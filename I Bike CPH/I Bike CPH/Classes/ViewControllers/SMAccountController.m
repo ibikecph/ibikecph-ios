@@ -11,7 +11,6 @@
 #import "DAKeyboardControl.h"
 #import "UIImage+Resize.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "Base64.h"
 #import "SMFavoritesUtil.h"
 
 @interface SMAccountController () {
@@ -142,7 +141,7 @@
     
     if (self.profileImage) {
         [[params objectForKey:@"user"] setValue:@{
-         @"file" : [UIImageJPEGRepresentation(self.profileImage, 1.0f) base64EncodedString],
+         @"file" : [UIImageJPEGRepresentation(self.profileImage, 1.0f) base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0],
          @"original_filename" : @"image.jpg",
          @"filename" : @"image.jpg"
          } forKey:@"image_path"];

@@ -1188,6 +1188,7 @@
 		4EE06C611A10FC5600DE4226 /* SMSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C291A10FC5600DE4226 /* SMSettingsController.m */; };
 		4EE06C621A10FC5600DE4226 /* SMSplashController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C2B1A10FC5600DE4226 /* SMSplashController.m */; };
 		4EE06C631A10FC5600DE4226 /* SMTranslatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C2D1A10FC5600DE4226 /* SMTranslatedViewController.m */; };
+		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1229,7 +1230,7 @@
 		4EE05FAB1A10F4D800DE4226 /* SMAboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMAboutController.h; path = ViewControllers/SMAboutController.h; sourceTree = "<group>"; };
 		4EE05FAC1A10F4D800DE4226 /* SMAboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMAboutController.m; path = ViewControllers/SMAboutController.m; sourceTree = "<group>"; };
 		4EE05FAD1A10F4D800DE4226 /* SMAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMAccountController.h; path = ViewControllers/SMAccountController.h; sourceTree = "<group>"; };
-		4EE05FAE1A10F4D800DE4226 /* SMAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMAccountController.m; path = ViewControllers/SMAccountController.m; sourceTree = "<group>"; };
+		4EE05FAE1A10F4D800DE4226 /* SMAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SMAccountController.m; path = ViewControllers/SMAccountController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4EE05FAF1A10F4D800DE4226 /* SMDebugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMDebugViewController.h; path = ViewControllers/SMDebugViewController.h; sourceTree = "<group>"; };
 		4EE05FB01A10F4D800DE4226 /* SMDebugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMDebugViewController.m; path = ViewControllers/SMDebugViewController.m; sourceTree = "<group>"; };
 		4EE05FB11A10F4D800DE4226 /* SMEnterEmailControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMEnterEmailControllerViewController.h; path = ViewControllers/SMEnterEmailControllerViewController.h; sourceTree = "<group>"; };
@@ -1241,7 +1242,7 @@
 		4EE05FB71A10F4D800DE4226 /* SMLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMLoginController.h; path = ViewControllers/SMLoginController.h; sourceTree = "<group>"; };
 		4EE05FB81A10F4D800DE4226 /* SMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMLoginController.m; path = ViewControllers/SMLoginController.m; sourceTree = "<group>"; };
 		4EE05FB91A10F4D800DE4226 /* SMRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMRegisterController.h; path = ViewControllers/SMRegisterController.h; sourceTree = "<group>"; };
-		4EE05FBA1A10F4D800DE4226 /* SMRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMRegisterController.m; path = ViewControllers/SMRegisterController.m; sourceTree = "<group>"; };
+		4EE05FBA1A10F4D800DE4226 /* SMRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SMRegisterController.m; path = ViewControllers/SMRegisterController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4EE05FBB1A10F4D800DE4226 /* SMReportErrorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMReportErrorController.h; path = ViewControllers/SMReportErrorController.h; sourceTree = "<group>"; };
 		4EE05FBC1A10F4D800DE4226 /* SMReportErrorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMReportErrorController.m; path = ViewControllers/SMReportErrorController.m; sourceTree = "<group>"; };
 		4EE05FBD1A10F4D800DE4226 /* SMRouteNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMRouteNavigationController.h; path = ViewControllers/SMRouteNavigationController.h; sourceTree = "<group>"; };
@@ -1251,7 +1252,7 @@
 		4EE05FC11A10F4D800DE4226 /* SMSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMSettingsController.h; path = ViewControllers/SMSettingsController.h; sourceTree = "<group>"; };
 		4EE05FC21A10F4D800DE4226 /* SMSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMSettingsController.m; path = ViewControllers/SMSettingsController.m; sourceTree = "<group>"; };
 		4EE05FC31A10F4D800DE4226 /* SMSplashController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMSplashController.h; path = ViewControllers/SMSplashController.h; sourceTree = "<group>"; };
-		4EE05FC41A10F4D800DE4226 /* SMSplashController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMSplashController.m; path = ViewControllers/SMSplashController.m; sourceTree = "<group>"; };
+		4EE05FC41A10F4D800DE4226 /* SMSplashController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SMSplashController.m; path = ViewControllers/SMSplashController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4EE05FC51A10F4D800DE4226 /* SMTranslatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMTranslatedViewController.h; path = ViewControllers/SMTranslatedViewController.h; sourceTree = "<group>"; };
 		4EE05FC61A10F4D800DE4226 /* SMTranslatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMTranslatedViewController.m; path = ViewControllers/SMTranslatedViewController.m; sourceTree = "<group>"; };
 		4EE05FC71A10F4D800DE4226 /* SMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMViewController.h; path = ViewControllers/SMViewController.h; sourceTree = "<group>"; };
@@ -2441,7 +2442,7 @@
 		4EE06C121A10FC5600DE4226 /* SMAboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutController.h; sourceTree = "<group>"; };
 		4EE06C131A10FC5600DE4226 /* SMAboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutController.m; sourceTree = "<group>"; };
 		4EE06C141A10FC5600DE4226 /* SMAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountController.h; sourceTree = "<group>"; };
-		4EE06C151A10FC5600DE4226 /* SMAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountController.m; sourceTree = "<group>"; };
+		4EE06C151A10FC5600DE4226 /* SMAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SMAccountController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4EE06C161A10FC5600DE4226 /* SMBreakRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBreakRouteViewController.h; sourceTree = "<group>"; };
 		4EE06C171A10FC5600DE4226 /* SMBreakRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBreakRouteViewController.m; sourceTree = "<group>"; };
 		4EE06C181A10FC5600DE4226 /* SMEnterEmailControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEnterEmailControllerViewController.h; sourceTree = "<group>"; };
@@ -2453,7 +2454,7 @@
 		4EE06C1E1A10FC5600DE4226 /* SMLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoginController.h; sourceTree = "<group>"; };
 		4EE06C1F1A10FC5600DE4226 /* SMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginController.m; sourceTree = "<group>"; };
 		4EE06C201A10FC5600DE4226 /* SMRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRegisterController.h; sourceTree = "<group>"; };
-		4EE06C211A10FC5600DE4226 /* SMRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRegisterController.m; sourceTree = "<group>"; };
+		4EE06C211A10FC5600DE4226 /* SMRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SMRegisterController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4EE06C221A10FC5600DE4226 /* SMReportErrorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReportErrorController.h; sourceTree = "<group>"; };
 		4EE06C231A10FC5600DE4226 /* SMReportErrorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReportErrorController.m; sourceTree = "<group>"; };
 		4EE06C241A10FC5600DE4226 /* SMRouteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteInfoViewController.h; sourceTree = "<group>"; };
@@ -2463,9 +2464,13 @@
 		4EE06C281A10FC5600DE4226 /* SMSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSettingsController.h; sourceTree = "<group>"; };
 		4EE06C291A10FC5600DE4226 /* SMSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSettingsController.m; sourceTree = "<group>"; };
 		4EE06C2A1A10FC5600DE4226 /* SMSplashController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSplashController.h; sourceTree = "<group>"; };
-		4EE06C2B1A10FC5600DE4226 /* SMSplashController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSplashController.m; sourceTree = "<group>"; };
+		4EE06C2B1A10FC5600DE4226 /* SMSplashController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SMSplashController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4EE06C2C1A10FC5600DE4226 /* SMTranslatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTranslatedViewController.h; sourceTree = "<group>"; };
 		4EE06C2D1A10FC5600DE4226 /* SMTranslatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTranslatedViewController.m; sourceTree = "<group>"; };
+		4EE06C651A1102A600DE4226 /* I Bike CPH-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "I Bike CPH-Prefix.pch"; sourceTree = "<group>"; };
+		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		FBE17F41EBD064F1BEE38068 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2473,6 +2478,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2509,6 +2515,8 @@
 				4EE05F7A1A10EDE700DE4226 /* CykelPlanen */,
 				4EE05F941A10EDE700DE4226 /* CykelPlanenTests */,
 				4EE05F4B1A10EBFA00DE4226 /* Products */,
+				EB75382B6E76E7EF0729C786 /* Pods */,
+				C83673E4C34341FF10FF5705 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2539,6 +2547,7 @@
 		4EE05F4D1A10EBFA00DE4226 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4EE06C651A1102A600DE4226 /* I Bike CPH-Prefix.pch */,
 				4EE05F4E1A10EBFA00DE4226 /* Info.plist */,
 				4EE05F4F1A10EBFA00DE4226 /* main.m */,
 			);
@@ -3949,6 +3958,23 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		C83673E4C34341FF10FF5705 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FBE17F41EBD064F1BEE38068 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB75382B6E76E7EF0729C786 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */,
+				EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3956,9 +3982,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4EE05F6D1A10EBFA00DE4226 /* Build configuration list for PBXNativeTarget "I Bike CPH" */;
 			buildPhases = (
+				28AEC9528EF0FB7CF480BF26 /* Check Pods Manifest.lock */,
 				4EE05F461A10EBFA00DE4226 /* Sources */,
 				4EE05F471A10EBFA00DE4226 /* Frameworks */,
 				4EE05F481A10EBFA00DE4226 /* Resources */,
+				37B4B92B914D1C42FB8F4A42 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5207,6 +5235,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		28AEC9528EF0FB7CF480BF26 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		37B4B92B914D1C42FB8F4A42 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4EE05F461A10EBFA00DE4226 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -5422,8 +5483,10 @@
 		};
 		4EE05F6E1A10EBFA00DE4226 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "I Bike CPH/I Bike CPH-Prefix.pch";
 				INFOPLIST_FILE = "I Bike CPH/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -5433,8 +5496,10 @@
 		};
 		4EE05F6F1A10EBFA00DE4226 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "I Bike CPH/I Bike CPH-Prefix.pch";
 				INFOPLIST_FILE = "I Bike CPH/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

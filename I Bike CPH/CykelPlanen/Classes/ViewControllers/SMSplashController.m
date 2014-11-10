@@ -16,7 +16,6 @@
 #import "SMUtil.h"
 #import "SMAppDelegate.h"
 #import "UIImage+Resize.h"
-#import "Base64.h"
 #import "SMFavoritesUtil.h"
 #import "SMReminder.h"
 #import "SMTransportation.h"
@@ -179,7 +178,7 @@ typedef enum {
     
     if (self.profileImage) {
         [[params objectForKey:@"user"] setValue:@{
-         @"file" : [UIImageJPEGRepresentation(self.profileImage, 1.0f) base64EncodedString],
+         @"file" : [UIImageJPEGRepresentation(self.profileImage, 1.0f) base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0],
          @"original_filename" : @"image.jpg",
          @"filename" : @"image.jpg"
          } forKey:@"image_path"];
