@@ -17,7 +17,7 @@
  * Handles (auto)login and register
  */
 @interface SMSplashController : SMTranslatedViewController <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SMAPIRequestDelegate, SMFavoritesDelegate>{
-    
+
     __weak IBOutlet UIView *registerView;
     __weak IBOutlet UIView *loginView;
     __weak IBOutlet UIScrollView *registerScroll;

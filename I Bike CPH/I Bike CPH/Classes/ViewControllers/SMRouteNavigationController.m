@@ -100,7 +100,7 @@ typedef enum {
     [self.mpView setTileSource:TILE_SOURCE];
     [self.mpView setDelegate:self];
     [self.mpView setMaxZoom:MAX_MAP_ZOOM];
-    
+
     [self setDirectionsState:directionsHidden];
     
     [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
@@ -125,13 +125,10 @@ typedef enum {
         [self start:self.startLocation.coordinate end:self.endLocation.coordinate withJSON:self.jsonRoot];
     }
     
-
-    
     [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:self.cargoHandleImageView];
     
     // setup cargo items
     
-        
     self.cargoItems= OSRM_SERVERS;
     [self.cargoTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self.cargoTableView reloadData];
@@ -159,7 +156,6 @@ typedef enum {
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         statusbarView.hidden = YES;
     }
-
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
@@ -481,8 +477,7 @@ typedef enum {
         topString= [topString stringByAppendingString:[hyphenedString substringToIndex:range.location+1]];
         bottomString= [bottomString stringByAppendingFormat:@"%@ ",[hyphenedString substringFromIndex:range.location+1]];
     }
-
-
+    
     for(int i=fromIndex; i<words.count; i++){
         bottomString= [bottomString stringByAppendingFormat:@"%@%@",[words objectAtIndex:i],( i==words.count-1)?@"":@" "];
     }
@@ -916,7 +911,7 @@ typedef enum {
 }
 
 - (void) updateTurn:(BOOL)firstElementRemoved {
-    
+
     @synchronized(self.route.turnInstructions) {
         
         [self reloadSwipableView];
@@ -1730,8 +1725,7 @@ typedef enum {
     }
 }
 
-- (void)request:(SMRequestOSRM *)req failedWithError:(NSError *)error {
-}
+- (void)request:(SMRequestOSRM *)req failedWithError:(NSError *)error {}
 
 - (void)serverNotReachable {
     SMNetworkErrorView * v = [SMNetworkErrorView getFromNib];
@@ -1755,11 +1749,7 @@ typedef enum {
 #pragma mark - statusbar style
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    //    if (centerView.frame.origin.x == 0.0f) {
-    //        return UIStatusBarStyleDefault;
-    //    } else {
     return UIStatusBarStyleLightContent;
-    //    }
 }
 
 @end

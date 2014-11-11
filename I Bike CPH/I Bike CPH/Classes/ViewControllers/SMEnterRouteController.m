@@ -221,7 +221,6 @@ typedef enum {
                 } else {
                     [destViewController setSearchText:@""];
                 }
-                
                 break;
             case fieldTo:
                 [destViewController setShouldAllowCurrentPosition:NO];
@@ -261,7 +260,6 @@ typedef enum {
         if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([[jsonRoot objectForKey:@"status"] intValue] != 0)) {
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_route_not_found") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
-            
             
         } else {
             NSDictionary * d = @{
@@ -429,7 +427,7 @@ typedef enum {
             }
     
         }
-            
+        
         NSDictionary * currentRow = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         SMEnterRouteCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         [cell.nameLabel setText:[currentRow objectForKey:@"name"]];
@@ -521,9 +519,9 @@ typedef enum {
         NSDictionary * currentRow = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         [toLabel setText:[self textFromData:currentRow]];
         [self setToData:@{
-         @"name" : [currentRow objectForKey:@"name"],
-         @"address" : [currentRow objectForKey:@"address"],
-         @"location" : [[CLLocation alloc] initWithLatitude:[[currentRow objectForKey:@"lat"] doubleValue] longitude:[[currentRow objectForKey:@"long"] doubleValue]]
+             @"name" : [currentRow objectForKey:@"name"],
+             @"address" : [currentRow objectForKey:@"address"],
+             @"location" : [[CLLocation alloc] initWithLatitude:[[currentRow objectForKey:@"lat"] doubleValue] longitude:[[currentRow objectForKey:@"long"] doubleValue]]
          }];
         
         if ((self.toData && self.fromData) || ([toLabel.text isEqualToString:@""] == NO && [fromLabel.text isEqualToString:@""] == NO)) {

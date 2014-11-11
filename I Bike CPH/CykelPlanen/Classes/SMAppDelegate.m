@@ -10,7 +10,7 @@
 #import "SMUtil.h"
 #import "SMSearchHistory.h"
 
-@interface SMAppDelegate()
+@interface SMAppDelegate ()
 @property (nonatomic, strong) NSMutableDictionary * fbDict;
 @end
 
@@ -22,22 +22,18 @@
     self.currentEvents = @[];
     self.searchHistory = [SMSearchHistory getSearchHistory];
     
-//    // Map overlays
-//    self.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
-    
     /**
      * initialize Google Analytics
      */
-//    [GAI sharedInstance].debug = YES;
-//    [GAI sharedInstance].dispatchInterval = GOOGLE_ANALYTICS_DISPATCH_INTERVAL;
-//#ifdef TEST_VERSION
-//    [GAI sharedInstance].trackUncaughtExceptions = YES;
-//#endif
-//    self.tracker = [[GAI sharedInstance] trackerWithTrackingId:GOOGLE_ANALYTICS_KEY];
-//    [[GAI sharedInstance] setDefaultTracker:self.tracker];
-//    [[GAI sharedInstance].defaultTracker setAnonymize:GOOGLE_ANALYTICS_ANONYMIZE];
-//    [[GAI sharedInstance].defaultTracker setSampleRate:GOOGLE_ANALYTICS_SAMPLE_RATE];
-//    [[GAI sharedInstance].defaultTracker setSessionTimeout:GOOGLE_ANALYTICS_SESSION_TIMEOUT];
+    [GAI sharedInstance].dispatchInterval = GOOGLE_ANALYTICS_DISPATCH_INTERVAL;
+#ifdef TEST_VERSION
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+#endif
+    self.tracker = [[GAI sharedInstance] trackerWithTrackingId:GOOGLE_ANALYTICS_KEY];
+    [[GAI sharedInstance] setDefaultTracker:self.tracker];
+    [[GAI sharedInstance].defaultTracker setAnonymize:GOOGLE_ANALYTICS_ANONYMIZE];
+    [[GAI sharedInstance].defaultTracker setSampleRate:GOOGLE_ANALYTICS_SAMPLE_RATE];
+    [[GAI sharedInstance].defaultTracker setSessionTimeout:GOOGLE_ANALYTICS_SESSION_TIMEOUT];
 
 
     if ([[NSFileManager defaultManager] fileExistsAtPath:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"settings.plist"]] == NO) {
@@ -55,18 +51,17 @@
     [self loadSettings];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"Language: %@", [defaults objectForKey:@"appLanguage"]);
-    //[defaults setObject:@"dk" forKey:@"appLanguage"];
     if (![defaults stringForKey:@"appLanguage"]) {
         /**
          * init default settings
          */
-       NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         NSArray* languages = [defaults objectForKey:@"AppleLanguages"];
         if ([[languages objectAtIndex:0] isEqualToString:@"da"] || [[languages objectAtIndex:0] isEqualToString:@"dan"]) {
             [defaults setObject:@"dk" forKey:@"appLanguage"];
         } else {
-            [defaults setObject:@"en" forKey:@"appLanguage"];        }
+            [defaults setObject:@"en" forKey:@"appLanguage"];
+        }
         [defaults synchronize];
     }
     

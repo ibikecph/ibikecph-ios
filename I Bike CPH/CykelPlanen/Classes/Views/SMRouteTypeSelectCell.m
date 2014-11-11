@@ -12,7 +12,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-       
     if (selected) {
         [cellText setTextColor:[UIColor whiteColor]];
         [cellImage setHighlighted:YES];

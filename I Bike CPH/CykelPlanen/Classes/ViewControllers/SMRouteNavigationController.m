@@ -51,8 +51,6 @@ typedef enum {
     directionsHidden
 } DirectionsState;
 
-
-
 @interface SMRouteNavigationController () {
     DirectionsState currentDirectionsState;
     CGFloat lastDirectionsPos;
@@ -247,9 +245,7 @@ typedef enum {
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
     [tblDirections reloadData];
-    
     if (self.currentlyRouting) {
         [UIApplication sharedApplication].idleTimerDisabled = YES;
     } else {
@@ -694,6 +690,7 @@ typedef enum {
     sw.latitude -= latDiff * LATITUDE_PADDING;
     sw.longitude -= lonDiff * LONGITUDE_PADDING;
     
+    
     [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake((ne.latitude+sw.latitude) / 2.0, (ne.longitude+sw.longitude) / 2.0)];
     [self.mpView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
 }
@@ -914,7 +911,7 @@ typedef enum {
     [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake(self.route.locationStart.latitude,self.route.locationStart.longitude)];
     [labelDistanceLeft setText:formatDistance(self.route.estimatedRouteDistance)];
     [labelTimeLeft setText:expectedArrivalTime(self.route.estimatedTimeForRoute)];
-    
+
     [self.mpView setUserTrackingMode:RMUserTrackingModeFollowWithHeading];
     [self.mpView rotateMap:self.route.lastCorrectedHeading];
 
@@ -1034,14 +1031,12 @@ typedef enum {
 //    self.pathVisible= YES;
     RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:[r getStartLocation].coordinate andTitle:nil];
     calculatedPathAnnotation.annotationType = @"path";
-
     calculatedPathAnnotation.userInfo = @{
                                          @"linePoints" : [NSArray arrayWithArray:r.waypoints],
                                          @"lineColor" : PATH_COLOR,
                                          @"fillColor" : [UIColor clearColor],
                                          @"lineWidth" : [NSNumber numberWithFloat:10.0f],
                                          };
-
     [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:r.waypoints]];
     [self.mpView addAnnotation:calculatedPathAnnotation];
     return @{
@@ -1068,7 +1063,6 @@ typedef enum {
 }
 
 - (void)resetZoom {
-
     [self.mpView setZoom:DEFAULT_MAP_ZOOM];
     [self.mpView zoomByFactor:1 near:[self.mpView coordinateToPixel:[SMLocationManager instance].lastValidLocation.coordinate] animated:YES];
 }
@@ -1273,7 +1267,6 @@ typedef enum {
         }
         RMMarker * rm = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
         [rm setZPosition:z];
-
         return rm;
     }
     
@@ -1340,12 +1333,10 @@ typedef enum {
 
 - (void)afterMapZoom:(RMMapView *)map byUser:(BOOL)wasUserAction {
     debugLog(@"After map zoom!!!! wasUserAction = %d", wasUserAction);
-    
     if (wasUserAction) {
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(resetZoomTurn) object:nil];
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(trackingOn) object:nil];
     }
-    
     [self checkCallouts];
 }
 
@@ -1466,7 +1457,7 @@ typedef enum {
     CGFloat distance = [self.route calculateDistanceTraveled];
     [finishDistance setText:formatDistance(distance)];
     [finishTime setText:[self.route timePassed]];
-    
+
     /**
      * save route data
      */
@@ -1480,7 +1471,7 @@ typedef enum {
     [finishDestination setText:[a objectAtIndex:0]];
     
     [[NSFileManager defaultManager] removeItemAtPath:[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"] error:nil];
-    
+
     /**
      * don't show destination notification
      */
@@ -1565,7 +1556,6 @@ typedef enum {
 }
 
 - (void) updateRoute {
-
     // Remove previous path and display new one
     [noConnectionView setAlpha:0.0f];
     for (RMAnnotation *annotation in self.mpView.annotations) {
@@ -1661,7 +1651,7 @@ typedef enum {
     [UIView animateWithDuration:0.4f animations:^{
         [stopView setAlpha:1.0f];
     } completion:^(BOOL finished) {
-    }];    
+    }];
 }
 
 - (void)trackingOn {
@@ -1809,7 +1799,7 @@ typedef enum {
         }
 
         return cell;
-    }    
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -1883,8 +1873,6 @@ typedef enum {
 //    }
 }
 
-
-
 #pragma mark - alert view delegate
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -1919,7 +1907,6 @@ typedef enum {
             CGFloat newY = mapContainer.frame.origin.y + MAX_TABLE;
             [self repositionInstructionsView:newY + 1];
             lastDirectionsPos = newY + 1;
-
         }
             break;
         case directionsNormal: {
@@ -2367,7 +2354,7 @@ typedef enum {
     _destination= pDestination;
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle{
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 

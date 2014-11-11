@@ -60,7 +60,6 @@
 @property (nonatomic, strong) NSString * destination;
 @property (nonatomic, strong) NSString * source;
 @property (weak, nonatomic) IBOutlet UIView *mapFade;
-
 @property (nonatomic, strong) id jsonRoot;
 
 @end

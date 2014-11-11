@@ -22,10 +22,10 @@
     self.currentContacts = @[];
     self.currentEvents = @[];
     self.searchHistory = [SMSearchHistory getSearchHistory];
-        
+    
     /**
      * initialize Google Analytics
-     */    
+     */
     [GAI sharedInstance].dispatchInterval = GOOGLE_ANALYTICS_DISPATCH_INTERVAL;
 #ifdef TEST_VERSION
     [GAI sharedInstance].trackUncaughtExceptions = YES;

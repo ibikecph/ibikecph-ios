@@ -385,7 +385,9 @@
     }
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle{
+#pragma mark - statusbar style
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 

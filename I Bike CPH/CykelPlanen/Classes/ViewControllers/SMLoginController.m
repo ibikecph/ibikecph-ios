@@ -28,6 +28,7 @@
         [scrlView setContentSize:CGSizeMake(320.0f, 410.0f)];
         
         UIScrollView * scr = scrlView;
+        
         [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
             CGRect frame = scr.frame;
             frame.size.height = keyboardFrameInView.origin.y;
@@ -219,7 +220,9 @@
     [super viewDidUnload];
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle{
+#pragma mark - statusbar style
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 

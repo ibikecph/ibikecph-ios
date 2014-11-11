@@ -170,7 +170,6 @@
         } else {
             [self checkLocation];
         }
-        
     } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"currentPosition"]) {
         SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
         [r setRequestIdentifier:@"getNearestForPinDrop"];

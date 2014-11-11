@@ -35,7 +35,6 @@ typedef enum {
 @property (nonatomic, strong) SMAPIRequest * locale;
 @end
 
-
 @implementation SMSplashController
 
 - (void)viewDidLoad {
@@ -56,7 +55,7 @@ typedef enum {
         [sh setDelegate:self.appDelegate];
         [sh fetchSearchHistoryFromServer];
         [[SMFavoritesUtil instance] fetchFavoritesFromServer];
-    }    
+    }
 }
 
 - (void)viewDidUnload {
