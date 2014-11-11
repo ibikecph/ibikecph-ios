@@ -10,7 +10,7 @@
 #import "SMAutocomplete.h"
 #import "SMRequestOSRM.h"
 #import "SMNearbyPlaces.h"
-#import <SMAPIOperation.h>
+#import "SMAPIOperation.h"
 
 @protocol SMSearchDelegate <NSObject>
 

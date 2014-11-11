@@ -59,7 +59,7 @@
     
 //    UITableView * tableView = tblView;
     UIScrollView * scr = scrlView;
-    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
+    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
         CGRect frame = scr.frame;
         frame.size.height = keyboardFrameInView.origin.y;
         scr.frame = frame;
@@ -78,7 +78,7 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
-    if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Report" withAction:@"Start" withLabel:@"" withValue:0]) {
+    if (![SMAnalytics trackEventWithCategory:@"Report" withAction:@"Start" withLabel:@"" withValue:0]) {
         debugLog(@"error in trackEvent");
     }
 
@@ -419,7 +419,7 @@
 
 - (void)request:(SMAPIRequest *)req completedWithResult:(NSDictionary *)result {
     if ([[result objectForKey:@"success"] boolValue]) {
-        if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Report" withAction:@"Completed" withLabel:@"" withValue:0]) {
+        if (![SMAnalytics trackEventWithCategory:@"Report" withAction:@"Completed" withLabel:@"" withValue:0]) {
             debugLog(@"error in trackEvent");
         }
 

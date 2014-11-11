@@ -1,0 +1,9 @@
+[submodule "AddressParser"]
+	path = AddressParser
+	url = https://github.com/ibikecph/AddressParser
+[submodule "route-me"]
+	path = route-me
+	url = https://github.com/ibikecph/route-me.git
+[submodule "routing-engine"]
+	path = routing-engine
+	url = https://github.com/ibikecph/routing-engine.git

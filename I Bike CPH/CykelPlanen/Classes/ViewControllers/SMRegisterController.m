@@ -13,6 +13,7 @@
 #import "SMUtil.h"
 #import "SMAppDelegate.h"
 #import "UIImage+Resize.h"
+#import "SMAnalytics.h"
 
 @interface SMRegisterController ()
 @property (nonatomic, strong) SMAPIRequest * apr;
@@ -30,7 +31,7 @@
     [scrlView setContentSize:CGSizeMake(320.0f, 410.0f)];
     
     UIScrollView * scr = scrlView;
-    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
+    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
         CGRect frame = scr.frame;
         frame.size.height = keyboardFrameInView.origin.y;
         scr.frame = frame;
@@ -183,7 +184,7 @@
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"" message:translateString(@"register_successful") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
             [self goBack:nil];
-            if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:registerEmail.text withValue:0]) {
+            if (![SMAnalytics trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:registerEmail.text withValue:0]) {
                 debugLog(@"error in trackEvent");
             }
         }

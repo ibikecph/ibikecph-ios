@@ -1,0 +1,150 @@
+//
+// Prefix header for all source files of the 'I Bike CPH' target in the 'I Bike CPH' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "AsyncImageView.h"
+    #import "SMTranslation.h"
+    #import "NSString+URLEncode.h"
+    #import "SharedImport.h"
+    #import "SMCustomCheckbox.h"
+    #import "keys.h"
+    #import "SMTranslatedViewController.h"
+    #import "SMUtil.h"
+    #import "SMCustomButton.h"
+    #import "SMPatternedButton.h"
+    #import "SMNetworkErrorView.h"
+    #import "SMRouteConsts.h"
+    #import "SMRouteUtils.h"
+    #import "SMUser.h"
+#endif
+
+#if DISTRIBUTION_VERSION
+#define debugLog(args...)    // NO logs
+#else
+#define debugLog(args...)    NSLog(@"%@", [NSString stringWithFormat: args])
+#endif
+
+#define translateString(txt) [SMTranslation decodeString:(txt)]
+
+#define CURRENT_POSITION_STRING [SMTranslation decodeString:@"current_position"]
+
+#define ORG_NAME @"ibikecph"
+
+#define ERROR_FADE 0.2f
+#define ERROR_WAIT 2.0f
+
+////#ifdef WORLD_ROUTING
+////    #define OSRM_SERVER @"http://router.project-osrm.org"
+//#define OSRM_ADDRESS @"routes.ibikecph.dk"
+////#else
+//    #define OSRM_SERVER @"http://routes.ibikecph.dk"
+//    #define OSRM_SERVER_CARGO @"http://routes.ibikecph.dk/cargobike"
+////#endif
+
+
+#define OSRM_SERVERS @[@{@"name" : translateString(@"marker_type_1"), @"image" : @"bike_route_gray", @"imageHighlighted" : @"bike_route_white", @"server" : OSRM_SERVER}, @{@"name" : translateString(@"marker_type_2"), @"image" :  @"service_station_gray", @"imageHighlighted" : @"service_station_white", @"server" : OSRM_SERVER_CARGO}, @{@"name" : translateString(@"marker_type_3"), @"image" :  @"s_station_gray", @"imageHighlighted" : @"s_station_white", @"server" : OSRM_SERVER_CARGO}, @{@"name" : translateString(@"marker_type_4"), @"image" :  @"metro_station_gray", @"imageHighlighted" : @"metro_station_white", @"server" : OSRM_SERVER_CARGO}, @{@"name" : translateString(@"marker_type_5"), @"image" :  @"l-gray", @"imageHighlighted" : @"l-white", @"server" : OSRM_SERVER_CARGO}]
+
+////#ifdef WORLD_ROUTING
+////#define TILE_SOURCE [[RMOpenStreetMapSource alloc] init]
+////#else
+//#define TILE_SOURCE [[SMiBikeCPHMapTileSource alloc] init]
+////#endif
+
+
+//#define TIME_FORMAT @"HH.mm"
+//#define TIME_DAYS_SHORT @"d"
+//#define TIME_HOURS_SHORT @"h"
+//#define TIME_MINUTES_SHORT @"min"
+//#define TIME_SECONDS_SHORT @"s"
+//#define DISTANCE_KM_SHORT @"km"
+//#define DISTANCE_M_SHORT @"m"
+
+#define CALENDAR_MAX_DAYS 15
+
+//#ifdef ENGLISH_VERSION
+    #define DEFAULT_LANGUAGE @"en"
+//#else
+//    #define DEFAULT_LANGUAGE @"dk"
+//#endif
+
+
+#define MAX_HEIGHT_FOR_EVENTS_TABLE 170.0f
+#define MAIL_RECIPIENTS @[@"support+00c86bd0c75940dcb863bbca9fa33313@feedback.hockeyapp.net", @"emil.tin@tmf.kk.dk"]
+#define ZOOM_TO_TURN_DURATION 4 // in seconds
+#define DEFAULT_MAP_ZOOM 18.5
+#define DEFAULT_TURN_ZOOM 18.5
+#define MAX_MAP_ZOOM 20
+#define PATH_COLOR [UIColor colorWithRed:6.0f/255.0f green:63.0f/255.0f blue:114.0f/255.0f alpha:0.85f]
+#define PATH_OPACITY 0.8f
+#define LOCATION_STATION_DISTANCE_ON_BIKE 20
+#define LOCATION_STATION_DISTANCE_ON_BUS 30.0
+#define LOCATION_END_DISTANCE LOCATION_STATION_DISTANCE_ON_BIKE
+#define LOCATION_DEFAULT_DISTANCE LOCATION_END_DISTANCE
+//#define GEOCODING_SEARCH_RADIUS 50000.0f
+//
+//#define PLACES_SEARCH_RADIUS @"20000"
+//#define FOURSQUARE_SEARCH_RADIUS @"20000"
+//#define PLACES_LANGUAGE @"da"
+//#define OIOREST_SEARCH_RADIUS @"50"
+//#define OIOREST_AUTOCOMPLETE_SEARCH_RADIUS @"20000"
+
+#define GOOGLE_ANALYTICS_DISPATCH_INTERVAL 120
+#define GOOGLE_ANALYTICS_SAMPLE_RATE 100
+#define GOOGLE_ANALYTICS_SESSION_TIMEOUT 1800
+#define GOOGLE_ANALYTICS_ANONYMIZE YES
+
+#define DIRECTION_FONT_SIZE 17.0f
+#define WAYPOINT_FONT_SIZE 20.0f
+#define INSTRUCTIONS_LABEL_WIDTH 194.0f
+
+#define NOTIFICATION_STATIONS_FETCHED @"NotificationStationsFetched"
+
+//#define USE_APPLE_GEOCODER YES
+
+#define MIN_DISTANCE_FOR_RECALCULATION 20.0
+
+#define BUILD_VERSION [NSString stringWithUTF8String:__DATE__" "__TIME__"\x0"]
+
+#define BUILD_STRING [NSString stringWithFormat:@"%@: %@", translateString(@"Build"), BUILD_VERSION]
+
+#define MAX_TURNS 4
+
+//#define TESTING
+
+#define API_ADDRESS @"www.ibikecph.dk"
+#define API_SERVER @"http://www.ibikecph.dk/api"
+#define API_DEFAULT_ACCEPT @{@"key": @"Accept", @"value" : @"application/vnd.ibikecph.v1"}
+#define API_DEFAULT_HEADERS @[API_DEFAULT_ACCEPT, @{@"key": @"Content-Type", @"value" : @"application/json"}]
+
+#define API_LOGIN @{@"service" : @"login", @"transferMethod" : @"POST", @"headers" : API_DEFAULT_HEADERS}
+#define API_REGISTER @{@"service" : @"users", @"transferMethod" : @"POST",  @"headers" : API_DEFAULT_HEADERS}
+#define API_GET_USER_DATA @{@"service" : @"users", @"transferMethod" : @"GET",  @"headers" : API_DEFAULT_HEADERS}
+#define API_CHANGE_USER_DATA @{@"service" : @"users", @"transferMethod" : @"PUT",  @"headers" : API_DEFAULT_HEADERS}
+#define API_CHANGE_PASSWORD @{@"service" : @"users/password", @"transferMethod" : @"PUT",  @"headers" : API_DEFAULT_HEADERS}
+#define API_DELETE_USER_DATA @{@"service" : @"users", @"transferMethod" : @"DELETE",  @"headers" : API_DEFAULT_HEADERS}
+
+#define API_SEND_FEEDBACK @{@"service" : @"issues", @"transferMethod" : @"POST",  @"headers" : API_DEFAULT_HEADERS}
+
+#define API_ADD_FAVORITE @{@"service" : @"favourites", @"transferMethod" : @"POST",  @"headers" : API_DEFAULT_HEADERS}
+#define API_EDIT_FAVORITE @{@"service" : @"favourites", @"transferMethod" : @"PUT",  @"headers" : API_DEFAULT_HEADERS}
+#define API_DELETE_FAVORITE @{@"service" : @"favourites", @"transferMethod" : @"DELETE",  @"headers" : API_DEFAULT_HEADERS}
+#define API_LIST_FAVORITES @{@"service" : @"favourites", @"transferMethod" : @"GET",  @"headers" : API_DEFAULT_HEADERS}
+
+#define API_LIST_HISTORY @{@"service" : @"routes", @"transferMethod" : @"GET",  @"headers" : API_DEFAULT_HEADERS}
+#define API_ADD_HISTORY @{@"service" : @"routes", @"transferMethod" : @"POST",  @"headers" : API_DEFAULT_HEADERS}
+
+#define API_SORT_FAVORITES @{@"service" : @"favourites/reorder", @"transferMethod" : @"POST",  @"headers" : API_DEFAULT_HEADERS}
+
+#define kFAVORITES_CHANGED @"favoritesChanged"
+
+
+

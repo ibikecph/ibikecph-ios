@@ -14,10 +14,7 @@
     #import "AsyncImageView.h"
     #import "SMTranslation.h"
     #import "NSString+URLEncode.h"
-    #import "GAI.h"
-    #import "GAITracker.h"
-    #import "GAIFields.h"
-    #import "GAIDictionaryBuilder.h"
+    #import "SharedImport.h"
     #import "SMCustomCheckbox.h"
     #import "keys.h"
     #import "SMTranslatedViewController.h"
@@ -27,8 +24,6 @@
     #import "SMNetworkErrorView.h"
     #import "SMRouteConsts.h"
     #import "SMRouteUtils.h"
-    #import "SMAddressParser.h"
-    #import "SMAnalytics.h"
 #endif
 
 #define translateString(txt) [SMTranslation decodeString:(txt)]

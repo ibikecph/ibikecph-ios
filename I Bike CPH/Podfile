@@ -2,6 +2,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '7.0'
 
+link_with 'I Bike CPH', 'CykelPlanen'
+
 inhibit_all_warnings!
 
 pod 'Facebook-iOS-SDK', '~>3.20'
