@@ -1215,6 +1215,8 @@
 		4EE073971A1178E300DE4226 /* white_btn_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE071561A1178E100DE4226 /* white_btn_pressed.png */; };
 		4EE073981A1178E300DE4226 /* white_btn_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE071571A1178E100DE4226 /* white_btn_pressed@2x.png */; };
 		4EE0739F1A117E6700DE4226 /* SMAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06D4C1A11163900DE4226 /* SMAPIRequest.m */; };
+		4EEE915B1A11A7070006BD95 /* UIView+LocateSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE915A1A11A7070006BD95 /* UIView+LocateSubview.m */; };
+		4EEE915C1A11A7070006BD95 /* UIView+LocateSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE915A1A11A7070006BD95 /* UIView+LocateSubview.m */; };
 		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -2552,6 +2554,8 @@
 		4EE071551A1178E100DE4226 /* white_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_btn@2x.png"; sourceTree = "<group>"; };
 		4EE071561A1178E100DE4226 /* white_btn_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_btn_pressed.png; sourceTree = "<group>"; };
 		4EE071571A1178E100DE4226 /* white_btn_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_btn_pressed@2x.png"; sourceTree = "<group>"; };
+		4EEE91591A11A7070006BD95 /* UIView+LocateSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LocateSubview.h"; sourceTree = "<group>"; };
+		4EEE915A1A11A7070006BD95 /* UIView+LocateSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LocateSubview.m"; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBE17F41EBD064F1BEE38068 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2747,6 +2751,8 @@
 				4ECC65A81A118B06008A7DB0 /* AsyncImageView.m */,
 				4E4BD1201A11916A006C78E5 /* SMUtil.h */,
 				4E4BD1211A11916A006C78E5 /* SMUtil.m */,
+				4EEE91591A11A7070006BD95 /* UIView+LocateSubview.h */,
+				4EEE915A1A11A7070006BD95 /* UIView+LocateSubview.m */,
 				4EE06E001A11251C00DE4226 /* ViewControllers */,
 				4EE06EAC1A112A0700DE4226 /* Views */,
 			);
@@ -5510,6 +5516,7 @@
 				4EE06DD11A11163900DE4226 /* SMViewController.m in Sources */,
 				4EE06DC61A11163900DE4226 /* SMEnterEmailControllerViewController.m in Sources */,
 				4EE06DCC1A11163900DE4226 /* SMRouteNavigationController.m in Sources */,
+				4EEE915B1A11A7070006BD95 /* UIView+LocateSubview.m in Sources */,
 				4EE06DFA1A11198400DE4226 /* FlickableView.m in Sources */,
 				4EE06EE21A112A9F00DE4226 /* SMContactsCell.m in Sources */,
 				4EE06DCA1A11163900DE4226 /* SMRegisterController.m in Sources */,
@@ -5622,6 +5629,7 @@
 				4EE06CE51A11135000DE4226 /* SMAddressParser.m in Sources */,
 				4EE06C591A10FC5600DE4226 /* SMEnterEmailControllerViewController.m in Sources */,
 				4EE06F091A112F6D00DE4226 /* SMCyLwReminderVC.m in Sources */,
+				4EEE915C1A11A7070006BD95 /* UIView+LocateSubview.m in Sources */,
 				4EE06F0B1A112F6D00DE4226 /* SMDirectionTopCell.m in Sources */,
 				4EE06CBE1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
 				4ECC659B1A118A51008A7DB0 /* SMCustomCheckbox.m in Sources */,

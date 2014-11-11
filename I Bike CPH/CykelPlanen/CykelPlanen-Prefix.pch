@@ -112,7 +112,8 @@
 
 #define MIN_DISTANCE_FOR_RECALCULATION 20.0
 
-#define BUILD_VERSION [NSString stringWithUTF8String:__DATE__" "__TIME__"\x0"]
+#define BUNDLE_VERSION [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*) kCFBundleVersionKey]
+#define USER_AGENT [NSString stringWithFormat:@"IBikeCPH/%@/iOS", BUNDLE_VERSION]
 
 #define BUILD_STRING [NSString stringWithFormat:@"%@: %@", translateString(@"Build"), BUILD_VERSION]
 
