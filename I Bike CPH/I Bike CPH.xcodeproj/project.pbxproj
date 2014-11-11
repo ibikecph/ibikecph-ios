@@ -590,7 +590,6 @@
 		4EE06DF51A1116CF00DE4226 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06DF41A1116CF00DE4226 /* MapKit.framework */; };
 		4EE06DF61A1116DB00DE4226 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06DF41A1116CF00DE4226 /* MapKit.framework */; };
 		4EE06DF71A1116FC00DE4226 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06C851A1112EB00DE4226 /* libMapView.a */; };
-		4EE06DFA1A11198400DE4226 /* FlickableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06DF91A11198400DE4226 /* FlickableView.m */; };
 		4EE06E031A11251C00DE4226 /* SMTranslatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E021A11251C00DE4226 /* SMTranslatedViewController.m */; };
 		4EE06E071A11261300DE4226 /* SMAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E061A11261300DE4226 /* SMAnalytics.m */; };
 		4EE06E5A1A11298800DE4226 /* SMAddFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE06E0D1A11298800DE4226 /* SMAddFavoriteCell.xib */; };
@@ -1892,8 +1891,6 @@
 		4EE06D7A1A11163900DE4226 /* SMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMViewController.h; sourceTree = "<group>"; };
 		4EE06D7B1A11163900DE4226 /* SMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMViewController.m; sourceTree = "<group>"; };
 		4EE06DF41A1116CF00DE4226 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		4EE06DF81A11198400DE4226 /* FlickableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickableView.h; sourceTree = "<group>"; };
-		4EE06DF91A11198400DE4226 /* FlickableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickableView.m; sourceTree = "<group>"; };
 		4EE06DFF1A11238C00DE4226 /* CykelPlanen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CykelPlanen-Prefix.pch"; sourceTree = "<group>"; };
 		4EE06E011A11251C00DE4226 /* SMTranslatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTranslatedViewController.h; sourceTree = "<group>"; };
 		4EE06E021A11251C00DE4226 /* SMTranslatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTranslatedViewController.m; sourceTree = "<group>"; };
@@ -2670,8 +2667,6 @@
 			children = (
 				4EE05FA81A10F4A400DE4226 /* SMAppDelegate.h */,
 				4EE05FA91A10F4A400DE4226 /* SMAppDelegate.m */,
-				4EE06DF81A11198400DE4226 /* FlickableView.h */,
-				4EE06DF91A11198400DE4226 /* FlickableView.m */,
 				4EE06D491A11163900DE4226 /* SMAnnotation.h */,
 				4EE06D4A1A11163900DE4226 /* SMAnnotation.m */,
 				4EE06D4B1A11163900DE4226 /* SMAPIRequest.h */,
@@ -5517,7 +5512,6 @@
 				4EE06DC61A11163900DE4226 /* SMEnterEmailControllerViewController.m in Sources */,
 				4EE06DCC1A11163900DE4226 /* SMRouteNavigationController.m in Sources */,
 				4EEE915B1A11A7070006BD95 /* UIView+LocateSubview.m in Sources */,
-				4EE06DFA1A11198400DE4226 /* FlickableView.m in Sources */,
 				4EE06EE21A112A9F00DE4226 /* SMContactsCell.m in Sources */,
 				4EE06DCA1A11163900DE4226 /* SMRegisterController.m in Sources */,
 				4EE06EEE1A112A9F00DE4226 /* SMEventsCalendarCell.m in Sources */,
