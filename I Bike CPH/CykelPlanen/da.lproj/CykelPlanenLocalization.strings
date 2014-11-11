@@ -1,0 +1,330 @@
+﻿
+/*
+ dictionary_dk.strings
+ I Bike CPH
+ 
+ Created by Ivan Pavlovic on 31/01/2013. Copyright � 2013 City of
+ Copenhagen. All rights reserved.
+ 
+ */
+
+"current_position" = "Nuværende position";
+"today" = "I dag";
+"tomorrow" = "I morgen";
+"accounts" = "Konto";
+"settings" = "Indstillinger";
+"about_css" = "Om CykelPlanen";
+"contacts" = "Kontakter";
+"favorites" = "Favoritter";
+"favorites_search" = "FAVORITTER";
+
+"direction_0" = "";
+"direction_1" = "Fortsæt ad";
+"direction_2" = "Drej lidt til højre ad";
+"direction_3" = "Drej til højre ad";
+"direction_4" = "Drej skarpt til højre ad";
+"direction_5" = "Foretag en u-vending på";
+"direction_6" = "Drej skarpt til venstre ad";
+"direction_7" = "Drej til venstre ad";
+"direction_8" = "Drej lidt til venstre ad";
+"direction_9" = "Via-punkt";
+"direction_10" = "Fortsæt ad";
+"direction_11" = "Kør in i rundkørslen ad";
+"direction_12" = "Kør fra rundkørslen ad";
+"direction_13" = "Bliv i rundkørslen";
+"direction_14" = "Bliv på";
+"direction_15" = "Ankomst til destinationen";
+"direction_16" = "Træk cyklen";
+"direction_17" = "Fortsæt på cyklen";
+"direction_100" = "Du nærmer dig destinationen";
+
+"first_direction_0" = "";
+"first_direction_1" = "Kør mod %@ og fortsæt ad";
+"first_direction_2" = "Kør mod %@ og drej lidt til højre ad";
+"first_direction_3" = "Kør mod %@ og drej til højre ad";
+"first_direction_4" = "Kør mod %@ og drej skarpt til højre ad";
+"first_direction_5" = "Kør mod %@ og foretag en u-vending på";
+"first_direction_6" = "Kør mod %@ og drej skarpt til venstre ad";
+"first_direction_7" = "Kør mod %@ og drej til venstre ad";
+"first_direction_8" = "Kør mod %@ og drej lidt til venstre ad";
+"first_direction_9" = "Kør mod %@ til via-punkt";
+"first_direction_10" = "Kør mod %@ og fortsæt til";
+"first_direction_11" = "Kør mod %@ og følg rundkørslen, tag afkørsel %@ til";
+"first_direction_12" = "Kør mod %@ forlad rundkørslen ved";
+"first_direction_13" = "Kør mod %@ og følg rundkørslen til";
+"first_direction_14" = "Kør mod %@ og bliv på";
+"first_direction_15" = "Ankomst til destinationen";
+"first_direction_16" = "Kør mod %@ og træk cyklen";
+"first_direction_17" = "Gå mod %@ og fortsæt på cykele";
+"first_direction_100" = "Du nærmer dig destinationen";
+
+"monday" = "Mandag";
+"tuesday" = "Tirsdag";
+"wednesday" = "Onsdag";
+"thursday" = "Torsdag";
+"friday" = "Fredag";
+
+"direction_N" = "nord";
+"direction_NE" = "nordøst";
+"direction_E" = "øst";
+"direction_SE" = "sydøst";
+"direction_S" = "syd";
+"direction_SW" = "sydvest";
+"direction_W" = "vest";
+"direction_NW" = "nordvest";
+
+"{highway:motorway}" = "motorvej";
+"{highway:motorway_link}" = "motorvej";
+"{highway:trunk}" = "hovedvej";
+"{highway:trunk_link}" = "hovedvej";
+"{highway:primary}" = "vej";
+"{highway:primary_link}" = "vej";
+"{highway:secondary}" = "vej";
+"{highway:secondary_link}" = "vej";
+"{highway:tertiary}" = "gade";
+"{highway:tertiary_link}" = "gade";
+"{highway:living_street}" = "gade";
+"{highway:pedestrian}" = "gågade";
+"{highway:residential}" = "gade";
+"{highway:unclassified}" = "gade";
+"{highway:service}" = "vej/sti";
+"{highway:track}" = "sti";
+"{highway:road}" = "vej";
+"{highway:path}" = "sti";
+"{highway:footway}" = "sti";
+"{highway:cycleway}" = "cykelsti";
+"{highway:bridleway}" = "ridesti";
+"{highway:steps}" = "trappe";
+"{roundabout:yes}" = "rundkørsel";
+"{area:yes}" = "plads";
+
+"search_to_placeholder" = "Indtast vej, gade, post nr.";
+
+"new_route" = "Ny rute";
+"Stop" = "Stop";
+
+"marker_type_1" = "Cykelsuperstier";
+"marker_type_2" = "Servicestationer";
+"marker_type_3" = "S-togs stationer";
+"marker_type_4" = "Metro stationer";
+"marker_type_5" = "Lokale stationer";
+
+"Error" = "Error";
+"OK" = "OK";
+"error_no_gps_location" = "Ingen GPS lokation!";
+"error_address_not_found" = "Adressens lokation kan ikke findes!";
+"error_from_address_not_found" = "START adressens lokation kan ikke findes!";
+"error_to_address_not_found" = "SLUT adressens lokation kan ikke findes!";
+"error_invalid_email" = "Ugyldig email!";
+"error_invalid_to_address" = "Destinationsadressen er ugyldig!";
+"error_favorites_name_exists" = "Navn er allerede brugt";
+
+"route_info"= "Rejseforslag";
+
+"route_stop_title" = "Vil du afslutte ruten?";
+"route_stop_text" = "Afbryd ruten ved at trykke på ‘Stop’. Du kan rapportere problemer med ruten ved at trykke på ‘Rapporter et problem’.";
+"report_error" = "Rapporter";
+"report_wrong_address" = "Vejnavn er forkert";
+"report_road_closed" = "Vejen er lukket";
+"report_one_way" = "Vejen er ensrettet";
+"report_illegal_turn" = "Ruten foreslår ulovlige sving";
+"report_wrong_instruction" = "Forkert instruktion";
+"report_other" = "Andet";
+
+"report_subject" = "Rapporter";
+"report_from" = "Start:";
+"report_to" = "Slut:";
+"report_tbt_instructions" = "Rutevejledning:";
+"report_reason" = "Begrundelse:";
+"report_instruction" = "Pågældende instruktion:";
+"report_contact_me" = "Jeg vil gerne kontaktes, når problemet er løst";
+"report_sent" = "Tak fordi du rapporterede fejlen!";
+
+"Done" = "Færdig";
+
+"error_route_not_found" = "Ruten blev ikke fundet!";
+
+"calculating" = "Beregner...";
+"recalculating" = "Genberegner...";
+
+"marker_start" = "Start";
+
+
+// these are in the storyboard
+"reminder_title" = "Påmindelser";
+"reminder_text" = "Få hjælp til at komme op på cyklen. Vælg de dage du ønsker at cykle, så hjælper vi dig med at komme igang.";
+"reminder_save_btn" = "GEM PÅMINDELSER";
+"reminder_alert_text" = "Husk at tage cyklen i morgen";
+
+// Favorites
+"favorites_title" = "Tilføj favoritter";
+"favorites_text" = "Nu kan du nemt og hurtigt navigere til dine foretrukne pendlerruter. Start med at tilføje din hjemme- og arbejdsadresse.";
+"favorites_home_address" = "Hjemmeadresse …";
+"favorites_work_address" = "Arbejdsadresse …";
+"favorites_save_btn" = "GEM FAVORITTER";
+
+// Break route
+"break_route_title" = "Knæk ruten";
+"btn_break_route" = "BREAK ROUTE";
+"break_route_text_top" = "Vidste du, at du let kan knække din pendlerrute ved at tage toget noget af vejen.";
+"break_route_text_bottom" = "Når du vælger “Knæk ruten” giver vi dig en ny rute til nærmeste S-togsstation og bringer dig frem til din endelige destination.";
+"break_route_spring" = "Afslut guide og ta’ en tur";
+"break_route_exit" = "Spring over";
+"break_route_header_title" = "Din rute er nu";
+"route_plan_button" = "Find rejse på Rejseplanen";
+
+"break_route_no_route" = "Ingen ruteforslag";
+"break_route_cant_break" = "Denne rute kan desværre ikke knækkes.";
+
+"departure" = "Afg.";
+"departures_at" = "Afg. kl.";
+"arrival" = "Ank.";
+"shift" = "Skift";
+"btn_skip" = "Spring over";
+"where_are_we_going" = "Ny rute";
+"ibikecph_route_planner" = "Cykelruteplanlægger";
+"Cancel" = "Fortryd";
+"calculating_new_route" = "Beregner ny rute...";
+"Distance" = "Afstand";
+"Time" = "Tid";
+"you_have_arrived_to" = "Du er nu fremme ved";
+"to_homepage" = "Til forsiden";
+"report_a_problem" = "Rapportér problem";
+"report_email_field" = "Skriv din email adresse";
+"report_email_checkbox" = "Giv mig besked når det er løst";
+"From:" = "Fra:";
+"To:" = "Til:";
+"hello_cyclist" = "Hej cyklist";
+"thanks_for_testing_text" = "Tak fordi du hjælper os med at teste.";
+"start_text" = "Cykelruteplanlæggeren.\nVi er glade for, at du hjælper os med at teste app’en, og for at vi kan komme i kontakt med dig, vil vi gerne bede om din email-adresse:";
+"e_mail_address" = "email adresse";
+"start_app" = "Start";
+"notify_me_when_fixed" = "Få besked når fejlen er udbedret";
+"report" = "Rapporter";
+"report_text" = "Ved tryk på “Rapportér” sendes teknisk information om ruten til os.\n\nVælger du at få besked når fejlen er udbedret, bliver din email-adresse sendt til os, så vi kan kontakte dig.";
+"choose_a_route_step" = "Vælg trin i ruten at rapportére";
+"cancel_picker" = "Annullere";
+"done_picker" = "Vælg";
+
+"recent_results" = "SENESTE";
+"show_more" = "VIS FLERE";
+"show_less" = "VIS MINDRE";
+
+"good_ride" = "Godt kørt!";
+"hope_you_had_a_good_trip" = "Vi håber du havde en god tur.";
+"back_ride" = "TILBAGE";
+"stop_ride" = "AFSLUT RUTEN";
+"ride_report_a_problem" = "RAPPORTER ET PROBLEM";
+
+"login_with_fb" = "FACEBOOK LOG IND";
+"register_with_mail" = "Opret med email";
+"skip" = "SPRING OVER";
+"create_account" = "OPRET KONTO";
+"create_account_text" = "Ved at oprette en konto, har du muligheden for at gemme favoritter og søgninger på tværs af mobilen og ibikecph.dk ";
+
+"back_splash" = "TILBAGE";
+"register_save" = "OPRET MIG";
+"create_account" = "OPRET DIN KONTO";
+
+"register_name_placeholder" = "Navn";
+"register_email_placeholder" = "Email";
+"register_password_placeholder" = "Adgangskode";
+"register_password_repeat_placeholder" = "Gentag adgangskode";
+"login" = "LOG IND";
+"choose_image_source" = "Vælg profilbillede";
+"image_source_camera" = "Fra kamera";
+"image_source_library" = "Fra bibliotek";
+"login_new_account" = "OPRET EN KONTO";
+"save_favorites" = "GEM FAVORITTER";
+"favorites_title" = "TILFØJ FAVORITTER";
+"favorites_text" = "Gem dine favorit destinationer i app’en så er det altid hurtigt og nemt at finde vej hjem, til arbejde eller skole.";
+"favorites_home_placeholder" = "Hjemmeadresse ...";
+"favorites_work_placeholder" = "Arbejdsadresse ...";
+"log_in" = "Log ind";
+
+"add_favorite" = "TILFØJ FAVORIT";
+"cell_add_favorite" = "TILFØJ NY FAVORIT";
+"edit_favorite" = "REDIGER";
+"cell_empty_favorite_text" = "Du har ingen favoritter, men du kan hurtigt tilføje en nu.";
+"save_favorite" = "GEM FAVORIT";
+"delete_favorite" = "SLET";
+"Home" = "Hjem";
+"Work" = "Arbejde";
+"School" = "Skole";
+"Favorite" = "Favorit";
+"back" = "TILBAGE";
+"done" = "FÆRDIG";
+"add_favorite_name_placeholder" = "Indtast navn ...";
+"add_favorite_address_placeholder" = "Find adresse ...";
+"account" = "Min Profil";
+
+"report_send" = "SEND BESKED";
+"describe_problem" = "BESKRIV PROBLEMET";
+"logout" = "LOG UD";
+
+"thank_you_for_feedback" = "Tak for din feedback";
+"feedback_text" = "Din feedback er blevet afsendt. Tak for hjælpen!\n\nDu kan deltage i opfølgning og diskussion af nye funktioner på www.ibikecph.dk/feedback.";
+"report_sent" = "FEEDBACKEN ER AFSENDT";
+
+"home_find_route" = "SØG RUTE";
+
+"intro_subtitle" = "Hurtigt fra A til B";
+
+"about_text" = "CykelPlanen app’en er Region Hovedstadens mobile rutevejleder for dig, der cykler i regionen. App’en kender de gode smutveje i regionen, hvor du må cykle og finder den hurtigste rute for dig. CykelPlanen skal bidrage til at få flere pendlere i regionen til at vælge cyklen frem for bilen.\nKortet er særligt tilpasset cyklister. CykelPlanen udregner den hurtigste rute for dig. Motorveje er tonet ned, hvorimod brosten er fremhævet, så du kan slippe for rysteture. Kortet viser de anlagte cykelsuperstier og servicestationer. Endvidere har app’en funktionen ”knæk ruten”, som leder dig hen til nærmeste Lokalbane, S- og metrostation, hvis cykelturen bliver for lang eller cyklen går i stykker. \nApp’en anvender kortdata fra det brugerdrevne OpenStreetMap (OSM), der opdateres løbende, fx når der anlægges nye cykelstier i regionen, og brugerne skal være med til at opdatere kortet i regionen.\n\nBemærk at det er tilladt at tage cyklen gratis med i s-toget og lokalbanen (maks. 6 stk) mens det kræver en cykelbillet i metroen. Det er dog ikke tilladt at medbringe cyklen i metroen i myldretiden (kl. 7.00 – kl. 9.00 og 15.30-17.00) eller stå af eller på S-toget med cykel på Nørreport Station på hverdage (mandag-fredag) i tidsrummet kl.7- 8.30 og  kl. 15.30- 17\n\nKom godt i gang:\nDu kan vælge hvor du vil hen på to måder:\nVælg på kort: Find stedet på kortet og hold fingeren nede indtil en nål bliver sat på kortet. Den nærmeste adresse bliver nu vist nederst. Vælg ’Start’ for at beregne ruten fra din nuværende position til destinationen.\nSøg efter adresse: Klik på forstørrelsesglasset i øverste højre hjørne. Indtast adressen hvor du vil hen og klik ’Gå’. Klik derefter på ’Start’ for at beregne ruten.\nNår ruten vises kan du klikke på ’Start’ for at aktivere GPS navigation. Undervejs vil instruktioner om hvornår du skal svinge blive vist nederst. Forventet ankomsttidspunkt vises øverst til højre ud for det lille flag.\n\nVis position:\nTryk på knappen med en pil i nederste højre hjørne, for at se hvor du er på kortet. Kortet vil herefter følge din position indtil du selv manuelt flytter kortet. Funktionen er slået til, når pilen er blå.\n\nLæs mere:\nApp’en kan bl.a. også gemme favorit-steder, hvis du opretter en profil. Læs mere om kort og funktioner på www.cykelsuperstier.dk.\nGod tur og tak fordi du cykler!";
+"about_ibikecph_title" = "OM CYKELPLANEN";
+"delete_my_account" = "SLET MIN KONTO";
+"you_are_logged_in_as" = "Du er logget ind som";
+"edit_my_account" = "Rediger profil";
+"save_changes" = "GEM ÆNDRINGER";
+"account_name_placeholder" = "Navn";
+"account_email_placeholder" = "Email";
+"account_password_placeholder" = "Skriv ny adgangskode";
+"account_repeat_placeholder" = "Gentag ny adgangskode";
+
+
+"login_error_fields" = "Både din email og din adgangskode skal være indtastet!";
+"register_error_fields" = "Alle felter skal være udfyldt!";
+"register_error_passwords" = "Din adgangskode er forkert!";
+
+"error_not_logged_in" = "Du skal være logget ind";
+"report_error_problem_not_selected" = "Vælg venligst et problem";
+"report_error_step_not_selected" = "Vælg venligst et trin i ruten";
+
+"start_route" = "START";
+
+
+"delete_account_title" = "Slet konto?";
+"delete_account_text" = "Alle dine favoritter samt din historik vil blive slettet";
+"Delete" = "Slet";
+"account_deleted" = "Din konto er blevet slettet";
+"close" = "LUK";
+
+"account_login" = "LOG IND";
+"favorites_login" = "Du har ingen favoritter, men du kan hurtigt tilføje en, hvis du logger ind.";
+
+"fb_login_error" = "Facebook login fejl!";
+"account_is_linked_to_facebook" = "Din konto er linket til Facebook";
+"please_login" = "Du skal logge ind";
+"or" = "eller";
+
+"current_position_cant_be_destination" = "Det er ikke muligt at anvende nuværende position som destination!";
+
+"register_error_passwords_short" = "Din adgangskode er for kort";
+"register_error_invalid_email" = "Din email adresse er ikke gyldig";
+
+"register_successful" = "Konto oprettet. En bekræftelse er blevet sendt til din email-adresse, følg venligst linket i emailen for at aktivere din konto.";
+
+"account_not_saved" = "Dine ændringer blev ikke gemt.";
+"account_cancel" = "Annullere";
+"account_dont_save" = "Gem ikke";
+
+"you_have_reached_your_destination" = "Du har nået din destination";
+
+"bike_type_1"= "Cykel";
+"bike_type_2"= "Ladcykel";
+
+"network_error_text" = "Netværks fejl opstod";
+
+"vehicle_2" = "Gå";
+"vehicle_3" = "Færge";
+"vehicle_4" = "Tog";

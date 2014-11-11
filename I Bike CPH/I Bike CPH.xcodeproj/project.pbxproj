@@ -2566,6 +2566,24 @@
 		4EEE91A81A1220230006BD95 /* SMRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRegisterController.m; sourceTree = "<group>"; };
 		4EEE91AB1A1243290006BD95 /* FlickableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickableView.h; sourceTree = "<group>"; };
 		4EEE91AC1A1243290006BD95 /* FlickableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickableView.m; sourceTree = "<group>"; };
+		4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = copenhagen2_withtimestamps.gpx; sourceTree = "<group>"; };
+		4EEE91B21A1245610006BD95 /* copenhagen_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = copenhagen_withtimestamps.gpx; sourceTree = "<group>"; };
+		4EEE91B31A1245610006BD95 /* test2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test2.gpx; sourceTree = "<group>"; };
+		4EEE91B41A1245610006BD95 /* testing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testing.gpx; sourceTree = "<group>"; };
+		4EEE91BD1A1245910006BD95 /* Albertslundruten.line */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Albertslundruten.line; sourceTree = "<group>"; };
+		4EEE91C51A1245E80006BD95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CykelPlanenLocalization.strings; sourceTree = "<group>"; };
+		4EEE91C71A1246100006BD95 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/CykelPlanenLocalization.strings; sourceTree = "<group>"; };
+		4EEE91C91A1246920006BD95 /* local-trains-timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "local-trains-timetable.json"; sourceTree = "<group>"; };
+		4EEE91CA1A1246920006BD95 /* metro-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "metro-stations.json"; sourceTree = "<group>"; };
+		4EEE91CB1A1246920006BD95 /* metro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro.json; sourceTree = "<group>"; };
+		4EEE91CC1A1246920006BD95 /* s-train-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-lines.json"; sourceTree = "<group>"; };
+		4EEE91CD1A1246920006BD95 /* s-train-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-stations.json"; sourceTree = "<group>"; };
+		4EEE91CE1A1246920006BD95 /* service_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service_stations.json; sourceTree = "<group>"; };
+		4EEE91CF1A1246920006BD95 /* stations copy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "stations copy.json"; sourceTree = "<group>"; };
+		4EEE91D01A1246920006BD95 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
+		4EEE91D11A1246920006BD95 /* timetable-new.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "timetable-new.json"; sourceTree = "<group>"; };
+		4EEE91D21A1246920006BD95 /* timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timetable.json; sourceTree = "<group>"; };
+		4EEE91D31A1246920006BD95 /* transportation-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "transportation-lines.json"; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBE17F41EBD064F1BEE38068 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2699,9 +2717,11 @@
 			children = (
 				4EE05FA11A10EEC900DE4226 /* Classes */,
 				4EE05FD81A10F61200DE4226 /* MainStoryboard_iPhone.storyboard */,
+				4EEE91C61A1245E80006BD95 /* CykelPlanenLocalization.strings */,
 				4EE05F881A10EDE700DE4226 /* Images.xcassets */,
 				4EE06F141A1178DE00DE4226 /* Images */,
 				4EE05F8A1A10EDE700DE4226 /* LaunchScreen.xib */,
+				4EEE91C81A1246920006BD95 /* Resources */,
 				4EE05F7B1A10EDE700DE4226 /* Supporting Files */,
 			);
 			path = CykelPlanen;
@@ -2740,6 +2760,7 @@
 				4EE06C661A1110DD00DE4226 /* Gitsubmodules */,
 				4EE06E091A11267D00DE4226 /* SharedImport.h */,
 				4EE05FA01A10EE8400DE4226 /* Classes */,
+				4EEE91B01A1245610006BD95 /* Resources */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -4189,6 +4210,36 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		4EEE91B01A1245610006BD95 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4EEE91BD1A1245910006BD95 /* Albertslundruten.line */,
+				4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */,
+				4EEE91B21A1245610006BD95 /* copenhagen_withtimestamps.gpx */,
+				4EEE91B31A1245610006BD95 /* test2.gpx */,
+				4EEE91B41A1245610006BD95 /* testing.gpx */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4EEE91C81A1246920006BD95 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4EEE91C91A1246920006BD95 /* local-trains-timetable.json */,
+				4EEE91CA1A1246920006BD95 /* metro-stations.json */,
+				4EEE91CB1A1246920006BD95 /* metro.json */,
+				4EEE91CC1A1246920006BD95 /* s-train-lines.json */,
+				4EEE91CD1A1246920006BD95 /* s-train-stations.json */,
+				4EEE91CE1A1246920006BD95 /* service_stations.json */,
+				4EEE91CF1A1246920006BD95 /* stations copy.json */,
+				4EEE91D01A1246920006BD95 /* stations.json */,
+				4EEE91D11A1246920006BD95 /* timetable-new.json */,
+				4EEE91D21A1246920006BD95 /* timetable.json */,
+				4EEE91D31A1246920006BD95 /* transportation-lines.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		C83673E4C34341FF10FF5705 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -4326,6 +4377,7 @@
 			knownRegions = (
 				en,
 				Base,
+				da,
 			);
 			mainGroup = 4EE05F411A10EBFA00DE4226;
 			productRefGroup = 4EE05F4B1A10EBFA00DE4226 /* Products */;
@@ -4414,6 +4466,7 @@
 				4EE065791A10FAB400DE4226 /* favEditBtnPressed@2x.png in Resources */,
 				4EE065A41A10FAB400DE4226 /* favTypeSchoolButtonPressed.png in Resources */,
 				4EE065181A10FAB400DE4226 /* icon-120.png in Resources */,
+				4EEE91BE1A1245910006BD95 /* Albertslundruten.line in Resources */,
 				4EE064F61A10FAB400DE4226 /* white-location@2x.png in Resources */,
 				4EE066131A10FAB400DE4226 /* routeComplete_report_problem_press@2x.png in Resources */,
 				4EE065631A10FAB400DE4226 /* drop_shadow_sliding_image@2x.png in Resources */,
@@ -4576,6 +4629,7 @@
 				4EE066071A10FAB400DE4226 /* reportPulldown@2x.png in Resources */,
 				4EE065E91A10FAB400DE4226 /* profile_default_image@2x.png in Resources */,
 				4EE065211A10FAB400DE4226 /* icon@2x.png in Resources */,
+				4EEE91B91A1245610006BD95 /* test2.gpx in Resources */,
 				4EE06D281A1115CE00DE4226 /* SMCalloutView.xib in Resources */,
 				4EE065131A10FAB400DE4226 /* icon_locate_no_tracking.png in Resources */,
 				4EE0655B1A10FAB400DE4226 /* drop_pin_add_fav_btn@2x.png in Resources */,
@@ -4627,6 +4681,7 @@
 				4EE0660D1A10FAB400DE4226 /* route_handle@2x.png in Resources */,
 				4EE066081A10FAB400DE4226 /* reportTextView.png in Resources */,
 				4EE066401A10FAB400DE4226 /* splash_bg_btn_blue.png in Resources */,
+				4EEE91B51A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */,
 				4EE065821A10FAB400DE4226 /* favHomeGrey.png in Resources */,
 				4EE065021A10FAB400DE4226 /* white-up-left@2x.png in Resources */,
 				4EE065A11A10FAB400DE4226 /* favTypeHomeButtonPressed@2x.png in Resources */,
@@ -4716,6 +4771,7 @@
 				4EE065AC1A10FAB400DE4226 /* favWorkGrey.png in Resources */,
 				4EE065B01A10FAB400DE4226 /* fb_linked_icon.png in Resources */,
 				4EE065C81A10FAB400DE4226 /* home_btn_inactive.png in Resources */,
+				4EEE91B71A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */,
 				4EE065851A10FAB400DE4226 /* favHomeWhite@2x.png in Resources */,
 				4EE0662F1A10FAB400DE4226 /* routeEnterSwitchIcon@2x.png in Resources */,
 				4EE0660A1A10FAB400DE4226 /* rightArrow.png in Resources */,
@@ -4766,6 +4822,7 @@
 				4EE065541A10FAB400DE4226 /* distance_black.png in Resources */,
 				4EE064F31A10FAB400DE4226 /* white-left.png in Resources */,
 				4EE065B41A10FAB400DE4226 /* findAutocomplete.png in Resources */,
+				4EEE91BB1A1245610006BD95 /* testing.gpx in Resources */,
 				4EE064EA1A10FAB400DE4226 /* white-down-left@2x.png in Resources */,
 				4EE065D71A10FAB400DE4226 /* loginFacebook@2x.png in Resources */,
 				4EE065811A10FAB400DE4226 /* favHomeBlack@2x.png in Resources */,
@@ -4859,6 +4916,7 @@
 				4EE0735F1A1178E300DE4226 /* sidemenu_handle_press@2x.png in Resources */,
 				4EE073521A1178E300DE4226 /* service_pin.png in Resources */,
 				4EE071DE1A1178E200DE4226 /* up-left.png in Resources */,
+				4EEE91DB1A1246920006BD95 /* stations.json in Resources */,
 				4EE071FA1A1178E200DE4226 /* drop_pin_add_fav_btn_press.png in Resources */,
 				4EE072621A1178E200DE4226 /* findLocation@2x.png in Resources */,
 				4EE0721F1A1178E200DE4226 /* favEmptyBG@2x.png in Resources */,
@@ -4873,6 +4931,7 @@
 				4EE0717A1A1178E100DE4226 /* back_arrow_btn_white.png in Resources */,
 				4EE0728F1A1178E200DE4226 /* input_field__scalable@2x.png in Resources */,
 				4EE0720B1A1178E200DE4226 /* favAdd@2x.png in Resources */,
+				4EEE91B61A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */,
 				4EE071DA1A1178E200DE4226 /* roundabout.png in Resources */,
 				4EE073131A1178E200DE4226 /* route_info_icon@2x.png in Resources */,
 				4EE0729A1A1178E200DE4226 /* list_find_bgr_single.png in Resources */,
@@ -4904,6 +4963,7 @@
 				4EE072871A1178E200DE4226 /* Icon-Small@2x.png in Resources */,
 				4EE071DD1A1178E200DE4226 /* u-turn@2x.png in Resources */,
 				4EE071CC1A1178E200DE4226 /* flag.png in Resources */,
+				4EEE91BA1A1245610006BD95 /* test2.gpx in Resources */,
 				4EE072DA1A1178E200DE4226 /* pullHandle.png in Resources */,
 				4EE071CB1A1178E200DE4226 /* field_password_icon@2x.png in Resources */,
 				4EE0725C1A1178E200DE4226 /* field_user_icon@2x.png in Resources */,
@@ -4948,6 +5008,7 @@
 				4EE071A91A1178E200DE4226 /* calloutBubbleRight@2x.png in Resources */,
 				4EE0723A1A1178E200DE4226 /* favStarGreySmall.png in Resources */,
 				4EE072221A1178E200DE4226 /* favHomeBlack.png in Resources */,
+				4EEE91B81A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */,
 				4EE071601A1178E100DE4226 /* accountBG.png in Resources */,
 				4EE072341A1178E200DE4226 /* favSchoolWhite.png in Resources */,
 				4EE072981A1178E200DE4226 /* leftArrow.png in Resources */,
@@ -4961,6 +5022,7 @@
 				4EE072321A1178E200DE4226 /* favSchoolGrey.png in Resources */,
 				4EE072821A1178E200DE4226 /* Icon-72.png in Resources */,
 				4EE073891A1178E300DE4226 /* station_icon.png in Resources */,
+				4EEE91DC1A1246920006BD95 /* timetable-new.json in Resources */,
 				4EE072281A1178E200DE4226 /* favListRow.png in Resources */,
 				4EE072B31A1178E200DE4226 /* metro_icon@2x.png in Resources */,
 				4EE072461A1178E200DE4226 /* favTypeHomeButtonPressed.png in Resources */,
@@ -4980,6 +5042,7 @@
 				4EE0731A1A1178E200DE4226 /* routeEnterBack.png in Resources */,
 				4EE071971A1178E200DE4226 /* break_route_info_btn.png in Resources */,
 				4EE0723F1A1178E200DE4226 /* favStarWhiteSmall@2x.png in Resources */,
+				4EEE91BC1A1245610006BD95 /* testing.gpx in Resources */,
 				4EE0716F1A1178E100DE4226 /* autocompleteHeader@2x.png in Resources */,
 				4EE0732F1A1178E300DE4226 /* routeEnterSingleRowPressed@2x.png in Resources */,
 				4EE071E11A1178E200DE4226 /* up-right@2x.png in Resources */,
@@ -5007,6 +5070,7 @@
 				4EE071E41A1178E200DE4226 /* walk.png in Resources */,
 				4EE073221A1178E300DE4226 /* routeEnterInputBG.png in Resources */,
 				4EE071D61A1178E200DE4226 /* right-ward.png in Resources */,
+				4EEE91D91A1246920006BD95 /* service_stations.json in Resources */,
 				4EE072971A1178E200DE4226 /* L@2x.png in Resources */,
 				4EE072851A1178E200DE4226 /* Icon-Small-50@2x.png in Resources */,
 				4EE071621A1178E100DE4226 /* accountInputBG.png in Resources */,
@@ -5077,6 +5141,7 @@
 				4EE071AF1A1178E200DE4226 /* cargo_slider@2x.png in Resources */,
 				4EE0733C1A1178E300DE4226 /* routeEnterViewMoreRow.png in Resources */,
 				4EE072E41A1178E200DE4226 /* red_btn.png in Resources */,
+				4EEE91D51A1246920006BD95 /* metro-stations.json in Resources */,
 				4EE072DB1A1178E200DE4226 /* pullHandle@2x.png in Resources */,
 				4EE071801A1178E100DE4226 /* bike_route@2x.png in Resources */,
 				4EE072211A1178E200DE4226 /* favHandle@2x.png in Resources */,
@@ -5128,6 +5193,7 @@
 				4EE073791A1178E300DE4226 /* splash_exclamation.png in Resources */,
 				4EE071C11A1178E200DE4226 /* currentPosition@2x.png in Resources */,
 				4EE06EA91A11298800DE4226 /* SMSwipableView.xib in Resources */,
+				4EEE91D71A1246920006BD95 /* s-train-lines.json in Resources */,
 				4EE0736D1A1178E300DE4226 /* splash_bg_btn_blue@2x.png in Resources */,
 				4EE072F31A1178E200DE4226 /* reminder_table_bgr@2x.png in Resources */,
 				4EE072451A1178E200DE4226 /* favTypeHomeButton@2x.png in Resources */,
@@ -5160,6 +5226,7 @@
 				4EE073771A1178E300DE4226 /* splash_cloud.png in Resources */,
 				4EE073551A1178E300DE4226 /* service_station_gray@2x.png in Resources */,
 				4EE071EF1A1178E200DE4226 /* distance_white@2x.png in Resources */,
+				4EEE91BF1A1245910006BD95 /* Albertslundruten.line in Resources */,
 				4EE072151A1178E200DE4226 /* favEditBtn@2x.png in Resources */,
 				4EE072011A1178E200DE4226 /* enterRouteClose@2x.png in Resources */,
 				4EE073971A1178E300DE4226 /* white_btn_pressed.png in Resources */,
@@ -5204,6 +5271,7 @@
 				4EE071D81A1178E200DE4226 /* right.png in Resources */,
 				4EE071C51A1178E200DE4226 /* down-left@2x.png in Resources */,
 				4EE071EC1A1178E200DE4226 /* distance_black.png in Resources */,
+				4EEE91D41A1246920006BD95 /* local-trains-timetable.json in Resources */,
 				4EE0723D1A1178E200DE4226 /* favStarWhiteLarge@2x.png in Resources */,
 				4EE071FD1A1178E200DE4226 /* drop_pin_start_bgr@2x.png in Resources */,
 				4EE072A31A1178E200DE4226 /* local_train_icon@2x.png in Resources */,
@@ -5227,7 +5295,9 @@
 				4EE073191A1178E200DE4226 /* routeComplete_report_problem_press@2x.png in Resources */,
 				4EE0735D1A1178E300DE4226 /* sidemenu_handle@2x.png in Resources */,
 				4EE071791A1178E100DE4226 /* back_arrow_btn_press@2x.png in Resources */,
+				4EEE91DA1A1246920006BD95 /* stations copy.json in Resources */,
 				4EE0726A1A1178E200DE4226 /* gray_btn@2x.png in Resources */,
+				4EEE91D61A1246920006BD95 /* metro.json in Resources */,
 				4EE073151A1178E200DE4226 /* routeComplete_close_btn@2x.png in Resources */,
 				4EE072681A1178E200DE4226 /* findRouteContacts@2x.png in Resources */,
 				4EE0728C1A1178E200DE4226 /* info.png in Resources */,
@@ -5244,6 +5314,7 @@
 				4EE071CD1A1178E200DE4226 /* flag@2x.png in Resources */,
 				4EE0729C1A1178E200DE4226 /* list_find_icon.png in Resources */,
 				4EE072B61A1178E200DE4226 /* metro_station_gray.png in Resources */,
+				4EEE91D81A1246920006BD95 /* s-train-stations.json in Resources */,
 				4EE0720A1A1178E200DE4226 /* favAdd.png in Resources */,
 				4EE073921A1178E300DE4226 /* warning_popup_bgr@2x.png in Resources */,
 				4EE071AE1A1178E200DE4226 /* cargo_slider.png in Resources */,
@@ -5304,6 +5375,7 @@
 				4EE0731C1A1178E300DE4226 /* routeEnterBottomRow.png in Resources */,
 				4EE071C81A1178E200DE4226 /* down.png in Resources */,
 				4EE0726B1A1178E200DE4226 /* gray_btn_pressed.png in Resources */,
+				4EEE91DD1A1246920006BD95 /* timetable.json in Resources */,
 				4EE0737E1A1178E300DE4226 /* splash_greass@2x.png in Resources */,
 				4EE071931A1178E200DE4226 /* break_route_active.png in Resources */,
 				4EE071F61A1178E200DE4226 /* drop_pin_add_fav_btn.png in Resources */,
@@ -5365,11 +5437,13 @@
 				4EE072ED1A1178E200DE4226 /* registerBG@2x.png in Resources */,
 				4EE073981A1178E300DE4226 /* white_btn_pressed@2x.png in Resources */,
 				4EE071ED1A1178E200DE4226 /* distance_black@2x.png in Resources */,
+				4EEE91C41A1245E80006BD95 /* CykelPlanenLocalization.strings in Resources */,
 				4EE0737F1A1178E300DE4226 /* splash_greass_transparent.png in Resources */,
 				4EE072001A1178E200DE4226 /* enterRouteClose.png in Resources */,
 				4EE0727C1A1178E200DE4226 /* icon_locate_me@2x.png in Resources */,
 				4EE072371A1178E200DE4226 /* favSearch_icon@2x.png in Resources */,
 				4EE0718C1A1178E100DE4226 /* blue_btn_ibike_pressed@2x.png in Resources */,
+				4EEE91DE1A1246920006BD95 /* transportation-lines.json in Resources */,
 				4EE073741A1178E300DE4226 /* splash_bgr_iPhone5.png in Resources */,
 				4EE0735B1A1178E300DE4226 /* service_station_white_old@2x.png in Resources */,
 				4EE072A11A1178E200DE4226 /* list_subway_icon@2x.png in Resources */,
@@ -5714,6 +5788,15 @@
 				4EE05F8B1A10EDE700DE4226 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		4EEE91C61A1245E80006BD95 /* CykelPlanenLocalization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EEE91C51A1245E80006BD95 /* en */,
+				4EEE91C71A1246100006BD95 /* da */,
+			);
+			name = CykelPlanenLocalization.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
