@@ -1215,6 +1215,8 @@
 		4EEE91A61A12177D0006BD95 /* SMEnterEmailControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE91A41A12177D0006BD95 /* SMEnterEmailControllerViewController.m */; };
 		4EEE91A91A1220230006BD95 /* SMRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE91A81A1220230006BD95 /* SMRegisterController.m */; };
 		4EEE91AA1A1220230006BD95 /* SMRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE91A81A1220230006BD95 /* SMRegisterController.m */; };
+		4EEE91AD1A1243290006BD95 /* FlickableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE91AC1A1243290006BD95 /* FlickableView.m */; };
+		4EEE91AE1A1243290006BD95 /* FlickableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE91AC1A1243290006BD95 /* FlickableView.m */; };
 		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -2540,6 +2542,8 @@
 		4EEE91A41A12177D0006BD95 /* SMEnterEmailControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEnterEmailControllerViewController.m; sourceTree = "<group>"; };
 		4EEE91A71A1220230006BD95 /* SMRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRegisterController.h; sourceTree = "<group>"; };
 		4EEE91A81A1220230006BD95 /* SMRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRegisterController.m; sourceTree = "<group>"; };
+		4EEE91AB1A1243290006BD95 /* FlickableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickableView.h; sourceTree = "<group>"; };
+		4EEE91AC1A1243290006BD95 /* FlickableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickableView.m; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBE17F41EBD064F1BEE38068 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3514,6 +3518,8 @@
 		4EE06EAC1A112A0700DE4226 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4EEE91AB1A1243290006BD95 /* FlickableView.h */,
+				4EEE91AC1A1243290006BD95 /* FlickableView.m */,
 				4EE06EB11A112A9F00DE4226 /* SMAddFavoriteCell.h */,
 				4EE06EB21A112A9F00DE4226 /* SMAddFavoriteCell.m */,
 				4EE06EB31A112A9F00DE4226 /* SMAutocompleteCell.h */,
@@ -5450,6 +5456,7 @@
 				4EE06CC31A11134C00DE4226 /* SMKMSStreetOperation.m in Sources */,
 				4EE06CC71A11134C00DE4226 /* NSString+URLEncode.m in Sources */,
 				4EE06EF61A112A9F00DE4226 /* SMNetworkErrorView.m in Sources */,
+				4EEE91AD1A1243290006BD95 /* FlickableView.m in Sources */,
 				4EEE91951A120CD60006BD95 /* SMContacts.m in Sources */,
 				4EE05FAA1A10F4A400DE4226 /* SMAppDelegate.m in Sources */,
 				4EE06DC51A11163900DE4226 /* SMDebugViewController.m in Sources */,
@@ -5534,6 +5541,7 @@
 			files = (
 				4ECC659D1A118A51008A7DB0 /* SMEventsCalendarCell.m in Sources */,
 				4ECC659F1A118A51008A7DB0 /* SMEventsHeader.m in Sources */,
+				4EEE91AE1A1243290006BD95 /* FlickableView.m in Sources */,
 				4EE06C381A10FC5600DE4226 /* SMDepartureInfo.m in Sources */,
 				4ECC65A61A118A51008A7DB0 /* SMViewMoreCell.m in Sources */,
 				4EE06C4D1A10FC5600DE4226 /* SMTrain.m in Sources */,
