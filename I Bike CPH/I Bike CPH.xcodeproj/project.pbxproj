@@ -1217,6 +1217,28 @@
 		4EEE91AA1A1220230006BD95 /* SMRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE91A81A1220230006BD95 /* SMRegisterController.m */; };
 		4EEE91AD1A1243290006BD95 /* FlickableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE91AC1A1243290006BD95 /* FlickableView.m */; };
 		4EEE91AE1A1243290006BD95 /* FlickableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE91AC1A1243290006BD95 /* FlickableView.m */; };
+		4EEE91B51A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */; };
+		4EEE91B61A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */; };
+		4EEE91B71A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B21A1245610006BD95 /* copenhagen_withtimestamps.gpx */; };
+		4EEE91B81A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B21A1245610006BD95 /* copenhagen_withtimestamps.gpx */; };
+		4EEE91B91A1245610006BD95 /* test2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B31A1245610006BD95 /* test2.gpx */; };
+		4EEE91BA1A1245610006BD95 /* test2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B31A1245610006BD95 /* test2.gpx */; };
+		4EEE91BB1A1245610006BD95 /* testing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B41A1245610006BD95 /* testing.gpx */; };
+		4EEE91BC1A1245610006BD95 /* testing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B41A1245610006BD95 /* testing.gpx */; };
+		4EEE91BE1A1245910006BD95 /* Albertslundruten.line in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91BD1A1245910006BD95 /* Albertslundruten.line */; };
+		4EEE91BF1A1245910006BD95 /* Albertslundruten.line in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91BD1A1245910006BD95 /* Albertslundruten.line */; };
+		4EEE91C41A1245E80006BD95 /* CykelPlanenLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91C61A1245E80006BD95 /* CykelPlanenLocalization.strings */; };
+		4EEE91D41A1246920006BD95 /* local-trains-timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91C91A1246920006BD95 /* local-trains-timetable.json */; };
+		4EEE91D51A1246920006BD95 /* metro-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CA1A1246920006BD95 /* metro-stations.json */; };
+		4EEE91D61A1246920006BD95 /* metro.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CB1A1246920006BD95 /* metro.json */; };
+		4EEE91D71A1246920006BD95 /* s-train-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CC1A1246920006BD95 /* s-train-lines.json */; };
+		4EEE91D81A1246920006BD95 /* s-train-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CD1A1246920006BD95 /* s-train-stations.json */; };
+		4EEE91D91A1246920006BD95 /* service_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CE1A1246920006BD95 /* service_stations.json */; };
+		4EEE91DA1A1246920006BD95 /* stations copy.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CF1A1246920006BD95 /* stations copy.json */; };
+		4EEE91DB1A1246920006BD95 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91D01A1246920006BD95 /* stations.json */; };
+		4EEE91DC1A1246920006BD95 /* timetable-new.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91D11A1246920006BD95 /* timetable-new.json */; };
+		4EEE91DD1A1246920006BD95 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91D21A1246920006BD95 /* timetable.json */; };
+		4EEE91DE1A1246920006BD95 /* transportation-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91D31A1246920006BD95 /* transportation-lines.json */; };
 		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 /* End PBXBuildFile section */
 

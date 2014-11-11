@@ -1,0 +1,1121 @@
+{
+  "stations" : [
+
+    {
+      "name":"Albertslund",
+      "coords":"12.3538 55.6581",
+      "line":"B,Bx",
+      "type":"s-train"
+    },
+    {
+      "name":"Allerød",
+      "coords":"12.357086 55.87098",
+      "line":"E",
+      "type":"s-train"
+    },
+    {
+      "name":"Avedøre",
+      "coords":"12.4551 55.6255",
+      "line":"A",
+      "type":"s-train"
+    },
+    {
+      "name":"Bagsværd",
+      "coords":"12.4545 55.7616",
+      "line":"H,A",
+      "type":"s-train"
+    },
+    {
+      "name":"Ballerup",
+      "coords":"12.3588 55.7295",
+      "line":"C,H",
+      "type":"s-train"
+    },
+    {
+      "name":"Bernstorffsvej",
+      "coords":"12.5575 55.743",
+      "line":"B",
+      "type":"s-train"
+    },
+    {
+      "name":"Birkerød",
+      "coords":"12.424216 55.84044",
+      "line":"E",
+      "type":"s-train"
+    },
+    {
+      "name":"Bispebjerg",
+      "coords":"12.5415 55.7062",
+      "line":"F",
+      "type":"s-train"
+    },
+    {
+      "name":"Brøndby Strand",
+      "coords":"12.422 55.621",
+      "line":"A",
+      "type":"s-train"
+    },
+    {
+      "name":"Brøndbyøster",
+      "coords":"12.4409 55.6651",
+      "line":"B",
+      "type":"s-train"
+    },
+    {
+      "name":"Buddinge",
+      "coords":"12.4944 55.7471",
+      "line":"H,A",
+      "type":"s-train"
+    },
+    {
+      "name":"Charlottenlund",
+      "coords":"12.5723 55.7517",
+      "line":"C",
+      "type":"s-train"
+    },
+    {
+      "name":"Danshøj",
+      "coords":"12.4937 55.6642",
+      "line":"F,B,Bx",
+      "type":"s-train"
+    },
+    {
+      "name":"Dybbølsbro",
+      "coords":"12.5595 55.6652",
+      "line":"C,H,B,Bx,A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Dyssegård",
+      "coords":"12.536 55.7323",
+      "line":"A",
+      "type":"s-train"
+    },
+    {
+      "name":"Egedal",
+      "coords":"12.18553 55.78",
+      "line":"C,H",
+      "type":"s-train"
+    },
+    {
+      "name":"Emdrup",
+      "coords":"12.5412 55.7204",
+      "line":"A",
+      "type":"s-train"
+    },
+    {
+      "name":"Enghave",
+      "coords":"12.5396 55.6632",
+      "line":"B,C,H,Bx",
+      "type":"s-train"
+    },
+    {
+      "name":"Farum",
+      "coords":"12.3734 55.8121",
+      "line":"H,A",
+      "type":"s-train"
+    },
+    {
+      "name":"Frederikssund",
+      "coords":"12.065621 55.835804",
+      "line":"C,H",
+      "type":"s-train"
+    },
+    {
+      "name":"Friheden",
+      "coords":"12.4822 55.629",
+      "line":"A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Fuglebakken",
+      "coords":"12.5275 55.6954",
+      "line":"F",
+      "type":"s-train"
+    },
+    {
+      "name":"Gentofte",
+      "coords":"12.5421 55.7533",
+      "line":"B",
+      "type":"s-train"
+    },
+    {
+      "name":"Glostrup",
+      "coords":"12.3985 55.6631",
+      "line":"B,Bx",
+      "type":"s-train"
+    },
+    {
+      "name":"Greve",
+      "coords":"12.295609 55.581219",
+      "line":"A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Grøndal",
+      "coords":"12.5155 55.6906",
+      "line":"F",
+      "type":"s-train"
+    },
+    {
+      "name":"Hareskov",
+      "coords":"12.4072 55.7656",
+      "line":"H,A",
+      "type":"s-train"
+    },
+    {
+      "name":"Hellerup",
+      "coords":"12.567 55.7305",
+      "line":"C,F,B,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Herlev",
+      "coords":"12.4442 55.7186",
+      "line":"C,H",
+      "type":"s-train"
+    },
+    {
+      "name":"Hillerød",
+      "coords":"12.310974 55.926921",
+      "line":"E",
+      "type":"s-train"
+    },
+    {
+      "name":"Holte",
+      "coords":"12.4684 55.8081",
+      "line":"B",
+      "type":"s-train"
+    },
+    {
+      "name":"Hundige",
+      "coords":"12.3334 55.5975",
+      "line":"A",
+      "type":"s-train"
+    },
+    {
+      "name":"Husum",
+      "coords":"12.4633 55.71",
+      "line":"C,H",
+      "type":"s-train"
+    },
+    {
+      "name":"Hvidovre",
+      "coords":"12.4752 55.6645",
+      "line":"B",
+      "type":"s-train"
+    },
+    {
+      "name":"Høje Taastrup",
+      "coords":"12.2693 55.6488",
+      "line":"B,Bx",
+      "type":"s-train"
+    },
+    {
+      "name":"Ishøj",
+      "coords":"12.3579 55.6134",
+      "line":"A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Islev",
+      "coords":"12.4694 55.6986",
+      "line":"C",
+      "type":"s-train"
+    },
+    {
+      "name":"Jersie",
+      "coords":"12.208447 55.520673",
+      "line":"A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Jyllingevej",
+      "coords":"12.4777 55.6904",
+      "line":"C",
+      "type":"s-train"
+    },
+    {
+      "name":"Jægersborg",
+      "coords":"12.5218 55.7615",
+      "line":"B",
+      "type":"s-train"
+    },
+    {
+      "name":"Karlslunde",
+      "coords":"12.268862 55.566286",
+      "line":"A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"KB Hallen",
+      "coords":"12.4923 55.6777",
+      "line":"F",
+      "type":"s-train"
+    },
+    {
+      "name":"Kildebakke",
+      "coords":"12.5076 55.7448",
+      "line":"A",
+      "type":"s-train"
+    },
+    {
+      "name":"Kildedal",
+      "coords":"12.2866 55.752",
+      "line":"C",
+      "type":"s-train"
+    },
+    {
+      "name":"Klampenborg",
+      "coords":"12.5882 55.7771",
+      "line":"C",
+      "type":"s-train"
+    },
+    {
+      "name":"København H",
+      "coords":"12.564603 55.672938",
+      "line":"A,B,C,E,H,Bx",
+      "type":"s-train"
+    },
+    {
+      "name":"Køge",
+      "coords":"12.186388 55.457567",
+      "line":"E",
+      "type":"s-train"
+    },
+    {
+      "name":"Langgade",
+      "coords":"12.5041 55.6674",
+      "line":"C",
+      "type":"s-train"
+    },
+    {
+      "name":"Lyngby",
+      "coords":"12.503125 55.7681",
+      "line":"B,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Malmparken",
+      "coords":"12.3861 55.7246",
+      "line":"C",
+      "type":"s-train"
+    },
+    {
+      "name":"Måløv",
+      "coords":"12.3179 55.7475",
+      "line":"C,H",
+      "type":"s-train"
+    },
+    {
+      "name":"Nordhavn",
+      "coords":"12.5907 55.7057",
+      "line":"C,H,B,A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Ny Ellebjerg",
+      "coords":"12.5166 55.6525",
+      "line":"F,A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Nørrebro",
+      "coords":"12.5377 55.7006",
+      "line":"F",
+      "type":"s-train"
+    },
+    {
+      "name":"Nørreport",
+      "coords":"12.5715 55.6837",
+      "line":"A,B,C,E,H,Bx",
+      "type":"s-train"
+    },
+    {
+      "name":"Ordrup",
+      "coords":"12.5839 55.7632",
+      "line":"C",
+      "type":"s-train"
+    },
+    {
+      "name":"Peter Bangs Vej",
+      "coords":"12.5036 55.678",
+      "line":"C",
+      "type":"s-train"
+    },
+    {
+      "name":"Ryparken",
+      "coords":"12.5595 55.7154",
+      "line":"F,A,H",
+      "type":"s-train"
+    },
+    {
+      "name":"Rødovre",
+      "coords":"12.4589 55.6648",
+      "line":"B",
+      "type":"s-train"
+    },
+    {
+      "name":"Sjælør",
+      "coords":"12.5267 55.6515",
+      "line":"A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Skovbrynet",
+      "coords":"12.434 55.7652",
+      "line":"A",
+      "type":"s-train"
+    },
+    {
+      "name":"Skovlunde",
+      "coords":"12.4025 55.723",
+      "line":"C",
+      "type":"s-train"
+    },
+    {
+      "name":"Solrød Strand",
+      "coords":"12.218083 55.533361",
+      "line":"A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Sorgenfri",
+      "coords":"12.4826 55.7816",
+      "line":"B",
+      "type":"s-train"
+    },
+    {
+      "name":"Stengården",
+      "coords":"12.4726 55.757",
+      "line":"H,A",
+      "type":"s-train"
+    },
+    {
+      "name":"Stenløse",
+      "coords":"12.19044 55.766338",
+      "line":"C,H",
+      "type":"s-train"
+    },
+    {
+      "name":"Svanemøllen",
+      "coords":"12.5782 55.7155",
+      "line":"C,H,B,A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Sydhavn",
+      "coords":"12.5376 55.6549",
+      "line":"A,E",
+      "type":"s-train"
+    },
+    {
+      "name":"Taastrup",
+      "coords":"12.3024 55.6526",
+      "line":"B,Bx",
+      "type":"s-train"
+    },
+    {
+      "name":"Valby",
+      "coords":"12.5139 55.6638",
+      "line":"B,C,H,Bx",
+      "type":"s-train"
+    },
+    {
+      "name":"Vallensbæk",
+      "coords":"12.3873 55.6234",
+      "line":"A",
+      "type":"s-train"
+    },
+    {
+      "name":"Vangede",
+      "coords":"12.5236 55.7395",
+      "line":"H,A",
+      "type":"s-train"
+    },
+    {
+      "name":"Veksø",
+      "coords":"12.238377 55.750255",
+      "line":"C,H",
+      "type":"s-train"
+    },
+    {
+      "name":"Vesterport",
+      "coords":"12.5624 55.6758",
+      "line":"A,B,C,E,H,Bx",
+      "type":"s-train"
+    },
+    {
+      "name":"Vigerslev Allé",
+      "coords":"12.4993 55.6597",
+      "line":"F",
+      "type":"s-train"
+    },
+    {
+      "name":"Virum",
+      "coords":"12.4729 55.7962",
+      "line":"B",
+      "type":"s-train"
+    },
+    {
+      "name":"Værløse",
+      "coords":"12.3733 55.782",
+      "line":"H,A",
+      "type":"s-train"
+    },
+    {
+      "name":"Ølby",
+      "coords":"12.175575 55.479845",
+      "line":"E",
+      "type":"s-train"
+    },
+    {
+      "name":"Ølstykke",
+      "coords":"12.159998 55.7955",
+      "line":"C,H",
+      "type":"s-train"
+    },
+    {
+      "name":"Østerport",
+      "coords":"12.5879 55.6928",
+      "line":"A,B,C,E,H,Bx",
+      "type":"s-train"
+    },
+    {
+
+      "name":"Ålholm",
+      "coords":"12.4932 55.6721",
+      "line":"F",
+      "type":"s-train"
+    },
+    {
+      "name":"Åmarken",
+      "coords":"12.4999 55.6398",
+      "line":"A",
+      "type":"s-train"
+    },
+    {
+      "name":"Flintholm",
+      "coords":"12.4989 55.6857",
+      "line":"C,H,F",
+      "type":"s-train"
+    },
+
+
+    {
+      "name":"Vanløse",
+      "coords":"12.4917 55.6871",
+      "line":"M1 / M2",
+      "type":"metro"
+    },
+    {
+      "name":"Flintholm",
+      "coords":"12.4989 55.6857",
+      "line":"M1 / M2",
+      "type":"metro"
+    },
+    {
+      "name":"Lindevang",
+      "coords":"12.5129 55.6835",
+      "line":"M1 / M2",
+      "type":"metro"
+    },
+    {
+      "name":"Fasanvej",
+      "coords":"12.5231 55.6817",
+      "line":"M1 / M2",
+      "type":"metro"
+    },
+    {
+      "name":"Frederiksberg",
+      "coords":"12.5323 55.6811",
+      "line":"M1 / M2",
+      "type":"metro"
+    },
+    {
+      "name":"Forum",
+      "coords":"12.5524 55.6818",
+      "line":"M1 / M2",
+      "type":"metro"
+    },
+    {
+      "name":"Nørreport",
+      "coords":"12.5715 55.6837",
+      "line":"M1 / M2",
+      "type":"metro"
+    },
+    {
+      "name":"Kongens Nytorv",
+      "coords":"12.585 55.6795",
+      "line":"M1 / M2",
+      "type":"metro"
+    },
+    {
+      "name":"Christianshavn",
+      "coords":"12.5913 55.6722",
+      "line":"M1 / M2",
+      "type":"metro"
+    },
+    {
+      "name":"Islands Brygge",
+      "coords":"12.5853 55.6634",
+      "line":"M1",
+      "type":"metro"
+    },
+    {
+      "name":"DR Byen",
+      "coords":"12.5891 55.6558",
+      "line":"M1",
+      "type":"metro"
+    },
+    {
+      "name":"Sundby",
+      "coords":"12.5856 55.6452",
+      "line":"M1",
+      "type":"metro"
+    },
+    {
+      "name":"Bella Center",
+      "coords":"12.5829 55.6379",
+      "line":"M1",
+      "type":"metro"
+    },
+    {
+      "name":"Ørestad",
+      "coords":"12.5795 55.6291",
+      "line":"M1",
+      "type":"metro"
+    },
+    {
+      "name":"Vestamager",
+      "coords":"12.5757 55.6194",
+      "line":"M1",
+      "type":"metro"
+    },
+    {
+      "name":"Amagerbro",
+      "coords":"12.6029 55.6633",
+      "line":"M2",
+      "type":""
+    },
+    {
+      "name":"Lergravsparken",
+      "coords":"12.6168 55.6622",
+      "line":"M2",
+      "type":""
+    },
+    {
+      "name":"Øresund",
+      "coords":"12.6287 55.6615",
+      "line":"M2",
+      "type":"metro"
+    },
+    {
+      "name":"Amager Strand",
+      "coords":"12.6318 55.6561",
+      "line":"M2",
+      "type":"metro"
+    },
+    {
+      "name":"Femøren",
+      "coords":"12.6381 55.6455",
+      "line":"M2",
+      "type":"metro"
+    },
+    {
+      "name":"Kastrup",
+      "coords":"12.647 55.6356",
+      "line":"M2",
+      "type":"metro"
+    },
+    {
+      "name":"Lufthavnen",
+      "coords":"12.6493 55.6304",
+      "line":"M2",
+      "type":"metro"
+    },
+
+    { 
+      "name":"Rødovre centrum", 
+      "coords":"12.4572 55.6802", 
+      "line":"0", 
+      "type":"service" 
+    },
+    { 
+      "name":"Ishuset ved damhussøen", 
+      "coords":"12.4737 55.6813",
+      "line":"0", 
+      "type":"service"
+    },
+    { 
+      "name":"Poppelstien ved Fabriksparken", 
+      "coords":"12.3764 55.6831",
+      "line":"0", 
+      "type":"service"
+    },
+    { 
+      "name":"Trippendalstien / Nordalstien", 
+      "coords":"12.4138 55.6827",
+      "line":"0", 
+      "type":"service"
+    },
+    { 
+      "name":"Bystien ved Skovvangskolen", 
+      "coords":"12.4138 55.6827",
+      "line":"0", 
+      "type":"service"
+    },                 
+    { 
+      "name":"Kejserinde Dagmars Plads", 
+      "point":"12.5346 55.6813",
+      "line":"0", 
+      "type":"service"
+    },
+    { 
+      "name":"Den Grønne Sti, ved Howitzvej", 
+      "coords:":"12.5228 55.6806",
+      "line":"0", 
+      "type":"service"
+
+    },
+
+    {
+      "name":"Nærum",
+      "coords":"12.528312 55.813929",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Nørgaardsvej",
+      "coords":"12.5133 55.7704",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Fuglevad",
+      "coords":"12.4974 55.785",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Brede",
+      "coords":"12.5009 55.7936",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Ørholm",
+      "coords":"12.5099 55.7997",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Ravnholm",
+      "coords":"12.52 55.8022",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Lyngby Lokal",
+      "coords":"12.505571 55.773918",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Jægersborg",
+      "coords":"12.5218 55.7615",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Hillerød st",
+      "coords":"12.310993 55.927074",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Grønholt",
+      "coords":"12.369462 55.953062",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Kratbjerg",
+      "coords":"12.391911 55.966236",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Fredensborg",
+      "coords":"12.406887 55.977208",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Langerød",
+      "coords":"12.451154 55.98123",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Kvistgård",
+      "coords":"12.502969 55.99037",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Mørdrup",
+      "coords":"12.532439 56.002129",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Snekkersten",
+      "coords":"12.583743 56.009251",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Helsingør",
+      "coords":"12.613183 56.033122",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Hundested Havn st",
+      "coords":"11.845981 55.965825",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Hundested st",
+      "coords":"11.852505 55.963519",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Vibehus st.",
+      "coords":"11.873117 55.960156",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Østerbjerg st ",
+      "coords":"11.913336 55.97668",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Dyssekilde st",
+      "coords":"11.942089 55.985467",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Melby st",
+      "coords":"11.971357 55.991589",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Hanehoved st",
+      "coords":"12.001827 55.975191",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Frederiksværk st",
+      "coords":"12.019594 55.968154",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Lille Knegme st",
+      "coords":"12.034615 55.946244",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Knegme st",
+      "coords":"12.047446 55.934515",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Ølsted st",
+      "coords":"12.072981 55.923071",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Grimstrup st",
+      "coords":"12.102035 55.915592",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Skævinge st",
+      "coords":"12.149199 55.907558",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Gøreløse st",
+      "coords":"12.202843 55.88701",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Brødeskov st",
+      "coords":"12.279275 55.893315",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Hillerød st",
+      "coords":"12.310993 55.927074",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Hillerød st",
+      "coords":"12.310993 55.927074",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Slotpavillonen st",
+      "coords":"12.311229 55.941774",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Gribsø st",
+      "coords":"12.301702 55.987436",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Kagerup st",
+      "coords":"12.285801 55.997565",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Duemose st",
+      "coords":"12.262606 56.009695",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Helsinge st",
+      "coords":"12.205163 56.023212",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Laugø st",
+      "coords":"12.182783 56.03929",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Ørby st",
+      "coords":"12.162527 56.055732",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Vejby st",
+      "coords":"12.13637 56.062633",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Holløse st",
+      "coords":"12.117101 56.059494",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Godhavn st",
+      "coords":"12.097703 56.059889",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Tisvildeleje st",
+      "coords":"12.077705 56.05923",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Hillerød st",
+      "coords":"12.310993 55.927074",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Slotpavillonen st",
+      "coords":"12.311229 55.941774",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Gribsø st",
+      "coords":"12.301702 55.987436",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Kagerup st",
+      "coords":"12.285801 55.997565",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Mårum st",
+      "coords":"12.317001 56.030718",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Saltrup st",
+      "coords":"12.321764 56.05451",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Græsted syd st",
+      "coords":"12.2955 56.063172",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Græsted st",
+      "coords":"12.286552 56.072862",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Pårup st",
+      "coords":"56.100996 12.301465",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Fjellenstrup st",
+      "coords":"12.298354 56.116311",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Gilleleje st",
+      "coords":"12.302753 56.123572",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Gilleleje øst st",
+      "coords":"12.308997 56.122687",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Stæremosen st",
+      "coords":"12.318782 56.112328",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Søborg st",
+      "coords":"12.333781 56.100457",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Firhøj st",
+      "coords":"12.355689 56.098315",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Dronningemølle st",
+      "coords":"12.386953 56.097753",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Kildekrog st",
+      "coords":"12.423388 56.092666",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Horneby sand st",
+      "coords":"12.435168 56.0899",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Hørnbæk st",
+      "coords":"12.459415 56.089206",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Karinebæk st",
+      "coords":"12.468192 56.08316",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Saunte st",
+      "coords":"12.484671 56.076946",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Skibstrup st",
+      "coords":"56.078239 12.512781",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Ålsgårde st",
+      "coords":"12.538637 56.075125",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Hellebæk st",
+      "coords":"12.553958 56.066382",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Højstrup st",
+      "coords":"12.594084 56.047176",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Marienlyst st",
+      "coords":"12.602281 56.043269",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Grønnehave st",
+      "coords":"12.610864 56.040668",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Helsingør",
+      "coords":"12.613183 56.033122",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    }
+  ]
+}
