@@ -1281,11 +1281,11 @@
 		4EEE92551A125F730006BD95 /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92531A125F730006BD95 /* smroute_settings_private.plist */; };
 		4EEE925A1A125F980006BD95 /* smroute_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92581A125F980006BD95 /* smroute_settings.plist */; };
 		4EEE925B1A125F980006BD95 /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92591A125F980006BD95 /* smroute_settings_private.plist */; };
-		4EEE92691A126CB10006BD95 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE926B1A126CB10006BD95 /* MainStoryboard_iPhone.storyboard */; };
 		4EEE92791A12E69D0006BD95 /* dictionary_dk.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92771A12E69D0006BD95 /* dictionary_dk.strings */; };
 		4EEE927A1A12E69D0006BD95 /* dictionary_en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92781A12E69D0006BD95 /* dictionary_en.strings */; };
 		4EEE927E1A12E6B90006BD95 /* dictionary_dk.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */; };
 		4EEE927F1A12E6B90006BD95 /* dictionary_en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */; };
+		4EEE92861A12E9800006BD95 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92851A12E9800006BD95 /* MainStoryboard_iPhone.storyboard */; };
 		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -2666,12 +2666,11 @@
 		4EEE92531A125F730006BD95 /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
 		4EEE92581A125F980006BD95 /* smroute_settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings.plist; sourceTree = "<group>"; };
 		4EEE92591A125F980006BD95 /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
-		4EEE926A1A126CB10006BD95 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		4EEE926E1A126CC40006BD95 /* da */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = da; path = da.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4EEE92771A12E69D0006BD95 /* dictionary_dk.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_dk.strings; sourceTree = "<group>"; };
 		4EEE92781A12E69D0006BD95 /* dictionary_en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_en.strings; sourceTree = "<group>"; };
 		4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_dk.strings; sourceTree = "<group>"; };
 		4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_en.strings; sourceTree = "<group>"; };
+		4EEE92851A12E9800006BD95 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBE17F41EBD064F1BEE38068 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2744,7 +2743,7 @@
 			isa = PBXGroup;
 			children = (
 				4EE05F731A10EC2E00DE4226 /* Classes */,
-				4EEE926B1A126CB10006BD95 /* MainStoryboard_iPhone.storyboard */,
+				4EEE92851A12E9800006BD95 /* MainStoryboard_iPhone.storyboard */,
 				4EE0631B1A10FA4900DE4226 /* Images.xcassets */,
 				4EE0631E1A10FAB300DE4226 /* Images */,
 				4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */,
@@ -4858,6 +4857,7 @@
 				4EE0659B1A10FAB400DE4226 /* favTypeFavoriteButton@2x.png in Resources */,
 				4EE065151A10FAB400DE4226 /* Default-568h@2x.png in Resources */,
 				4EE06E5A1A11298800DE4226 /* SMAddFavoriteCell.xib in Resources */,
+				4EEE92861A12E9800006BD95 /* MainStoryboard_iPhone.storyboard in Resources */,
 				4EE0665E1A10FAB400DE4226 /* tokenNormal.png in Resources */,
 				4EE065011A10FAB400DE4226 /* white-up-left.png in Resources */,
 				4EE065F51A10FAB400DE4226 /* red_btn_pressed@2x.png in Resources */,
@@ -4912,7 +4912,6 @@
 				4EE064FA1A10FAB400DE4226 /* white-right-ward@2x.png in Resources */,
 				4EE0655D1A10FAB400DE4226 /* drop_pin_add_fav_btn_active@2x.png in Resources */,
 				4EE065321A10FAB400DE4226 /* back_arrow_btn_white@2x.png in Resources */,
-				4EEE92691A126CB10006BD95 /* MainStoryboard_iPhone.storyboard in Resources */,
 				4EE065A61A10FAB400DE4226 /* favTypeWorkButton.png in Resources */,
 				4EE0650C1A10FAB400DE4226 /* findRouteCalendar@2x.png in Resources */,
 				4EE065AA1A10FAB400DE4226 /* favWorkBlack.png in Resources */,
@@ -6035,15 +6034,6 @@
 				4EE05F8B1A10EDE700DE4226 /* Base */,
 			);
 			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		4EEE926B1A126CB10006BD95 /* MainStoryboard_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4EEE926A1A126CB10006BD95 /* en */,
-				4EEE926E1A126CC40006BD95 /* da */,
-			);
-			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
