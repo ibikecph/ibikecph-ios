@@ -39,7 +39,6 @@
 		4EE05F7E1A10EDE700DE4226 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F7D1A10EDE700DE4226 /* main.m */; };
 		4EE05F891A10EDE700DE4226 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F881A10EDE700DE4226 /* Images.xcassets */; };
 		4EE05F981A10EDE700DE4226 /* CykelPlanenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F971A10EDE700DE4226 /* CykelPlanenTests.m */; };
-		4EE05FA41A10F3C400DE4226 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05FA31A10F3C400DE4226 /* MainStoryboard_iPhone.storyboard */; };
 		4EE05FAA1A10F4A400DE4226 /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05FA91A10F4A400DE4226 /* SMAppDelegate.m */; };
 		4EE05FD91A10F61200DE4226 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05FD81A10F61200DE4226 /* MainStoryboard_iPhone.storyboard */; };
 		4EE0631C1A10FA4900DE4226 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EE0631B1A10FA4900DE4226 /* Images.xcassets */; };
@@ -1227,7 +1226,6 @@
 		4EEE91BC1A1245610006BD95 /* testing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B41A1245610006BD95 /* testing.gpx */; };
 		4EEE91BE1A1245910006BD95 /* Albertslundruten.line in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91BD1A1245910006BD95 /* Albertslundruten.line */; };
 		4EEE91BF1A1245910006BD95 /* Albertslundruten.line in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91BD1A1245910006BD95 /* Albertslundruten.line */; };
-		4EEE91C41A1245E80006BD95 /* CykelPlanenLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91C61A1245E80006BD95 /* CykelPlanenLocalization.strings */; };
 		4EEE91D41A1246920006BD95 /* local-trains-timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91C91A1246920006BD95 /* local-trains-timetable.json */; };
 		4EEE91D51A1246920006BD95 /* metro-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CA1A1246920006BD95 /* metro-stations.json */; };
 		4EEE91D61A1246920006BD95 /* metro.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CB1A1246920006BD95 /* metro.json */; };
@@ -1239,7 +1237,6 @@
 		4EEE91DC1A1246920006BD95 /* timetable-new.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91D11A1246920006BD95 /* timetable-new.json */; };
 		4EEE91DD1A1246920006BD95 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91D21A1246920006BD95 /* timetable.json */; };
 		4EEE91DE1A1246920006BD95 /* transportation-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91D31A1246920006BD95 /* transportation-lines.json */; };
-		4EEE91E41A1247880006BD95 /* IBikeCphLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91E61A1247880006BD95 /* IBikeCphLocalization.strings */; };
 		4EEE91E91A1257C50006BD95 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91E81A1257C50006BD95 /* routeme.plist */; };
 		4EEE91EA1A1257CB0006BD95 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91E81A1257C50006BD95 /* routeme.plist */; };
 		4EEE92091A125E250006BD95 /* HeadingAngleSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91F01A125E250006BD95 /* HeadingAngleSmall.png */; };
@@ -1284,6 +1281,11 @@
 		4EEE92551A125F730006BD95 /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92531A125F730006BD95 /* smroute_settings_private.plist */; };
 		4EEE925A1A125F980006BD95 /* smroute_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92581A125F980006BD95 /* smroute_settings.plist */; };
 		4EEE925B1A125F980006BD95 /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92591A125F980006BD95 /* smroute_settings_private.plist */; };
+		4EEE92691A126CB10006BD95 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE926B1A126CB10006BD95 /* MainStoryboard_iPhone.storyboard */; };
+		4EEE92791A12E69D0006BD95 /* dictionary_dk.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92771A12E69D0006BD95 /* dictionary_dk.strings */; };
+		4EEE927A1A12E69D0006BD95 /* dictionary_en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92781A12E69D0006BD95 /* dictionary_en.strings */; };
+		4EEE927E1A12E6B90006BD95 /* dictionary_dk.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */; };
+		4EEE927F1A12E6B90006BD95 /* dictionary_en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */; };
 		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1347,7 +1349,6 @@
 		4EE05F911A10EDE700DE4226 /* CykelPlanenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CykelPlanenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EE05F961A10EDE700DE4226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EE05F971A10EDE700DE4226 /* CykelPlanenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CykelPlanenTests.m; sourceTree = "<group>"; };
-		4EE05FA31A10F3C400DE4226 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4EE05FA81A10F4A400DE4226 /* SMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAppDelegate.h; sourceTree = "<group>"; };
 		4EE05FA91A10F4A400DE4226 /* SMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAppDelegate.m; sourceTree = "<group>"; };
 		4EE05FD81A10F61200DE4226 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
@@ -2630,8 +2631,6 @@
 		4EEE91B31A1245610006BD95 /* test2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test2.gpx; sourceTree = "<group>"; };
 		4EEE91B41A1245610006BD95 /* testing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testing.gpx; sourceTree = "<group>"; };
 		4EEE91BD1A1245910006BD95 /* Albertslundruten.line */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Albertslundruten.line; sourceTree = "<group>"; };
-		4EEE91C51A1245E80006BD95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CykelPlanenLocalization.strings; sourceTree = "<group>"; };
-		4EEE91C71A1246100006BD95 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/CykelPlanenLocalization.strings; sourceTree = "<group>"; };
 		4EEE91C91A1246920006BD95 /* local-trains-timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "local-trains-timetable.json"; sourceTree = "<group>"; };
 		4EEE91CA1A1246920006BD95 /* metro-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "metro-stations.json"; sourceTree = "<group>"; };
 		4EEE91CB1A1246920006BD95 /* metro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro.json; sourceTree = "<group>"; };
@@ -2643,8 +2642,6 @@
 		4EEE91D11A1246920006BD95 /* timetable-new.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "timetable-new.json"; sourceTree = "<group>"; };
 		4EEE91D21A1246920006BD95 /* timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timetable.json; sourceTree = "<group>"; };
 		4EEE91D31A1246920006BD95 /* transportation-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "transportation-lines.json"; sourceTree = "<group>"; };
-		4EEE91E51A1247880006BD95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/IBikeCphLocalization.strings; sourceTree = "<group>"; };
-		4EEE91E71A1247980006BD95 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/IBikeCphLocalization.strings; sourceTree = "<group>"; };
 		4EEE91E81A1257C50006BD95 /* routeme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = routeme.plist; sourceTree = "<group>"; };
 		4EEE91F01A125E250006BD95 /* HeadingAngleSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HeadingAngleSmall.png; path = Resources/HeadingAngleSmall.png; sourceTree = "<group>"; };
 		4EEE91F11A125E250006BD95 /* HeadingAngleSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HeadingAngleSmall@2x.png"; path = "Resources/HeadingAngleSmall@2x.png"; sourceTree = "<group>"; };
@@ -2669,6 +2666,12 @@
 		4EEE92531A125F730006BD95 /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
 		4EEE92581A125F980006BD95 /* smroute_settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings.plist; sourceTree = "<group>"; };
 		4EEE92591A125F980006BD95 /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
+		4EEE926A1A126CB10006BD95 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		4EEE926E1A126CC40006BD95 /* da */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = da; path = da.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		4EEE92771A12E69D0006BD95 /* dictionary_dk.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_dk.strings; sourceTree = "<group>"; };
+		4EEE92781A12E69D0006BD95 /* dictionary_en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_en.strings; sourceTree = "<group>"; };
+		4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_dk.strings; sourceTree = "<group>"; };
+		4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_en.strings; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBE17F41EBD064F1BEE38068 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2741,12 +2744,12 @@
 			isa = PBXGroup;
 			children = (
 				4EE05F731A10EC2E00DE4226 /* Classes */,
-				4EE05FA31A10F3C400DE4226 /* MainStoryboard_iPhone.storyboard */,
-				4EEE91E61A1247880006BD95 /* IBikeCphLocalization.strings */,
+				4EEE926B1A126CB10006BD95 /* MainStoryboard_iPhone.storyboard */,
 				4EE0631B1A10FA4900DE4226 /* Images.xcassets */,
 				4EE0631E1A10FAB300DE4226 /* Images */,
 				4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */,
 				4EEE92561A125F980006BD95 /* Resources */,
+				4EEE92761A12E69D0006BD95 /* Localization */,
 				4EE05F4D1A10EBFA00DE4226 /* Supporting Files */,
 			);
 			path = "I Bike CPH";
@@ -2804,11 +2807,11 @@
 			children = (
 				4EE05FA11A10EEC900DE4226 /* Classes */,
 				4EE05FD81A10F61200DE4226 /* MainStoryboard_iPhone.storyboard */,
-				4EEE91C61A1245E80006BD95 /* CykelPlanenLocalization.strings */,
 				4EE05F881A10EDE700DE4226 /* Images.xcassets */,
 				4EE06F141A1178DE00DE4226 /* Images */,
 				4EE05F8A1A10EDE700DE4226 /* LaunchScreen.xib */,
 				4EEE91C81A1246920006BD95 /* Resources */,
+				4EEE927B1A12E6B90006BD95 /* Localization */,
 				4EE05F7B1A10EDE700DE4226 /* Supporting Files */,
 			);
 			path = CykelPlanen;
@@ -4407,6 +4410,24 @@
 			path = "route-me";
 			sourceTree = "<group>";
 		};
+		4EEE92761A12E69D0006BD95 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4EEE92771A12E69D0006BD95 /* dictionary_dk.strings */,
+				4EEE92781A12E69D0006BD95 /* dictionary_en.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		4EEE927B1A12E6B90006BD95 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */,
+				4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		C83673E4C34341FF10FF5705 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -4770,11 +4791,11 @@
 				4EE064EF1A10FAB400DE4226 /* white-flag.png in Resources */,
 				4EE065881A10FAB400DE4226 /* favoritesInput.png in Resources */,
 				4EE065561A10FAB400DE4226 /* distance_white.png in Resources */,
-				4EEE91E41A1247880006BD95 /* IBikeCphLocalization.strings in Resources */,
 				4EE065411A10FAB400DE4226 /* calloutBubbleLeft@2x.png in Resources */,
 				4EE0658D1A10FAB400DE4226 /* favSchoolGrey@2x.png in Resources */,
 				4EE065761A10FAB400DE4226 /* favEditBtn.png in Resources */,
 				4EE064D11A10FAB400DE4226 /* left.png in Resources */,
+				4EEE92791A12E69D0006BD95 /* dictionary_dk.strings in Resources */,
 				4EE065BE1A10FAB400DE4226 /* green_grey.png in Resources */,
 				4EE0660F1A10FAB400DE4226 /* routeComplete_close_btn@2x.png in Resources */,
 				4EE0656D1A10FAB400DE4226 /* fav_plus_none@2x.png in Resources */,
@@ -4891,7 +4912,7 @@
 				4EE064FA1A10FAB400DE4226 /* white-right-ward@2x.png in Resources */,
 				4EE0655D1A10FAB400DE4226 /* drop_pin_add_fav_btn_active@2x.png in Resources */,
 				4EE065321A10FAB400DE4226 /* back_arrow_btn_white@2x.png in Resources */,
-				4EE05FA41A10F3C400DE4226 /* MainStoryboard_iPhone.storyboard in Resources */,
+				4EEE92691A126CB10006BD95 /* MainStoryboard_iPhone.storyboard in Resources */,
 				4EE065A61A10FAB400DE4226 /* favTypeWorkButton.png in Resources */,
 				4EE0650C1A10FAB400DE4226 /* findRouteCalendar@2x.png in Resources */,
 				4EE065AA1A10FAB400DE4226 /* favWorkBlack.png in Resources */,
@@ -4925,6 +4946,7 @@
 				4EE0661C1A10FAB400DE4226 /* routeEnterInputBG.png in Resources */,
 				4EE065D51A10FAB400DE4226 /* loginBG@2x.png in Resources */,
 				4EE0655A1A10FAB400DE4226 /* drop_pin_add_fav_btn.png in Resources */,
+				4EEE927A1A12E69D0006BD95 /* dictionary_en.strings in Resources */,
 				4EE0653C1A10FAB400DE4226 /* btnClose.png in Resources */,
 				4EE064E51A10FAB400DE4226 /* walk.png in Resources */,
 				4EE0654F1A10FAB400DE4226 /* checkboxChecked@2x.png in Resources */,
@@ -5300,6 +5322,7 @@
 				4EE073241A1178E300DE4226 /* routeEnterLocateIcon.png in Resources */,
 				4EE071841A1178E100DE4226 /* bike_route_white@2x.png in Resources */,
 				4EE071661A1178E100DE4226 /* accountMenu.png in Resources */,
+				4EEE927E1A12E6B90006BD95 /* dictionary_dk.strings in Resources */,
 				4EE0720E1A1178E200DE4226 /* favAddBG.png in Resources */,
 				4EE071D41A1178E200DE4226 /* near-destination.png in Resources */,
 				4EE072731A1178E200DE4226 /* home_btn_inactive.png in Resources */,
@@ -5626,6 +5649,7 @@
 				4EE071671A1178E100DE4226 /* accountMenu@2x.png in Resources */,
 				4EE071891A1178E100DE4226 /* blue_btn_ibike.png in Resources */,
 				4EE072B51A1178E200DE4226 /* metro_logo_pin@2x.png in Resources */,
+				4EEE927F1A12E6B90006BD95 /* dictionary_en.strings in Resources */,
 				4EEE92411A125E690006BD95 /* arrow_position.png in Resources */,
 				4EE071CA1A1178E200DE4226 /* field_email_icon@2x.png in Resources */,
 				4EE0717C1A1178E100DE4226 /* back_arrow_btn_white_press.png in Resources */,
@@ -5651,7 +5675,6 @@
 				4EE072ED1A1178E200DE4226 /* registerBG@2x.png in Resources */,
 				4EE073981A1178E300DE4226 /* white_btn_pressed@2x.png in Resources */,
 				4EE071ED1A1178E200DE4226 /* distance_black@2x.png in Resources */,
-				4EEE91C41A1245E80006BD95 /* CykelPlanenLocalization.strings in Resources */,
 				4EE0737F1A1178E300DE4226 /* splash_greass_transparent.png in Resources */,
 				4EE072001A1178E200DE4226 /* enterRouteClose.png in Resources */,
 				4EE0727C1A1178E200DE4226 /* icon_locate_me@2x.png in Resources */,
@@ -6014,22 +6037,13 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		4EEE91C61A1245E80006BD95 /* CykelPlanenLocalization.strings */ = {
+		4EEE926B1A126CB10006BD95 /* MainStoryboard_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4EEE91C51A1245E80006BD95 /* en */,
-				4EEE91C71A1246100006BD95 /* da */,
+				4EEE926A1A126CB10006BD95 /* en */,
+				4EEE926E1A126CC40006BD95 /* da */,
 			);
-			name = CykelPlanenLocalization.strings;
-			sourceTree = "<group>";
-		};
-		4EEE91E61A1247880006BD95 /* IBikeCphLocalization.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4EEE91E51A1247880006BD95 /* en */,
-				4EEE91E71A1247980006BD95 /* da */,
-			);
-			name = IBikeCphLocalization.strings;
+			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
