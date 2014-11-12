@@ -6117,6 +6117,7 @@
 			baseConfigurationReference = D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				GCC_PREFIX_HEADER = "I Bike CPH/I Bike CPH-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6147,6 +6148,7 @@
 			baseConfigurationReference = EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				GCC_PREFIX_HEADER = "I Bike CPH/I Bike CPH-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
