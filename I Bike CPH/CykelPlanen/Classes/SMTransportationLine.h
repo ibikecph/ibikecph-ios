@@ -13,6 +13,9 @@
 #import "SMSingleRouteInfo.h"
 #import "SMStationInfo.h"
 
+/**
+ * <##>. Used in SMRouteTransportationInfo.
+ */
 @interface SMTransportationLine : NSObject<NSCoding>
 
 @property(nonatomic, strong) NSArray * stations;

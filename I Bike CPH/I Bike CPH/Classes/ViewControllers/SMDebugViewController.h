@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * View controller for debugging on runing app.
+ */
 @interface SMDebugViewController : UIViewController
 
 @end

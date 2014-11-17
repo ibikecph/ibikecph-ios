@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SMTurnInstruction.h"
 
+/**
+ * View to display a direction instruction. Has description label (not used), direction image, distance label, wayname label Has convenience function to load from SMSwipableView.xib
+ */
 @interface SMSwipableView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;

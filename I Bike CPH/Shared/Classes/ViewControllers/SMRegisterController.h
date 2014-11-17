@@ -10,10 +10,8 @@
 #import "SMAPIRequest.h"
 
 /**
- * \ingroup screens
- * Register from menu
+ * View controller for sign up with name, email, password, repeat password, and image.
  */
-
 @interface SMRegisterController : SMTranslatedViewController <SMAPIRequestDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     __weak IBOutlet UIScrollView *scrlView;
     __weak IBOutlet UITextField *registerName;

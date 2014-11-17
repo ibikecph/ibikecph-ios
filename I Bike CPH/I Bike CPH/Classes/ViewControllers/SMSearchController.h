@@ -19,8 +19,7 @@
 @end
 
 /**
- * \ingroup screens
- * Address search screen
+ * View controller to search for address. Has search field, and results list. FIXME: Merge.
  */
 @interface SMSearchController : SMTranslatedViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SMAutocompleteDelegate, SMAPIOperationDelegate>{
     

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "SMCyBaseVC.h"
+//#import "SMCyBaseVC.h" // FIXME: Clean up outcommented code
 
+/**
+ * View controller to set bike reminders when onboarding.
+ */
 @interface SMCyLwReminderVC : UIViewController //SMCyBaseVC
 
 @property (weak, nonatomic) IBOutlet UISwitch *swMonday;

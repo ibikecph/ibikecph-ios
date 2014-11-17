@@ -10,10 +10,8 @@
 #import "SMAPIRequest.h"
 
 /**
- * \ingroup screens
- * Account screen
+ * Account view controller. Has different content if Facebook account or not. FB: image, name. Regular: image, name, email, password, pw repeat. FIXME: Merge.
  */
-
 @interface SMAccountController : SMTranslatedViewController <UITextFieldDelegate, SMAPIRequestDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIAlertViewDelegate>{
     
     __weak IBOutlet UIImageView *fbImage;

@@ -16,8 +16,7 @@
 @end
 
 /**
- * \ingroup map
- * Custom annotation
+ * Custom map annotation
  */
 @interface SMAnnotation : RMAnnotation <SMCalloutDelegate>
 

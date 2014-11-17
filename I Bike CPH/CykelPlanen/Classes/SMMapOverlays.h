@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "RMMapView.h"
 
+/**
+ * Map overlays. Handle markers/annotations for metro, service, station, and local train.
+ */
 @interface SMMapOverlays : NSObject
 
 -(SMMapOverlays*)initWithMapView:(RMMapView*)mapView;

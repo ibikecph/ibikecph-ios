@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
 /**
- * \ingroup screens
- * About screen
+ * About view controller. Has about text in scrollable view. FIXME: Merge.
  */
 @interface SMAboutController : SMTranslatedViewController {
     __weak IBOutlet UIScrollView *scrlView;

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * UIView category to find subviews of certain class
+ */
 @interface UIView (LocateSubview)
 
 - (UIView*)subviewWithClassName:(NSString*) className;

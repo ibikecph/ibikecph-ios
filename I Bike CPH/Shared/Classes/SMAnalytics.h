@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 
 /**
- @class SMAnalytics
- @abstract Google Analytics wrapper
+ * Google Analytics wrapper
  */
 @interface SMAnalytics : NSObject
 

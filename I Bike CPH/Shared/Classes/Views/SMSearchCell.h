@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TTTAttributedLabel.h"
 
+/**
+ * Table view cell for search. Has name label and icon image. Used in SMSearchController.
+ */
 @interface SMSearchCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *nameLabel;

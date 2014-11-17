@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Route node. Has reference string, role string, and coordinate. Used in SMTransportation and SMTransportationLine
+ */
 @interface SMNode : NSObject
 
 @property(nonatomic, strong) NSString* ref;

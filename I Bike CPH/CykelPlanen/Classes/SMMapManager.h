@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "RMMapView.h"
+
+/**
+ * Helper for map. Adds annotation/marker map at coordinate.
+ */
 @interface SMMapManager : NSObject
 
 +(SMMapManager*)instance;

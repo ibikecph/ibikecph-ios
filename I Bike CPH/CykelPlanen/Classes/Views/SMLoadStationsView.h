@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * View acticity spinner for when loading stations. Loads SMLoadStationsView.xib. FIXME: Probably not used in app :/
+ */
 @interface SMLoadStationsView : UIView
 
 @property (weak, nonatomic) IBOutlet UIView *loadingView;

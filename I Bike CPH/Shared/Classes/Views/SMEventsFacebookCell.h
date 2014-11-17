@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 City of Copenhagen. All rights reserved.
 //
 
+/**
+ * Table view cell for a facebook event. FIXME: Probably not used in app :/
+ */
 @interface SMEventsFacebookCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *cellBG;

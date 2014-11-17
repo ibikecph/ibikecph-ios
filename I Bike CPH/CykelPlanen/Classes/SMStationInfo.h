@@ -18,6 +18,9 @@ typedef enum  {
 
 } SMStationInfoType;
 
+/**
+ * Station information. Has coordinate, name, and type. Used in SMArrivalInfo and more.
+ */
 @interface SMStationInfo : NSObject<NSCoding>
 
 +(NSString*)imageNameForType:(SMStationInfoType)type;

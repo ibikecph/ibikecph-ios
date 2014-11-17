@@ -14,6 +14,9 @@ typedef enum {
     SMGPSTrackButtonStateNotFollowing
 } ButtonStateType;
 
+/**
+ * Button to control GPS tracking. Has three track states i.e. following, following w/ header, and not following.
+ */
 @interface SMGPSTrackButton : UIButton
 
 @property (nonatomic,readonly) ButtonStateType gpsTrackState;

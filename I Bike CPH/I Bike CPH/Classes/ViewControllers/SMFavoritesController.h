@@ -10,10 +10,8 @@
 #import "SMSearchController.h"
 
 /**
- * \ingroup screens
- * Favorites list
+ * View controller for favorites when onboarding to quick add home and work. Has home and work textfield.
  */
-
 @interface SMFavoritesController : SMTranslatedViewController <UITextFieldDelegate, SMSearchDelegate> {
     
     __weak IBOutlet UITextField *favoriteHome;

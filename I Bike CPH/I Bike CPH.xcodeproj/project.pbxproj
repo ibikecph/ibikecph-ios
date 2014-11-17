@@ -483,7 +483,6 @@
 		4EE06C4B1A10FC5600DE4226 /* SMTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06BFC1A10FC5600DE4226 /* SMTime.m */; };
 		4EE06C4D1A10FC5600DE4226 /* SMTrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C001A10FC5600DE4226 /* SMTrain.m */; };
 		4EE06C4E1A10FC5600DE4226 /* SMTransportation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C021A10FC5600DE4226 /* SMTransportation.m */; };
-		4EE06C4F1A10FC5600DE4226 /* SMTransportationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C041A10FC5600DE4226 /* SMTransportationCell.m */; };
 		4EE06C501A10FC5600DE4226 /* SMTransportationLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C061A10FC5600DE4226 /* SMTransportationLine.m */; };
 		4EE06C511A10FC5600DE4226 /* SMTripRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C081A10FC5600DE4226 /* SMTripRoute.m */; };
 		4EE06C521A10FC5600DE4226 /* SMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C0A1A10FC5600DE4226 /* SMUser.m */; };
@@ -611,8 +610,6 @@
 		4EE06F051A112F6D00DE4226 /* SMBreakRouteButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E161A11298800DE4226 /* SMBreakRouteButtonCell.m */; };
 		4EE06F061A112F6D00DE4226 /* SMBreakRouteHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E181A11298800DE4226 /* SMBreakRouteHeader.m */; };
 		4EE06F071A112F6D00DE4226 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E1A1A11298800DE4226 /* SMCalloutView.m */; };
-		4EE06F081A112F6D00DE4226 /* SMCyLwFirstTimeIntro.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E251A11298800DE4226 /* SMCyLwFirstTimeIntro.m */; };
-		4EE06F091A112F6D00DE4226 /* SMCyLwReminderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E271A11298800DE4226 /* SMCyLwReminderVC.m */; };
 		4EE06F0A1A112F6D00DE4226 /* SMDirectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E291A11298800DE4226 /* SMDirectionCell.m */; };
 		4EE06F0B1A112F6D00DE4226 /* SMDirectionTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E2E1A11298800DE4226 /* SMDirectionTopCell.m */; };
 		4EE06F0C1A112F6D00DE4226 /* SMEmptyFavoritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E301A11298800DE4226 /* SMEmptyFavoritesCell.m */; };
@@ -1286,6 +1283,9 @@
 		4EEE927E1A12E6B90006BD95 /* dictionary_dk.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */; };
 		4EEE927F1A12E6B90006BD95 /* dictionary_en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */; };
 		4EEE92861A12E9800006BD95 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92851A12E9800006BD95 /* MainStoryboard_iPhone.storyboard */; };
+		4EEE92891A1A4A340006BD95 /* SMTransportationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE92881A1A4A340006BD95 /* SMTransportationCell.m */; };
+		4EEE928C1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE928B1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m */; };
+		4EEE928F1A1A52620006BD95 /* SMCyLwReminderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE928E1A1A52620006BD95 /* SMCyLwReminderVC.m */; };
 		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1820,8 +1820,6 @@
 		4EE06C001A10FC5600DE4226 /* SMTrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTrain.m; sourceTree = "<group>"; };
 		4EE06C011A10FC5600DE4226 /* SMTransportation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportation.h; sourceTree = "<group>"; };
 		4EE06C021A10FC5600DE4226 /* SMTransportation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportation.m; sourceTree = "<group>"; };
-		4EE06C031A10FC5600DE4226 /* SMTransportationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationCell.h; sourceTree = "<group>"; };
-		4EE06C041A10FC5600DE4226 /* SMTransportationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationCell.m; sourceTree = "<group>"; };
 		4EE06C051A10FC5600DE4226 /* SMTransportationLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationLine.h; sourceTree = "<group>"; };
 		4EE06C061A10FC5600DE4226 /* SMTransportationLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationLine.m; sourceTree = "<group>"; };
 		4EE06C071A10FC5600DE4226 /* SMTripRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTripRoute.h; sourceTree = "<group>"; };
@@ -1967,10 +1965,6 @@
 		4EE06E191A11298800DE4226 /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
 		4EE06E1A1A11298800DE4226 /* SMCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
 		4EE06E1B1A11298800DE4226 /* SMCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMCalloutView.xib; sourceTree = "<group>"; };
-		4EE06E241A11298800DE4226 /* SMCyLwFirstTimeIntro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCyLwFirstTimeIntro.h; sourceTree = "<group>"; };
-		4EE06E251A11298800DE4226 /* SMCyLwFirstTimeIntro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCyLwFirstTimeIntro.m; sourceTree = "<group>"; };
-		4EE06E261A11298800DE4226 /* SMCyLwReminderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCyLwReminderVC.h; sourceTree = "<group>"; };
-		4EE06E271A11298800DE4226 /* SMCyLwReminderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCyLwReminderVC.m; sourceTree = "<group>"; };
 		4EE06E281A11298800DE4226 /* SMDirectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDirectionCell.h; sourceTree = "<group>"; };
 		4EE06E291A11298800DE4226 /* SMDirectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDirectionCell.m; sourceTree = "<group>"; };
 		4EE06E2C1A11298800DE4226 /* SMDirectionsFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMDirectionsFooter.xib; sourceTree = "<group>"; };
@@ -2671,6 +2665,12 @@
 		4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_dk.strings; sourceTree = "<group>"; };
 		4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_en.strings; sourceTree = "<group>"; };
 		4EEE92851A12E9800006BD95 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		4EEE92871A1A4A340006BD95 /* SMTransportationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationCell.h; sourceTree = "<group>"; };
+		4EEE92881A1A4A340006BD95 /* SMTransportationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationCell.m; sourceTree = "<group>"; };
+		4EEE928A1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCyLwFirstTimeIntro.h; sourceTree = "<group>"; };
+		4EEE928B1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCyLwFirstTimeIntro.m; sourceTree = "<group>"; };
+		4EEE928D1A1A52620006BD95 /* SMCyLwReminderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCyLwReminderVC.h; sourceTree = "<group>"; };
+		4EEE928E1A1A52620006BD95 /* SMCyLwReminderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCyLwReminderVC.m; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBE17F41EBD064F1BEE38068 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2886,6 +2886,10 @@
 				4EE06BC61A10FC5600DE4226 /* SMAnnotation.m */,
 				4EE06BC71A10FC5600DE4226 /* SMAPIRequest.h */,
 				4EE06BC81A10FC5600DE4226 /* SMAPIRequest.m */,
+				4EE06BD91A10FC5600DE4226 /* SMFavoritesUtil.h */,
+				4EE06BDA1A10FC5600DE4226 /* SMFavoritesUtil.m */,
+				4EE06BF11A10FC5600DE4226 /* SMSearchHistory.h */,
+				4EE06BF21A10FC5600DE4226 /* SMSearchHistory.m */,
 				4EE06BC91A10FC5600DE4226 /* SMArrivalInfo.h */,
 				4EE06BCA1A10FC5600DE4226 /* SMArrivalInfo.m */,
 				4EE06BCB1A10FC5600DE4226 /* SMArrivalInformation.h */,
@@ -2898,8 +2902,6 @@
 				4EE06BD21A10FC5600DE4226 /* SMBrokenRouteInfo.m */,
 				4EE06BD51A10FC5600DE4226 /* SMDepartureInfo.h */,
 				4EE06BD61A10FC5600DE4226 /* SMDepartureInfo.m */,
-				4EE06BD91A10FC5600DE4226 /* SMFavoritesUtil.h */,
-				4EE06BDA1A10FC5600DE4226 /* SMFavoritesUtil.m */,
 				4EE06BDD1A10FC5600DE4226 /* SMLineData.h */,
 				4EE06BDE1A10FC5600DE4226 /* SMLineData.m */,
 				4EE06BDF1A10FC5600DE4226 /* SMMapManager.h */,
@@ -2918,8 +2920,6 @@
 				4EE06BEC1A10FC5600DE4226 /* SMRouteTimeInfo.m */,
 				4EE06BED1A10FC5600DE4226 /* SMRouteTransportationInfo.h */,
 				4EE06BEE1A10FC5600DE4226 /* SMRouteTransportationInfo.m */,
-				4EE06BF11A10FC5600DE4226 /* SMSearchHistory.h */,
-				4EE06BF21A10FC5600DE4226 /* SMSearchHistory.m */,
 				4EE06BF31A10FC5600DE4226 /* SMSingleRouteInfo.h */,
 				4EE06BF41A10FC5600DE4226 /* SMSingleRouteInfo.m */,
 				4EE06BF51A10FC5600DE4226 /* SMStationInfo.h */,
@@ -2934,8 +2934,6 @@
 				4EE06C001A10FC5600DE4226 /* SMTrain.m */,
 				4EE06C011A10FC5600DE4226 /* SMTransportation.h */,
 				4EE06C021A10FC5600DE4226 /* SMTransportation.m */,
-				4EE06C031A10FC5600DE4226 /* SMTransportationCell.h */,
-				4EE06C041A10FC5600DE4226 /* SMTransportationCell.m */,
 				4EE06C051A10FC5600DE4226 /* SMTransportationLine.h */,
 				4EE06C061A10FC5600DE4226 /* SMTransportationLine.m */,
 				4EE06C071A10FC5600DE4226 /* SMTripRoute.h */,
@@ -3403,8 +3401,6 @@
 				4EE06C131A10FC5600DE4226 /* SMAboutController.m */,
 				4EE06C141A10FC5600DE4226 /* SMAccountController.h */,
 				4EE06C151A10FC5600DE4226 /* SMAccountController.m */,
-				4EE06C161A10FC5600DE4226 /* SMBreakRouteViewController.h */,
-				4EE06C171A10FC5600DE4226 /* SMBreakRouteViewController.m */,
 				4EE06C1A1A10FC5600DE4226 /* SMEnterRouteController.h */,
 				4EE06C1B1A10FC5600DE4226 /* SMEnterRouteController.m */,
 				4EE06C1C1A10FC5600DE4226 /* SMFavoritesController.h */,
@@ -3413,8 +3409,6 @@
 				4EE06C1F1A10FC5600DE4226 /* SMLoginController.m */,
 				4EE06C221A10FC5600DE4226 /* SMReportErrorController.h */,
 				4EE06C231A10FC5600DE4226 /* SMReportErrorController.m */,
-				4EE06C241A10FC5600DE4226 /* SMRouteInfoViewController.h */,
-				4EE06C251A10FC5600DE4226 /* SMRouteInfoViewController.m */,
 				4EE06C261A10FC5600DE4226 /* SMRouteNavigationController.h */,
 				4EE06C271A10FC5600DE4226 /* SMRouteNavigationController.m */,
 				4EEE91A01A1214F40006BD95 /* SMSearchController.h */,
@@ -3423,6 +3417,14 @@
 				4EE06C291A10FC5600DE4226 /* SMSettingsController.m */,
 				4EE06C2A1A10FC5600DE4226 /* SMSplashController.h */,
 				4EE06C2B1A10FC5600DE4226 /* SMSplashController.m */,
+				4EE06C241A10FC5600DE4226 /* SMRouteInfoViewController.h */,
+				4EE06C251A10FC5600DE4226 /* SMRouteInfoViewController.m */,
+				4EE06C161A10FC5600DE4226 /* SMBreakRouteViewController.h */,
+				4EE06C171A10FC5600DE4226 /* SMBreakRouteViewController.m */,
+				4EEE928A1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.h */,
+				4EEE928B1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m */,
+				4EEE928D1A1A52620006BD95 /* SMCyLwReminderVC.h */,
+				4EEE928E1A1A52620006BD95 /* SMCyLwReminderVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -3569,8 +3571,6 @@
 				4EE06D5F1A11163900DE4226 /* SMAboutController.m */,
 				4EE06D601A11163900DE4226 /* SMAccountController.h */,
 				4EE06D611A11163900DE4226 /* SMAccountController.m */,
-				4EE06D621A11163900DE4226 /* SMDebugViewController.h */,
-				4EE06D631A11163900DE4226 /* SMDebugViewController.m */,
 				4EE06D661A11163900DE4226 /* SMEnterRouteController.h */,
 				4EE06D671A11163900DE4226 /* SMEnterRouteController.m */,
 				4EE06D681A11163900DE4226 /* SMFavoritesController.h */,
@@ -3589,6 +3589,8 @@
 				4EE06D771A11163900DE4226 /* SMSplashController.m */,
 				4EE06D7A1A11163900DE4226 /* SMViewController.h */,
 				4EE06D7B1A11163900DE4226 /* SMViewController.m */,
+				4EE06D621A11163900DE4226 /* SMDebugViewController.h */,
+				4EE06D631A11163900DE4226 /* SMDebugViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -3620,10 +3622,6 @@
 				4EE06E191A11298800DE4226 /* SMCalloutView.h */,
 				4EE06E1A1A11298800DE4226 /* SMCalloutView.m */,
 				4EE06E1B1A11298800DE4226 /* SMCalloutView.xib */,
-				4EE06E241A11298800DE4226 /* SMCyLwFirstTimeIntro.h */,
-				4EE06E251A11298800DE4226 /* SMCyLwFirstTimeIntro.m */,
-				4EE06E261A11298800DE4226 /* SMCyLwReminderVC.h */,
-				4EE06E271A11298800DE4226 /* SMCyLwReminderVC.m */,
 				4EE06E281A11298800DE4226 /* SMDirectionCell.h */,
 				4EE06E291A11298800DE4226 /* SMDirectionCell.m */,
 				4EE06E2C1A11298800DE4226 /* SMDirectionsFooter.xib */,
@@ -3643,6 +3641,8 @@
 				4EE06E4E1A11298800DE4226 /* SMRouteTypeSelectCell.m */,
 				4EE06E541A11298800DE4226 /* SMSwipableView.m */,
 				4EE06E551A11298800DE4226 /* SMSwipableView.xib */,
+				4EEE92871A1A4A340006BD95 /* SMTransportationCell.h */,
+				4EEE92881A1A4A340006BD95 /* SMTransportationCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -5877,7 +5877,6 @@
 				4EE06C381A10FC5600DE4226 /* SMDepartureInfo.m in Sources */,
 				4ECC65A61A118A51008A7DB0 /* SMViewMoreCell.m in Sources */,
 				4EE06C4D1A10FC5600DE4226 /* SMTrain.m in Sources */,
-				4EE06C4F1A10FC5600DE4226 /* SMTransportationCell.m in Sources */,
 				4EE06F0D1A112F6D00DE4226 /* SMLoadStationsView.m in Sources */,
 				4EE06C3D1A10FC5600DE4226 /* SMMapManager.m in Sources */,
 				4EE06CE41A11134C00DE4226 /* SMTurnInstruction.m in Sources */,
@@ -5900,7 +5899,6 @@
 				4EE06C5E1A10FC5600DE4226 /* SMReportErrorController.m in Sources */,
 				4ECC65911A1183CA008A7DB0 /* SMAppDelegate.m in Sources */,
 				4EE06C421A10FC5600DE4226 /* SMReminder.m in Sources */,
-				4EE06F081A112F6D00DE4226 /* SMCyLwFirstTimeIntro.m in Sources */,
 				4EE06EEB1A112A9F00DE4226 /* SMDirectionsFooter.m in Sources */,
 				4EE06F0A1A112F6D00DE4226 /* SMDirectionCell.m in Sources */,
 				4EE06CD21A11134C00DE4226 /* SMGeocoder.m in Sources */,
@@ -5923,6 +5921,7 @@
 				4EEE91A61A12177D0006BD95 /* SMEnterEmailControllerViewController.m in Sources */,
 				4E4BD1231A11916A006C78E5 /* SMUtil.m in Sources */,
 				4ECC65981A118A51008A7DB0 /* SMContactsCell.m in Sources */,
+				4EEE928F1A1A52620006BD95 /* SMCyLwReminderVC.m in Sources */,
 				4ECC65941A118A36008A7DB0 /* SMTranslatedViewController.m in Sources */,
 				4ECC65A31A118A51008A7DB0 /* SMRadioCheckedCell.m in Sources */,
 				4EE06CC61A11134C00DE4226 /* NSString+Relevance.m in Sources */,
@@ -5935,7 +5934,6 @@
 				4EE06CBC1A11134C00DE4226 /* SMAPIQueue.m in Sources */,
 				4ECC65AA1A118B06008A7DB0 /* AsyncImageView.m in Sources */,
 				4EE06CE51A11135000DE4226 /* SMAddressParser.m in Sources */,
-				4EE06F091A112F6D00DE4226 /* SMCyLwReminderVC.m in Sources */,
 				4EEE915C1A11A7070006BD95 /* UIView+LocateSubview.m in Sources */,
 				4EE06F0B1A112F6D00DE4226 /* SMDirectionTopCell.m in Sources */,
 				4EE06CBE1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
@@ -5945,6 +5943,7 @@
 				4EEE91AA1A1220230006BD95 /* SMRegisterController.m in Sources */,
 				4EE06F071A112F6D00DE4226 /* SMCalloutView.m in Sources */,
 				4EE06C5B1A10FC5600DE4226 /* SMFavoritesController.m in Sources */,
+				4EEE92891A1A4A340006BD95 /* SMTransportationCell.m in Sources */,
 				4EE06C3A1A10FC5600DE4226 /* SMFavoritesUtil.m in Sources */,
 				4EE06CE21A11134C00DE4226 /* SMRouteUtils.m in Sources */,
 				4EE06C3C1A10FC5600DE4226 /* SMLineData.m in Sources */,
@@ -5971,6 +5970,7 @@
 				4EEE91961A120CD60006BD95 /* SMContacts.m in Sources */,
 				4ECC659E1A118A51008A7DB0 /* SMEventsFacebookCell.m in Sources */,
 				4ECC65951A118A39008A7DB0 /* SMAddFavoriteCell.m in Sources */,
+				4EEE928C1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m in Sources */,
 				4EE06F0C1A112F6D00DE4226 /* SMEmptyFavoritesCell.m in Sources */,
 				4EE06C501A10FC5600DE4226 /* SMTransportationLine.m in Sources */,
 				4EE06C301A10FC5600DE4226 /* SMAnnotation.m in Sources */,

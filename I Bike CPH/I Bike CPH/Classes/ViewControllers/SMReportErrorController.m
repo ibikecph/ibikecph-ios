@@ -189,6 +189,9 @@
     [self.apr executeRequest:API_SEND_FEEDBACK withParams:d];
 }
 
+/** 
+ * FIXME: Probably not used in app :/
+ */
 - (void)sendEmail {
     if (currentSelection < 0) {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"report_error_problem_not_selected") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];

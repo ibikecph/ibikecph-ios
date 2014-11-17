@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ * Table view cell that acts as header for autocomplete table view
+ */
 @interface SMAutocompleteHeader : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *headerTitle;

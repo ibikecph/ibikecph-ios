@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Table view cell. Has break route button. Used in SMBreakRouteViewController.
+ */
 @interface SMBreakRouteButtonCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet SMPatternedButton *btnBreakRoute;
 @end

@@ -22,8 +22,7 @@ typedef enum _registrationValidationResult{
 @end
 
 /**
- * \ingroup libs
- * Various utils
+ * Various utils, e.g. email validation
  */
 
 @interface SMUtil : NSObject

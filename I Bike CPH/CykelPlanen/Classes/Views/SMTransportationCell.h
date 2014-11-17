@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Table view cell for transportation selection. Has source address button, destination address button, address information button, source activity indicator, destination activity indicator, source station icon, destination station icon. Used in SMBreakRouteViewController.
+ */
 @interface SMTransportationCell : UITableViewCell
 
 @property(weak, nonatomic) IBOutlet UIButton* buttonAddressSource;

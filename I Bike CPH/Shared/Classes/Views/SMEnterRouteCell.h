@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TTTAttributedLabel.h"
 
+/**
+ * Table view cell for favorites and recent destinations. Has descriptive icon, name label, and background image
+ */
 @interface SMEnterRouteCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *nameLabel;
 @property (weak, nonatomic) IBOutlet AsyncImageView *iconImage;

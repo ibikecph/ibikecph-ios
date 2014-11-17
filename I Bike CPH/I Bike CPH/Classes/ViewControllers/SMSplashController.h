@@ -11,10 +11,7 @@
 #import "SMFavoritesUtil.h"
 
 /**
- * \ingroup screens
- * Splash screen controller
- *
- * Handles (auto)login and register
+ * View controller for splash screen controller. Handles (auto)login and register. Has a lot of views that really should be separate view controller for login and signup. FIXME: Merge.
  */
 @interface SMSplashController : SMTranslatedViewController <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SMAPIRequestDelegate, SMFavoritesDelegate>{
 

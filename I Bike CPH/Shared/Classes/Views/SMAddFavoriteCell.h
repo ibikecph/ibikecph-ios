@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SMUtil.h"
 
-
+/**
+ * Table view cell for favorite
+ */
 @interface SMAddFavoriteCell : UIView <UIGestureRecognizerDelegate>{
     __weak IBOutlet UIImageView *cellBG;
 }

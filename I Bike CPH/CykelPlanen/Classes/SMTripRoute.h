@@ -19,6 +19,9 @@
 - (void) didCalculateRouteDistances:(SMTripRoute*)route;
 @end
 
+/**
+ * Trip route. Has bool if valid, full route, broken route information, broken routes (array of SMRoutes that compose this route), transportation route (sorted by bike distance), delegate. Used in SMUser.
+ */
 @interface SMTripRoute : NSObject<SMRouteDelegate>
 
 -(id) initWithRoute:(SMRoute*)route;

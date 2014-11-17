@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Arrival mapping for arrivals and depatures. Used by SMArrivalInformation.
+ */
 @interface SMArrivalMapping : NSObject
 
 @property(nonatomic, strong) NSMutableArray* arrivals;

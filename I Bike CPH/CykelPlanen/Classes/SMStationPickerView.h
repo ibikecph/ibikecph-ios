@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Station picker view wraps a UIPickerView with padding. Used in SMBreakRouteViewController
+ */
 @interface SMStationPickerView : UIView
 
 @property(nonatomic, strong) UIPickerView* pickerView;

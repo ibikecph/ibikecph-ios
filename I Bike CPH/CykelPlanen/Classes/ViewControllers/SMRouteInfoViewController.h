@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SMSingleRouteInfo.h"
+
+/**
+ * View controller for route information. Has title label, and single route information.
+ */
 @interface SMRouteInfoViewController : UIViewController<UITableViewDataSource, UITableViewDataSource, NSXMLParserDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;

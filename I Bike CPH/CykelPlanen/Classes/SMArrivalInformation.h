@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "SMStationInfo.h"
 #import "SMArrivalMapping.h"
+
+/**
+ * TODO: Arrival information for station. 
+ */
 @interface SMArrivalInformation : NSObject
 
 @property(nonatomic, strong) SMStationInfo* station;

@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SMTime.h"
 
+/**
+ * Departure information. Has times for day start and end, and night start and end.
+ */
 @interface SMDepartureInfo : NSObject
 
 @property(strong, nonatomic) SMTime* dayStart;

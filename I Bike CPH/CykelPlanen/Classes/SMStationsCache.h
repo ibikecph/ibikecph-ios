@@ -8,7 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "SMTransportation.h"
+
+/**
+ * Cache of stations. FIXME: Probably not used in app :/
+ */
 @interface SMStationsCache : NSObject
+
 
 +(SMStationsCache*)instance;
 

@@ -10,10 +10,8 @@
 #import "SMAPIRequest.h"
 
 /**
- * \ingroup screens
- * Login from menu
+ * View controller when logging in from menu. Has email and password textfield. FIXME: Merge.
  */
-
 @interface SMLoginController : SMTranslatedViewController<SMAPIRequestDelegate, UITextFieldDelegate> {
     __weak IBOutlet UITextField *loginEmail;
     __weak IBOutlet UITextField *loginPassword;

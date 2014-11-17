@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Table view cell for route type. Used in SMRouteNavigationController. FIXME: Merge.
+ */
 @interface SMRouteTypeSelectCell : UITableViewCell {
     
     __weak IBOutlet UIImageView *cellImage;

@@ -10,6 +10,9 @@
 #import "SMTripRoute.h"
 #import "SMRoute.h"
 
+/**
+ * User. Has trip route, and route. Is used as shared instance. Used in SMBreakRouteViewcontroller, SMTripRoute.
+ */
 @interface SMUser : NSObject
 
 +(SMUser*)user;

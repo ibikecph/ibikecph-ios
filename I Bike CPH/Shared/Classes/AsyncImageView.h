@@ -15,9 +15,7 @@
 @end
 
 /**
- * \ingroup libs
- * \ingroup sm
- * Asynchronously loads an image
+ * Asynchronously loads an image. Probably not used :/
  *
  * loadImage: - asynchronously loads na image checking the cache first
  * loadImage:withBackup: - asynchronously load an image with backup link in case the first one doesn't exist
@@ -34,7 +32,7 @@
 @property (nonatomic, strong) NSURLConnection * conn;
 
 /**
- * asynchronously loads na image checking the cache first
+ * asynchronously loads an image checking the cache first
  */
 - (void) loadImage:(NSString*)imagePath;
 /**

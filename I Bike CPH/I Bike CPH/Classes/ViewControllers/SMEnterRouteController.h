@@ -22,10 +22,8 @@
 @end
 
 /**
- * \ingroup screens
- * From/To address picker
+ * View controller for creating route. Has from and to labels, swap and start button, and arrow image view for current location. FIXME: Merge.
  */
-
 @interface SMEnterRouteController : SMTranslatedViewController <SMRequestOSRMDelegate, UITableViewDataSource, UITableViewDelegate, SMSearchDelegate>{
     
     __weak IBOutlet UILabel *fromLabel;

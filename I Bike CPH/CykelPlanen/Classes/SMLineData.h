@@ -11,6 +11,9 @@
 #import "SMArrivalInfo.h"
 #import "SMStationInfo.h"
 
+/**
+ * Line data. Has departure info, and multiple arrival infos.
+ */
 @interface SMLineData : NSObject
 
 @property(nonatomic, strong) SMDepartureInfo* departureInfo;

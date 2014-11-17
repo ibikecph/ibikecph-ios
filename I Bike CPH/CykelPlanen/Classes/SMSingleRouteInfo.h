@@ -11,6 +11,9 @@
 
 @class SMTransportationLine;
 
+/**
+ * Single route information. Has source station, destination station, transportation line, station type, bike distance, distance1, and distance2. Used in SMRouteTimeInfo and SMTransportationLine.
+ */
 @interface SMSingleRouteInfo : NSObject
 
 @property(nonatomic, strong) SMStationInfo* sourceStation;

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Button to handle resize of text in title label.
+ */
 @interface SMCustomButton : UIButton
 
 -(void) resizeToFitTheTextWithMinWidth:(float)minWidth andMaxWidth:(float) maxWidth;

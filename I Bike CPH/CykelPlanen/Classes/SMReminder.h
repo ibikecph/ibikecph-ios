@@ -17,6 +17,9 @@ typedef enum {
     DayFriday= 4
 } Day;
 
+/**
+ * Handler for bike reminders.
+ */
 @interface SMReminder : NSObject
 
 +(SMReminder*)sharedInstance;

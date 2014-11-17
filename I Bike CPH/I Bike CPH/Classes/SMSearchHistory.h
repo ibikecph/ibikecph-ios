@@ -17,10 +17,8 @@
 @interface SMSearchHistory : NSObject <SMAPIRequestDelegate>
 
 /**
- * \ingroup libs
  * Fetches/saves history
  */
-
 @property (nonatomic, weak) id<SMSearchHistoryDelegate>delegate;
 
 + (SMSearchHistory *)instance;

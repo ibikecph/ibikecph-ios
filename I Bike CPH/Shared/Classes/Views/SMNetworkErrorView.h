@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 City of Copenhagen. All rights reserved.
 //
 
+/**
+ * View for displaying a network error. Has convenience function to load from SMNetworkErrorView.xib
+ */
 @interface SMNetworkErrorView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel *warningText;

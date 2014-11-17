@@ -15,8 +15,7 @@
 @end
 
 /**
- * \ingroup libs
- * Tokenized text field
+ * Tokenized text field. FIXME: Probably not used in app :/
  */
 
 @interface SMTokenizedTextField : UIView <UITextFieldDelegate, UIScrollViewDelegate>

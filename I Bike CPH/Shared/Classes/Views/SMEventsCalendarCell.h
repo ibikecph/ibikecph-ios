@@ -6,7 +6,9 @@
 //  Copyright (c) 2013 City of Copenhagen. All rights reserved.
 //
 
-
+/**
+ * Table view cell for a calender event. FIXME: Probably not used in app :/
+ */
 @interface SMEventsCalendarCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *cellBG;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;

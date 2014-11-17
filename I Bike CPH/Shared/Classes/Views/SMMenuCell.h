@@ -14,6 +14,9 @@
 - (void)editFavorite:(SMMenuCell*)cell;
 @end
 
+/**
+ * Table view cell for favorites in menu
+ */
 @interface SMMenuCell : UITableViewCell {
     
     __weak IBOutlet UIImageView *cellBG;

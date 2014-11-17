@@ -13,6 +13,9 @@
 - (void)facebookEventsFound:(NSArray*) evnts;
 @end
 
+/**
+ * Handler for fetching events from system calendar on iOS + Facebook
+ */
 @interface SMEvents : NSObject
 
 /**

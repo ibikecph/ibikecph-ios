@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SMStationInfo.h"
 
+/**
+ * TODO: Arrival information for station. Colocates arrival and departures.
+ */
 @interface SMArrivalInfo : NSObject
 
 -(id)initWithDepartures:(NSArray*)departures arrivals:(NSArray*)arrivals;

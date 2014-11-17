@@ -18,10 +18,8 @@
 @end
 
 /**
- * \ingroup libs
- * Fetches/saves favorites
+ * Handler that fetches/saves favorites
  */
-
 @interface SMFavoritesUtil : NSObject <SMAPIRequestDelegate>
 
 @property (nonatomic, weak) id<SMFavoritesDelegate>delegate;

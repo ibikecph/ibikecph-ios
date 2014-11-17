@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Table view cell for to indicate an empty favorite for population
+ */
 @interface SMEmptyFavoritesCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *text;

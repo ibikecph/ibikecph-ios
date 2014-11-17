@@ -10,7 +10,9 @@
 #import "SMStationInfo.h"
 #import "SMTransportationLine.h"
 
-// contains information about a route
+/**
+ * Information bout a route. FIXME: Call something else.
+ */
 @interface SMBrokenRouteInfo : NSObject
 
 @property(nonatomic, strong) SMStationInfo* sourceStation;

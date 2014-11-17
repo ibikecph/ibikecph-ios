@@ -33,10 +33,8 @@ typedef enum {
 } CurrentScreenType;
 
 /**
- * \ingroup screens
- * Main app view
+ * View controller for main app use. Has map, menu button, search button, location/tracking button.
  */
-
 @interface SMViewController : SMTranslatedViewController <RMMapViewDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, EnterRouteDelegate, UIGestureRecognizerDelegate, SMAnnotationActionDelegate, SMNearbyPlacesDelegate, SMRequestOSRMDelegate, SMMenuCellDelegate, SMSearchDelegate, UITextFieldDelegate, ViewTapDelegate, SMFavoritesDelegate>  {
     IBOutlet UIView *menuView;
     __weak IBOutlet FlickableView *centerView;

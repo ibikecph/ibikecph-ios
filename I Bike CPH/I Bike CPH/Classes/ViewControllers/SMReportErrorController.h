@@ -11,8 +11,7 @@
 #import "SMAPIRequest.h"
 
 /**
- * \ingroup screens
- * Report an error screen
+ * View controller to report error on route. Has select route segment button, choose error type, and send report button. FIXME: Merge.
  */
 @interface SMReportErrorController : SMTranslatedViewController <UIPickerViewDataSource, UIPickerViewDelegate, MFMailComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, SMAPIRequestDelegate> {
     

@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "SMSingleRouteInfo.h"
+
+/**
+ * Route time information. Has route information (SMSingleRouteInfo), source time, and destination time.
+ */
 @interface SMRouteTimeInfo : NSObject
 
 -(id)initWithRouteInfo:(SMSingleRouteInfo*)routeInfo sourceTime:(SMTime*)sourceTime destinationTime:(SMTime*)destTime;

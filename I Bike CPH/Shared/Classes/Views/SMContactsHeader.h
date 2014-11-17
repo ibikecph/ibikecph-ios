@@ -10,6 +10,9 @@
 - (void)buttonPressed:(id) btn;
 @end
 
+/**
+ * Table view cell that acts as header in contacts table view. Has image, text label, and button.
+ */
 @interface SMContactsHeader : UITableViewCell
 
 @property (nonatomic, weak) id<SMContactsHeaderDelegate> delegate;

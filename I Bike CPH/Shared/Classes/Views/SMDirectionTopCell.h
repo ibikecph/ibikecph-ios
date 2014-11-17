@@ -10,6 +10,9 @@
 
 #import "SMTurnInstruction.h"
 
+/**
+ * View for turn instructions.
+ */
 @interface SMDirectionTopCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;

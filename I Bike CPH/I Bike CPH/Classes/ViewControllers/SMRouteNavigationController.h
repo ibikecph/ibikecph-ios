@@ -14,10 +14,8 @@
 #import "SMRequestOSRM.h"
 
 /**
- * \ingroup screens
- * Main turn-by-turn navigation screen
+ * View controller for turn-by-turn navigation. FIXME: Should be separated so route type selection is own view controller. FIXME: Merge. 
  */
-
 @interface SMRouteNavigationController : SMTranslatedViewController <UIGestureRecognizerDelegate,RMMapViewDelegate, SMRouteDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIScrollViewDelegate, RouteDelegate, ViewTapDelegate, SMRequestOSRMDelegate> {
     __weak IBOutlet UITableView *tblDirections;
     __weak IBOutlet UIView *instructionsView;

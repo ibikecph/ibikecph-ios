@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/** 
+ * Button that adds noise grain to image
+ */
 @interface SMPatternedButton : UIButton
 
 @end

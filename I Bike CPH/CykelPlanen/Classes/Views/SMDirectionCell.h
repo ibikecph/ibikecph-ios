@@ -10,6 +10,9 @@
 
 #import "SMTurnInstruction.h"
 
+/**
+ * Table view cell for instruction direction in route list. Used in SMRouteNavigationController. FIXME: Merge.
+ */
 @interface SMDirectionCell : UITableViewCell {
 
 }

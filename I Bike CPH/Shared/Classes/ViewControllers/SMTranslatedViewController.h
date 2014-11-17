@@ -11,10 +11,9 @@
 #import "SMAppDelegate.h";
 
 /**
- * \ingroup libs
- * Base class for all the views
+ * Base class for all the view controller
  *
- * Handles translation
+ * Handles translation by calling [SMTranslation translateView:self.view] in viewDidLoad()
  */
 @interface SMTranslatedViewController : GAITrackedViewController
 

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SMReminder.h"
+
+/**
+ * Table view cell for reminders. Has title label, and current day. Used in SMViewController.
+ */
 @interface SMReminderTableViewCell : UITableViewCell
 - (void)setupWithTitle:(NSString*)title;
 

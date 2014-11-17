@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * View controller for entering an email adress. FIXME: Probably not used in app :/
+ */
 @interface SMEnterEmailControllerViewController : UIViewController <UITextFieldDelegate> {
     
     __weak IBOutlet UITextField *emailField;

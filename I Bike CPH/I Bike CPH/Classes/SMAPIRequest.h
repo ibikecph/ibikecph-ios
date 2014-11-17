@@ -17,6 +17,9 @@
 - (void)serverNotReachable;
 @end
 
+/**
+ * Handler for requst to server API. Handles reachablity + loading wait indicator.
+ */
 @interface SMAPIRequest : NSObject <NSURLConnectionDataDelegate, NSURLConnectionDelegate>
 
 @property (nonatomic, weak) id<SMAPIRequestDelegate> delegate;

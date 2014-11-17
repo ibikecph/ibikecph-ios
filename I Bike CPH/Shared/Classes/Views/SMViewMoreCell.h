@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Table view cell for "Show more". Used in SMEnterRouteController.
+ */
 @interface SMViewMoreCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *buttonLabel;

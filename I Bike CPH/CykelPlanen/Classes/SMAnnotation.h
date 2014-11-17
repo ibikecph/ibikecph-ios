@@ -15,6 +15,9 @@
 - (void)annotationActivated:(SMAnnotation*)annotation;
 @end
 
+/**
+ * Custom map annotation
+ */
 @interface SMAnnotation : RMAnnotation <SMCalloutDelegate>
 
 @property (nonatomic, weak) id<SMAnnotationActionDelegate> delegate;

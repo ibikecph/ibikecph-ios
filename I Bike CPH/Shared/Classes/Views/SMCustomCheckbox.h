@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 /**
- * \ingroup views
  * Custom checkbox
  */
 @interface SMCustomCheckbox : UIButton

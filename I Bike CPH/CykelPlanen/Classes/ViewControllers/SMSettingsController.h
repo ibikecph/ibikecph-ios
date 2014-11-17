@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 /**
- * \ingroup screens
- * Settings screen
+ * View controller for settings. FIXME: Probably not used in app :/
  */
 @interface SMSettingsController : SMTranslatedViewController
 

@@ -13,13 +13,10 @@
 - (void)searchHistoryOperationFinishedSuccessfully:(id)req withData:(id)data;
 @end
 
-
-@interface SMSearchHistory : NSObject <SMAPIRequestDelegate>
-
 /**
- * \ingroup libs
- * Fetches/saves history
+ * Handler that fetches/saves history
  */
+@interface SMSearchHistory : NSObject <SMAPIRequestDelegate>
 
 @property (nonatomic, weak) id<SMSearchHistoryDelegate>delegate;
 

@@ -10,6 +10,9 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "SMSearchHistory.h"
 
+/**
+ * App delegate. Handles facebook session, contacts, events, routes history, search history, Google Analytics trakcing, and app settings.
+ */
 @interface SMAppDelegate : UIResponder <UIApplicationDelegate, SMSearchHistoryDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

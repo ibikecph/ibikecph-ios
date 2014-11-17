@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Address book helper for AdressBook.framework on iOS
+ */
+
 @class SMContacts;
 
 @protocol SMContactsDelegate <NSObject>

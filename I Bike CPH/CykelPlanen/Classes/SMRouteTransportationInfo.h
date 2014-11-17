@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SMTransportationLine.h"
 
+/**
+ * Route transportation information. Has starting stations sorted, ending station sorted, transportation line
+ */
 @interface SMRouteTransportationInfo : NSObject
 
 @property(nonatomic, strong) NSArray* startingStationsSorted;

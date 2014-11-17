@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SMSearchCell.h"
 
+/**
+ * Table view cell extending SMSearchCell w/ address label. Used in SMSearchController.
+ */
 @interface SMSearchTwoRowCell : SMSearchCell
 
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *addressLabel;

@@ -12,6 +12,9 @@
 - (void)buttonClicked;
 @end
 
+/**
+ * View as pop up box. Has text label, description label, and button. Used in SMAnnotation. FIXME: Merge.
+ */
 @interface SMCalloutView : UIView  {
 }
 

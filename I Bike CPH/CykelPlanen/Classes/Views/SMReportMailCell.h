@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Table view cell for report. Has check box button, and email text view. Used in SMReportErrorController
+ */
 @interface SMReportMailCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *checkboxMail;
 @property (weak, nonatomic) IBOutlet UITextView *email;

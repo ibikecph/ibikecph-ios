@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Table view cell that acts as break route header. Has title label, and route distance label. Used in SMBreakRouteViewController
+ */
 @interface SMBreakRouteHeader : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *routeDistance;

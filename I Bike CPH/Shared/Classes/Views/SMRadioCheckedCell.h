@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Table view cell w/ radio button. Has title label and text view. Used in SMErrorReportController.
+ */
 @interface SMRadioCheckedCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *radioTitle;

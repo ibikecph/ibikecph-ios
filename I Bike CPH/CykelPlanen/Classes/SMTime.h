@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Time to calculate difference between two and format to string. Has hours and minutes. Used in SMDepartureInfo, SMRouteInfoViewController, SMTransportation, SMTransportationLine.
+ */
 @interface SMTime : NSObject
 
 +(SMTime*)timeFromString:(NSString*)timeString;

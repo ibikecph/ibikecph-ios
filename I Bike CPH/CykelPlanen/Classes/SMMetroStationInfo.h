@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Metro station information. Has station and time offset.
+ */
 @interface SMMetroStationInfo : NSObject
 
 -(id)initWithStation:(SMStationInfo*)station timeOffset:(NSNumber*)number;

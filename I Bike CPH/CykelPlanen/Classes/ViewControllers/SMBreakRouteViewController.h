@@ -10,6 +10,10 @@
 #import "SMTripRoute.h"
 #import "SMStationPickerView.h"
 #import "SMAddressPickerView.h"
+
+/**
+ * View controller for breaking a route. Has destination address button, source address button, trip route, full route, source station, destination station, source name, destination name, source address, destinaton address
+ */
 @interface SMBreakRouteViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, SMBreakRouteDelegate, AddressSelectDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView* tableView;

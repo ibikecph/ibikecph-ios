@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SMArrivalInformation.h"
 
+/**
+ * Train. Has arrival information for stations. FIXME: arrival inforamtion is exposed as mutable/nilable array. Used in SMRouteInfoViewController, SMTransportation.
+ */
 @interface SMTrain : NSObject
 
 @property(nonatomic, strong) NSMutableArray* arrivalInformation;

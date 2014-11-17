@@ -22,7 +22,10 @@ typedef enum  {
 -(NSString*)addressView:(SMAddressPickerView *)pAddressPickerView titleForRow:(int)row;
 @end
 
-@interface SMAddressPickerView : UIView<UIPickerViewDelegate>
+/**
+ * Address picker view. Loads SMAddressPickerView.xib. Used in SMBreakRouteViewController.
+ */
+@interface SMAddressPickerView : UIView<UIPickerViewDelegate> // FIXME: Don't expose UIPickerViewDelegate
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (assign, nonatomic) AddressType addressType;

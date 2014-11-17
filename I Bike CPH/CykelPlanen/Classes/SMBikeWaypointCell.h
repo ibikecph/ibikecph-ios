@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Table view cell for bike waypoint. Has top/bottom address labels, address image view, distance label, distance image view.
+ */
 @interface SMBikeWaypointCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *labelAddressTop;
 @property (weak, nonatomic) IBOutlet UILabel *labelAddressBottom;
