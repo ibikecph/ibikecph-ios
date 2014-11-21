@@ -40,6 +40,10 @@
 		4E7BA9FE1A1E3E5800F9744A /* CurrentLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9FC1A1E3E5800F9744A /* CurrentLocationItem.swift */; };
 		4E7BA9FF1A1E3E5800F9744A /* CurrentLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9FC1A1E3E5800F9744A /* CurrentLocationItem.swift */; };
 		4E7BAA001A1E3E5800F9744A /* CurrentLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9FC1A1E3E5800F9744A /* CurrentLocationItem.swift */; };
+		4E7BAA071A1E406000F9744A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BAA061A1E406000F9744A /* User.swift */; };
+		4E7BAA081A1E406000F9744A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BAA061A1E406000F9744A /* User.swift */; };
+		4E7BAA091A1E406000F9744A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BAA061A1E406000F9744A /* User.swift */; };
+		4E7BAA0A1A1E406000F9744A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BAA061A1E406000F9744A /* User.swift */; };
 		4ECC65911A1183CA008A7DB0 /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC65901A1183CA008A7DB0 /* SMAppDelegate.m */; };
 		4ECC65931A118A31008A7DB0 /* SMAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E061A11261300DE4226 /* SMAnalytics.m */; };
 		4ECC65941A118A36008A7DB0 /* SMTranslatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E021A11251C00DE4226 /* SMTranslatedViewController.m */; };
@@ -1369,6 +1373,7 @@
 		4E7BA9F21A1E3A0C00F9744A /* HistoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		4E7BA9F71A1E3C3900F9744A /* FavoriteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		4E7BA9FC1A1E3E5800F9744A /* CurrentLocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationItem.swift; sourceTree = "<group>"; };
+		4E7BAA061A1E406000F9744A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4ECC658F1A1183CA008A7DB0 /* SMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAppDelegate.h; sourceTree = "<group>"; };
 		4ECC65901A1183CA008A7DB0 /* SMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAppDelegate.m; sourceTree = "<group>"; };
 		4ECC65A71A118B06008A7DB0 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
@@ -2762,6 +2767,7 @@
 				4E7BA9F21A1E3A0C00F9744A /* HistoryItem.swift */,
 				4E7BA9F71A1E3C3900F9744A /* FavoriteItem.swift */,
 				4E7BA9FC1A1E3E5800F9744A /* CurrentLocationItem.swift */,
+				4E7BAA061A1E406000F9744A /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -5909,6 +5915,7 @@
 				4EE06CC51A11134C00DE4226 /* NSString+Relevance.m in Sources */,
 				4EE06DC71A11163900DE4226 /* SMEnterRouteController.m in Sources */,
 				4EE06EFC1A112A9F00DE4226 /* SMSearchCell.m in Sources */,
+				4E7BAA071A1E406000F9744A /* User.swift in Sources */,
 				4E7BA9F31A1E3A0C00F9744A /* HistoryItem.swift in Sources */,
 				4EE06CBD1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
 				4EE06EF81A112A9F00DE4226 /* SMPatternedButton.m in Sources */,
@@ -5950,6 +5957,7 @@
 				4E7BA9F91A1E3C3900F9744A /* FavoriteItem.swift in Sources */,
 				4E7BA9EB1A1E2C7100F9744A /* SwiftyJSON.swift in Sources */,
 				4E7BA9E71A1E2C3600F9744A /* FoursquareItem.swift in Sources */,
+				4E7BAA081A1E406000F9744A /* User.swift in Sources */,
 				4E7BA9EE1A1E300D00F9744A /* KortforItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6026,6 +6034,7 @@
 				4ECC65AA1A118B06008A7DB0 /* AsyncImageView.m in Sources */,
 				4EE06CE51A11135000DE4226 /* SMAddressParser.m in Sources */,
 				4EEE915C1A11A7070006BD95 /* UIView+LocateSubview.m in Sources */,
+				4E7BAA091A1E406000F9744A /* User.swift in Sources */,
 				4E7BA9D91A1E214700F9744A /* FoursquareItem.swift in Sources */,
 				4EE06F0B1A112F6D00DE4226 /* SMDirectionTopCell.m in Sources */,
 				4EE06CBE1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
@@ -6092,6 +6101,7 @@
 				4E7BA9FB1A1E3C3900F9744A /* FavoriteItem.swift in Sources */,
 				4E7BA9EC1A1E2C7100F9744A /* SwiftyJSON.swift in Sources */,
 				4E7BA9E81A1E2C3700F9744A /* FoursquareItem.swift in Sources */,
+				4E7BAA0A1A1E406000F9744A /* User.swift in Sources */,
 				4E7BA9EF1A1E300D00F9744A /* KortforItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
