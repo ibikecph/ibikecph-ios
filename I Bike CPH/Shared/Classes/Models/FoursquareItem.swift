@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 
-class FoursquareItem: SearchListItem {
+@objc class FoursquareItem: NSObject, SearchListItem {
     
     var type: SearchListItemType = .Foursquare
     var name: String

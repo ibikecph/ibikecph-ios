@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 
-class KortforItem: SearchListItem {
+@objc class KortforItem: NSObject, SearchListItem {
     
     var type: SearchListItemType = .Kortfor
     var name: String

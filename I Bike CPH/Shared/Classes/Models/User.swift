@@ -9,7 +9,7 @@
 import UIKit
 
 // https://github.com/ibikecph/ibikecph-lib-android/blob/master/IBikeCPHLib/src/com/spoiledmilk/ibikecph/login/UserData.java
-class User: NSObject {
+@objc class User: NSObject {
     
     let name: String
     let email: String

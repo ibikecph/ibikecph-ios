@@ -15,5 +15,8 @@
 #import "GAIDictionaryBuilder.h"
 #import "SMAddressParser.h"
 #import "SMAnalytics.h"
+@import CoreLocation;
+
+#import "I_Bike_CPH-Swift.h"
 
 #endif

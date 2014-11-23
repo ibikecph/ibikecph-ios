@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class FavoriteItem: SearchListItem {
+@objc class FavoriteItem: NSObject, SearchListItem {
     
     enum Type: String {
         case Home = "home"

@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 // https://github.com/ibikecph/ibikecph-lib-android/blob/master/IBikeCPHLib/src/com/spoiledmilk/ibikecph/search/HistoryData.java
-class HistoryItem: SearchListItem {
+@objc class HistoryItem: NSObject, SearchListItem {
    
     var type: SearchListItemType = .History
     var name: String
