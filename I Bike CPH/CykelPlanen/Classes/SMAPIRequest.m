@@ -58,7 +58,7 @@
     }
     
 
-    if ([[request objectForKey:@"transferMethod"] isEqualToString:@"GET"] || [[request objectForKey:@"transferMethod"] isEqualToString:@"DELETE"]) {
+    if ([request[@"transferMethod"] isEqualToString:@"GET"] || [request[@"transferMethod"] isEqualToString:@"DELETE"]) {
         [self executeGetRequestWithParams:params andURL:request];
     } else {
         [self executePostRequestWithParams:params andURL:request];
@@ -70,7 +70,7 @@
  */
 - (void) executeGetRequestWithParams:(NSDictionary*) params andURL:(NSDictionary*) service {
     if (service) {
-        NSString * urlString = [NSString stringWithFormat:@"%@/%@", API_SERVER, [service objectForKey:@"service"]];
+        NSString * urlString = [NSString stringWithFormat:@"%@/%@", API_SERVER, service[@"service"]];
         BOOL first = NO;
         NSRange range = [urlString rangeOfString:@"?"];
         if (range.location == NSNotFound) {
@@ -80,11 +80,11 @@
         
         NSMutableArray * d = [[NSMutableArray alloc] initWithCapacity:[[params allKeys] count]];
         for (NSString * key in [params allKeys]) {
-            if ([[params objectForKey:key] isKindOfClass:[NSString class]]) {
-                [d addObject:[NSString stringWithFormat:@"%@=%@", key, [[params objectForKey:key] urlEncode]]];
+            if ([params[key] isKindOfClass:[NSString class]]) {
+                [d addObject:[NSString stringWithFormat:@"%@=%@", key, [params[key] urlEncode]]];
             } else {
-                if(![[params objectForKey:key] isEqual:[NSNull null]])
-                    [d addObject:[NSString stringWithFormat:@"%@=%@", key, [[params objectForKey:key] stringValue]]];
+                if(![params[key] isEqual:[NSNull null]])
+                    [d addObject:[NSString stringWithFormat:@"%@=%@", key, [params[key] stringValue]]];
             }
         }        
         NSString * urlP = [d componentsJoinedByString:@"&"];
@@ -95,15 +95,15 @@
             urlString = [urlString stringByAppendingFormat:@"&%@", urlP];
         }
         
-        debugLog(@"*** %@ %@", [service objectForKey:@"transferMethod"], urlString);
+        debugLog(@"*** %@ %@", service[@"transferMethod"], urlString);
         
 //        NSData * data = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
         
         NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
 //        [req setHTTPBody:data];
-        [req setHTTPMethod:[service objectForKey:@"transferMethod"]];
-        for (NSDictionary * d in [service objectForKey:@"headers"]) {
-            [req setValue:[d objectForKey:@"value"] forHTTPHeaderField:[d objectForKey:@"key"]];
+        [req setHTTPMethod:service[@"transferMethod"]];
+        for (NSDictionary * d in service[@"headers"]) {
+            [req setValue:d[@"value"] forHTTPHeaderField:d[@"key"]];
         }
 
         if (self.conn) {
@@ -130,11 +130,11 @@
         NSLog(@"POST DATA: %@", data);
         NSLog(@"PARAMS: %@", params);
         
-        NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", API_SERVER, [service objectForKey:@"service"]]]];
-        [req setHTTPMethod:[service objectForKey:@"transferMethod"]];
+        NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", API_SERVER, service[@"service"]]];
+        [req setHTTPMethod:service[@"transferMethod"]];
         [req setHTTPBody:data];
-        for (NSDictionary * d in [service objectForKey:@"headers"]) {
-            [req setValue:[d objectForKey:@"value"] forHTTPHeaderField:[d objectForKey:@"key"]];
+        for (NSDictionary * d in service[@"headers"]) {
+            [req setValue:d[@"value"] forHTTPHeaderField:d[@"key"]];
         }
         
         if (self.conn) {
@@ -214,7 +214,7 @@
         }
         return;
     }
-    if ([d objectForKey:@"invalid_token"]) {
+    if (d[@"invalid_token"]) {
         SMAppDelegate * appd = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
         [appd.appSettings removeObjectForKey:@"auth_token"];
         [appd.appSettings removeObjectForKey:@"id"];

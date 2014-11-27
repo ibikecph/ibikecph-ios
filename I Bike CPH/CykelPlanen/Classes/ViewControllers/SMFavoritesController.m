@@ -25,7 +25,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet SMPatternedButton *btnSave;
 @property (weak, nonatomic) IBOutlet UIButton *btnSkip;
 
-@property (nonatomic, strong) NSDictionary * homeDict;
+@property (nonatomic, strong) NSDictionary * homeItem;
 @property (nonatomic, strong) NSDictionary * workDict;
 @end
 

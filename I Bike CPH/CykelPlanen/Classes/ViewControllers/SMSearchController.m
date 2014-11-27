@@ -209,7 +209,7 @@
     [self.autocomp getAutocomplete:text];
 }
 
-- (void)showFade {
+- (void)showFade l{
     [tblFade setAlpha:1.0f];
 }
 

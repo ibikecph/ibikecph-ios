@@ -113,7 +113,7 @@
     [self.apr executeRequest:API_LIST_HISTORY withParams:@{@"auth_token": [self.appDelegate.appSettings objectForKey:@"auth_token"]}];
 }
 
-- (void)addSearchToServer:(NSDictionary*)srchData {
+- (void)addSearchToServer:(NSObject*)srchData {
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
     [self setApr:ap];
     [self.apr setRequestIdentifier:@"addHistory"];

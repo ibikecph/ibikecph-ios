@@ -28,8 +28,8 @@ typedef enum {
     BOOL historyOpen;
 }
 @property (nonatomic, strong) NSArray * groupedList;
-@property (nonatomic, strong) NSDictionary * fromData;
-@property (nonatomic, strong) NSDictionary * toData;
+@property (nonatomic, strong) NSObject<SearchListItem> *fromItem;
+@property (nonatomic, strong) NSObject<SearchListItem> *toItem;
 @end
 
 @implementation SMEnterRouteController
@@ -514,6 +514,18 @@ typedef enum {
     [tblView reloadData];
 }
 
+- (NSString*)textFromItem:(NSObject<SearchListItem> *)item {
+    NSMutableArray * arr = [NSMutableArray array];
+    [arr addObject:item.name];
+    if (item.address && ![item.name isEqualToString:item.address]) {
+        NSString * s = [item.address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if ([s isEqualToString:@""] == NO) {
+            [arr addObject:s];
+        }
+    }
+    return [arr componentsJoinedByString:@", "];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([self isCountButton:indexPath]) {
@@ -528,8 +540,8 @@ typedef enum {
                 debugLog(@"error in trackEvent");
             }
         }
-        NSDictionary * currentRow = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-        [toLabel setText:[currentRow objectForKey:@"name"]];
+        NSObject<SearchListItem> *currentItem = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        [toLabel setText:[self textFromItem:currentItem]];
         [self setToData:@{
              @"name" : [currentRow objectForKey:@"name"],
              @"address" : [currentRow objectForKey:@"address"],
@@ -574,14 +586,14 @@ typedef enum {
 
 #pragma mark - search delegate 
 
-- (void)locationFound:(NSDictionary *)locationDict {
+- (void)locationFound:(NSObject<SearchListItem> *)locationItem {
     switch (delegateField) {
         case fieldTo:
-            [self setToData:locationDict];
-            [toLabel setText:[self.toData objectForKey:@"name"]];
+            [self setToData:locationItem];
+            [toLabel setText:[self textFromData:locationItem]];
             break;
         case fieldFrom:
-            [self setFromData:locationDict];
+            [self setFromData:locationItem];
             
             if (self.fromData == nil  || ([self.fromData objectForKey:@"source"] && [[self.fromData objectForKey:@"source"] isEqualToString:@"currentPosition"])) {
                 [swapButton setEnabled:NO];
@@ -589,7 +601,7 @@ typedef enum {
                 [swapButton setEnabled:YES];
             }
             
-            [fromLabel setText:[self.fromData objectForKey:@"name"]];
+            [fromLabel setText:[self textFromData:locationItem]];
             if ([[locationDict objectForKey:@"source"] isEqualToString:@"currentPosition"]) {
                 [locationArrow setHidden:NO];
                 CGRect frame = fromLabel.frame;

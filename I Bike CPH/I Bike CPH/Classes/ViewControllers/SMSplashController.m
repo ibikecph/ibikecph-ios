@@ -171,16 +171,17 @@ typedef enum {
                                     }];
     
     if (self.profileImage) {
-        [[params objectForKey:@"user"] setValue:@{
-         @"file" : [UIImageJPEGRepresentation(self.profileImage, 1.0f) base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0],
-         @"original_filename" : @"image.jpg",
-         @"filename" : @"image.jpg"
-         } forKey:@"image_path"];
+        params[@"user"][@"image_path"] = @{
+             @"file" : [UIImageJPEGRepresentation(self.profileImage, 1.0f) base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0],
+             @"original_filename" : @"image.jpg",
+             @"filename" : @"image.jpg"
+        };
     }
     
     if ([passwordField.text isEqualToString:@""] == NO) {
-        [[params objectForKey:@"user"] setValue:passwordField.text forKey:@"password"];
-        [[params objectForKey:@"user"] setValue:passwordField.text forKey:@"password_confirmation"];
+        // TODO: Why just duplicate password?
+        params[@"user"][@"password"] = passwordField.text;
+        params[@"user"][@"password_confirmation"] = passwordField.text;
     }
     
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
@@ -453,7 +454,7 @@ typedef enum {
 #pragma mark - imagepicker delegate
 
 - (void) imagePickerController: (UIImagePickerController *) picker didFinishPickingMediaWithInfo: (NSDictionary *) info {
-    self.profileImage = [[info objectForKey:UIImagePickerControllerOriginalImage] resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
+    self.profileImage = [info[UIImagePickerControllerOriginalImage] resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
     [registerImage setImage:self.profileImage forState:UIControlStateNormal];
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -485,24 +486,24 @@ typedef enum {
 }
 
 - (void)request:(SMAPIRequest *)req completedWithResult:(NSDictionary *)result {
-    if ([[result objectForKey:@"success"] boolValue]) {
+    if ([result[@"success"] boolValue]) {
         if ([req.requestIdentifier isEqualToString:@"login"]) {
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"auth_token"] forKey:@"auth_token"];
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"id"] forKey:@"id"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:loginEmail.text forKey:@"username"];
             [self.appDelegate.appSettings setValue:loginPassword.text forKey:@"password"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [self.appDelegate saveSettings];
             [self fetchFavs];
         } else if ([req.requestIdentifier isEqualToString:@"autoLogin"]) {
-                [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"auth_token"] forKey:@"auth_token"];
-                [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"id"] forKey:@"id"];
+                [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
+                [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
                 [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
                 [self.appDelegate saveSettings];
                 [self fetchFavs];
         } else if ([req.requestIdentifier isEqualToString:@"loginFB"]) {
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"auth_token"] forKey:@"auth_token"];
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"id"] forKey:@"id"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"FB" forKey:@"loginType"];
             [self.appDelegate saveSettings];
             [self fetchFavs];
@@ -515,11 +516,11 @@ typedef enum {
             }
         }
     } else {
-        if ([result objectForKey:@"info_title"]) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:[result objectForKey:@"info_title"] message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        if (result[@"info_title"]) {
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:result[@"info_title"] message:result[@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
         } else {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:result[@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
         }
         [req hideWaitingView];

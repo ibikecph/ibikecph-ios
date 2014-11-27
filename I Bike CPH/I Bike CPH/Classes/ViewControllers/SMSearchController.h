@@ -14,7 +14,7 @@
 
 @protocol SMSearchDelegate <NSObject>
 
-- (void)locationFound:(NSDictionary*)locationDict;
+- (void)locationFound:(NSObject<SearchListItem>*)locationItem;
 
 @end
 
@@ -31,6 +31,6 @@
 @property (nonatomic, strong) NSString * searchText;
 @property (nonatomic, weak) id<SMSearchDelegate> delegate;
 @property BOOL shouldAllowCurrentPosition;
-@property (nonatomic, strong) NSDictionary * locationData;
+@property (nonatomic, strong) NSObject<SearchListItem> *locationItem;
 
 @end

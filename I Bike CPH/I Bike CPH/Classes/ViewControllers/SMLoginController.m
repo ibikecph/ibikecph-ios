@@ -152,30 +152,30 @@
 }
 
 - (void)request:(SMAPIRequest *)req completedWithResult:(NSDictionary *)result {
-    if ([[result objectForKey:@"success"] boolValue]) {
+    if ([result[@"success"] boolValue]) {
         if ([req.requestIdentifier isEqualToString:@"login"]) {
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"auth_token"] forKey:@"auth_token"];
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"id"] forKey:@"id"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:loginEmail.text forKey:@"username"];
             [self.appDelegate.appSettings setValue:loginPassword.text forKey:@"password"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [self.appDelegate saveSettings];
             [self goBack:nil];
         } else if ([req.requestIdentifier isEqualToString:@"autoLogin"]) {
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"auth_token"] forKey:@"auth_token"];
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"id"] forKey:@"id"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [self.appDelegate saveSettings];
             [self goBack:nil];
         } else if ([req.requestIdentifier isEqualToString:@"loginFB"]) {
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"auth_token"] forKey:@"auth_token"];
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"id"] forKey:@"id"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"FB" forKey:@"loginType"];
             [self.appDelegate saveSettings];
             [self goBack:nil];
         } else if ([req.requestIdentifier isEqualToString:@"register"]) {
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"auth_token"] forKey:@"auth_token"];
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"id"] forKey:@"id"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
+            [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [self.appDelegate saveSettings];
             [self goBack:nil];
@@ -184,11 +184,11 @@
             }
         }
     } else {
-        if ([result objectForKey:@"info_title"]) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:[result objectForKey:@"info_title"] message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        if (result[@"info_title"]) {
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:result[@"info_title"] message:result[@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
         } else {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:result[@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
         }
     }

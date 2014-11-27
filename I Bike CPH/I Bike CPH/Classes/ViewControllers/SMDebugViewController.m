@@ -34,7 +34,7 @@
 
 - (IBAction)addText:(NSNotification*)notif {
     @synchronized(self) {
-        textLog.text = [NSString stringWithFormat:@"%@%@", [NSString stringWithFormat:@"%@\n", [notif.userInfo objectForKey:@"text"]], textLog.text];
+        textLog.text = [NSString stringWithFormat:@"%@%@", [NSString stringWithFormat:@"%@\n", notif.userInfo[@"text"]], textLog.text];
     }
 }
 

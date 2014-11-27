@@ -243,24 +243,16 @@
             if (sd == nil) {
                 sd = [NSDate date];
             }
-            NSDictionary * dc = @{
-                                 @"name" : [d objectForKey:@"toName"],
-                                 @"address" : [d objectForKey:@"toName"],
-                                 @"startDate" : sd,
-                                 @"endDate" : [NSDate date],
-                                 @"source" :  @"searchHistory",
-                                 @"subsource" : @"searchHistory",
-                                 @"lat" : [d objectForKey:@"toLattitude"],
-                                 @"long" : [d objectForKey:@"toLongitude"],
-                                 @"order" : @1
-                                 };
-            [arr2 addObject:dc];
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:[d[@"toLattitude"] doubleValue] longitude:[d[@"toLongitude"] doubleValue]];
+            HistoryItem *item = [[HistoryItem alloc] initWithName:d[@"toName"] address:d[@"toName"] location:location startDate:sd endDate:[NSDate date]];
+            
+            [arr2 addObject:item];
             NSLog(@"%@", data);
-            NSLog(@"%@", dc);
+            NSLog(@"%@", item);
         }
-        [arr2 sortUsingComparator:^NSComparisonResult(NSDictionary* obj1, NSDictionary* obj2) {
-            NSDate * d1 = [obj1 objectForKey:@"startDate"];
-            NSDate * d2 = [obj2 objectForKey:@"startDate"];
+        [arr2 sortUsingComparator:^NSComparisonResult(HistoryItem *obj1, HistoryItem* obj2) {
+            NSDate * d1 = obj1.startDate;
+            NSDate * d2 = obj2.startDate;
             return [d2 compare:d1];
         }];
         [self setSearchHistory:arr2];

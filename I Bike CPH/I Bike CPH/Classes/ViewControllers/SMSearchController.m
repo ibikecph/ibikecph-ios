@@ -37,6 +37,9 @@
 @property (nonatomic, strong) SMAPIQueue * queue;
 @end
 
+static NSString *const SingleRowSearchCellIdentifier = @"searchCell";
+static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
+
 @implementation SMSearchController
 
 - (id)init {
@@ -89,7 +92,7 @@
 }
 
 - (void)setReturnKey {
-    if (self.locationData) {
+    if (self.locationItem) {
         [searchField setReturnKeyType:UIReturnKeyGo];
         [searchField resignFirstResponder];
         [searchField becomeFirstResponder];
@@ -130,14 +133,9 @@
 }
 
 - (NSArray*)getSearchTerms {
-    
-
-    NSDictionary * d = [SMAddressParser parseAddress:searchField.text];
-    NSMutableArray * arr = [NSMutableArray array];
-    for (NSString * key in [d allKeys]) {
-        [arr addObject:[d objectForKey:key]];
-    }
-    NSString * search = [arr componentsJoinedByString:@" "];
+    UnknownSearchListItem *item = [SMAddressParser parseAddress:searchField.text];
+    NSString * search = [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@", item.name, item.address, item.street, item.number, item.zip, item.city, item.country];
+    search = [search stringByReplacingOccurrencesOfString:@"  " withString:@" "]; // Remove double spacing
     NSMutableCharacterSet * set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
     [set addCharactersInString:@","];
     search = [search stringByTrimmingCharactersInSet:set];
@@ -149,96 +147,49 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary * currentRow = [self.searchResults objectAtIndex:indexPath.row];
-    NSString * identifier;
-
-
+    NSObject<SearchListItem> *item = [self.searchResults objectAtIndex:indexPath.row];
+   
     NSArray * words = [self getSearchTerms];
-    
-    
+
     SMSearchCell * cell;
-    if ([currentRow objectForKey:@"line1"]) {
-        if ([currentRow objectForKey:@"line2"] && [[currentRow objectForKey:@"line2"] isEqualToString:@""] == NO) {
-            identifier = @"searchTwoRowsCell";
-            SMSearchTwoRowCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-            [cell.addressLabel setText:[currentRow objectForKey:@"line2"] afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+    if (item.type == SearchListItemTypeCurrentLocation)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:SingleRowSearchCellIdentifier];
+        cell.nameLabel.text = item.name;
+    }
+    else if (item.type == SearchListItemTypeKortfor) {
+        SMSearchTwoRowCell *twoCell = [tableView dequeueReusableCellWithIdentifier:TwoRowSearchCellIdentifier];
+        
+        NSString *name;
+        NSString *address;
+        
+        name = item.name;
+        address = [NSString stringWithFormat:@"%@ %@", item.zip, item.city];
+        
+        [twoCell.nameLabel setText:name afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+            for (NSString * srch in words) {
+                NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
                 
-                for (NSString * srch in words) {
-                    NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
-                    
-                    if (boldRange.length > 0 && boldRange.location != NSNotFound) {
-                        UIFont *boldSystemFont = [UIFont systemFontOfSize:cell.addressLabel.font.pointSize];
-                        
-                        CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
-                        
-                        if (font) {
-                            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
-                            CFRelease(font);
-                            [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:[UIColor colorWithWhite:0.0f alpha:1.0f] range:boldRange];
-                        }
-                        
-                    }
-                }
+                twoCell.nameLabel.textColor = [UIColor lightGrayColor];
+                UIFont *boldSystemFont = [UIFont systemFontOfSize:twoCell.nameLabel.font.pointSize];
+                CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
                 
-                return mutableAttributedString;
-            }];
-            
-            [cell.nameLabel setText:[currentRow objectForKey:@"line1"] afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-                for (NSString * srch in words) {
-                    NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
-                    
-                    cell.nameLabel.textColor = [UIColor lightGrayColor];
-                    UIFont *boldSystemFont = [UIFont systemFontOfSize:cell.nameLabel.font.pointSize];
-                    CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
-                    
-                    if (font) {
-                        [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
-                        CFRelease(font);
-                        [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:[UIColor colorWithWhite:0.0f alpha:1.0f] range:boldRange];
-                    }
+                if (font) {
+                    [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+                    CFRelease(font);
+                    [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:[UIColor colorWithWhite:0.0f alpha:1.0f] range:boldRange];
                 }
-                return mutableAttributedString;
-            }];
-            [cell setImageWithData:currentRow];
-            return cell;
-        } else {
-            identifier = @"searchCell";
-            SMSearchCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-            
-            [cell.nameLabel setText:[currentRow objectForKey:@"line1"] afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-                for (NSString * srch in words) {
-                    NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
-                    UIFont *boldSystemFont = [UIFont systemFontOfSize:cell.nameLabel.font.pointSize];
-                    
-                    CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
-                    
-                    if (font) {
-                        [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
-                        CFRelease(font);
-                        [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:[UIColor colorWithWhite:0.0f alpha:1.0f] range:boldRange];
-                    }
-                }
-                return mutableAttributedString;
-            }];
-            [cell setImageWithData:currentRow];
-            return cell;
-        }
-    } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"currentPosition"]) {
-        identifier = @"searchCell";
-        SMSearchCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        [cell.nameLabel setText:[currentRow objectForKey:@"name"]];
-        [cell setImageWithData:currentRow];
-        return cell;
-    } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"autocomplete"] && ([[currentRow objectForKey:@"subsource"] isEqualToString:@"foursquare"] || [[currentRow objectForKey:@"subsource"] isEqualToString:@"places"]) && [[currentRow objectForKey:@"address"] isEqualToString:@""] == NO) {
-        identifier = @"searchTwoRowsCell";
-        SMSearchTwoRowCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        [cell.addressLabel setText:[currentRow objectForKey:@"address"] afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+            }
+            return mutableAttributedString;
+        }];
+        
+        [twoCell.addressLabel setText:address afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
             
             for (NSString * srch in words) {
                 NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
                 
                 if (boldRange.length > 0 && boldRange.location != NSNotFound) {
-                    UIFont *boldSystemFont = [UIFont systemFontOfSize:cell.addressLabel.font.pointSize];
+                    UIFont *boldSystemFont = [UIFont systemFontOfSize:twoCell.addressLabel.font.pointSize];
                     
                     CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
                     
@@ -250,11 +201,60 @@
                     
                 }
             }
-            
+            return mutableAttributedString;
+        }];
+        cell = twoCell;
+    }
+    else if (![item.name isEqualToString:item.address] &&
+        item.address != nil &&
+        ![item.address isEqualToString:@""])
+    {
+        SMSearchTwoRowCell *twoCell = [tableView dequeueReusableCellWithIdentifier:TwoRowSearchCellIdentifier];
+        
+        [twoCell.nameLabel setText:item.name afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+            for (NSString * srch in words) {
+                NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
+                
+                twoCell.nameLabel.textColor = [UIColor lightGrayColor];
+                UIFont *boldSystemFont = [UIFont systemFontOfSize:twoCell.nameLabel.font.pointSize];
+                CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+                
+                if (font) {
+                    [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+                    CFRelease(font);
+                    [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:[UIColor colorWithWhite:0.0f alpha:1.0f] range:boldRange];
+                }
+            }
             return mutableAttributedString;
         }];
         
-        [cell.nameLabel setText:[currentRow objectForKey:@"name"] afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+        [twoCell.addressLabel setText:item.address afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+            
+            for (NSString * srch in words) {
+                NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
+                
+                if (boldRange.length > 0 && boldRange.location != NSNotFound) {
+                    UIFont *boldSystemFont = [UIFont systemFontOfSize:twoCell.addressLabel.font.pointSize];
+                    
+                    CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+                    
+                    if (font) {
+                        [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+                        CFRelease(font);
+                        [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:[UIColor colorWithWhite:0.0f alpha:1.0f] range:boldRange];
+                    }
+                    
+                }
+            }
+            return mutableAttributedString;
+        }];
+        cell = twoCell;
+    }
+    else
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:SingleRowSearchCellIdentifier];
+        
+        [cell.nameLabel setText:item.name afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
             for (NSString * srch in words) {
                 NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
                 
@@ -270,174 +270,48 @@
             }
             return mutableAttributedString;
         }];
-        [cell setImageWithData:currentRow];
-        return cell;
-    } else if ([currentRow objectForKey:@"address"] && [[currentRow objectForKey:@"address"] isEqualToString:@""] == NO){
-        NSDictionary * d = [SMAddressParser parseAddress:[currentRow objectForKey:@"address"]];
-        NSMutableArray * arr = [NSMutableArray array];
-        if ([d objectForKey:@"street"]) {
-            [arr addObject:[[d objectForKey:@"street"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-        }
-        if ([d objectForKey:@"number"]) {
-            [arr addObject:[[d objectForKey:@"number"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-        }
-        NSString * line1 = [arr componentsJoinedByString:@" "];
-        
-        arr = [NSMutableArray array];
-        if ([d objectForKey:@"zip"]) {
-            [arr addObject:[[d objectForKey:@"zip"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-        }
-        if ([d objectForKey:@"city"]) {
-            [arr addObject:[[d objectForKey:@"city"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-        }
-        NSString * line2 = [arr componentsJoinedByString:@" "];        
-        if (line2 && [line2 isEqualToString:@""] == NO) {
-            identifier = @"searchTwoRowsCell";
-            SMSearchTwoRowCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-            [cell.addressLabel setText:line2 afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-                
-                for (NSString * srch in words) {
-                    NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
-                    
-                    if (boldRange.length > 0 && boldRange.location != NSNotFound) {
-                        UIFont *boldSystemFont = [UIFont systemFontOfSize:cell.addressLabel.font.pointSize];
-                        
-                        CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
-                        
-                        if (font) {
-                            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
-                            CFRelease(font);
-                            [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:[UIColor colorWithWhite:0.0f alpha:1.0f] range:boldRange];
-                        }
-                        
-                    }
-                }
-                
-                return mutableAttributedString;
-            }];
-            
-            [cell.nameLabel setText:line1 afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-                for (NSString * srch in words) {
-                    NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
-                    
-                    cell.nameLabel.textColor = [UIColor lightGrayColor];
-                    UIFont *boldSystemFont = [UIFont systemFontOfSize:cell.nameLabel.font.pointSize];
-                    CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
-                    
-                    if (font) {
-                        [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
-                        CFRelease(font);
-                        [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:[UIColor colorWithWhite:0.0f alpha:1.0f] range:boldRange];
-                    }
-                }
-                return mutableAttributedString;
-            }];
-            [cell setImageWithData:currentRow];
-            return cell;
-        } else {
-            identifier = @"searchCell";
-            SMSearchCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-            
-            [cell.nameLabel setText:line1 afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-                for (NSString * srch in words) {
-                    NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
-                    UIFont *boldSystemFont = [UIFont systemFontOfSize:cell.nameLabel.font.pointSize];
-                    
-                    CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
-                    
-                    if (font) {
-                        [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
-                        CFRelease(font);
-                        [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:[UIColor colorWithWhite:0.0f alpha:1.0f] range:boldRange];
-                    }
-                }
-                return mutableAttributedString;
-            }];
-            [cell setImageWithData:currentRow];
-            return cell;
-        }
-    } else {
-        identifier = @"searchCell";
-        SMSearchCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        
-        if ([[currentRow objectForKey:@"source"] isEqualToString:@"currentPosition"]) {
-            [cell.nameLabel setText:[currentRow objectForKey:@"name"]];
-        } else {
-            [cell.nameLabel setText:[currentRow objectForKey:@"name"] afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-                for (NSString * srch in words) {
-                    NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
-                    UIFont *boldSystemFont = [UIFont systemFontOfSize:cell.nameLabel.font.pointSize];
-                    
-                    CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
-                    
-                    if (font) {
-                        [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
-                        CFRelease(font);
-                        [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:[UIColor colorWithWhite:0.0f alpha:1.0f] range:boldRange];
-                    }
-                }
-                return mutableAttributedString;
-            }];
-        }
-        [cell setImageWithData:currentRow];
-        return cell;
     }
+    
+    if (item.type == SearchListItemTypeFavorite) {
+        [cell setImageWithFavoriteType:((FavoriteItem *)item).origin];
+    } else {
+        [cell setImageWithType:item.type];
+    }
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary * currentRow = [self.searchResults objectAtIndex:indexPath.row];
-    [searchField setText:[currentRow objectForKey:@"name"]];
+    NSObject<SearchListItem> *currentItem = [self.searchResults objectAtIndex:indexPath.row];
+    searchField.text = currentItem.name;
     
-    if ([currentRow objectForKey:@"subsource"]) {
-        [self setLocationData:@{
-                                @"name" : [currentRow objectForKey:@"name"],
-                                @"address" : [currentRow objectForKey:@"address"],
-                                @"location" : [[CLLocation alloc] initWithLatitude:[[currentRow objectForKey:@"lat"] doubleValue] longitude:[[currentRow objectForKey:@"long"] doubleValue]],
-                                @"source" : [currentRow objectForKey:@"source"],
-                                @"subsource" : [currentRow objectForKey:@"subsource"]
-                                }];
-    } else {
-        [self setLocationData:@{
-                                @"name" : [currentRow objectForKey:@"name"],
-                                @"address" : [currentRow objectForKey:@"address"],
-                                @"location" : [[CLLocation alloc] initWithLatitude:[[currentRow objectForKey:@"lat"] doubleValue] longitude:[[currentRow objectForKey:@"long"] doubleValue]],
-                                @"source" : [currentRow objectForKey:@"source"]
-                                }];
+    self.locationItem = currentItem;
+    if (self.delegate) {
+        [self.delegate locationFound:self.locationItem];
     }
     [self setReturnKey];
 
-    if ([[currentRow objectForKey:@"source"] isEqualToString:@"autocomplete"] && [[currentRow objectForKey:@"subsource"] isEqualToString:@"oiorest"]) {
-        searchField.text = [currentRow objectForKey:@"address"];
-        NSString * street = [currentRow objectForKey:@"street"];
+    if (currentItem.type == SearchListItemTypeKortfor) { // TODO: Check if oiorest/kortfor + autocomplete
+        searchField.text = currentItem.address;
+        NSString * street = currentItem.street;
         if(street.length > 0) {
             [self stopAll];
             [self delayedAutocomplete:searchField.text];
-            [self setCaretForSearchFieldOnPosition:[NSNumber numberWithInt:street.length+1]];
+            [self setCaretForSearchFieldOnPosition:@(street.length+1)];
         } else {
             [self checkLocation];
         }
-    } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"currentPosition"]) {
+    } else if (currentItem.type == SearchListItemTypeCurrentLocation) {
         if ([SMLocationManager instance].hasValidLocation) {
-            CLLocation * loc = [SMLocationManager instance].lastValidLocation;
+            CLLocation *loc = [SMLocationManager instance].lastValidLocation;
             if (loc) {
-                [self setLocationData:@{
-                                        @"name" : CURRENT_POSITION_STRING,
-                                        @"address" : CURRENT_POSITION_STRING,
-                                        @"location" : loc,
-                                        @"source" : @"currentPosition",
-                                        @"subsource" : @""
-                                        }];
-                if (self.delegate) {
-                    [self.delegate locationFound:self.locationData];
-                }
                 [self goBack:nil];
             }
         }
     } else {
         if (self.delegate) {
-            [self.delegate locationFound:self.locationData];
+            [self.delegate locationFound:self.locationItem];
         }
         [self goBack:nil];
     }
@@ -479,71 +353,33 @@
             
         } else {
             [tblFade setAlpha:1.0f];
-            if (self.locationData && [self.locationData objectForKey:@"location"]) {
+            if (self.locationItem && self.locationItem.location) {
                 if (self.delegate) {
-                    [self.delegate locationFound:self.locationData];
+                    [self.delegate locationFound:self.locationItem];
                     [self goBack:nil];
                 }
                 [self hideFade];
             } else {
                 [self hideFade];
                 if (self.searchResults && self.searchResults.count > 0) {
-                    NSDictionary * currentRow = [self.searchResults objectAtIndex:0];
-                    if ([[currentRow objectForKey:@"source"] isEqualToString:@"currentPosition"]) {
-                        currentRow = nil;
+                    NSObject<SearchListItem> *currentItem = [self.searchResults objectAtIndex:0];
+                    if (currentItem.type == SearchListItemTypeCurrentLocation) {
+                        currentItem = nil;
                          if (self.searchResults && self.searchResults.count > 1) {
-                             currentRow = [self.searchResults objectAtIndex:1];
+                             currentItem = [self.searchResults objectAtIndex:1];
                          }
                     }
-                    if (currentRow) {
-                        [searchField setText:[currentRow objectForKey:@"name"]];
+                    if (currentItem) {
+                        searchField.text = currentItem.name;
+                        self.locationItem = currentItem;
                         
-                        if ([currentRow objectForKey:@"subsource"]) {
-                            [self setLocationData:@{
-                                                    @"name" : [currentRow objectForKey:@"name"],
-                                                    @"address" : [currentRow objectForKey:@"address"],
-                                                    @"location" : [[CLLocation alloc] initWithLatitude:[[currentRow objectForKey:@"lat"] doubleValue] longitude:[[currentRow objectForKey:@"long"] doubleValue]],
-                                                    @"source" : [currentRow objectForKey:@"source"],
-                                                    @"subsource" : [currentRow objectForKey:@"subsource"]
-                                                    }];
-                        } else {
-                            [self setLocationData:@{
-                                                    @"name" : [currentRow objectForKey:@"name"],
-                                                    @"address" : [currentRow objectForKey:@"address"],
-                                                    @"location" : [[CLLocation alloc] initWithLatitude:[[currentRow objectForKey:@"lat"] doubleValue] longitude:[[currentRow objectForKey:@"long"] doubleValue]],
-                                                    @"source" : [currentRow objectForKey:@"source"]
-                                                    }];
-                        }
                         if (self.delegate) {
-                            [self.delegate locationFound:self.locationData];
+                            [self.delegate locationFound:self.locationItem];
                             [self goBack:nil];
                         }
                     }
 
                 }
-                
-                
-//                [SMGeocoder geocode:searchField.text completionHandler:^(NSArray *placemarks, NSError *error) {
-//                    if ([placemarks count] > 0) {
-//                        MKPlacemark *coord = [placemarks objectAtIndex:0];
-//                        [self goBack:nil];
-//                        if (self.delegate) {
-//                            [self.delegate locationFound:@{
-//                                                           @"name" : searchField.text,
-//                                                           @"address" : searchField.text,
-//                                                           @"location" : [[CLLocation alloc] initWithLatitude:coord.coordinate.latitude longitude:coord.coordinate.longitude],
-//                                                           @"source" : @"typedIn"
-//                                                           }];
-//                        }
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            [self performSelector:@selector(hideFade) withObject:nil afterDelay:0.01f];
-//                        });
-//                    } else {
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            [self performSelector:@selector(hideFade) withObject:nil afterDelay:0.01f];
-//                        });
-//                    }
-//                }];
             }
         }
     } else {
@@ -587,25 +423,18 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString * s = [[textField.text stringByReplacingCharactersInRange:range withString:string] capitalizedString];
     if ([[s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] == NO) {
-        self.locationData = nil;
+        self.locationItem = nil;
 //        [self setReturnKey];
     }
     [self stopAll];
     if ([s length] >= 2) {
         [self delayedAutocomplete:s];
-//        [self performSelector:@selector(delayedAutocomplete:) withObject:s afterDelay:0.5f];
+        [self performSelector:@selector(delayedAutocomplete:) withObject:s afterDelay:0.5f];
     } else if ([s length] == 1) {
         NSMutableArray * r = [NSMutableArray array];
         if (self.shouldAllowCurrentPosition) {
-            [r insertObject:@{
-                              @"name" : CURRENT_POSITION_STRING,
-                              @"address" : CURRENT_POSITION_STRING,
-                              @"startDate" : [NSDate date],
-                              @"endDate" : [NSDate date],
-                              @"lat" : [NSNumber numberWithDouble:[SMLocationManager instance].lastValidLocation.coordinate.latitude],
-                              @"long" : [NSNumber numberWithDouble:[SMLocationManager instance].lastValidLocation.coordinate.longitude],
-                              @"source" : @"currentPosition",
-                              } atIndex:0];
+            CurrentLocationItem *currentLocationItem = [CurrentLocationItem new];
+            [r insertObject:currentLocationItem atIndex:0];
         }
         self.searchResults = r;
         [tblView reloadData];
@@ -619,11 +448,11 @@
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
-    self.locationData = nil;
+    self.locationItem = nil;
     [self setReturnKey];
     textField.text = @"";
     [self autocompleteEntriesFound:@[] forString:@""];
-    self.locationData = nil;
+    self.locationItem = nil;
     return YES;
 }
 
@@ -659,10 +488,12 @@
             }
         }
         
-        for (NSDictionary * d in arr) {
+        // Check if address and name isn't already in results array
+        for (id<SearchListItem> d in arr) {
             BOOL found = NO;
-            for (NSDictionary * d1 in r) {
-                if ([[d1 objectForKey:@"name"] isEqualToString:[d objectForKey:@"name"]] && [[d1 objectForKey:@"address"] isEqualToString:[d objectForKey:@"address"]]) {
+            for (id<SearchListItem> d1 in r) {
+                if ([d1.name isEqualToString:d.name] &&
+                    [d1.address isEqualToString:d.address]) {
                     found = YES;
                     break;
                 }
@@ -675,75 +506,65 @@
         
         for (int i = 0; i < [self.favorites count]; i++) {
             BOOL found = NO;
-            NSDictionary * d = [self.favorites objectAtIndex:i];
-            for (NSDictionary * d1 in r) {
-                if ([[d1 objectForKey:@"name"] isEqualToString:[d objectForKey:@"name"]] && [[d1 objectForKey:@"address"] isEqualToString:[d objectForKey:@"address"]]) {
+            id<SearchListItem> d = [self.favorites objectAtIndex:i];
+            for (id<SearchListItem>  d1 in r) {
+                if ([d1.name isEqualToString:d.name] &&
+                    [d1.address isEqualToString:d.address]) {
                     found = YES;
                     break;
                 }
             }
-            if (found == NO && [SMRouteUtils pointsForName:[d objectForKey:@"name"] andAddress:[d objectForKey:@"address"] andTerms:str] > 0) {
+            if (found == NO && [SMRouteUtils pointsForName:d.name andAddress:d.address andTerms:str] > 0) {
                 [r addObject:d];
             }
         }
         
         for (int i = 0; i < [appd.searchHistory count]; i++) {
             BOOL found = NO;
-            NSDictionary * d = [appd.searchHistory objectAtIndex:i];
-            for (NSDictionary * d1 in r) {
-                if ([[d1 objectForKey:@"name"] isEqualToString:[d objectForKey:@"name"]] && [[d1 objectForKey:@"address"] isEqualToString:[d objectForKey:@"address"]]) {
+            id<SearchListItem> d = [appd.searchHistory objectAtIndex:i];
+            for (id<SearchListItem> d1 in r) {
+                if ([d1.name isEqualToString:d.name] &&
+                    [d1.address isEqualToString:d.address]) {
                     found = YES;
                     break;
                 }
             }
-            if (found == NO && [SMRouteUtils pointsForName:[d objectForKey:@"name"] andAddress:[d objectForKey:@"address"] andTerms:str] > 0) {
-                debugLog(@"Object: %@\nString: %@\npoints: %d\n", d, str, [SMRouteUtils pointsForName:[d objectForKey:@"name"] andAddress:[d objectForKey:@"address"] andTerms:str]);
+            if (found == NO && [SMRouteUtils pointsForName:d.name andAddress:d.address andTerms:str] > 0) {
+                debugLog(@"Object: %@\nString: %@\npoints: %ld\n", d, str, (long)[SMRouteUtils pointsForName:d.name andAddress:d.address andTerms:str]);
                 [r addObject:d];
             }
         }
         
-        [r sortUsingComparator:^NSComparisonResult(NSDictionary* obj1, NSDictionary* obj2) {
-//            NSComparisonResult cmp = [[obj1 objectForKey:@"order"] compare:[obj2 objectForKey:@"order"]];
-//            if (cmp == NSOrderedSame) {
-//                cmp = [[obj2 objectForKey:@"relevance"] compare:[obj1 objectForKey:@"relevance"]];
-//                if (cmp == NSOrderedSame) {
-                
-                    double dist1 = 0.0f;
-                    double dist2 = 0.0f;
-                    if ([obj1 objectForKey:@"distance"]) {
-                        dist1 = [[obj1 objectForKey:@"distance"] doubleValue];
-                    } else if ([obj1 objectForKey:@"lat"] && [obj1 objectForKey:@"long"]) {
-                        dist1 = [[[CLLocation alloc] initWithLatitude:[[obj1 objectForKey:@"lat"] doubleValue]  longitude:[[obj1 objectForKey:@"long"] doubleValue]] distanceFromLocation:[SMLocationManager instance].lastValidLocation];
-                    }
-                    
-                    if ([obj2 objectForKey:@"distance"]) {
-                        dist2 = [[obj2 objectForKey:@"distance"] doubleValue];
-                    } else if ([obj2 objectForKey:@"lat"] && [obj2 objectForKey:@"long"]) {
-                        dist2 = [[[CLLocation alloc] initWithLatitude:[[obj2 objectForKey:@"lat"] doubleValue]  longitude:[[obj2 objectForKey:@"long"] doubleValue]] distanceFromLocation:[SMLocationManager instance].lastValidLocation];
-                    }
-                    
-                    if (dist1 > dist2) {
-                        return NSOrderedDescending;
-                    } else if (dist1 < dist2) {
-                        return NSOrderedAscending;
-                    } else {
-                        return [[obj2 objectForKey:@"relevance"] compare:[obj1 objectForKey:@"relevance"]];
-                    }
-//                }
-//            }
-//            return NSOrderedSame;
+        [r sortUsingComparator:^NSComparisonResult(NSObject<SearchListItem> *obj1, NSObject<SearchListItem> *obj2) {
+            CLLocation *currentLocation = [SMLocationManager instance].lastValidLocation;
+            
+            SEL distanceSelector = @selector(distance);
+            NSString *distanceSelectorString = NSStringFromSelector(distanceSelector);
+            
+            double dist1 = 0.0f;
+            double dist2 = 0.0f;
+            if ([obj1 respondsToSelector:distanceSelector]) {
+                dist1 = [[obj1 valueForKey:distanceSelectorString] doubleValue];
+            } else {
+                dist1 = [obj1.location distanceFromLocation:currentLocation];
+            }
+            if ([obj2 respondsToSelector:distanceSelector]) {
+                dist2 = [[obj2 valueForKey:distanceSelectorString] doubleValue];
+            } else {
+                dist2 = [obj2.location distanceFromLocation:currentLocation];
+            }
+            if (dist1 > dist2) {
+                return NSOrderedDescending;
+            } else if (dist1 < dist2) {
+                return NSOrderedAscending;
+            } else {
+                return NSOrderedSame;
+            }
         }];
         
         if (self.shouldAllowCurrentPosition) {
-            [r insertObject:@{
-             @"name" : CURRENT_POSITION_STRING,
-             @"address" : CURRENT_POSITION_STRING,
-             @"startDate" : [NSDate date],
-             @"endDate" : [NSDate date],
-             @"lat" : [NSNumber numberWithDouble:[SMLocationManager instance].lastValidLocation.coordinate.latitude],
-             @"long" : [NSNumber numberWithDouble:[SMLocationManager instance].lastValidLocation.coordinate.longitude],
-             @"source" : @"currentPosition",
-             } atIndex:0];        
+            CurrentLocationItem *currentLocationItem = [CurrentLocationItem new];
+            [r insertObject:currentLocationItem atIndex:0];
         }
         
         
@@ -757,21 +578,17 @@
 
 -(void)queuedRequest:(SMAPIOperation *)object failedWithError:(NSError *)error {
     [self autocompleteEntriesFound:self.tempSearch forString:object.searchString];
-//    @synchronized(self.queue) {
-//        if ([self.queue.queue operationCount] == 0) {
-            [self hideFade];
-//        }
-//    }
+    [self hideFade];
 }
+
+
+static NSString *const sourceOiorest = @"oiorest";
 
 - (void)queuedRequest:(SMAPIOperation *)object finishedWithResult:(id)result {
     [self.tempSearch addObjectsFromArray:result];
     [self autocompleteEntriesFound:self.tempSearch forString:object.searchString];
-//    @synchronized(self.queue) {
-//        if ([self.queue.queue operationCount] == 0) {
-            [self hideFade];
-//        }
-//    }
+    
+    [self hideFade];
 }
 
 

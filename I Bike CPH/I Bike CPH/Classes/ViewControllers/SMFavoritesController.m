@@ -20,8 +20,8 @@ typedef enum {
 @interface SMFavoritesController () {
     FavoriteType searchFav;
 }
-@property (nonatomic, strong) NSDictionary * homeDict;
-@property (nonatomic, strong) NSDictionary * workDict;
+@property (nonatomic, strong) HistoryItem *homeItem;
+@property (nonatomic, strong) HistoryItem *workItem;
 @end
 
 @implementation SMFavoritesController
@@ -29,16 +29,8 @@ typedef enum {
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[[UIApplication sharedApplication] setStatusBarHidden:YES];
-    self.workDict = nil;
-    self.homeDict = nil;
-}
-
-- (void)viewDidUnload {
-    favoriteHome = nil;
-    favoriteWork = nil;
-    scrlView = nil;
-    favoritesView = nil;
-    [super viewDidUnload];
+    self.workItem = nil;
+    self.homeItem = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -64,63 +56,17 @@ typedef enum {
 }
 
 - (IBAction)saveFavorites:(id)sender {
-    if (self.homeDict) {
-        if ([self.homeDict objectForKey:@"subsource"] && [[self.homeDict objectForKey:@"subsource"] isEqualToString:@"foursquare"]) {
-            SMFavoritesUtil * fv = [SMFavoritesUtil instance];
-            [fv addFavoriteToServer:@{
-             @"name" : [self.homeDict objectForKey:@"name"],
-             @"address" : [self.homeDict objectForKey:@"name"],
-             @"startDate" : [NSDate date],
-             @"endDate" : [NSDate date],
-             @"source" : @"favorites",
-             @"subsource" : @"home",
-             @"lat" : [NSNumber numberWithDouble:((CLLocation*)[self.homeDict objectForKey:@"location"]).coordinate.latitude],
-             @"long" : [NSNumber numberWithDouble:((CLLocation*)[self.homeDict objectForKey:@"location"]).coordinate.longitude],
-             @"order" : @0
-             }];
-        } else {
-            SMFavoritesUtil * fv = [SMFavoritesUtil instance];
-            [fv addFavoriteToServer:@{
-             @"name" : translateString(@"Home"),
-             @"address" : [self.homeDict objectForKey:@"address"],
-             @"startDate" : [NSDate date],
-             @"endDate" : [NSDate date],
-             @"source" : @"favorites",
-             @"subsource" : @"home",
-             @"lat" : [NSNumber numberWithDouble:((CLLocation*)[self.homeDict objectForKey:@"location"]).coordinate.latitude],
-             @"long" : [NSNumber numberWithDouble:((CLLocation*)[self.homeDict objectForKey:@"location"]).coordinate.longitude],
-             @"order" : @0
-             }];
-        }
+    if (self.homeItem) {
+        FavoriteItem *item = [[FavoriteItem alloc] initWithOther:self.homeItem];
+        item.origin = FavoriteItemTypeHome;
+        SMFavoritesUtil *fv = [SMFavoritesUtil instance];
+        [fv addFavoriteToServer:item];
     }
-    if (self.workDict) {
-        if ([self.workDict objectForKey:@"subsource"] && [[self.workDict objectForKey:@"subsource"] isEqualToString:@"foursquare"]) {
-            SMFavoritesUtil * fv = [SMFavoritesUtil instance];
-            [fv addFavoriteToServer:@{
-             @"name" : [self.workDict objectForKey:@"name"],
-             @"address" : [self.workDict objectForKey:@"nameden runde"],
-             @"startDate" : [NSDate date],
-             @"endDate" : [NSDate date],
-             @"source" : @"favorites",
-             @"subsource" : @"work",
-             @"lat" : [NSNumber numberWithDouble:((CLLocation*)[self.workDict objectForKey:@"location"]).coordinate.latitude],
-             @"long" : [NSNumber numberWithDouble:((CLLocation*)[self.workDict objectForKey:@"location"]).coordinate.longitude],
-             @"order" : @0
-             }];            
-        } else {
-            SMFavoritesUtil * fv = [SMFavoritesUtil instance];
-            [fv addFavoriteToServer:@{
-             @"name" : translateString(@"Work"),
-             @"address" : [self.workDict objectForKey:@"address"],
-             @"startDate" : [NSDate date],
-             @"endDate" : [NSDate date],
-             @"source" : @"favorites",
-             @"subsource" : @"work",
-             @"lat" : [NSNumber numberWithDouble:((CLLocation*)[self.workDict objectForKey:@"location"]).coordinate.latitude],
-             @"long" : [NSNumber numberWithDouble:((CLLocation*)[self.workDict objectForKey:@"location"]).coordinate.longitude],
-             @"order" : @0
-             }];
-        }
+    if (self.workItem) {
+        FavoriteItem *item = [[FavoriteItem alloc] initWithOther:self.workItem];
+        item.origin = FavoriteItemTypeWork;
+        SMFavoritesUtil *fv = [SMFavoritesUtil instance];
+        [fv addFavoriteToServer:item];
     }
     [self performSegueWithIdentifier:@"favoritesToMain" sender:nil];
 }
@@ -157,15 +103,15 @@ typedef enum {
 
 #pragma mark - search delegate
 
-- (void)locationFound:(NSDictionary *)locationDict {
+- (void)locationFound:(NSObject<SearchListItem> *)item {
     switch (searchFav) {
         case favHome:
-            [favoriteHome setText:[locationDict objectForKey:@"name"]];
-            [self setHomeDict:locationDict];
+            [favoriteHome setText:item.name];
+            [self setHomeItem:[[HistoryItem alloc] initWithOther:item startDate:[NSDate date] endDate:[NSDate date]]];
             break;
         case favWork:
-            [favoriteWork setText:[locationDict objectForKey:@"name"]];
-            [self setWorkDict:locationDict];
+            [favoriteWork setText:item.name];
+            [self setWorkItem:[[HistoryItem alloc] initWithOther:item startDate:[NSDate date] endDate:[NSDate date]]];
             break;
         default:
             break;

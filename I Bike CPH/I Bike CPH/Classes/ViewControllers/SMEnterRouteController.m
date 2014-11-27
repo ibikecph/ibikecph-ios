@@ -28,8 +28,8 @@ typedef enum {
     BOOL historyOpen;
 }
 @property (nonatomic, strong) NSArray * groupedList;
-@property (nonatomic, strong) NSDictionary * fromData;
-@property (nonatomic, strong) NSDictionary * toData;
+@property (nonatomic, strong) NSObject<SearchListItem> *fromItem;
+@property (nonatomic, strong) NSObject<SearchListItem> *toItem;
 @end
 
 @implementation SMEnterRouteController
@@ -57,9 +57,9 @@ typedef enum {
     
     [toLabel setText:@""];
     
-    self.fromData = nil;
+    self.fromItem = nil;
 
-    self.toData = nil;
+    self.toItem = nil;
 
     
     for (id v in tblView.subviews) {
@@ -82,15 +82,15 @@ typedef enum {
     NSMutableArray * last = [NSMutableArray array];
     for (int i = 0; i < MIN(10, [appd.searchHistory count]); i++) {
         BOOL found = NO;
-        NSDictionary * d = [appd.searchHistory objectAtIndex:i];
-        for (NSDictionary * d1 in last) {
-            if ([[d1 objectForKey:@"address"] isEqualToString:[d objectForKey:@"address"]]) {
+        NSObject<SearchListItem> *item = [appd.searchHistory objectAtIndex:i];
+        for (NSObject<SearchListItem> *item1 in last) {
+            if ([item1.address isEqualToString:item.address]) {
                 found = YES;
                 break;
             }
         }
         if (found == NO) {
-            [last addObject:d];
+            [last addObject:item];
         }
     }
     
@@ -132,7 +132,7 @@ typedef enum {
 #pragma mark - button actions
 
 - (IBAction)swapFields:(id)sender {
-    if (self.fromData == nil  || ([self.fromData objectForKey:@"source"] && [[self.fromData objectForKey:@"source"] isEqualToString:@"currentPosition"])) {
+    if (self.fromItem == nil || self.fromItem.type == SearchListItemTypeCurrentLocation) {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"current_position_cant_be_destination") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
         [av show];
         return;
@@ -141,11 +141,11 @@ typedef enum {
     NSString * txt = fromLabel.text;
     fromLabel.text = toLabel.text;
     toLabel.text = txt;
-    NSDictionary * data = [self.fromData copy];
-    self.fromData = self.toData;
-    self.toData = data;
+    NSObject<SearchListItem> *item = self.fromItem.copy;
+    self.fromItem = self.toItem;
+    self.toItem = item;
     
-    if (self.fromData == nil  || ([self.fromData objectForKey:@"source"] && [[self.fromData objectForKey:@"source"] isEqualToString:@"currentPosition"])) {
+    if (self.fromItem == nil || self.fromItem.type == SearchListItemTypeCurrentLocation) {
         [swapButton setEnabled:NO];
     } else {
         [swapButton setEnabled:YES];
@@ -161,27 +161,24 @@ typedef enum {
         return;
     }
     
-    if ([[self.toData objectForKey:@"source"] isEqualToString:@"currentPosition"]) {
+    if (self.toItem.type == SearchListItemTypeCurrentLocation) {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_invalid_to_address") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
         [av show];
         return;
     }
     
-    if (self.fromData == nil) {
+    if (self.fromItem == nil) {
         if ([SMLocationManager instance].hasValidLocation == NO) {
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_no_gps_location") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
             return;            
         } else {
-            self.fromData = [NSMutableDictionary dictionaryWithDictionary:@{@"name" : CURRENT_POSITION_STRING,
-                             @"address" : @"",
-                             @"location" : [SMLocationManager instance].lastValidLocation
-                             }];
+            self.fromItem = [CurrentLocationItem new];
         }
     }
     
-    if ([[self.fromData objectForKey:@"name"] isEqualToString:CURRENT_POSITION_STRING] == NO) {
-        if (![SMAnalytics trackEventWithCategory:@"Route" withAction:@"From" withLabel:[self.fromData objectForKey:@"name"] withValue:0]) {
+    if ([self.fromItem.name isEqualToString:CURRENT_POSITION_STRING] == NO) {
+        if (![SMAnalytics trackEventWithCategory:@"Route" withAction:@"From" withLabel:self.fromItem.name withValue:0]) {
             debugLog(@"error in trackEvent");
         }
     }
@@ -192,10 +189,10 @@ typedef enum {
     
 //    SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
 //    [r setAuxParam:@"nearestPoint"];
-//    [r findNearestPointForStart:[self.fromData objectForKey:@"location"] andEnd:[self.toData objectForKey:@"location"]];
+//    [r findNearestPointForStart:[self.fromItem objectForKey:@"location"] andEnd:[self.toItem objectForKey:@"location"]];
     
-    CLLocation * s = [self.fromData objectForKey:@"location"];
-    CLLocation * e = [self.toData objectForKey:@"location"];
+    CLLocation * s = self.fromItem.location;
+    CLLocation * e = self.toItem.location;
     
     NSString * st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)", fromLabel.text, s.coordinate.latitude, s.coordinate.longitude, toLabel.text, e.coordinate.latitude, e.coordinate.longitude];
     debugLog(@"%@", st);
@@ -215,16 +212,16 @@ typedef enum {
         switch (delegateField) {
             case fieldFrom:
                 [destViewController setShouldAllowCurrentPosition:YES];
-                if (self.fromData && [[self.fromData objectForKey:@"source"] isEqualToString:@"currentPosition"] == NO) {
+                if (self.fromItem && self.fromItem.type != SearchListItemTypeCurrentLocation) {
                     [destViewController setSearchText:fromLabel.text];
-                    destViewController.locationData = self.fromData;
+                    destViewController.locationItem = self.fromItem;
                 } else {
                     [destViewController setSearchText:@""];
                 }
                 break;
             case fieldTo:
                 [destViewController setShouldAllowCurrentPosition:NO];
-                destViewController.locationData = self.toData;
+                destViewController.locationItem = self.toItem;
                 [destViewController setSearchText:toLabel.text];
                 break;
             default:
@@ -244,8 +241,8 @@ typedef enum {
 
 - (void)request:(SMRequestOSRM *)req finishedWithResult:(id)res {
     if ([req.auxParam isEqualToString:@"nearestPoint"]) {
-        CLLocation * s = [res objectForKey:@"start"];
-        CLLocation * e = [res objectForKey:@"end"];
+        CLLocation * s = res[@"start"];
+        CLLocation * e = res[@"end"];
         
         NSString * st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)", fromLabel.text, s.coordinate.latitude, s.coordinate.longitude, toLabel.text, e.coordinate.latitude, e.coordinate.longitude];
         debugLog(@"%@", st);
@@ -257,34 +254,22 @@ typedef enum {
         [r getRouteFrom:s.coordinate to:e.coordinate via:nil];
     } else if ([req.auxParam isEqualToString:@"startRoute"]){
         id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingAllowFragments error:nil];
-        if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([[jsonRoot objectForKey:@"status"] intValue] != 0)) {
+        if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([jsonRoot[@"status"] intValue] != 0)) {
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_route_not_found") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
             
         } else {
-            NSDictionary * d = @{
-                                 @"name" : [self.toData objectForKey:@"name"],
-                                 @"address" : [self.toData objectForKey:@"address"],
-                                 @"startDate" : [NSDate date],
-                                 @"endDate" : [NSDate date],
-                                 @"source" : @"searchHistory",
-                                 @"subsource" : @"",
-                                 @"lat" : [NSNumber numberWithDouble:((CLLocation*)[self.toData objectForKey:@"location"]).coordinate.latitude],
-                                 @"long" : [NSNumber numberWithDouble:((CLLocation*)[self.toData objectForKey:@"location"]).coordinate.longitude],
-                                 @"order" : @1
-                                 };
-            [SMSearchHistory saveToSearchHistory:d];
+            HistoryItem *item = [[HistoryItem alloc] initWithOther:self.toItem startDate:[NSDate date] endDate:[NSDate date]];
+            [SMSearchHistory saveToSearchHistory:item];
             
             if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
                 SMSearchHistory * sh = [SMSearchHistory instance];
                 [sh setDelegate:self.appDelegate];
-                [sh addSearchToServer:d];
+                [sh addSearchToServer:item];
             }
             
-            [self.delegate findRouteFrom:((CLLocation*)[self.fromData objectForKey:@"location"]).coordinate to:((CLLocation*)[self.toData objectForKey:@"location"]).coordinate fromAddress:fromLabel.text toAddress:toLabel.text withJSON:jsonRoot];
-            [self dismissViewControllerAnimated:YES completion:^{
-            }];
-            
+            [self.delegate findRouteFrom:self.fromItem.location.coordinate to:self.toItem.location.coordinate fromAddress:fromLabel.text toAddress:toLabel.text withJSON:jsonRoot];
+            [self dismissViewControllerAnimated:YES completion:^{}];
         }
         [UIView animateWithDuration:0.2f animations:^{
             [fadeView setAlpha:0.0f];
@@ -428,54 +413,55 @@ typedef enum {
     
         }
         
-        NSDictionary * currentRow = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        NSObject<SearchListItem> *currentRow = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         SMEnterRouteCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        [cell.nameLabel setText:[currentRow objectForKey:@"name"]];
+        cell.nameLabel.text = currentRow.name;
         
-        if ([[currentRow objectForKey:@"source"] isEqualToString:@"fb"]) {
-            [cell.iconImage setImage:[UIImage imageNamed:@"findRouteCalendar"]];
-            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findRouteCalendar"]];
-        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"ios"]) {
-            [cell.iconImage setImage:[UIImage imageNamed:@"findRouteCalendar"]];
-            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findRouteCalendar"]];
-        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"contacts"]) {
-            [cell.iconImage setImage:[UIImage imageNamed:@"findRouteContacts"]];
-            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findRouteContacts"]];
-        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"autocomplete"]) {
-            if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"foursquare"]) {
-                [cell.iconImage setImage:[UIImage imageNamed:@"findLocation"]];
-                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findLocation"]];
-            } else {
-                [cell.iconImage setImage:[UIImage imageNamed:@"findAutocomplete"]];
-                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findAutocomplete"]];
-            }
-        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"searchHistory"]) {
-            [cell.iconImage setImage:[UIImage imageNamed:@"findHistory"]];
-            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findHistory"]];
-        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"favorites"]) {
-            if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"home"]) {
-                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favHomeWhite"]];
-                [cell.iconImage setImage:[UIImage imageNamed:@"favHomeGrey"]];
-            } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"work"]) {
-                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favWorkWhite"]];
-                [cell.iconImage setImage:[UIImage imageNamed:@"favWorkGrey"]];
-            } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"school"]) {
-                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favSchoolWhite"]];
-                [cell.iconImage setImage:[UIImage imageNamed:@"favSchoolGrey"]];
-            } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"favorite"]) {
-                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favStarWhiteSmall"]];
-                [cell.iconImage setImage:[UIImage imageNamed:@"favStarGreySmall"]];
-            } else {
-                [cell.iconImage setImage:nil];
-                [cell.iconImage setHighlightedImage:nil];
-            }
-        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"favoriteRoutes"]) {
-            [cell.iconImage setImage:[UIImage imageNamed:@"findHistory"]];
-            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findHistory"]];
-        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"pastRoutes"]) {
-            [cell.iconImage setImage:[UIImage imageNamed:@"findHistory"]];
-            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findHistory"]];
-        }
+        // TODO: Use logic from SMSearchCell
+//        if ([[currentRow objectForKey:@"source"] isEqualToString:@"fb"]) {
+//            [cell.iconImage setImage:[UIImage imageNamed:@"findRouteCalendar"]];
+//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findRouteCalendar"]];
+//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"ios"]) {
+//            [cell.iconImage setImage:[UIImage imageNamed:@"findRouteCalendar"]];
+//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findRouteCalendar"]];
+//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"contacts"]) {
+//            [cell.iconImage setImage:[UIImage imageNamed:@"findRouteContacts"]];
+//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findRouteContacts"]];
+//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"autocomplete"]) {
+//            if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"foursquare"]) {
+//                [cell.iconImage setImage:[UIImage imageNamed:@"findLocation"]];
+//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findLocation"]];
+//            } else {
+//                [cell.iconImage setImage:[UIImage imageNamed:@"findAutocomplete"]];
+//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findAutocomplete"]];
+//            }
+//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"searchHistory"]) {
+//            [cell.iconImage setImage:[UIImage imageNamed:@"findHistory"]];
+//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findHistory"]];
+//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"favorites"]) {
+//            if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"home"]) {
+//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favHomeWhite"]];
+//                [cell.iconImage setImage:[UIImage imageNamed:@"favHomeGrey"]];
+//            } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"work"]) {
+//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favWorkWhite"]];
+//                [cell.iconImage setImage:[UIImage imageNamed:@"favWorkGrey"]];
+//            } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"school"]) {
+//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favSchoolWhite"]];
+//                [cell.iconImage setImage:[UIImage imageNamed:@"favSchoolGrey"]];
+//            } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"favorite"]) {
+//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favStarWhiteSmall"]];
+//                [cell.iconImage setImage:[UIImage imageNamed:@"favStarGreySmall"]];
+//            } else {
+//                [cell.iconImage setImage:nil];
+//                [cell.iconImage setHighlightedImage:nil];
+//            }
+//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"favoriteRoutes"]) {
+//            [cell.iconImage setImage:[UIImage imageNamed:@"findHistory"]];
+//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findHistory"]];
+//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"pastRoutes"]) {
+//            [cell.iconImage setImage:[UIImage imageNamed:@"findHistory"]];
+//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findHistory"]];
+//        }
         return cell;
     }
 }
@@ -490,11 +476,11 @@ typedef enum {
     [tblView reloadData];
 }
 
-- (NSString*)textFromData:(NSDictionary*)data {
+- (NSString*)textFromItem:(NSObject<SearchListItem> *)item {
     NSMutableArray * arr = [NSMutableArray array];
-    [arr addObject:[data objectForKey:@"name"]];
-    if ([data objectForKey:@"address"] && [[data objectForKey:@"name"] isEqualToString:[data objectForKey:@"address"]] == NO) {
-        NSString * s = [[data objectForKey:@"address"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [arr addObject:item.name];
+    if (item.address && ![item.name isEqualToString:item.address]) {
+        NSString * s = [item.address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         if ([s isEqualToString:@""] == NO) {
             [arr addObject:s];
         }
@@ -516,15 +502,12 @@ typedef enum {
                 debugLog(@"error in trackEvent");
             }
         }
-        NSDictionary * currentRow = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-        [toLabel setText:[self textFromData:currentRow]];
-        [self setToData:@{
-             @"name" : [currentRow objectForKey:@"name"],
-             @"address" : [currentRow objectForKey:@"address"],
-             @"location" : [[CLLocation alloc] initWithLatitude:[[currentRow objectForKey:@"lat"] doubleValue] longitude:[[currentRow objectForKey:@"long"] doubleValue]]
-         }];
+        NSObject<SearchListItem> *currentItem = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        [toLabel setText:[self textFromItem:currentItem]];
+        self.toItem = currentItem;
         
-        if ((self.toData && self.fromData) || ([toLabel.text isEqualToString:@""] == NO && [fromLabel.text isEqualToString:@""] == NO)) {
+        
+        if ((self.toItem && self.fromItem) || ([toLabel.text isEqualToString:@""] == NO && [fromLabel.text isEqualToString:@""] == NO)) {
             [startButton setEnabled:YES];
         } else {
             [startButton setEnabled:NO];
@@ -562,23 +545,24 @@ typedef enum {
 
 #pragma mark - search delegate 
 
-- (void)locationFound:(NSDictionary *)locationDict {
+- (void)locationFound:(NSObject<SearchListItem> *)locationItem {
     switch (delegateField) {
         case fieldTo:
-            [self setToData:locationDict];
-            [toLabel setText:[self textFromData:locationDict]];
+            self.toItem = locationItem;
+            toLabel.text = [self textFromItem:locationItem];
             break;
         case fieldFrom:
-            [self setFromData:locationDict];
+            self.fromItem = locationItem;
             
-            if (self.fromData == nil  || ([self.fromData objectForKey:@"source"] && [[self.fromData objectForKey:@"source"] isEqualToString:@"currentPosition"])) {
+            
+            if (self.fromItem == nil  || self.fromItem.type == SearchListItemTypeCurrentLocation) {
                 [swapButton setEnabled:NO];
             } else {
                 [swapButton setEnabled:YES];
             }
             
-            [fromLabel setText:[self textFromData:locationDict]];
-            if ([[locationDict objectForKey:@"source"] isEqualToString:@"currentPosition"]) {
+            fromLabel.text = [self textFromItem:locationItem];
+            if (self.fromItem.type == SearchListItemTypeCurrentLocation) {
                 [locationArrow setHidden:NO];
                 CGRect frame = fromLabel.frame;
                 frame.origin.x = locationArrow.frame.origin.x + 20.0f;
@@ -598,7 +582,7 @@ typedef enum {
             break;
     }
     
-    if ((self.toData && self.fromData) || ([toLabel.text isEqualToString:@""] == NO && [fromLabel.text isEqualToString:@""] == NO)) {
+    if ((self.toItem && self.fromItem) || ([toLabel.text isEqualToString:@""] == NO && [fromLabel.text isEqualToString:@""] == NO)) {
         [startButton setEnabled:YES];
     } else {
         [startButton setEnabled:NO];

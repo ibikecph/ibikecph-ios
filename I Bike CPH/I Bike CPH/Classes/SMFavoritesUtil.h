@@ -24,16 +24,16 @@
 
 @property (nonatomic, weak) id<SMFavoritesDelegate>delegate;
 
-+ (NSMutableArray*)getFavorites;
-+ (BOOL)saveToFavorites:(NSDictionary*)dict;
-+ (BOOL)saveFavorites:(NSArray*)fav;
++ (NSMutableArray *)getFavorites;
++ (BOOL)saveToFavorites:(FavoriteItem *)item;
++ (BOOL)saveFavorites:(NSArray *)fav;
 
 + (SMFavoritesUtil *)instance;
 
 - (SMFavoritesUtil *)initWithDelegate:(id<SMFavoritesDelegate>)delegate;
 - (void)fetchFavoritesFromServer;
-- (void)addFavoriteToServer:(NSDictionary*)favData;
-- (void)deleteFavoriteFromServer:(NSDictionary*)favData;
-- (void)editFavorite:(NSDictionary*)favData;
+- (void)addFavoriteToServer:(FavoriteItem *)favItem;
+- (void)deleteFavoriteFromServer:(FavoriteItem *)favItem;
+- (void)editFavorite:(FavoriteItem *)favItem;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "SMSearchHistory.h"
 #import "SMAppDelegate.h"
+@import CoreLocation;
 
 @interface SMSearchHistory()
 @property (nonatomic, strong) SMAPIRequest * apr;
@@ -19,25 +20,16 @@
 + (NSArray*)getSearchHistory {
     SMAppDelegate * appd = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
     if ([[NSFileManager defaultManager] fileExistsAtPath:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"searchHistory.plist"]]) {
-        NSMutableArray * arr = [NSArray arrayWithContentsOfFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"searchHistory.plist"]];
+        NSArray * arr = [NSArray arrayWithContentsOfFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"searchHistory.plist"]];
         NSMutableArray * arr2 = [NSMutableArray array];
         if (arr) {
             for (NSDictionary * d in arr) {
-                [arr2 addObject:@{
-                 @"name" : [d objectForKey:@"name"],
-                 @"address" : [d objectForKey:@"address"],
-                 @"startDate" : [NSKeyedUnarchiver unarchiveObjectWithData:[d objectForKey:@"startDate"]],
-                 @"endDate" : [NSKeyedUnarchiver unarchiveObjectWithData:[d objectForKey:@"endDate"]],
-                 @"source" : [d objectForKey:@"source"],
-                 @"subsource" : [d objectForKey:@"subsource"],
-                 @"lat" : [d objectForKey:@"lat"],
-                 @"long" : [d objectForKey:@"long"],
-                 @"order" : @1
-                 }];
+                HistoryItem *item = [[HistoryItem alloc] initWithPlistDictionary:d];
+                [arr2 addObject:item];
             }
-            [arr2 sortUsingComparator:^NSComparisonResult(NSDictionary* obj1, NSDictionary* obj2) {
-                NSDate * d1 = [obj1 objectForKey:@"startDate"];
-                NSDate * d2 = [obj2 objectForKey:@"startDate"];
+            [arr2 sortUsingComparator:^NSComparisonResult(HistoryItem *obj1, HistoryItem *obj2) {
+                NSDate * d1 = obj1.startDate;
+                NSDate * d2 = obj2.endDate;
                 return [d2 compare:d1];
             }];
             
@@ -53,35 +45,26 @@
 + (BOOL) saveSearchHistory {
     SMAppDelegate * appd = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
     NSMutableArray * r = [NSMutableArray array];
-    for (NSDictionary * d in appd.searchHistory) {
-        [r addObject:@{
-         @"name" : [d objectForKey:@"name"],
-         @"address" : [d objectForKey:@"address"],
-         @"startDate" : [NSKeyedArchiver archivedDataWithRootObject:[d objectForKey:@"startDate"]],
-         @"endDate" : [NSKeyedArchiver archivedDataWithRootObject:[d objectForKey:@"endDate"]],
-         @"source" : [d objectForKey:@"source"],
-         @"subsource" : [d objectForKey:@"subsource"],
-         @"lat" : [d objectForKey:@"lat"],
-         @"long" : [d objectForKey:@"long"]
-         }];
+    for (HistoryItem *item in appd.searchHistory) {
+        [r addObject:item.plistRepresentation];
     }
 
     return [r writeToFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"searchHistory.plist"] atomically:YES];
 }
 
-+ (BOOL)saveToSearchHistory:(NSDictionary*)dict {
++ (BOOL)saveToSearchHistory:(HistoryItem *)item {
     SMAppDelegate * appd = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
     NSMutableArray * arr = [NSMutableArray array];
-    for (NSDictionary * srch in appd.searchHistory) {
-        if ([[srch objectForKey:@"address"] isEqualToString:[dict objectForKey:@"address"]] == NO) {
+    for (HistoryItem *srch in appd.searchHistory) {
+        if (![srch.address isEqualToString:item.address]) {
             [arr addObject:srch];
         }
     }
-    [arr addObject:dict];
+    [arr addObject:item];
     
-    [arr sortUsingComparator:^NSComparisonResult(NSDictionary* obj1, NSDictionary* obj2) {
-        NSDate * d1 = [obj1 objectForKey:@"startDate"];
-        NSDate * d2 = [obj2 objectForKey:@"startDate"];
+    [arr sortUsingComparator:^NSComparisonResult(HistoryItem *obj1, HistoryItem *obj2) {
+        NSDate * d1 = obj1.startDate;
+        NSDate * d2 = obj2.startDate;
         return [d2 compare:d1];
     }];
     [appd setSearchHistory:arr];
@@ -113,7 +96,7 @@
     [self.apr executeRequest:API_LIST_HISTORY withParams:@{@"auth_token": [self.appDelegate.appSettings objectForKey:@"auth_token"]}];
 }
 
-- (void)addSearchToServer:(NSDictionary*)srchData {
+- (void)addSearchToServer:(NSObject<SearchListItem>*)searchItem {
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
     [self setApr:ap];
     [self.apr setRequestIdentifier:@"addHistory"];
@@ -129,9 +112,9 @@
      @"from_name": @"N/A",
      @"from_lattitude": @0,
      @"from_longitude": @0,
-     @"to_name": [srchData objectForKey:@"name"],
-     @"to_lattitude": [NSString stringWithFormat:@"%f", [[srchData objectForKey:@"lat"] doubleValue]],
-     @"to_longitude": [NSString stringWithFormat:@"%f", [[srchData objectForKey:@"long"] doubleValue]],
+     @"to_name": searchItem.name,
+     @"to_lattitude": [NSString stringWithFormat:@"%f", searchItem.location.coordinate.latitude],
+     @"to_longitude": [NSString stringWithFormat:@"%f", searchItem.location.coordinate.longitude],
      @"start_date" : date }}
      ];    
 }
@@ -148,16 +131,16 @@
     NSDictionary * d = @{
                          @"auth_token":[self.appDelegate.appSettings objectForKey:@"auth_token"], @
                          "route": @{
-                                 @"from_name": [[[srchData objectForKey:@"fromName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]?@"N/A":[[srchData objectForKey:@"fromName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
-                                 @"from_lattitude": [NSString stringWithFormat:@"%f", ((CLLocation*)[srchData objectForKey:@"fromLocation"]).coordinate.latitude],
-                                 @"from_longitude": [NSString stringWithFormat:@"%f", ((CLLocation*)[srchData objectForKey:@"fromLocation"]).coordinate.longitude],
-                                 @"to_name": [[[srchData objectForKey:@"toName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]?@"N/A":[[srchData objectForKey:@"toName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
-                                 @"to_lattitude": [NSString stringWithFormat:@"%f", ((CLLocation*)[srchData objectForKey:@"toLocation"]).coordinate.latitude],
-                                 @"to_longitude": [NSString stringWithFormat:@"%f", ((CLLocation*)[srchData objectForKey:@"toLocation"]).coordinate.longitude],
+                                 @"from_name": [[srchData[@"fromName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]?@"N/A":[srchData[@"fromName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
+                                 @"from_lattitude": [NSString stringWithFormat:@"%f", ((CLLocation*)srchData[@"fromLocation"]).coordinate.latitude],
+                                 @"from_longitude": [NSString stringWithFormat:@"%f", ((CLLocation*)srchData[@"fromLocation"]).coordinate.longitude],
+                                 @"to_name": [[srchData[@"toName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]?@"N/A":[srchData[@"toName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
+                                 @"to_lattitude": [NSString stringWithFormat:@"%f", ((CLLocation*)srchData[@"toLocation"]).coordinate.latitude],
+                                 @"to_longitude": [NSString stringWithFormat:@"%f", ((CLLocation*)srchData[@"toLocation"]).coordinate.longitude],
                                  @"route_visited_locations": @"tetststst",//[srchData objectForKey:@"visitedLocations"],
                                  @"is_finished": @"true",
-                                 @"start_date" : [df stringFromDate:[srchData objectForKey:@"startDate"]],
-                                 @"end_date" : [df stringFromDate:[srchData objectForKey:@"endDate"]]
+                                 @"start_date" : [df stringFromDate:srchData[@"startDate"]],
+                                 @"end_date" : [df stringFromDate:srchData[@"endDate"]]
                                  }};
     
     [self.apr executeRequest:API_ADD_HISTORY withParams:d];
@@ -176,8 +159,8 @@
 }
 
 - (void)request:(SMAPIRequest *)req completedWithResult:(NSDictionary *)result {
-    if ([result objectForKey:@"error"]) {
-    } else if ([[result objectForKey:@"success"] boolValue]) {
+    if (result[@"error"]) {
+    } else if ([result[@"success"] boolValue]) {
         if ([req.requestIdentifier isEqualToString:@"fetchList"]) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(searchHistoryOperationFinishedSuccessfully:withData:)]) {
                 [self.delegate searchHistoryOperationFinishedSuccessfully:self withData:result];
@@ -187,7 +170,7 @@
             
         }
     } else {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:result[@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
         [av show];
     }
 }

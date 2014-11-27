@@ -28,6 +28,7 @@
 
 #import "SMUtil.h"
 #import "SMRouteUtils.h"
+#import "SMRouteLocation.h"
 
 #import "SMAnnotation.h"
 #import "SMSwipableView.h"
@@ -694,10 +695,10 @@ typedef enum {
 - (void)saveRoute {
     if (self.route && self.route.visitedLocations && ([self.route.visitedLocations count] > 0)) {
         NSDictionary *dt = [self.route save];
-        NSData * data = [dt objectForKey:@"data"];
+        NSData * data = dt[@"data"];
         NSDictionary * d = @{
-                             @"startDate" : [NSKeyedArchiver archivedDataWithRootObject:[[self.route.visitedLocations objectAtIndex:0] objectForKey:@"date"]],
-                             @"endDate" : [NSKeyedArchiver archivedDataWithRootObject:[[self.route.visitedLocations lastObject] objectForKey:@"date"]],
+                             @"startDate" : [NSKeyedArchiver archivedDataWithRootObject:((SMRouteLocation *)self.route.visitedLocations.firstObject).date],
+                             @"endDate" : [NSKeyedArchiver archivedDataWithRootObject:((SMRouteLocation *)self.route.visitedLocations.lastObject).date],
                              @"visitedLocations" : data,
                              @"fromName" : self.source,
                              @"toName" : self.destination,
@@ -712,9 +713,9 @@ typedef enum {
         if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
             SMSearchHistory * sh = [SMSearchHistory instance];
             [sh addFinishedRouteToServer:@{
-             @"startDate" : [[self.route.visitedLocations objectAtIndex:0] objectForKey:@"date"],
-             @"endDate" : [[self.route.visitedLocations lastObject] objectForKey:@"date"],
-             @"visitedLocations" : [dt objectForKey:@"polyline"],
+             @"startDate" : ((SMRouteLocation *)self.route.visitedLocations.firstObject).date,
+             @"endDate" : ((SMRouteLocation *)self.route.visitedLocations.lastObject).date,
+             @"visitedLocations" : dt[@"polyline"],
              @"fromName" : self.source,
              @"toName" : self.destination,
              @"fromLocation" : self.startLocation,
@@ -761,17 +762,17 @@ typedef enum {
 //        RMPath * path = [[RMPath alloc] initWithView:aMapView];
         RMShape *path = [[RMShape alloc] initWithView:aMapView];
         [path setZPosition:-MAXFLOAT];
-        [path setLineColor:[annotation.userInfo objectForKey:@"lineColor"]];
+        [path setLineColor:annotation.userInfo[@"lineColor"]];
         [path setOpacity:PATH_OPACITY];
-        [path setFillColor:[annotation.userInfo objectForKey:@"fillColor"]];
-        [path setLineWidth:[[annotation.userInfo objectForKey:@"lineWidth"] floatValue]];
+        [path setFillColor:annotation.userInfo[@"fillColor"]];
+        [path setLineWidth:[annotation.userInfo[@"lineWidth"] floatValue]];
         path.scaleLineWidth = NO;
 
-        if ([[annotation.userInfo objectForKey:@"closePath"] boolValue])
+        if ([annotation.userInfo[@"closePath"] boolValue])
             [path closePath];
 
-        @synchronized([annotation.userInfo objectForKey:@"linePoints"]) {
-            for (CLLocation *location in [annotation.userInfo objectForKey:@"linePoints"]) {
+        @synchronized(annotation.userInfo[@"linePoints"]) {
+            for (CLLocation *location in annotation.userInfo[@"linePoints"]) {
                 [path addLineToCoordinate:location.coordinate];
             }
         }
@@ -782,15 +783,15 @@ typedef enum {
     if ([annotation.annotationType isEqualToString:@"line"]) {
         RMShape *line = [[RMShape alloc] initWithView:aMapView];
         [line setZPosition:-MAXFLOAT];
-        [line setLineColor:[annotation.userInfo objectForKey:@"lineColor"]];
+        [line setLineColor:annotation.userInfo[@"lineColor"]];
         [line setOpacity:PATH_OPACITY];
-        [line setFillColor:[annotation.userInfo objectForKey:@"fillColor"]];
-        [line setLineWidth:[[annotation.userInfo objectForKey:@"lineWidth"] floatValue]];
+        [line setFillColor:annotation.userInfo[@"fillColor"]];
+        [line setLineWidth:[annotation.userInfo[@"lineWidth"] floatValue]];
         line.scaleLineWidth = YES;
 
-        CLLocation *start = [annotation.userInfo objectForKey:@"lineStart"];
+        CLLocation *start = annotation.userInfo[@"lineStart"];
         [line addLineToCoordinate:start.coordinate];
-        CLLocation *end = [annotation.userInfo objectForKey:@"lineEnd"];
+        CLLocation *end = annotation.userInfo[@"lineEnd"];
         [line addLineToCoordinate:end.coordinate];
 
         return line;
@@ -1022,8 +1023,8 @@ typedef enum {
         }
     }
     NSMutableArray * arr = [NSMutableArray arrayWithCapacity:self.route.visitedLocations];
-    for (NSDictionary * d in self.route.visitedLocations) {
-        [arr addObject:[d objectForKey:@"location"]];
+    for (SMRouteLocation *d in self.route.visitedLocations) {
+        [arr addObject:d.location];
     }
     
     CLLocation * loc = nil;
@@ -1278,7 +1279,7 @@ typedef enum {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(tableView==self.cargoTableView){
         NSDictionary* currentRow = [self.cargoItems objectAtIndex:indexPath.row];
-        self.osrmServer = [currentRow objectForKey:@"server"];
+        self.osrmServer = currentRow[@"server"];
         [self newRouteType];
     }else{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -1707,7 +1708,7 @@ typedef enum {
 - (void)request:(SMRequestOSRM *)req finishedWithResult:(id)res {
     if ([req.auxParam isEqualToString:@"startRoute"]){
         id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingAllowFragments error:nil];
-        if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([[jsonRoot objectForKey:@"status"] intValue] != 0)) {
+        if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([jsonRoot[@"status"] intValue] != 0)) {
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_route_not_found") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
         } else {

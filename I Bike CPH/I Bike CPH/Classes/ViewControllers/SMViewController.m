@@ -83,7 +83,7 @@ typedef enum {
 @property (nonatomic, strong) NSString * startName;
 @property (nonatomic, strong) NSString * endName;
 
-@property (nonatomic, strong) NSDictionary * locDict;
+@property (nonatomic, strong) FavoriteItem *locItem;
 @property NSInteger locIndex;
 @property (nonatomic, strong) NSString * favName;
 
@@ -111,10 +111,6 @@ typedef enum {
     [super viewDidLoad];
     pinWorking = NO;
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-
-    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
-    }
     
     [RMMapView class];
     
@@ -227,9 +223,6 @@ typedef enum {
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
-    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
-
-    
     [self readjustViewsForRotation:self.interfaceOrientation];
     
     self.findFrom = @"";
@@ -279,7 +272,7 @@ typedef enum {
     if ([[NSFileManager defaultManager] fileExistsAtPath: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]]) {
         NSDictionary * d = [NSDictionary dictionaryWithContentsOfFile: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]];
         
-        NSString * st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)",CURRENT_POSITION_STRING, [[d objectForKey:@"startLat"] doubleValue], [[d objectForKey:@"startLong"] doubleValue], [d objectForKey:@"destination"], [[d objectForKey:@"endLat"] doubleValue], [[d objectForKey:@"endLong"] doubleValue]];
+        NSString * st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)",CURRENT_POSITION_STRING, [d[@"startLat"] doubleValue], [d[@"startLong"] doubleValue], d[@"destination"], [d[@"endLat"] doubleValue], [d[@"endLong"] doubleValue]];
         debugLog(@"%@", st);
         if (![SMAnalytics trackEventWithCategory:@"Route:" withAction:@"Resume" withLabel:st withValue:0]) {
             debugLog(@"error in trackPageview");
@@ -288,14 +281,12 @@ typedef enum {
         /**
          * show new route
          */
-        CLLocation * cEnd = [[CLLocation alloc] initWithLatitude:[[d objectForKey:@"endLat"] floatValue] longitude:[[d objectForKey:@"endLong"] floatValue]];
-        CLLocation * cStart = [[CLLocation alloc] initWithLatitude:[[d objectForKey:@"startLat"] floatValue] longitude:[[d objectForKey:@"startLong"] floatValue]];
-        
-        
+        CLLocation * cEnd = [[CLLocation alloc] initWithLatitude:[d[@"endLat"] floatValue] longitude:[d[@"endLong"] floatValue]];
+        CLLocation * cStart = [[CLLocation alloc] initWithLatitude:[d[@"startLat"] floatValue] longitude:[d[@"startLong"] floatValue]];
         
         SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
         [r setRequestIdentifier:@"rowSelectRoute"];
-        [r setAuxParam:[d objectForKey:@"destination"]];
+        [r setAuxParam:d[@"destination"]];
         [r findNearestPointForStart:cStart andEnd:cEnd];                
     } else {
         [self.mpView addObserver:self forKeyPath:@"userTrackingMode" options:0 context:nil];
@@ -471,7 +462,7 @@ typedef enum {
         [self showPinDrop];
         
         [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
-            [routeStreet setText:[response objectForKey:@"title"]];
+            [routeStreet setText:response[@"title"]];
             if ([routeStreet.text isEqualToString:@""]) {
                 [routeStreet setText:[NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude]];
             }
@@ -490,7 +481,7 @@ typedef enum {
             }
             
 //            [self.destinationPin setSubtitle:@""];
-            [self.destinationPin setTitle:[response objectForKey:@"title"]];
+            [self.destinationPin setTitle:response[@"title"]];
 //            [self.destinationPin setDelegate:self];
 //            [self.destinationPin setRoutingCoordinate:loc];
         }];
@@ -542,17 +533,8 @@ typedef enum {
 }
 
 - (void)delayedAddPin {
-    NSDictionary * d = @{
-                         @"name" : routeStreet.text,
-                         @"address" : routeStreet.text,
-                         @"startDate" : [NSDate date],
-                         @"endDate" : [NSDate date],
-                         @"source" : @"favorites",
-                         @"subsource" : @"favorite",
-                         @"lat" :[NSNumber numberWithDouble: self.destinationPin.coordinate.latitude],
-                         @"long" : [NSNumber numberWithDouble: self.destinationPin.coordinate.longitude],
-                         @"order" : @0
-                         };
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:self.destinationPin.coordinate.latitude longitude:self.destinationPin.coordinate.longitude];
+    FavoriteItem *item = [[FavoriteItem alloc] initWithName:routeStreet.text address:routeStreet.text location:location startDate:[NSDate date] endDate:[NSDate date] origin:FavoriteItemTypeUnknown];
     NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF.name = %@ AND SELF.address = %@", routeStreet.text, routeStreet.text];
     NSArray * arr = [[SMFavoritesUtil getFavorites] filteredArrayUsingPredicate:pred];
     SMFavoritesUtil * fv = [SMFavoritesUtil instance];
@@ -560,13 +542,13 @@ typedef enum {
     if ([arr count] > 0) {
         [pinButton setSelected:NO];
         [fv deleteFavoriteFromServer:[arr objectAtIndex:0]];
-        if (![SMAnalytics trackEventWithCategory:@"Favorites" withAction:@"Delete" withLabel:[NSString stringWithFormat:@"%@ - (%f, %f)", addFavName.text, ((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.latitude, ((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.longitude] withValue:0]) {
+        if (![SMAnalytics trackEventWithCategory:@"Favorites" withAction:@"Delete" withLabel:[NSString stringWithFormat:@"%@ - (%f, %f)", addFavName.text, self.locItem.location.coordinate.latitude, self.locItem.location.coordinate.longitude] withValue:0]) {
             debugLog(@"error in trackEvent");
         }
     } else {
         [pinButton setSelected:YES];
-        [fv addFavoriteToServer:d];
-        if (![SMAnalytics trackEventWithCategory:@"Favorites" withAction:@"New" withLabel:[NSString stringWithFormat:@"%@ - (%f, %f)", addFavName.text, ((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.latitude, ((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.longitude] withValue:0]) {
+        [fv addFavoriteToServer:item];
+        if (![SMAnalytics trackEventWithCategory:@"Favorites" withAction:@"New" withLabel:[NSString stringWithFormat:@"%@ - (%f, %f)", addFavName.text, self.locItem.location.coordinate.latitude, self.locItem.location.coordinate.longitude] withValue:0]) {
             debugLog(@"error in trackEvent");
         }
     }
@@ -647,27 +629,31 @@ typedef enum {
     }];
 
     if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
-        addFavAddress.text = [self.locDict objectForKey:@"address"];
-        addFavName.text = [self.locDict objectForKey:@"name"];
+        addFavAddress.text = self.locItem.address;
+        addFavName.text = self.locItem.name;
         editTitle.text = translateString(@"edit_favorite");
         [addSaveButton setHidden:YES];
         [editSaveButton setHidden:NO];
         [editDeleteButton setHidden:NO];
         
-        if ([[self.locDict objectForKey:@"subsource"] isEqualToString:@"home"]) {
-            currentFav = typeHome;
-            [self addSelectHome:nil];
-        } else if ([[self.locDict objectForKey:@"subsource"] isEqualToString:@"work"]) {
-            currentFav = typeWork;
-            [self addSelectWork:nil];
-        } else if ([[self.locDict objectForKey:@"subsource"] isEqualToString:@"school"]) {
-            currentFav = typeSchool;
-            [self addSelectSchool:nil];
-        } else {
-            currentFav = typeFavorite;
-            [self addSelectFavorite:nil];
+        switch (self.locItem.origin) {
+            case FavoriteItemTypeHome:
+                currentFav = typeHome;
+                [self addSelectHome:nil];
+                break;
+            case FavoriteItemTypeWork:
+                currentFav = typeWork;
+                [self addSelectWork:nil];
+                break;
+            case FavoriteItemTypeSchool:
+                currentFav = typeSchool;
+                [self addSelectSchool:nil];
+                break;
+            case FavoriteItemTypeUnknown:
+                currentFav = typeFavorite;
+                [self addSelectFavorite:nil];
+                break;
         }
-        
         [self animateEditViewShow];
     } else {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"error_not_logged_in") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
@@ -681,7 +667,7 @@ typedef enum {
 
 
     if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
-        self.locDict = nil;
+        self.locItem = nil;
         addFavAddress.text = @"";
         addFavName.text = @"";
         currentFav = typeFavorite;
@@ -755,7 +741,7 @@ typedef enum {
         return;
     }
         
-    if (self.locDict && [self.locDict objectForKey:@"address"] && [addFavName.text isEqualToString:@""] == NO) {
+    if (self.locItem && self.locItem.address.length && [addFavName.text isEqualToString:@""] == NO) {
         if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
             NSString * favType;
             switch (currentFav) {
@@ -776,22 +762,13 @@ typedef enum {
                     break;
             }
             SMFavoritesUtil * fv = [SMFavoritesUtil instance];
-            [fv addFavoriteToServer:@{
-             @"name" : addFavName.text,
-             @"address" : [self.locDict objectForKey:@"address"],
-             @"startDate" : [NSDate date],
-             @"endDate" : [NSDate date],
-             @"source" : @"favorites",
-             @"subsource" : favType,
-             @"lat" : [NSNumber numberWithDouble:((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.latitude],
-             @"long" : [NSNumber numberWithDouble:((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.longitude],
-             @"order" : @0
-             }];
+            FavoriteItem *item = [[FavoriteItem alloc] initWithName:addFavName.text address:self.locItem.address location:self.locItem.location startDate:[NSDate date] endDate:[NSDate date] origin:FavoriteItemTypeUnknown];
+            [fv addFavoriteToServer:item];
             
             [self addFavoriteHide:nil];
             
             
-            if (![SMAnalytics trackEventWithCategory:@"Favorites" withAction:@"New" withLabel:[NSString stringWithFormat:@"%@ - (%f, %f)", addFavName.text, ((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.latitude, ((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.longitude] withValue:0]) {
+            if (![SMAnalytics trackEventWithCategory:@"Favorites" withAction:@"New" withLabel:[NSString stringWithFormat:@"%@ - (%f, %f)", addFavName.text, self.locItem.location.coordinate.latitude, self.locItem.location.coordinate.longitude] withValue:0]) {
                 debugLog(@"error in trackEvent");
             }
         } else {
@@ -805,10 +782,9 @@ typedef enum {
     
     if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
         SMFavoritesUtil * fv = [SMFavoritesUtil instance];
-        [fv deleteFavoriteFromServer:@{
-         @"id" : [[self.favoritesList objectAtIndex:self.locIndex] objectForKey:@"id"]
-         }];
-        if (![SMAnalytics trackEventWithCategory:@"Favorites" withAction:@"Delete" withLabel:[NSString stringWithFormat:@"%@ - (%f, %f)", addFavName.text, ((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.latitude, ((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.longitude] withValue:0]) {
+        FavoriteItem *item = self.favoritesList[self.locIndex];
+        [fv deleteFavoriteFromServer:item];
+        if (![SMAnalytics trackEventWithCategory:@"Favorites" withAction:@"Delete" withLabel:[NSString stringWithFormat:@"%@ - (%f, %f)", addFavName.text, item.location.coordinate.latitude, item.location.coordinate.longitude] withValue:0]) {
             debugLog(@"error in trackEvent");
         }
         [self addFavoriteHide:nil];
@@ -844,25 +820,17 @@ typedef enum {
                 break;
         }
         
-        NSDictionary * dict = @{
-                                @"id" : [[self.favoritesList objectAtIndex:self.locIndex] objectForKey:@"id"],
-                                @"name" : addFavName.text,
-                                @"address" : [self.locDict objectForKey:@"address"],
-                                @"startDate" : [NSDate date],
-                                @"endDate" : [NSDate date],
-                                @"source" : @"favorites",
-                                @"subsource" : favType,
-                                @"lat" : [self.locDict objectForKey:@"location"]?[NSNumber numberWithDouble:((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.latitude]:[self.locDict objectForKey:@"lat"],
-                                @"long" : [self.locDict objectForKey:@"location"]?[NSNumber numberWithDouble:((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.longitude]:[self.locDict objectForKey:@"long"],
-                                @"order" : @0
-                                };
-        
-        debugLog(@"%@", dict);
+        FavoriteItem *itemAtIndex = self.favoritesList[self.locIndex];
+        FavoriteItem *item = [[FavoriteItem alloc] initWithOther:self.locItem];
+        item.identifier = itemAtIndex.identifier;
+        item.startDate = [NSDate date];
+        item.endDate = [NSDate date];
+        debugLog(@"%@", item);
         
         SMFavoritesUtil * fv = [SMFavoritesUtil instance];
-        [fv editFavorite:dict];
+        [fv editFavorite:item];
         [self addFavoriteHide:nil];
-        if (![SMAnalytics trackEventWithCategory:@"Favorites" withAction:@"Save" withLabel:[NSString stringWithFormat:@"%@ - (%f, %f)", addFavName.text, ((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.latitude, ((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.longitude] withValue:0]) {
+        if (![SMAnalytics trackEventWithCategory:@"Favorites" withAction:@"Save" withLabel:[NSString stringWithFormat:@"%@ - (%f, %f)", addFavName.text, item.location.coordinate.latitude, item.location.coordinate.longitude] withValue:0]) {
             debugLog(@"error in trackEvent");
         }
     } else {
@@ -946,9 +914,9 @@ typedef enum {
     [tblMenu setEditing:NO];
     int i = 0;
     NSMutableArray * arr = [NSMutableArray array];
-    for (NSDictionary * d in self.favoritesList) {
+    for (FavoriteItem *item in self.favoritesList) {
         [arr addObject:@{
-         @"id" : [d objectForKey:@"id"],
+         @"id" : item.identifier,
          @"position" : [NSString stringWithFormat:@"%d", i]
          }];
         i += 1;
@@ -1010,17 +978,17 @@ typedef enum {
         
         NSDictionary * params = (NSDictionary*)sender;
         SMRouteNavigationController *destViewController = segue.destinationViewController;
-        [destViewController setStartLocation:[params objectForKey:@"start"]];
-        [destViewController setEndLocation:[params objectForKey:@"end"]];
+        [destViewController setStartLocation:params[@"start"]];
+        [destViewController setEndLocation:params[@"end"]];
         [destViewController setDestination:self.destination];
         [destViewController setSource:self.source];
         [destViewController setJsonRoot:self.jsonRoot];
         
         NSDictionary * d = @{
-                             @"endLat": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"end"]).coordinate.latitude],
-                             @"endLong": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"end"]).coordinate.longitude],
-                             @"startLat": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"start"]).coordinate.latitude],
-                             @"startLong": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"start"]).coordinate.longitude],
+                             @"endLat": [NSNumber numberWithDouble:((CLLocation*)params[@"end"]).coordinate.latitude],
+                             @"endLong": [NSNumber numberWithDouble:((CLLocation*)params[@"end"]).coordinate.longitude],
+                             @"startLat": [NSNumber numberWithDouble:((CLLocation*)params[@"start"]).coordinate.latitude],
+                             @"startLong": [NSNumber numberWithDouble:((CLLocation*)params[@"start"]).coordinate.longitude],
                              @"destination": ((self.destination == nil) ? @"" : self.destination),
                              };
         
@@ -1055,37 +1023,40 @@ typedef enum {
     if (tableView == tblMenu) {
         if ([self.favoritesList count] > 0) {
             if (tblMenu.isEditing) {
-                NSDictionary * currentRow = [self.favoritesList objectAtIndex:indexPath.row];
-                SMMenuCell * cell = [tableView dequeueReusableCellWithIdentifier:@"favoritesCell"];
+                FavoriteItem *currentItem = self.favoritesList[indexPath.row];
+                SMMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"favoritesCell"];
                 [cell.image setContentMode:UIViewContentModeCenter];
                 [cell setDelegate:self];
                 [cell.image setImage:[UIImage imageNamed:@"favReorder"]];
                 [cell.editBtn setHidden:NO];
-                [cell.text setText:[currentRow objectForKey:@"name"]];
+                cell.text.text = currentItem.name;
                 return cell;
             } else {
-                NSDictionary * currentRow = [self.favoritesList objectAtIndex:indexPath.row];
+                FavoriteItem *currentItem = self.favoritesList[indexPath.row];
                 SMMenuCell * cell = [tableView dequeueReusableCellWithIdentifier:@"favoritesCell"];
                 [cell.image setContentMode:UIViewContentModeCenter];
                 [cell setDelegate:self];
                 [cell setIndentationLevel:2];
-                if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"home"]) {
-                    [cell.image setImage:[UIImage imageNamed:@"favHomeGrey"]];
-                    [cell.image setHighlightedImage:[UIImage imageNamed:@"favHomeWhite"]];
-                } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"work"]) {
-                    [cell.image setImage:[UIImage imageNamed:@"favWorkGrey"]];
-                    [cell.image setHighlightedImage:[UIImage imageNamed:@"favWorkWhite"]];
-                } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"school"]) {
-                    [cell.image setImage:[UIImage imageNamed:@"favSchoolGrey"]];
-                    [cell.image setHighlightedImage:[UIImage imageNamed:@"favSchoolWhite"]];
-                } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"favorite"]) {
-                    [cell.image setImage:[UIImage imageNamed:@"favStarGreySmall"]];
-                    [cell.image setHighlightedImage:[UIImage imageNamed:@"favStarWhiteSmall"]];
-                } else {
-                    [cell.image setImage:nil];
+                switch (currentItem.origin) {
+                    case FavoriteItemTypeHome:
+                        [cell.image setImage:[UIImage imageNamed:@"favHomeGrey"]];
+                        [cell.image setHighlightedImage:[UIImage imageNamed:@"favHomeWhite"]];
+                        break;
+                    case FavoriteItemTypeWork:
+                        [cell.image setImage:[UIImage imageNamed:@"favWorkGrey"]];
+                        [cell.image setHighlightedImage:[UIImage imageNamed:@"favWorkWhite"]];
+                        break;
+                    case FavoriteItemTypeSchool:
+                        [cell.image setImage:[UIImage imageNamed:@"favSchoolGrey"]];
+                        [cell.image setHighlightedImage:[UIImage imageNamed:@"favSchoolWhite"]];
+                        break;
+                    default:
+                        [cell.image setImage:[UIImage imageNamed:@"favStarGreySmall"]];
+                        [cell.image setHighlightedImage:[UIImage imageNamed:@"favStarWhiteSmall"]];
+                        break;
                 }
                 [cell.editBtn setHidden:YES];
-                [cell.text setText:[currentRow objectForKey:@"name"]];
+                cell.text.text = currentItem.name;
                 
                 UIView * v = [cell viewWithTag:10001];
                 if (v) {
@@ -1101,13 +1072,10 @@ typedef enum {
                 [cell.addFavoritesText setTextColor:[UIColor whiteColor]];
                 [cell.text setTextColor:[UIColor colorWithRed:0.0f/255.0f green:174.0f/255.0f blue:239.0f/255.0f alpha:1.0f]];
                 [cell.addFavoritesSymbol setImage:[UIImage imageNamed:@"favAdd"]];
-//                [cell.text setTextColor:[UIColor greenColor]];
             } else {
-                [cell.addFavoritesText setText:translateString(@"favorites_login")];                
-//                [cell.addFavoritesText setTextColor:[UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0f]];
+                [cell.addFavoritesText setText:translateString(@"favorites_login")];
                 [cell.addFavoritesText setTextColor:[UIColor colorWithRed:123.0f/255.0f green:123.0f/255.0f blue:123.0f/255.0f alpha:1.0f]];
                 [cell.text setTextColor:[UIColor colorWithRed:123.0f/255.0f green:123.0f/255.0f blue:123.0f/255.0f alpha:1.0f]];
-//                [cell.text setTextColor:[UIColor redColor]];
                 [cell.addFavoritesSymbol setImage:[UIImage imageNamed:@"fav_plus_none_grey"]];
 
             }
@@ -1134,7 +1102,7 @@ typedef enum {
                 /**
                  * edit favorite
                  */
-                self.locDict = [self.favoritesList objectAtIndex:indexPath.row];
+                self.locItem = self.favoritesList[indexPath.row];
                 self.locIndex = indexPath.row;
                 [self editFavoriteShow:nil];
             } else {
@@ -1142,14 +1110,14 @@ typedef enum {
                  * navigate to favorite
                  */
                 if (indexPath.row < [self.favoritesList count]) {
-                    NSDictionary * currentRow = [self.favoritesList objectAtIndex:indexPath.row];
+                    FavoriteItem *currentItem = self.favoritesList[indexPath.row];
                     
                     [self.view bringSubviewToFront:fadeView];
                     [UIView animateWithDuration:0.4f animations:^{
                         [fadeView setAlpha:1.0f];
                     }];
                     
-                    CLLocation * cEnd = [[CLLocation alloc] initWithLatitude:[[currentRow objectForKey:@"lat"] floatValue] longitude:[[currentRow objectForKey:@"long"] floatValue]];
+                    CLLocation * cEnd = currentItem.location;
                     CLLocation * cStart = [[CLLocation alloc] initWithLatitude:[SMLocationManager instance].lastValidLocation.coordinate.latitude longitude:[SMLocationManager instance].lastValidLocation.coordinate.longitude];
                     
                     if (![SMAnalytics trackEventWithCategory:@"Route" withAction:@"Menu" withLabel:@"Favorites" withValue:0]) {
@@ -1157,8 +1125,8 @@ typedef enum {
                     }
                     
                     SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
-                    [r setRequestIdentifier:@"rowSelectRoute"];
-                    [r setAuxParam:[currentRow objectForKey:@"name"]];
+                    r.requestIdentifier = @"rowSelectRoute";
+                    r.auxParam = currentItem.name;
                     [r findNearestPointForStart:cStart andEnd:cEnd];
                 } else {
                     /**
@@ -1384,10 +1352,6 @@ typedef enum {
     
     CLLocation * cEnd = [[CLLocation alloc] initWithLatitude:annotation.routingCoordinate.coordinate.latitude longitude:annotation.routingCoordinate.coordinate.longitude];
     CLLocation * cStart = [[CLLocation alloc] initWithLatitude:[SMLocationManager instance].lastValidLocation.coordinate.latitude longitude:[SMLocationManager instance].lastValidLocation.coordinate.longitude];
-//    SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
-//    [r setRequestIdentifier:@"rowSelectRoute"];
-//    [r setAuxParam:annotation.title];
-//    [r findNearestPointForStart:cStart andEnd:cEnd];
     
     
     /**
@@ -1450,16 +1414,16 @@ typedef enum {
     if ([req.requestIdentifier isEqualToString:@"getNearestForPinDrop"]) {
         NSDictionary * r = res;
         CLLocation * coord;
-        if ([r objectForKey:@"mapped_coordinate"] && [[r objectForKey:@"mapped_coordinate"] isKindOfClass:[NSArray class]] && ([[r objectForKey:@"mapped_coordinate"] count] > 1)) {
-            coord = [[CLLocation alloc] initWithLatitude:[[[r objectForKey:@"mapped_coordinate"] objectAtIndex:0] doubleValue] longitude:[[[r objectForKey:@"mapped_coordinate"] objectAtIndex:1] doubleValue]];
+        if (r[@"mapped_coordinate"] && [r[@"mapped_coordinate"] isKindOfClass:[NSArray class]] && ([r[@"mapped_coordinate"] count] > 1)) {
+            coord = [[CLLocation alloc] initWithLatitude:[r[@"mapped_coordinate"][0] doubleValue] longitude:[r[@"mapped_coordinate"][1] doubleValue]];
         } else {
             coord = req.coord;
         }
         SMNearbyPlaces * np = [[SMNearbyPlaces alloc] initWithDelegate:self];
         [np findPlacesForLocation:[[CLLocation alloc] initWithLatitude:coord.coordinate.latitude longitude:coord.coordinate.longitude]];
     } else if ([req.requestIdentifier isEqualToString:@"rowSelectRoute"]) {
-        CLLocation * s = [res objectForKey:@"start"];
-        CLLocation * e = [res objectForKey:@"end"];
+        CLLocation * s = res[@"start"];
+        CLLocation * e = res[@"end"];
         
         NSString * st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)", @"", s.coordinate.latitude, s.coordinate.longitude, @"", e.coordinate.latitude, e.coordinate.longitude];
         debugLog(@"%@", st);
@@ -1477,7 +1441,7 @@ typedef enum {
         [r getRouteFrom:s.coordinate to:e.coordinate via:nil];
     } else if ([req.auxParam isEqualToString:@"startRoute"]){
         id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingAllowFragments error:nil];
-        if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([[jsonRoot objectForKey:@"status"] intValue] != 0)) {
+        if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([jsonRoot[@"status"] intValue] != 0)) {
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_route_not_found") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
         } else {
@@ -1560,11 +1524,11 @@ typedef enum {
 
 #pragma mark - search delegate
 
-- (void)locationFound:(NSDictionary *)locationDict {
-    [self setLocDict:locationDict];
-    [addFavAddress setText:[locationDict objectForKey:@"address"]];
-    if ([locationDict objectForKey:@"subsource"] && [[locationDict objectForKey:@"subsource"] isEqualToString:@"foursquare"]) {
-        [addFavName setText:[locationDict objectForKey:@"name"]];
+- (void)locationFound:(NSObject<SearchListItem> *)locationItem {
+    self.locItem = [[FavoriteItem alloc] initWithOther:locationItem];
+    addFavAddress.text = self.locItem.address;
+    if (self.locItem.type == SearchListItemTypeFoursquare) {
+        addFavName.text = self.locItem.address;
     } else {
         switch (currentFav) {
             case typeFavorite:

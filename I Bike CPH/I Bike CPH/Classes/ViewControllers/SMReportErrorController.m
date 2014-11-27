@@ -393,7 +393,7 @@
 }
 
 - (void)request:(SMAPIRequest *)req completedWithResult:(NSDictionary *)result {
-    if ([[result objectForKey:@"success"] boolValue]) {
+    if ([result[@"success"] boolValue]) {
         if (![SMAnalytics trackEventWithCategory:@"Report" withAction:@"Completed" withLabel:@"" withValue:0]) {
             debugLog(@"error in trackEvent");
         }

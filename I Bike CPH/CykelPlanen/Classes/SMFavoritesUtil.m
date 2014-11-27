@@ -100,8 +100,8 @@
     [self.apr executeRequest:API_LIST_FAVORITES withParams:@{@"auth_token": [self.appDelegate.appSettings objectForKey:@"auth_token"]}];
 }
 
-- (void)addFavoriteToServer:(NSDictionary*)favData {
-    [SMFavoritesUtil saveToFavorites:favData];
+- (void)addFavoriteToServer:(UnknownSearchListItem *)favItem {
+    [SMFavoritesUtil saveToFavorites:favItem];
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
     [self setApr:ap];
     [self.apr setRequestIdentifier:@"addFavorite"];

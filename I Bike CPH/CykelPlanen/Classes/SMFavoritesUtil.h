@@ -32,7 +32,7 @@
 
 - (SMFavoritesUtil *)initWithDelegate:(id<SMFavoritesDelegate>)delegate;
 - (void)fetchFavoritesFromServer;
-- (void)addFavoriteToServer:(NSDictionary*)favData;
+- (void)addFavoriteToServer:(UnknownSearchListItem *)favData;
 - (void)deleteFavoriteFromServer:(NSDictionary*)favData;
 - (void)editFavorite:(NSDictionary*)favData;
 

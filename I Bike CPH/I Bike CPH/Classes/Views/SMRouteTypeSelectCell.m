@@ -24,9 +24,9 @@
 }
 
 - (void)setupCellWithData:(NSDictionary*)data {
-    cellText.text= [data objectForKey:@"name"];
-    cellImage.image= [UIImage imageNamed:[data objectForKey:@"image"]];
-    [cellImage setHighlightedImage:[UIImage imageNamed:[data objectForKey:@"imageHighlighted"]]];
+    cellText.text = data[@"name"];
+    cellImage.image = [UIImage imageNamed:data[@"image"]];
+    [cellImage setHighlightedImage:[UIImage imageNamed:data[@"imageHighlighted"]]];
 }
 
 + (CGFloat)getHeight {

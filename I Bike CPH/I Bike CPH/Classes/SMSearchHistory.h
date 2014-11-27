@@ -27,7 +27,7 @@
 + (BOOL) saveSearchHistory;
 
 - (void)fetchSearchHistoryFromServer;
-- (void)addSearchToServer:(NSDictionary*)srchData;
+- (void)addSearchToServer:(NSObject<SearchListItem> *)srchData;
 
 - (void)addFinishedRouteToServer:(NSDictionary*)srchData;
 

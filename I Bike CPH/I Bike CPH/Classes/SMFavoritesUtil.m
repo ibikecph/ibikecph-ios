@@ -21,18 +21,8 @@
         NSMutableArray * arr2 = [NSMutableArray array];
         if (arr) {
             for (NSDictionary * d in arr) {
-                [arr2 addObject:@{
-                 @"id" : [d objectForKey:@"id"],
-                 @"name" : [d objectForKey:@"name"],
-                 @"address" : [d objectForKey:@"address"],
-                 @"startDate" : [NSKeyedUnarchiver unarchiveObjectWithData:[d objectForKey:@"startDate"]],
-                 @"endDate" : [NSKeyedUnarchiver unarchiveObjectWithData:[d objectForKey:@"endDate"]],
-                 @"source" : [d objectForKey:@"source"],
-                 @"subsource" : [d objectForKey:@"subsource"],
-                 @"lat" : [d objectForKey:@"lat"],
-                 @"long" : [d objectForKey:@"long"],
-                 @"order" : @0
-                 }];
+                FavoriteItem *favoriteItem = [[FavoriteItem alloc] initWithPlistDictionary:d];
+                [arr2 addObject:favoriteItem];
             }
             return arr2;
         }
@@ -42,33 +32,21 @@
 
 + (BOOL)saveFavorites:(NSArray*)fav {
     NSMutableArray * r = [NSMutableArray array];
-    for (NSDictionary * d in fav) {
-        [r addObject:@{
-         @"id" : [d objectForKey:@"id"]?[d objectForKey:@"id"]:@"0",
-         @"name" : [d objectForKey:@"name"],
-         @"address" : [d objectForKey:@"address"],
-         @"startDate" : [NSKeyedArchiver archivedDataWithRootObject:[d objectForKey:@"startDate"]],
-         @"endDate" : [NSKeyedArchiver archivedDataWithRootObject:[d objectForKey:@"endDate"]],
-         @"source" : [d objectForKey:@"source"],
-         @"subsource" : [d objectForKey:@"subsource"],
-         @"lat" : [d objectForKey:@"lat"],
-         @"long" : [d objectForKey:@"long"]
-         }];
+    for (FavoriteItem * item in fav) {
+        [r addObject:item.plistRepresentation];
     }
     return [r writeToFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"favorites.plist"] atomically:YES];
 }
 
-+ (BOOL)saveToFavorites:(NSDictionary*)dict {
++ (BOOL)saveToFavorites:(FavoriteItem *)item {
     NSMutableArray * arr = [NSMutableArray array];
     NSMutableArray * a = [self getFavorites];
-    for (NSDictionary * srch in a) {
-        if ([[srch objectForKey:@"name"] isEqualToString:[dict objectForKey:@"name"]] == NO) {
+    for (UnknownSearchListItem *srch in a) {
+        if ([srch.name isEqualToString:item.name] == NO) {
             [arr addObject:srch];
         }
     }
-    [arr addObject:dict];
-    
-    
+    [arr addObject:item];
     
     BOOL x = [SMFavoritesUtil saveFavorites:arr];
     
@@ -100,26 +78,25 @@
     [self.apr executeRequest:API_LIST_FAVORITES withParams:@{@"auth_token": [self.appDelegate.appSettings objectForKey:@"auth_token"]}];
 }
 
-- (void)addFavoriteToServer:(NSDictionary*)favData {
-    [SMFavoritesUtil saveToFavorites:favData];
+- (void)addFavoriteToServer:(FavoriteItem *)favItem {
+    [SMFavoritesUtil saveToFavorites:favItem];
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
     [self setApr:ap];
     [self.apr setRequestIdentifier:@"addFavorite"];
     [self.apr executeRequest:API_ADD_FAVORITE withParams:@{
      @"auth_token":[self.appDelegate.appSettings objectForKey:@"auth_token"], @
      "favourite": @{
-     @"name": [favData objectForKey:@"name"],
-     @"address": [favData objectForKey:@"address"],
-     @"lattitude": [NSString stringWithFormat:@"%f", [[favData objectForKey:@"lat"] doubleValue]],
-     @"longitude": [NSString stringWithFormat:@"%f", [[favData objectForKey:@"long"] doubleValue]],
-     @"source": @"favourites",
-     @"sub_source": [favData objectForKey:@"subsource"] }}
-];
+         @"name": favItem.name,
+         @"address": favItem.address,
+         @"lattitude": @(favItem.location.coordinate.latitude),
+         @"longitude": @(favItem.location.coordinate.longitude),
+         @"source": @"favourites"
+    }}];
 }
 
-- (void)deleteFavoriteFromServer:(NSDictionary*)favData {
+- (void)deleteFavoriteFromServer:(FavoriteItem *)favItem {
     NSMutableArray * a = [SMFavoritesUtil getFavorites];
-    NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF.id = %@", [favData objectForKey:@"id"]];
+    NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF.id = %@", favItem.identifier];
     NSArray * arr = [a filteredArrayUsingPredicate:pred];
     if ([arr count] > 0) {
         [a removeObjectsInArray:arr];
@@ -130,26 +107,26 @@
     [self setApr:ap];
     [self.apr setRequestIdentifier:@"addFavorite"];
     NSMutableDictionary * params = [API_DELETE_FAVORITE mutableCopy];
-    [params setValue:[NSString stringWithFormat:@"%@/%@", [params objectForKey:@"service"], [favData objectForKey:@"id"]] forKey:@"service"];
+    params[@"service"] = [NSString stringWithFormat:@"%@/%@", params[@"service"], favItem.identifier];
     [self.apr executeRequest:params withParams:@{
      @"auth_token":[self.appDelegate.appSettings objectForKey:@"auth_token"]}];
 }
 
-- (void)editFavorite:(NSDictionary*)favData {
+- (void)editFavorite:(FavoriteItem *)favItem {
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
     [self setApr:ap];
     [self.apr setRequestIdentifier:@"editFavorite"];
     NSMutableDictionary * params = [API_EDIT_FAVORITE mutableCopy];
-    [params setValue:[NSString stringWithFormat:@"%@/%@", [params objectForKey:@"service"], [favData objectForKey:@"id"]] forKey:@"service"];
+    params[@"service"] = [NSString stringWithFormat:@"%@/%@", params[@"service"], favItem.identifier];
     [self.apr executeRequest:params withParams:@{
      @"auth_token":[self.appDelegate.appSettings objectForKey:@"auth_token"], @
      "favourite": @{
-     @"name": [favData objectForKey:@"name"],
-     @"address": [favData objectForKey:@"address"],
-     @"lattitude": [NSString stringWithFormat:@"%f", [[favData objectForKey:@"lat"] doubleValue]],
-     @"longitude": [NSString stringWithFormat:@"%f", [[favData objectForKey:@"long"] doubleValue]],
-     @"source": @"favourites",
-     @"sub_source": [favData objectForKey:@"subsource"] }}];
+         @"name": favItem.name,
+         @"address": favItem.address,
+         @"lattitude": @(favItem.location.coordinate.latitude),
+         @"longitude": @(favItem.location.coordinate.longitude),
+         @"source": @"favourites"
+    }}];
 }
 
 
@@ -177,19 +154,11 @@
         }
     } else if ([[result objectForKey:@"success"] boolValue]) {
         if ([req.requestIdentifier isEqualToString:@"fetchList"]) {
-            NSMutableArray * arr = [NSMutableArray arrayWithCapacity:result.count];
-            for (NSDictionary * d in [result objectForKey:@"data"]) {
-                [arr addObject:@{
-                                @"id": [d objectForKey:@"id"],
-                                @"name": [d objectForKey:@"name"],
-                                @"address": [d objectForKey:@"address"],
-                                @"startDate": [NSDate date],
-                                @"endDate": [NSDate date],
-                                @"lat": [NSNumber numberWithDouble:[[d objectForKey:@"lattitude"] doubleValue]],
-                                @"long": [NSNumber numberWithDouble:[[d objectForKey:@"longitude"] doubleValue]],
-                                @"source": @"favorites",
-                                @"subsource": [d objectForKey:@"sub_source"]
-                 }];
+            NSMutableArray *arr = [NSMutableArray arrayWithCapacity:result.count];
+            for (NSDictionary *d in [result objectForKey:@"data"]) {
+                // TODO: Parse result to
+                FavoriteItem *item = [[FavoriteItem alloc] initWithJsonDictionary:d];
+                [arr addObject:item];
             }
             [SMFavoritesUtil saveFavorites:arr];
             [[NSNotificationCenter defaultCenter] postNotificationName:kFAVORITES_CHANGED object:self];
@@ -200,7 +169,7 @@
             [self fetchFavoritesFromServer];
         }
     } else {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:result[@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
         [av show];
     }
 }
