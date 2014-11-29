@@ -176,15 +176,6 @@ FBGraphObjectPagingLoaderDelegate>
     self.loader.tableView = self.tableView;
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    self.loader.tableView = nil;
-    self.spinner = nil;
-    self.tableView = nil;
-}
-
 - (void)loadData
 {
     [self loadDataThrottledSkippingRoundTripIfCached:[NSNumber numberWithBool:YES]];

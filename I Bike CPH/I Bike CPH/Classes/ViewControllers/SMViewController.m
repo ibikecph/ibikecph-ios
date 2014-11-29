@@ -177,49 +177,8 @@ typedef enum {
     
 }
 
-- (void)viewDidUnload {
-    self.mpView = nil;
-    menuView = nil;
-    centerView = nil;
-    dropPinView = nil;
-    tblMenu = nil;
-    fadeView = nil;
-    buttonTrackUser = nil;
-    favHeader = nil;
-    accHeader = nil;
-    infHeader = nil;
-    favEditStart = nil;
-    favEditDone = nil;
-    addFavFavoriteButton = nil;
-    addFavHomeButton = nil;
-    addFavWorkButton = nil;
-    addFavSchoolButton = nil;
-    addFavAddress = nil;
-    addFavName = nil;
-    mainMenu = nil;
-    addMenu = nil;
-    editTitle = nil;
-    editSaveButton = nil;
-    editDeleteButton = nil;
-    addSaveButton = nil;
-    blockingView = nil;
-    findRouteBig = nil;
-    findRouteSmall = nil;
-    self.tableFooter = nil;
-    account_label = nil;
-    routeStreet = nil;
-    menuBtn = nil;
-    menuBtn = nil;
-    pinButton = nil;
-    [super viewDidUnload];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        statusbarView.hidden = YES;
-    }
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
@@ -1509,9 +1468,7 @@ typedef enum {
                 [self openMenu:menuFavorites];
             }];
         }
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-            [self setNeedsStatusBarAppearanceUpdate];
-        }
+        [self setNeedsStatusBarAppearanceUpdate];
     }
 }
 

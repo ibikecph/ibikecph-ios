@@ -49,15 +49,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidUnload {
-    scrlView = nil;
-    registerName = nil;
-    registerEmail = nil;
-    registerPassword = nil;
-    registerRepeatPassword = nil;
-    registerImage = nil;
-    [super viewDidUnload];
-}
 
 #pragma mark - button actions
 

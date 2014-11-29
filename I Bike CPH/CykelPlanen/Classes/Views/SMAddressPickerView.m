@@ -32,15 +32,9 @@
 
 -(void)setup{
     
-//    NSString* verStr = [[UIDevice currentDevice] systemVersion];
-//    double ver = [verStr doubleValue];
-//    if ( ver >= 7 ) {
-        self.backgroundColor= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-        self.opaque= YES;
-//    } else {
-//        self.backgroundColor= [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
-//        self.opaque= NO;
-//    }
+    self.backgroundColor= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    self.opaque= YES;
+
     self.addressType= AddressTypeUndefined;
     
     self.sourceCurrentIndex= 0;

@@ -89,16 +89,5 @@
 - (void) goToNextView{
     [self performSegueWithIdentifier:@"goToFavorites" sender:self];
 }
-- (void)viewDidUnload {
-    [self setScreenTitle:nil];
-    [self setScreenText:nil];
-    [self setBtnSave:nil];
-    [self setBtnSkip:nil];
-    [self setMonday:nil];
-    [self setTuesday:nil];
-    [self setWednesday:nil];
-    [self setThursday:nil];
-    [self setFriday:nil];
-    [super viewDidUnload];
-}
+
 @end

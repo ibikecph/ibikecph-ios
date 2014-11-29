@@ -343,13 +343,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{}
 
-- (void)viewDidUnload {
-    [self setTitle:nil];
-    [self setButtonAddressSource:nil];
-    [self setButtonAddressDestination:nil];
-    [super viewDidUnload];
-}
-
 -(IBAction)onSourceAddressButtonTap:(id)sender {
     [self displayAddressViewWithAddressType:AddressTypeSource model:sourceStationsFiltered];
 }
