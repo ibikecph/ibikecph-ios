@@ -46,11 +46,5 @@
 - (IBAction)onExit:(UIButton *)sender {
     [self performSegueWithIdentifier:@"firstTimeIntroToMap" sender:self];
 }
-- (void)viewDidUnload {
-    [self setBtnExitGuide:nil];
-    [self setScreenTitle:nil];
-    [self setScreenTopText:nil];
-    [self setScreenBottomText:nil];
-    [super viewDidUnload];
-}
+
 @end

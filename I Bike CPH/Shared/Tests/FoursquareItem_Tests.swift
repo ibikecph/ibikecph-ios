@@ -35,7 +35,7 @@ class FoursquareItem_Tests: XCTestCase {
         serverResponse["location"] = locationResponse
         serverResponse["name"] = "Frederiksberg Rådhusplads"
         
-        let foursquareItem = FoursquareItem(json: serverResponse as AnyObject)
+        let foursquareItem = FoursquareItem(jsonDictionary: serverResponse as AnyObject)
         
         XCTAssert(foursquareItem.name == "Frederiksberg Rådhusplads", "Wrong name")
         XCTAssert(foursquareItem.address == "Smallegade 1", "Wrong address")

@@ -239,12 +239,6 @@
     self.backgroundImageView.image = [UIImage imageNamed:imagePath];
 }
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [self updateBackgroundImage];
 }

@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet AsyncImageView *iconImage;
 
 + (CGFloat)getHeight;
-- (void)setImageWithData:(NSDictionary*)currentRow;
+- (void)setImageWithType:(SearchListItemType)type;
+- (void)setImageWithFavoriteType:(FavoriteItemType)type;
 
 @end

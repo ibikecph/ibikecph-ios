@@ -269,12 +269,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewDidUnload {
-    [self setTableView:nil];
-    [self setTitleLabel:nil];
-    [super viewDidUnload];
-}
-
 - (IBAction)didTapOnBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }

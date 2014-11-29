@@ -29,13 +29,6 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)viewDidUnload {
-    emailField = nil;
-    scrlView = nil;
-    [super viewDidUnload];
-}
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GAITrackedViewController.h"
-#import "SMAppDelegate.h";
+#import "SMAppDelegate.h"
 
 /**
  * Base class for all the view controller
