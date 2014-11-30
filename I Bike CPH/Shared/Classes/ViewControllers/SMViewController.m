@@ -35,6 +35,16 @@
 #import "DAKeyboardControl.h"
 #import "SMFavoritesUtil.h"
 #import "SMAPIRequest.h"
+
+#import "SMReminderTableViewCell.h"
+
+#import "SMRouteTypeSelectCell.h"
+
+#import "SMTransportation.h"
+#import "SMTransportationLine.h"
+#import "SMStationInfo.h"
+#import "SMLoadStationsView.h"
+
 #import "UIView+LocateSubview.h"
 
 typedef enum {
@@ -61,6 +71,13 @@ typedef enum {
 @property (nonatomic, strong) SMContacts *contacts;
 @property (nonatomic, strong) RMMapView *mpView;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnReminders;
+@property (weak, nonatomic) IBOutlet UIView *headerReminders;
+@property (weak, nonatomic) IBOutlet UITableView *tblFavorites;
+@property (weak, nonatomic) IBOutlet UIButton *btnFavorites;
+@property (weak, nonatomic) IBOutlet UIImageView *imgReminders;
+@property BOOL reminderFolded;
+
 /**
  * data sources for tables
  */
@@ -76,10 +93,12 @@ typedef enum {
 
 @property (nonatomic, strong) id jsonRoot;
 
+@property (weak, nonatomic) IBOutlet UITableView *overlaysMenuTable;
+@property (nonatomic, strong) NSArray* overlaysMenuItems;
 
 
-@property CLLocationCoordinate2D startLoc;
-@property CLLocationCoordinate2D endLoc;
+@property (nonatomic, strong) CLLocation *startLoc;
+@property (nonatomic, strong) CLLocation *endLoc;
 @property (nonatomic, strong) NSString * startName;
 @property (nonatomic, strong) NSString * endName;
 
@@ -90,12 +109,13 @@ typedef enum {
 @property (nonatomic, strong) SMFavoritesUtil * favs;
 
 @property (nonatomic, strong) SMAPIRequest * request;
+@property (nonatomic, strong) SMLoadStationsView *loadView;
+
 @end
 
-@implementation SMViewController
-
-
-
+@implementation SMViewController{
+    BOOL observersAdded;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -127,13 +147,8 @@ typedef enum {
     self.favorites = [@[] mutableCopy];
     [self setFavoritesList:[SMFavoritesUtil getFavorites]];
 
-    /**
-     * removed for alpha
-     */
-//    [self performSelector:@selector(getPhoneContacts) withObject:nil afterDelay:0.001f];
-    /**
-     * end alpha remove
-     */
+    // TODO: From CykelPlanen
+//     [self.appDelegate.mapOverlays loadMarkers];
     
     currentScreen = screenMap;
     [self.mpView setTileSource:TILE_SOURCE];
@@ -143,7 +158,6 @@ typedef enum {
     
     [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake(55.675455,12.566643) animated:NO];
     [self.mpView setZoom:16];
-//    [self.mpView zoomByFactor:1 near:CGPointMake(self.mpView.frame.size.width/2.0f, self.mpView.frame.size.height/2.0f) animated:NO];
     [self.mpView setEnableBouncing:TRUE];
     
     [self openMenu:menuFavorites];
@@ -164,6 +178,38 @@ typedef enum {
     [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:menuBtn];
     [centerView addPullView:blockingView];
 
+    // TODO: From CykelPlanen
+//    [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:overlayMenuBtn];
+//    
+//    [self setTitle:translateString(@"reminder_title") forButton:remindersHeaderButton];
+//    [self setTitle:translateString(@"account") forButton:accountHeaderButton];
+//    [self setTitle:translateString(@"about_css") forButton:aboutHeaderButton];
+//    
+//    [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:overlayMenuBtn];
+//    
+//    [self setTitle:translateString(@"reminder_title") forButton:remindersHeaderButton];
+//    [self setTitle:translateString(@"account") forButton:accountHeaderButton];
+//    [self setTitle:translateString(@"about_css") forButton:aboutHeaderButton];
+//    
+//    self.overlaysMenuItems = OSRM_SERVERS;
+//    [self.overlaysMenuTable setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+//    [self.overlaysMenuTable reloadData];
+//    
+//    if ( self.appDelegate.mapOverlays == nil ) {
+//        self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
+//    }
+//    [self.appDelegate.mapOverlays useMapView:self.mpView];
+//    [self.appDelegate.mapOverlays loadMarkers];
+//    
+//    UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapMenuBtn:)];
+//    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanMenuBtn:)];
+//    [menuBtn addGestureRecognizer:singleTap];
+//    [menuBtn addGestureRecognizer:panGesture];
+//    
+//    UITapGestureRecognizer* singleTapOverlayMenu = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapOverlayMenuBtn:)];
+//    UIPanGestureRecognizer* panGestureOverlayMenu = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanOverlayMenuBtn:)];
+//    [overlayMenuBtn addGestureRecognizer:singleTapOverlayMenu];
+//    [overlayMenuBtn addGestureRecognizer:panGestureOverlayMenu];
 }
 
 - (void)invalidToken:(NSNotification*)notification {
@@ -187,12 +233,6 @@ typedef enum {
     self.findFrom = @"";
     self.findTo = @"";
     
-//#if DEBUG
-//    [debugLabel setText:BUILD_STRING];
-//#else
-//    [debugLabel setText:@""];
-//#endif
-    
     findRouteSmall.alpha = 1.0f;
     findRouteBig.alpha = 0.0f;
     
@@ -206,13 +246,18 @@ typedef enum {
 
 - (void)viewWillDisappear:(BOOL)animated {
     [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
-    @try{
-        [self.mpView removeObserver:self forKeyPath:@"userTrackingMode" context:nil];
-        [centerView removeObserver:self forKeyPath:@"frame"];
-        [tblMenu removeObserver:self forKeyPath:@"editing"];
-    }@catch(id anException){
+
+    if(_loadView){
+        [self.loadView.activityIndicatorView stopAnimating];
+        [self.loadView removeFromSuperview];
+        _loadView= nil;
     }
     
+    if(observersAdded){
+        [self.mpView removeObserver:self forKeyPath:@"userTrackingMode"];
+        [centerView removeObserver:self forKeyPath:@"frame"];
+        [tblMenu removeObserver:self forKeyPath:@"editing"];
+    }
     CGRect frame = dropPinView.frame;
     frame.origin.y = self.mpView.frame.origin.y + self.mpView.frame.size.height;
     [dropPinView setFrame:frame];
@@ -228,6 +273,75 @@ typedef enum {
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [SMUser user].tripRoute= nil;
+    [SMUser user].route= nil;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLoadTransformationData:) name:NOTIFICATION_DID_PARSE_DATA_KEY object:nil];
+    if([SMTransportation instance].dataLoaded){
+        [self loadLastRoute];
+    }else{
+        NSLog(@"DATA NOT LOADED... SHOWING VIEW");
+        self.loadView= [[SMLoadStationsView alloc] initWithFrame:self.view.bounds];
+        [self.loadView setup];
+        [self.view addSubview:self.loadView];
+    }
+    [self.mpView setUserTrackingMode:RMUserTrackingModeFollow];
+    
+    if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
+        SMFavoritesUtil * fv = [[SMFavoritesUtil alloc] initWithDelegate:self];
+        [self setFavs:fv];
+        [self.favs fetchFavoritesFromServer];
+    } else {
+        [self favoritesChanged:nil];
+    }
+
+    // TODO: From CykelPlanen
+//    [self.appDelegate.mapOverlays useMapView:self.mpView];
+//    [self.appDelegate.mapOverlays toggleMarkers];
+//    
+//    for (SMAnnotation* annotation in self.mpView.annotations) {
+//        if ([annotation isKindOfClass:[SMAnnotation class]] && [annotation.annotationType isEqualToString:@"station"]) {
+//            [annotation hideCallout];
+//        }
+//    }
+//    
+//    if ( self.appDelegate.mapOverlays.pathVisible )
+//        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+//    if ( self.appDelegate.mapOverlays.serviceMarkersVisible )
+//        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+//    if ( self.appDelegate.mapOverlays.stationMarkersVisible )
+//        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+//    if ( self.appDelegate.mapOverlays.metroMarkersVisible )
+//        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+//    
+//    for (SMAnnotation* annotation in self.mpView.annotations) {
+//        if ([annotation isKindOfClass:[SMAnnotation class]] && [annotation.annotationType isEqualToString:@"station"]) {
+//            [annotation hideCallout];
+//        }
+//    }
+
+}
+
+-(void)didLoadTransformationData:(NSNotification*)notification{
+    NSLog(@"NOTIFICATION");
+    if(self.loadView){
+        [self performSelectorOnMainThread:@selector(hideLoadingView) withObject:nil waitUntilDone:NO];
+
+    }else{
+        [self performSelectorOnMainThread:@selector(loadLastRoute) withObject:nil waitUntilDone:NO];
+    }
+}
+
+-(void)hideLoadingView{
+    [UIView animateWithDuration:0.4 delay:0.0 options:0 animations:^{
+        self.loadView.alpha= 0.0;
+    } completion:^(BOOL finished){
+        [self.loadView removeFromSuperview];
+        _loadView= nil;
+        [self performSelectorOnMainThread:@selector(loadLastRoute) withObject:nil waitUntilDone:NO];
+    }];
+}
+-(void)loadLastRoute{
     if ([[NSFileManager defaultManager] fileExistsAtPath: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]]) {
         NSDictionary * d = [NSDictionary dictionaryWithContentsOfFile: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]];
         
@@ -248,6 +362,7 @@ typedef enum {
         [r setAuxParam:d[@"destination"]];
         [r findNearestPointForStart:cStart andEnd:cEnd];                
     } else {
+        observersAdded= YES;
         [self.mpView addObserver:self forKeyPath:@"userTrackingMode" options:0 context:nil];
         [tblMenu addObserver:self forKeyPath:@"editing" options:0 context:nil];
         [centerView addObserver:self forKeyPath:@"frame" options:0 context:nil];
@@ -364,6 +479,9 @@ typedef enum {
     }];
 }
 
+- (IBAction)onSelectAccount:(UIButton *)sender {
+    [self tapAccount:sender];
+}
 
 - (IBAction)tapAccount:(id)sender {
     if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
@@ -371,6 +489,10 @@ typedef enum {
     } else {
         [self performSegueWithIdentifier:@"mainToLogin" sender:nil];
     }
+}
+
+- (IBAction)onSelectInfo:(UIButton *)sender {
+    [self tapInfo:sender];
 }
 
 - (IBAction)tapInfo:(id)sender {
@@ -395,7 +517,12 @@ typedef enum {
     debugLog(@"pin drop LOC: %@", loc);
     debugLog(@"pin drop POINT: %@", NSStringFromCGPoint(point));
     
-    
+    [self displayPinWithPoint:point atLocation:loc ];
+    [self showPinDrop];
+    [self displayDestinationNameWithLocation:loc];
+}
+
+-(void)displayPinWithPoint:(CGPoint)point atLocation:(CLLocation*)loc{
     UIImageView * im = [[UIImageView alloc] initWithFrame:CGRectMake(point.x - 17.0f, 0.0f, 34.0f, 34.0f)];
     [im setImage:[UIImage imageNamed:@"markerFinish"]];
     [self.mpView addSubview:im];
@@ -403,52 +530,61 @@ typedef enum {
         [im setFrame:CGRectMake(point.x - 17.0f, point.y - 34.0f, 34.0f, 34.0f)];
     } completion:^(BOOL finished) {
         debugLog(@"dropped pin");
-        [self.mpView removeAllAnnotations];
-        SMAnnotation *endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:@""];
-        endMarkerAnnotation.annotationType = @"marker";
-        endMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerFinish"];
-        endMarkerAnnotation.anchorPoint = CGPointMake(0.5, 1.0);
-        [self.mpView addAnnotation:endMarkerAnnotation];
-        [self setDestinationPin:endMarkerAnnotation];
         
-        [self.destinationPin setSubtitle:@""];
-        [self.destinationPin setDelegate:self];
-        [self.destinationPin setRoutingCoordinate:loc];
-
+        if (self.endMarkerAnnotation != nil ) {
+            [self.mpView removeAnnotation:self.endMarkerAnnotation];
+            self.endMarkerAnnotation = nil;
+            self.endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:loc.coordinate andTitle:@""];
+        }
+        
+        self.endMarkerAnnotation.annotationType = @"marker";
+        self.endMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerFinish"];
+        self.endMarkerAnnotation.anchorPoint = CGPointMake(0.5, 1.0);
+        [self.mpView addAnnotation:self.endMarkerAnnotation];
+        [self setDestinationAnnotation:self.endMarkerAnnotation withLocation:loc];
         
         [im removeFromSuperview];
-        
-        [self showPinDrop];
-        
-        [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
-            [routeStreet setText:response[@"title"]];
-            if ([routeStreet.text isEqualToString:@""]) {
-                [routeStreet setText:[NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude]];
-            }
-            
-            NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF.name = %@ AND SELF.address = %@", routeStreet.text, routeStreet.text];
-            NSArray * arr = [[SMFavoritesUtil getFavorites] filteredArrayUsingPredicate:pred];
-            if ([arr count] > 0) {
-                [pinButton setSelected:YES];
-            } else {
-                [pinButton setSelected:NO];
-            }
-            if ([self.appDelegate.appSettings objectForKey:@"auth_token"] && [[self.appDelegate.appSettings objectForKey:@"auth_token"] isKindOfClass:[NSString class]] && [[self.appDelegate.appSettings objectForKey:@"auth_token"] isEqualToString:@""] == NO) {
-                pinButton.enabled = YES;
-            } else {
-                pinButton.enabled = NO;
-            }
-            
-//            [self.destinationPin setSubtitle:@""];
-            [self.destinationPin setTitle:response[@"title"]];
-//            [self.destinationPin setDelegate:self];
-//            [self.destinationPin setRoutingCoordinate:loc];
-        }];
-        
-//        SMNearbyPlaces * np = [[SMNearbyPlaces alloc] initWithDelegate:self];
-//        [np findPlacesForLocation:[[CLLocation alloc] initWithLatitude:loc.coordinate.latitude longitude:loc.coordinate.longitude]];
     }];
+}
 
+-(void)setDestinationAnnotation:(SMAnnotation*)annotation withLocation:(CLLocation*)loc{
+    [self setDestinationPin:annotation];
+    
+    [self.destinationPin setSubtitle:@""];
+    [self.destinationPin setDelegate:self];
+    [self.destinationPin setRoutingCoordinate:loc];
+}
+
+-(void)displayDestinationNameWithString:(NSString*)str{
+    [routeStreet setText:str];
+}
+
+-(void)displayDestinationNameWithLocation:(CLLocation*)loc{
+    [SMGeocoder reverseGeocode:loc.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
+        NSLog(@"reverse geocode error: %@", error);
+        NSLog(@"Pin at: %@", [response objectForKey:@"title"]);
+        [routeStreet setText:response[@"title"]];
+        if ([routeStreet.text isEqualToString:@""]) {
+            [routeStreet setText:[NSString stringWithFormat:@"%f, %f", loc.coordinate.latitude, loc.coordinate.longitude]];
+        }
+        
+        NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF.name = %@ AND SELF.address = %@", routeStreet.text, routeStreet.text];
+        NSArray * arr = [[SMFavoritesUtil getFavorites] filteredArrayUsingPredicate:pred];
+        if ([arr count] > 0) {
+            [pinButton setSelected:YES];
+        } else {
+            [pinButton setSelected:NO];
+        }
+        NSString *token = self.appDelegate.appSettings[@"auth_token"];
+        if (token && [token isKindOfClass:[NSString class]] && [token isEqualToString:@""] == NO) {
+            pinButton.enabled = YES;
+        } else {
+            pinButton.enabled = NO;
+        }
+        
+        [self.destinationPin setTitle:response[@"title"]];
+    }];
+    
 }
 
 - (void)readjustViewsForRotation:(UIInterfaceOrientation) orientation {
@@ -539,6 +675,10 @@ typedef enum {
         frame.origin.y = dropPinView.frame.origin.y - 65.0f;
         [buttonTrackUser setFrame:frame];
         
+        frame = overlayMenuBtn.frame;
+        frame.origin.y = dropPinView.frame.origin.y - 65.0f;
+        [overlayMenuBtn setFrame:frame];
+        
     } completion:^(BOOL finished) {
     }];
 }
@@ -551,6 +691,11 @@ typedef enum {
         frame = buttonTrackUser.frame;
         frame.origin.y = dropPinView.frame.origin.y - 65.0f;
         [buttonTrackUser setFrame:frame];
+        
+        frame = overlayMenuBtn.frame;
+        frame.origin.y = dropPinView.frame.origin.y - 65.0f;
+        [overlayMenuBtn setFrame:frame];
+        
     } completion:^(BOOL finished) {
         
     }];
@@ -861,9 +1006,6 @@ typedef enum {
     currentFav = typeSchool;
 }
 
-
-
-
 - (IBAction)startEdit:(id)sender {
     [tblMenu setEditing:YES];
     [tblMenu reloadData];
@@ -894,8 +1036,6 @@ typedef enum {
 
     if ([SMLocationManager instance].hasValidLocation) {
         [self.mpView setUserTrackingMode:RMUserTrackingModeFollow];
-//        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(trackingOn) object:nil];
-//        [self performSelector:@selector(trackingOn) withObject:nil afterDelay:1.0];
         [self.mpView setCenterCoordinate:[SMLocationManager instance].lastValidLocation.coordinate];
     } else {
         [self.mpView setUserTrackingMode:RMUserTrackingModeFollow];
@@ -933,7 +1073,6 @@ typedef enum {
                 [v removeFromSuperview];
             }
         }
-
         
         NSDictionary * params = (NSDictionary*)sender;
         SMRouteNavigationController *destViewController = segue.destinationViewController;
@@ -963,19 +1102,100 @@ typedef enum {
     }
 }
 
+
+- (IBAction)toggleReminders:(UIButton *)sender {
+    self.reminderFolded = !self.reminderFolded;
+    
+    if (self.headerReminders.frame.size.height <= 50) {
+        self.reminderFolded = YES;
+    }
+    
+    CGFloat startY = favHeader.frame.origin.y;
+    CGFloat maxHeight = menuView.frame.size.height - 0;//startY;
+    if ( self.reminderFolded ) {
+        
+        [UIView animateWithDuration:0.4f animations:^{
+            //[self openMenu:menuReminders];
+            
+            [self.imgReminders setImage:[UIImage imageNamed:@"reminders_arrow_up"]];
+            
+            [favEditDone setHidden:YES];
+            [favEditStart setHidden:YES];
+            CGRect frame = favHeader.frame;
+            frame.size.height = 45.0f;
+            [favHeader setFrame:frame];
+            
+            frame = self.headerReminders.frame;
+            frame.origin.y = favHeader.frame.origin.y + 45.0f;
+            frame.size.height = maxHeight - 3 * 45.0f;
+            [self.headerReminders setFrame:frame];
+            
+            float startY = self.headerReminders.frame.origin.y + 6*45; //self.headerReminders.frame.size.height;
+            
+            frame = favHeader.frame;
+            //frame.origin.y = 0; //startY;
+            frame.size.height = 45.0f;
+            [favHeader setFrame:frame];
+            
+            frame = accHeader.frame;
+            frame.origin.y = startY;
+            frame.size.height = 45.0f;
+            [accHeader setFrame:frame];
+            
+            frame = infHeader.frame;
+            frame.origin.y = startY + 45.0f;
+            frame.size.height = 45.0f;
+            [infHeader setFrame:frame];
+            
+        }];
+    } else {
+        [UIView animateWithDuration:0.4f animations:^{
+             [self.imgReminders setImage:[UIImage imageNamed:@"reminders_arrow_down"]];
+            [self openMenu:menuFavorites];
+        }];
+        
+    }
+}
+
 #pragma mark - tableview delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    
+    if (tableView == self.overlaysMenuTable) {
+        return 1;
+    }
+    
+    if (tableView == self.tblFavorites) {
+        return 1;
+    } else {
+        return 2;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([self.favoritesList count] > 0) {
+    
+    if (tableView == self.overlaysMenuTable) {
+        return [self.overlaysMenuItems count];
+    }
+    
+    if (tableView == self.tblFavorites) {
+        return 5;
+    }
+    
+    if (section == 0) {
+        if ([self.favoritesList count] > 0) {
+            return [self.favoritesList count];
+        } else {
+            return 1;
+        }
         return [self.favoritesList count];
     } else {
-        return 1;
+        if ( self.reminderFolded ){
+            return 0;
+        } else {
+            return 0;
+        }
     }
-    return [self.favoritesList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -1046,9 +1266,36 @@ typedef enum {
     return cell;
 }
 
+- (void)overlaysMenuItemSelected:(int)row selected:(BOOL)pSelected{
+    // TODO: From CykelPlanen
+//    if (row == 0){
+//        [self.appDelegate.mapOverlays toggleMarkers:@"path" state:pSelected];
+//    } else if ( row == 1 ) {
+//        [self.appDelegate.mapOverlays toggleMarkers:@"service" state:pSelected];
+//    } else if ( row == 2 ) {
+//        [self.appDelegate.mapOverlays toggleMarkers:@"station" state:pSelected];
+//    } else if ( row == 3 ) {
+//        [self.appDelegate.mapOverlays toggleMarkers:@"metro" state:pSelected];
+//    } else if ( row == 4 ) {
+//        [self.appDelegate.mapOverlays toggleMarkers:@"local-trains" state:pSelected];
+//    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if( tableView == self.overlaysMenuTable ){
+        [self overlaysMenuItemSelected:indexPath.row selected:NO];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if( tableView == self.overlaysMenuTable ){
+        [self overlaysMenuItemSelected:indexPath.row selected:YES];
+        return;
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (tableView == tblMenu) {
+    if (tableView == tblMenu && indexPath.section == 0) {
         if ([self.favoritesList count] == 0) {
             if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
                 /**
@@ -1100,9 +1347,17 @@ typedef enum {
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(tableView==self.overlaysMenuTable) {
+        return [SMRouteTypeSelectCell getHeight];
+    }
+    
     if (tableView == tblMenu) {
         if ([self.favoritesList count] == 0) {
-            return [SMEmptyFavoritesCell getHeight];
+            if ( indexPath.section == 0 ) {
+                return [SMEmptyFavoritesCell getHeight];
+            } else if ( indexPath.section == 1) {
+                return 45.0f;
+            }
         } else {
             return [SMMenuCell getHeight];
         }
@@ -1116,7 +1371,7 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     if (tableView == tblMenu) {
-        if ([self.favoritesList count] <= 1) {
+        if ([self.favoritesList count] == 0) {
             return;
         }
         NSDictionary * src = [self.favoritesList objectAtIndex:sourceIndexPath.row];
@@ -1195,7 +1450,7 @@ typedef enum {
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    if (tableView == tblMenu) {
+    if (tableView == tblMenu && section == 0) {
         if (tableView.isEditing) {
             return [[UIView alloc] initWithFrame:CGRectZero];
         } else {
@@ -1206,12 +1461,32 @@ typedef enum {
             }
         }
     } else {
-        return nil;
+        return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    }
+}
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if ( section == 0 ) {
+        return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    } else {
+        return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (tableView == tblMenu) {
+        if (section == 0) {
+            return 0;
+        } else {
+            return 0;
+        }
+    } else {
+        return 0;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (tableView == tblMenu) {
+    if (tableView == tblMenu && section == 0) {
         if (tableView.isEditing) {
             return 0.0f;
         } else {
@@ -1265,14 +1540,67 @@ typedef enum {
 }
 
 - (void)mapViewRegionDidChange:(RMMapView *)mapView {
+    
+    float t = MAX((mapView.zoom / 10.0) - 1.0, 0.0)*2.0;
+    float zoom = lerp(0.35, 1.5, t);
+    
+    for (SMAnnotation* an in mapView.annotations) {
+        if ([an.annotationType isEqualToString:@"station"]) {
+            RMMarker* marker = (RMMarker*)(an.layer);
+            [marker updateBoundsWithZoom: zoom];
+        }
+    }
+
     [self checkCallouts];
 }
 
+float lerp(float a, float b, float t) {
+    return b*t + (1.0-t)*a;
+}
+
 - (RMMapLayer *)mapView:(RMMapView *)aMapView layerForAnnotation:(SMAnnotation *)annotation {
-    if ([annotation.annotationType isEqualToString:@"marker"]) {
+    if ([annotation.annotationType isEqualToString:@"marker"] || [annotation.annotationType isEqualToString:@"station"]) {
         RMMarker * m = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
         return m;
     }
+
+    if ([annotation.annotationType isEqualToString:@"path"]) {
+        RMShape *path = [[RMShape alloc] initWithView:aMapView];
+        [path setZPosition:-MAXFLOAT];
+        [path setLineColor:[annotation.userInfo objectForKey:@"lineColor"]];
+        [path setOpacity:PATH_OPACITY];
+        [path setFillColor:[annotation.userInfo objectForKey:@"fillColor"]];
+        [path setLineWidth:[[annotation.userInfo objectForKey:@"lineWidth"] floatValue]];
+        path.scaleLineWidth = NO;
+        
+        if ([[annotation.userInfo objectForKey:@"closePath"] boolValue])
+            [path closePath];
+        
+        @synchronized([annotation.userInfo objectForKey:@"linePoints"]) {
+            for (CLLocation *location in [annotation.userInfo objectForKey:@"linePoints"]) {
+                [path addLineToCoordinate:location.coordinate];
+            }
+        }
+        return path;
+    }
+    
+    if ([annotation.annotationType isEqualToString:@"line"]) {
+        RMShape *line = [[RMShape alloc] initWithView:aMapView];
+        [line setZPosition:-MAXFLOAT];
+        [line setLineColor:[annotation.userInfo objectForKey:@"lineColor"]];
+        [line setOpacity:PATH_OPACITY];
+        [line setFillColor:[annotation.userInfo objectForKey:@"fillColor"]];
+        [line setLineWidth:[[annotation.userInfo objectForKey:@"lineWidth"] floatValue]];
+        line.scaleLineWidth = YES;
+        
+        CLLocation *start = [annotation.userInfo objectForKey:@"lineStart"];
+        [line addLineToCoordinate:start.coordinate];
+        CLLocation *end = [annotation.userInfo objectForKey:@"lineEnd"];
+        [line addLineToCoordinate:end.coordinate];
+        
+        return line;
+    }
+    
     return nil;
 }
 
@@ -1285,15 +1613,39 @@ typedef enum {
 }
 
 - (void)tapOnAnnotation:(SMAnnotation *)annotation onMap:(RMMapView *)map {
-    if ([annotation.annotationType isEqualToString:@"marker"]) {
-        for (id v in self.mpView.subviews) {
-            if ([v isKindOfClass:[SMCalloutView class]]) {
-                [v removeFromSuperview];
-            }
+    for (id v in self.mpView.subviews) {
+        if ([v isKindOfClass:[SMCalloutView class]]) {
+            [v removeFromSuperview];
         }
-        [self.mpView removeAllAnnotations];
-        [self hidePinDrop];
     }
+    [self.mpView removeAllAnnotations];
+    [self hidePinDrop];
+    
+    BOOL visible = NO;
+    if (annotation.calloutShown)
+        visible = YES;
+    
+    // TODO: From CykelPlanen
+//    for (SMAnnotation* ann in map.annotations) {
+//        if ([ann isKindOfClass:[SMAnnotation class]]) {
+//            [ann hideCallout];
+//        }
+//    }
+//    NSLog(@"ANNOTATION SELECTED: %@", annotation.annotationType.lowercaseString);
+//    if([annotation.annotationType.lowercaseString isEqualToString:@"station"]){
+//        SMStationInfo* station= [annotation.userInfo objectForKey:@"station"];
+//        //if(station){
+//        [self showPinDrop];
+//        [self displayDestinationNameWithString:station.name];
+//        [self setDestinationAnnotation:annotation withLocation:station.location];
+//        
+//        if (visible)
+//            [annotation hideCallout];
+//        else
+//            [annotation showCallout];
+//        
+//        RMMapLayer* layer= [self mapView:map layerForAnnotation:annotation];
+//    }
 }
 
 #pragma mark - SMAnnotation delegate methods
@@ -1322,9 +1674,15 @@ typedef enum {
         debugLog(@"error in trackPageview");
     }
     self.startName = CURRENT_POSITION_STRING;
-    self.endName = annotation.title;
-    self.startLoc = cStart.coordinate;
-    self.endLoc = cEnd.coordinate;
+    SMStationInfo* station= [annotation.userInfo objectForKey:@"station"];
+    if(station){
+        self.endName= station.name;
+    }else{
+        self.endName = annotation.title;
+    }
+
+    self.startLoc = cStart;
+    self.endLoc = cEnd;
     SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
     [r setAuxParam:@"startRoute"];
     [r getRouteFrom:cStart.coordinate to:cEnd.coordinate via:nil];
@@ -1355,15 +1713,6 @@ typedef enum {
         pinButton.enabled = YES;
     }
     
-    
-//    [self.destinationPin setSubtitle:owner.subtitle];
-//    [self.destinationPin setTitle:owner.title];
-//    [self.destinationPin setDelegate:self];
-//    [self.destinationPin setRoutingCoordinate:owner.coord];
-//    [self.destinationPin showCallout];
-    
-    
-    
     [self showPinDrop];
 }
 
@@ -1392,8 +1741,8 @@ typedef enum {
         
         self.startName = CURRENT_POSITION_STRING;
         self.endName = req.auxParam;
-        self.startLoc = s.coordinate;
-        self.endLoc = e.coordinate;
+        self.startLoc = s;
+        self.endLoc = e;
         
         SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
         [r setAuxParam:@"startRoute"];
@@ -1404,10 +1753,41 @@ typedef enum {
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_route_not_found") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
         } else {
-            [self findRouteFrom:self.startLoc to:self.endLoc fromAddress:self.startName toAddress:self.endName withJSON:jsonRoot];
-            [self dismissViewControllerAnimated:YES completion:^{
-            }];
+            [self findRouteFrom:self.startLoc.coordinate to:self.endLoc.coordinate fromAddress:self.startName toAddress:self.endName withJSON:jsonRoot];
             
+            NSDictionary* dict= jsonRoot;
+            
+            NSDictionary* routeDict= [dict objectForKey:@"route_summary"];
+            NSString* name= [routeDict objectForKey:@"end_point"];
+            NSString* address= [routeDict objectForKey:@"end_point"];
+            
+            address = self.endName;
+            name = self.endName;
+            
+            [SMGeocoder reverseGeocode:self.endLoc.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
+                NSString* streetName = [response objectForKey:@"title"];
+                
+                NSLog(@"Recent: %@ address: %@", self.endName, streetName);
+                
+                NSString* new_address = streetName;
+                NSString* new_name = streetName;
+                
+                if ([streetName isEqualToString:self.endName]) {
+                    new_name = streetName;
+                    new_address = streetName;
+                } else {
+                    new_name = self.endName;
+                    new_address = streetName;
+                }
+                if ([new_name isEqualToString:@""]) {
+                    new_name = [NSString stringWithFormat:@"%f, %f", self.endLoc.coordinate.latitude, self.endLoc.coordinate.longitude];
+                }
+                if(new_address && new_name){
+                    HistoryItem *item = [[HistoryItem alloc] initWithName:new_name address:new_address location:self.endLoc startDate:[NSDate date] endDate:[NSDate date]];
+                    [SMSearchHistory saveToSearchHistory:item];
+                }
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
         }
         [UIView animateWithDuration:0.4f animations:^{
             [fadeView setAlpha:0.0f];
@@ -1570,11 +1950,7 @@ typedef enum {
 #pragma mark - statusbar style
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-//    if (centerView.frame.origin.x == 0.0f) {
-//        return UIStatusBarStyleDefault;
-//    } else {
-        return UIStatusBarStyleLightContent;
-//    }
+    return UIStatusBarStyleLightContent;
 }
 
 @end

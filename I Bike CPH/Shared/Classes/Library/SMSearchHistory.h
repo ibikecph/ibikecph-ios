@@ -23,7 +23,7 @@
 
 + (SMSearchHistory *)instance;
 + (NSArray*)getSearchHistory;
-+ (BOOL)saveToSearchHistory:(NSDictionary*)dict;
++ (BOOL)saveToSearchHistory:(HistoryItem *)item;
 + (BOOL) saveSearchHistory;
 
 - (void)fetchSearchHistoryFromServer;

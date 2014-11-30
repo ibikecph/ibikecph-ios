@@ -24,20 +24,6 @@
 		4E5982171A24AC1200A40484 /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982081A24AC1200A40484 /* SearchListItem.swift */; };
 		4E5982181A24AC1200A40484 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982091A24AC1200A40484 /* User.swift */; };
 		4E5982191A24AC1200A40484 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982091A24AC1200A40484 /* User.swift */; };
-		4E59821A1A24AC3500A40484 /* CurrentLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */; };
-		4E59821B1A24AC3600A40484 /* CurrentLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */; };
-		4E59821C1A24AC3B00A40484 /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982031A24AC1200A40484 /* FavoriteItem.swift */; };
-		4E59821D1A24AC3B00A40484 /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982041A24AC1200A40484 /* FoursquareItem.swift */; };
-		4E59821E1A24AC3B00A40484 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982051A24AC1200A40484 /* HistoryItem.swift */; };
-		4E59821F1A24AC3B00A40484 /* KortforItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982061A24AC1200A40484 /* KortforItem.swift */; };
-		4E5982201A24AC3C00A40484 /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982031A24AC1200A40484 /* FavoriteItem.swift */; };
-		4E5982211A24AC3C00A40484 /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982041A24AC1200A40484 /* FoursquareItem.swift */; };
-		4E5982221A24AC3C00A40484 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982051A24AC1200A40484 /* HistoryItem.swift */; };
-		4E5982231A24AC3C00A40484 /* KortforItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982061A24AC1200A40484 /* KortforItem.swift */; };
-		4E5982241A24AC3E00A40484 /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982081A24AC1200A40484 /* SearchListItem.swift */; };
-		4E5982251A24AC3E00A40484 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982091A24AC1200A40484 /* User.swift */; };
-		4E5982261A24AC3F00A40484 /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982081A24AC1200A40484 /* SearchListItem.swift */; };
-		4E5982271A24AC3F00A40484 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982091A24AC1200A40484 /* User.swift */; };
 		4E5982281A24AC4100A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E5982291A24AC4100A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59822B1A24C4DD00A40484 /* BitBlueprint.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E59822A1A24C4DD00A40484 /* BitBlueprint.gpx */; };
@@ -45,241 +31,133 @@
 		4E7BA9E51A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */; };
 		4E7BA9E61A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */; };
 		4E8E34381A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
-		4E8E34391A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
 		4E8E343A1A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
-		4E8E343B1A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
 		4EC56DB81A2A25E900B696B4 /* SMAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */; };
-		4EC56DB91A2A25E900B696B4 /* SMAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */; };
 		4EC56DBA1A2A25E900B696B4 /* SMAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */; };
-		4EC56DBB1A2A25E900B696B4 /* SMAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */; };
 		4EC56DBC1A2A25E900B696B4 /* SMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA91A2A25E900B696B4 /* SMAnnotation.m */; };
-		4EC56DBD1A2A25E900B696B4 /* SMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA91A2A25E900B696B4 /* SMAnnotation.m */; };
 		4EC56DBE1A2A25E900B696B4 /* SMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA91A2A25E900B696B4 /* SMAnnotation.m */; };
-		4EC56DBF1A2A25E900B696B4 /* SMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA91A2A25E900B696B4 /* SMAnnotation.m */; };
 		4EC56DC01A2A25E900B696B4 /* SMAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */; };
-		4EC56DC11A2A25E900B696B4 /* SMAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */; };
 		4EC56DC21A2A25E900B696B4 /* SMAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */; };
-		4EC56DC31A2A25E900B696B4 /* SMAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */; };
 		4EC56DC41A2A25E900B696B4 /* SMContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAD1A2A25E900B696B4 /* SMContacts.m */; };
-		4EC56DC51A2A25E900B696B4 /* SMContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAD1A2A25E900B696B4 /* SMContacts.m */; };
 		4EC56DC61A2A25E900B696B4 /* SMContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAD1A2A25E900B696B4 /* SMContacts.m */; };
-		4EC56DC71A2A25E900B696B4 /* SMContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAD1A2A25E900B696B4 /* SMContacts.m */; };
 		4EC56DC81A2A25E900B696B4 /* SMEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAF1A2A25E900B696B4 /* SMEvents.m */; };
-		4EC56DC91A2A25E900B696B4 /* SMEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAF1A2A25E900B696B4 /* SMEvents.m */; };
 		4EC56DCA1A2A25E900B696B4 /* SMEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAF1A2A25E900B696B4 /* SMEvents.m */; };
-		4EC56DCB1A2A25E900B696B4 /* SMEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAF1A2A25E900B696B4 /* SMEvents.m */; };
 		4EC56DCC1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB11A2A25E900B696B4 /* SMFavoritesUtil.m */; };
-		4EC56DCD1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB11A2A25E900B696B4 /* SMFavoritesUtil.m */; };
 		4EC56DCE1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB11A2A25E900B696B4 /* SMFavoritesUtil.m */; };
-		4EC56DCF1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB11A2A25E900B696B4 /* SMFavoritesUtil.m */; };
 		4EC56DD01A2A25E900B696B4 /* SMSearchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB31A2A25E900B696B4 /* SMSearchHistory.m */; };
-		4EC56DD11A2A25E900B696B4 /* SMSearchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB31A2A25E900B696B4 /* SMSearchHistory.m */; };
 		4EC56DD21A2A25E900B696B4 /* SMSearchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB31A2A25E900B696B4 /* SMSearchHistory.m */; };
-		4EC56DD31A2A25E900B696B4 /* SMSearchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB31A2A25E900B696B4 /* SMSearchHistory.m */; };
 		4EC56DD41A2A25E900B696B4 /* SMUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB51A2A25E900B696B4 /* SMUtil.m */; };
-		4EC56DD51A2A25E900B696B4 /* SMUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB51A2A25E900B696B4 /* SMUtil.m */; };
 		4EC56DD61A2A25E900B696B4 /* SMUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB51A2A25E900B696B4 /* SMUtil.m */; };
-		4EC56DD71A2A25E900B696B4 /* SMUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB51A2A25E900B696B4 /* SMUtil.m */; };
 		4EC56DD81A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB71A2A25E900B696B4 /* UIView+LocateSubview.m */; };
-		4EC56DD91A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB71A2A25E900B696B4 /* UIView+LocateSubview.m */; };
 		4EC56DDA1A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB71A2A25E900B696B4 /* UIView+LocateSubview.m */; };
-		4EC56DDB1A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB71A2A25E900B696B4 /* UIView+LocateSubview.m */; };
 		4EC56DDE1A2A262800B696B4 /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DDD1A2A262800B696B4 /* SMAppDelegate.m */; };
-		4EC56DDF1A2A262800B696B4 /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DDD1A2A262800B696B4 /* SMAppDelegate.m */; };
 		4EC56DE01A2A262800B696B4 /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DDD1A2A262800B696B4 /* SMAppDelegate.m */; };
-		4EC56DE11A2A262800B696B4 /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DDD1A2A262800B696B4 /* SMAppDelegate.m */; };
 		4EC56E291A2A2C3D00B696B4 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DE91A2A2C3D00B696B4 /* AsyncImageView.m */; };
-		4EC56E2A1A2A2C3D00B696B4 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DE91A2A2C3D00B696B4 /* AsyncImageView.m */; };
 		4EC56E2B1A2A2C3D00B696B4 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DE91A2A2C3D00B696B4 /* AsyncImageView.m */; };
-		4EC56E2C1A2A2C3D00B696B4 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DE91A2A2C3D00B696B4 /* AsyncImageView.m */; };
 		4EC56E2D1A2A2C3D00B696B4 /* FlickableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DEB1A2A2C3D00B696B4 /* FlickableView.m */; };
-		4EC56E2E1A2A2C3D00B696B4 /* FlickableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DEB1A2A2C3D00B696B4 /* FlickableView.m */; };
 		4EC56E2F1A2A2C3D00B696B4 /* FlickableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DEB1A2A2C3D00B696B4 /* FlickableView.m */; };
-		4EC56E301A2A2C3D00B696B4 /* FlickableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DEB1A2A2C3D00B696B4 /* FlickableView.m */; };
 		4EC56E311A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DED1A2A2C3D00B696B4 /* SMAddFavoriteCell.m */; };
-		4EC56E321A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DED1A2A2C3D00B696B4 /* SMAddFavoriteCell.m */; };
 		4EC56E331A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DED1A2A2C3D00B696B4 /* SMAddFavoriteCell.m */; };
-		4EC56E341A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DED1A2A2C3D00B696B4 /* SMAddFavoriteCell.m */; };
 		4EC56E351A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DEE1A2A2C3D00B696B4 /* SMAddFavoriteCell.xib */; };
 		4EC56E361A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DEE1A2A2C3D00B696B4 /* SMAddFavoriteCell.xib */; };
 		4EC56E371A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DEE1A2A2C3D00B696B4 /* SMAddFavoriteCell.xib */; };
 		4EC56E381A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DEE1A2A2C3D00B696B4 /* SMAddFavoriteCell.xib */; };
 		4EC56E391A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF01A2A2C3D00B696B4 /* SMAutocompleteCell.m */; };
-		4EC56E3A1A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF01A2A2C3D00B696B4 /* SMAutocompleteCell.m */; };
 		4EC56E3B1A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF01A2A2C3D00B696B4 /* SMAutocompleteCell.m */; };
-		4EC56E3C1A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF01A2A2C3D00B696B4 /* SMAutocompleteCell.m */; };
 		4EC56E3D1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF21A2A2C3D00B696B4 /* SMAutocompleteHeader.m */; };
-		4EC56E3E1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF21A2A2C3D00B696B4 /* SMAutocompleteHeader.m */; };
 		4EC56E3F1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF21A2A2C3D00B696B4 /* SMAutocompleteHeader.m */; };
-		4EC56E401A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF21A2A2C3D00B696B4 /* SMAutocompleteHeader.m */; };
 		4EC56E411A2A2C3D00B696B4 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF41A2A2C3D00B696B4 /* SMCalloutView.m */; };
-		4EC56E421A2A2C3D00B696B4 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF41A2A2C3D00B696B4 /* SMCalloutView.m */; };
 		4EC56E431A2A2C3D00B696B4 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF41A2A2C3D00B696B4 /* SMCalloutView.m */; };
-		4EC56E441A2A2C3D00B696B4 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF41A2A2C3D00B696B4 /* SMCalloutView.m */; };
 		4EC56E451A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DF51A2A2C3D00B696B4 /* SMCalloutView.xib */; };
 		4EC56E461A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DF51A2A2C3D00B696B4 /* SMCalloutView.xib */; };
 		4EC56E471A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DF51A2A2C3D00B696B4 /* SMCalloutView.xib */; };
 		4EC56E481A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DF51A2A2C3D00B696B4 /* SMCalloutView.xib */; };
 		4EC56E491A2A2C3D00B696B4 /* SMContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF71A2A2C3D00B696B4 /* SMContactsCell.m */; };
-		4EC56E4A1A2A2C3D00B696B4 /* SMContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF71A2A2C3D00B696B4 /* SMContactsCell.m */; };
 		4EC56E4B1A2A2C3D00B696B4 /* SMContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF71A2A2C3D00B696B4 /* SMContactsCell.m */; };
-		4EC56E4C1A2A2C3D00B696B4 /* SMContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF71A2A2C3D00B696B4 /* SMContactsCell.m */; };
 		4EC56E4D1A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF91A2A2C3D00B696B4 /* SMContactsHeader.m */; };
-		4EC56E4E1A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF91A2A2C3D00B696B4 /* SMContactsHeader.m */; };
 		4EC56E4F1A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF91A2A2C3D00B696B4 /* SMContactsHeader.m */; };
-		4EC56E501A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF91A2A2C3D00B696B4 /* SMContactsHeader.m */; };
 		4EC56E511A2A2C3D00B696B4 /* SMCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFB1A2A2C3D00B696B4 /* SMCustomButton.m */; };
-		4EC56E521A2A2C3D00B696B4 /* SMCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFB1A2A2C3D00B696B4 /* SMCustomButton.m */; };
 		4EC56E531A2A2C3D00B696B4 /* SMCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFB1A2A2C3D00B696B4 /* SMCustomButton.m */; };
-		4EC56E541A2A2C3D00B696B4 /* SMCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFB1A2A2C3D00B696B4 /* SMCustomButton.m */; };
 		4EC56E551A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFD1A2A2C3D00B696B4 /* SMCustomCheckbox.m */; };
-		4EC56E561A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFD1A2A2C3D00B696B4 /* SMCustomCheckbox.m */; };
 		4EC56E571A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFD1A2A2C3D00B696B4 /* SMCustomCheckbox.m */; };
-		4EC56E581A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFD1A2A2C3D00B696B4 /* SMCustomCheckbox.m */; };
 		4EC56E591A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFF1A2A2C3D00B696B4 /* SMDirectionCell.m */; };
-		4EC56E5A1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFF1A2A2C3D00B696B4 /* SMDirectionCell.m */; };
 		4EC56E5B1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFF1A2A2C3D00B696B4 /* SMDirectionCell.m */; };
-		4EC56E5C1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFF1A2A2C3D00B696B4 /* SMDirectionCell.m */; };
 		4EC56E5D1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E011A2A2C3D00B696B4 /* SMDirectionsFooter.m */; };
-		4EC56E5E1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E011A2A2C3D00B696B4 /* SMDirectionsFooter.m */; };
 		4EC56E5F1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E011A2A2C3D00B696B4 /* SMDirectionsFooter.m */; };
-		4EC56E601A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E011A2A2C3D00B696B4 /* SMDirectionsFooter.m */; };
 		4EC56E611A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E021A2A2C3D00B696B4 /* SMDirectionsFooter.xib */; };
 		4EC56E621A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E021A2A2C3D00B696B4 /* SMDirectionsFooter.xib */; };
 		4EC56E631A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E021A2A2C3D00B696B4 /* SMDirectionsFooter.xib */; };
 		4EC56E641A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E021A2A2C3D00B696B4 /* SMDirectionsFooter.xib */; };
 		4EC56E651A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E041A2A2C3D00B696B4 /* SMDirectionTopCell.m */; };
-		4EC56E661A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E041A2A2C3D00B696B4 /* SMDirectionTopCell.m */; };
 		4EC56E671A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E041A2A2C3D00B696B4 /* SMDirectionTopCell.m */; };
-		4EC56E681A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E041A2A2C3D00B696B4 /* SMDirectionTopCell.m */; };
 		4EC56E691A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E061A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m */; };
-		4EC56E6A1A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E061A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m */; };
 		4EC56E6B1A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E061A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m */; };
-		4EC56E6C1A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E061A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m */; };
 		4EC56E6D1A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */; };
-		4EC56E6E1A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */; };
 		4EC56E6F1A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */; };
-		4EC56E701A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */; };
 		4EC56E711A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0A1A2A2C3D00B696B4 /* SMEventsCalendarCell.m */; };
-		4EC56E721A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0A1A2A2C3D00B696B4 /* SMEventsCalendarCell.m */; };
 		4EC56E731A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0A1A2A2C3D00B696B4 /* SMEventsCalendarCell.m */; };
-		4EC56E741A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0A1A2A2C3D00B696B4 /* SMEventsCalendarCell.m */; };
 		4EC56E751A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0C1A2A2C3D00B696B4 /* SMEventsFacebookCell.m */; };
-		4EC56E761A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0C1A2A2C3D00B696B4 /* SMEventsFacebookCell.m */; };
 		4EC56E771A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0C1A2A2C3D00B696B4 /* SMEventsFacebookCell.m */; };
-		4EC56E781A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0C1A2A2C3D00B696B4 /* SMEventsFacebookCell.m */; };
 		4EC56E791A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0E1A2A2C3D00B696B4 /* SMEventsHeader.m */; };
-		4EC56E7A1A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0E1A2A2C3D00B696B4 /* SMEventsHeader.m */; };
 		4EC56E7B1A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0E1A2A2C3D00B696B4 /* SMEventsHeader.m */; };
-		4EC56E7C1A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0E1A2A2C3D00B696B4 /* SMEventsHeader.m */; };
 		4EC56E7D1A2A2C3D00B696B4 /* SMGPSTrackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E101A2A2C3D00B696B4 /* SMGPSTrackButton.m */; };
-		4EC56E7E1A2A2C3D00B696B4 /* SMGPSTrackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E101A2A2C3D00B696B4 /* SMGPSTrackButton.m */; };
 		4EC56E7F1A2A2C3D00B696B4 /* SMGPSTrackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E101A2A2C3D00B696B4 /* SMGPSTrackButton.m */; };
-		4EC56E801A2A2C3D00B696B4 /* SMGPSTrackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E101A2A2C3D00B696B4 /* SMGPSTrackButton.m */; };
 		4EC56E811A2A2C3D00B696B4 /* SMMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E121A2A2C3D00B696B4 /* SMMenuCell.m */; };
-		4EC56E821A2A2C3D00B696B4 /* SMMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E121A2A2C3D00B696B4 /* SMMenuCell.m */; };
 		4EC56E831A2A2C3D00B696B4 /* SMMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E121A2A2C3D00B696B4 /* SMMenuCell.m */; };
-		4EC56E841A2A2C3D00B696B4 /* SMMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E121A2A2C3D00B696B4 /* SMMenuCell.m */; };
 		4EC56E851A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E141A2A2C3D00B696B4 /* SMNetworkErrorView.m */; };
-		4EC56E861A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E141A2A2C3D00B696B4 /* SMNetworkErrorView.m */; };
 		4EC56E871A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E141A2A2C3D00B696B4 /* SMNetworkErrorView.m */; };
-		4EC56E881A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E141A2A2C3D00B696B4 /* SMNetworkErrorView.m */; };
 		4EC56E891A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E151A2A2C3D00B696B4 /* SMNetworkErrorView.xib */; };
 		4EC56E8A1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E151A2A2C3D00B696B4 /* SMNetworkErrorView.xib */; };
 		4EC56E8B1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E151A2A2C3D00B696B4 /* SMNetworkErrorView.xib */; };
 		4EC56E8C1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E151A2A2C3D00B696B4 /* SMNetworkErrorView.xib */; };
 		4EC56E8D1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E171A2A2C3D00B696B4 /* SMPatternedButton.m */; };
-		4EC56E8E1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E171A2A2C3D00B696B4 /* SMPatternedButton.m */; };
 		4EC56E8F1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E171A2A2C3D00B696B4 /* SMPatternedButton.m */; };
-		4EC56E901A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E171A2A2C3D00B696B4 /* SMPatternedButton.m */; };
 		4EC56E911A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E191A2A2C3D00B696B4 /* SMRadioCheckedCell.m */; };
-		4EC56E921A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E191A2A2C3D00B696B4 /* SMRadioCheckedCell.m */; };
 		4EC56E931A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E191A2A2C3D00B696B4 /* SMRadioCheckedCell.m */; };
-		4EC56E941A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E191A2A2C3D00B696B4 /* SMRadioCheckedCell.m */; };
 		4EC56E951A2A2C3D00B696B4 /* SMRadioUncheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1B1A2A2C3D00B696B4 /* SMRadioUncheckedCell.m */; };
-		4EC56E961A2A2C3D00B696B4 /* SMRadioUncheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1B1A2A2C3D00B696B4 /* SMRadioUncheckedCell.m */; };
 		4EC56E971A2A2C3D00B696B4 /* SMRadioUncheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1B1A2A2C3D00B696B4 /* SMRadioUncheckedCell.m */; };
-		4EC56E981A2A2C3D00B696B4 /* SMRadioUncheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1B1A2A2C3D00B696B4 /* SMRadioUncheckedCell.m */; };
 		4EC56E991A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1D1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m */; };
-		4EC56E9A1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1D1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m */; };
 		4EC56E9B1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1D1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m */; };
-		4EC56E9C1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1D1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m */; };
 		4EC56E9D1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1F1A2A2C3D00B696B4 /* SMSearchCell.m */; };
-		4EC56E9E1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1F1A2A2C3D00B696B4 /* SMSearchCell.m */; };
 		4EC56E9F1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1F1A2A2C3D00B696B4 /* SMSearchCell.m */; };
-		4EC56EA01A2A2C3D00B696B4 /* SMSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1F1A2A2C3D00B696B4 /* SMSearchCell.m */; };
 		4EC56EA11A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E211A2A2C3D00B696B4 /* SMSearchTwoRowCell.m */; };
-		4EC56EA21A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E211A2A2C3D00B696B4 /* SMSearchTwoRowCell.m */; };
 		4EC56EA31A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E211A2A2C3D00B696B4 /* SMSearchTwoRowCell.m */; };
-		4EC56EA41A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E211A2A2C3D00B696B4 /* SMSearchTwoRowCell.m */; };
 		4EC56EA51A2A2C3D00B696B4 /* SMSwipableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E231A2A2C3D00B696B4 /* SMSwipableView.m */; };
-		4EC56EA61A2A2C3D00B696B4 /* SMSwipableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E231A2A2C3D00B696B4 /* SMSwipableView.m */; };
 		4EC56EA71A2A2C3D00B696B4 /* SMSwipableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E231A2A2C3D00B696B4 /* SMSwipableView.m */; };
-		4EC56EA81A2A2C3D00B696B4 /* SMSwipableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E231A2A2C3D00B696B4 /* SMSwipableView.m */; };
 		4EC56EA91A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E241A2A2C3D00B696B4 /* SMSwipableView.xib */; };
 		4EC56EAA1A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E241A2A2C3D00B696B4 /* SMSwipableView.xib */; };
 		4EC56EAB1A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E241A2A2C3D00B696B4 /* SMSwipableView.xib */; };
 		4EC56EAC1A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E241A2A2C3D00B696B4 /* SMSwipableView.xib */; };
 		4EC56EAD1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E261A2A2C3D00B696B4 /* SMTokenizedTextField.m */; };
-		4EC56EAE1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E261A2A2C3D00B696B4 /* SMTokenizedTextField.m */; };
 		4EC56EAF1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E261A2A2C3D00B696B4 /* SMTokenizedTextField.m */; };
-		4EC56EB01A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E261A2A2C3D00B696B4 /* SMTokenizedTextField.m */; };
 		4EC56EB11A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E281A2A2C3D00B696B4 /* SMViewMoreCell.m */; };
-		4EC56EB21A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E281A2A2C3D00B696B4 /* SMViewMoreCell.m */; };
 		4EC56EB31A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E281A2A2C3D00B696B4 /* SMViewMoreCell.m */; };
-		4EC56EB41A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E281A2A2C3D00B696B4 /* SMViewMoreCell.m */; };
 		4EC56ECF1A2A3AAE00B696B4 /* SMAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB61A2A3AAD00B696B4 /* SMAboutController.m */; };
-		4EC56ED01A2A3AAE00B696B4 /* SMAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB61A2A3AAD00B696B4 /* SMAboutController.m */; };
 		4EC56ED11A2A3AAE00B696B4 /* SMAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB61A2A3AAD00B696B4 /* SMAboutController.m */; };
-		4EC56ED21A2A3AAE00B696B4 /* SMAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB61A2A3AAD00B696B4 /* SMAboutController.m */; };
 		4EC56ED31A2A3AAE00B696B4 /* SMAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB81A2A3AAD00B696B4 /* SMAccountController.m */; };
-		4EC56ED41A2A3AAE00B696B4 /* SMAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB81A2A3AAD00B696B4 /* SMAccountController.m */; };
 		4EC56ED51A2A3AAE00B696B4 /* SMAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB81A2A3AAD00B696B4 /* SMAccountController.m */; };
-		4EC56ED61A2A3AAE00B696B4 /* SMAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB81A2A3AAD00B696B4 /* SMAccountController.m */; };
 		4EC56ED71A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */; };
-		4EC56ED81A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */; };
 		4EC56ED91A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */; };
-		4EC56EDA1A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */; };
 		4EC56EDB1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBC1A2A3AAD00B696B4 /* SMEnterRouteController.m */; };
-		4EC56EDC1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBC1A2A3AAD00B696B4 /* SMEnterRouteController.m */; };
 		4EC56EDD1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBC1A2A3AAD00B696B4 /* SMEnterRouteController.m */; };
-		4EC56EDE1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBC1A2A3AAD00B696B4 /* SMEnterRouteController.m */; };
 		4EC56EDF1A2A3AAE00B696B4 /* SMFavoritesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBE1A2A3AAD00B696B4 /* SMFavoritesController.m */; };
-		4EC56EE01A2A3AAE00B696B4 /* SMFavoritesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBE1A2A3AAD00B696B4 /* SMFavoritesController.m */; };
 		4EC56EE11A2A3AAE00B696B4 /* SMFavoritesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBE1A2A3AAD00B696B4 /* SMFavoritesController.m */; };
-		4EC56EE21A2A3AAE00B696B4 /* SMFavoritesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBE1A2A3AAD00B696B4 /* SMFavoritesController.m */; };
 		4EC56EE31A2A3AAE00B696B4 /* SMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC01A2A3AAD00B696B4 /* SMLoginController.m */; };
-		4EC56EE41A2A3AAE00B696B4 /* SMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC01A2A3AAD00B696B4 /* SMLoginController.m */; };
 		4EC56EE51A2A3AAE00B696B4 /* SMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC01A2A3AAD00B696B4 /* SMLoginController.m */; };
-		4EC56EE61A2A3AAE00B696B4 /* SMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC01A2A3AAD00B696B4 /* SMLoginController.m */; };
 		4EC56EE71A2A3AAE00B696B4 /* SMRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC21A2A3AAD00B696B4 /* SMRegisterController.m */; };
-		4EC56EE81A2A3AAE00B696B4 /* SMRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC21A2A3AAD00B696B4 /* SMRegisterController.m */; };
 		4EC56EE91A2A3AAE00B696B4 /* SMRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC21A2A3AAD00B696B4 /* SMRegisterController.m */; };
-		4EC56EEA1A2A3AAE00B696B4 /* SMRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC21A2A3AAD00B696B4 /* SMRegisterController.m */; };
 		4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC41A2A3AAD00B696B4 /* SMReportErrorController.m */; };
-		4EC56EEC1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC41A2A3AAD00B696B4 /* SMReportErrorController.m */; };
 		4EC56EED1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC41A2A3AAD00B696B4 /* SMReportErrorController.m */; };
-		4EC56EEE1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC41A2A3AAD00B696B4 /* SMReportErrorController.m */; };
 		4EC56EEF1A2A3AAE00B696B4 /* SMRouteNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC61A2A3AAD00B696B4 /* SMRouteNavigationController.m */; };
-		4EC56EF01A2A3AAE00B696B4 /* SMRouteNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC61A2A3AAD00B696B4 /* SMRouteNavigationController.m */; };
 		4EC56EF11A2A3AAE00B696B4 /* SMRouteNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC61A2A3AAD00B696B4 /* SMRouteNavigationController.m */; };
-		4EC56EF21A2A3AAE00B696B4 /* SMRouteNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC61A2A3AAD00B696B4 /* SMRouteNavigationController.m */; };
 		4EC56EF31A2A3AAE00B696B4 /* SMSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC81A2A3AAD00B696B4 /* SMSearchController.m */; };
-		4EC56EF41A2A3AAE00B696B4 /* SMSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC81A2A3AAD00B696B4 /* SMSearchController.m */; };
 		4EC56EF51A2A3AAE00B696B4 /* SMSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC81A2A3AAD00B696B4 /* SMSearchController.m */; };
-		4EC56EF61A2A3AAE00B696B4 /* SMSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC81A2A3AAD00B696B4 /* SMSearchController.m */; };
 		4EC56EF71A2A3AAE00B696B4 /* SMSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECA1A2A3AAD00B696B4 /* SMSettingsController.m */; };
-		4EC56EF81A2A3AAE00B696B4 /* SMSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECA1A2A3AAD00B696B4 /* SMSettingsController.m */; };
 		4EC56EF91A2A3AAE00B696B4 /* SMSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECA1A2A3AAD00B696B4 /* SMSettingsController.m */; };
-		4EC56EFA1A2A3AAE00B696B4 /* SMSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECA1A2A3AAD00B696B4 /* SMSettingsController.m */; };
 		4EC56EFB1A2A3AAE00B696B4 /* SMSplashController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECC1A2A3AAD00B696B4 /* SMSplashController.m */; };
-		4EC56EFC1A2A3AAE00B696B4 /* SMSplashController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECC1A2A3AAD00B696B4 /* SMSplashController.m */; };
 		4EC56EFD1A2A3AAE00B696B4 /* SMSplashController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECC1A2A3AAD00B696B4 /* SMSplashController.m */; };
-		4EC56EFE1A2A3AAE00B696B4 /* SMSplashController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECC1A2A3AAD00B696B4 /* SMSplashController.m */; };
 		4EC56EFF1A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */; };
-		4EC56F001A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */; };
 		4EC56F011A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */; };
-		4EC56F021A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */; };
 		4EE05F501A10EBFA00DE4226 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F4F1A10EBFA00DE4226 /* main.m */; };
 		4EE05F5E1A10EBFA00DE4226 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */; };
 		4EE05F6A1A10EBFA00DE4226 /* I_Bike_CPHTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F691A10EBFA00DE4226 /* I_Bike_CPHTests.m */; };
@@ -778,7 +656,6 @@
 		4EE06CE41A11134C00DE4226 /* SMTurnInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CB61A11134C00DE4226 /* SMTurnInstruction.m */; };
 		4EE06CE51A11135000DE4226 /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C731A1110ED00DE4226 /* SMAddressParser.m */; };
 		4EE06CE61A11137A00DE4226 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06C851A1112EB00DE4226 /* libMapView.a */; };
-		4EE06DD11A11163900DE4226 /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06D7B1A11163900DE4226 /* SMViewController.m */; };
 		4EE06DF51A1116CF00DE4226 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06DF41A1116CF00DE4226 /* MapKit.framework */; };
 		4EE06DF61A1116DB00DE4226 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06DF41A1116CF00DE4226 /* MapKit.framework */; };
 		4EE06DF71A1116FC00DE4226 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06C851A1112EB00DE4226 /* libMapView.a */; };
@@ -1440,7 +1317,10 @@
 		4EEE92891A1A4A340006BD95 /* SMTransportationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE92881A1A4A340006BD95 /* SMTransportationCell.m */; };
 		4EEE928C1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE928B1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m */; };
 		4EEE928F1A1A52620006BD95 /* SMCyLwReminderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE928E1A1A52620006BD95 /* SMCyLwReminderVC.m */; };
-		4EFA27ED1A2A40790050450C /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06D7B1A11163900DE4226 /* SMViewController.m */; };
+		4EFA28091A2B7B120050450C /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982081A24AC1200A40484 /* SearchListItem.swift */; };
+		4EFA280A1A2B7B120050450C /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982041A24AC1200A40484 /* FoursquareItem.swift */; };
+		4EFA280D1A2B871D0050450C /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA280C1A2B871D0050450C /* SMViewController.m */; };
+		4EFA280E1A2B871D0050450C /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA280C1A2B871D0050450C /* SMViewController.m */; };
 		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -2144,8 +2024,6 @@
 		4EE06CB51A11134C00DE4226 /* SMTurnInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTurnInstruction.h; sourceTree = "<group>"; };
 		4EE06CB61A11134C00DE4226 /* SMTurnInstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTurnInstruction.m; sourceTree = "<group>"; };
 		4EE06D431A1115EF00DE4226 /* keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = keys.h; path = "../../../ibikecph-ios-legacy/ibikecph/keys.h"; sourceTree = "<group>"; };
-		4EE06D7A1A11163900DE4226 /* SMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMViewController.h; sourceTree = "<group>"; };
-		4EE06D7B1A11163900DE4226 /* SMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMViewController.m; sourceTree = "<group>"; };
 		4EE06DF41A1116CF00DE4226 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4EE06DFF1A11238C00DE4226 /* CykelPlanen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CykelPlanen-Prefix.pch"; sourceTree = "<group>"; };
 		4EE06E091A11267D00DE4226 /* SharedImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedImport.h; sourceTree = "<group>"; };
@@ -2791,6 +2669,8 @@
 		4EEE928B1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCyLwFirstTimeIntro.m; sourceTree = "<group>"; };
 		4EEE928D1A1A52620006BD95 /* SMCyLwReminderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCyLwReminderVC.h; sourceTree = "<group>"; };
 		4EEE928E1A1A52620006BD95 /* SMCyLwReminderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCyLwReminderVC.m; sourceTree = "<group>"; };
+		4EFA280B1A2B871D0050450C /* SMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMViewController.h; sourceTree = "<group>"; };
+		4EFA280C1A2B871D0050450C /* SMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMViewController.m; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBE17F41EBD064F1BEE38068 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3013,8 +2893,8 @@
 		4EE05F9F1A10EE7600DE4226 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4EE06C661A1110DD00DE4226 /* Gitsubmodules */,
 				4EE06E091A11267D00DE4226 /* SharedImport.h */,
+				4EE06C661A1110DD00DE4226 /* Gitsubmodules */,
 				4E7BA9E31A1E2A1800F9744A /* Tests */,
 				4EE05FA01A10EE8400DE4226 /* Classes */,
 				4EEE91B01A1245610006BD95 /* Resources */,
@@ -3681,8 +3561,6 @@
 		4EE06D5D1A11163900DE4226 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4EE06D7A1A11163900DE4226 /* SMViewController.h */,
-				4EE06D7B1A11163900DE4226 /* SMViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -3716,6 +3594,8 @@
 				4EC56ECC1A2A3AAD00B696B4 /* SMSplashController.m */,
 				4EC56ECD1A2A3AAD00B696B4 /* SMTranslatedViewController.h */,
 				4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */,
+				4EFA280B1A2B871D0050450C /* SMViewController.h */,
+				4EFA280C1A2B871D0050450C /* SMViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -5947,6 +5827,7 @@
 				4EC56E491A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
 				4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
 				4EC56EEF1A2A3AAE00B696B4 /* SMRouteNavigationController.m in Sources */,
+				4EFA280D1A2B871D0050450C /* SMViewController.m in Sources */,
 				4EE06CD31A11134C00DE4226 /* SMGPSUtil.m in Sources */,
 				4EC56E711A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
 				4EC56EA11A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */,
@@ -5964,7 +5845,6 @@
 				4EE06CBF1A11134C00DE4226 /* SMKMSAddressOperation.m in Sources */,
 				4EE06CDF1A11134C00DE4226 /* SMRouteSettings.m in Sources */,
 				4EC56E7D1A2A2C3D00B696B4 /* SMGPSTrackButton.m in Sources */,
-				4EE06DD11A11163900DE4226 /* SMViewController.m in Sources */,
 				4EC56DD81A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
 				4EC56E4D1A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */,
 				4EC56E2D1A2A2C3D00B696B4 /* FlickableView.m in Sources */,
@@ -5999,71 +5879,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EC56DC51A2A25E900B696B4 /* SMContacts.m in Sources */,
-				4EC56E7A1A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
-				4EC56DCD1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */,
-				4EC56DC11A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
-				4EC56DBD1A2A25E900B696B4 /* SMAnnotation.m in Sources */,
-				4EC56ED01A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
-				4EC56E761A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
-				4EC56E3E1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */,
-				4EC56E4E1A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */,
-				4EC56E7E1A2A2C3D00B696B4 /* SMGPSTrackButton.m in Sources */,
-				4E5982241A24AC3E00A40484 /* SearchListItem.swift in Sources */,
-				4EC56E2A1A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
-				4EC56E561A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
-				4EC56E3A1A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
-				4EC56E961A2A2C3D00B696B4 /* SMRadioUncheckedCell.m in Sources */,
-				4EC56E6A1A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */,
-				4EC56E861A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
-				4EC56EB21A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */,
-				4E59821F1A24AC3B00A40484 /* KortforItem.swift in Sources */,
-				4EC56DD11A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
-				4EC56EF41A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
-				4EC56EDC1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */,
 				4EE05F6A1A10EBFA00DE4226 /* I_Bike_CPHTests.m in Sources */,
-				4EC56EFC1A2A3AAE00B696B4 /* SMSplashController.m in Sources */,
-				4EC56E5A1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
-				4EC56ED81A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
-				4E8E34391A272A84004D529B /* OiorestItem.swift in Sources */,
-				4EC56EE01A2A3AAE00B696B4 /* SMFavoritesController.m in Sources */,
-				4EC56EAE1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */,
-				4E59821A1A24AC3500A40484 /* CurrentLocationItem.swift in Sources */,
-				4EC56E8E1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
-				4EC56EA21A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */,
-				4E5982251A24AC3E00A40484 /* User.swift in Sources */,
 				4E7BA9E51A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */,
-				4EC56DC91A2A25E900B696B4 /* SMEvents.m in Sources */,
-				4EC56ED41A2A3AAE00B696B4 /* SMAccountController.m in Sources */,
-				4EC56E921A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */,
-				4EC56E661A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */,
-				4EC56E721A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
-				4EC56E9E1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */,
-				4EC56F001A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
-				4EC56E421A2A2C3D00B696B4 /* SMCalloutView.m in Sources */,
-				4EC56E821A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
-				4EC56DDF1A2A262800B696B4 /* SMAppDelegate.m in Sources */,
-				4EC56E4A1A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
-				4EC56EEC1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
-				4EC56E9A1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
-				4EC56E5E1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */,
-				4EC56EA61A2A2C3D00B696B4 /* SMSwipableView.m in Sources */,
-				4EC56E521A2A2C3D00B696B4 /* SMCustomButton.m in Sources */,
-				4EC56E6E1A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */,
-				4EC56E321A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
-				4E59821C1A24AC3B00A40484 /* FavoriteItem.swift in Sources */,
-				4EC56E2E1A2A2C3D00B696B4 /* FlickableView.m in Sources */,
-				4EC56DB91A2A25E900B696B4 /* SMAnalytics.m in Sources */,
-				4EC56EE41A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
-				4EC56EF81A2A3AAE00B696B4 /* SMSettingsController.m in Sources */,
-				4EC56EE81A2A3AAE00B696B4 /* SMRegisterController.m in Sources */,
-				4E59821E1A24AC3B00A40484 /* HistoryItem.swift in Sources */,
-				4E59821D1A24AC3B00A40484 /* FoursquareItem.swift in Sources */,
 				4E5982281A24AC4100A40484 /* SwiftyJSON.swift in Sources */,
-				4EC56DD91A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
-				4EC56DD51A2A25E900B696B4 /* SMUtil.m in Sources */,
-				4EFA27ED1A2A40790050450C /* SMViewController.m in Sources */,
-				4EC56EF01A2A3AAE00B696B4 /* SMRouteNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6077,6 +5895,7 @@
 				4E5982191A24AC1200A40484 /* User.swift in Sources */,
 				4EE06C4D1A10FC5600DE4226 /* SMTrain.m in Sources */,
 				4EE06F0D1A112F6D00DE4226 /* SMLoadStationsView.m in Sources */,
+				4EFA280E1A2B871D0050450C /* SMViewController.m in Sources */,
 				4EC56E3F1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */,
 				4E59820D1A24AC1200A40484 /* CurrentLocationItem.swift in Sources */,
 				4EC56EAF1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */,
@@ -6199,70 +6018,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EC56DC71A2A25E900B696B4 /* SMContacts.m in Sources */,
-				4EC56E7C1A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
-				4EC56DCF1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */,
-				4EC56DC31A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
-				4EC56DBF1A2A25E900B696B4 /* SMAnnotation.m in Sources */,
-				4EC56ED21A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
-				4EC56E781A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
-				4EC56E401A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */,
-				4EC56E501A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */,
-				4EC56E801A2A2C3D00B696B4 /* SMGPSTrackButton.m in Sources */,
-				4E5982261A24AC3F00A40484 /* SearchListItem.swift in Sources */,
-				4EC56E2C1A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
-				4EC56E581A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
-				4EC56E3C1A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
-				4EC56E981A2A2C3D00B696B4 /* SMRadioUncheckedCell.m in Sources */,
-				4EC56E6C1A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */,
-				4EC56E881A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
-				4EC56EB41A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */,
-				4E5982231A24AC3C00A40484 /* KortforItem.swift in Sources */,
-				4EC56DD31A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
-				4EC56EF61A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
-				4EC56EDE1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */,
+				4EFA280A1A2B7B120050450C /* FoursquareItem.swift in Sources */,
+				4EFA28091A2B7B120050450C /* SearchListItem.swift in Sources */,
 				4EE05F981A10EDE700DE4226 /* CykelPlanenTests.m in Sources */,
-				4EC56EFE1A2A3AAE00B696B4 /* SMSplashController.m in Sources */,
-				4EC56E5C1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
-				4EC56EDA1A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
-				4E8E343B1A272A84004D529B /* OiorestItem.swift in Sources */,
-				4EC56EE21A2A3AAE00B696B4 /* SMFavoritesController.m in Sources */,
-				4EC56EB01A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */,
-				4E59821B1A24AC3600A40484 /* CurrentLocationItem.swift in Sources */,
-				4EC56E901A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
-				4EC56EA41A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */,
-				4E5982271A24AC3F00A40484 /* User.swift in Sources */,
 				4E7BA9E61A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */,
-				4EC56DCB1A2A25E900B696B4 /* SMEvents.m in Sources */,
-				4EC56ED61A2A3AAE00B696B4 /* SMAccountController.m in Sources */,
-				4EC56E941A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */,
-				4EC56E681A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */,
-				4EC56E741A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
-				4EC56EA01A2A2C3D00B696B4 /* SMSearchCell.m in Sources */,
-				4EC56F021A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
-				4EC56E441A2A2C3D00B696B4 /* SMCalloutView.m in Sources */,
-				4EC56E841A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
-				4EC56DE11A2A262800B696B4 /* SMAppDelegate.m in Sources */,
-				4EC56E4C1A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
-				4EC56EEE1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
-				4EC56E9C1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
-				4EC56E601A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */,
-				4EC56EA81A2A2C3D00B696B4 /* SMSwipableView.m in Sources */,
-				4EC56E541A2A2C3D00B696B4 /* SMCustomButton.m in Sources */,
-				4EC56E701A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */,
-				4EC56E341A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
-				4E5982201A24AC3C00A40484 /* FavoriteItem.swift in Sources */,
-				4EC56E301A2A2C3D00B696B4 /* FlickableView.m in Sources */,
-				4EC56DBB1A2A25E900B696B4 /* SMAnalytics.m in Sources */,
-				4EC56EE61A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
-				4EC56EFA1A2A3AAE00B696B4 /* SMSettingsController.m in Sources */,
-				4EC56EEA1A2A3AAE00B696B4 /* SMRegisterController.m in Sources */,
-				4E5982221A24AC3C00A40484 /* HistoryItem.swift in Sources */,
-				4E5982211A24AC3C00A40484 /* FoursquareItem.swift in Sources */,
 				4E5982291A24AC4100A40484 /* SwiftyJSON.swift in Sources */,
-				4EC56DDB1A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
-				4EC56DD71A2A25E900B696B4 /* SMUtil.m in Sources */,
-				4EC56EF21A2A3AAE00B696B4 /* SMRouteNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6396,6 +6156,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEFINES_MODULE = YES;
 				GCC_PREFIX_HEADER = "I Bike CPH/I Bike CPH-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"I_BIKE_CPH=1",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
@@ -6411,6 +6175,7 @@
 					"$(SDKROOT)/usr/include/libz",
 				);
 				INFOPLIST_FILE = "I Bike CPH/Info.plist";
+				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6430,6 +6195,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEFINES_MODULE = YES;
 				GCC_PREFIX_HEADER = "I Bike CPH/I Bike CPH-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					I_BIKE_CPH,
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
@@ -6445,6 +6214,7 @@
 					"$(SDKROOT)/usr/include/libz",
 				);
 				INFOPLIST_FILE = "I Bike CPH/Info.plist";
+				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6464,10 +6234,11 @@
 					"$(inherited)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"I_BIKE_CPH=1",
 				);
 				INFOPLIST_FILE = "I Bike CPHTests/Info.plist";
+				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -6484,7 +6255,9 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = "I_BIKE_CPH=1";
 				INFOPLIST_FILE = "I Bike CPHTests/Info.plist";
+				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I Bike CPH.app/I Bike CPH";
@@ -6497,7 +6270,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CYKEL_PLANEN = 1;
+				DEFINES_MODULE = YES;
 				GCC_PREFIX_HEADER = "CykelPlanen/CykelPlanen-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"CYKEL_PLANEN=1",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -6529,7 +6308,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CYKEL_PLANEN = 1;
+				DEFINES_MODULE = YES;
 				GCC_PREFIX_HEADER = "CykelPlanen/CykelPlanen-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -6559,13 +6341,14 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				CYKEL_PLANEN = 1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"CYKEL_PLANEN=1",
 				);
 				INFOPLIST_FILE = CykelPlanenTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -6580,10 +6363,12 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				CYKEL_PLANEN = 1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = "CYKEL_PLANEN=1";
 				INFOPLIST_FILE = CykelPlanenTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

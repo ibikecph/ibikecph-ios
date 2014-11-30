@@ -74,7 +74,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="findRouteCalendar.png" id="4SW-ED-qxa" customClass="AsyncImageView">
-                                                    <rect key="frame" x="10" y="0.0" width="32" height="32"/>
+                                                    <rect key="frame" x="10" y="7.5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -106,7 +106,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="findRouteCalendar.png" id="n6a-dQ-V4Y" customClass="AsyncImageView">
-                                                    <rect key="frame" x="10" y="0.0" width="32" height="32"/>
+                                                    <rect key="frame" x="10" y="7.5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -4820,8 +4820,8 @@ God tur og tak fordi du cykler!</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e6x-Rl-rMW"/>
-        <segue reference="yP5-9Q-UWd"/>
+        <segue reference="SAG-9b-Vbu"/>
+        <segue reference="pNO-eB-0CQ"/>
         <segue reference="6eV-Lw-Uga"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1230,9 +1230,10 @@ typedef enum {
     return [loc1 distanceFromLocation:loc2] < pDistance;
 }
 
--(BOOL)location:(CLLocation*)loc1 matchesLocation:(CLLocation*)loc2{
-    return [self location:loc1 matchesLocation:loc2 distance:LOCATION_DEFAULT_DISTANCE];
-}
+// TODO: From CykelPlanen
+//-(BOOL)location:(CLLocation*)loc1 matchesLocation:(CLLocation*)loc2{
+//    return [self location:loc1 matchesLocation:loc2 distance:LOCATION_DEFAULT_DISTANCE];
+//}
 
 - (void)beforeMapMove:(RMMapView *)map byUser:(BOOL)wasUserAction {
     if (wasUserAction) {
@@ -1749,7 +1750,8 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.cargoTableView){
-        [self overlaysMenuItemSelected:indexPath.row selected:NO];
+        // TODO: From CykelPlanen
+//        [self overlaysMenuItemSelected:indexPath.row selected:NO];
     }
 }
 

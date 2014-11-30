@@ -66,18 +66,7 @@
         }
         [defaults synchronize];
     }
-    
-//#ifdef ENGLISH_VERSION
-//    UIStoryboard *iPhone4Storyboard = [UIStoryboard storyboardWithName:@"EnglishStoryboard_iPhone" bundle:nil];
-//#else
-    UIStoryboard *iPhone4Storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-//#endif
 
-    SMTranslatedViewController *initialViewController = [iPhone4Storyboard instantiateInitialViewController];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController  = initialViewController;
-    [self.window makeKeyAndVisible];
-    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     return YES;

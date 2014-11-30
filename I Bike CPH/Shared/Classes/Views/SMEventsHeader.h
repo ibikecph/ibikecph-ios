@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 City of Copenhagen. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 /**
  * Table view cell that acts as header for events. FIXME: Probably not used in app :/
  */

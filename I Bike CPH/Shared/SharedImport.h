@@ -6,8 +6,11 @@
 //  Copyright (c) 2014 I Bike CPH. All rights reserved.
 //
 
-#ifndef I_Bike_CPH_SharedImport_h
-#define I_Bike_CPH_SharedImport_h
+//#ifndef I_Bike_CPH_SharedImport_h
+//#define I_Bike_CPH_SharedImport_h
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #import "GAI.h"
 #import "GAITracker.h"
@@ -17,7 +20,13 @@
 #import "SMAnalytics.h"
 @import CoreLocation;
 
-#import "I_Bike_CPH-Swift.h"
+#if defined(I_BIKE_CPH)
+    #import "I_Bike_CPH-Swift.h"
+#elif defined(CYKEL_PLANEN)
+    #import "CykelPlanen-Swift.h"
+#else
+    #error Must define a target (I_BIKE_CPH / CYKEL_PLANEN) macro!
+#endif
 
 #import "AsyncImageView.h"
 #import "SMTranslation.h"
@@ -29,8 +38,6 @@
 #import "SMCustomButton.h"
 #import "SMPatternedButton.h"
 #import "SMNetworkErrorView.h"
-#import "SMRouteConsts.h"
-#import "SMRouteUtils.h"
 
 #define API_ADDRESS @"www.ibikecph.dk"
 //#define API_SERVER @"http://ibikecph-staging.herokuapp.com/api"
@@ -74,9 +81,6 @@
 #define debugLog(args...)    NSLog(@"%@", [NSString stringWithFormat: args])
 #endif
 
-#define BUNDLE_VERSION [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*) kCFBundleVersionKey]
-#define USER_AGENT [NSString stringWithFormat:@"IBikeCPH/%@/iOS", BUNDLE_VERSION]
-
 #define BUILD_STRING [NSString stringWithFormat:@"%@: %@", translateString(@"Build"), BUILD_VERSION]
 
 #define MAX_TURNS 4
@@ -104,4 +108,7 @@
 
 #define kFAVORITES_CHANGED @"favoritesChanged"
 
-#endif
+#import "SMRouteConsts.h"
+#import "SMRouteUtils.h"
+
+//#endif

@@ -36,7 +36,7 @@ typedef enum {
  * View controller for main app use. Has map, menu button, search button, location/tracking button.
  */
 @interface SMViewController : SMTranslatedViewController <RMMapViewDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, EnterRouteDelegate, UIGestureRecognizerDelegate, SMAnnotationActionDelegate, SMNearbyPlacesDelegate, SMRequestOSRMDelegate, SMMenuCellDelegate, SMSearchDelegate, UITextFieldDelegate, ViewTapDelegate, SMFavoritesDelegate>  {
-    IBOutlet UIView *menuView;
+    __weak IBOutlet FlickableView *menuView;
     __weak IBOutlet FlickableView *centerView;
     __weak IBOutlet UIView *dropPinView;
     
@@ -47,6 +47,9 @@ typedef enum {
 
     __weak IBOutlet SMGPSTrackButton *buttonTrackUser;
     __weak IBOutlet UIView *favHeader;
+    __weak IBOutlet UIButton *remindersHeaderButton;
+    __weak IBOutlet UIButton *accountHeaderButton;
+    __weak IBOutlet UIButton *aboutHeaderButton;
     __weak IBOutlet UIView *accHeader;
     __weak IBOutlet UIView *infHeader;
     __weak IBOutlet UIButton *favEditStart;
@@ -68,12 +71,15 @@ typedef enum {
     
     __weak IBOutlet UIView *blockingView;
     
+    __weak IBOutlet FlickableView *overlayMenu;
+    
     __weak IBOutlet UIButton *findRouteBig;
     __weak IBOutlet UIButton *findRouteSmall;
     BOOL animationShown;
     __weak IBOutlet UILabel *account_label;
     __weak IBOutlet UILabel *routeStreet;
     __weak IBOutlet UIView *menuBtn;
+    __weak IBOutlet UIImageView *overlayMenuBtn;
     __weak IBOutlet UIButton *pinButton;
     __weak IBOutlet UIView *statusbarView;
 }
@@ -82,5 +88,8 @@ typedef enum {
  * properties for table
  */
 @property (nonatomic, strong) IBOutlet SMAddFavoriteCell *tableFooter;
+@property (weak, nonatomic) IBOutlet UIImageView *mainMenuBtn;
+
+@property (nonatomic, strong) SMAnnotation* endMarkerAnnotation;
 
 @end

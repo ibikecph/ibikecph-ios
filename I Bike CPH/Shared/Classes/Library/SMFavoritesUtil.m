@@ -7,6 +7,7 @@
 //
 
 #import "SMFavoritesUtil.h"
+#import "SMAppDelegate.h"
 
 @interface SMFavoritesUtil ()
 @property (nonatomic, strong) SMAPIRequest * apr;
