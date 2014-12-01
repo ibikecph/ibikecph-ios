@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qyQ-LZ-vdu">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Rdu-zx-YfW">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="qyQ-LZ-vdu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l44-iB-w7p">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="K1a-Hs-PE4" kind="relationship" relationship="rootViewController" id="GVW-Cq-97K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8iI-BE-AHz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="217" y="522"/>
+        </scene>
+        <!--Splash Controller-->
+        <scene sceneID="hRg-gT-5DU">
+            <objects>
+                <viewController id="K1a-Hs-PE4" customClass="SMSplashController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M05-Mo-zmE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hxi-Np-1m9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aQd-eh-MeM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhs-M8-Awk">
+                                <rect key="frame" x="235" y="376" width="131" height="58"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                <state key="normal" title="login_with_fb">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9O-5q-Zzu">
+                                <rect key="frame" x="0.0" y="542" width="323" height="58"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                <state key="normal" title="register_with_mail">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcv-0L-DTY">
+                                <rect key="frame" x="277" y="542" width="323" height="58"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                <state key="normal" title="skip">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOL-k1-Vo7">
+                                <rect key="frame" x="234" y="444" width="131" height="58"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                <state key="normal" title="login">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="i9b-t7-Stg" customClass="LogoImageView" customModule="CykelPlanen" customModuleProvider="target">
+                                <rect key="frame" x="16" y="20" width="568" height="356"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Lhs-M8-Awk" secondAttribute="centerX" id="5ca-RV-cDG"/>
+                            <constraint firstItem="Hxi-Np-1m9" firstAttribute="top" secondItem="Zcv-0L-DTY" secondAttribute="bottom" id="8K6-66-tZ4"/>
+                            <constraint firstAttribute="centerX" secondItem="xOL-k1-Vo7" secondAttribute="centerX" id="EgG-CJ-3np"/>
+                            <constraint firstItem="Hxi-Np-1m9" firstAttribute="top" secondItem="Q9O-5q-Zzu" secondAttribute="bottom" id="JaV-BX-Wio"/>
+                            <constraint firstItem="Zcv-0L-DTY" firstAttribute="leading" secondItem="Q9O-5q-Zzu" secondAttribute="trailing" constant="-46" id="JfH-Md-Ntc"/>
+                            <constraint firstItem="xOL-k1-Vo7" firstAttribute="top" secondItem="Lhs-M8-Awk" secondAttribute="bottom" constant="10" id="RNT-jM-koc"/>
+                            <constraint firstItem="xOL-k1-Vo7" firstAttribute="width" secondItem="Lhs-M8-Awk" secondAttribute="width" id="dcC-Kf-DPd"/>
+                            <constraint firstItem="Lhs-M8-Awk" firstAttribute="top" secondItem="i9b-t7-Stg" secondAttribute="bottom" id="mOu-Wh-FnR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="i9b-t7-Stg" secondAttribute="trailing" id="mn2-jC-WhK"/>
+                            <constraint firstAttribute="centerX" secondItem="i9b-t7-Stg" secondAttribute="centerX" id="rVg-fV-JVE"/>
+                            <constraint firstItem="i9b-t7-Stg" firstAttribute="top" secondItem="M05-Mo-zmE" secondAttribute="bottom" id="rXG-ik-J2h"/>
+                            <constraint firstItem="Q9O-5q-Zzu" firstAttribute="leading" secondItem="aQd-eh-MeM" secondAttribute="leading" id="tYr-m5-Ym9"/>
+                            <constraint firstItem="i9b-t7-Stg" firstAttribute="leading" secondItem="aQd-eh-MeM" secondAttribute="leadingMargin" id="tmL-0f-jRI"/>
+                            <constraint firstAttribute="trailing" secondItem="Zcv-0L-DTY" secondAttribute="trailing" id="ugk-3l-LJ5"/>
+                            <constraint firstItem="Zcv-0L-DTY" firstAttribute="width" secondItem="Q9O-5q-Zzu" secondAttribute="width" id="vUo-q8-qgb"/>
+                            <constraint firstItem="Q9O-5q-Zzu" firstAttribute="top" secondItem="xOL-k1-Vo7" secondAttribute="bottom" constant="40" id="zmp-Fv-w8w"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7m1-EF-ScD"/>
+                    <connections>
+                        <outlet property="btnRegisterWithMail" destination="Q9O-5q-Zzu" id="sRd-gF-EEB"/>
+                        <outlet property="btnSkip" destination="Zcv-0L-DTY" id="ewW-JY-RaN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TKS-Ys-QPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="999" y="522"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="h8G-yG-eTJ">
+            <objects>
+                <viewController id="wXf-rU-rTt" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WMT-SA-kZJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="YoJ-hl-OAx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WIx-mR-KO7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OS0-9e-XlN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="splash_greass.png" translatesAutoresizingMaskIntoConstraints="NO" id="d6w-NQ-R5c" userLabel="grass">
+                                        <rect key="frame" x="0.0" y="357" width="320" height="151"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="splash_sky.png" translatesAutoresizingMaskIntoConstraints="NO" id="mny-Sm-cHQ" userLabel="sky">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="212"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="splash_illustration.png" translatesAutoresizingMaskIntoConstraints="NO" id="0vM-hb-cdQ" userLabel="bikers">
+                                        <rect key="frame" x="0.0" y="230" width="320" height="119"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="css_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="m1c-4e-8Mc">
+                                <rect key="frame" x="40" y="46" width="240" height="132"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Hurtigt fra A til B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9X0-ta-QdG">
+                                <rect key="frame" x="16" y="170" width="288" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AL7-f6-b12">
+                                <rect key="frame" x="52" y="290" width="216" height="45"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <inset key="titleEdgeInsets" minX="41" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="login_with_fb" backgroundImage="loginFacebook.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="loginFacebookPressed.png"/>
+                                <state key="highlighted" backgroundImage="loginFacebookPressed.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEx-kJ-TvM" customClass="SMCustomButton">
+                                <rect key="frame" x="52" y="343" width="216" height="45"/>
+                                <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <state key="normal" title="login" backgroundImage="gray_btn.png">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="gray_btn_pressed.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="top" fixedFrame="YES" image="intro_bottom_menu_bgr.png" translatesAutoresizingMaskIntoConstraints="NO" id="4CC-yv-QaL">
+                                <rect key="frame" x="0.0" y="420" width="320" height="61"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNc-Z8-CPK">
+                                <rect key="frame" x="10" y="420" width="160" height="60"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="register_with_mail" image="register_orange.png">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="selected" image="register.png" backgroundImage="splash_bg_btn_blue_pressed.png"/>
+                                <state key="highlighted" image="register.png">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7a-46-pEy">
+                                <rect key="frame" x="160" y="420" width="160" height="60"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="skip_orange.png">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="skip.png" backgroundImage="splash_bg_btn_blue_pressed.png"/>
+                                <state key="highlighted" image="skip.png">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="bottom_divider_vertical.png" translatesAutoresizingMaskIntoConstraints="NO" id="T3P-0z-Uv8">
+                                <rect key="frame" x="180" y="428" width="2" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d4b-B2-PTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="999" y="1191"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bottom_divider_vertical.png" width="2" height="2"/>
+        <image name="css_logo.png" width="130" height="108"/>
+        <image name="gray_btn.png" width="11" height="11"/>
+        <image name="gray_btn_pressed.png" width="11" height="11"/>
+        <image name="intro_bottom_menu_bgr.png" width="320" height="61"/>
+        <image name="loginFacebook.png" width="216" height="45"/>
+        <image name="loginFacebookPressed.png" width="216" height="45"/>
+        <image name="register.png" width="22" height="22"/>
+        <image name="register_orange.png" width="22" height="22"/>
+        <image name="skip.png" width="22" height="22"/>
+        <image name="skip_orange.png" width="22" height="22"/>
+        <image name="splash_bg_btn_blue_pressed.png" width="1" height="60"/>
+        <image name="splash_greass.png" width="320" height="131"/>
+        <image name="splash_illustration.png" width="320" height="119"/>
+        <image name="splash_sky.png" width="320" height="212"/>
+    </resources>
+</document>

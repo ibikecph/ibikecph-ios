@@ -66,8 +66,8 @@
         }
         [defaults synchronize];
     }
-
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    self.window.tintColor = [Styler tintColor];
     
     return YES;
 }

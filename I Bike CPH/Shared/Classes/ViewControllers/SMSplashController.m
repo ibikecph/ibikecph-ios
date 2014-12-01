@@ -582,10 +582,4 @@ typedef enum {
     [self goToFavorites:nil];
 }
 
-#pragma mark - statusbar style
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
 @end

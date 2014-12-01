@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1EEED384110D35DC5028BAF9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
+		4E4F5FDA1A2BAC4700233ACA /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FD91A2BAC4700233ACA /* Styling.swift */; };
+		4E4F5FDB1A2BAC4700233ACA /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FD91A2BAC4700233ACA /* Styling.swift */; };
+		4E4F5FDE1A2BAE1400233ACA /* StyleCykelPlanen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FDC1A2BAE1400233ACA /* StyleCykelPlanen.swift */; };
+		4E4F5FE01A2BB3A000233ACA /* StyleIBikeCph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FDF1A2BB3A000233ACA /* StyleIBikeCph.swift */; };
 		4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820B1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820C1A24AC1200A40484 /* CurrentLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */; };
@@ -1321,6 +1325,8 @@
 		4EFA280A1A2B7B120050450C /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982041A24AC1200A40484 /* FoursquareItem.swift */; };
 		4EFA280D1A2B871D0050450C /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA280C1A2B871D0050450C /* SMViewController.m */; };
 		4EFA280E1A2B871D0050450C /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA280C1A2B871D0050450C /* SMViewController.m */; };
+		4EFA28101A2BA1330050450C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFA280F1A2BA1330050450C /* Main.storyboard */; };
+		4EFA28111A2BA1330050450C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFA280F1A2BA1330050450C /* Main.storyboard */; };
 		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1363,6 +1369,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E4F5FD91A2BAC4700233ACA /* Styling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
+		4E4F5FDC1A2BAE1400233ACA /* StyleCykelPlanen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleCykelPlanen.swift; sourceTree = "<group>"; };
+		4E4F5FDF1A2BB3A000233ACA /* StyleIBikeCph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleIBikeCph.swift; sourceTree = "<group>"; };
 		4E5982001A24AC1200A40484 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationItem.swift; sourceTree = "<group>"; };
 		4E5982031A24AC1200A40484 /* FavoriteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
@@ -2671,6 +2680,7 @@
 		4EEE928E1A1A52620006BD95 /* SMCyLwReminderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCyLwReminderVC.m; sourceTree = "<group>"; };
 		4EFA280B1A2B871D0050450C /* SMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMViewController.h; sourceTree = "<group>"; };
 		4EFA280C1A2B871D0050450C /* SMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMViewController.m; sourceTree = "<group>"; };
+		4EFA280F1A2BA1330050450C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBE17F41EBD064F1BEE38068 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2801,6 +2811,7 @@
 			children = (
 				4EE05F731A10EC2E00DE4226 /* Classes */,
 				4EEE92851A12E9800006BD95 /* MainStoryboard_iPhone.storyboard */,
+				4E4F5FDF1A2BB3A000233ACA /* StyleIBikeCph.swift */,
 				4EE0631B1A10FA4900DE4226 /* Images.xcassets */,
 				4EE0631E1A10FAB300DE4226 /* Images */,
 				4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */,
@@ -2853,6 +2864,7 @@
 			children = (
 				4EE05FA11A10EEC900DE4226 /* Classes */,
 				4EE05FD81A10F61200DE4226 /* MainStoryboard_iPhone.storyboard */,
+				4E4F5FDC1A2BAE1400233ACA /* StyleCykelPlanen.swift */,
 				4EE05F881A10EDE700DE4226 /* Images.xcassets */,
 				4EE06F141A1178DE00DE4226 /* Images */,
 				4EE05F8A1A10EDE700DE4226 /* LaunchScreen.xib */,
@@ -2894,6 +2906,8 @@
 			isa = PBXGroup;
 			children = (
 				4EE06E091A11267D00DE4226 /* SharedImport.h */,
+				4E4F5FD91A2BAC4700233ACA /* Styling.swift */,
+				4EFA280F1A2BA1330050450C /* Main.storyboard */,
 				4EE06C661A1110DD00DE4226 /* Gitsubmodules */,
 				4E7BA9E31A1E2A1800F9744A /* Tests */,
 				4EE05FA01A10EE8400DE4226 /* Classes */,
@@ -5034,6 +5048,7 @@
 				4EEE91BB1A1245610006BD95 /* testing.gpx in Resources */,
 				4EE064EA1A10FAB400DE4226 /* white-down-left@2x.png in Resources */,
 				4EE065D71A10FAB400DE4226 /* loginFacebook@2x.png in Resources */,
+				4EFA28101A2BA1330050450C /* Main.storyboard in Resources */,
 				4EE065811A10FAB400DE4226 /* favHomeBlack@2x.png in Resources */,
 				4EE064DC1A10FAB400DE4226 /* roundabout@2x.png in Resources */,
 				4EE065281A10FAB400DE4226 /* accountInputBG@2x.png in Resources */,
@@ -5304,6 +5319,7 @@
 				4EE071961A1178E200DE4226 /* break_route_gray@2x.png in Resources */,
 				4EE072BC1A1178E200DE4226 /* no_connection.png in Resources */,
 				4EE072B21A1178E200DE4226 /* metro_icon.png in Resources */,
+				4EFA28111A2BA1330050450C /* Main.storyboard in Resources */,
 				4EE072521A1178E200DE4226 /* favWorkGrey.png in Resources */,
 				4EE071E61A1178E200DE4226 /* warning_icon.png in Resources */,
 				4EE073381A1178E300DE4226 /* routeEnterTopRow.png in Resources */,
@@ -5801,6 +5817,7 @@
 				4EE06CC11A11134C00DE4226 /* SMKMSPlacesOperation.m in Sources */,
 				4EE06CC31A11134C00DE4226 /* SMKMSStreetOperation.m in Sources */,
 				4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */,
+				4E4F5FE01A2BB3A000233ACA /* StyleIBikeCph.swift in Sources */,
 				4EC56E9D1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */,
 				4EC56EE71A2A3AAE00B696B4 /* SMRegisterController.m in Sources */,
 				4EE06CC71A11134C00DE4226 /* NSString+URLEncode.m in Sources */,
@@ -5862,6 +5879,7 @@
 				4EC56DC81A2A25E900B696B4 /* SMEvents.m in Sources */,
 				4EE06CC91A11134C00DE4226 /* Reachability.m in Sources */,
 				4EC56E691A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */,
+				4E4F5FDA1A2BAC4700233ACA /* Styling.swift in Sources */,
 				4EC56DD01A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
 				4EE06CCF1A11134C00DE4226 /* SMAutocomplete.m in Sources */,
 				4EC56E291A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
@@ -5939,6 +5957,7 @@
 				4EC56E5B1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
 				4EC56DDA1A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
 				4EC56EFD1A2A3AAE00B696B4 /* SMSplashController.m in Sources */,
+				4E4F5FDE1A2BAE1400233ACA /* StyleCykelPlanen.swift in Sources */,
 				4EE05F7E1A10EDE700DE4226 /* main.m in Sources */,
 				4EE06CCC1A11134C00DE4226 /* SMTranslation.m in Sources */,
 				4EC56EE91A2A3AAE00B696B4 /* SMRegisterController.m in Sources */,
@@ -5977,6 +5996,7 @@
 				4EE06F111A112F6D00DE4226 /* SMReportMailCell.m in Sources */,
 				4EE06C4E1A10FC5600DE4226 /* SMTransportation.m in Sources */,
 				4EE06CDC1A11134C00DE4226 /* SMRoute.m in Sources */,
+				4E4F5FDB1A2BAC4700233ACA /* Styling.swift in Sources */,
 				4EE06CBA1A11134C00DE4226 /* SMAPIOperation.m in Sources */,
 				4EE06C521A10FC5600DE4226 /* SMUser.m in Sources */,
 				4EE06C441A10FC5600DE4226 /* SMRouteTransportationInfo.m in Sources */,
