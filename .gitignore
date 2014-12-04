@@ -28,3 +28,6 @@ DerivedData
 .idea/
 *.hmap
 *.xccheckout
+
+# Private keys
+smroute_settings_private.plist
