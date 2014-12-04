@@ -21,12 +21,7 @@
 /**
  * View controller to search for address. Has search field, and results list. FIXME: Merge.
  */
-@interface SMSearchController : SMTranslatedViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SMAutocompleteDelegate, SMAPIOperationDelegate, SMRequestOSRMDelegate, SMNearbyPlacesDelegate>{
-    
-    __weak IBOutlet UITableView *tblView;
-    __weak IBOutlet UIView *tblFade;
-    __weak IBOutlet UITextField *searchField;
-}
+@interface SMSearchController : SMTranslatedViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SMAutocompleteDelegate, SMAPIOperationDelegate, SMRequestOSRMDelegate, SMNearbyPlacesDelegate>
 
 @property (nonatomic, strong) NSString * searchText;
 @property (nonatomic, weak) id<SMSearchDelegate> delegate;

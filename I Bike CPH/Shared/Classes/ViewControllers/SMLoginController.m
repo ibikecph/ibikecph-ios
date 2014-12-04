@@ -9,11 +9,12 @@
 #import "SMLoginController.h"
 #import "DAKeyboardControl.h"
 
-@interface SMLoginController ()
-@property (nonatomic, strong) SMAPIRequest * apr;
+@interface SMLoginController()<SMAPIRequestDelegate, UITextFieldDelegate>
 
-//- (IBAction)loginWithFacebook:(id)sender;
-//- (IBAction)doLogin:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *loginEmail;
+@property (weak, nonatomic) IBOutlet UITextField *loginPassword;
+
+@property (nonatomic, strong) SMAPIRequest * apr;
 
 @end
 
@@ -21,20 +22,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
-        [self goBack:nil];
-    } else {
-        [scrlView setContentSize:CGSizeMake(320.0f, 410.0f)];
-        
-        UIScrollView * scr = scrlView;
-        
-        [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
-            CGRect frame = scr.frame;
-            frame.size.height = keyboardFrameInView.origin.y;
-            scr.frame = frame;
-        }];
-    }
+    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -48,17 +37,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)goBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark - button actions
 
 - (IBAction)doLogin:(id)sender {
-    [loginEmail resignFirstResponder];
-    [loginPassword resignFirstResponder];
-    [scrlView setContentOffset:CGPointZero animated:YES];
-    if ([loginEmail.text isEqualToString:@""] || [loginPassword.text isEqualToString:@""]) {
+    [self.loginEmail resignFirstResponder];
+    [self.loginPassword resignFirstResponder];
+    if ([self.loginEmail.text isEqualToString:@""] || [self.loginPassword.text isEqualToString:@""]) {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"login_error_fields") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
         [av show];
         return;
@@ -68,10 +52,10 @@
     [self setApr:ap];
     [self.apr setRequestIdentifier:@"login"];
     [self.apr showTransparentWaitingIndicatorInView:self.view];
-    [self.apr executeRequest:API_LOGIN withParams:@{@"user": @{ @"email": loginEmail.text, @"password": loginPassword.text}}];
+    [self.apr executeRequest:API_LOGIN withParams:@{@"user": @{ @"email": self.loginEmail.text, @"password": self.loginPassword.text}}];
 }
 
-- (IBAction)doFBLogin:(NSString*)fbToken {
+- (void)doFBLogin:(NSString*)fbToken {
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
     [self setApr:ap];
     [self.apr setRequestIdentifier:@"loginFB"];
@@ -156,30 +140,30 @@
         if ([req.requestIdentifier isEqualToString:@"login"]) {
             [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
             [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
-            [self.appDelegate.appSettings setValue:loginEmail.text forKey:@"username"];
-            [self.appDelegate.appSettings setValue:loginPassword.text forKey:@"password"];
+            [self.appDelegate.appSettings setValue:self.loginEmail.text forKey:@"username"];
+            [self.appDelegate.appSettings setValue:self.loginPassword.text forKey:@"password"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [self.appDelegate saveSettings];
-            [self goBack:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         } else if ([req.requestIdentifier isEqualToString:@"autoLogin"]) {
             [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
             [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [self.appDelegate saveSettings];
-            [self goBack:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         } else if ([req.requestIdentifier isEqualToString:@"loginFB"]) {
             [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
             [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"FB" forKey:@"loginType"];
             [self.appDelegate saveSettings];
-            [self goBack:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         } else if ([req.requestIdentifier isEqualToString:@"register"]) {
             [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
             [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [self.appDelegate saveSettings];
-            [self goBack:nil];
-            if (![SMAnalytics trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:loginEmail.text withValue:0]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+            if (![SMAnalytics trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:self.loginEmail.text withValue:0]) {
                 debugLog(@"error in trackEvent");
             }
         }
@@ -195,28 +179,19 @@
 }
 
 
-- (IBAction)loginWithMail:(id)sender {
-    [self performSegueWithIdentifier:@"mainToRegister" sender:nil];
-}
-
-
 #pragma mark - textfield delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSInteger tag = textField.tag + 1;
     [textField resignFirstResponder];
-    [[scrlView viewWithTag:tag] becomeFirstResponder];
-    if (tag == 103) {
-        [scrlView setContentOffset:CGPointZero];
+    if (textField == self.loginEmail) {
+        [self.loginPassword becomeFirstResponder];
+    }
+    if (textField == self.loginPassword) {
         [self doLogin:nil];
     }
     return YES;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [scrlView setContentOffset:CGPointMake(0.0f, MAX(0.0f,textField.frame.origin.y - 82.0f))];
-    return YES;
-}
 
 #pragma mark - statusbar style
 

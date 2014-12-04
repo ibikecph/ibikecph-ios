@@ -45,7 +45,7 @@
 #pragma mark - statusbar style
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleBlackOpaque;
+    return UIStatusBarStyleLightContent;
 }
 
 @end

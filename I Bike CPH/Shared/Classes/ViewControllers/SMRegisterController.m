@@ -14,9 +14,19 @@
 #import "SMAppDelegate.h"
 #import "UIImage+Resize.h"
 
-@interface SMRegisterController ()
+@interface SMRegisterController () <SMAPIRequestDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+
+@property (weak, nonatomic) IBOutlet UIButton *imageButton;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordConfirmField;
+
 @property (nonatomic, strong) SMAPIRequest * apr;
 @property (nonatomic, strong) UIImage * profileImage;
+
+
 @end
 
 @implementation SMRegisterController
@@ -24,18 +34,10 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    registerImage.layer.cornerRadius = 5;
-    registerImage.layer.masksToBounds = YES;
+    self.imageButton.layer.cornerRadius = 5;
+    self.imageButton.layer.masksToBounds = YES;
     
-    [scrlView setContentSize:CGSizeMake(320.0f, 410.0f)];
-    
-    UIScrollView * scr = scrlView;
-    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
-        CGRect frame = scr.frame;
-        frame.size.height = keyboardFrameInView.origin.y;
-        scr.frame = frame;
-    }];
-    
+    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {}];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -43,32 +45,25 @@
     [self.view removeKeyboardControl];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 #pragma mark - button actions
 
 - (IBAction)doRegister:(id)sender {
-    [registerEmail resignFirstResponder];
-    [registerPassword resignFirstResponder];
-    [registerRepeatPassword resignFirstResponder];
-    [registerName resignFirstResponder];
-    [scrlView setContentOffset:CGPointZero animated:YES];
+    [self.emailField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    [self.passwordConfirmField resignFirstResponder];
+    [self.nameField resignFirstResponder];
     
-    if([SMUtil validateRegistrationName:registerName.text Email:registerEmail.text Password:registerPassword.text AndRepeatedPassword:registerRepeatPassword.text] != RVR_REGISTRATION_DATA_VALID){
+    if([SMUtil validateRegistrationName:self.nameField.text Email:self.emailField.text Password:self.passwordField.text AndRepeatedPassword:self.passwordConfirmField.text] != RVR_REGISTRATION_DATA_VALID){
         return;
     }
     
     NSMutableDictionary * user = [NSMutableDictionary dictionaryWithDictionary:@{
-                                  @"name": registerName.text,
-                                  @"email": registerEmail.text,
-                                  @"email_confirmation": registerEmail.text,
-                                  @"password": registerPassword.text,
-                                  @"password_confirmation": registerRepeatPassword.text,
+                                  @"name": self.nameField.text,
+                                  @"email": self.emailField.text,
+                                  @"email_confirmation": self.emailField.text,
+                                  @"password": self.passwordField.text,
+                                  @"password_confirmation": self.passwordConfirmField.text,
                                   @"account_source" : ORG_NAME
                                   }];
     
@@ -84,9 +79,9 @@
          } forKey:@"image_path"];
     }
     
-    if ([registerPassword.text isEqualToString:@""] == NO) {
-        [[params objectForKey:@"user"] setValue:registerPassword.text forKey:@"password"];
-        [[params objectForKey:@"user"] setValue:registerPassword.text forKey:@"password_confirmation"];
+    if ([self.passwordField.text isEqualToString:@""] == NO) {
+        [[params objectForKey:@"user"] setValue:self.passwordField.text forKey:@"password"];
+        [[params objectForKey:@"user"] setValue:self.passwordField.text forKey:@"password_confirmation"];
     }
     
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
@@ -95,7 +90,6 @@
     [self.apr showTransparentWaitingIndicatorInView:self.view];
     [self.apr executeRequest:API_REGISTER withParams:params];
 }
-
 
 - (IBAction)selectImageSource:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == YES){
@@ -124,13 +118,8 @@
     cameraUI.delegate = self;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [self presentModalViewController: cameraUI animated: YES];
+        [self presentViewController:cameraUI animated:YES completion:nil];
     }
-}
-
-
-- (IBAction)goBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -167,14 +156,14 @@
         if ([req.requestIdentifier isEqualToString:@"register"]) {
 //            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"auth_token"] forKey:@"auth_token"];
 //            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"id"] forKey:@"id"];
-//            [self.appDelegate.appSettings setValue:registerEmail.text forKey:@"username"];
-//            [self.appDelegate.appSettings setValue:registerPassword.text forKey:@"password"];
+//            [self.appDelegate.appSettings setValue:self.emailField.text forKey:@"username"];
+//            [self.appDelegate.appSettings setValue:self.passwordField.text forKey:@"password"];
 //            [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
 //            [self.appDelegate saveSettings];
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"" message:translateString(@"register_successful") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
-            [self goBack:nil];
-            if (![SMAnalytics trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:registerEmail.text withValue:0]) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            if (![SMAnalytics trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:self.emailField.text withValue:0]) {
                 debugLog(@"error in trackEvent");
             }
         }
@@ -184,30 +173,30 @@
     }
 }
 
+
 #pragma mark - textfield delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSInteger tag = textField.tag + 1;
     [textField resignFirstResponder];
-    [[scrlView viewWithTag:tag] becomeFirstResponder];
-    if (tag == 105) {
-        [scrlView setContentOffset:CGPointZero];
+    if (textField == self.nameField) {
+        [self.emailField becomeFirstResponder];
+    } else if (textField == self.emailField) {
+        [self.passwordField becomeFirstResponder];
+    } else if (textField == self.passwordField) {
+        [self.passwordConfirmField becomeFirstResponder];
+    } else if (textField == self.passwordConfirmField) {
         [self doRegister:nil];
     }
     return YES;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [scrlView setContentOffset:CGPointMake(0.0f, MAX(0.0f,textField.frame.origin.y - 116.0f))];
-    return YES;
-}
 
 #pragma mark - imagepicker delegate
 
 - (void) imagePickerController: (UIImagePickerController *) picker didFinishPickingMediaWithInfo: (NSDictionary *) info {
     self.profileImage = [[info objectForKey:UIImagePickerControllerOriginalImage] resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
-    [registerImage setImage:self.profileImage];
-    [self dismissModalViewControllerAnimated:YES];
+    [self.imageButton setImage:self.profileImage forState:UIControlStateNormal];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - action sheet delegate

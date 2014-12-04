@@ -25,6 +25,11 @@
 #import "SMAddressParser.h"
 
 @interface SMSearchController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *searchField;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *loaderView;
+
 @property (nonatomic, strong) NSArray * searchResults;
 @property (nonatomic, strong) NSMutableArray * tempSearch;
 @property (nonatomic, strong) SMAutocomplete * autocomp;
@@ -72,10 +77,10 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [searchField setText:self.searchText];
+    [self.searchField setText:self.searchText];
     self.autocomp = [[SMAutocomplete alloc] initWithDelegate:self];
-    [tblView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    [searchField becomeFirstResponder];
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [self.searchField becomeFirstResponder];
     [self setFavorites:[SMFavoritesUtil getFavorites]];
     
     self.queue = [[SMAPIQueue alloc] initWithMaxOperations:3];
@@ -87,21 +92,21 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 
 - (void)setReturnKey {
     if (self.locationItem) {
-        [searchField setReturnKeyType:UIReturnKeyGo];
-        [searchField resignFirstResponder];
-        [searchField becomeFirstResponder];
+        [self.searchField setReturnKeyType:UIReturnKeyGo];
+        [self.searchField resignFirstResponder];
+        [self.searchField becomeFirstResponder];
     } else {
-        [searchField setReturnKeyType:UIReturnKeyDone];
-        [searchField resignFirstResponder];
-        [searchField becomeFirstResponder];
+        [self.searchField setReturnKeyType:UIReturnKeyDone];
+        [self.searchField resignFirstResponder];
+        [self.searchField becomeFirstResponder];
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    UITableView * tbl = tblView;
-    UIView * fade = tblFade;
+    
+    UITableView * tbl = self.tableView;
+    UIView * fade = self.loaderView;
     
     [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
         [tbl setFrame:CGRectMake(0.0f, tbl.frame.origin.y, tbl.frame.size.width, keyboardFrameInView.origin.y - tbl.frame.origin.y)];
@@ -111,9 +116,23 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [self.view removeKeyboardControl];
     [super viewWillDisappear:animated];
+}
+
+
+#pragma mark - Setters and Getters 
+
+- (void)setLocationItem:(NSObject<SearchListItem> *)locationItem {
+    if (locationItem != _locationItem) {
+        _locationItem = locationItem;
+        
+        NSString *prePopulatedString = nil;
+        if (self.locationItem.type != SearchListItemTypeCurrentLocation) {
+            prePopulatedString = locationItem.name;
+        }
+        self.searchField.text = prePopulatedString;
+    }
 }
 
 #pragma mark - tableview delegate
@@ -127,7 +146,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 }
 
 - (NSArray*)getSearchTerms {
-    UnknownSearchListItem *item = [SMAddressParser parseAddress:searchField.text];
+    UnknownSearchListItem *item = [SMAddressParser parseAddress:self.searchField.text];
     NSString * search = [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@", item.name, item.address, item.street, item.number, item.zip, item.city, item.country];
     search = [search stringByReplacingOccurrencesOfString:@"  " withString:@" "]; // Remove double spacing
     NSMutableCharacterSet * set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
@@ -278,17 +297,16 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSObject<SearchListItem> *currentItem = [self.searchResults objectAtIndex:indexPath.row];
-    searchField.text = currentItem.name;
-    
     self.locationItem = currentItem;
     [self setReturnKey];
+    
 
     if (currentItem.type == SearchListItemTypeKortfor) { // TODO: Check if oiorest/kortfor + autocomplete
-        searchField.text = currentItem.address;
+        self.searchField.text = currentItem.address;
         NSString * street = currentItem.street;
         if(street.length > 0) {
             [self stopAll];
-            [self delayedAutocomplete:searchField.text];
+            [self delayedAutocomplete:self.searchField.text];
             [self setCaretForSearchFieldOnPosition:@(street.length+1)];
         } else {
             [self checkLocation];
@@ -297,19 +315,19 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         if ([SMLocationManager instance].hasValidLocation) {
             CLLocation *loc = [SMLocationManager instance].lastValidLocation;
             if (loc) {
-                [self goBack:nil];
+                [self dismiss];
             }
         }
     } else {
         if (self.delegate) {
             [self.delegate locationFound:self.locationItem];
         }
-        [self goBack:nil];
+        [self dismiss];
     }
     
     // TODO: From CykelPlanen for l283-308
 //    if ([[currentRow objectForKey:@"source"] isEqualToString:@"autocomplete"] && [[currentRow objectForKey:@"subsource"] isEqualToString:@"oiorest"]) {
-//        searchField.text = [currentRow objectForKey:@"address"];
+//        self.searchField.text = [currentRow objectForKey:@"address"];
 //        NSString * street = [currentRow objectForKey:@"street"];
 //        if(street.length > 0){
 //            [self setCaretForSearchFieldOnPosition:[NSNumber numberWithInt:street.length+1]];
@@ -358,8 +376,8 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 }
 
 - (void)delayedAutocomplete:(NSString*)text {
-    [tblFade setAlpha:1.0f];
-    [tblView reloadData];
+    [self.loaderView setAlpha:1.0f];
+    [self.tableView reloadData];
     [self.queue addTasks:[text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     
     // TODO: From Cykelplanen for l362-363
@@ -367,26 +385,26 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 }
 
 - (void)showFade {
-    [tblFade setAlpha:1.0f];
+    [self.loaderView setAlpha:1.0f];
 }
 
 - (void)hideFade {
     [UIView animateWithDuration:0.2f delay:1.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        tblFade.alpha = 0.0f;
+        self.loaderView.alpha = 0.0f;
     } completion:^(BOOL finished) {
     }];
 }
 
 - (void)checkLocation {
-    if ([searchField.text isEqualToString:@""] == NO) {
-        if ([searchField.text isEqualToString:CURRENT_POSITION_STRING]) {
+    if ([self.searchField.text isEqualToString:@""] == NO) {
+        if ([self.searchField.text isEqualToString:CURRENT_POSITION_STRING]) {
             
         } else {
-            [tblFade setAlpha:1.0f];
+            [self.loaderView setAlpha:1.0f];
             if (self.locationItem && self.locationItem.location) {
                 if (self.delegate) {
                     [self.delegate locationFound:self.locationItem];
-                    [self goBack:nil];
+                    [self dismiss];
                 }
                 [self hideFade];
             } else {
@@ -400,12 +418,12 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
                          }
                     }
                     if (currentItem) {
-                        searchField.text = currentItem.name;
+                        self.searchField.text = currentItem.name;
                         self.locationItem = currentItem;
                         
                         if (self.delegate) {
                             [self.delegate locationFound:self.locationItem];
-                            [self goBack:nil];
+                            [self dismiss];
                         }
                     }
 
@@ -413,14 +431,14 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
             }
             
             // TODO: From CykelPlanel for l386-413
-//            [SMGeocoder geocode:searchField.text completionHandler:^(NSArray *placemarks, NSError *error) {
+//            [SMGeocoder geocode:self.searchField.text completionHandler:^(NSArray *placemarks, NSError *error) {
 //                if ([placemarks count] > 0) {
 //                    MKPlacemark *coord = [placemarks objectAtIndex:0];
-//                    [self dismissModalViewControllerAnimated:YES];
+//                    [self dismiss];
 //                    if (self.delegate) {
 //                        [self.delegate locationFound:@{
-//                                                       @"name" : searchField.text,
-//                                                       @"address" : searchField.text,
+//                                                       @"name" : self.searchField.text,
+//                                                       @"address" : self.searchField.text,
 //                                                       @"location" : [[CLLocation alloc] initWithLatitude:coord.coordinate.latitude longitude:coord.coordinate.longitude],
 //                                                       @"source" : @"typedIn"
 //                                                       }];
@@ -449,26 +467,17 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
     //First call will be used to set cursor to begining and call recursively this method again with delay to set real position
     int num = [pos intValue];
     if(num > 0){
-        UITextPosition * from = [searchField positionFromPosition:[searchField beginningOfDocument] offset:0];
-        UITextPosition * to =[searchField positionFromPosition:[searchField beginningOfDocument] offset:0];
-        [searchField setSelectedTextRange:[searchField textRangeFromPosition:from toPosition:to]];
+        UITextPosition * from = [self.searchField positionFromPosition:[self.searchField beginningOfDocument] offset:0];
+        UITextPosition * to =[self.searchField positionFromPosition:[self.searchField beginningOfDocument] offset:0];
+        [self.searchField setSelectedTextRange:[self.searchField textRangeFromPosition:from toPosition:to]];
         NSNumber * newPos = [NSNumber numberWithInt:-num];
         [self performSelector:@selector(setCaretForSearchFieldOnPosition:) withObject:newPos afterDelay:0.3];
     } else {
         num = -num;
-        UITextPosition * from = [searchField positionFromPosition:[searchField beginningOfDocument] offset:num];
-        UITextPosition * to =[searchField positionFromPosition:[searchField beginningOfDocument] offset:num];
-        [searchField setSelectedTextRange:[searchField textRangeFromPosition:from toPosition:to]];
+        UITextPosition * from = [self.searchField positionFromPosition:[self.searchField beginningOfDocument] offset:num];
+        UITextPosition * to =[self.searchField positionFromPosition:[self.searchField beginningOfDocument] offset:num];
+        [self.searchField setSelectedTextRange:[self.searchField textRangeFromPosition:from toPosition:to]];
     }
-}
-
-#pragma mark - button actions
-
-- (IBAction)goBack:(id)sender {
-    [self.queue stopAllRequests];
-    self.queue.delegate = nil;
-    self.queue = nil;
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - textfield delegate
@@ -476,7 +485,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString * s = [[textField.text stringByReplacingCharactersInRange:range withString:string] capitalizedString];
     if ([[s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] == NO) {
-        self.locationItem = nil;
+        _locationItem = nil;
 //        [self setReturnKey];
     }
     [self stopAll];
@@ -490,12 +499,12 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
             [r insertObject:currentLocationItem atIndex:0];
         }
         self.searchResults = r;
-        [tblView reloadData];
-        tblFade.alpha = 0.0f;
+        [self.tableView reloadData];
+        self.loaderView.alpha = 0.0f;
     } else {
         self.searchResults = @[];
-        [tblView reloadData];
-        tblFade.alpha = 0.0f;
+        [self.tableView reloadData];
+        self.loaderView.alpha = 0.0f;
     }
     
     // TODO: From CykelPlanen for l478-499
@@ -520,7 +529,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 //                                  } atIndex:0];
 //            }
 //            self.searchResults = r;
-//            [tblView reloadData];
+//            [self.tableView reloadData];
 //        }
 //    }
     
@@ -550,12 +559,12 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         
         if ([str isEqualToString:@""]) {
             self.searchResults = r;
-            [tblView reloadData];
-            [tblFade setAlpha:0.0f];
+            [self.tableView reloadData];
+            [self.loaderView setAlpha:0.0f];
             return;
         }
         
-//        if ([[str lowercaseString] isEqualToString:[searchField.text lowercaseString]] == NO) {
+//        if ([[str lowercaseString] isEqualToString:[self.searchField.text lowercaseString]] == NO) {
 //            return;
 //        }
         
@@ -648,8 +657,8 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         
         
         self.searchResults = r;
-        [tblView reloadData];
-        [tblFade setAlpha:0.0f];
+        [self.tableView reloadData];
+        [self.loaderView setAlpha:0.0f];
     }
 }
 
@@ -679,12 +688,12 @@ static NSString *const sourceOiorest = @"oiorest";
 //    
 //    if ([str isEqualToString:@""]) {
 //        self.searchResults = r;
-//        [tblView reloadData];
-//        [tblFade setAlpha:0.0f];
+//        [self.tableView reloadData];
+//        [self.loaderView setAlpha:0.0f];
 //        return;
 //    }
 //    
-//    if ([[str lowercaseString] isEqualToString:[searchField.text lowercaseString]] == NO) {
+//    if ([[str lowercaseString] isEqualToString:[self.searchField.text lowercaseString]] == NO) {
 //        return;
 //    }
 //    
@@ -762,8 +771,8 @@ static NSString *const sourceOiorest = @"oiorest";
 //    
 //    
 //    self.searchResults = r;
-//    [tblView reloadData];
-//    [tblFade setAlpha:0.0f];
+//    [self.tableView reloadData];
+//    [self.loaderView setAlpha:0.0f];
 //}
 //
 //#pragma mark - osrm request delegate
@@ -826,8 +835,15 @@ static NSString *const sourceOiorest = @"oiorest";
 //    if (self.delegate) {
 //        [self.delegate locationFound:self.locationData];
 //    }
-//    [self dismissModalViewControllerAnimated:YES];
+//    [self dismiss];
 //}
+
+
+#pragma mark - UIStatusBarStyle
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 
 @end

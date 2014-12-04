@@ -24,16 +24,7 @@
 /**
  * View controller for creating route. Has from and to labels, swap and start button, and arrow image view for current location. FIXME: Merge.
  */
-@interface SMEnterRouteController : SMTranslatedViewController <SMRequestOSRMDelegate, UITableViewDataSource, UITableViewDelegate, SMSearchDelegate>{
-    
-    __weak IBOutlet UILabel *fromLabel;
-    __weak IBOutlet UITableView *tblView;
-    __weak IBOutlet UIView *fadeView;
-    __weak IBOutlet UITextField *toLabel;
-    __weak IBOutlet UIImageView *locationArrow;
-    __weak IBOutlet UIButton *swapButton;
-    __weak IBOutlet UIButton *startButton;
-}
+@interface SMEnterRouteController : SMTranslatedViewController <SMRequestOSRMDelegate, UITableViewDataSource, UITableViewDelegate, SMSearchDelegate>
 
 @property (nonatomic, weak) id<EnterRouteDelegate> delegate;
 

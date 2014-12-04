@@ -67,6 +67,7 @@
         [defaults synchronize];
     }
     
+    [Styler setupAppearance];
     self.window.tintColor = [Styler tintColor];
     
     return YES;

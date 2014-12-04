@@ -30,6 +30,14 @@ typedef enum {
 @property (nonatomic, strong) NSArray * groupedList;
 @property (nonatomic, strong) NSObject<SearchListItem> *fromItem;
 @property (nonatomic, strong) NSObject<SearchListItem> *toItem;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *startButton;
+@property (weak, nonatomic) IBOutlet UIButton *swapButton;
+@property (weak, nonatomic) IBOutlet UIButton *fromButton;
+@property (weak, nonatomic) IBOutlet UIButton *toButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *loaderView;
+
 @end
 
 @implementation SMEnterRouteController
@@ -43,30 +51,19 @@ typedef enum {
     favoritesOpen = NO;
     historyOpen = NO;
     
-	[tblView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+	[self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
-    [fromLabel setText:CURRENT_POSITION_STRING];
-    [locationArrow setHidden:NO];
-    CGRect frame = fromLabel.frame;
-    frame.origin.x = locationArrow.frame.origin.x + 20.0f;
-    frame.size.width = 269.0f - frame.origin.x;
-    [fromLabel setFrame:frame];
-    [fromLabel setTextColor:[UIColor colorWithRed:39.0f/255.0f green:111.0f/255.0f blue:183.0f/255.0f alpha:1.0f]];
-    
-    toLabel.placeholder= translateString(@"search_to_placeholder");
-    
-    [toLabel setText:@""];
-    
-    self.fromItem = nil;
+    self.fromItem = [CurrentLocationItem new];
 
     self.toItem = nil;
 
     
-    for (id v in tblView.subviews) {
-        if ([v isKindOfClass:[UIScrollView class]]) {
-            [v setDelegate: self];
-        }
-    }
+    // TODO: Verify that this can be deleted
+//    for (id v in self.tableView.subviews) {
+//        if ([v isKindOfClass:[UIScrollView class]]) {
+//            [v setDelegate:self];
+//        }
+//    }
     
     
     SMAppDelegate * appd = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
@@ -95,7 +92,7 @@ typedef enum {
     }
     
     [self setGroupedList:@[saved, last]];
-    [tblView reloadData];
+    [self.tableView reloadData];
 
     if (![SMAnalytics trackEventWithCategory:@"Route" withAction:@"Search" withLabel:@"" withValue:0]) {
         debugLog(@"error in trackEvent");
@@ -103,20 +100,61 @@ typedef enum {
 
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-//    [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    [super viewWillDisappear:animated];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark - Setters and Getters
+
+- (void)setFromItem:(NSObject<SearchListItem> *)fromItem {
+    if (fromItem != _fromItem) {
+        _fromItem = fromItem;
+        
+        NSString *title;
+        if (self.fromItem) {
+            title = [self textFromItem:self.fromItem];
+        } else {
+            title = translateString(@"search_to_placeholder");
+        }
+        [self.fromButton setTitle:title forState:UIControlStateNormal];
+        
+        [self checkSwapButtonState];
+        [self checkStartButtonState];
+    }
+}
+
+- (void)setToItem:(NSObject<SearchListItem> *)toItem {
+    if (toItem != _toItem) {
+        _toItem = toItem;
+        
+        NSString *title;
+        if (self.toItem) {
+            title = [self textFromItem:self.toItem];
+        } else {
+            title = translateString(@"search_to_placeholder");
+        }
+        [self.toButton setTitle:title forState:UIControlStateNormal];
+        
+        [self checkSwapButtonState];
+        [self checkStartButtonState];
+    }
+}
+
+
+#pragma mark - 
+
+- (void)checkSwapButtonState {
+    BOOL isCurrentType = self.fromItem.type == SearchListItemTypeCurrentLocation;
+    self.swapButton.enabled = !isCurrentType;
+}
+
+- (void)checkStartButtonState {
+    BOOL hasEndPoints = self.toItem && self.fromItem;
+    self.startButton.enabled = hasEndPoints;
+}
+
 
 #pragma mark - button actions
 
@@ -127,26 +165,13 @@ typedef enum {
         return;
     }
     
-    NSString * txt = fromLabel.text;
-    fromLabel.text = toLabel.text;
-    toLabel.text = txt;
-    NSObject<SearchListItem> *item = self.fromItem.copy;
+    NSObject<SearchListItem> *item = self.fromItem;
     self.fromItem = self.toItem;
     self.toItem = item;
-    
-    if (self.fromItem == nil || self.fromItem.type == SearchListItemTypeCurrentLocation) {
-        [swapButton setEnabled:NO];
-    } else {
-        [swapButton setEnabled:YES];
-    }
-}
-
-- (IBAction)goBack:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)findRoute:(id)sender {
-    if (([toLabel.text isEqualToString:@""]) || ([fromLabel.text isEqualToString:@""])) {
+    if (!self.toItem || !self.fromItem) {
         return;
     }
     
@@ -173,13 +198,13 @@ typedef enum {
     }
     
     [UIView animateWithDuration:0.2f animations:^{
-        [fadeView setAlpha:1.0f];
+        [self.loaderView setAlpha:1.0f];
     }];
     
     CLLocation * s = self.fromItem.location;
     CLLocation * e = self.toItem.location;
     
-    NSString * st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)", fromLabel.text, s.coordinate.latitude, s.coordinate.longitude, toLabel.text, e.coordinate.latitude, e.coordinate.longitude];
+    NSString * st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)", self.fromButton.titleLabel.text, s.coordinate.latitude, s.coordinate.longitude, self.toButton.titleLabel.text, e.coordinate.latitude, e.coordinate.longitude];
     debugLog(@"%@", st);
     if (![SMAnalytics trackEventWithCategory:@"Route:" withAction:@"Finder" withLabel:st withValue:0]) {
         debugLog(@"error in trackPageview");
@@ -196,18 +221,12 @@ typedef enum {
         [destViewController setDelegate:self];
         switch (delegateField) {
             case fieldFrom:
-                [destViewController setShouldAllowCurrentPosition:YES];
-                if (self.fromItem && self.fromItem.type != SearchListItemTypeCurrentLocation) {
-                    [destViewController setSearchText:fromLabel.text];
-                    destViewController.locationItem = self.fromItem;
-                } else {
-                    [destViewController setSearchText:@""];
-                }
+                destViewController.shouldAllowCurrentPosition = YES;
+                destViewController.locationItem = self.fromItem;
                 break;
             case fieldTo:
-                [destViewController setShouldAllowCurrentPosition:NO];
+                destViewController.shouldAllowCurrentPosition = NO;
                 destViewController.locationItem = self.toItem;
-                [destViewController setSearchText:toLabel.text];
                 break;
             default:
                 break;
@@ -220,7 +239,7 @@ typedef enum {
 
 - (void)request:(SMRequestOSRM *)req failedWithError:(NSError *)error {
     [UIView animateWithDuration:0.2f animations:^{
-        [fadeView setAlpha:0.0f];
+        [self.loaderView setAlpha:0.0f];
     }];
 }
 
@@ -229,7 +248,7 @@ typedef enum {
         CLLocation * s = res[@"start"];
         CLLocation * e = res[@"end"];
         
-        NSString * st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)", fromLabel.text, s.coordinate.latitude, s.coordinate.longitude, toLabel.text, e.coordinate.latitude, e.coordinate.longitude];
+        NSString * st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)", self.fromButton.titleLabel.text, s.coordinate.latitude, s.coordinate.longitude, self.toButton.titleLabel.text, e.coordinate.latitude, e.coordinate.longitude];
         debugLog(@"%@", st);
         if (![SMAnalytics trackEventWithCategory:@"Route:" withAction:@"Finder" withLabel:st withValue:0]) {
             debugLog(@"error in trackPageview");
@@ -253,15 +272,15 @@ typedef enum {
                 [sh addSearchToServer:item];
             }
             
-            [self.delegate findRouteFrom:self.fromItem.location.coordinate to:self.toItem.location.coordinate fromAddress:fromLabel.text toAddress:toLabel.text withJSON:jsonRoot];
-            [self dismissViewControllerAnimated:YES completion:^{}];
+            [self.delegate findRouteFrom:self.fromItem.location.coordinate to:self.toItem.location.coordinate fromAddress:self.fromButton.titleLabel.text toAddress:self.toButton.titleLabel.text withJSON:jsonRoot];
+            [self dismiss];
         }
         [UIView animateWithDuration:0.2f animations:^{
-            [fadeView setAlpha:0.0f];
+            [self.loaderView setAlpha:0.0f];
         }];
     } else {
         [UIView animateWithDuration:0.2f animations:^{
-            [fadeView setAlpha:0.0f];
+            [self.loaderView setAlpha:0.0f];
         }];
     }
 }
@@ -287,15 +306,16 @@ typedef enum {
 
 #pragma mark - tap gesture
 
-- (IBAction)labelTapped:(UITapGestureRecognizer*)recognizer {
-    delegateField = fieldFrom;
-    [self performSegueWithIdentifier:@"searchSegue" sender:nil];
-}
-
 - (IBAction)toTapped:(id)sender {
     delegateField = fieldTo;
     [self performSegueWithIdentifier:@"searchSegue" sender:nil];
 }
+
+- (IBAction)fromTapped:(id)sender {
+    delegateField = fieldFrom;
+    [self performSegueWithIdentifier:@"searchSegue" sender:nil];
+}
+
 
 #pragma mark - tableview delegate
 
@@ -378,26 +398,8 @@ typedef enum {
         }
         return cell;
     } else {
-        NSString * identifier = @"autocompleteMiddleCell";
-        if (indexPath.row == 0) {
-            if ([[self.groupedList objectAtIndex:indexPath.section] count] == 1) {
-                identifier = @"autocompleteSingleCell";
-            } else {
-                identifier = @"autocompleteTopCell";
-            }
-        } else {
-            if (indexPath.section == 0) {
-                if (indexPath.row == [[self.groupedList objectAtIndex:indexPath.section] count]-1 && indexPath.row < MAX_FAVORITES) {
-                    identifier = @"autocompleteBottomCell";
-                }
-            } else {
-                if (indexPath.row == [[self.groupedList objectAtIndex:indexPath.section] count]-1 && indexPath.row < MAX_HISTORY) {
-                    identifier = @"autocompleteBottomCell";
-                }
-            }
-    
-        }
-        
+        NSString * identifier = @"autocompleteCell";
+
         NSObject<SearchListItem> *currentRow = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         SMEnterRouteCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         cell.nameLabel.text = currentRow.name;
@@ -457,8 +459,8 @@ typedef enum {
     } else if (section == 1) {
         historyOpen = !historyOpen;
     }
-    [tblView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [tblView reloadData];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadData];
 }
 
 - (NSString*)textFromItem:(NSObject<SearchListItem> *)item {
@@ -488,15 +490,7 @@ typedef enum {
             }
         }
         NSObject<SearchListItem> *currentItem = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-        [toLabel setText:[self textFromItem:currentItem]];
         self.toItem = currentItem;
-        
-        
-        if ((self.toItem && self.fromItem) || ([toLabel.text isEqualToString:@""] == NO && [fromLabel.text isEqualToString:@""] == NO)) {
-            [startButton setEnabled:YES];
-        } else {
-            [startButton setEnabled:NO];
-        }
     }
 }
 
@@ -528,50 +522,28 @@ typedef enum {
     return cell;
 }
 
+
 #pragma mark - search delegate 
 
 - (void)locationFound:(NSObject<SearchListItem> *)locationItem {
     switch (delegateField) {
         case fieldTo:
             self.toItem = locationItem;
-            toLabel.text = [self textFromItem:locationItem];
             break;
         case fieldFrom:
             self.fromItem = locationItem;
-            
-            
-            if (self.fromItem == nil  || self.fromItem.type == SearchListItemTypeCurrentLocation) {
-                [swapButton setEnabled:NO];
-            } else {
-                [swapButton setEnabled:YES];
-            }
-            
-            fromLabel.text = [self textFromItem:locationItem];
-            if (self.fromItem.type == SearchListItemTypeCurrentLocation) {
-                [locationArrow setHidden:NO];
-                CGRect frame = fromLabel.frame;
-                frame.origin.x = locationArrow.frame.origin.x + 20.0f;
-                frame.size.width = 269.0f - frame.origin.x;
-                [fromLabel setFrame:frame];
-                [fromLabel setTextColor:[UIColor colorWithRed:39.0f/255.0f green:111.0f/255.0f blue:183.0f/255.0f alpha:1.0f]];
-            } else {
-                [locationArrow setHidden:YES];
-                CGRect frame = fromLabel.frame;
-                frame.origin.x = locationArrow.frame.origin.x;
-                frame.size.width = 269.0f - frame.origin.x;
-                [fromLabel setFrame:frame];
-                [fromLabel setTextColor:[UIColor blackColor]];
-            }
             break;
         default:
             break;
     }
-    
-    if ((self.toItem && self.fromItem) || ([toLabel.text isEqualToString:@""] == NO && [fromLabel.text isEqualToString:@""] == NO)) {
-        [startButton setEnabled:YES];
-    } else {
-        [startButton setEnabled:NO];
-    }
+}
+
+
+
+#pragma mark - UIStatusBarStyle
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 

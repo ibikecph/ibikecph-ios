@@ -12,13 +12,6 @@
 /**
  * View controller for sign up with name, email, password, repeat password, and image.
  */
-@interface SMRegisterController : SMTranslatedViewController <SMAPIRequestDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
-    __weak IBOutlet UIScrollView *scrlView;
-    __weak IBOutlet UITextField *registerName;
-    __weak IBOutlet UITextField *registerEmail;
-    __weak IBOutlet UITextField *registerPassword;
-    __weak IBOutlet UITextField *registerRepeatPassword;
-    __weak IBOutlet UIImageView *registerImage;
-}
+@interface SMRegisterController : SMTranslatedViewController
 
 @end

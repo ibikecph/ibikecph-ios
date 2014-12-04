@@ -25,7 +25,7 @@ extension Styler {
     
     class func setupAppearance() {
         UINavigationBar.appearance().barTintColor = Styler.navigationBarTintColor()
-        UIBarButtonItem.appearance().tintColor = Styler.navigationBarContentTintColor()
+        UINavigationBar.appearance().tintColor = Styler.navigationBarContentTintColor()
     }
 }
 
