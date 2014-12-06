@@ -16,9 +16,17 @@
 @interface SMAccountController () {
     
 }
+
+@property (weak, nonatomic) IBOutlet UIButton *imageButton;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordConfirmField;
+
 @property (nonatomic, strong) SMAPIRequest * apr;
 @property (nonatomic, strong) UIImage * profileImage;
 @property (nonatomic, strong) NSDictionary * userData;
+
 @end
 
 @implementation SMAccountController
@@ -26,51 +34,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     hasChanged = NO;
-//	[[UIApplication sharedApplication] setStatusBarHidden:YES];
     
-    [scrlView setContentSize:scrlView.frame.size];
+    self.title = translateString(@"account");
+
+    // TODO: Make a SMFacebookAccountController and SMNativeAccountController
     
     /**
      * rounded corners for images
      */
-    fbImage.layer.cornerRadius = 5;
-    fbImage.layer.masksToBounds = YES;
-    regularImage.layer.cornerRadius = 5;
-    regularImage.layer.masksToBounds = YES;
-    
-    /**
-     * decide which view we want to show
-     */
-    if ([self.appDelegate.appSettings objectForKey:@"loginType"] && [[self.appDelegate.appSettings objectForKey:@"loginType"] isEqualToString:@"FB"]) {
-        /**
-         * FB account type
-         */
-        [fbView setHidden:NO];
-        [regularView setHidden:YES];
-        [fbImage setImage:nil];
-        [fbName setText:@""];
-        SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
-        [self setApr:ap];
-        [self.apr setRequestIdentifier:@"getUserFB"];
-        [self.apr showTransparentWaitingIndicatorInView:self.view];
-        [self.apr executeRequest:@{@"service" : [NSString stringWithFormat:@"users/%@", [self.appDelegate.appSettings objectForKey:@"id"]], @"transferMethod" : @"GET",  @"headers" : API_DEFAULT_HEADERS} withParams:@{@"auth_token": [self.appDelegate.appSettings objectForKey:@"auth_token"]}];
-        self.profileImage = nil;
-    } else {
-        /**
-         * regular account type
-         */
-        [fbView setHidden:YES];
-        [regularView setHidden:NO];
-        SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
-        [self setApr:ap];
-        [self.apr setRequestIdentifier:@"getUser"];
-        [self.apr showTransparentWaitingIndicatorInView:self.view];
-        [self.apr executeRequest:@{@"service" : [NSString stringWithFormat:@"users/%@", [self.appDelegate.appSettings objectForKey:@"id"]], @"transferMethod" : @"GET",  @"headers" : API_DEFAULT_HEADERS} withParams:@{@"auth_token": [self.appDelegate.appSettings objectForKey:@"auth_token"]}];
-        self.profileImage = nil;
-        
-        name.delegate = self;
-        password.delegate = self;
-    }
+//    fbImage.layer.cornerRadius = 5;
+//    fbImage.layer.masksToBounds = YES;
+//    regularImage.layer.cornerRadius = 5;
+//    regularImage.layer.masksToBounds = YES;
+//    
+//    /**
+//     * decide which view we want to show
+//     */
+//    if ([self.appDelegate.appSettings objectForKey:@"loginType"] && [[self.appDelegate.appSettings objectForKey:@"loginType"] isEqualToString:@"FB"]) {
+//        /**
+//         * FB account type
+//         */
+//        [fbView setHidden:NO];
+//        [regularView setHidden:YES];
+//        [fbImage setImage:nil];
+//        [fbName setText:@""];
+//        SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
+//        [self setApr:ap];
+//        [self.apr setRequestIdentifier:@"getUserFB"];
+//        [self.apr showTransparentWaitingIndicatorInView:self.view];
+//        [self.apr executeRequest:@{@"service" : [NSString stringWithFormat:@"users/%@", [self.appDelegate.appSettings objectForKey:@"id"]], @"transferMethod" : @"GET",  @"headers" : API_DEFAULT_HEADERS} withParams:@{@"auth_token": [self.appDelegate.appSettings objectForKey:@"auth_token"]}];
+//        self.profileImage = nil;
+//    } else {
+//        /**
+//         * regular account type
+//         */
+//        [fbView setHidden:YES];
+//        [regularView setHidden:NO];
+//        SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
+//        [self setApr:ap];
+//        [self.apr setRequestIdentifier:@"getUser"];
+//        [self.apr showTransparentWaitingIndicatorInView:self.view];
+//        [self.apr executeRequest:@{@"service" : [NSString stringWithFormat:@"users/%@", [self.appDelegate.appSettings objectForKey:@"id"]], @"transferMethod" : @"GET",  @"headers" : API_DEFAULT_HEADERS} withParams:@{@"auth_token": [self.appDelegate.appSettings objectForKey:@"auth_token"]}];
+//        self.profileImage = nil;
+//        
+//        name.delegate = self;
+//        password.delegate = self;
+//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -89,7 +98,7 @@
     [super viewWillDisappear:animated];
 }
 
-
+/*
 #pragma mark - button actions
 
 - (void)inputKeyboardWillHide:(NSNotification *)notification {
@@ -288,9 +297,7 @@
     
             [self.navigationController popViewControllerAnimated:YES];
         } else {
-            /**
-             * regular account type
-             */
+            // Regular account type
             [fbView setHidden:YES];
             [regularView setHidden:NO];
 
@@ -370,6 +377,8 @@
         }    
     }
 }
+ 
+ */
 
 #pragma mark - statusbar style
 

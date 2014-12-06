@@ -14,7 +14,6 @@
  */
 @interface SMRouteInfoViewController : UIViewController<UITableViewDataSource, UITableViewDataSource, NSXMLParserDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) SMSingleRouteInfo* singleRouteInfo;

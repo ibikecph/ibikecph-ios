@@ -18,8 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
 
-@property (weak, nonatomic) IBOutlet SMPatternedButton *buttonAddressDestination;
-@property (weak, nonatomic) IBOutlet SMPatternedButton *buttonAddressSource;
 @property(nonatomic, strong) SMTripRoute* tripRoute;
 @property(nonatomic, strong) SMRoute* fullRoute;
 @property(nonatomic, strong) SMStationInfo* sourceStation;

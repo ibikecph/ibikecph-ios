@@ -20,6 +20,12 @@
 
 @implementation SMLoginController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.title = translateString(@"log_in");
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {

@@ -48,8 +48,11 @@
 @property (weak, nonatomic) IBOutlet UIView *blockingView;
 @property (weak, nonatomic) IBOutlet SMGPSTrackButton *buttonTrackUser;
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
-@property (weak, nonatomic) IBOutlet UIView *dropPinView;
 @property (weak, nonatomic) IBOutlet UIView *loaderView;
+
+@property (weak, nonatomic) IBOutlet UIView *bottomDrawerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomDrawerViewConstraint;
+@property (assign, nonatomic) BOOL bottomDrawerViewVisible;
 
 @property (assign, nonatomic) BOOL animationShown;
 @property (weak, nonatomic) IBOutlet UILabel *routeStreet;
@@ -104,8 +107,6 @@
     [self.mapView setMaxZoom:MAX_MAP_ZOOM];
 
     self.mapView.userTrackingMode = RMUserTrackingModeFollow;
-    self.mapView.defaultLocationCoordinate = CLLocationCoordinate2DMake(55.675455,12.566643);
-//    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(55.675455,12.566643) animated:NO];
     [self.mapView setZoom:16];
     [self.mapView setEnableBouncing:TRUE];
     
@@ -150,7 +151,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     self.findFrom = @"";
     self.findTo = @"";
@@ -159,7 +160,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
 
@@ -221,6 +222,45 @@
 //        }
 //    }
 }
+
+//- (void)viewDidLayoutSubviews {
+//    [super viewDidLayoutSubviews];
+//    
+//    [self checkBottomDrawerLayout];
+//}
+
+- (void)updateViewConstraints {
+    [super updateViewConstraints];
+    
+    [self checkBottomDrawerLayout];
+}
+
+
+#pragma mark - Setters and Getters
+
+- (void)setBottomDrawerViewVisible:(BOOL)bottomDrawerViewVisible
+{
+    if (bottomDrawerViewVisible != _bottomDrawerViewVisible) {
+        _bottomDrawerViewVisible = bottomDrawerViewVisible;
+        
+        [UIView animateWithDuration:0.25 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            [self checkBottomDrawerLayout];
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+}
+
+
+#pragma mark - 
+
+- (void)checkBottomDrawerLayout {
+    self.bottomDrawerViewConstraint.constant = self.view.bounds.size.height - (self.bottomDrawerViewVisible ? self.bottomDrawerView.frame.size.height : 0);
+}
+
+
+#pragma mark -
 
 -(void)didLoadTransformationData:(NSNotification*)notification{
     NSLog(@"NOTIFICATION");
@@ -327,11 +367,17 @@
 - (void)displayDestinationNameWithLocation:(CLLocation*)loc{
     [SMGeocoder reverseGeocode:loc.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
         NSLog(@"reverse geocode error: %@", error);
-        NSLog(@"Pin at: %@", [response objectForKey:@"title"]);
-        [self.routeStreet setText:response[@"title"]];
-        if ([self.routeStreet.text isEqualToString:@""]) {
-            [self.routeStreet setText:[NSString stringWithFormat:@"%f, %f", loc.coordinate.latitude, loc.coordinate.longitude]];
+        NSString *title = response[@"title"];
+        NSString *subtitle = response[@"subtitle"];
+        NSString *text = title;
+        if (subtitle.length) {
+            text = [text stringByAppendingFormat:@"\n%@", subtitle];
         }
+        if (text.length == 0) {
+            text = [NSString stringWithFormat:@"%f, %f", loc.coordinate.latitude, loc.coordinate.longitude];
+        }
+        NSLog(@"Pin at: %@", text);
+        self.routeStreet.text = text;
         
         NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF.name = %@ AND SELF.address = %@", self.routeStreet.text, self.routeStreet.text];
         NSArray * arr = [[SMFavoritesUtil getFavorites] filteredArrayUsingPredicate:pred];
@@ -347,9 +393,8 @@
             self.pinButton.enabled = NO;
         }
         
-        [self.destinationPin setTitle:response[@"title"]];
+        [self.destinationPin setTitle:title];
     }];
-    
 }
 
 #pragma mark - rotation
@@ -400,50 +445,17 @@
 }
 
 - (void)showPinDrop {
-    // TODO: Animate pin drop view in from bottom.
-//    CGRect frame = dropPinView.frame;
-//    frame.origin.y = centerView.frame.size.height - 6.0f;
-//    [dropPinView setFrame:frame];
-//    [dropPinView setHidden:NO];
-//    routeStreet.text = @"";
+    self.bottomDrawerViewVisible = YES;
+    self.routeStreet.text = @"";
+    
+    // TODO
 //    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(delayedAddPin) object:nil];
 //    pinWorking = NO;
 //    pinButton.enabled = NO;
-//    [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-//        CGRect frame = dropPinView.frame;
-//        frame.origin.y = centerView.frame.size.height - dropPinView.frame.size.height;
-//        [dropPinView setFrame:frame];
-//        
-//        frame = buttonTrackUser.frame;
-//        frame.origin.y = dropPinView.frame.origin.y - 65.0f;
-//        [buttonTrackUser setFrame:frame];
-//        
-//        frame = overlayMenuBtn.frame;
-//        frame.origin.y = dropPinView.frame.origin.y - 65.0f;
-//        [overlayMenuBtn setFrame:frame];
-//        
-//    } completion:^(BOOL finished) {
-//    }];
 }
 
 - (void)hidePinDrop {
-    // TODO: Animate pin hide out to below bottom
-//    [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-//        CGRect frame = dropPinView.frame;
-//        frame.origin.y = self.mapView.frame.origin.y + self.mapView.frame.size.height;
-//        [dropPinView setFrame:frame];
-//        frame = buttonTrackUser.frame;
-//        frame.origin.y = dropPinView.frame.origin.y - 65.0f;
-//        [buttonTrackUser setFrame:frame];
-//        
-//        frame = overlayMenuBtn.frame;
-//        frame.origin.y = dropPinView.frame.origin.y - 65.0f;
-//        [overlayMenuBtn setFrame:frame];
-//        
-//    } completion:^(BOOL finished) {
-//        
-//    }];
-    
+    self.bottomDrawerViewVisible = NO;
 }
 
 - (void)trackingOn {
@@ -465,7 +477,7 @@
     if ([segue.identifier isEqualToString:@"enterRouteSegue"]) {
         SMEnterRouteController *destViewController = segue.destinationViewController;
         [destViewController setDelegate:self];
-    } else if ([segue.identifier isEqualToString:@"goToNavigationView"]) {
+    } else if ([segue.identifier isEqualToString:@"mainToRoute"]) {
         [self.mapView removeAllAnnotations];
         for (id v in self.mapView.subviews) {
             if ([v isKindOfClass:[SMCalloutView class]]) {
@@ -481,11 +493,13 @@
         [destViewController setSource:self.source];
         [destViewController setJsonRoot:self.jsonRoot];
         
+        CLLocation *endLocation = (CLLocation*)params[@"end"];
+        CLLocation *startLocation = (CLLocation*)params[@"start"];
         NSDictionary * d = @{
-                             @"endLat": [NSNumber numberWithDouble:((CLLocation*)params[@"end"]).coordinate.latitude],
-                             @"endLong": [NSNumber numberWithDouble:((CLLocation*)params[@"end"]).coordinate.longitude],
-                             @"startLat": [NSNumber numberWithDouble:((CLLocation*)params[@"start"]).coordinate.latitude],
-                             @"startLong": [NSNumber numberWithDouble:((CLLocation*)params[@"start"]).coordinate.longitude],
+                             @"endLat": @(endLocation.coordinate.latitude),
+                             @"endLong": @(endLocation.coordinate.longitude),
+                             @"startLat": @(startLocation.coordinate.latitude),
+                             @"startLong": @(startLocation.coordinate.longitude),
                              @"destination": ((self.destination == nil) ? @"" : self.destination),
                              };
         
@@ -511,7 +525,7 @@
     self.source = (src == nil ? @"" : src);
     self.jsonRoot = jsonRoot;
     if (self.navigationController.topViewController == self) {
-        [self performSegueWithIdentifier:@"goToNavigationView" sender:@{@"start" : start, @"end" : end}];
+        [self performSegueWithIdentifier:@"mainToRoute" sender:@{@"start" : start, @"end" : end}];
     }
 }
 
@@ -688,7 +702,7 @@ float lerp(float a, float b, float t) {
 
 #pragma mark - nearby places delegate
 
-- (void) nearbyPlaces:(SMNearbyPlaces *)owner foundLocations:(NSArray *)locations {
+- (void)nearbyPlaces:(SMNearbyPlaces *)owner foundLocations:(NSArray *)locations {
 //    [self.destinationPin setNearbyObjects:locations];
     [self.routeStreet setText:owner.title];
     if ([self.routeStreet.text isEqualToString:@""]) {
@@ -780,7 +794,8 @@ float lerp(float a, float b, float t) {
                     HistoryItem *item = [[HistoryItem alloc] initWithName:new_name address:new_address location:self.endLoc startDate:[NSDate date] endDate:[NSDate date]];
                     [SMSearchHistory saveToSearchHistory:item];
                 }
-                [self dismissViewControllerAnimated:YES completion:nil];
+                // TODO: Ends up here e.g. when going to route. Find out why.
+//                [self dismissViewControllerAnimated:YES completion:nil];
             }];
         }
         [UIView animateWithDuration:0.4f animations:^{

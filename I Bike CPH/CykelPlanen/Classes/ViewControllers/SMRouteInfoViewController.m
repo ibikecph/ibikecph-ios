@@ -15,7 +15,7 @@
 
 @end
 
-@implementation SMRouteInfoViewController{
+@implementation SMRouteInfoViewController {
     NSDateFormatter* dateFormatter;
     NSMutableArray* times;
     NSXMLParser* idParser;
@@ -34,7 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.titleLabel setText:translateString(@"route_info")];
+    
+    self.title = translateString(@"route_info");
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     dateFormatter= [[NSDateFormatter alloc] init];
@@ -43,7 +44,7 @@
     [self filterLines];
 }
 
--(void)filterLines{
+-(void)filterLines {
     SMTransportation* transportation= [SMTransportation instance];
     NSDate* date= [NSDate new];
     NSCalendar* cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -83,7 +84,7 @@
         }];
      
         BOOL hasDuplicates= NO;
-        do{
+        do {
             hasDuplicates= NO;
             
             for(int i=0; i<((int)timesArray.count)-1; i++){
@@ -101,8 +102,8 @@
                     
                 }
             }
-        }while(hasDuplicates);
-        times= [NSArray arrayWithArray:timesArray];
+        } while(hasDuplicates);
+        times = [NSArray arrayWithArray:timesArray];
 
     }else{
         NSString* urlString= [NSString stringWithFormat:@"http://xmlopen.rejseplanen.dk/bin/rest.exe/location?input=%@",[self.singleRouteInfo.sourceStation.name urlEncode]];

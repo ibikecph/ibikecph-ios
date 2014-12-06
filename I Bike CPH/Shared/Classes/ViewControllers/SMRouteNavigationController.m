@@ -178,10 +178,12 @@ typedef enum {
 
 -(void)onStationsFetched:(NSNotification*)notification{}
 
+    
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
+    
+    // TODO: Change to YES when view is implemented in storyboard
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     // TODO: From CykelPlanen
 //    if([[SMUser user] route]){
@@ -273,6 +275,8 @@ typedef enum {
 
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
     [centerView removeObserver:self forKeyPath:@"frame"];
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -2249,7 +2253,7 @@ typedef enum {
 #pragma mark - statusbar style
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
+    return UIStatusBarStyleLightContent;
 }
 
 @end

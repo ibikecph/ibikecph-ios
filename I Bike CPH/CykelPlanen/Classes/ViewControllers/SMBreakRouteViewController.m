@@ -32,7 +32,6 @@
     int endTime;
 }
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) NSMutableArray* stationNames;
 @property (strong, nonatomic) NSMutableArray* destStationNames;
 
@@ -60,8 +59,7 @@
     breakRouteFailed= NO;
     displayed= NO;
     
-    NSString* title= translateString(@"break_route_title");
-    [self.titleLabel setText:title];
+    self.title = translateString(@"break_route_title");
     
     self.tableView.separatorStyle= UITableViewCellSeparatorStyleNone;
     

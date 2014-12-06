@@ -9,11 +9,8 @@
 #import <UIKit/UIKit.h>
 
 /**
- * About view controller. Has about text in scrollable view. FIXME: Merge.
+ * About view controller. Has about text in scrollable view.
  */
-@interface SMAboutController : SMTranslatedViewController {
-    __weak IBOutlet UIScrollView *scrlView;
-    __weak IBOutlet UILabel *aboutText;
-}
+@interface SMAboutController : SMTranslatedViewController
 
 @end

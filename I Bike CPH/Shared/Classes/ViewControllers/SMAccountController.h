@@ -12,21 +12,7 @@
 /**
  * Account view controller. Has different content if Facebook account or not. FB: image, name. Regular: image, name, email, password, pw repeat. FIXME: Merge.
  */
-@interface SMAccountController : SMTranslatedViewController <UITextFieldDelegate, SMAPIRequestDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIAlertViewDelegate>{
-    
-    __weak IBOutlet UIImageView *fbImage;
-    __weak IBOutlet UILabel *fbName;
-    __weak IBOutlet UIView *fbView;
-    
-    __weak IBOutlet UIScrollView *scrlView;
-    
-    
-    __weak IBOutlet UIImageView *regularImage;
-    __weak IBOutlet UITextField *name;
-    __weak IBOutlet UITextField *email;
-    __weak IBOutlet UITextField *password;
-    __weak IBOutlet UITextField *passwordRepeat;
-    __weak IBOutlet UIView *regularView;
+@interface SMAccountController : SMTranslatedViewController <UITextFieldDelegate, SMAPIRequestDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIAlertViewDelegate> {
     BOOL hasChanged;
 }
 

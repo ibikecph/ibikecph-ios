@@ -31,6 +31,12 @@
 
 @implementation SMRegisterController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.title = translateString(@"create_account");
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
