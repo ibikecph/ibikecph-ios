@@ -9,6 +9,7 @@
 #import "SMMainViewController.h"
 
 #import "SMLocationManager.h"
+#import "SMSearchHistory.h"
 
 #import "RMMapView.h"
 #import "RMAnnotation.h"

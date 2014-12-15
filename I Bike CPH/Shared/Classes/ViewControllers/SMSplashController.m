@@ -21,7 +21,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
+    if (self.appDelegate.appSettings[@"auth_token"]) {
         [self goToMain];
     }
 }

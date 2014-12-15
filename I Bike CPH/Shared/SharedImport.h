@@ -13,7 +13,6 @@
 #import <UIKit/UIKit.h>
 
 #import "GAI.h"
-#import "GAITracker.h"
 #import "GAIFields.h"
 #import "GAIDictionaryBuilder.h"
 #import "SMAddressParser.h"
@@ -39,9 +38,11 @@
 #import "SMPatternedButton.h"
 #import "SMNetworkErrorView.h"
 
+#import <FacebookSDK/FacebookSDK.h>
+
 #define API_ADDRESS @"www.ibikecph.dk"
 //#define API_SERVER @"http://ibikecph-staging.herokuapp.com/api"
-#define API_SERVER @"http://www.ibikecph.dk/api"
+#define API_SERVER @"https://www.ibikecph.dk/api"
 
 #define translateString(txt) [SMTranslation decodeString:(txt)]
 

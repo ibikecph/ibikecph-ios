@@ -9,7 +9,6 @@
 #endif
 
 #ifdef __OBJC__
-    #import "CykelPlanen-Swift.h"
     #import "SharedImport.h"
     #import "SMUser.h"
 #endif
@@ -28,7 +27,6 @@
 #define NOTIFICATION_STATIONS_FETCHED @"NotificationStationsFetched"
 
 #define API_ADDRESS @"www.ibikecph.dk"
-#define API_SERVER @"http://www.ibikecph.dk/api"
 #define API_DEFAULT_ACCEPT @{@"key": @"Accept", @"value" : @"application/vnd.ibikecph.v1"}
 #define API_USER_AGENT @{@"key": @"User-Agent", @"value" : USER_AGENT}
 #define API_DEFAULT_HEADERS @[API_DEFAULT_ACCEPT, API_USER_AGENT, @{@"key": @"Content-Type", @"value" : @"application/json"}]

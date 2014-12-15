@@ -23,10 +23,13 @@ extension UINavigationController {
 extension UIViewController {
     
     func dismiss() {
-        if let navigation = self.parentViewController as? UINavigationController {
-            navigation.popViewControllerAnimated(true)
-        } else {
-            dismissViewControllerAnimated(true, completion: nil)
+        if let navigation = self.parentViewController as? UINavigationController { // Check if view controller is on a navigation stack
+            if navigation.viewControllers.first as UIViewController != self { // Check if view controller isn't the top vc in the stack
+                navigation.popViewControllerAnimated(true)
+                return
+            }
         }
+        // Default
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

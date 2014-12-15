@@ -77,6 +77,9 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = translateString(@"search");
+    
     [self.searchField setText:self.searchText];
     self.autocomp = [[SMAutocomplete alloc] initWithDelegate:self];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
@@ -307,6 +310,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         if(street.length > 0) {
             [self stopAll];
             [self delayedAutocomplete:self.searchField.text];
+            // TODO: Carret position doesn't set correctly
             [self setCaretForSearchFieldOnPosition:@(street.length+1)];
         } else {
             [self checkLocation];

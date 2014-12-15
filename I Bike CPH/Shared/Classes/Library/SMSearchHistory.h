@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "SMAPIRequest.h"
-#import "SharedImport.h"
+
+@class HistoryItem;
+@protocol SearchListItem;
 
 @protocol SMSearchHistoryDelegate <NSObject>
 - (void)searchHistoryOperationFinishedSuccessfully:(id)req withData:(id)data;

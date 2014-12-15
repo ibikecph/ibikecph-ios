@@ -10,6 +10,7 @@
 #import "SMAPIRequest.h"
 
 @class SMFavoritesUtil;
+@class FavoriteItem;
 
 @protocol SMFavoritesDelegate <NSObject>
 - (void)favoritesOperationFinishedSuccessfully:(id)req withData:(id)data;
@@ -24,6 +25,7 @@
 
 @property (nonatomic, weak) id<SMFavoritesDelegate>delegate;
 
++ (NSArray *)favorites;
 + (NSMutableArray *)getFavorites;
 + (BOOL)saveToFavorites:(FavoriteItem *)item;
 + (BOOL)saveFavorites:(NSArray *)fav;

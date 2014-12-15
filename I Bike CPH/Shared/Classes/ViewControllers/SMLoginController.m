@@ -150,25 +150,25 @@
             [self.appDelegate.appSettings setValue:self.loginPassword.text forKey:@"password"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [self.appDelegate saveSettings];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self dismiss];
         } else if ([req.requestIdentifier isEqualToString:@"autoLogin"]) {
             [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
             [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [self.appDelegate saveSettings];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self dismiss];
         } else if ([req.requestIdentifier isEqualToString:@"loginFB"]) {
             [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
             [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"FB" forKey:@"loginType"];
             [self.appDelegate saveSettings];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self dismiss];
         } else if ([req.requestIdentifier isEqualToString:@"register"]) {
             [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
             [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [self.appDelegate saveSettings];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self dismiss];
             if (![SMAnalytics trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:self.loginEmail.text withValue:0]) {
                 debugLog(@"error in trackEvent");
             }

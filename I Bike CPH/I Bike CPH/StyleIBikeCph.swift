@@ -8,6 +8,16 @@
 
 import UIKit
 
+extension UIColor {
+    
+    class func red() {
+        return UIColor(red: 255/255, green: 13/255, blue: 0/255, alpha: 1)
+    }
+    class func blue() {
+        return UIColor(red: 0/255, green: 174/255, blue: 255/255, alpha: 1)
+    }
+}
+
 @objc class Styler: StyleProtocol {
     
     class func backgroundColor() -> UIColor {
@@ -15,7 +25,19 @@ import UIKit
     }
     
     class func tintColor() -> UIColor {
-        return UIColor.blueColor()
+        return .red()
+    }
+    
+    class func foregroundColor() -> UIColor {
+        return .darkGrayColor()
+    }
+    
+    class func navigationBarTintColor() -> UIColor {
+        return .red()
+    }
+    
+    class func navigationBarContentTintColor() -> UIColor {
+        return .whiteColor()
     }
     
     class func logo() -> UIImage? {

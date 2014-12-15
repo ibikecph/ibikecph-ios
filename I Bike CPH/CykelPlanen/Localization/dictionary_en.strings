@@ -13,7 +13,7 @@ Copenhagen. All rights reserved.
 "tomorrow" = "Tomorrow";
 "account" = "Account";
 "settings" = "Settings";
-"about_css" = "About CykelPlanen";
+"about" = "About CykelPlanen";
 "contacts" = "CONTACTS";
 "favorites" = "Favorites";
 "favorites_search" = "FAVORITES";
@@ -98,6 +98,7 @@ Copenhagen. All rights reserved.
 "{roundabout:yes}" = "roundabout";
 "{area:yes}" = "area";
 
+"search" = "Search";
 "search_to_placeholder" = "Enter road, street, postal code";
 
 "direction_number_1" = "1st";
@@ -278,7 +279,7 @@ Copenhagen. All rights reserved.
 "intro_subtitle" = "Quickly from A to B";
 
 "about_text" = "The CykelPlanen app is the Capital Region of Denmark mobile route planner for everyone cycling in the region.\nThe app knows the nice shortcuts in the region where you’re allowed to bicycle. The app should help to get more commuters in the region to choose the bike instead of the car.\nThe map is specifically adapted to cyclists and the app calculates the fastest route. Motorways are toned down, whereas cobblestones are highlighted so you can avoid bumpy rides. The map shows the Cycle Super Highways, the service stations and train stations in the region. The app also has a function “Less Biking” which guides you to the nearest train station if your bike breaks down or the route is too long.\nThe app uses map data from the crowd-sourced OpenStreetMap (OSM), which is continuously updated, for example when a new bike lane or new bicycle bridge opens and the users in region can update the map if something is missing.\n\nNote: It’s free to bring the bicycle in the S-train and on the local trains (max 6) but you have to buy a bicycle ticket if you want to bring your bicycle in the metro. You are not allowed to bring your bike in the Metro during rush hour (between 07:00 and 09.00 and between 15.30 and 17:30) or to/from Nørreport station between 07:00 and 08:30 and between 15:30-17:00 during weekdays.\n\nGetting Started:\nYou can choose where to go in two ways:\nLocate on map: Find the place on the map and hold down your finger until a pin is placed on the map. The nearest address will be displayed at the bottom. Select ‘Start’ to calculate the route from your current location to the destination.\nSearch by address: Click on the magnifying glass in the upper right corner. Enter the destination address and click ‘Go’. Then click ‘Start’ to calculate the route.\nWhen the route is displayed, click ‘Start’ to activate GPS navigation. While your ride, turn instructions will be shown at the bottom. Estimated arrival time is shown in the upper right corner, next to the small flag.\n\nShow location:\nPress the button with an arrow in the lower-right corner to see where you are on the map. The map will follow your location, until you manually pan the map. The function is enabled when the arrow is blue.\n\nRead more:\nThe app includes additional features, like the ability to save favorite locations if you are logged in. Read more about the map and features on www.supercykelstier.dk\nHave a nice ride and thank you for cycling!";
-"about_ibikecph_title" = "ABOUT CYKELPLANEN";
+"about_title" = "ABOUT CYKELPLANEN";
 "delete_my_account" = "DELETE ACCOUNT";
 "you_are_logged_in_as" = "You are logged in as";
 "edit_my_account" = "Edit account";

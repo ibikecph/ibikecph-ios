@@ -7,3 +7,7 @@
 #import "SMLocationManager.h"
 #import "SMAddressParser.h"
 #import "SMRouteUtils.h"
+#import "SMTranslation.h"
+#import "SMFavoritesUtil.h"
+#import "SMSearchController.h"
+#import "SMReminderTableViewCell.h"

@@ -7,10 +7,11 @@
 //
 
 #import "SMAppDelegate.h"
+#import <FacebookSDK/FacebookSDK.h>
 #import "SMUtil.h"
 #import "SMSearchHistory.h"
 
-@interface SMAppDelegate ()
+@interface SMAppDelegate () <SMSearchHistoryDelegate>
 @property (nonatomic, strong) NSMutableDictionary * fbDict;
 @end
 

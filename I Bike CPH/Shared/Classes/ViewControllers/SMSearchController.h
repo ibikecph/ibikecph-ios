@@ -12,6 +12,8 @@
 #import "SMNearbyPlaces.h"
 #import "SMAPIOperation.h"
 
+@protocol SearchListItem;
+
 @protocol SMSearchDelegate <NSObject>
 
 - (void)locationFound:(NSObject<SearchListItem>*)locationItem;

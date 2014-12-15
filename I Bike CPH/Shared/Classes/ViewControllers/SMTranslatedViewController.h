@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GAITrackedViewController.h"
+//#import "GAITrackedViewController.h"
 #import "SMAppDelegate.h"
 
 /**
@@ -15,7 +15,7 @@
  *
  * Handles translation by calling [SMTranslation translateView:self.view] in viewDidLoad()
  */
-@interface SMTranslatedViewController : GAITrackedViewController
+@interface SMTranslatedViewController : UIViewController
 
 @property (nonatomic, weak) SMAppDelegate * appDelegate;
 

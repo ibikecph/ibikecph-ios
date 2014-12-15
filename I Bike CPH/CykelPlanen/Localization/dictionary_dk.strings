@@ -3,7 +3,7 @@
 "tomorrow" = "I morgen";
 "accounts" = "Konto";
 "settings" = "Indstillinger";
-"about_css" = "Om CykelPlanen";
+"about" = "Om CykelPlanen";
 "contacts" = "Kontakter";
 "favorites" = "Favoritter";
 "favorites_search" = "FAVORITTER";
@@ -88,6 +88,7 @@
 "{roundabout:yes}" = "rundkørsel";
 "{area:yes}" = "plads";
 
+"search" = "Søg";
 "search_to_placeholder" = "Indtast vej, gade, post nr.";
 
 "new_route" = "Ny rute";

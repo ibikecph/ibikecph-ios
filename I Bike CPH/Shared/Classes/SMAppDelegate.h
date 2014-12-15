@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <FacebookSDK/FacebookSDK.h>
-#import "SMSearchHistory.h"
+
+@class FBRequestConnection;
+@class FBSession;
+@protocol GAITracker;
 
 /**
  * App delegate. Handles facebook session, contacts, events, routes history, search history, Google Analytics trakcing, and app settings.
  */
-@interface SMAppDelegate : UIResponder <UIApplicationDelegate, SMSearchHistoryDelegate>
+@interface SMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property BOOL fbLoggedIn;

@@ -8,18 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		1EEED384110D35DC5028BAF9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
+		4E2A92561A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
+		4E2A92571A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
 		4E392AD91A308DBE0076BA86 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD61A308DBE0076BA86 /* routeme.plist */; };
 		4E392ADA1A308DBE0076BA86 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD61A308DBE0076BA86 /* routeme.plist */; };
 		4E392ADB1A308DBE0076BA86 /* smroute_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD71A308DBE0076BA86 /* smroute_settings.plist */; };
 		4E392ADC1A308DBE0076BA86 /* smroute_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD71A308DBE0076BA86 /* smroute_settings.plist */; };
 		4E392ADD1A308DBE0076BA86 /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD81A308DBE0076BA86 /* smroute_settings_private.plist */; };
 		4E392ADE1A308DBE0076BA86 /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD81A308DBE0076BA86 /* smroute_settings_private.plist */; };
-		4E392AE71A30A79B0076BA86 /* SMFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E392AE61A30A79B0076BA86 /* SMFavoritesViewController.m */; };
-		4E392AE81A30A79B0076BA86 /* SMFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E392AE61A30A79B0076BA86 /* SMFavoritesViewController.m */; };
+		4E3C3A871A39DEFC00C79E52 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C3A861A39DEFC00C79E52 /* FavoriteListViewController.swift */; };
+		4E3C3A881A39DEFC00C79E52 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C3A861A39DEFC00C79E52 /* FavoriteListViewController.swift */; };
+		4E3C3A8A1A39E80300C79E52 /* SharedImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */; };
+		4E3C3A8B1A39E80300C79E52 /* SharedImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */; };
+		4E3C3A8D1A3A043900C79E52 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */; };
+		4E3C3A8E1A3A043900C79E52 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */; };
+		4E4BA4891A3F17A5006FF0FD /* ReminderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4BA4881A3F17A5006FF0FD /* ReminderListViewController.swift */; };
+		4E4BA48A1A3F1B12006FF0FD /* ReminderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4BA4881A3F17A5006FF0FD /* ReminderListViewController.swift */; };
 		4E4F5FDA1A2BAC4700233ACA /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FD91A2BAC4700233ACA /* Styling.swift */; };
 		4E4F5FDB1A2BAC4700233ACA /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FD91A2BAC4700233ACA /* Styling.swift */; };
 		4E4F5FDE1A2BAE1400233ACA /* StyleCykelPlanen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FDC1A2BAE1400233ACA /* StyleCykelPlanen.swift */; };
 		4E4F5FE01A2BB3A000233ACA /* StyleIBikeCph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FDF1A2BB3A000233ACA /* StyleIBikeCph.swift */; };
+		4E55A0241A3605E900386F85 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0231A3605E900386F85 /* MenuTableViewCell.swift */; };
+		4E55A0251A3605E900386F85 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0231A3605E900386F85 /* MenuTableViewCell.swift */; };
+		4E55A0271A36068800386F85 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0261A36068800386F85 /* MenuViewController.swift */; };
+		4E55A0281A36068800386F85 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0261A36068800386F85 /* MenuViewController.swift */; };
 		4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820B1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820C1A24AC1200A40484 /* CurrentLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */; };
@@ -152,8 +164,6 @@
 		4EC56ED91A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */; };
 		4EC56EDB1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBC1A2A3AAD00B696B4 /* SMEnterRouteController.m */; };
 		4EC56EDD1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBC1A2A3AAD00B696B4 /* SMEnterRouteController.m */; };
-		4EC56EDF1A2A3AAE00B696B4 /* SMFavoritesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBE1A2A3AAD00B696B4 /* SMFavoritesController.m */; };
-		4EC56EE11A2A3AAE00B696B4 /* SMFavoritesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBE1A2A3AAD00B696B4 /* SMFavoritesController.m */; };
 		4EC56EE31A2A3AAE00B696B4 /* SMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC01A2A3AAD00B696B4 /* SMLoginController.m */; };
 		4EC56EE51A2A3AAE00B696B4 /* SMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC01A2A3AAD00B696B4 /* SMLoginController.m */; };
 		4EC56EE71A2A3AAE00B696B4 /* SMRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EC21A2A3AAD00B696B4 /* SMRegisterController.m */; };
@@ -1375,14 +1385,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		4E392AD61A308DBE0076BA86 /* routeme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = routeme.plist; sourceTree = "<group>"; };
 		4E392AD71A308DBE0076BA86 /* smroute_settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings.plist; sourceTree = "<group>"; };
 		4E392AD81A308DBE0076BA86 /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
-		4E392AE51A30A79B0076BA86 /* SMFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFavoritesViewController.h; sourceTree = "<group>"; };
-		4E392AE61A30A79B0076BA86 /* SMFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFavoritesViewController.m; sourceTree = "<group>"; };
+		4E3C3A861A39DEFC00C79E52 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
+		4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedImages.xcassets; sourceTree = "<group>"; };
+		4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		4E4BA4881A3F17A5006FF0FD /* ReminderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderListViewController.swift; sourceTree = "<group>"; };
 		4E4F5FD91A2BAC4700233ACA /* Styling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
 		4E4F5FDC1A2BAE1400233ACA /* StyleCykelPlanen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleCykelPlanen.swift; sourceTree = "<group>"; };
 		4E4F5FDF1A2BB3A000233ACA /* StyleIBikeCph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleIBikeCph.swift; sourceTree = "<group>"; };
+		4E55A0231A3605E900386F85 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		4E55A0261A36068800386F85 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		4E5982001A24AC1200A40484 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationItem.swift; sourceTree = "<group>"; };
 		4E5982031A24AC1200A40484 /* FavoriteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
@@ -1489,8 +1504,6 @@
 		4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEnterEmailControllerViewController.m; sourceTree = "<group>"; };
 		4EC56EBB1A2A3AAD00B696B4 /* SMEnterRouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEnterRouteController.h; sourceTree = "<group>"; };
 		4EC56EBC1A2A3AAD00B696B4 /* SMEnterRouteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEnterRouteController.m; sourceTree = "<group>"; };
-		4EC56EBD1A2A3AAD00B696B4 /* SMFavoritesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFavoritesController.h; sourceTree = "<group>"; };
-		4EC56EBE1A2A3AAD00B696B4 /* SMFavoritesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFavoritesController.m; sourceTree = "<group>"; };
 		4EC56EBF1A2A3AAD00B696B4 /* SMLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoginController.h; sourceTree = "<group>"; };
 		4EC56EC01A2A3AAD00B696B4 /* SMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginController.m; sourceTree = "<group>"; };
 		4EC56EC11A2A3AAD00B696B4 /* SMRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRegisterController.h; sourceTree = "<group>"; };
@@ -2733,6 +2746,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E2A92541A3B43050032ACD4 /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				4E2A92551A3B43130032ACD4 /* Async.swift */,
+			);
+			path = "3rd Party";
+			sourceTree = "<group>";
+		};
 		4E392AD51A308DBE0076BA86 /* route-me */ = {
 			isa = PBXGroup;
 			children = (
@@ -2958,6 +2979,7 @@
 				4EC56DA51A2A25E900B696B4 /* Library */,
 				4EE06E001A11251C00DE4226 /* ViewControllers */,
 				4EE06EAC1A112A0700DE4226 /* Views */,
+				4E2A92541A3B43050032ACD4 /* 3rd Party */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -3623,8 +3645,6 @@
 				4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */,
 				4EC56EBB1A2A3AAD00B696B4 /* SMEnterRouteController.h */,
 				4EC56EBC1A2A3AAD00B696B4 /* SMEnterRouteController.m */,
-				4EC56EBD1A2A3AAD00B696B4 /* SMFavoritesController.h */,
-				4EC56EBE1A2A3AAD00B696B4 /* SMFavoritesController.m */,
 				4EC56EBF1A2A3AAD00B696B4 /* SMLoginController.h */,
 				4EC56EC01A2A3AAD00B696B4 /* SMLoginController.m */,
 				4EC56EC11A2A3AAD00B696B4 /* SMRegisterController.h */,
@@ -3645,8 +3665,9 @@
 				4EFA280C1A2B871D0050450C /* SMMainViewController.m */,
 				4EE671C81A2F3CCC0037865B /* SMMenuViewController.h */,
 				4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */,
-				4E392AE51A30A79B0076BA86 /* SMFavoritesViewController.h */,
-				4E392AE61A30A79B0076BA86 /* SMFavoritesViewController.m */,
+				4E3C3A861A39DEFC00C79E52 /* FavoriteListViewController.swift */,
+				4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */,
+				4E4BA4881A3F17A5006FF0FD /* ReminderListViewController.swift */,
 				4EE671C51A2F25F00037865B /* UINavigationController.swift */,
 			);
 			path = ViewControllers;
@@ -3743,6 +3764,8 @@
 				4EC56E261A2A2C3D00B696B4 /* SMTokenizedTextField.m */,
 				4EC56E271A2A2C3D00B696B4 /* SMViewMoreCell.h */,
 				4EC56E281A2A2C3D00B696B4 /* SMViewMoreCell.m */,
+				4E55A0231A3605E900386F85 /* MenuTableViewCell.swift */,
+				4E55A0261A36068800386F85 /* MenuViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4357,6 +4380,7 @@
 				4EEE91B31A1245610006BD95 /* test2.gpx */,
 				4EEE91B41A1245610006BD95 /* testing.gpx */,
 				4E59822A1A24C4DD00A40484 /* BitBlueprint.gpx */,
+				4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -4979,6 +5003,7 @@
 				4EE0659D1A10FAB400DE4226 /* favTypeFavoriteButtonPressed@2x.png in Resources */,
 				4EE065901A10FAB400DE4226 /* favSearch_icon.png in Resources */,
 				4EE065571A10FAB400DE4226 /* distance_white@2x.png in Resources */,
+				4E3C3A8A1A39E80300C79E52 /* SharedImages.xcassets in Resources */,
 				4EE0665D1A10FAB400DE4226 /* tokenHighlighted@2x.png in Resources */,
 				4EE065AC1A10FAB400DE4226 /* favWorkGrey.png in Resources */,
 				4EE065B01A10FAB400DE4226 /* fb_linked_icon.png in Resources */,
@@ -5176,6 +5201,7 @@
 				4EE073721A1178E300DE4226 /* splash_bg_btn_red_pressed.png in Resources */,
 				4EE073571A1178E300DE4226 /* service_station_gray_old@2x.png in Resources */,
 				4EE071AA1A1178E200DE4226 /* camera.png in Resources */,
+				4E3C3A8B1A39E80300C79E52 /* SharedImages.xcassets in Resources */,
 				4EE072431A1178E200DE4226 /* favTypeFavoriteButtonPressed@2x.png in Resources */,
 				4EE0734D1A1178E300DE4226 /* search_btn_start@2x.png in Resources */,
 				4EE072DF1A1178E200DE4226 /* quitRouteOverlay@2x.png in Resources */,
@@ -5800,7 +5826,7 @@
 				4EC56E811A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
 				4EC56E911A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */,
 				4EC56ED71A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
-				4EC56EDF1A2A3AAE00B696B4 /* SMFavoritesController.m in Sources */,
+				4E55A0241A3605E900386F85 /* MenuTableViewCell.swift in Sources */,
 				4E59820E1A24AC1200A40484 /* FavoriteItem.swift in Sources */,
 				4EE06CD11A11134C00DE4226 /* SMGeocoder.m in Sources */,
 				4EE06CC11A11134C00DE4226 /* SMKMSPlacesOperation.m in Sources */,
@@ -5812,18 +5838,19 @@
 				4EE06CC71A11134C00DE4226 /* NSString+URLEncode.m in Sources */,
 				4EC56E6D1A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */,
 				4E5982101A24AC1200A40484 /* FoursquareItem.swift in Sources */,
+				4E4BA4891A3F17A5006FF0FD /* ReminderListViewController.swift in Sources */,
 				4EC56E951A2A2C3D00B696B4 /* SMRadioUncheckedCell.m in Sources */,
 				4EC56EAD1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */,
 				4EE06CB91A11134C00DE4226 /* SMAPIOperation.m in Sources */,
 				4EE06CBB1A11134C00DE4226 /* SMAPIQueue.m in Sources */,
 				4EE06C7D1A1110ED00DE4226 /* SMAddressParser.m in Sources */,
 				4EC56DCC1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */,
-				4E392AE71A30A79B0076BA86 /* SMFavoritesViewController.m in Sources */,
 				4EC56E8D1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
 				4EC56E791A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
 				4EE06CD51A11134C00DE4226 /* SMLocationManager.m in Sources */,
 				4EC56E591A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
 				4EE05F501A10EBFA00DE4226 /* main.m in Sources */,
+				4E2A92561A3B43130032ACD4 /* Async.swift in Sources */,
 				4EC56DC01A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
 				4E5982141A24AC1200A40484 /* KortforItem.swift in Sources */,
 				4EE06CE31A11134C00DE4226 /* SMTurnInstruction.m in Sources */,
@@ -5831,6 +5858,7 @@
 				4EE06CDB1A11134C00DE4226 /* SMRoute.m in Sources */,
 				4EC56DC41A2A25E900B696B4 /* SMContacts.m in Sources */,
 				4EC56ED31A2A3AAE00B696B4 /* SMAccountController.m in Sources */,
+				4E3C3A8D1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
 				4EC56E491A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
 				4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
 				4EC56EEF1A2A3AAE00B696B4 /* SMRouteNavigationController.m in Sources */,
@@ -5856,6 +5884,7 @@
 				4EC56DD81A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
 				4EC56E4D1A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */,
 				4EC56E2D1A2A2C3D00B696B4 /* FlickableView.m in Sources */,
+				4E3C3A871A39DEFC00C79E52 /* FavoriteListViewController.swift in Sources */,
 				4E5982161A24AC1200A40484 /* SearchListItem.swift in Sources */,
 				4EE06CC51A11134C00DE4226 /* NSString+Relevance.m in Sources */,
 				4EC56DDE1A2A262800B696B4 /* SMAppDelegate.m in Sources */,
@@ -5882,6 +5911,7 @@
 				4EC56ECF1A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
 				4EE06CE11A11134C00DE4226 /* SMRouteUtils.m in Sources */,
 				4EC56E311A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
+				4E55A0271A36068800386F85 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5907,8 +5937,11 @@
 				4EE06F0D1A112F6D00DE4226 /* SMLoadStationsView.m in Sources */,
 				4EFA280E1A2B871D0050450C /* SMMainViewController.m in Sources */,
 				4EC56E3F1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */,
+				4E4BA48A1A3F1B12006FF0FD /* ReminderListViewController.swift in Sources */,
+				4E3C3A881A39DEFC00C79E52 /* FavoriteListViewController.swift in Sources */,
 				4E59820D1A24AC1200A40484 /* CurrentLocationItem.swift in Sources */,
 				4EC56EAF1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */,
+				4E55A0251A3605E900386F85 /* MenuTableViewCell.swift in Sources */,
 				4EE06C3D1A10FC5600DE4226 /* SMMapManager.m in Sources */,
 				4EE06CE41A11134C00DE4226 /* SMTurnInstruction.m in Sources */,
 				4EE06C361A10FC5600DE4226 /* SMBrokenRouteInfo.m in Sources */,
@@ -5940,12 +5973,10 @@
 				4EC56E671A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */,
 				4EE06CD21A11134C00DE4226 /* SMGeocoder.m in Sources */,
 				4EC56E871A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
-				4E392AE81A30A79B0076BA86 /* SMFavoritesViewController.m in Sources */,
 				4EE06C341A10FC5600DE4226 /* SMArrivalMapping.m in Sources */,
 				4EC56E831A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
 				4EE06CC81A11134C00DE4226 /* NSString+URLEncode.m in Sources */,
 				4EC56E531A2A2C3D00B696B4 /* SMCustomButton.m in Sources */,
-				4EC56EE11A2A3AAE00B696B4 /* SMFavoritesController.m in Sources */,
 				4EC56E9B1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4EC56E5B1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
 				4EC56DDA1A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
@@ -6009,10 +6040,12 @@
 				4EC56E571A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
 				4E5982111A24AC1200A40484 /* FoursquareItem.swift in Sources */,
 				4EE06C321A10FC5600DE4226 /* SMArrivalInfo.m in Sources */,
+				4E2A92571A3B43130032ACD4 /* Async.swift in Sources */,
 				4E59820B1A24AC1200A40484 /* SwiftyJSON.swift in Sources */,
 				4EC56ED51A2A3AAE00B696B4 /* SMAccountController.m in Sources */,
 				4EE06CCA1A11134C00DE4226 /* Reachability.m in Sources */,
 				4EEE928C1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m in Sources */,
+				4E55A0281A36068800386F85 /* MenuViewController.swift in Sources */,
 				4EE06C501A10FC5600DE4226 /* SMTransportationLine.m in Sources */,
 				4EC56DCE1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */,
 				4EE06C541A10FC5600DE4226 /* SMWay.m in Sources */,
@@ -6025,6 +6058,7 @@
 				4EE06CC21A11134C00DE4226 /* SMKMSPlacesOperation.m in Sources */,
 				4EC56ED11A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
 				4EE06CD01A11134C00DE4226 /* SMAutocomplete.m in Sources */,
+				4E3C3A8E1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
 				4EC56EA31A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -4,8 +4,6 @@
 <dict>
 	<key>GEOCODING_SEARCH_RADIUS</key>
 	<real>250</real>
-	<key>USE_APPLE_GEOCODER</key>
-	<true/>
 	<key>OSRM_ADDRESS</key>
 	<string>router.project-osrm.org</string>
 	<key>OSRM_SERVER</key>

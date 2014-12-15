@@ -15,6 +15,7 @@ import UIKit
     
     class func backgroundColor() -> UIColor
     class func tintColor() -> UIColor
+    class func foregroundColor() -> UIColor
     class func navigationBarTintColor() -> UIColor
     class func navigationBarContentTintColor() -> UIColor
     
@@ -27,6 +28,8 @@ extension Styler {
         UINavigationBar.appearance().barTintColor = Styler.navigationBarTintColor()
         UINavigationBar.appearance().tintColor = Styler.navigationBarContentTintColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Styler.navigationBarContentTintColor()]
+        UIToolbar.appearance().barTintColor = Styler.navigationBarTintColor()
+        UIToolbar.appearance().tintColor = Styler.navigationBarContentTintColor()
     }
 }
 

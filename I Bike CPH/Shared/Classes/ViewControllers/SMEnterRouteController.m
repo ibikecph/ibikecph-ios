@@ -13,7 +13,6 @@
 #import "SMEnterRouteCell.h"
 #import "SMAutocompleteHeader.h"
 #import "SMViewMoreCell.h"
-#import "SMFavoritesController.h"
 #import "SMFavoritesUtil.h"
 #import "SMSearchHistory.h"
 

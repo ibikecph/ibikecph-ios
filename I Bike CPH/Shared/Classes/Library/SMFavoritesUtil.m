@@ -11,10 +11,23 @@
 
 @interface SMFavoritesUtil ()
 @property (nonatomic, strong) SMAPIRequest * apr;
-@property (nonatomic, weak) SMAppDelegate * appDelegate;
+@property (nonatomic, readonly) SMAppDelegate *appDelegate;
 @end
 
 @implementation SMFavoritesUtil
+
+
+#pragma mark - Setters and Getters {
+
+- (SMAppDelegate *)appDelegate {
+    return (SMAppDelegate*)[UIApplication sharedApplication].delegate;
+}
+
+#pragma mark -
+
++ (NSArray *)favorites {
+    return [self getFavorites].copy;
+}
 
 + (NSMutableArray*)getFavorites {
     if ([[NSFileManager defaultManager] fileExistsAtPath:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"favorites.plist"]]) {
@@ -32,8 +45,8 @@
 }
 
 + (BOOL)saveFavorites:(NSArray*)fav {
-    NSMutableArray * r = [NSMutableArray array];
-    for (FavoriteItem * item in fav) {
+    NSMutableArray *r = [NSMutableArray array];
+    for (FavoriteItem *item in fav) {
         [r addObject:item.plistRepresentation];
     }
     return [r writeToFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"favorites.plist"] atomically:YES];
@@ -42,7 +55,7 @@
 + (BOOL)saveToFavorites:(FavoriteItem *)item {
     NSMutableArray * arr = [NSMutableArray array];
     NSMutableArray * a = [self getFavorites];
-    for (UnknownSearchListItem *srch in a) {
+    for (FavoriteItem *srch in a) {
         if ([srch.name isEqualToString:item.name] == NO) {
             [arr addObject:srch];
         }
@@ -58,16 +71,13 @@
 	static SMFavoritesUtil *instance;
 	if (instance == nil) {
 		instance = [[SMFavoritesUtil alloc] init];
-        instance.appDelegate = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
 	}
-    instance.delegate = nil;
 	return instance;
 }
 
 - (SMFavoritesUtil *)initWithDelegate:(id<SMFavoritesDelegate>)delegate {
     self = [super init];
     if (self) {
-        self.appDelegate = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
     }
     return self;
 }
@@ -91,7 +101,8 @@
          @"address": favItem.address,
          @"lattitude": @(favItem.location.coordinate.latitude),
          @"longitude": @(favItem.location.coordinate.longitude),
-         @"source": @"favourites"
+         @"source": @"favourites",
+         @"sub_source": [self stringForOrigin:favItem.origin]
     }}];
 }
 
@@ -126,10 +137,18 @@
          @"address": favItem.address,
          @"lattitude": @(favItem.location.coordinate.latitude),
          @"longitude": @(favItem.location.coordinate.longitude),
-         @"source": @"favourites"
+         @"source": [self stringForOrigin:favItem.origin]
     }}];
 }
 
+- (NSString *)stringForOrigin:(FavoriteItemType)type {
+    switch (type) {
+        case FavoriteItemTypeHome: return @"home";
+        case FavoriteItemTypeWork: return @"work";
+        case FavoriteItemTypeSchool: return @"school";
+        case FavoriteItemTypeUnknown: return @"favourites";
+    }
+}
 
 #pragma mark - api delegate
 
