@@ -41,6 +41,9 @@
                                 <state key="normal" title="skip">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="SKIP"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="9Pp-Y2-dkg" kind="presentation" identifier="splashToMain" id="rfX-a5-yqc"/>
                                 </connections>
@@ -2369,8 +2372,8 @@ God tur og tak fordi du cykler!</string>
         <image name="select_station_bgr.png" width="243" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cR0-BE-PFO"/>
-        <segue reference="2Vq-ft-HSw"/>
+        <segue reference="yk2-zf-Q1g"/>
         <segue reference="7W8-lE-WHM"/>
+        <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>
 </document>
