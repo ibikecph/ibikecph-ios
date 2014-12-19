@@ -11,3 +11,4 @@
 #import "SMFavoritesUtil.h"
 #import "SMSearchController.h"
 #import "SMReminderTableViewCell.h"
+#import "SMRouteSettings.h"

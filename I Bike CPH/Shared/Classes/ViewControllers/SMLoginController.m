@@ -8,6 +8,7 @@
 
 #import "SMLoginController.h"
 #import "DAKeyboardControl.h"
+#import "IBCSessionTokenCachingStrategy.h"
 
 @interface SMLoginController()<SMAPIRequestDelegate, UITextFieldDelegate>
 
@@ -89,29 +90,42 @@
 }
 
 - (IBAction)loginWithFacebook:(id)sender {
-    SMAppDelegate * appDelegate = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
-    if (!appDelegate.session) {
-        // Create a new, logged out session.
-        appDelegate.session = [[FBSession alloc] initWithPermissions:@[@"email"]];
-    }
-    if (appDelegate.session.state == FBSessionStateCreatedOpening) {
-        appDelegate.session = [[FBSession alloc] initWithPermissions:@[@"email"]];
-    }
-    if (appDelegate.session.isOpen) {
-        [self getFBData];
-    } else {
-        // if the session isn't open, let's open it now and present the login UX to the user
-        [appDelegate.session openWithCompletionHandler:^(FBSession *session,
-                                                         FBSessionState status,
-                                                         NSError *error) {
-            [FBSession setActiveSession:session];
-            SMAppDelegate * appDelegate = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
-            if (appDelegate.session.isOpen) {
-                [self getFBData];
-            }
-        }];
-    }
+    
+    FacebookHandler *faceboookHandler = [FacebookHandler new];
+    [faceboookHandler request:^(NSString *identifier, NSString *email, NSString *token, NSError *error) {
+        if (error) {
+            // TODO: Show error to user
+            NSLog(@"Couldn't sign in to Facebook %@", error.localizedDescription);
+            return;
+        }
+        
+        SMAppDelegate * appDelegate = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
+        if (!appDelegate.session ||
+            appDelegate.session.state == FBSessionStateCreatedOpening) {
+            // Create a new, logged out session.
+            IBCSessionTokenCachingStrategy *tokenStrategy = [[IBCSessionTokenCachingStrategy alloc] initWithToken:token andPermissions:@[@"email"]];
+            appDelegate.session = [[FBSession alloc] initWithAppID:nil permissions:@[@"email"] urlSchemeSuffix:nil tokenCacheStrategy:tokenStrategy]; // [[FBSession alloc] initWithPermissions:@[@"email"]];
+        }
+        if (appDelegate.session.isOpen) {
+            [self getFBData];
+        } else {
+            
+            
+            //        // if the session isn't open, let's open it now and present the login UX to the user
+            //        [appDelegate.session openWithCompletionHandler:^(FBSession *session,
+            //                                                         FBSessionState status,
+            //                                                         NSError *error) {
+            //            [FBSession setActiveSession:session];
+            //            SMAppDelegate * appDelegate = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
+            //            if (appDelegate.session.isOpen) {
+            //                [self getFBData];
+            //            }
+            //        }];
+        }
+    }];
 }
+
+
 
 #pragma mark - api delegate
 
