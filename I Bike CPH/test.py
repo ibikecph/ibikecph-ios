@@ -12,27 +12,44 @@ desired_caps['app'] = '../../../../../../users/duemunk/Gits/ibikecph-ios/I Bike 
  
 driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
  
-time.sleep(3)
+# time.sleep(3)
  
-skip_button = driver.find_element_by_accessibility_id('SKIP')
-self.assertIsNotNone(skip_button)
-skip_button.click()
-#
-# # we may get to another page of skipping
-# skip_button = driver.find_element_by_android_uiautomator('new UiSelector().text("SKIP")')
-# if skip_button is not None:
-#     skip_button.click()
-#     skip_button.click()
-#
-# # Find the search button
-# search_button = driver.find_element_by_class_name("android.widget.ImageButton")
-# search_button.click()
-#
-# # Find the destination field
-# dst_field = driver.find_elements_by_class_name("android.widget.TextView")[1]
-# dst_field.click()
-#
-# # New activity, new destination field
-# dst_field2 = driver.find_element_by_class_name("android.widget.EditText")
-# dst_field2.click()
-# driver.sendKeys("Rovsingsgade 47, 2200 Kobenhavn N")
+def skip_login():
+    skip_button = driver.find_element_by_accessibility_id('SKIP')
+    skip_button.click()
+
+def accept_location():
+    # Location requires user consent
+    driver.find_element_by_name("Allow").click()
+
+def enter_route():
+    # Find the search button
+    search_button = driver.find_element_by_accessibility_id("SEARCH")
+    search_button.click()
+
+def open_destination():
+    # Find the destination field
+    dst_field = driver.find_element_by_accessibility_id("TO")
+    dst_field.click()
+
+def edit_destination():
+    # New activity, new destination field
+    dst_field2 = driver.find_element_by_accessibility_id("TEXTFIELD")
+    dst_field2.click()
+    dst_field2.sendKeys("Rovsingsgade 47, 2200 Kobenhavn N")
+    
+    
+if __name__ == "__main__":
+    try:
+        skip_login()
+        accept_location()
+        enter_route()
+        open_destination()
+        edit_destination()
+
+    finally:
+        driver.quit()
+
+        # We're done, let's drop a shell
+        # ipshell()
+    

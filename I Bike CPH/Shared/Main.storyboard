@@ -471,6 +471,9 @@
                                 <state key="normal" image="homeSearchSmall.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="SEARCH"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="qMR-FD-gOs" kind="show" identifier="enterRouteSegue" id="sli-qt-kjO"/>
                                 </connections>
@@ -1605,6 +1608,9 @@ God tur og tak fordi du cykler!</string>
                                         <state key="normal" title="Current position">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="FROM"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="fromTapped:" destination="qMR-FD-gOs" eventType="touchUpInside" id="BUo-KV-Nfr"/>
                                         </connections>
@@ -1617,6 +1623,9 @@ God tur og tak fordi du cykler!</string>
                                         <state key="normal" title="Indtast vej, gade, post nr.">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="TO"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="toTapped:" destination="qMR-FD-gOs" eventType="touchUpInside" id="o57-q8-Z9x"/>
                                         </connections>
@@ -1830,6 +1839,9 @@ God tur og tak fordi du cykler!</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="TEXTFIELD"/>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="LMy-mo-cyB"/>
@@ -2373,7 +2385,7 @@ God tur og tak fordi du cykler!</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yk2-zf-Q1g"/>
-        <segue reference="7W8-lE-WHM"/>
         <segue reference="cR0-BE-PFO"/>
+        <segue reference="YD8-cY-nJg"/>
     </inferredMetricsTieBreakers>
 </document>
