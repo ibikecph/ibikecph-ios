@@ -12,8 +12,6 @@
 		4E2A92571A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
 		4E3867811A430A0E0018AC5B /* FacebookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3867801A430A0E0018AC5B /* FacebookHandler.swift */; };
 		4E3867821A430CBB0018AC5B /* FacebookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3867801A430A0E0018AC5B /* FacebookHandler.swift */; };
-		4E3867881A43233E0018AC5B /* IBCSessionTokenCachingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3867871A43233E0018AC5B /* IBCSessionTokenCachingStrategy.m */; };
-		4E3867891A43233E0018AC5B /* IBCSessionTokenCachingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3867871A43233E0018AC5B /* IBCSessionTokenCachingStrategy.m */; };
 		4E392AD91A308DBE0076BA86 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD61A308DBE0076BA86 /* routeme.plist */; };
 		4E392ADA1A308DBE0076BA86 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD61A308DBE0076BA86 /* routeme.plist */; };
 		4E392ADB1A308DBE0076BA86 /* smroute_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD71A308DBE0076BA86 /* smroute_settings.plist */; };
@@ -1391,8 +1389,6 @@
 /* Begin PBXFileReference section */
 		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		4E3867801A430A0E0018AC5B /* FacebookHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHandler.swift; sourceTree = "<group>"; };
-		4E3867861A43233E0018AC5B /* IBCSessionTokenCachingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCSessionTokenCachingStrategy.h; sourceTree = "<group>"; };
-		4E3867871A43233E0018AC5B /* IBCSessionTokenCachingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCSessionTokenCachingStrategy.m; sourceTree = "<group>"; };
 		4E392AD61A308DBE0076BA86 /* routeme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = routeme.plist; sourceTree = "<group>"; };
 		4E392AD71A308DBE0076BA86 /* smroute_settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings.plist; sourceTree = "<group>"; };
 		4E392AD81A308DBE0076BA86 /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
@@ -2839,8 +2835,6 @@
 				4EC56DB61A2A25E900B696B4 /* UIView+LocateSubview.h */,
 				4EC56DB71A2A25E900B696B4 /* UIView+LocateSubview.m */,
 				4E3867801A430A0E0018AC5B /* FacebookHandler.swift */,
-				4E3867861A43233E0018AC5B /* IBCSessionTokenCachingStrategy.h */,
-				4E3867871A43233E0018AC5B /* IBCSessionTokenCachingStrategy.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -5920,7 +5914,6 @@
 				4E5982121A24AC1200A40484 /* HistoryItem.swift in Sources */,
 				4EC56ECF1A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
 				4EE06CE11A11134C00DE4226 /* SMRouteUtils.m in Sources */,
-				4E3867881A43233E0018AC5B /* IBCSessionTokenCachingStrategy.m in Sources */,
 				4E3867811A430A0E0018AC5B /* FacebookHandler.swift in Sources */,
 				4EC56E311A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
 				4E55A0271A36068800386F85 /* MenuViewController.swift in Sources */,
@@ -5969,7 +5962,6 @@
 				4EE06C491A10FC5600DE4226 /* SMStationPickerView.m in Sources */,
 				4E5982131A24AC1200A40484 /* HistoryItem.swift in Sources */,
 				4EE06CE01A11134C00DE4226 /* SMRouteSettings.m in Sources */,
-				4E3867891A43233E0018AC5B /* IBCSessionTokenCachingStrategy.m in Sources */,
 				4EC56DD21A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
 				4EE06F061A112F6D00DE4226 /* SMBreakRouteHeader.m in Sources */,
 				4EE06C3F1A10FC5600DE4226 /* SMMetroStationInfo.m in Sources */,
