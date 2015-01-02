@@ -1,28 +1,24 @@
 PODS:
-  - Bolts (1.1.3)
   - DAKeyboardControl (2.4.0)
-  - Facebook-iOS-SDK (3.20.0):
-    - Bolts (~> 1.0)
-  - GoogleAnalytics-iOS-SDK (3.10)
+  - GoogleAnalytics-iOS-SDK (3.10):
+    - GoogleAnalytics-iOS-SDK/Core (= 3.10)
+  - GoogleAnalytics-iOS-SDK/Core (3.10)
   - Reveal-iOS-SDK (1.0.6)
   - TTTAttributedLabel (1.10.1)
   - UIImage-Categories (0.0.1)
 
 DEPENDENCIES:
   - DAKeyboardControl (~> 2.0)
-  - Facebook-iOS-SDK (~> 3.20)
   - GoogleAnalytics-iOS-SDK (~> 3.10)
   - Reveal-iOS-SDK
   - TTTAttributedLabel (~> 1.10)
   - UIImage-Categories
 
 SPEC CHECKSUMS:
-  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   DAKeyboardControl: 45a363c85c48a7df76f21f236d9f85800e001775
-  Facebook-iOS-SDK: 5854404b4b651f612a8ef79ca06d766858f4cb8e
-  GoogleAnalytics-iOS-SDK: e5872d2acc120613d954320e206c7e3bc8357d7c
+  GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
   Reveal-iOS-SDK: 74a39b426dbc915962704ed24f43ee32ae7797f9
   TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
   UIImage-Categories: 99245612a4725173db4f0a9ed8ba9dbe2a1e0b4f
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.36.0.beta.1

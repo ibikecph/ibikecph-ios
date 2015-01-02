@@ -70,48 +70,21 @@
 }
 
 
-- (void)getFBData {
-    [[FBRequest requestForMe] startWithCompletionHandler:
-     ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
-         if (!error) {
-             /*
-              * handle FB login
-              */
-             SMAppDelegate * appDelegate = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
-             NSString *accessToken = appDelegate.session.accessTokenData.accessToken;
-             
-             [self doFBLogin:accessToken];
-         } else {
-             UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"fb_login_error") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
-             [av show];
-         }
-     }];
+- (IBAction)loginWithFacebook:(id)sender {
+    
+    FacebookHandler *faceboookHandler = [FacebookHandler new];
+    [faceboookHandler request:^(NSString *identifier, NSString *email, NSString *token, NSError *error) {
+        if (error) {
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"fb_login_error") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+            [av show];
+            NSLog(@"Couldn't sign in to Facebook %@", error.localizedDescription);
+            return;
+        }
+        [self doFBLogin:token];
+    }];
 }
 
-- (IBAction)loginWithFacebook:(id)sender {
-    SMAppDelegate * appDelegate = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
-    if (!appDelegate.session) {
-        // Create a new, logged out session.
-        appDelegate.session = [[FBSession alloc] initWithPermissions:@[@"email"]];
-    }
-    if (appDelegate.session.state == FBSessionStateCreatedOpening) {
-        appDelegate.session = [[FBSession alloc] initWithPermissions:@[@"email"]];
-    }
-    if (appDelegate.session.isOpen) {
-        [self getFBData];
-    } else {
-        // if the session isn't open, let's open it now and present the login UX to the user
-        [appDelegate.session openWithCompletionHandler:^(FBSession *session,
-                                                         FBSessionState status,
-                                                         NSError *error) {
-            [FBSession setActiveSession:session];
-            SMAppDelegate * appDelegate = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
-            if (appDelegate.session.isOpen) {
-                [self getFBData];
-            }
-        }];
-    }
-}
+
 
 #pragma mark - api delegate
 

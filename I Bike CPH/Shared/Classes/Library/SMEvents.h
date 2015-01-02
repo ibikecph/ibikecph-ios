@@ -20,12 +20,11 @@
 
 /**
  * \ingroup libs
- * Events (FB + local) import
+ * Events (local) import
  */
 @property (nonatomic, weak) id<SMEventsDelegate> delegate;
 
 - (void)getLocalEvents;
-- (void)getFacebookEvents;
 
 - (void)getAllEvents;
 

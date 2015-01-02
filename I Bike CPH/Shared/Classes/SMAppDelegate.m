@@ -7,12 +7,10 @@
 //
 
 #import "SMAppDelegate.h"
-#import <FacebookSDK/FacebookSDK.h>
 #import "SMUtil.h"
 #import "SMSearchHistory.h"
 
 @interface SMAppDelegate () <SMSearchHistoryDelegate>
-@property (nonatomic, strong) NSMutableDictionary * fbDict;
 @end
 
 @implementation SMAppDelegate
@@ -92,116 +90,8 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application {
-    [self.session close];
-}
-
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     return UIInterfaceOrientationMaskPortrait;
-}
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return [self.session handleOpenURL:url];
-}
-
-- (void) fbAuth {
-    if (!self.session.isOpen) {
-        self.session = [[FBSession alloc] initWithPermissions:[NSArray arrayWithObjects:@"publish_stream", @"status_update", nil]];
-        [self.session openWithCompletionHandler:^(FBSession *session,
-                                                  FBSessionState status,
-                                                  NSError *error) {
-            if (status == FBSessionStateOpen) {
-                debugLog(@"New session: %@", [FBSession activeSession]);
-                _fbLoggedIn = YES;
-                
-                FBRequestConnection *connection = [FBRequestConnection new];
-                FBRequestHandler handler =
-                ^(FBRequestConnection *connection, id result, NSError *error) {
-                    [self showAlert:@"" result:result error:error];
-                };
-                
-                FBRequest  * req = [[FBRequest alloc] initWithSession:self.session graphPath:@"me/feed" parameters:[NSDictionary dictionaryWithDictionary:self.fbDict] HTTPMethod:@"POST"];
-                [connection addRequest:req completionHandler:handler];
-                [connection start];
-                [self setFbConnection:connection];
-            }
-        }];
-        
-    } else {
-        debugLog(@"Already active session: %@", [FBSession activeSession]);
-        FBRequestConnection *connection = [FBRequestConnection new];
-        FBRequestHandler handler =
-        ^(FBRequestConnection *connection, id result, NSError *error) {
-            [self showAlert:@"" result:result error:error];
-        };
-        FBRequest  * req = [[FBRequest alloc] initWithSession:self.session graphPath:@"me/feed" parameters:[NSDictionary dictionaryWithDictionary:self.fbDict] HTTPMethod:@"POST"];
-        [connection addRequest:req completionHandler:handler];
-        [connection start];
-        [self setFbConnection:connection];
-    }
-}
-
-- (void)fbGetEvents {
-    if (!self.session.isOpen) {
-        self.session = [[FBSession alloc] initWithPermissions:[NSArray arrayWithObjects:@"publish_stream", @"user_events", nil]];
-        [self.session openWithCompletionHandler:^(FBSession *session,
-                                                  FBSessionState status,
-                                                  NSError *error) {
-            if (status == FBSessionStateOpen) {
-                debugLog(@"New session: %@", [FBSession activeSession]);
-                _fbLoggedIn = YES;
-                
-                FBRequestConnection *connection = [FBRequestConnection new];
-                FBRequestHandler handler =
-                ^(FBRequestConnection *connection, id result, NSError *error) {
-                    [self showAlert:@"" result:result error:error];
-                };
-                
-                FBRequest  * req = [[FBRequest alloc] initWithSession:self.session graphPath:@"me/events" parameters:@{} HTTPMethod:@"POST"];
-                [connection addRequest:req completionHandler:handler];
-                [connection start];
-                [self setFbConnection:connection];
-            }
-        }];
-        
-    } else {
-        debugLog(@"Already active session: %@", [FBSession activeSession]);
-        FBRequestConnection *connection = [FBRequestConnection new];
-        FBRequestHandler handler =
-        ^(FBRequestConnection *connection, id result, NSError *error) {
-            [self showAlert:@"" result:result error:error];
-        };
-        FBRequest  * req = [[FBRequest alloc] initWithSession:self.session graphPath:@"me/events" parameters:@{} HTTPMethod:@"POST"];
-        [connection addRequest:req completionHandler:handler];
-        [connection start];
-        [self setFbConnection:connection];
-    }
-}
-
-- (void) postFbMessage:(NSMutableDictionary*) dict {
-    [self setFbDict:[NSMutableDictionary dictionaryWithDictionary:dict]];
-    [self fbAuth];
-}
-
-// UIAlertView helper for post buttons
-- (void)showAlert:(NSString *)message
-           result:(id)result
-            error:(NSError *)error {
-    NSString *alertMsg;
-    NSString *alertTitle;
-    if (error) {
-        alertMsg = error.localizedDescription;
-        alertTitle = @"Facebook error";
-    } else {
-        alertMsg = @"Successfully posted!";
-        alertTitle = @"";
-    }
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                        message:alertMsg
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-    [alertView show];
 }
 
 - (BOOL)saveSettings {

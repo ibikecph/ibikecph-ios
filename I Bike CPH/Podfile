@@ -6,7 +6,6 @@ link_with 'I Bike CPH', 'CykelPlanen'
 
 inhibit_all_warnings!
 
-pod 'Facebook-iOS-SDK', '~>3.20'
 pod 'GoogleAnalytics-iOS-SDK', '~>3.10'
 pod 'TTTAttributedLabel', '~>1.10'
 pod 'DAKeyboardControl', '~>2.0'

@@ -38,8 +38,6 @@
 #import "SMPatternedButton.h"
 #import "SMNetworkErrorView.h"
 
-#import <FacebookSDK/FacebookSDK.h>
-
 #define API_ADDRESS @"www.ibikecph.dk"
 //#define API_SERVER @"http://ibikecph-staging.herokuapp.com/api"
 #define API_SERVER @"https://www.ibikecph.dk/api"

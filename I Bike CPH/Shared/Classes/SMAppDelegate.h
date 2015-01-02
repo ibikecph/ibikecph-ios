@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class FBRequestConnection;
-@class FBSession;
 @protocol GAITracker;
 
 /**
@@ -18,9 +16,6 @@
 @interface SMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property BOOL fbLoggedIn;
-@property (nonatomic, strong) FBSession *session;
-@property (nonatomic, strong) FBRequestConnection * fbConnection;
 
 @property (nonatomic, strong) NSArray * currentContacts;
 @property (nonatomic, strong) NSArray * currentEvents;

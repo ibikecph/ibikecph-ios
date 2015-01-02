@@ -10,6 +10,8 @@
 		1EEED384110D35DC5028BAF9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 		4E2A92561A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
 		4E2A92571A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
+		4E3867811A430A0E0018AC5B /* FacebookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3867801A430A0E0018AC5B /* FacebookHandler.swift */; };
+		4E3867821A430CBB0018AC5B /* FacebookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3867801A430A0E0018AC5B /* FacebookHandler.swift */; };
 		4E392AD91A308DBE0076BA86 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD61A308DBE0076BA86 /* routeme.plist */; };
 		4E392ADA1A308DBE0076BA86 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD61A308DBE0076BA86 /* routeme.plist */; };
 		4E392ADB1A308DBE0076BA86 /* smroute_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD71A308DBE0076BA86 /* smroute_settings.plist */; };
@@ -1386,6 +1388,7 @@
 
 /* Begin PBXFileReference section */
 		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		4E3867801A430A0E0018AC5B /* FacebookHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHandler.swift; sourceTree = "<group>"; };
 		4E392AD61A308DBE0076BA86 /* routeme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = routeme.plist; sourceTree = "<group>"; };
 		4E392AD71A308DBE0076BA86 /* smroute_settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings.plist; sourceTree = "<group>"; };
 		4E392AD81A308DBE0076BA86 /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
@@ -2831,6 +2834,7 @@
 				4EC56DB51A2A25E900B696B4 /* SMUtil.m */,
 				4EC56DB61A2A25E900B696B4 /* UIView+LocateSubview.h */,
 				4EC56DB71A2A25E900B696B4 /* UIView+LocateSubview.m */,
+				4E3867801A430A0E0018AC5B /* FacebookHandler.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -5910,6 +5914,7 @@
 				4E5982121A24AC1200A40484 /* HistoryItem.swift in Sources */,
 				4EC56ECF1A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
 				4EE06CE11A11134C00DE4226 /* SMRouteUtils.m in Sources */,
+				4E3867811A430A0E0018AC5B /* FacebookHandler.swift in Sources */,
 				4EC56E311A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
 				4E55A0271A36068800386F85 /* MenuViewController.swift in Sources */,
 			);
@@ -6053,6 +6058,7 @@
 				4EE06C4B1A10FC5600DE4226 /* SMTime.m in Sources */,
 				4EE06C5F1A10FC5600DE4226 /* SMRouteInfoViewController.m in Sources */,
 				4EE671CB1A2F3CCC0037865B /* SMMenuViewController.m in Sources */,
+				4E3867821A430CBB0018AC5B /* FacebookHandler.swift in Sources */,
 				4EE06C511A10FC5600DE4226 /* SMTripRoute.m in Sources */,
 				4EE06C401A10FC5600DE4226 /* SMNode.m in Sources */,
 				4EE06CC21A11134C00DE4226 /* SMKMSPlacesOperation.m in Sources */,
