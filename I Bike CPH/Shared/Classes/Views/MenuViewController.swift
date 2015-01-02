@@ -19,7 +19,13 @@ class MenuViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let loggedIn = false // TODO 
+    class func appDelegate() -> SMAppDelegate? {
+        return UIApplication.sharedApplication().delegate as? SMAppDelegate ?? nil
+    }
+    
+    class func loggedIn() -> Bool {
+        return appDelegate()?.appSettings["auth_token"] != nil
+    }
     
     let cellID = "MenuCellID"
 
@@ -30,9 +36,8 @@ class MenuViewController: UIViewController {
         MenuItem(title: SMTranslation.decodeString("reminder_title"), iconImageName: "reminders", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
         }),
-        // TODO: Change title depending on logged in status
-        MenuItem(title: SMTranslation.decodeString(true ? "account" : "account_login"), iconImageName: "profile", action: { menuViewController in
-            if menuViewController.loggedIn {
+        MenuItem(title: SMTranslation.decodeString(MenuViewController.loggedIn() ? "account" : "account_login"), iconImageName: "profile", action: { menuViewController in
+            if MenuViewController.loggedIn() {
                 menuViewController.performSegueWithIdentifier("menuToAccount", sender: menuViewController)
             } else {
                 menuViewController.performSegueWithIdentifier("menuToLogin", sender: menuViewController)
