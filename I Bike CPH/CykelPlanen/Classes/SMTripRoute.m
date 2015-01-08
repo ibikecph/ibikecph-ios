@@ -192,11 +192,11 @@
     return transportRoute;
 }
 
--(SMTurnInstruction*)newTurnInstructionWithStation:(SMStationInfo*)station{
-    SMTurnInstruction* turnInstruction= [SMTurnInstruction new];
-    turnInstruction.wayName= station.name;
-    turnInstruction.loc= station.location;
-    turnInstruction.smallImageName= [SMStationInfo imageNameForType:station.type];
+- (SMTurnInstruction *)newTurnInstructionWithStation:(SMStationInfo *)station {
+    SMTurnInstruction *turnInstruction = [SMTurnInstruction new];
+    turnInstruction.wayName = station.name;
+    turnInstruction.loc = station.location;
+    turnInstruction.imageName = [SMStationInfo imageNameForType:station.type];
     return turnInstruction;
 }
 

@@ -14,17 +14,14 @@
  */
 @interface SMSwipableView : UIView
 
-@property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *imgDirection;
 @property (weak, nonatomic) IBOutlet UILabel *lblDistance;
 @property (weak, nonatomic) IBOutlet UILabel *lblWayname;
 
 @property NSInteger position;
 
-+ (SMSwipableView*) getFromNib;
++ (SMSwipableView *)getFromNib;
 
 - (void)renderViewFromInstruction:(SMTurnInstruction *)turn;
-
-+ (CGFloat)getHeight;
 
 @end

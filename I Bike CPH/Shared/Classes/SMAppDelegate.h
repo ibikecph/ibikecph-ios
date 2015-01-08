@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol GAITracker;
+#import "SMMapOverlays.h"
 
 /**
  * App delegate. Handles facebook session, contacts, events, routes history, search history, Google Analytics trakcing, and app settings.
@@ -24,8 +25,7 @@
 
 @property(nonatomic, strong) id<GAITracker> tracker;
 
-// TODO: From CykelPlanen
-//@property (nonatomic, strong) SMMapOverlays *mapOverlays;
+@property (nonatomic, strong) SMMapOverlays *mapOverlays;
 
 @property (nonatomic, strong) NSMutableDictionary * appSettings;
 - (BOOL)saveSettings;

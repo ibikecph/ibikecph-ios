@@ -25,20 +25,9 @@
 
 
 - (void)renderViewFromInstruction:(SMTurnInstruction *)turn {
-    [self.lblWayname setText:turn.wayName];
-    
-    CGSize size = [self.lblWayname.text sizeWithFont:[UIFont boldSystemFontOfSize:self.lblWayname.font.pointSize] constrainedToSize:CGSizeMake(INSTRUCTIONS_LABEL_WIDTH, 80.0f) lineBreakMode:NSLineBreakByWordWrapping];
-    CGRect frame = self.lblWayname.frame;
-    frame.size.height = size.height;
-    frame.origin.y = floorf((self.frame.size.height - size.height) / 2.0f) - 10.0f;
-    [self.lblWayname setFrame:frame];
-    [self.lblDistance setText:formatDistance(turn.lengthInMeters)]; // dynamic distance
-    
-    [self.imgDirection setImage:[turn largeDirectionIcon]];
-}
-
-+ (CGFloat)getHeight {
-    return 82.0f;
+    self.lblWayname.text = turn.wayName;
+    self.lblDistance.text = formatDistance(turn.lengthInMeters); // dynamic distance
+    self.imgDirection.image = turn.directionIcon;
 }
 
 

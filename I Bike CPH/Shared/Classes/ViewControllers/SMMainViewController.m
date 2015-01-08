@@ -11,8 +11,6 @@
 #import "SMLocationManager.h"
 #import "SMSearchHistory.h"
 
-#import "RMMapView.h"
-#import "RMAnnotation.h"
 #import "RMMarker.h"
 #import "RMShape.h"
 
@@ -28,9 +26,6 @@
 #import "SMEnterRouteController.h"
 
 #import "SMFavoritesUtil.h"
-
-// TODO: Move to other vc
-#import "SMRouteTypeSelectCell.h"
 
 #import "SMTransportation.h"
 #import "SMTransportationLine.h"
@@ -99,9 +94,6 @@
 //    animationShown = NO;
     
     [SMLocationManager instance];
- 
-    // TODO: From CykelPlanen
-//     [self.appDelegate.mapOverlays loadMarkers];
     
     [self.mapView setTileSource:TILE_SOURCE];
     [self.mapView setDelegate:self];
@@ -111,32 +103,21 @@
     [self.mapView setZoom:16];
     [self.mapView setEnableBouncing:TRUE];
     
+    // Load overlays
+    if (self.appDelegate.mapOverlays == nil) {
+        self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
+    }
+    [self.appDelegate.mapOverlays useMapView:self.mapView];
+    [self.appDelegate.mapOverlays loadMarkers];
+    
 //    [self.centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:self.menuButton];
 //    [self.centerView addPullView:self.blockingView];
 
     // TODO: From CykelPlanen
 //    [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:overlayMenuBtn];
 //    
-//    [self setTitle:translateString(@"reminder_title") forButton:remindersHeaderButton];
-//    [self setTitle:translateString(@"account") forButton:accountHeaderButton];
-//    [self setTitle:translateString(@"about_css") forButton:aboutHeaderButton];
-//    
 //    [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:overlayMenuBtn];
-//    
-//    [self setTitle:translateString(@"reminder_title") forButton:remindersHeaderButton];
-//    [self setTitle:translateString(@"account") forButton:accountHeaderButton];
-//    [self setTitle:translateString(@"about_css") forButton:aboutHeaderButton];
-//    
-//    self.overlaysMenuItems = OSRM_SERVERS;
-//    [self.overlaysMenuTable setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-//    [self.overlaysMenuTable reloadData];
-//    
-//    if ( self.appDelegate.mapOverlays == nil ) {
-//        self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
-//    }
-//    [self.appDelegate.mapOverlays useMapView:self.mapView];
-//    [self.appDelegate.mapOverlays loadMarkers];
-//    
+//
 //    UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapMenuBtn:)];
 //    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanMenuBtn:)];
 //    [menuBtn addGestureRecognizer:singleTap];
@@ -180,8 +161,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [SMUser user].tripRoute= nil;
-    [SMUser user].route= nil;
+    [SMUser user].tripRoute = nil;
+    [SMUser user].route = nil;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLoadTransformationData:) name:NOTIFICATION_DID_PARSE_DATA_KEY object:nil];
     if([SMTransportation instance].dataLoaded){
@@ -197,31 +178,6 @@
         observersAdded = YES;
         [self.mapView addObserver:self forKeyPath:@"userTrackingMode" options:0 context:nil];
     }
-
-    // TODO: From CykelPlanen
-//    [self.appDelegate.mapOverlays useMapView:self.mapView];
-//    [self.appDelegate.mapOverlays toggleMarkers];
-//    
-//    for (SMAnnotation* annotation in self.mapView.annotations) {
-//        if ([annotation isKindOfClass:[SMAnnotation class]] && [annotation.annotationType isEqualToString:@"station"]) {
-//            [annotation hideCallout];
-//        }
-//    }
-//    
-//    if ( self.appDelegate.mapOverlays.pathVisible )
-//        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-//    if ( self.appDelegate.mapOverlays.serviceMarkersVisible )
-//        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-//    if ( self.appDelegate.mapOverlays.stationMarkersVisible )
-//        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-//    if ( self.appDelegate.mapOverlays.metroMarkersVisible )
-//        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-//    
-//    for (SMAnnotation* annotation in self.mapView.annotations) {
-//        if ([annotation isKindOfClass:[SMAnnotation class]] && [annotation.annotationType isEqualToString:@"station"]) {
-//            [annotation hideCallout];
-//        }
-//    }
 }
 
 //- (void)viewDidLayoutSubviews {
@@ -857,6 +813,5 @@ float lerp(float a, float b, float t) {
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleDefault;
 }
-
 
 @end

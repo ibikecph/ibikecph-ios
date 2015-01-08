@@ -9,6 +9,11 @@
 import UIKit
 
 
+struct SectionViewModel {
+    let title: String? = nil
+    let items: [MenuItem]
+}
+
 struct MenuItem {
     let title: String
     let iconImageName: String
@@ -29,23 +34,48 @@ class MenuViewController: UIViewController {
     
     let cellID = "MenuCellID"
 
-    let items = [
-        MenuItem(title: SMTranslation.decodeString("favorites"), iconImageName: "favorite", action: { menuViewController in
-            menuViewController.performSegueWithIdentifier("menuToFavorites", sender: menuViewController)
-        }),
-        MenuItem(title: SMTranslation.decodeString("reminder_title"), iconImageName: "reminders", action: { menuViewController in
-            menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
-        }),
-        MenuItem(title: SMTranslation.decodeString(MenuViewController.loggedIn() ? "account" : "account_login"), iconImageName: "profile", action: { menuViewController in
-            if MenuViewController.loggedIn() {
-                menuViewController.performSegueWithIdentifier("menuToAccount", sender: menuViewController)
-            } else {
-                menuViewController.performSegueWithIdentifier("menuToLogin", sender: menuViewController)
-            }
-        }),
-        MenuItem(title: SMTranslation.decodeString("about"), iconImageName: "info", action: { menuViewController in
-            menuViewController.performSegueWithIdentifier("menuToAbout", sender: menuViewController)
-        })]
+    let sections = [
+        SectionViewModel(title: nil, items:
+            [
+                MenuItem(title: SMTranslation.decodeString("favorites"), iconImageName: "favorite", action: { menuViewController in
+                    menuViewController.performSegueWithIdentifier("menuToFavorites", sender: menuViewController)
+                }),
+                MenuItem(title: SMTranslation.decodeString("reminder_title"), iconImageName: "reminders", action: { menuViewController in
+                    menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
+                }),
+                MenuItem(title: SMTranslation.decodeString(MenuViewController.loggedIn() ? "account" : "account_login"), iconImageName: "profile", action: { menuViewController in
+                    if MenuViewController.loggedIn() {
+                        menuViewController.performSegueWithIdentifier("menuToAccount", sender: menuViewController)
+                    } else {
+                        menuViewController.performSegueWithIdentifier("menuToLogin", sender: menuViewController)
+                    }
+                }),
+                MenuItem(title: SMTranslation.decodeString("about"), iconImageName: "info", action: { menuViewController in
+                    menuViewController.performSegueWithIdentifier("menuToAbout", sender: menuViewController)
+                })
+            ]
+        ),
+        SectionViewModel(title: SMTranslation.decodeString("preferences"), items:
+            [
+                MenuItem(title: SMTranslation.decodeString("map_overlays"), iconImageName: "", action: { menuViewController in
+                    menuViewController.performSegueWithIdentifier("menuToOverlays", sender: menuViewController)
+                }),
+                MenuItem(title: SMTranslation.decodeString("bike"), iconImageName: "bike", action: { menuViewController in
+                    menuViewController.performSegueWithIdentifier("menuToBike", sender: menuViewController)
+                }),
+                MenuItem(title: SMTranslation.decodeString("voice"), iconImageName: "", action: { menuViewController in
+                    menuViewController.performSegueWithIdentifier("menuToVoice", sender: menuViewController)
+                }),
+                MenuItem(title: SMTranslation.decodeString("speedguide"), iconImageName: "", action: { menuViewController in
+                    menuViewController.performSegueWithIdentifier("menuToSpeedGuide", sender: menuViewController)
+                }),
+                MenuItem(title: SMTranslation.decodeString("tracking"), iconImageName: "", action: { menuViewController in
+                    menuViewController.performSegueWithIdentifier("menuToTracking", sender: menuViewController)
+                })
+            ]
+        )
+    ]
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,14 +100,22 @@ class MenuViewController: UIViewController {
 
 extension MenuViewController: UITableViewDataSource {
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].title
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return sections[section].items.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
-        let item = items[indexPath.row]
+        let item = sections[indexPath.section].items[indexPath.row]
         cell.configure(text: item.title, icon: UIImage(named: item.iconImageName))
         
         return cell
@@ -87,7 +125,7 @@ extension MenuViewController: UITableViewDataSource {
 extension MenuViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let item = items[indexPath.row]
+        let item = sections[indexPath.section].items[indexPath.row]
         item.action(self)
         tableView .deselectRowAtIndexPath(indexPath, animated: true)
     }

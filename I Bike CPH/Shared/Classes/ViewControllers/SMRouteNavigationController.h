@@ -44,11 +44,9 @@
     __weak IBOutlet UIImageView *noConnectionView;
     __weak IBOutlet UIView *finishView;
     __weak IBOutlet UILabel *finishStreet;
-    __weak IBOutlet UIImageView *pullHandleImageView;
     __weak IBOutlet UIView *routeOverviewBottom;
     __weak IBOutlet FlickableView *centerView;
     __weak IBOutlet UIButton *breakRouteButton;
-    __weak IBOutlet UIView *blockingView;
     __weak IBOutlet UIView *mapContainer;
     __weak IBOutlet UIView *statusbarView;
 }

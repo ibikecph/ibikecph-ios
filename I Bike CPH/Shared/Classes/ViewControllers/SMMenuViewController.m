@@ -36,6 +36,8 @@ typedef enum {
     typeNone
 } FavoriteType;
 
+// TODO: Delete class file when all parts have been moved to other classes e.g. MenuViewController
+
 @interface SMMenuViewController () <SMMenuCellDelegate, SMFavoritesDelegate, UITextFieldDelegate> {
     
     MenuType menuOpen;
@@ -64,9 +66,6 @@ typedef enum {
 
 @property (nonatomic, strong) SMContacts *contacts;
 @property BOOL reminderFolded;
-
-@property (weak, nonatomic) IBOutlet UITableView *overlaysMenuTable; // TODO: Move to other vc
-@property (nonatomic, strong) NSArray* overlaysMenuItems;
 
 /**
  * properties for table
@@ -395,7 +394,6 @@ typedef enum {
         self.reminderFolded = YES;
     }
 
-    CGFloat startY = self.favHeader.frame.origin.y;
     CGFloat maxHeight = self.view.frame.size.height - 0;//startY;
     if ( self.reminderFolded ) {
 
@@ -446,10 +444,6 @@ typedef enum {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    if (tableView == self.overlaysMenuTable) {
-        return 1;
-    }
-
     if (tableView == self.favoritesTableView) {
         return 2;
     } else {
@@ -458,10 +452,6 @@ typedef enum {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    if (tableView == self.overlaysMenuTable) {
-        return [self.overlaysMenuItems count];
-    }
 
     if (tableView == self.favoritesTableView) {
         if (section == 0) {
@@ -551,35 +541,7 @@ typedef enum {
     return cell;
 }
 
-- (void)overlaysMenuItemSelected:(int)row selected:(BOOL)pSelected{
-    // TODO: From CykelPlanen. Move to other vc
-//    if (row == 0){
-//        [self.appDelegate.mapOverlays toggleMarkers:@"path" state:pSelected];
-//    } else if ( row == 1 ) {
-//        [self.appDelegate.mapOverlays toggleMarkers:@"service" state:pSelected];
-//    } else if ( row == 2 ) {
-//        [self.appDelegate.mapOverlays toggleMarkers:@"station" state:pSelected];
-//    } else if ( row == 3 ) {
-//        [self.appDelegate.mapOverlays toggleMarkers:@"metro" state:pSelected];
-//    } else if ( row == 4 ) {
-//        [self.appDelegate.mapOverlays toggleMarkers:@"local-trains" state:pSelected];
-//    }
-}
-
-// TODO: Move to other vc
-//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if( tableView == self.overlaysMenuTable ){
-//        [self overlaysMenuItemSelected:indexPath.row selected:NO];
-//    }
-//}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    // TODO: Move to other vc
-//    if( tableView == self.overlaysMenuTable ){
-//        [self overlaysMenuItemSelected:indexPath.row selected:YES];
-//        return;
-//    }
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (tableView == self.favoritesTableView && indexPath.section == 0) {
@@ -631,10 +593,6 @@ typedef enum {
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Move to other vc
-//    if(tableView==self.overlaysMenuTable) {
-//        return [SMRouteTypeSelectCell getHeight];
-//    }
 
     if (tableView == self.favoritesTableView) {
         if ([self.favoritesList count] == 0) {
