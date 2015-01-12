@@ -10,6 +10,10 @@
 		1EEED384110D35DC5028BAF9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 		4E2A92561A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
 		4E2A92571A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
+		4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
+		4E33B91E1A640590007D4C82 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91D1A640590007D4C82 /* AppHelper.swift */; };
+		4E33B91F1A6406FD007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
+		4E33B9201A640700007D4C82 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91D1A640590007D4C82 /* AppHelper.swift */; };
 		4E3867811A430A0E0018AC5B /* FacebookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3867801A430A0E0018AC5B /* FacebookHandler.swift */; };
 		4E3867821A430CBB0018AC5B /* FacebookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3867801A430A0E0018AC5B /* FacebookHandler.swift */; };
 		4E392AD91A308DBE0076BA86 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD61A308DBE0076BA86 /* routeme.plist */; };
@@ -60,6 +64,22 @@
 		4E7BA9E61A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */; };
 		4E8E34381A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
 		4E8E343A1A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
+		4EBB7B3A1A5EB4E70064B530 /* farum-route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* farum-route.json */; };
+		4EBB7B3B1A5EB4E70064B530 /* farum-route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* farum-route.json */; };
+		4EBB7B3C1A5EB4E70064B530 /* metro-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B361A5EB4E70064B530 /* metro-stations.json */; };
+		4EBB7B3D1A5EB4E70064B530 /* metro-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B361A5EB4E70064B530 /* metro-stations.json */; };
+		4EBB7B3E1A5EB4E70064B530 /* s-train-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B371A5EB4E70064B530 /* s-train-stations.json */; };
+		4EBB7B3F1A5EB4E70064B530 /* s-train-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B371A5EB4E70064B530 /* s-train-stations.json */; };
+		4EBB7B401A5EB4E70064B530 /* service_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B381A5EB4E70064B530 /* service_stations.json */; };
+		4EBB7B411A5EB4E70064B530 /* service_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B381A5EB4E70064B530 /* service_stations.json */; };
+		4EBB7B421A5EB4E70064B530 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B391A5EB4E70064B530 /* stations.json */; };
+		4EBB7B431A5EB4E70064B530 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B391A5EB4E70064B530 /* stations.json */; };
+		4EBB7B451A5EC0880064B530 /* BikePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B441A5EC0880064B530 /* BikePreferencesViewController.swift */; };
+		4EBB7B461A5EC0880064B530 /* BikePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B441A5EC0880064B530 /* BikePreferencesViewController.swift */; };
+		4EBB7B481A5EC2A00064B530 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B471A5EC2A00064B530 /* RouteType.swift */; };
+		4EBB7B491A5EC2A00064B530 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B471A5EC2A00064B530 /* RouteType.swift */; };
+		4EBB7B4B1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */; };
+		4EBB7B4C1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */; };
 		4EC56DB81A2A25E900B696B4 /* SMAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */; };
 		4EC56DBA1A2A25E900B696B4 /* SMAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */; };
 		4EC56DBC1A2A25E900B696B4 /* SMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA91A2A25E900B696B4 /* SMAnnotation.m */; };
@@ -1270,6 +1290,10 @@
 		4EE073961A1178E300DE4226 /* white_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE071551A1178E100DE4226 /* white_btn@2x.png */; };
 		4EE073971A1178E300DE4226 /* white_btn_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE071561A1178E100DE4226 /* white_btn_pressed.png */; };
 		4EE073981A1178E300DE4226 /* white_btn_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE071571A1178E100DE4226 /* white_btn_pressed@2x.png */; };
+		4EE633761A5E8A94009DA49B /* OverlaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */; };
+		4EE633771A5E8A94009DA49B /* OverlaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */; };
+		4EE6337A1A5E8B6D009DA49B /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633791A5E8B6D009DA49B /* Overlays.swift */; };
+		4EE6337B1A5E8B6D009DA49B /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633791A5E8B6D009DA49B /* Overlays.swift */; };
 		4EE671C61A2F25F00037865B /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C51A2F25F00037865B /* UINavigationController.swift */; };
 		4EE671C71A2F25F00037865B /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C51A2F25F00037865B /* UINavigationController.swift */; };
 		4EE671CA1A2F3CCC0037865B /* SMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */; };
@@ -1285,13 +1309,8 @@
 		4EEE91BE1A1245910006BD95 /* Albertslundruten.line in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91BD1A1245910006BD95 /* Albertslundruten.line */; };
 		4EEE91BF1A1245910006BD95 /* Albertslundruten.line in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91BD1A1245910006BD95 /* Albertslundruten.line */; };
 		4EEE91D41A1246920006BD95 /* local-trains-timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91C91A1246920006BD95 /* local-trains-timetable.json */; };
-		4EEE91D51A1246920006BD95 /* metro-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CA1A1246920006BD95 /* metro-stations.json */; };
 		4EEE91D61A1246920006BD95 /* metro.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CB1A1246920006BD95 /* metro.json */; };
 		4EEE91D71A1246920006BD95 /* s-train-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CC1A1246920006BD95 /* s-train-lines.json */; };
-		4EEE91D81A1246920006BD95 /* s-train-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CD1A1246920006BD95 /* s-train-stations.json */; };
-		4EEE91D91A1246920006BD95 /* service_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CE1A1246920006BD95 /* service_stations.json */; };
-		4EEE91DA1A1246920006BD95 /* stations copy.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CF1A1246920006BD95 /* stations copy.json */; };
-		4EEE91DB1A1246920006BD95 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91D01A1246920006BD95 /* stations.json */; };
 		4EEE91DC1A1246920006BD95 /* timetable-new.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91D11A1246920006BD95 /* timetable-new.json */; };
 		4EEE91DD1A1246920006BD95 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91D21A1246920006BD95 /* timetable.json */; };
 		4EEE91DE1A1246920006BD95 /* transportation-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91D31A1246920006BD95 /* transportation-lines.json */; };
@@ -1390,6 +1409,8 @@
 
 /* Begin PBXFileReference section */
 		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		4E33B91B1A640579007D4C82 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
+		4E33B91D1A640590007D4C82 /* AppHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		4E3867801A430A0E0018AC5B /* FacebookHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHandler.swift; sourceTree = "<group>"; };
 		4E392AD61A308DBE0076BA86 /* routeme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = routeme.plist; sourceTree = "<group>"; };
 		4E392AD71A308DBE0076BA86 /* smroute_settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings.plist; sourceTree = "<group>"; };
@@ -1417,6 +1438,14 @@
 		4E7BA9D01A1E1AD100F9744A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareItem_Tests.swift; sourceTree = "<group>"; };
 		4E8E34371A272A84004D529B /* OiorestItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OiorestItem.swift; sourceTree = "<group>"; };
+		4EBB7B351A5EB4E70064B530 /* farum-route.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "farum-route.json"; sourceTree = "<group>"; };
+		4EBB7B361A5EB4E70064B530 /* metro-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "metro-stations.json"; sourceTree = "<group>"; };
+		4EBB7B371A5EB4E70064B530 /* s-train-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-stations.json"; sourceTree = "<group>"; };
+		4EBB7B381A5EB4E70064B530 /* service_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service_stations.json; sourceTree = "<group>"; };
+		4EBB7B391A5EB4E70064B530 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
+		4EBB7B441A5EC0880064B530 /* BikePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikePreferencesViewController.swift; sourceTree = "<group>"; };
+		4EBB7B471A5EC2A00064B530 /* RouteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
+		4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTypeHandler.swift; sourceTree = "<group>"; };
 		4EC56DA61A2A25E900B696B4 /* SMAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAnalytics.h; sourceTree = "<group>"; };
 		4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAnalytics.m; sourceTree = "<group>"; };
 		4EC56DA81A2A25E900B696B4 /* SMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAnnotation.h; sourceTree = "<group>"; };
@@ -2657,6 +2686,8 @@
 		4EE071551A1178E100DE4226 /* white_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_btn@2x.png"; sourceTree = "<group>"; };
 		4EE071561A1178E100DE4226 /* white_btn_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_btn_pressed.png; sourceTree = "<group>"; };
 		4EE071571A1178E100DE4226 /* white_btn_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_btn_pressed@2x.png"; sourceTree = "<group>"; };
+		4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaysViewController.swift; sourceTree = "<group>"; };
+		4EE633791A5E8B6D009DA49B /* Overlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
 		4EE671C51A2F25F00037865B /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		4EE671C81A2F3CCC0037865B /* SMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMenuViewController.h; sourceTree = "<group>"; };
 		4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMenuViewController.m; sourceTree = "<group>"; };
@@ -2666,13 +2697,8 @@
 		4EEE91B41A1245610006BD95 /* testing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testing.gpx; sourceTree = "<group>"; };
 		4EEE91BD1A1245910006BD95 /* Albertslundruten.line */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Albertslundruten.line; sourceTree = "<group>"; };
 		4EEE91C91A1246920006BD95 /* local-trains-timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "local-trains-timetable.json"; sourceTree = "<group>"; };
-		4EEE91CA1A1246920006BD95 /* metro-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "metro-stations.json"; sourceTree = "<group>"; };
 		4EEE91CB1A1246920006BD95 /* metro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro.json; sourceTree = "<group>"; };
 		4EEE91CC1A1246920006BD95 /* s-train-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-lines.json"; sourceTree = "<group>"; };
-		4EEE91CD1A1246920006BD95 /* s-train-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-stations.json"; sourceTree = "<group>"; };
-		4EEE91CE1A1246920006BD95 /* service_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service_stations.json; sourceTree = "<group>"; };
-		4EEE91CF1A1246920006BD95 /* stations copy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "stations copy.json"; sourceTree = "<group>"; };
-		4EEE91D01A1246920006BD95 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		4EEE91D11A1246920006BD95 /* timetable-new.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "timetable-new.json"; sourceTree = "<group>"; };
 		4EEE91D21A1246920006BD95 /* timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timetable.json; sourceTree = "<group>"; };
 		4EEE91D31A1246920006BD95 /* transportation-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "transportation-lines.json"; sourceTree = "<group>"; };
@@ -2817,6 +2843,18 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		4EBB7B341A5EB4E70064B530 /* LocationData */ = {
+			isa = PBXGroup;
+			children = (
+				4EBB7B351A5EB4E70064B530 /* farum-route.json */,
+				4EBB7B361A5EB4E70064B530 /* metro-stations.json */,
+				4EBB7B371A5EB4E70064B530 /* s-train-stations.json */,
+				4EBB7B381A5EB4E70064B530 /* service_stations.json */,
+				4EBB7B391A5EB4E70064B530 /* stations.json */,
+			);
+			path = LocationData;
+			sourceTree = "<group>";
+		};
 		4EC56DA51A2A25E900B696B4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -2839,6 +2877,7 @@
 				4EC56DB61A2A25E900B696B4 /* UIView+LocateSubview.h */,
 				4EC56DB71A2A25E900B696B4 /* UIView+LocateSubview.m */,
 				4E3867801A430A0E0018AC5B /* FacebookHandler.swift */,
+				4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -2985,6 +3024,7 @@
 				4EC56DDC1A2A262800B696B4 /* SMAppDelegate.h */,
 				4EC56DDD1A2A262800B696B4 /* SMAppDelegate.m */,
 				4EC56DA51A2A25E900B696B4 /* Library */,
+				4EE633781A5E8B54009DA49B /* Models */,
 				4EE06E001A11251C00DE4226 /* ViewControllers */,
 				4EE06EAC1A112A0700DE4226 /* Views */,
 				4E2A92541A3B43050032ACD4 /* 3rd Party */,
@@ -3676,6 +3716,8 @@
 				4E3C3A861A39DEFC00C79E52 /* FavoriteListViewController.swift */,
 				4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */,
 				4E4BA4881A3F17A5006FF0FD /* ReminderListViewController.swift */,
+				4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */,
+				4EBB7B441A5EC0880064B530 /* BikePreferencesViewController.swift */,
 				4EE671C51A2F25F00037865B /* UINavigationController.swift */,
 			);
 			path = ViewControllers;
@@ -4378,6 +4420,17 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		4EE633781A5E8B54009DA49B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4EE633791A5E8B6D009DA49B /* Overlays.swift */,
+				4EBB7B471A5EC2A00064B530 /* RouteType.swift */,
+				4E33B91B1A640579007D4C82 /* UserHelper.swift */,
+				4E33B91D1A640590007D4C82 /* AppHelper.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4EEE91B01A1245610006BD95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -4388,6 +4441,7 @@
 				4EEE91B31A1245610006BD95 /* test2.gpx */,
 				4EEE91B41A1245610006BD95 /* testing.gpx */,
 				4E59822A1A24C4DD00A40484 /* BitBlueprint.gpx */,
+				4EBB7B341A5EB4E70064B530 /* LocationData */,
 				4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */,
 			);
 			path = Resources;
@@ -4397,13 +4451,8 @@
 			isa = PBXGroup;
 			children = (
 				4EEE91C91A1246920006BD95 /* local-trains-timetable.json */,
-				4EEE91CA1A1246920006BD95 /* metro-stations.json */,
 				4EEE91CB1A1246920006BD95 /* metro.json */,
 				4EEE91CC1A1246920006BD95 /* s-train-lines.json */,
-				4EEE91CD1A1246920006BD95 /* s-train-stations.json */,
-				4EEE91CE1A1246920006BD95 /* service_stations.json */,
-				4EEE91CF1A1246920006BD95 /* stations copy.json */,
-				4EEE91D01A1246920006BD95 /* stations.json */,
 				4EEE91D11A1246920006BD95 /* timetable-new.json */,
 				4EEE91D21A1246920006BD95 /* timetable.json */,
 				4EEE91D31A1246920006BD95 /* transportation-lines.json */,
@@ -4678,6 +4727,7 @@
 				4EE065471A10FAB400DE4226 /* camera@2x.png in Resources */,
 				4EE065361A10FAB400DE4226 /* blue_btn.png in Resources */,
 				4EE0657E1A10FAB400DE4226 /* favEmptyBG.png in Resources */,
+				4EBB7B421A5EB4E70064B530 /* stations.json in Resources */,
 				4EE065DF1A10FAB400DE4226 /* no_connection@2x.png in Resources */,
 				4EE065001A10FAB400DE4226 /* white-u-turn@2x.png in Resources */,
 				4EE064F81A10FAB400DE4226 /* white-near-destination@2x.png in Resources */,
@@ -4690,6 +4740,7 @@
 				4EE065BF1A10FAB400DE4226 /* green_grey@2x.png in Resources */,
 				4EE0654B1A10FAB400DE4226 /* cargo_slider@2x.png in Resources */,
 				4EE065F01A10FAB400DE4226 /* radioUnchecked.png in Resources */,
+				4EBB7B401A5EB4E70064B530 /* service_stations.json in Resources */,
 				4EEE92151A125E250006BD95 /* TrackingDotHalo.png in Resources */,
 				4EE065791A10FAB400DE4226 /* favEditBtnPressed@2x.png in Resources */,
 				4EE065A41A10FAB400DE4226 /* favTypeSchoolButtonPressed.png in Resources */,
@@ -4829,6 +4880,7 @@
 				4EE064D11A10FAB400DE4226 /* left.png in Resources */,
 				4EEE92791A12E69D0006BD95 /* dictionary_dk.strings in Resources */,
 				4EE065BE1A10FAB400DE4226 /* green_grey.png in Resources */,
+				4EBB7B3A1A5EB4E70064B530 /* farum-route.json in Resources */,
 				4EE0660F1A10FAB400DE4226 /* routeComplete_close_btn@2x.png in Resources */,
 				4EE0656D1A10FAB400DE4226 /* fav_plus_none@2x.png in Resources */,
 				4EE0651B1A10FAB400DE4226 /* icon-80.png in Resources */,
@@ -5050,11 +5102,13 @@
 				4EE064D51A10FAB400DE4226 /* near-destination.png in Resources */,
 				4EE065C21A10FAB400DE4226 /* greenroute_grey.png in Resources */,
 				4EE066031A10FAB400DE4226 /* reportHeaderBG@2x.png in Resources */,
+				4EBB7B3E1A5EB4E70064B530 /* s-train-stations.json in Resources */,
 				4EE0657B1A10FAB400DE4226 /* favEditDeleteButton@2x.png in Resources */,
 				4EE0658B1A10FAB400DE4226 /* favReorder@2x.png in Resources */,
 				4EE066111A10FAB400DE4226 /* routeComplete_report_problem@2x.png in Resources */,
 				4EE0663A1A10FAB400DE4226 /* routeStopOverlay.png in Resources */,
 				4EE065FB1A10FAB400DE4226 /* reportBottom@2x.png in Resources */,
+				4EBB7B3C1A5EB4E70064B530 /* metro-stations.json in Resources */,
 				4EE065BC1A10FAB400DE4226 /* gray_btn_pressed.png in Resources */,
 				4EE065491A10FAB400DE4226 /* cargo_grey@2x.png in Resources */,
 				4EE065C11A10FAB400DE4226 /* green_white@2x.png in Resources */,
@@ -5173,7 +5227,6 @@
 				4EE0735F1A1178E300DE4226 /* sidemenu_handle_press@2x.png in Resources */,
 				4EE073521A1178E300DE4226 /* service_pin.png in Resources */,
 				4EE071DE1A1178E200DE4226 /* up-left.png in Resources */,
-				4EEE91DB1A1246920006BD95 /* stations.json in Resources */,
 				4EE071FA1A1178E200DE4226 /* drop_pin_add_fav_btn_press.png in Resources */,
 				4EEE920E1A125E250006BD95 /* LoadingTile.png in Resources */,
 				4EE072621A1178E200DE4226 /* findLocation@2x.png in Resources */,
@@ -5181,6 +5234,7 @@
 				4EE071F51A1178E200DE4226 /* drop_down@2x.png in Resources */,
 				4EE072831A1178E200DE4226 /* Icon-72@2x.png in Resources */,
 				4EE072931A1178E200DE4226 /* l-gray@2x.png in Resources */,
+				4EBB7B3B1A5EB4E70064B530 /* farum-route.json in Resources */,
 				4EE071BE1A1178E200DE4226 /* css_logo_small.png in Resources */,
 				4EE072AF1A1178E200DE4226 /* markerFinish@2x.png in Resources */,
 				4EE072D51A1178E200DE4226 /* pin_b_orange@2x.png in Resources */,
@@ -5329,7 +5383,6 @@
 				4EE071E41A1178E200DE4226 /* walk.png in Resources */,
 				4EE073221A1178E300DE4226 /* routeEnterInputBG.png in Resources */,
 				4EE071D61A1178E200DE4226 /* right-ward.png in Resources */,
-				4EEE91D91A1246920006BD95 /* service_stations.json in Resources */,
 				4EEE92471A125E690006BD95 /* marker-blue.png in Resources */,
 				4EE072971A1178E200DE4226 /* L@2x.png in Resources */,
 				4EC56E371A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */,
@@ -5382,6 +5435,7 @@
 				4EE072551A1178E200DE4226 /* favWorkWhite@2x.png in Resources */,
 				4EE0715E1A1178E100DE4226 /* about_header.png in Resources */,
 				4EE072EC1A1178E200DE4226 /* registerBG.png in Resources */,
+				4EBB7B3F1A5EB4E70064B530 /* s-train-stations.json in Resources */,
 				4EEE92181A125E250006BD95 /* TrackingDotHalo@2x.png in Resources */,
 				4EE073211A1178E300DE4226 /* routeEnterHeader@2x.png in Resources */,
 				4EE073941A1178E300DE4226 /* warningIcon@2x.png in Resources */,
@@ -5405,7 +5459,6 @@
 				4EE071AF1A1178E200DE4226 /* cargo_slider@2x.png in Resources */,
 				4EE0733C1A1178E300DE4226 /* routeEnterViewMoreRow.png in Resources */,
 				4EE072E41A1178E200DE4226 /* red_btn.png in Resources */,
-				4EEE91D51A1246920006BD95 /* metro-stations.json in Resources */,
 				4EE072DB1A1178E200DE4226 /* pullHandle@2x.png in Resources */,
 				4EC56E631A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */,
 				4EE071801A1178E100DE4226 /* bike_route@2x.png in Resources */,
@@ -5567,18 +5620,19 @@
 				4EE073191A1178E200DE4226 /* routeComplete_report_problem_press@2x.png in Resources */,
 				4EE0735D1A1178E300DE4226 /* sidemenu_handle@2x.png in Resources */,
 				4EE071791A1178E100DE4226 /* back_arrow_btn_press@2x.png in Resources */,
-				4EEE91DA1A1246920006BD95 /* stations copy.json in Resources */,
 				4EE0726A1A1178E200DE4226 /* gray_btn@2x.png in Resources */,
 				4EEE91D61A1246920006BD95 /* metro.json in Resources */,
 				4EE073151A1178E200DE4226 /* routeComplete_close_btn@2x.png in Resources */,
 				4EE072681A1178E200DE4226 /* findRouteContacts@2x.png in Resources */,
 				4EE0728C1A1178E200DE4226 /* info.png in Resources */,
+				4EBB7B411A5EB4E70064B530 /* service_stations.json in Resources */,
 				4EE072C41A1178E200DE4226 /* normalDirectionsShadow.png in Resources */,
 				4EE0723B1A1178E200DE4226 /* favStarGreySmall@2x.png in Resources */,
 				4EE072EF1A1178E200DE4226 /* registerBlueButton@2x.png in Resources */,
 				4EE072E11A1178E200DE4226 /* radioChecked@2x.png in Resources */,
 				4EE06CB81A11134C00DE4226 /* .gitignore in Resources */,
 				4EE0722C1A1178E200DE4226 /* favListRowSelected.png in Resources */,
+				4EBB7B3D1A5EB4E70064B530 /* metro-stations.json in Resources */,
 				4EE0725D1A1178E200DE4226 /* findAutocomplete.png in Resources */,
 				4EE072A21A1178E200DE4226 /* local_train_icon.png in Resources */,
 				4EE072FC1A1178E200DE4226 /* reportButton.png in Resources */,
@@ -5586,7 +5640,6 @@
 				4EE071CD1A1178E200DE4226 /* flag@2x.png in Resources */,
 				4EE0729C1A1178E200DE4226 /* list_find_icon.png in Resources */,
 				4EE072B61A1178E200DE4226 /* metro_station_gray.png in Resources */,
-				4EEE91D81A1246920006BD95 /* s-train-stations.json in Resources */,
 				4EE0720A1A1178E200DE4226 /* favAdd.png in Resources */,
 				4EE073921A1178E300DE4226 /* warning_popup_bgr@2x.png in Resources */,
 				4EE071AE1A1178E200DE4226 /* cargo_slider.png in Resources */,
@@ -5636,6 +5689,7 @@
 				4EE0729B1A1178E200DE4226 /* list_find_bgr_single@2x.png in Resources */,
 				4EE072A51A1178E200DE4226 /* locate_icon@2x.png in Resources */,
 				4EE073871A1178E300DE4226 /* splashDialog.png in Resources */,
+				4EBB7B431A5EB4E70064B530 /* stations.json in Resources */,
 				4EE072BD1A1178E200DE4226 /* no_connection@2x.png in Resources */,
 				4EE0730D1A1178E200DE4226 /* route_close_btn@2x.png in Resources */,
 				4EE073481A1178E300DE4226 /* search_back_btn.png in Resources */,
@@ -5865,10 +5919,12 @@
 				4EC56E3D1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */,
 				4EE06CDB1A11134C00DE4226 /* SMRoute.m in Sources */,
 				4EC56DC41A2A25E900B696B4 /* SMContacts.m in Sources */,
+				4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */,
 				4EC56ED31A2A3AAE00B696B4 /* SMAccountController.m in Sources */,
 				4E3C3A8D1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
 				4EC56E491A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
 				4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
+				4EE633761A5E8A94009DA49B /* OverlaysViewController.swift in Sources */,
 				4EC56EEF1A2A3AAE00B696B4 /* SMRouteNavigationController.m in Sources */,
 				4EFA280D1A2B871D0050450C /* SMMainViewController.m in Sources */,
 				4EE06CD31A11134C00DE4226 /* SMGPSUtil.m in Sources */,
@@ -5885,6 +5941,7 @@
 				4EE06CCB1A11134C00DE4226 /* SMTranslation.m in Sources */,
 				4EC56DD41A2A25E900B696B4 /* SMUtil.m in Sources */,
 				4E8E34381A272A84004D529B /* OiorestItem.swift in Sources */,
+				4EBB7B451A5EC0880064B530 /* BikePreferencesViewController.swift in Sources */,
 				4EE06CBF1A11134C00DE4226 /* SMKMSAddressOperation.m in Sources */,
 				4EE671C61A2F25F00037865B /* UINavigationController.swift in Sources */,
 				4EE06CDF1A11134C00DE4226 /* SMRouteSettings.m in Sources */,
@@ -5897,6 +5954,8 @@
 				4EE06CC51A11134C00DE4226 /* NSString+Relevance.m in Sources */,
 				4EC56DDE1A2A262800B696B4 /* SMAppDelegate.m in Sources */,
 				4EC56EFF1A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
+				4EBB7B481A5EC2A00064B530 /* RouteType.swift in Sources */,
+				4E33B91E1A640590007D4C82 /* AppHelper.swift in Sources */,
 				4EC56EF71A2A3AAE00B696B4 /* SMSettingsController.m in Sources */,
 				4EC56EE31A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
 				4EC56EFB1A2A3AAE00B696B4 /* SMSplashController.m in Sources */,
@@ -5912,8 +5971,10 @@
 				4EC56DD01A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
 				4EE06CCF1A11134C00DE4226 /* SMAutocomplete.m in Sources */,
 				4EC56E291A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
+				4EE6337A1A5E8B6D009DA49B /* Overlays.swift in Sources */,
 				4EC56E511A2A2C3D00B696B4 /* SMCustomButton.m in Sources */,
 				4EC56EDB1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */,
+				4EBB7B4B1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */,
 				4EC56EB11A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */,
 				4E5982121A24AC1200A40484 /* HistoryItem.swift in Sources */,
 				4EC56ECF1A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
@@ -5966,6 +6027,7 @@
 				4EC56EA71A2A2C3D00B696B4 /* SMSwipableView.m in Sources */,
 				4EE06C491A10FC5600DE4226 /* SMStationPickerView.m in Sources */,
 				4E5982131A24AC1200A40484 /* HistoryItem.swift in Sources */,
+				4EBB7B491A5EC2A00064B530 /* RouteType.swift in Sources */,
 				4EE06CE01A11134C00DE4226 /* SMRouteSettings.m in Sources */,
 				4EC56DD21A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
 				4EE06F061A112F6D00DE4226 /* SMBreakRouteHeader.m in Sources */,
@@ -5978,6 +6040,7 @@
 				4EE06CC01A11134C00DE4226 /* SMKMSAddressOperation.m in Sources */,
 				4EC56EB31A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */,
 				4EE06C421A10FC5600DE4226 /* SMReminder.m in Sources */,
+				4EE633771A5E8A94009DA49B /* OverlaysViewController.swift in Sources */,
 				4E8E343A1A272A84004D529B /* OiorestItem.swift in Sources */,
 				4EC56EE51A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
 				4EC56E671A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */,
@@ -5987,6 +6050,7 @@
 				4EC56E831A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
 				4EE06CC81A11134C00DE4226 /* NSString+URLEncode.m in Sources */,
 				4EC56E531A2A2C3D00B696B4 /* SMCustomButton.m in Sources */,
+				4E33B9201A640700007D4C82 /* AppHelper.swift in Sources */,
 				4EC56E9B1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4EC56E5B1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
 				4EC56DDA1A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
@@ -6008,6 +6072,7 @@
 				4EE06CBC1A11134C00DE4226 /* SMAPIQueue.m in Sources */,
 				4EC56E8F1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
 				4EE06CE51A11135000DE4226 /* SMAddressParser.m in Sources */,
+				4EBB7B461A5EC0880064B530 /* BikePreferencesViewController.swift in Sources */,
 				4EC56E5F1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */,
 				4EC56EF51A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
 				4EC56DC21A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
@@ -6028,11 +6093,13 @@
 				4EC56E6B1A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */,
 				4EE06C4A1A10FC5600DE4226 /* SMStationsCache.m in Sources */,
 				4EE06F111A112F6D00DE4226 /* SMReportMailCell.m in Sources */,
+				4EE6337B1A5E8B6D009DA49B /* Overlays.swift in Sources */,
 				4EE06C4E1A10FC5600DE4226 /* SMTransportation.m in Sources */,
 				4EE06CDC1A11134C00DE4226 /* SMRoute.m in Sources */,
 				4E4F5FDB1A2BAC4700233ACA /* Styling.swift in Sources */,
 				4EE06CBA1A11134C00DE4226 /* SMAPIOperation.m in Sources */,
 				4EE06C521A10FC5600DE4226 /* SMUser.m in Sources */,
+				4EBB7B4C1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */,
 				4EE06C441A10FC5600DE4226 /* SMRouteTransportationInfo.m in Sources */,
 				4EE06CD81A11134C00DE4226 /* SMNearbyPlaces.m in Sources */,
 				4EC56E4F1A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */,
@@ -6062,6 +6129,7 @@
 				4EE06C431A10FC5600DE4226 /* SMRouteTimeInfo.m in Sources */,
 				4EE06C4B1A10FC5600DE4226 /* SMTime.m in Sources */,
 				4EE06C5F1A10FC5600DE4226 /* SMRouteInfoViewController.m in Sources */,
+				4E33B91F1A6406FD007D4C82 /* UserHelper.swift in Sources */,
 				4EE671CB1A2F3CCC0037865B /* SMMenuViewController.m in Sources */,
 				4E3867821A430CBB0018AC5B /* FacebookHandler.swift in Sources */,
 				4EE06C511A10FC5600DE4226 /* SMTripRoute.m in Sources */,
@@ -6339,6 +6407,7 @@
 					"CYKEL_PLANEN=1",
 				);
 				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
@@ -6350,7 +6419,6 @@
 					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
 					"\"${PODS_ROOT}/Headers/Public/UIImage-Categories\"",
 					"$(SDKROOT)/usr/include/libz",
-					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 				);
 				INFOPLIST_FILE = CykelPlanen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -6374,6 +6442,7 @@
 				GCC_PREFIX_HEADER = "CykelPlanen/CykelPlanen-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
@@ -6385,7 +6454,6 @@
 					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
 					"\"${PODS_ROOT}/Headers/Public/UIImage-Categories\"",
 					"$(SDKROOT)/usr/include/libz",
-					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 				);
 				INFOPLIST_FILE = CykelPlanen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

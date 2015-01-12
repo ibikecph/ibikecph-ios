@@ -157,11 +157,11 @@ Copenhagen. All rights reserved.
 "marker_start" = "Start";
 
 // markers
-"marker_type_1" = "Cycle super highways";
-"marker_type_2" = "Service stations";
-"marker_type_3" = "S-train stations";
-"marker_type_4" = "Metro stations";
-"marker_type_5" = "Local trains stations";
+"cycle_super_highways" = "Cycle super highways";
+"service_stations" = "Service stations";
+"s_train_stations" = "S-train stations";
+"metro_stations" = "Metro stations";
+"local_trains_stations" = "Local trains stations";
 
 // these are in the storyboard
 "register_with_mail" = "Register with email";

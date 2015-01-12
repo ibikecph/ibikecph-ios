@@ -15,7 +15,6 @@
  */
 @interface SMDirectionTopCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *imgDirection;
 @property (weak, nonatomic) IBOutlet UILabel *lblDistance;
 @property (weak, nonatomic) IBOutlet UILabel *lblWayname;
@@ -23,8 +22,5 @@
 @property NSInteger position;
 
 - (void)renderViewFromInstruction:(SMTurnInstruction *)turn;
-
-+ (CGFloat)getHeight;
-+ (CGFloat)getHeightForDescription:(NSString*) desc andWayname:(NSString*) wayname;
 
 @end

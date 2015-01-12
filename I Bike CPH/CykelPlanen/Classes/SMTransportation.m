@@ -239,9 +239,6 @@ static NSOperationQueue* stationQueue;
     NSArray* trainsArr= [dict objectForKey:@"local-trains"];
     NSMutableArray* trains= [NSMutableArray new];
     for( NSDictionary* arr in trainsArr){
-        NSString* lineName= [arr objectForKey:@"line"];
-        NSString* firstStation= [arr objectForKey:@"first-station"];
-        NSString* lastStation= [arr objectForKey:@"last-station"];
         NSArray* stations= [arr objectForKey:@"stations"];
         
         NSDictionary* departureDict= [arr objectForKey:@"departure"];

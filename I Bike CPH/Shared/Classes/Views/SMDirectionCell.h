@@ -16,15 +16,11 @@
 @interface SMDirectionCell : UITableViewCell {
 
 }
-@property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *imgDirection;
 @property (weak, nonatomic) IBOutlet UILabel *lblDistance;
 @property (weak, nonatomic) IBOutlet UILabel *lblWayname;
 @property (weak, nonatomic) IBOutlet UIImageView *imgBackground;
 
 - (void)renderViewFromInstruction:(SMTurnInstruction *)turn;
-
-+ (CGFloat)getHeight;
-+ (CGFloat)getHeightForDescription:(NSString*) desc andWayname:(NSString*) wayname;
 
 @end

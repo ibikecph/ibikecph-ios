@@ -11,6 +11,7 @@ import UIKit
 class FavoriteListViewController: SMTranslatedViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noProfileLabel: UILabel!
     
     private var items: [FavoriteItem] = [FavoriteItem]() {
         didSet {
@@ -25,11 +26,17 @@ class FavoriteListViewController: SMTranslatedViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        items = SMFavoritesUtil.favorites() as [FavoriteItem] // Get local favorites
-        SMFavoritesUtil.instance().delegate = self
-        SMFavoritesUtil.instance().fetchFavoritesFromServer() // Fetch favorites from server
+        
+        if UserHelper.loggedIn() {
+            items = SMFavoritesUtil.favorites() as [FavoriteItem] // Get local favorites
+            SMFavoritesUtil.instance().delegate = self
+            SMFavoritesUtil.instance().fetchFavoritesFromServer() // Fetch favorites from server
+            tableView.hidden = false
+            noProfileLabel.hidden = true
+        } else {
+            tableView.hidden = true
+            noProfileLabel.hidden = false
+        }
     }
 
     override func didReceiveMemoryWarning() {

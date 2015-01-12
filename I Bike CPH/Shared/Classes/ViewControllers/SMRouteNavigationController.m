@@ -51,7 +51,7 @@ typedef enum {
     directionsHidden
 } DirectionsState;
 
-@interface SMRouteNavigationController () {
+@interface SMRouteNavigationController () <RouteTypeHandlerDelegateObjc> {
     DirectionsState currentDirectionsState;
     CGFloat lastDirectionsPos;
     CGFloat touchOffset;
@@ -65,13 +65,11 @@ typedef enum {
     SMTripRoute* tempTripRoute;
     SMRoute* tempRoute;
 }
-@property (weak, nonatomic) IBOutlet UIImageView *cargoHandleImageView;
-@property (weak, nonatomic) IBOutlet UITableView *cargoTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *instructionHeightConstraint;
 
-@property (nonatomic, strong) NSArray* cargoItems;
 @property (nonatomic, strong) SMRoute *route;
 @property (nonatomic, strong) SMTripRoute* brokenRoute;
-@property (nonatomic, strong) IBOutlet RMMapView * mpView;
+@property (nonatomic, strong) IBOutlet RMMapView * mapView;
 @property int directionsShownCount; // How many directions are shown in the directions table at the moment:
                                     // -1 means no direction is shown and minimized directions view is not shown (this happens before first call to showDirections())
                                     // 0 means no direction is shown and minimized directions view is shown
@@ -82,12 +80,6 @@ typedef enum {
 @property BOOL pulling;
 @property (nonatomic, strong) NSString * osrmServer;
 
-@property (nonatomic, strong) NSMutableArray* stationMarkers;
-@property (nonatomic, strong) NSMutableArray* metroMarkers;
-@property (nonatomic, strong) NSMutableArray* serviceMarkers;
-@property BOOL stationMarkersVisible;
-@property BOOL metroMarkersVisible;
-@property BOOL serviceMarkersVisible;
 @property BOOL pathVisible;
 
 @end
@@ -106,13 +98,9 @@ typedef enum {
     [super viewDidLoad];
 
     [breakRouteButton.imageView setContentMode:UIViewContentModeScaleAspectFill];
-    UIImageView* imageView= [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mover"]];
     
-    imageView.center= CGPointMake(pullHandleImageView.bounds.size.width/2, pullHandleImageView.frame.size.height-imageView.frame.size.height/2-5);
-    [pullHandleImageView addSubview:imageView];
-    shouldShowOverview = NO;
+    self.osrmServer = [RouteTypeHandler sharedInstance].server;
     
-    self.osrmServer = OSRM_SERVER;
     self.pulling = NO;
 
     self.recycledItems = [NSMutableSet set];
@@ -126,22 +114,22 @@ typedef enum {
 
     [SMLocationManager instance];
 
-    self.mpView.contentScaleFactor= 0.5;
+    self.mapView.contentScaleFactor = 0.5;
     
-    [self.mpView setTileSource:TILE_SOURCE];
-    [self.mpView setDelegate:self];
-    [self.mpView setMaxZoom:MAX_MAP_ZOOM];
+    [self.mapView setTileSource:TILE_SOURCE];
+    [self.mapView setDelegate:self];
+    [self.mapView setMaxZoom:MAX_MAP_ZOOM];
 
     [self setDirectionsState:directionsHidden];
     
-    [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
-    [self.mpView setTriggerUpdateOnHeadingChange:NO];
-    [self.mpView setDisplayHeadingCalibration:NO];
-    [self.mpView setEnableBouncing:NO];
-    [self.mpView setRoutingDelegate:nil];
+    [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
+    [self.mapView setTriggerUpdateOnHeadingChange:NO];
+    [self.mapView setDisplayHeadingCalibration:NO];
+    [self.mapView setEnableBouncing:NO];
+    [self.mapView setRoutingDelegate:nil];
     
-    [self.mpView setZoom:DEFAULT_MAP_ZOOM];
-
+    [self.mapView setZoom:DEFAULT_MAP_ZOOM];
+    
     [labelTimeLeft setText:@""];
     [labelDistanceLeft setText:@""];
     
@@ -154,26 +142,18 @@ typedef enum {
         [self start:self.startLocation.coordinate end:self.endLocation.coordinate withJSON:self.jsonRoot];
     }
     
-    [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:self.cargoHandleImageView];
-    
-    // setup cargo items
-    
-    self.cargoItems= OSRM_SERVERS;
-    [self.cargoTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    [self.cargoTableView reloadData];
-    [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-    
     [centerView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     
-    self.pathVisible= YES;
+    self.pathVisible = YES;
     
-    // TODO: From CykelPlanen
-//    if ( self.appDelegate.mapOverlays == nil ) {
-//        self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:self.mpView];
-//    }
-//    [self.appDelegate.mapOverlays useMapView:self.mpView];
-//
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStationsFetched:) name:NOTIFICATION_STATIONS_FETCHED object:nil];
+    // Setup map overlays
+    if (self.appDelegate.mapOverlays == nil) {
+        self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:self.mapView];
+    }
+    [self.appDelegate.mapOverlays useMapView:self.mapView];
+    [self.appDelegate.mapOverlays loadMarkers];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStationsFetched:) name:NOTIFICATION_STATIONS_FETCHED object:nil];
 }
 
 -(void)onStationsFetched:(NSNotification*)notification{}
@@ -182,8 +162,7 @@ typedef enum {
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    // TODO: Change to YES when view is implemented in storyboard
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     // TODO: From CykelPlanen
 //    if([[SMUser user] route]){
@@ -199,34 +178,23 @@ typedef enum {
     if (self.startLocation && self.endLocation) {
         [self start:self.startLocation.coordinate end:self.endLocation.coordinate withJSON:self.jsonRoot];
     }
-    [self.mpView addObserver:self forKeyPath:@"userTrackingMode" options:0 context:nil];
-    [self.mpView addObserver:self forKeyPath:@"zoom" options:0 context:nil];
+    [self.mapView addObserver:self forKeyPath:@"userTrackingMode" options:0 context:nil];
+    [self.mapView addObserver:self forKeyPath:@"zoom" options:0 context:nil];
     [self addObserver:self forKeyPath:@"currentlyRouting" options:0 context:nil];
     [swipableView addObserver:self forKeyPath:@"hidden" options:0 context:nil];
     [self.mapFade addObserver:self forKeyPath:@"frame" options:0 context:nil];
     
-    [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
+    [self.mapView setTileSource:TILE_SOURCE];
+    [self.mapView setDelegate:self];
+    [self.mapView setMaxZoom:MAX_MAP_ZOOM];
     
-    CGFloat maxSize = self.view.frame.size.height - 160.0f;
-    if (self.mapFade.frame.size.height > maxSize) {
-        [self.mapFade setAlpha:0.0f];
-    } else {
-        [self.mapFade setAlpha: 0.8f - ((self.mapFade.frame.size.height - MAX_TABLE) * 0.8f / (maxSize - MAX_TABLE))];
-    }
+    self.mapView.userTrackingMode = RMUserTrackingModeFollow;
+    [self.mapView setZoom:16];
+    [self.mapView setEnableBouncing:TRUE];
     
-    [self.mpView rotateMap:0.0];
+    [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
     
-    if (self.mapFade.alpha > 0.7f) {
-        [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
-        [closeButton setImage:[UIImage imageNamed:@"btnCloseDark"] forState:UIControlStateNormal];
-        [labelDistanceLeft setTextColor:[UIColor whiteColor]];
-        [labelTimeLeft setTextColor:[UIColor whiteColor]];
-    } else {
-        [arrivalBG setImage:[UIImage imageNamed:@"distance_white"]];
-        [closeButton setImage:[UIImage imageNamed:@"btnClose"] forState:UIControlStateNormal];
-        [labelDistanceLeft setTextColor:[UIColor darkGrayColor]];
-        [labelTimeLeft setTextColor:[UIColor darkGrayColor]];
-    }
+    [self.mapView rotateMap:0.0];
     
     [centerView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     
@@ -234,20 +202,13 @@ typedef enum {
     rect.size.height= 0;
     self.mapFade.frame= rect;
     
-    // markers visibility
-    [self removeAllMarkers];
-    [self toggleMarkers];
-    
-    // TODO: From CykelPlanen
-//    [self.appDelegate.mapOverlays useMapView:self.mpView];
-//    [self.appDelegate.mapOverlays toggleMarkers];
-    [self.mpView setZoom:self.mpView.zoom+0.0001];
-    [self mapViewRegionDidChange:self.mpView];
+    [self.mapView setZoom:self.mapView.zoom+0.0001];
+    [self mapViewRegionDidChange:self.mapView];
     
     double delayInSeconds = 1.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.mpView setZoom:self.mpView.zoom+0.0001];
+        [self.mapView setZoom:self.mapView.zoom+0.0001];
     });
 }
 
@@ -259,18 +220,6 @@ typedef enum {
     } else {
         [UIApplication sharedApplication].idleTimerDisabled = NO;
     }
-
-    // TODO: From CykelPlanen
-//    if ( self.appDelegate.mapOverlays.pathVisible )
-//        [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-//    if ( self.appDelegate.mapOverlays.serviceMarkersVisible )
-//        [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-//    if ( self.appDelegate.mapOverlays.stationMarkersVisible )
-//        [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-//    if ( self.appDelegate.mapOverlays.metroMarkersVisible )
-//        [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-//    if ( self.appDelegate.mapOverlays.localTrainMarkersVisible )
-//        [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
 }
 
 
@@ -282,8 +231,8 @@ typedef enum {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self removeObserver:self forKeyPath:@"currentlyRouting" context:nil];
     [swipableView removeObserver:self forKeyPath:@"hidden" context:nil];
-    [self.mpView removeObserver:self forKeyPath:@"userTrackingMode" context:nil];
-    [self.mpView removeObserver:self forKeyPath:@"zoom" context:nil];
+    [self.mapView removeObserver:self forKeyPath:@"userTrackingMode" context:nil];
+    [self.mapView removeObserver:self forKeyPath:@"zoom" context:nil];
     [self.mapFade removeObserver:self forKeyPath:@"frame"];
     [super viewWillDisappear:animated];
 }
@@ -296,95 +245,20 @@ typedef enum {
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - station markers
+#pragma mark - Route
 
-- (void)loadMarkers {
-    self.stationMarkers = [[NSMutableArray alloc] init];
-    
-        for(int i=0; i<[SMTransportation instance].allStations.count; i++){
-            
-            SMStationInfo* stationLocation= [SMTransportation instance].allStations[i];
-            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(stationLocation.latitude, stationLocation.longitude);
-            
-            NSString* imageName = [SMStationInfo imageNameForType:stationLocation.type];
-            NSString* title = @"station";
 
-            NSString* annotationTitle = stationLocation.name;
-
-            NSString* alternateTitle = @"alternate title";
-            
-            SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
-            annotation.annotationType = @"marker";
-            annotation.annotationIcon = [UIImage imageNamed:imageName];
-            annotation.anchorPoint = CGPointMake(0.5, 1.0);
-            NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
-            annotation.title = annotationTitle;
-            
-            if ([annotation.title isEqualToString:@""] && alternateTitle) {
-                annotation.title = alternateTitle;
-            }
-            
-            annotation.userInfo= @{keyZIndex: [NSNumber numberWithInt:MAP_LEVEL_STATIONS]};
-            
-            annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            
-            [self.stationMarkers addObject:annotation];
-
-        }
-    
-}
 
 -(void)removeAllMarkers{
-    [self.mpView removeAnnotations:self.metroMarkers];
-    [self.mpView removeAnnotations:self.serviceMarkers];
-    [self.mpView removeAnnotations:self.stationMarkers];
-    [self hideRouteAnnotation];
-    
+    [self hideRouteAnnotation];   
 }
 
 -(void)toggleMarkers{
-        if ( self.metroMarkersVisible ) {
-            [self.mpView addAnnotations:self.metroMarkers];
-        } else {
-            [self.mpView removeAnnotations:self.metroMarkers];
-        }
-
-        if ( self.serviceMarkersVisible ) {
-            [self.mpView addAnnotations:self.serviceMarkers];
-        } else {
-            [self.mpView removeAnnotations:self.serviceMarkers];
-        }
-
-        if ( self.stationMarkersVisible ) {
-            [self.mpView addAnnotations:self.stationMarkers];
-        } else {
-            [self.mpView removeAnnotations:self.stationMarkers];
-        }
-
-        if ( self.pathVisible ) {
-            [self showRouteAnnotation];
-        } else {
-            [self hideRouteAnnotation];
-        }
-
-}
-
-- (void)toggleMarkers:(NSString*)markerType state:(BOOL)state{
-    if ( [markerType isEqualToString:@"metro"] ) {
-        self.metroMarkersVisible = state;
-       
-    } else if ( [markerType isEqualToString:@"service"] ) {
-        self.serviceMarkersVisible = state;
-       
-    } else if ( [markerType isEqualToString:@"station"] ) {
-        self.stationMarkersVisible = state;
-       
-    }else if([markerType isEqualToString:@"path"]){
-        self.pathVisible= state;
-    
+    if (self.pathVisible) {
+        [self showRouteAnnotation];
+    } else {
+        [self hideRouteAnnotation];
     }
-    
-    [self toggleMarkers];
 }
 
 #pragma mark - custom methods
@@ -392,37 +266,16 @@ typedef enum {
 #define LATITUDE_PADDING 0.25f
 #define LONGITUDE_PADDING 0.10f
 
-- (void)setupMapSize:(BOOL)heading {
-    CGRect frame = mapContainer.frame;
-    if (overviewShown) {
-        frame.size.height = routeOverview.frame.origin.y + 1.0f;
-    } else if ((heading == NO) || self.pulling) {
-        frame.size.height = (self.view.frame.size.height - frame.origin.y);
-    } else {
-        if (currentDirectionsState == directionsMini) {
-            frame.size.height = (self.view.frame.size.height - frame.origin.y) * 1.36f;
-        } else {
-            frame.size.height = (self.view.frame.size.height - frame.origin.y - 102.0f) * 1.36f;
-        }
-    }
-    [mapContainer setFrame:frame];
-    
-    frame = buttonTrackUser.frame;
-    frame.origin.y = instructionsView.frame.origin.y - 65.0f;
-    [buttonTrackUser setFrame:frame];
-    
-}
-
 - (void)showRouteOverview {
     oldTrackingMode = RMUserTrackingModeNone;
     [self setDirectionsState:directionsHidden];
-    [self.mpView rotateMap:0];
-    for (RMAnnotation *annotation in self.mpView.annotations) {
+    [self.mapView rotateMap:0];
+    for (RMAnnotation *annotation in self.mapView.annotations) {
         if ([annotation.annotationType isEqualToString:@"path"]) {
-            [self.mpView removeAnnotation:annotation];
+            [self.mapView removeAnnotation:annotation];
         }
     }
-    [routeOverview setHidden:NO];
+    routeOverview.hidden = NO;
     [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         routeOverview.alpha = 1.0f;
     } completion:^(BOOL finished) {
@@ -444,32 +297,29 @@ typedef enum {
     [self setDirectionsState:directionsNormal];
     // Display new path
     NSDictionary * coordinates = [self addRouteAnnotation:self.route];
-    [self.mpView setRoutingDelegate:self];
+    [self.mapView setRoutingDelegate:self];
     [tblDirections reloadData];
     
     [self reloadSwipableView];
     
-    [routeOverview setFrame:instructionsView.frame];
-    
-    [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, %0.f min, via %@", formatDistance(self.route.estimatedRouteDistance), ceilf(self.route.estimatedTimeForRoute / 60.0f), self.route.longestStreet]];
+    overviewTimeDistance.text = [NSString stringWithFormat:@"%@, %0.f min, via %@", formatDistance(self.route.estimatedRouteDistance), ceilf(self.route.estimatedTimeForRoute / 60.0f), self.route.longestStreet];
     
     NSArray * a = [self.destination componentsSeparatedByString:@","];
     NSString* streetName= [a objectAtIndex:0];
-    overviewDestination.lineBreakMode= UILineBreakModeCharacterWrap;
-    overviewDestinationBottom.lineBreakMode= UILineBreakModeTailTruncation;
+    overviewDestination.lineBreakMode= NSLineBreakByCharWrapping;
+    overviewDestinationBottom.lineBreakMode= NSLineBreakByWordWrapping;
     
     
-    if(streetName){
-        NSArray* splittedString= [self splitString:streetName];
+    overviewDestination.text = nil;
+    overviewDestinationBottom.text = nil;
+    if(streetName) {
+        NSArray *splittedString = [self splitString:streetName];
         
-        [overviewDestination setText:[splittedString objectAtIndex:0]];
+        overviewDestination.text = splittedString[0];
         
-        if(splittedString.count>1){
-            [overviewDestinationBottom setText:[splittedString objectAtIndex:1]];
+        if (splittedString.count > 1) {
+            overviewDestinationBottom.text = splittedString[1];
         }
-    }else{
-        overviewDestination.text= @"";
-        overviewDestinationBottom.text= @"";
     }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -486,7 +336,7 @@ typedef enum {
     fr.size.height = 0.0f;
     self.mapFade.frame = fr;
     
-    [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
+    [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
 //    [self.mpView setShowsUserLocation:YES];
 
 
@@ -534,11 +384,11 @@ typedef enum {
     sw.longitude -= lonDiff * LONGITUDE_PADDING;
     
     
-    [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake((ne.latitude+sw.latitude) / 2.0, (ne.longitude+sw.longitude) / 2.0)];
-    [self.mpView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
+    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake((ne.latitude+sw.latitude) / 2.0, (ne.longitude+sw.longitude) / 2.0)];
+    [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
 }
 
--(NSArray*)splitString:(NSString*)str{
+- (NSArray *)splitString:(NSString *)str {
     // split into words
     NSMutableArray* words= [[NSMutableArray alloc] initWithArray:[str componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]]];
     NSString* base= [words objectAtIndex:0];
@@ -727,13 +577,12 @@ typedef enum {
         NSString* annotation = [marker objectForKey:@"annotation"];
         NSString* alternateTitle = [marker objectForKey:@"alternateTitle"];
         
-        [self addMarkerToMapView:self.mpView withCoordinate:coord title:title imageName:image annotationTitle:annotation alternateTitle:alternateTitle];
+        [self addMarkerToMapView:self.mapView withCoordinate:coord title:title imageName:image annotationTitle:annotation alternateTitle:alternateTitle];
     }
 }
 
 -(void)startRouting{
     
-    [self setupMapSize:YES];
     overviewShown = NO;
     
     fullRoute= self.route;
@@ -743,20 +592,16 @@ typedef enum {
     
     self.route.delegate= self;
     
-    [UIView animateWithDuration:0.4f animations:^{
-        [routeOverview setAlpha:0.0f];
-    } completion:^(BOOL finished) {
-        [routeOverview setHidden:YES];
-    }];
+    routeOverview.hidden = YES;
     
     self.currentlyRouting = YES;
     [self resetZoom];
-    [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake(self.route.locationStart.latitude,self.route.locationStart.longitude)];
+    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.route.locationStart.latitude,self.route.locationStart.longitude)];
     [labelDistanceLeft setText:formatDistance(self.route.estimatedRouteDistance)];
     [labelTimeLeft setText:expectedArrivalTime(self.route.estimatedTimeForRoute)];
 
-    [self.mpView setUserTrackingMode:RMUserTrackingModeFollowWithHeading];
-    [self.mpView rotateMap:self.route.lastCorrectedHeading];
+    [self.mapView setUserTrackingMode:RMUserTrackingModeFollowWithHeading];
+    [self.mapView rotateMap:self.route.lastCorrectedHeading];
 
     [self renderMinimizedDirectionsViewFromInstruction];
     CGRect frame = self.mapFade.frame;
@@ -775,10 +620,10 @@ typedef enum {
 
 - (void)newRouteType {
     oldTrackingMode = RMUserTrackingModeNone;
-    [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
+    [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
     self.route.delegate = nil;
     self.route = nil;
-    self.mpView.delegate = nil;
+    self.mapView.delegate = nil;
     SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
     [r setAuxParam:@"startRoute"];
     [r setOsrmServer:self.osrmServer];
@@ -790,12 +635,12 @@ typedef enum {
 
 - (void) start:(CLLocationCoordinate2D)from end:(CLLocationCoordinate2D)to  withJSON:(id)jsonRoot{
     
-    if (self.mpView.delegate == nil) {
-        self.mpView.delegate = self;
+    if (self.mapView.delegate == nil) {
+        self.mapView.delegate = self;
     }
     
-    for (RMAnnotation *annotation in self.mpView.annotations) {
-        [self.mpView removeAnnotation:annotation];
+    for (RMAnnotation *annotation in self.mapView.annotations) {
+        [self.mapView removeAnnotation:annotation];
     }
     if(!self.route){
         // TODO: From CykelPlanen
@@ -832,12 +677,12 @@ typedef enum {
         
         if(locations){
             for(CLLocation* loc in locations){
-                [self addMarkerToMapView:self.mpView withCoordinate:CLLocationCoordinate2DMake(loc.coordinate.latitude, loc.coordinate.longitude) title:@"S" imageName:@"metro_icon" annotationTitle:nil alternateTitle:nil];
+                [self addMarkerToMapView:self.mapView withCoordinate:CLLocationCoordinate2DMake(loc.coordinate.latitude, loc.coordinate.longitude) title:@"S" imageName:@"metro_icon" annotationTitle:nil alternateTitle:nil];
             }
         }
     }
 
-    SMAnnotation *startMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:from andTitle:@"A"]; /// START
+    SMAnnotation *startMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mapView coordinate:from andTitle:@"A"]; /// START
     startMarkerAnnotation.annotationType = @"marker";
     startMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerStart"];
     startMarkerAnnotation.anchorPoint = CGPointMake(0.5, 1.0);
@@ -848,9 +693,9 @@ typedef enum {
     }
     [arr removeObjectAtIndex:0];
     startMarkerAnnotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [self.mpView addAnnotation:startMarkerAnnotation];
+    [self.mapView addAnnotation:startMarkerAnnotation];
 
-    SMAnnotation *endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:to andTitle:@"B"];
+    SMAnnotation *endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mapView coordinate:to andTitle:@"B"];
     endMarkerAnnotation.annotationType = @"marker";
     endMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerFinish"];
     endMarkerAnnotation.anchorPoint = CGPointMake(0.5, 1.0);
@@ -858,7 +703,7 @@ typedef enum {
     endMarkerAnnotation.title = [[arr objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [arr removeObjectAtIndex:0];
     endMarkerAnnotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [self.mpView addAnnotation:endMarkerAnnotation]; /// END
+    [self.mapView addAnnotation:endMarkerAnnotation]; /// END
     
     // TODO: From CykelPlanen
 //    // start marker (A)
@@ -874,7 +719,7 @@ typedef enum {
 //    [self addMarkerToMapView:self.mpView withCoordinate:to title:@"B" imageName:@"b_pin" annotationTitle:endTitle alternateTitle:nil];
     
 
-    [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake(from.latitude,from.longitude)];
+    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(from.latitude,from.longitude)];
 
     [self showRouteOverview];
 }
@@ -892,21 +737,21 @@ typedef enum {
     }
 
     annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [self.mpView addAnnotation:annotation];
+    [self.mapView addAnnotation:annotation];
 }
 
 - (void) renderMinimizedDirectionsViewFromInstruction {
     if (self.route.turnInstructions.count > 0) {
         SMTurnInstruction *nextTurn = [self.route.turnInstructions objectAtIndex:0];
         [labelDistanceToNextTurn setText:formatDistance(nextTurn.lengthInMeters)];
-        [imgNextTurnDirection setImage:[nextTurn largeDirectionIcon]];
+        imgNextTurnDirection.image = nextTurn.directionIcon;
     } else {
         [minimizedInstructionsView setHidden:YES];
     }
 }
 
 - (NSDictionary*) addRouteAnnotation:(SMRoute *)r {
-    RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:[r getStartLocation].coordinate andTitle:nil];
+    RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mapView coordinate:[r getStartLocation].coordinate andTitle:nil];
     calculatedPathAnnotation.annotationType = @"path";
     calculatedPathAnnotation.userInfo = @{
                                          @"linePoints" : [NSArray arrayWithArray:r.waypoints],
@@ -915,7 +760,7 @@ typedef enum {
                                          @"lineWidth" : [NSNumber numberWithFloat:10.0f],
                                          };
     [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:r.waypoints]];
-    [self.mpView addAnnotation:calculatedPathAnnotation];
+    [self.mapView addAnnotation:calculatedPathAnnotation];
     return @{
              @"neCoordinate" : calculatedPathAnnotation.neCoordinate,
              @"swCoordinate" : calculatedPathAnnotation.swCoordinate
@@ -932,23 +777,23 @@ typedef enum {
 
 -(void)hideRouteAnnotation{
 
-    for(RMAnnotation* annotation in self.mpView.annotations){
+    for(RMAnnotation* annotation in self.mapView.annotations){
         if([annotation.annotationType isEqual:@"path"]){
-            [self.mpView removeAnnotation:annotation];
+            [self.mapView removeAnnotation:annotation];
         }
     }
 }
 
 - (void)resetZoom {
-    [self.mpView setZoom:DEFAULT_MAP_ZOOM];
-    [self.mpView zoomByFactor:1 near:[self.mpView coordinateToPixel:[SMLocationManager instance].lastValidLocation.coordinate] animated:YES];
+    [self.mapView setZoom:DEFAULT_MAP_ZOOM];
+    [self.mapView zoomByFactor:1 near:[self.mapView coordinateToPixel:[SMLocationManager instance].lastValidLocation.coordinate] animated:YES];
 }
 
 - (void)zoomToLocation:(CLLocation*)loc temporary:(BOOL)isTemp {
-    [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
+    [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
 //    [self.mpView setZoom:DEFAULT_TURN_ZOOM];
 //    [self.mpView zoomByFactor:1 near:[self.mpView coordinateToPixel:loc.coordinate] animated:YES];
-    [self.mpView setCenterCoordinate:loc.coordinate];
+    [self.mapView setCenterCoordinate:loc.coordinate];
     
     if (buttonTrackUser.gpsTrackState != SMGPSTrackButtonStateNotFollowing) {
         [buttonTrackUser newGpsTrackState:SMGPSTrackButtonStateNotFollowing];
@@ -1043,7 +888,7 @@ typedef enum {
 #pragma mark - mapView delegate
 
 - (void)checkCallouts {
-    for (SMAnnotation * annotation in self.mpView.annotations) {
+    for (SMAnnotation * annotation in self.mapView.annotations) {
         if ([annotation.annotationType isEqualToString:@"station"] && [annotation isKindOfClass:[SMAnnotation class]]) {
             if (annotation.calloutShown) {
                 [annotation showCallout];
@@ -1077,7 +922,7 @@ typedef enum {
 
 - (void)tapOnAnnotation:(SMAnnotation *)annotation onMap:(RMMapView *)map {
     if ([annotation.annotationType isEqualToString:@"marker"]) {
-        for (id v in self.mpView.subviews) {
+        for (id v in self.mapView.subviews) {
             if ([v isKindOfClass:[SMCalloutView class]]) {
                 [v removeFromSuperview];
             }
@@ -1091,7 +936,7 @@ typedef enum {
     }
     if ( [annotation.annotationType isEqualToString:@"station"]) {
         [annotation showCallout];
-        for (id v in self.mpView.subviews) {
+        for (id v in self.mapView.subviews) {
             if ([v isKindOfClass:[SMCalloutView class]]) {
                 [v removeFromSuperview];
             }
@@ -1296,7 +1141,7 @@ typedef enum {
         return;
     }
     currentDirectionsState = directionsNormal;
-    [routeOverview setHidden:YES];
+    routeOverview.hidden = YES;
     
     // Display new path
     [self addRouteAnnotation:self.route]; /// START, END
@@ -1306,7 +1151,7 @@ typedef enum {
 //        break;
 //    }
     
-    [self.mpView setRoutingDelegate:self];
+    [self.mapView setRoutingDelegate:self];
     
     
     [tblDirections reloadData];
@@ -1317,7 +1162,7 @@ typedef enum {
     
     [self reloadSwipableView];
     
-    [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake(self.route.locationStart.latitude,self.route.locationStart.longitude)];
+    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.route.locationStart.latitude,self.route.locationStart.longitude)];
     
     [labelDistanceLeft setText:formatDistance(self.route.estimatedRouteDistance)];
     [labelTimeLeft setText:expectedArrivalTime(self.route.estimatedTimeForRoute)];
@@ -1398,14 +1243,14 @@ typedef enum {
     /**
      * remove delegate so we don't correct position and heading any more
      */
-    [self.mpView setRoutingDelegate:nil];
+    [self.mapView setRoutingDelegate:nil];
     
     /**
      * hide the route
      */
-    for (RMAnnotation *annotation in self.mpView.annotations) {
+    for (RMAnnotation *annotation in self.mapView.annotations) {
         if ([annotation.annotationType isEqualToString:@"path"]) {
-            [self.mpView removeAnnotation:annotation];
+            [self.mapView removeAnnotation:annotation];
         }
     }
     /**
@@ -1418,7 +1263,7 @@ typedef enum {
         debugLog(@"error in trackEvent");
     }
     
-    [self.mpView setUserTrackingMode:RMUserTrackingModeFollow];
+    [self.mapView setUserTrackingMode:RMUserTrackingModeFollow];
     
     CGRect fr = self.mapFade.frame;
     fr.size.height = 0.0f;
@@ -1444,9 +1289,9 @@ typedef enum {
 }
 
 - (void)showRouteTravelled {
-    for (RMAnnotation *annotation in self.mpView.annotations) {
+    for (RMAnnotation *annotation in self.mapView.annotations) {
         if ([annotation.annotationType isEqualToString:@"path"]) {
-            [self.mpView removeAnnotation:annotation];
+            [self.mapView removeAnnotation:annotation];
         }
     }
     NSMutableArray * arr = [NSMutableArray arrayWithCapacity:self.route.visitedLocations];
@@ -1459,7 +1304,7 @@ typedef enum {
         loc = [arr objectAtIndex:0];
     }
     
-    RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:loc.coordinate andTitle:nil];
+    RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mapView coordinate:loc.coordinate andTitle:nil];
     calculatedPathAnnotation.annotationType = @"path";
     calculatedPathAnnotation.userInfo = @{
                                           @"linePoints" : [NSArray arrayWithArray:arr],
@@ -1468,15 +1313,15 @@ typedef enum {
                                           @"lineWidth" : [NSNumber numberWithFloat:10.0f],
                                           };
     [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:arr]];
-    [self.mpView addAnnotation:calculatedPathAnnotation];
+    [self.mapView addAnnotation:calculatedPathAnnotation];
 }
 
 - (void) updateRoute {
     // Remove previous path and display new one
     [noConnectionView setAlpha:0.0f];
-    for (RMAnnotation *annotation in self.mpView.annotations) {
+    for (RMAnnotation *annotation in self.mapView.annotations) {
         if ([annotation.annotationType isEqualToString:@"path"]) {
-            [self.mpView removeAnnotation:annotation];
+            [self.mapView removeAnnotation:annotation];
         }
     }
     [self addRouteAnnotation:self.route];
@@ -1551,10 +1396,10 @@ typedef enum {
 - (IBAction)goBack:(id)sender {
     self.currentlyRouting = NO;
     
-    [self.mpView setDelegate:nil];
-    [self.mpView setRoutingDelegate:nil];
-    [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
-    self.mpView = nil;
+    [self.mapView setDelegate:nil];
+    [self.mapView setRoutingDelegate:nil];
+    [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
+    self.mapView = nil;
 
     [[NSFileManager defaultManager] removeItemAtPath:[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"] error:nil];
     
@@ -1565,7 +1410,9 @@ typedef enum {
 
 -(IBAction)buttonPressed:(id)sender {
     [UIView animateWithDuration:0.4f animations:^{
-        [stopView setAlpha:1.0f];
+//        [stopView setAlpha:1.0f];
+        // TODO: Show alert
+        [self goBack:nil];
     } completion:^(BOOL finished) {
     }];
 }
@@ -1574,17 +1421,17 @@ typedef enum {
     debugLog(@"trackingOn() btn state = 0x%0x, prev btn state = 0x%0x", buttonTrackUser.gpsTrackState, buttonTrackUser.prevGpsTrackState);
     if (buttonTrackUser.gpsTrackState == SMGPSTrackButtonStateNotFollowing) {
         if (self.currentlyRouting == NO) {
-            [self.mpView setUserTrackingMode:RMUserTrackingModeFollow];
+            [self.mapView setUserTrackingMode:RMUserTrackingModeFollow];
         } else if (buttonTrackUser.prevGpsTrackState == SMGPSTrackButtonStateFollowing) {
-            [self.mpView setUserTrackingMode:RMUserTrackingModeFollow];
+            [self.mapView setUserTrackingMode:RMUserTrackingModeFollow];
         } else {
-            [self.mpView setUserTrackingMode:RMUserTrackingModeFollowWithHeading];
+            [self.mapView setUserTrackingMode:RMUserTrackingModeFollowWithHeading];
         }
     } else if (buttonTrackUser.gpsTrackState == SMGPSTrackButtonStateFollowing && self.currentlyRouting) {
-        [self.mpView setUserTrackingMode:RMUserTrackingModeFollowWithHeading];
+        [self.mapView setUserTrackingMode:RMUserTrackingModeFollowWithHeading];
     } else {
         // next state is follow
-        [self.mpView setUserTrackingMode:RMUserTrackingModeFollow];
+        [self.mapView setUserTrackingMode:RMUserTrackingModeFollow];
     }
 }
 
@@ -1597,7 +1444,7 @@ typedef enum {
         center = [SMLocationManager instance].lastValidLocation.coordinate;
     else
         center = self.startLocation.coordinate;
-    [self.mpView setCenterCoordinate:center animated:NO];
+    [self.mapView setCenterCoordinate:center animated:NO];
 
     [self trackingOn];
 
@@ -1671,55 +1518,32 @@ typedef enum {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == self.cargoTableView) {
-        return self.cargoItems.count;
-    } else {
-        return self.route.turnInstructions.count;
-    }
+    return self.route.turnInstructions.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView==self.cargoTableView) {
-        SMRouteTypeSelectCell* cell= [tableView dequeueReusableCellWithIdentifier:@"cargoCell"];
-        NSDictionary *cargoItem= [self.cargoItems objectAtIndex:indexPath.row];
-        [cell setupCellWithData:cargoItem];
-        return cell;
-    } else {
-        int i = [indexPath row];
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:(i == 0 ? @"topDirectionCell" : @"directionCell")];
+    int i = [indexPath row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:(i == 0 ? @"topDirectionCell" : @"directionCell")];
 
-        if (i >= 0 && i < self.route.turnInstructions.count) {
-            SMTurnInstruction *turn = (SMTurnInstruction *)[self.route.turnInstructions objectAtIndex:i];
-            /**
-             * Replace "Destination reached" message with your address
-             */
-            if (turn.drivingDirection == 15) {
-                turn.wayName = self.destination;
-                turn.shortDescriptionString = turn.descriptionString;
-            }
-            if (i == 0) {
-                [(SMDirectionTopCell *)cell renderViewFromInstruction:turn];
-            }
-            else {
-                [(SMDirectionCell *)cell renderViewFromInstruction:turn];
-            }
+    if (i >= 0 && i < self.route.turnInstructions.count) {
+        SMTurnInstruction *turn = (SMTurnInstruction *)[self.route.turnInstructions objectAtIndex:i];
+        /**
+         * Replace "Destination reached" message with your address
+         */
+        if (turn.drivingDirection == 15) {
+            turn.wayName = self.destination;
+            turn.shortDescriptionString = turn.descriptionString;
         }
-        return cell;
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(tableView==self.cargoTableView){
-        return [SMRouteTypeSelectCell getHeight];
-    }else{
-        SMTurnInstruction *turn = (SMTurnInstruction *)[self.route.turnInstructions objectAtIndex:indexPath.row];
-        if (indexPath.row == 0) {
-            return [SMDirectionTopCell getHeightForDescription:[turn descriptionString] andWayname:turn.shortDescriptionString];
-        } else {
-            return [SMDirectionCell getHeightForDescription:[turn descriptionString] andWayname:turn.shortDescriptionString];
+        if (i == 0) {
+            [(SMDirectionTopCell *)cell renderViewFromInstruction:turn];
+        }
+        else {
+            [(SMDirectionCell *)cell renderViewFromInstruction:turn];
         }
     }
+    return cell;
 }
+
 
 #pragma mark - UITableViewDelegate methods
 
@@ -1728,48 +1552,6 @@ typedef enum {
         [self trackUser:nil];
 }
 
-- (void)slideBackToMap {
-    [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        CGRect frame = centerView.frame;
-        frame.origin.x = centerView.startPos;
-        [centerView setFrame:frame];
-    } completion:^(BOOL finished) {
-    }];
-}
-
-// TODO: From CykelPlanen
-//- (void)overlaysMenuItemSelected:(int)row selected:(BOOL)pSelected{
-//    if (row == 0){
-//        [self.appDelegate.mapOverlays toggleMarkers:@"path" state:pSelected];
-//    } else if ( row == 1 ) {
-//        [self.appDelegate.mapOverlays toggleMarkers:@"service" state:pSelected];
-//    } else if ( row == 2 ) {
-//        [self.appDelegate.mapOverlays toggleMarkers:@"station" state:pSelected];
-//    } else if ( row == 3 ) {
-//        [self.appDelegate.mapOverlays toggleMarkers:@"metro" state:pSelected];
-//    } else if ( row == 4 ) {
-//        [self.appDelegate.mapOverlays toggleMarkers:@"local-trains" state:pSelected];
-//    }
-//}
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.cargoTableView){
-        // TODO: From CykelPlanen
-//        [self overlaysMenuItemSelected:indexPath.row selected:NO];
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.cargoTableView){
-        NSDictionary* currentRow = [self.cargoItems objectAtIndex:indexPath.row]; /// START
-        self.osrmServer = currentRow[@"server"];
-        [self newRouteType]; /// END
-        // TODO: From CykelPlanen
-//        [self overlaysMenuItemSelected:indexPath.row selected:YES];
-    } else {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }
-}
 
 #pragma mark - alert view delegate
 
@@ -1798,9 +1580,6 @@ typedef enum {
     }
     switch (state) {
         case directionsFullscreen: {
-            CGRect frame = tblDirections.frame;
-            frame.size.height = instructionsView.frame.size.height - tblDirections.frame.origin.y;
-            [tblDirections setFrame:frame];
             [tblDirections setScrollEnabled:YES];
             CGFloat newY = mapContainer.frame.origin.y + MAX_TABLE;
             [self repositionInstructionsView:newY + 1];
@@ -1815,16 +1594,14 @@ typedef enum {
             CGFloat newY = 0;
             @synchronized(self.route.turnInstructions) {
                 if ([self.route.turnInstructions count] > 0) {
-                    tblHeight = [SMDirectionTopCell getHeightForDescription:[[self.route.turnInstructions objectAtIndex:0] descriptionString] andWayname:[[self.route.turnInstructions objectAtIndex:0] wayName]];                    
+                    tblHeight = 80;
                 }
             }
             newY = maxY - tblHeight;
             [self repositionInstructionsView:newY + 1];
             lastDirectionsPos = newY + 1;
             [swipableView setHidden:NO];
-            [swipableView setFrame:tblDirections.frame];
             [tblDirections setScrollEnabled:NO];
-
         }
             break;
         case directionsMini:
@@ -1846,30 +1623,16 @@ typedef enum {
     currentDirectionsState = state;
 }
 
-
-- (void)resizeMap {
-//    CGRect frame = self.mpView.frame;
-//    frame.size.height = instructionsView.frame.origin.y - frame.origin.y + 5.0f;
-//    [self.mpView setFrame:frame];
-    CGRect frame = self.mapFade.frame;
-    frame.size.height = instructionsView.frame.origin.y - frame.origin.y + 5.0f;
-    [self.mapFade setFrame:frame];
-}
-
 - (void)repositionInstructionsView:(CGFloat)newY {
-    CGRect frame = instructionsView.frame;
-    frame.size.height += frame.origin.y - newY;
-    frame.origin.y = newY;
-    [instructionsView setFrame:frame];
+    CGFloat newHeight = self.view.frame.size.height - newY;
+    self.instructionHeightConstraint.constant = newHeight;
     
-    [self resizeMap];
-}
-
-- (void)repositionSwipableView:(CGFloat)newY {
-    CGRect frame = swipableView.frame;
-    frame.size.height += frame.origin.y - newY;
-    frame.origin.y = newY;
-    [swipableView setFrame:frame];
+    CGFloat fadeRegion = self.view.frame.size.height / 2;
+    if (newY < fadeRegion) {
+        self.mapFade.alpha = 0.8 * (1 - newY / fadeRegion);
+    } else {
+        self.mapFade.alpha = 0;
+    }
 }
 
 - (void)setNewDirections:(CGFloat)newY {
@@ -1877,42 +1640,22 @@ typedef enum {
         case directionsFullscreen:
             if (newY > lastDirectionsPos + 20.0f) {
                 [self setDirectionsState:directionsNormal];
-                self.cargoHandleImageView.hidden = NO;
                 buttonTrackUser.hidden = NO;
             } else {
                 [self setDirectionsState:directionsFullscreen];
-                self.cargoHandleImageView.hidden = YES;
                 buttonTrackUser.hidden = YES;
             }
             break;
         case directionsNormal:
-            if (newY > lastDirectionsPos + 20.0f) {
-                [self setDirectionsState:directionsMini];
-                self.cargoHandleImageView.hidden = NO;
-                buttonTrackUser.hidden = NO;
-            } else if (newY < lastDirectionsPos - 20.0f) {
+            if (newY < lastDirectionsPos - 20.0f) {
                 [self setDirectionsState:directionsFullscreen];
-                self.cargoHandleImageView.hidden = YES;
                 buttonTrackUser.hidden = YES;
             } else {
                 [self setDirectionsState:directionsNormal];
-                self.cargoHandleImageView.hidden = NO;
-                buttonTrackUser.hidden = NO;
-            }
-            break;
-        case directionsMini:
-            if (newY < lastDirectionsPos - 20.0f) {
-                [self setDirectionsState:directionsNormal];
-                self.cargoHandleImageView.hidden = NO;
-                buttonTrackUser.hidden = NO;
-            } else {
-                [self setDirectionsState:directionsMini];
-                self.cargoHandleImageView.hidden = NO;
                 buttonTrackUser.hidden = NO;
             }
             break;
         case directionsHidden:
-            self.cargoHandleImageView.hidden = NO;
             buttonTrackUser.hidden = NO;
             break;
         default:
@@ -1930,19 +1673,18 @@ typedef enum {
         self.pulling = NO;
         float newY = [sender locationInView:self.view].y;
         [self setNewDirections:newY];
-        [self.mpView setUserTrackingMode:oldTrackingMode];
+        [self.mapView setUserTrackingMode:oldTrackingMode];
     } else if (sender.state == UIGestureRecognizerStateChanged) {
         self.pulling = YES;
         [swipableView setHidden:YES];
-        float newY = MAX([sender locationInView:self.view].y - touchOffset, self.mpView.frame.origin.y);
+        float newY = MAX([sender locationInView:self.view].y - touchOffset, self.mapView.frame.origin.y);
         [self repositionInstructionsView:newY];
     } else if (sender.state == UIGestureRecognizerStateBegan) {
         self.pulling = YES;
-        oldTrackingMode = self.mpView.userTrackingMode;
-        [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
+        oldTrackingMode = self.mapView.userTrackingMode;
+        [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
         touchOffset = [sender locationInView:instructionsView].y;
         [swipableView setHidden:YES];
-        [self.cargoHandleImageView setHidden:YES];
         [buttonTrackUser setHidden:YES];
     }
 }
@@ -1988,7 +1730,6 @@ typedef enum {
 }
 
 - (void)reloadSwipableView {
-    [swipableView setFrame:tblDirections.frame];
     SMTurnInstruction * instr = nil;
     NSInteger start = MAX(0, floor(swipableView.contentOffset.x / self.view.frame.size.width));
     @synchronized(self.instructionsForScrollview) {
@@ -2052,7 +1793,7 @@ typedef enum {
                     [self.activeItems addObject:cell];
                     cell.position = i;
                     SMTurnInstruction *turn = (SMTurnInstruction *)[self.instructionsForScrollview objectAtIndex:i];
-                    [cell setFrame:CGRectMake(i*swipableView.frame.size.width, 0, swipableView.frame.size.width, [SMSwipableView getHeight])];
+                    [cell setFrame:CGRectMake(i*swipableView.frame.size.width, 0, swipableView.frame.size.width, swipableView.frame.size.height)];
                     [cell renderViewFromInstruction:turn];
                     [swipableView addSubview:cell];
                 }
@@ -2081,7 +1822,8 @@ typedef enum {
                 self.updateSwipableView = NO;
             }
         }
-    [swipableView setContentSize:CGSizeMake(swipableView.contentSize.width, swipableView.frame.size.height)];
+        [swipableView setContentSize:CGSizeMake(swipableView.contentSize.width, swipableView.frame.size.height)];
+        NSLog(@"%f", swipableView.frame.size.height);
     }
 }
 
@@ -2115,60 +1857,15 @@ typedef enum {
             [tblDirections setAlpha:0.0f];
         }
         [self drawArrows];
-    } else if (object == self.mpView && [keyPath isEqualToString:@"zoom"]) {
-        NSLog(@"Zoom: %f", self.mpView.zoom);
-    } else if (object == self.mpView && [keyPath isEqualToString:@"userTrackingMode"]) {
-        if (self.mpView.userTrackingMode == RMUserTrackingModeFollow) {
+    } else if (object == self.mapView && [keyPath isEqualToString:@"zoom"]) {
+        NSLog(@"Zoom: %f", self.mapView.zoom);
+    } else if (object == self.mapView && [keyPath isEqualToString:@"userTrackingMode"]) {
+        if (self.mapView.userTrackingMode == RMUserTrackingModeFollow) {
             [buttonTrackUser newGpsTrackState:SMGPSTrackButtonStateFollowing];
-            [self setupMapSize:NO];
-        } else if (self.mpView.userTrackingMode == RMUserTrackingModeFollowWithHeading) {
+        } else if (self.mapView.userTrackingMode == RMUserTrackingModeFollowWithHeading) {
             [buttonTrackUser newGpsTrackState:SMGPSTrackButtonStateFollowingWithHeading];
-            [self setupMapSize:NO]; // set to YES to center
-        } else if (self.mpView.userTrackingMode == RMUserTrackingModeNone) {
+        } else if (self.mapView.userTrackingMode == RMUserTrackingModeNone) {
             [buttonTrackUser newGpsTrackState:SMGPSTrackButtonStateNotFollowing];
-            [self setupMapSize:NO];
-        }
-    } else if (object == self.mapFade && [keyPath isEqualToString:@"frame"]) {
-        CGFloat maxSize = self.view.frame.size.height - 160.0f;
-        if (self.mapFade.frame.size.height > maxSize) {
-            [self.mapFade setAlpha:0.0f];
-            [self toggleBreakRouteButton];
-            
-        } else {
-            [self.mapFade setAlpha: 0.8f - ((self.mapFade.frame.size.height - MAX_TABLE) * 0.8f / (maxSize - MAX_TABLE))];
-
-            [self toggleBreakRouteButton];
-
-        }
-        
-        if (self.mapFade.alpha > 0.7f) {
-            [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
-            [closeButton setImage:[UIImage imageNamed:@"btnCloseDark"] forState:UIControlStateNormal];
-            [labelDistanceLeft setTextColor:[UIColor whiteColor]];
-            [labelTimeLeft setTextColor:[UIColor whiteColor]];
-        } else {
-            [arrivalBG setImage:[UIImage imageNamed:@"distance_white"]];
-            [closeButton setImage:[UIImage imageNamed:@"btnClose"] forState:UIControlStateNormal];
-            [labelDistanceLeft setTextColor:[UIColor darkGrayColor]];
-            [labelTimeLeft setTextColor:[UIColor darkGrayColor]];
-        }
-        
-        debugLog(@"size: %f maxSize: %f alpha: %f", self.mapFade.frame.size.height, maxSize, self.mapFade.alpha);
-    } else if (object == centerView && [keyPath isEqualToString:@"frame"]) {
-        if (centerView.frame.origin.x > 0.0f) {
-            if (blockingView.alpha == 0.0f) {
-                oldTrackingMode = self.mpView.userTrackingMode;
-                [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
-                [blockingView setAlpha:1.0f];
-                for (id v in self.mpView.subviews) {
-                    if ([v isKindOfClass:[SMCalloutView class]]) {
-                        [v removeFromSuperview];
-                    }
-                }
-            }
-        } else {
-            [self.mpView setUserTrackingMode:oldTrackingMode];
-            [blockingView setAlpha:0.0f];
         }
     }
 }
@@ -2250,10 +1947,19 @@ typedef enum {
     _destination= pDestination;
 }
 
-#pragma mark - statusbar style
+
+
+#pragma mark - RouteTypeHandlerDelegateObjc
+
+- (void)routeTypeHandlerChanged:(NSString *)toServer {
+    self.osrmServer = toServer;
+    [self newRouteType];
+}
+
+#pragma mark - UIStatusBarStyle
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 @end

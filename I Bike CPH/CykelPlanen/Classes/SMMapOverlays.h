@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RMMapView.h"
+@class RMMapView;
 
 /**
  * Map overlays. Handle markers/annotations for metro, service, station, and local train.

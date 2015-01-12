@@ -12,3 +12,5 @@
 #import "SMSearchController.h"
 #import "SMReminderTableViewCell.h"
 #import "SMRouteSettings.h"
+#import "SMMapOverlays.h"
+#import "SMAppDelegate.h"

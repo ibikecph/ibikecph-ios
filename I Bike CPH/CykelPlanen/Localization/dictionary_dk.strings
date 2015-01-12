@@ -94,11 +94,11 @@
 "new_route" = "Ny rute";
 "Stop" = "Stop";
 
-"marker_type_1" = "Supercykelstier";
-"marker_type_2" = "Servicestationer";
-"marker_type_3" = "S-togs stationer";
-"marker_type_4" = "Metro stationer";
-"marker_type_5" = "Lokale stationer";
+"cycle_super_highways" = "Supercykelstier";
+"service_stations" = "Servicestationer";
+"s_train_stations" = "S-togs stationer";
+"metro_stations" = "Metro stationer";
+"local_trains_stations" = "Lokale stationer";
 
 "Error" = "Error";
 "OK" = "OK";
