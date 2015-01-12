@@ -1140,7 +1140,7 @@ God tur og tak fordi du cykler!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-p0-HEI">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-p0-HEI">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlI-Mv-YIJ">
@@ -1996,7 +1996,7 @@ God tur og tak fordi du cykler!</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zz-SN-PuR">
-                                                    <rect key="frame" x="49.5" y="0.0" width="550.5" height="50"/>
+                                                    <rect key="frame" x="49" y="0.0" width="550.5" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Ji7-8L-Di1"/>
                                                     </constraints>
@@ -2036,6 +2036,12 @@ God tur og tak fordi du cykler!</string>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="favorites_login" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOn-aF-TRI">
+                                <rect key="frame" x="16" y="291" width="568" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2045,8 +2051,17 @@ God tur og tak fordi du cykler!</string>
                             <constraint firstItem="M5o-Du-DdS" firstAttribute="leading" secondItem="3L2-NC-4nW" secondAttribute="leading" id="U3x-N5-uVv"/>
                             <constraint firstItem="ZdZ-FV-Ztv" firstAttribute="leading" secondItem="3L2-NC-4nW" secondAttribute="leading" id="Yen-XA-hus"/>
                             <constraint firstItem="uAo-3X-NlT" firstAttribute="top" secondItem="M5o-Du-DdS" secondAttribute="bottom" id="dgI-lP-vXh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qOn-aF-TRI" secondAttribute="trailing" id="qgc-mo-mKS"/>
+                            <constraint firstItem="qOn-aF-TRI" firstAttribute="leading" secondItem="3L2-NC-4nW" secondAttribute="leadingMargin" id="rZ9-PE-Fdq"/>
+                            <constraint firstAttribute="centerY" secondItem="qOn-aF-TRI" secondAttribute="centerY" id="sS3-Ck-vGF"/>
+                            <constraint firstAttribute="centerX" secondItem="qOn-aF-TRI" secondAttribute="centerX" id="vAc-zq-8Zs"/>
                             <constraint firstAttribute="trailing" secondItem="M5o-Du-DdS" secondAttribute="trailing" id="yCL-iN-eAZ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="vAc-zq-8Zs"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Trf-Qc-ZKw">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PYp-1d-zoI">
@@ -2056,6 +2071,7 @@ God tur og tak fordi du cykler!</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noProfileLabel" destination="qOn-aF-TRI" id="1Nt-DB-Gua"/>
                         <outlet property="tableView" destination="ZdZ-FV-Ztv" id="30G-7O-jpT"/>
                         <outlet property="toolbar" destination="M5o-Du-DdS" id="kMp-t1-uZZ"/>
                         <segue destination="SaP-gh-izC" kind="show" identifier="favoritesToFavorite" id="37j-d7-iiw"/>
@@ -2916,6 +2932,11 @@ God tur og tak fordi du cykler!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACK-NA-ykA">
+                                <rect key="frame" x="215" y="290.5" width="170" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="hB2-Lp-VIQ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -2970,9 +2991,16 @@ God tur og tak fordi du cykler!</string>
                         <constraints>
                             <constraint firstItem="Tr8-C9-gyR" firstAttribute="top" secondItem="hB2-Lp-VIQ" secondAttribute="bottom" id="4qn-2t-Jsy"/>
                             <constraint firstItem="hB2-Lp-VIQ" firstAttribute="leading" secondItem="1Od-WE-LmC" secondAttribute="leading" id="8e0-Xq-YSN"/>
+                            <constraint firstAttribute="centerX" secondItem="ACK-NA-ykA" secondAttribute="centerX" id="SCF-CL-VmQ"/>
+                            <constraint firstAttribute="centerY" secondItem="ACK-NA-ykA" secondAttribute="centerY" id="prb-no-Ief"/>
                             <constraint firstItem="hB2-Lp-VIQ" firstAttribute="top" secondItem="1Od-WE-LmC" secondAttribute="top" id="uNe-MI-ztI"/>
                             <constraint firstAttribute="trailing" secondItem="hB2-Lp-VIQ" secondAttribute="trailing" id="v7i-Hb-kzj"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ACK-NA-ykA"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                 </viewController>

@@ -10,6 +10,10 @@
 		1EEED384110D35DC5028BAF9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 		4E2A92561A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
 		4E2A92571A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
+		4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
+		4E33B91E1A640590007D4C82 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91D1A640590007D4C82 /* AppHelper.swift */; };
+		4E33B91F1A6406FD007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
+		4E33B9201A640700007D4C82 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91D1A640590007D4C82 /* AppHelper.swift */; };
 		4E3867811A430A0E0018AC5B /* FacebookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3867801A430A0E0018AC5B /* FacebookHandler.swift */; };
 		4E3867821A430CBB0018AC5B /* FacebookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3867801A430A0E0018AC5B /* FacebookHandler.swift */; };
 		4E392AD91A308DBE0076BA86 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD61A308DBE0076BA86 /* routeme.plist */; };
@@ -1405,6 +1409,8 @@
 
 /* Begin PBXFileReference section */
 		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		4E33B91B1A640579007D4C82 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
+		4E33B91D1A640590007D4C82 /* AppHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		4E3867801A430A0E0018AC5B /* FacebookHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHandler.swift; sourceTree = "<group>"; };
 		4E392AD61A308DBE0076BA86 /* routeme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = routeme.plist; sourceTree = "<group>"; };
 		4E392AD71A308DBE0076BA86 /* smroute_settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings.plist; sourceTree = "<group>"; };
@@ -4419,6 +4425,8 @@
 			children = (
 				4EE633791A5E8B6D009DA49B /* Overlays.swift */,
 				4EBB7B471A5EC2A00064B530 /* RouteType.swift */,
+				4E33B91B1A640579007D4C82 /* UserHelper.swift */,
+				4E33B91D1A640590007D4C82 /* AppHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -5911,6 +5919,7 @@
 				4EC56E3D1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */,
 				4EE06CDB1A11134C00DE4226 /* SMRoute.m in Sources */,
 				4EC56DC41A2A25E900B696B4 /* SMContacts.m in Sources */,
+				4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */,
 				4EC56ED31A2A3AAE00B696B4 /* SMAccountController.m in Sources */,
 				4E3C3A8D1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
 				4EC56E491A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
@@ -5946,6 +5955,7 @@
 				4EC56DDE1A2A262800B696B4 /* SMAppDelegate.m in Sources */,
 				4EC56EFF1A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
 				4EBB7B481A5EC2A00064B530 /* RouteType.swift in Sources */,
+				4E33B91E1A640590007D4C82 /* AppHelper.swift in Sources */,
 				4EC56EF71A2A3AAE00B696B4 /* SMSettingsController.m in Sources */,
 				4EC56EE31A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
 				4EC56EFB1A2A3AAE00B696B4 /* SMSplashController.m in Sources */,
@@ -6040,6 +6050,7 @@
 				4EC56E831A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
 				4EE06CC81A11134C00DE4226 /* NSString+URLEncode.m in Sources */,
 				4EC56E531A2A2C3D00B696B4 /* SMCustomButton.m in Sources */,
+				4E33B9201A640700007D4C82 /* AppHelper.swift in Sources */,
 				4EC56E9B1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4EC56E5B1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
 				4EC56DDA1A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
@@ -6118,6 +6129,7 @@
 				4EE06C431A10FC5600DE4226 /* SMRouteTimeInfo.m in Sources */,
 				4EE06C4B1A10FC5600DE4226 /* SMTime.m in Sources */,
 				4EE06C5F1A10FC5600DE4226 /* SMRouteInfoViewController.m in Sources */,
+				4E33B91F1A6406FD007D4C82 /* UserHelper.swift in Sources */,
 				4EE671CB1A2F3CCC0037865B /* SMMenuViewController.m in Sources */,
 				4E3867821A430CBB0018AC5B /* FacebookHandler.swift in Sources */,
 				4EE06C511A10FC5600DE4226 /* SMTripRoute.m in Sources */,

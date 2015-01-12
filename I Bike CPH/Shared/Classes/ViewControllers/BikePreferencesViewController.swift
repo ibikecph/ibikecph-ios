@@ -24,16 +24,12 @@ private struct RouteTypeViewModel {
     let type: RouteType
     var selected: Bool {
         get {
-            
-                // TODO:
-//                switch type {
-//                    case .Regular: return
-//                    case .Cargo: return
-//                }
-            return false
+            return type == routeTypeHandler.type
         }
         set {
-            // TODO:
+            if newValue {
+                routeTypeHandler.type = type
+            }
         }
     }
     

@@ -51,7 +51,7 @@ typedef enum {
     directionsHidden
 } DirectionsState;
 
-@interface SMRouteNavigationController () {
+@interface SMRouteNavigationController () <RouteTypeHandlerDelegateObjc> {
     DirectionsState currentDirectionsState;
     CGFloat lastDirectionsPos;
     CGFloat touchOffset;
@@ -99,7 +99,8 @@ typedef enum {
 
     [breakRouteButton.imageView setContentMode:UIViewContentModeScaleAspectFill];
     
-    self.osrmServer = OSRM_SERVER;
+    self.osrmServer = [RouteTypeHandler sharedInstance].server;
+    
     self.pulling = NO;
 
     self.recycledItems = [NSMutableSet set];
@@ -1944,6 +1945,15 @@ typedef enum {
 
 -(void)setDestination:(NSString *)pDestination{
     _destination= pDestination;
+}
+
+
+
+#pragma mark - RouteTypeHandlerDelegateObjc
+
+- (void)routeTypeHandlerChanged:(NSString *)toServer {
+    self.osrmServer = toServer;
+    [self newRouteType];
 }
 
 #pragma mark - UIStatusBarStyle

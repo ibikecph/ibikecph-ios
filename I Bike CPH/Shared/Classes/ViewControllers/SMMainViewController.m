@@ -127,6 +127,10 @@
 //    UIPanGestureRecognizer* panGestureOverlayMenu = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanOverlayMenuBtn:)];
 //    [overlayMenuBtn addGestureRecognizer:singleTapOverlayMenu];
 //    [overlayMenuBtn addGestureRecognizer:panGestureOverlayMenu];
+    
+    if([SMTransportation instance].dataLoaded){
+        [self loadLastRoute];
+    }
 }
 
 
@@ -165,9 +169,7 @@
     [SMUser user].route = nil;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLoadTransformationData:) name:NOTIFICATION_DID_PARSE_DATA_KEY object:nil];
-    if([SMTransportation instance].dataLoaded){
-        [self loadLastRoute];
-    }else{
+    if(![SMTransportation instance].dataLoaded){
         NSLog(@"DATA NOT LOADED... SHOWING VIEW");
         self.loadStationsView= [[SMLoadStationsView alloc] initWithFrame:self.view.bounds];
         [self.loadStationsView setup];
@@ -481,9 +483,7 @@
     self.destination = (dst == nil ? @"" : dst);
     self.source = (src == nil ? @"" : src);
     self.jsonRoot = jsonRoot;
-    if (self.navigationController.topViewController == self) {
-        [self performSegueWithIdentifier:@"mainToRoute" sender:@{@"start" : start, @"end" : end}];
-    }
+    [self performSegueWithIdentifier:@"mainToRoute" sender:@{@"start" : start, @"end" : end}];
 }
 
 #pragma mark - gesture recognizer delegate
@@ -719,41 +719,6 @@ float lerp(float a, float b, float t) {
             [av show];
         } else {
             [self findRouteFrom:self.startLoc.coordinate to:self.endLoc.coordinate fromAddress:self.startName toAddress:self.endName withJSON:jsonRoot];
-            
-            NSDictionary* dict= jsonRoot;
-            
-            NSDictionary* routeDict= [dict objectForKey:@"route_summary"];
-            NSString* name= [routeDict objectForKey:@"end_point"];
-            NSString* address= [routeDict objectForKey:@"end_point"];
-            
-            address = self.endName;
-            name = self.endName;
-            
-            [SMGeocoder reverseGeocode:self.endLoc.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
-                NSString* streetName = [response objectForKey:@"title"];
-                
-                NSLog(@"Recent: %@ address: %@", self.endName, streetName);
-                
-                NSString* new_address = streetName;
-                NSString* new_name = streetName;
-                
-                if ([streetName isEqualToString:self.endName]) {
-                    new_name = streetName;
-                    new_address = streetName;
-                } else {
-                    new_name = self.endName;
-                    new_address = streetName;
-                }
-                if ([new_name isEqualToString:@""]) {
-                    new_name = [NSString stringWithFormat:@"%f, %f", self.endLoc.coordinate.latitude, self.endLoc.coordinate.longitude];
-                }
-                if(new_address && new_name){
-                    HistoryItem *item = [[HistoryItem alloc] initWithName:new_name address:new_address location:self.endLoc startDate:[NSDate date] endDate:[NSDate date]];
-                    [SMSearchHistory saveToSearchHistory:item];
-                }
-                // TODO: Ends up here e.g. when going to route. Find out why.
-//                [self dismissViewControllerAnimated:YES completion:nil];
-            }];
         }
         [UIView animateWithDuration:0.4f animations:^{
             [self.loaderView setAlpha:0.0f];

@@ -271,8 +271,8 @@ typedef enum {
                 [sh addSearchToServer:item];
             }
             
-            [self.delegate findRouteFrom:self.fromItem.location.coordinate to:self.toItem.location.coordinate fromAddress:self.fromButton.titleLabel.text toAddress:self.toButton.titleLabel.text withJSON:jsonRoot];
             [self dismiss];
+            [self.delegate findRouteFrom:self.fromItem.location.coordinate to:self.toItem.location.coordinate fromAddress:self.fromButton.titleLabel.text toAddress:self.toButton.titleLabel.text withJSON:jsonRoot];
         }
         [UIView animateWithDuration:0.2f animations:^{
             [self.loaderView setAlpha:0.0f];

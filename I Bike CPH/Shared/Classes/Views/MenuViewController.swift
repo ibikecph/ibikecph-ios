@@ -24,14 +24,6 @@ class MenuViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    class func appDelegate() -> SMAppDelegate? {
-        return UIApplication.sharedApplication().delegate as? SMAppDelegate ?? nil
-    }
-    
-    class func loggedIn() -> Bool {
-        return appDelegate()?.appSettings["auth_token"] != nil
-    }
-    
     let cellID = "MenuCellID"
 
     let sections = [
@@ -43,8 +35,8 @@ class MenuViewController: UIViewController {
                 MenuItem(title: SMTranslation.decodeString("reminder_title"), iconImageName: "reminders", action: { menuViewController in
                     menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
                 }),
-                MenuItem(title: SMTranslation.decodeString(MenuViewController.loggedIn() ? "account" : "account_login"), iconImageName: "profile", action: { menuViewController in
-                    if MenuViewController.loggedIn() {
+                MenuItem(title: SMTranslation.decodeString(UserHelper.loggedIn() ? "account" : "account_login"), iconImageName: "profile", action: { menuViewController in
+                    if UserHelper.loggedIn() {
                         menuViewController.performSegueWithIdentifier("menuToAccount", sender: menuViewController)
                     } else {
                         menuViewController.performSegueWithIdentifier("menuToLogin", sender: menuViewController)
@@ -79,7 +71,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
 //        self.title = SMTranslation.translateView("menu")
     }
     
