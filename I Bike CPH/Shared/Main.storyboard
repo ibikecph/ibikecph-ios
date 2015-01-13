@@ -1140,7 +1140,7 @@ God tur og tak fordi du cykler!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-p0-HEI">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-p0-HEI">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlI-Mv-YIJ">
@@ -1957,10 +1957,11 @@ God tur og tak fordi du cykler!</string>
                         <segue destination="CmL-Pc-62W" kind="show" identifier="menuToFavorites" id="4n3-Sa-VHJ"/>
                         <segue destination="xNM-kw-qFI" kind="show" identifier="menuToAbout" id="4Ul-HV-5CP"/>
                         <segue destination="h7b-VQ-XtA" kind="show" identifier="menuToLogin" id="2Vq-ft-HSw"/>
-                        <segue destination="HgL-f2-3Al" kind="show" identifier="menuToAccount" id="UPU-A9-0r1"/>
+                        <segue destination="HgL-f2-3Al" kind="show" identifier="menuToAccountNative" id="UPU-A9-0r1"/>
                         <segue destination="1AN-tD-MKu" kind="show" identifier="menuToReminders" id="eTH-4h-mt7"/>
                         <segue destination="hsI-UY-mY8" kind="show" identifier="menuToOverlays" id="meI-YB-opB"/>
                         <segue destination="cdl-a1-MI0" kind="show" identifier="menuToBike" id="C5m-Ce-HY6"/>
+                        <segue destination="CaA-EE-oV6" kind="show" identifier="menuToAccountFacebook" id="TIc-7B-BT4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Szy-D8-DKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2609,10 +2610,10 @@ God tur og tak fordi du cykler!</string>
             </objects>
             <point key="canvasLocation" x="-909" y="2789"/>
         </scene>
-        <!--Account Controller-->
+        <!--Account Native View Controller-->
         <scene sceneID="BYd-Dg-eaa">
             <objects>
-                <viewController id="HgL-f2-3Al" customClass="SMAccountController" sceneMemberID="viewController">
+                <viewController id="HgL-f2-3Al" customClass="SMAccountNativeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TAf-Vv-fsF"/>
                         <viewControllerLayoutGuide type="bottom" id="uZF-8d-nnQ"/>
@@ -2655,7 +2656,7 @@ God tur og tak fordi du cykler!</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="doRegister:" destination="HgL-f2-3Al" eventType="touchUpInside" id="wFn-jh-qJ4"/>
+                                    <action selector="saveChanges:" destination="HgL-f2-3Al" eventType="touchUpInside" id="abH-Z5-bSs"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="account_name_placeholder" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nb8-6Y-SLO">
@@ -2694,7 +2695,7 @@ God tur og tak fordi du cykler!</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="selectImageSource:" destination="HgL-f2-3Al" eventType="touchUpInside" id="aFe-qQ-fuX"/>
+                                    <action selector="changeImage:" destination="HgL-f2-3Al" eventType="touchUpInside" id="1nl-At-5uz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gzt-xQ-Gp3">
@@ -2708,9 +2709,12 @@ God tur og tak fordi du cykler!</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="doRegister:" destination="HgL-f2-3Al" eventType="touchUpInside" id="oqR-jw-Pms"/>
+                                    <action selector="deleteAccount:" destination="HgL-f2-3Al" eventType="touchUpInside" id="4fR-9d-Pb6"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wby-ls-bV0">
+                                <rect key="frame" x="260" y="74" width="80" height="80"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -2721,16 +2725,20 @@ God tur og tak fordi du cykler!</string>
                             <constraint firstItem="jUm-Fq-kAH" firstAttribute="top" secondItem="nb8-6Y-SLO" secondAttribute="bottom" constant="10" id="83J-mf-TeJ"/>
                             <constraint firstAttribute="centerX" secondItem="GON-Q5-vSf" secondAttribute="centerX" id="83p-Tx-upa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GON-Q5-vSf" secondAttribute="trailing" id="Fpl-Ss-Qn5"/>
+                            <constraint firstItem="GON-Q5-vSf" firstAttribute="trailing" secondItem="Wby-ls-bV0" secondAttribute="trailing" id="HUq-2S-37E"/>
                             <constraint firstItem="VNJ-hd-w4u" firstAttribute="trailing" secondItem="aen-EW-goF" secondAttribute="trailingMargin" id="Ijo-rO-Yx0"/>
                             <constraint firstItem="GON-Q5-vSf" firstAttribute="leading" secondItem="aen-EW-goF" secondAttribute="leadingMargin" id="LeI-76-IMu"/>
                             <constraint firstItem="nb8-6Y-SLO" firstAttribute="leading" secondItem="aen-EW-goF" secondAttribute="leadingMargin" id="LtX-sD-7qK"/>
                             <constraint firstItem="VNJ-hd-w4u" firstAttribute="leading" secondItem="aen-EW-goF" secondAttribute="leadingMargin" id="O8o-T0-hOd"/>
                             <constraint firstItem="nb8-6Y-SLO" firstAttribute="top" secondItem="GON-Q5-vSf" secondAttribute="bottom" constant="10" id="OJU-mA-PaQ"/>
                             <constraint firstItem="jUm-Fq-kAH" firstAttribute="leading" secondItem="aen-EW-goF" secondAttribute="leadingMargin" id="Osh-c7-Mhw"/>
+                            <constraint firstItem="GON-Q5-vSf" firstAttribute="top" secondItem="Wby-ls-bV0" secondAttribute="top" id="R7C-0K-x2T"/>
                             <constraint firstItem="VNJ-hd-w4u" firstAttribute="top" secondItem="9NO-7X-Urq" secondAttribute="bottom" constant="10" id="RhA-dC-47n"/>
                             <constraint firstItem="uZF-8d-nnQ" firstAttribute="top" secondItem="Gzt-xQ-Gp3" secondAttribute="bottom" id="a5b-S1-136"/>
                             <constraint firstItem="sIp-GT-F4z" firstAttribute="trailing" secondItem="aen-EW-goF" secondAttribute="trailingMargin" id="aMJ-3q-zKI"/>
+                            <constraint firstItem="GON-Q5-vSf" firstAttribute="bottom" secondItem="Wby-ls-bV0" secondAttribute="bottom" id="awW-cv-jaA"/>
                             <constraint firstItem="9NO-7X-Urq" firstAttribute="top" secondItem="sIp-GT-F4z" secondAttribute="bottom" constant="10" id="dnR-aY-169"/>
+                            <constraint firstItem="GON-Q5-vSf" firstAttribute="leading" secondItem="Wby-ls-bV0" secondAttribute="leading" id="gjO-kE-Ek6"/>
                             <constraint firstItem="sIp-GT-F4z" firstAttribute="top" secondItem="jUm-Fq-kAH" secondAttribute="bottom" constant="10" id="grJ-5e-7Pm"/>
                             <constraint firstItem="Gzt-xQ-Gp3" firstAttribute="leading" secondItem="aen-EW-goF" secondAttribute="leadingMargin" id="jfB-0Q-VcB"/>
                             <constraint firstItem="9NO-7X-Urq" firstAttribute="leading" secondItem="aen-EW-goF" secondAttribute="leadingMargin" id="n60-aD-l05"/>
@@ -2746,14 +2754,20 @@ God tur og tak fordi du cykler!</string>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="sB7-h1-1Wg">
-                        <barButtonItem key="rightBarButtonItem" title="logout" id="yAh-K2-BWo"/>
+                        <barButtonItem key="rightBarButtonItem" title="logout" id="yAh-K2-BWo">
+                            <connections>
+                                <action selector="logout:" destination="HgL-f2-3Al" id="iN9-9c-y8j"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailField" destination="jUm-Fq-kAH" id="XrD-Cf-pek"/>
-                        <outlet property="imageButton" destination="GON-Q5-vSf" id="fiA-2e-h0t"/>
-                        <outlet property="nameField" destination="nb8-6Y-SLO" id="x0A-a4-IZg"/>
-                        <outlet property="passwordConfirmField" destination="9NO-7X-Urq" id="yFq-7K-Kyg"/>
-                        <outlet property="passwordField" destination="sIp-GT-F4z" id="QzK-Pg-0QG"/>
+                        <outlet property="emailField" destination="jUm-Fq-kAH" id="CGu-Nd-y6g"/>
+                        <outlet property="imageButton" destination="GON-Q5-vSf" id="QKx-FX-Ri7"/>
+                        <outlet property="imageView" destination="Wby-ls-bV0" id="k5e-Ga-gaY"/>
+                        <outlet property="logoutButton" destination="yAh-K2-BWo" id="eFm-Wy-vD5"/>
+                        <outlet property="nameField" destination="nb8-6Y-SLO" id="Hcx-jo-gw6"/>
+                        <outlet property="passwordConfirmField" destination="9NO-7X-Urq" id="kZc-1x-OLe"/>
+                        <outlet property="passwordField" destination="sIp-GT-F4z" id="O93-rp-8Ao"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9c-c5-LI0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3008,6 +3022,107 @@ God tur og tak fordi du cykler!</string>
             </objects>
             <point key="canvasLocation" x="-1605" y="6595"/>
         </scene>
+        <!--Account Facebook View Controller-->
+        <scene sceneID="Bu9-CF-6Yc">
+            <objects>
+                <viewController id="CaA-EE-oV6" customClass="SMAccountFacebookViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GY1-YZ-4VO"/>
+                        <viewControllerLayoutGuide type="bottom" id="uqC-Jp-dpN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pYk-op-uqH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QB-RH-6kG">
+                                <rect key="frame" x="16" y="540" width="568" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="E0Z-dE-yKg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                <state key="normal" title="delete_my_account">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteAccount:" destination="CaA-EE-oV6" eventType="touchUpInside" id="wf9-ZC-6Xw"/>
+                                    <action selector="doRegister:" destination="CaA-EE-oV6" eventType="touchUpInside" id="uSO-FN-dYA"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1VZ-Q4-I9e">
+                                <rect key="frame" x="260" y="143" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1VZ-Q4-I9e" secondAttribute="height" multiplier="1:1" id="B59-8W-kg7"/>
+                                    <constraint firstAttribute="height" constant="80" id="sjt-Lf-Qew"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you_are_logged_in_as" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9q-p7-NIs">
+                                <rect key="frame" x="16" y="104" width="568" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOp-R8-QWP">
+                                <rect key="frame" x="16" y="243" width="568" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fb_linked_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="9go-vf-wle">
+                                <rect key="frame" x="286" y="282" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="27" id="RoP-bX-jIM"/>
+                                    <constraint firstAttribute="height" constant="27" id="eyy-0u-5AL"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="account_is_linked_to_facebook" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gof-N0-m8j">
+                                <rect key="frame" x="16" y="329" width="568" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="gof-N0-m8j" secondAttribute="trailing" id="1rS-js-Hzp"/>
+                            <constraint firstItem="mOp-R8-QWP" firstAttribute="top" secondItem="1VZ-Q4-I9e" secondAttribute="bottom" constant="20" id="4jg-Qb-UgR"/>
+                            <constraint firstItem="p9q-p7-NIs" firstAttribute="top" secondItem="GY1-YZ-4VO" secondAttribute="bottom" constant="40" id="8uR-eF-XUF"/>
+                            <constraint firstItem="9go-vf-wle" firstAttribute="top" secondItem="mOp-R8-QWP" secondAttribute="bottom" constant="20" id="B0N-e4-aCa"/>
+                            <constraint firstItem="9QB-RH-6kG" firstAttribute="leading" secondItem="pYk-op-uqH" secondAttribute="leadingMargin" id="C1H-KY-0GY"/>
+                            <constraint firstItem="9QB-RH-6kG" firstAttribute="trailing" secondItem="pYk-op-uqH" secondAttribute="trailingMargin" id="F1h-Ny-Hmq"/>
+                            <constraint firstItem="uqC-Jp-dpN" firstAttribute="top" secondItem="9QB-RH-6kG" secondAttribute="bottom" id="P5j-oz-OPC"/>
+                            <constraint firstAttribute="centerX" secondItem="mOp-R8-QWP" secondAttribute="centerX" id="Rfu-e6-Noh"/>
+                            <constraint firstItem="1VZ-Q4-I9e" firstAttribute="top" secondItem="p9q-p7-NIs" secondAttribute="bottom" constant="20" id="TeL-Fd-NCA"/>
+                            <constraint firstAttribute="centerX" secondItem="9go-vf-wle" secondAttribute="centerX" id="WeD-rZ-aGo"/>
+                            <constraint firstAttribute="centerX" secondItem="p9q-p7-NIs" secondAttribute="centerX" id="dQ8-52-jno"/>
+                            <constraint firstItem="gof-N0-m8j" firstAttribute="leading" secondItem="pYk-op-uqH" secondAttribute="leadingMargin" id="fKc-AG-SX3"/>
+                            <constraint firstItem="1VZ-Q4-I9e" firstAttribute="top" secondItem="GY1-YZ-4VO" secondAttribute="bottom" constant="10" id="fL7-Zu-l1b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mOp-R8-QWP" secondAttribute="trailing" id="h8q-LW-Ep5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p9q-p7-NIs" secondAttribute="trailing" id="jWa-E7-OcV"/>
+                            <constraint firstItem="p9q-p7-NIs" firstAttribute="leading" secondItem="pYk-op-uqH" secondAttribute="leadingMargin" id="jao-AO-1Yp"/>
+                            <constraint firstItem="mOp-R8-QWP" firstAttribute="leading" secondItem="pYk-op-uqH" secondAttribute="leadingMargin" id="sHD-R2-WTi"/>
+                            <constraint firstAttribute="centerX" secondItem="gof-N0-m8j" secondAttribute="centerX" id="uiS-hj-SDc"/>
+                            <constraint firstAttribute="centerX" secondItem="1VZ-Q4-I9e" secondAttribute="centerX" id="w7g-j3-rDy"/>
+                            <constraint firstItem="gof-N0-m8j" firstAttribute="top" secondItem="9go-vf-wle" secondAttribute="bottom" constant="20" id="yhx-Ov-cNP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dQ8-52-jno"/>
+                                <exclude reference="fL7-Zu-l1b"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="i0S-AT-FSV">
+                        <barButtonItem key="rightBarButtonItem" title="logout" id="JKJ-fu-coK"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="1VZ-Q4-I9e" id="eas-XU-FsZ"/>
+                        <outlet property="logoutButton" destination="JKJ-fu-coK" id="d9a-Zg-3iN"/>
+                        <outlet property="nameLabel" destination="mOp-R8-QWP" id="s5d-IT-Ve9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p8r-Vk-82e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-909" y="5070.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow_large.png" width="37" height="32"/>
@@ -3031,6 +3146,7 @@ God tur og tak fordi du cykler!</string>
         <image name="drop_pin_add_fav_btn_active.png" width="37" height="77"/>
         <image name="drop_pin_add_fav_btn_press.png" width="37" height="77"/>
         <image name="favStarGreySmall.png" width="22" height="22"/>
+        <image name="fb_linked_icon.png" width="54" height="54"/>
         <image name="findRouteCalendar.png" width="21" height="22"/>
         <image name="homeSearchSmall.png" width="45" height="45"/>
         <image name="home_btn_active.png" width="80" height="80"/>

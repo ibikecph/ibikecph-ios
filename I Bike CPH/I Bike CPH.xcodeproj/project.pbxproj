@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1EEED384110D35DC5028BAF9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
+		4E23D6DC1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */; };
+		4E23D6DD1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */; };
 		4E2A92561A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
 		4E2A92571A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
 		4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
@@ -182,8 +184,6 @@
 		4EC56EB31A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E281A2A2C3D00B696B4 /* SMViewMoreCell.m */; };
 		4EC56ECF1A2A3AAE00B696B4 /* SMAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB61A2A3AAD00B696B4 /* SMAboutController.m */; };
 		4EC56ED11A2A3AAE00B696B4 /* SMAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB61A2A3AAD00B696B4 /* SMAboutController.m */; };
-		4EC56ED31A2A3AAE00B696B4 /* SMAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB81A2A3AAD00B696B4 /* SMAccountController.m */; };
-		4EC56ED51A2A3AAE00B696B4 /* SMAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EB81A2A3AAD00B696B4 /* SMAccountController.m */; };
 		4EC56ED71A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */; };
 		4EC56ED91A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */; };
 		4EC56EDB1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56EBC1A2A3AAD00B696B4 /* SMEnterRouteController.m */; };
@@ -1290,6 +1290,8 @@
 		4EE073961A1178E300DE4226 /* white_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE071551A1178E100DE4226 /* white_btn@2x.png */; };
 		4EE073971A1178E300DE4226 /* white_btn_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE071561A1178E100DE4226 /* white_btn_pressed.png */; };
 		4EE073981A1178E300DE4226 /* white_btn_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE071571A1178E100DE4226 /* white_btn_pressed@2x.png */; };
+		4EE59AF41A6485BA00B89D71 /* SMAccountNativeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE59AF31A6485BA00B89D71 /* SMAccountNativeViewController.m */; };
+		4EE59AF51A6485BA00B89D71 /* SMAccountNativeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE59AF31A6485BA00B89D71 /* SMAccountNativeViewController.m */; };
 		4EE633761A5E8A94009DA49B /* OverlaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */; };
 		4EE633771A5E8A94009DA49B /* OverlaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */; };
 		4EE6337A1A5E8B6D009DA49B /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633791A5E8B6D009DA49B /* Overlays.swift */; };
@@ -1408,6 +1410,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E23D6DA1A648E56008998CB /* SMAccountFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountFacebookViewController.h; sourceTree = "<group>"; };
+		4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountFacebookViewController.m; sourceTree = "<group>"; };
 		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		4E33B91B1A640579007D4C82 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		4E33B91D1A640590007D4C82 /* AppHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
@@ -1533,8 +1537,6 @@
 		4EC56E281A2A2C3D00B696B4 /* SMViewMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMViewMoreCell.m; sourceTree = "<group>"; };
 		4EC56EB51A2A3AAD00B696B4 /* SMAboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutController.h; sourceTree = "<group>"; };
 		4EC56EB61A2A3AAD00B696B4 /* SMAboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutController.m; sourceTree = "<group>"; };
-		4EC56EB71A2A3AAD00B696B4 /* SMAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountController.h; sourceTree = "<group>"; };
-		4EC56EB81A2A3AAD00B696B4 /* SMAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountController.m; sourceTree = "<group>"; };
 		4EC56EB91A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEnterEmailControllerViewController.h; sourceTree = "<group>"; };
 		4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEnterEmailControllerViewController.m; sourceTree = "<group>"; };
 		4EC56EBB1A2A3AAD00B696B4 /* SMEnterRouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEnterRouteController.h; sourceTree = "<group>"; };
@@ -2686,6 +2688,8 @@
 		4EE071551A1178E100DE4226 /* white_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_btn@2x.png"; sourceTree = "<group>"; };
 		4EE071561A1178E100DE4226 /* white_btn_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_btn_pressed.png; sourceTree = "<group>"; };
 		4EE071571A1178E100DE4226 /* white_btn_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_btn_pressed@2x.png"; sourceTree = "<group>"; };
+		4EE59AF21A6485BA00B89D71 /* SMAccountNativeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountNativeViewController.h; sourceTree = "<group>"; };
+		4EE59AF31A6485BA00B89D71 /* SMAccountNativeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountNativeViewController.m; sourceTree = "<group>"; };
 		4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaysViewController.swift; sourceTree = "<group>"; };
 		4EE633791A5E8B6D009DA49B /* Overlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
 		4EE671C51A2F25F00037865B /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
@@ -3687,8 +3691,10 @@
 			children = (
 				4EC56EB51A2A3AAD00B696B4 /* SMAboutController.h */,
 				4EC56EB61A2A3AAD00B696B4 /* SMAboutController.m */,
-				4EC56EB71A2A3AAD00B696B4 /* SMAccountController.h */,
-				4EC56EB81A2A3AAD00B696B4 /* SMAccountController.m */,
+				4EE59AF21A6485BA00B89D71 /* SMAccountNativeViewController.h */,
+				4EE59AF31A6485BA00B89D71 /* SMAccountNativeViewController.m */,
+				4E23D6DA1A648E56008998CB /* SMAccountFacebookViewController.h */,
+				4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */,
 				4EC56EB91A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.h */,
 				4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */,
 				4EC56EBB1A2A3AAD00B696B4 /* SMEnterRouteController.h */,
@@ -5886,6 +5892,7 @@
 				4EC56DB81A2A25E900B696B4 /* SMAnalytics.m in Sources */,
 				4EC56E991A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4EC56E811A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
+				4E23D6DC1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */,
 				4EC56E911A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */,
 				4EC56ED71A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
 				4E55A0241A3605E900386F85 /* MenuTableViewCell.swift in Sources */,
@@ -5920,7 +5927,6 @@
 				4EE06CDB1A11134C00DE4226 /* SMRoute.m in Sources */,
 				4EC56DC41A2A25E900B696B4 /* SMContacts.m in Sources */,
 				4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */,
-				4EC56ED31A2A3AAE00B696B4 /* SMAccountController.m in Sources */,
 				4E3C3A8D1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
 				4EC56E491A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
 				4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
@@ -5956,6 +5962,7 @@
 				4EC56EFF1A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
 				4EBB7B481A5EC2A00064B530 /* RouteType.swift in Sources */,
 				4E33B91E1A640590007D4C82 /* AppHelper.swift in Sources */,
+				4EE59AF41A6485BA00B89D71 /* SMAccountNativeViewController.m in Sources */,
 				4EC56EF71A2A3AAE00B696B4 /* SMSettingsController.m in Sources */,
 				4EC56EE31A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
 				4EC56EFB1A2A3AAE00B696B4 /* SMSplashController.m in Sources */,
@@ -6025,10 +6032,12 @@
 				4EC56EDD1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */,
 				4EC56DC61A2A25E900B696B4 /* SMContacts.m in Sources */,
 				4EC56EA71A2A2C3D00B696B4 /* SMSwipableView.m in Sources */,
+				4EE59AF51A6485BA00B89D71 /* SMAccountNativeViewController.m in Sources */,
 				4EE06C491A10FC5600DE4226 /* SMStationPickerView.m in Sources */,
 				4E5982131A24AC1200A40484 /* HistoryItem.swift in Sources */,
 				4EBB7B491A5EC2A00064B530 /* RouteType.swift in Sources */,
 				4EE06CE01A11134C00DE4226 /* SMRouteSettings.m in Sources */,
+				4E23D6DD1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */,
 				4EC56DD21A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
 				4EE06F061A112F6D00DE4226 /* SMBreakRouteHeader.m in Sources */,
 				4EE06C3F1A10FC5600DE4226 /* SMMetroStationInfo.m in Sources */,
@@ -6119,7 +6128,6 @@
 				4EE06C321A10FC5600DE4226 /* SMArrivalInfo.m in Sources */,
 				4E2A92571A3B43130032ACD4 /* Async.swift in Sources */,
 				4E59820B1A24AC1200A40484 /* SwiftyJSON.swift in Sources */,
-				4EC56ED51A2A3AAE00B696B4 /* SMAccountController.m in Sources */,
 				4EE06CCA1A11134C00DE4226 /* Reachability.m in Sources */,
 				4EEE928C1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m in Sources */,
 				4E55A0281A36068800386F85 /* MenuViewController.swift in Sources */,

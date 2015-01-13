@@ -13,4 +13,11 @@ import Foundation
     class func loggedIn() -> Bool {
         return AppHelper.delegate()?.appSettings["auth_token"] != nil
     }
+    
+    class func isFacebook() -> Bool {
+        if let loginType = AppHelper.delegate()?.appSettings["loginType"] as? String {
+            return loginType == "FB"
+        }
+        return false
+    }
 }

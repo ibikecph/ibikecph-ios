@@ -37,7 +37,11 @@ class MenuViewController: UIViewController {
                 }),
                 MenuItem(title: SMTranslation.decodeString(UserHelper.loggedIn() ? "account" : "account_login"), iconImageName: "profile", action: { menuViewController in
                     if UserHelper.loggedIn() {
-                        menuViewController.performSegueWithIdentifier("menuToAccount", sender: menuViewController)
+                        if UserHelper.isFacebook() {
+                            menuViewController.performSegueWithIdentifier("menuToAccountFacebook", sender: menuViewController)
+                        } else {
+                            menuViewController.performSegueWithIdentifier("menuToAccountNative", sender: menuViewController)
+                        }
                     } else {
                         menuViewController.performSegueWithIdentifier("menuToLogin", sender: menuViewController)
                     }
