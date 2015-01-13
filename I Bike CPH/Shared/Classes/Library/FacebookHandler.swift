@@ -48,7 +48,7 @@ import Social
                 if let error = error {
                     println("... with error: \(error)")
                 }
-                self.failed(completion: completion)
+                self.failed(error: error, completion: completion)
                 return
             }
             println("Facebook granted access")
@@ -71,18 +71,14 @@ import Social
                 print("Facebook failed renew credentials for account: \(account)")
                 if let error = error {
                     println("...with error: \(error)")
-                    self.failed(account: account, error: error, completion: completion)
-                    return
                 }
-                self.failed(account: account, completion: completion)
+                self.failed(account: account, error: error, completion: completion)
             case .Rejected:
                 print("Facebook rejected renew credentials for account: \(account)")
                 if let error = error {
                     println("...with error: \(error)")
-                    self.failed(account: account, error: error, completion: completion)
-                    return
                 }
-                self.failed(account: account, completion: completion)
+                self.failed(account: account, error: error, completion: completion)
             case .Renewed:
                 println("Facebook renewed credentials for account: \(account)")
                 self.accountStore.saveAccount(account) { (success, error) -> Void in
@@ -90,10 +86,8 @@ import Social
                         print("Facebook account save failed")
                         if let error = error {
                             println("... with error: \(error)")
-                            self.failed(account: account, error: error, completion: completion)
-                            return
                         }
-                        self.failed(account: account, completion: completion)
+                        self.failed(account: account, error: error, completion: completion)
                         return
                     }
                     println("Facebook account saved")
@@ -125,7 +119,7 @@ import Social
             var deserializationError: NSError?
             if let userData = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &deserializationError) as? NSDictionary {
                 if let deserializationError = deserializationError {
-                    self.failed(account: account, completion: completion)
+                    self.failed(account: account,  error: deserializationError, completion: completion)
                     return
                 }
                 self.succeededWithUserData(userData, token: token, completion: completion)
