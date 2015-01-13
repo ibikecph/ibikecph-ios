@@ -295,12 +295,12 @@
     } completion:^(BOOL finished) {
         debugLog(@"dropped pin");
         
-        if (self.endMarkerAnnotation != nil) {
+        if (self.endMarkerAnnotation == nil) {
+            [self.mapView removeAllAnnotations];
+        } else {
             [self.mapView removeAnnotation:self.endMarkerAnnotation];
-            self.endMarkerAnnotation = nil;
-            self.endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mapView coordinate:loc.coordinate andTitle:@""];
         }
-        
+        self.endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mapView coordinate:loc.coordinate andTitle:@""];
         self.endMarkerAnnotation.annotationType = @"marker";
         self.endMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerFinish"];
         self.endMarkerAnnotation.anchorPoint = CGPointMake(0.5, 1.0);
@@ -312,11 +312,11 @@
 }
 
 - (void)setDestinationAnnotation:(SMAnnotation*)annotation withLocation:(CLLocation *)loc {
-    [self setDestinationPin:annotation];
+    self.destinationPin = annotation;
     
-    [self.destinationPin setSubtitle:@""];
-    [self.destinationPin setDelegate:self];
-    [self.destinationPin setRoutingCoordinate:loc];
+    self.destinationPin.subtitle = @"";
+    self.destinationPin.delegate = self;
+    self.destinationPin.routingCoordinate = loc;
 }
 
 - (void)displayDestinationNameWithString:(NSString*)str {
