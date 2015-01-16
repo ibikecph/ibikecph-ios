@@ -88,7 +88,6 @@
     
     pinWorking = NO;
     
-    [RMMapView class];
     
     // TODO
 //    animationShown = NO;
