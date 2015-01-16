@@ -13,16 +13,14 @@
 /**
  * View controller to report error on route. Has select route segment button, choose error type, and send report button. FIXME: Merge.
  */
-@interface SMReportErrorController : SMTranslatedViewController <UIPickerViewDataSource, UIPickerViewDelegate, MFMailComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, SMAPIRequestDelegate> {
+@interface SMReportErrorController : SMTranslatedViewController {
     
     __weak IBOutlet UIButton *btnSelectRouteSegment;
     __weak IBOutlet SMCustomCheckbox *switchContactMe;
     __weak IBOutlet UIScrollView *scrlView;
-    __weak IBOutlet UIView *fadeView;
     __weak IBOutlet UIPickerView *pckrView;
     __weak IBOutlet UITableView *tblView;
     __weak IBOutlet UIView *reportSentView;
-    __weak IBOutlet UITextField *reportEmail;
     
     BOOL pickerOpen;
     NSInteger currentSelection;

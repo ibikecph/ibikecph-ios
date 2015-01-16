@@ -12,10 +12,12 @@
 #import "DAKeyboardControl.h"
 #import "SMReportMailCell.h"
 
-@interface SMReportErrorController ()
+@interface SMReportErrorController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, SMAPIRequestDelegate>
 @property (nonatomic, strong) NSString * reportedSegment;
 @property (nonatomic, strong) NSArray * possibleErrors;
 @property (nonatomic, strong) NSString * reportText;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pickerWrapperViewBottomContstraint;
+@property (weak, nonatomic) IBOutlet UIView *pickerWrapperView;
 
 @property (nonatomic, strong) SMAPIRequest * apr;
 @end
@@ -24,7 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,10 +37,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self hidePickerAnimated:NO];
+    
     [scrlView setContentSize:CGSizeMake(scrlView.frame.size.width, tblView.contentSize.height + tblView.frame.origin.y + 50.0f)];
-    [fadeView setAlpha:0.0f];
-    [fadeView setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.0f]];
-    pickerOpen = NO;
     self.reportedSegment = @"";
     self.possibleErrors = @[translateString(@"report_wrong_address"), translateString(@"report_road_closed"), translateString(@"report_one_way"), translateString(@"report_illegal_turn"), translateString(@"report_wrong_instruction"), translateString(@"report_other")];
     currentSelection = -1;
@@ -76,7 +76,7 @@
 #pragma mark - button actions
 
 - (IBAction)goBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismiss];
 }
 
 - (IBAction)showHidePicker:(id)sender {
@@ -99,7 +99,7 @@
     }
 }
 
-#pragma mark - picker delegate
+#pragma mark - UIPickerViewDataSource
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
@@ -124,7 +124,6 @@
 }
 
 - (IBAction)sendReport:(id)sender {
-//    [self sendEmail];
     [self sendAPIReport:nil];
 }
 
@@ -177,141 +176,49 @@
     [self.apr executeRequest:API_SEND_FEEDBACK withParams:d];
 }
 
-/** 
- * FIXME: Probably not used in app :/
- */
-- (void)sendEmail {
-    if (currentSelection < 0) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"report_error_problem_not_selected") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
-        [av show];
-        return;
-    }
-    
-    if ((self.reportedSegment == nil) || ([self.reportedSegment isEqualToString:@""])) {
-//        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"report_error_step_not_selected") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
-//        [av show];
-//        return;
-        self.reportedSegment = @"";
-    }
-    
-    MFMailComposeViewController * mvc = [[MFMailComposeViewController alloc] init];
-    [mvc setSubject:translateString(@"report_subject")];
-    [mvc setToRecipients:MAIL_RECIPIENTS];
-    [mvc setMailComposeDelegate:self];
-    NSString *str = @"";
-    if (switchContactMe.on) {
-        str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n\n", translateString(@"report_contact_me")]];
-    }
-
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", translateString(@"report_from")]];
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n%@\n\n", self.source, self.sourceLoc]];
-
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", translateString(@"report_to")]];
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n%@\n\n", self.destination, self.destinationLoc]];
-    
-    
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", translateString(@"report_reason")]];
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n\n", [self.possibleErrors objectAtIndex:currentSelection]]];
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n\n", self.reportText]];
-    
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", translateString(@"report_instruction")]];
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n\n", self.reportedSegment]];
-
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", translateString(@"report_tbt_instructions")]];
-    for (NSString * s in self.routeDirections) {
-        str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", s]];
-    }
-    
-    SMReportMailCell* emailCell = (SMReportMailCell*)[tblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-    NSString* userEmail = emailCell.email.text;
-    if ( emailCell.selected ) {
-        str = [str stringByAppendingString:userEmail];
-    }
-    
-    [mvc setMessageBody:str isHTML:NO];
-    [self presentModalViewController:mvc animated:YES];
-}
-
 - (void)showPicker {
     [pckrView reloadAllComponents];
-    [fadeView setAlpha:1.0f];
-    [fadeView setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.0f]];
-    CGRect frame = fadeView.frame;
-    frame.origin.y = 288.0f;
-    [fadeView setFrame:frame];
-    
     [self hideKeyboard:nil];
-    
-    [UIView animateWithDuration:0.4f animations:^{
-        CGRect frame = fadeView.frame;
-        frame.origin.y = 0.0f;
-        [fadeView setFrame:frame];
+    [self.view setNeedsUpdateConstraints];
+    [UIView animateWithDuration:0.25 animations:^{
+        self.pickerWrapperViewBottomContstraint.constant = 0;
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         pickerOpen = YES;
-        [UIView animateWithDuration:0.4f animations:^{
-            [fadeView setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.7f]];
-        }];
     }];
 }
 
 - (void)hidePicker {
-    CGRect frame = fadeView.frame;
-    frame.origin.y = 0.0f;
-    [fadeView setFrame:frame];
-    [UIView animateWithDuration:0.4f animations:^{
-        [fadeView setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.0f]];
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.4f animations:^{
-            CGRect frame = fadeView.frame;
-            frame.origin.y = 288.0f;
-            [fadeView setFrame:frame];
+    [self hidePickerAnimated:YES];
+}
+
+- (void)hidePickerAnimated:(BOOL)animated {
+    [self.view layoutIfNeeded];
+    if (animated) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.pickerWrapperViewBottomContstraint.constant = -self.pickerWrapperView.frame.size.height;
+            [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
             pickerOpen = NO;
-            [fadeView setAlpha:0.0f];
         }];
-    }];
-}
-
-#pragma mark - mail send delegate
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    
-    if (result == MFMailComposeResultSent) {
-        [self dismissModalViewControllerAnimated:YES];
-        [UIView animateWithDuration:0.4f animations:^{
-            [reportSentView setAlpha:1.0f];
-        }];
-        
-//        UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"report_sent") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
-//        [av show];
-//        [self dismissModalViewControllerAnimated:YES];
     } else {
-        [controller dismissModalViewControllerAnimated:YES];
+        self.pickerWrapperViewBottomContstraint.constant = -self.pickerWrapperView.frame.size.height;
+        pickerOpen = NO;
     }
 }
+
 
 #pragma mark - tableview delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1; // "Let me know when it is fixed" is in section 2
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ( section == 0 ) {
-        return [self.possibleErrors count];
-    } else {
-        return 1;
-    }
+    return [self.possibleErrors count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.section == 1) {
-        SMReportMailCell* cell = [tableView dequeueReusableCellWithIdentifier:@"reportMailCell"];
-        [cell.email setText:translateString(@"report_email_field")];
-        [cell.checkboxMail setTitle:translateString(@"report_email_checkbox") forState:UIControlStateNormal];
-        return cell;
-    }
     
     if (indexPath.row == currentSelection) {
         NSString * identifier = @"reportRadioChecked";

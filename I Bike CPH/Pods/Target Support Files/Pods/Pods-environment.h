@@ -24,6 +24,12 @@
 #define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK_Core 10
 #define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK_Core 0
 
+// PSTAlertController
+#define COCOAPODS_POD_AVAILABLE_PSTAlertController
+#define COCOAPODS_VERSION_MAJOR_PSTAlertController 1
+#define COCOAPODS_VERSION_MINOR_PSTAlertController 1
+#define COCOAPODS_VERSION_PATCH_PSTAlertController 0
+
 // TTTAttributedLabel
 #define COCOAPODS_POD_AVAILABLE_TTTAttributedLabel
 #define COCOAPODS_VERSION_MAJOR_TTTAttributedLabel 1

@@ -25,6 +25,7 @@
 #import "SMDirectionCell.h"
 #import "SMDirectionTopCell.h"
 #import "SMReportErrorController.h"
+#import "PSTAlertController.h"
 
 #import "SMUtil.h"
 #import "SMRouteUtils.h"
@@ -1387,13 +1388,22 @@ typedef enum {
     }];
 }
 
-- (IBAction)hideStopView:(id)sender {
-    [UIView animateWithDuration:0.4f animations:^{
-        [stopView setAlpha:0.0f];
-    }];
+- (IBAction)tappedCloseButton:(id)sender {
+    PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:translateString(@"route_stop_title") message:nil preferredStyle:PSTAlertControllerStyleActionSheet];
+    [alertController addCancelActionWithHandler:nil];
+    
+    [alertController addAction:[PSTAlertAction actionWithTitle:translateString(@"ride_report_a_problem") handler:^(PSTAlertAction *action) {
+        [self performSegueWithIdentifier:@"routeToReport" sender:nil];
+    }]];
+    
+    [alertController addAction:[PSTAlertAction actionWithTitle:translateString(@"stop_ride") handler:^(PSTAlertAction *action) {
+        [self goBack];
+    }]];
+    
+    [alertController showWithSender:self controller:self animated:YES completion:nil];
 }
 
-- (IBAction)goBack:(id)sender {
+- (void)goBack {
     self.currentlyRouting = NO;
     
     [self.mapView setDelegate:nil];
@@ -1404,17 +1414,8 @@ typedef enum {
     [[NSFileManager defaultManager] removeItemAtPath:[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"] error:nil];
     
     [self saveRoute];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
--(IBAction)buttonPressed:(id)sender {
-    [UIView animateWithDuration:0.4f animations:^{
-//        [stopView setAlpha:1.0f];
-        // TODO: Show alert
-        [self goBack:nil];
-    } completion:^(BOOL finished) {
-    }];
+ 
+    [self dismiss];
 }
 
 - (void)trackingOn {
@@ -1451,7 +1452,7 @@ typedef enum {
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if (([segue.identifier isEqualToString:@"reportError"]) ){
+    if (([segue.identifier isEqualToString:@"routeToReport"]) ){
         SMReportErrorController *destViewController = segue.destinationViewController;
         NSMutableArray * arr = [NSMutableArray array];
         if (self.route) {
@@ -1470,11 +1471,11 @@ typedef enum {
                 }
             }
         }
-        [destViewController setRouteDirections:arr];
-        [destViewController setDestination:self.destination];
-        [destViewController setSource:self.source];
-        [destViewController setDestinationLoc:self.endLocation];
-        [destViewController setSourceLoc:self.startLocation];
+        destViewController.routeDirections = arr;
+        destViewController.destination = self.destination;
+        destViewController.source = self.source;
+        destViewController.destinationLoc = self.endLocation;
+        destViewController.sourceLoc = self.startLocation;
     }else if([segue.identifier isEqualToString:@"breakRoute"]){
         SMBreakRouteViewController* brVC= segue.destinationViewController;
         brVC.sourceName= self.source;
@@ -1552,22 +1553,6 @@ typedef enum {
         [self trackUser:nil];
 }
 
-
-#pragma mark - alert view delegate
-
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
-    switch (buttonIndex) {
-        case 2:
-            [self performSegueWithIdentifier:@"reportError" sender:nil];
-            break;
-        case 1: {
-            [self goBack:nil];
-        }
-            break;
-        default:
-            break;
-    }
-}
 
 #pragma mark - directions table
 

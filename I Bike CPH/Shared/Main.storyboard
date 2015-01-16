@@ -714,7 +714,7 @@ God tur og tak fordi du cykler!</string>
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="buttonPressed:" destination="0iY-Gd-Bo4" eventType="touchUpInside" id="lEG-IM-HLg"/>
+                                            <action selector="tappedCloseButton:" destination="0iY-Gd-Bo4" eventType="touchUpInside" id="k9t-k0-Xk2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -771,7 +771,7 @@ God tur og tak fordi du cykler!</string>
                                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="41"/>
                                                                 </imageView>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="100 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="DsQ-Ee-LTz">
-                                                                    <rect key="frame" x="0.0" y="44" width="80" height="21.5"/>
+                                                                    <rect key="frame" x="0.0" y="44" width="80" height="22"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                                                     <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -823,14 +823,14 @@ God tur og tak fordi du cykler!</string>
                                                         <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJd-wA-NeS">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="iYc-8p-bs7">
-                                                                    <rect key="frame" x="0.0" y="4" width="80" height="36.5"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iYc-8p-bs7">
+                                                                    <rect key="frame" x="0.0" y="4" width="80" height="37"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="36" id="bcO-D8-aKt"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="70 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="OLT-hn-kcf">
-                                                                    <rect key="frame" x="0.0" y="40" width="80" height="15.5"/>
+                                                                    <rect key="frame" x="0.0" y="40" width="80" height="16"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
                                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </label>
@@ -907,14 +907,14 @@ God tur og tak fordi du cykler!</string>
                                                 <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gU1-tm-DN0">
-                                                <rect key="frame" x="20" y="20" width="560" height="59.5"/>
+                                                <rect key="frame" x="20" y="20" width="560" height="60"/>
                                                 <subviews>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6KR-5X-zcb">
                                                         <rect key="frame" x="101" y="0.0" width="353" height="37"/>
                                                         <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     </activityIndicatorView>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="calculating_new_route" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXD-gX-OEv">
-                                                        <rect key="frame" x="1" y="39" width="553" height="20.5"/>
+                                                        <rect key="frame" x="1" y="39" width="553" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -1004,7 +1004,7 @@ God tur og tak fordi du cykler!</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="School" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHg-p9-mFz" userLabel="Destination">
-                                        <rect key="frame" x="13" y="12" width="445" height="27.5"/>
+                                        <rect key="frame" x="13" y="12" width="445" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27.5" id="7VD-Ag-9VT"/>
                                         </constraints>
@@ -1012,8 +1012,8 @@ God tur og tak fordi du cykler!</string>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5S-dq-MMD" userLabel="Destination 2">
-                                        <rect key="frame" x="13" y="39" width="445" height="27.5"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5S-dq-MMD" userLabel="Destination 2">
+                                        <rect key="frame" x="13" y="39" width="445" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27.5" id="eYe-PG-Rdh"/>
                                         </constraints>
@@ -1021,7 +1021,7 @@ God tur og tak fordi du cykler!</string>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbi-oY-Qve">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbi-oY-Qve">
                                         <rect key="frame" x="13" y="67" width="445" height="18"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
@@ -1100,7 +1100,7 @@ God tur og tak fordi du cykler!</string>
                         <outlet property="swipeRightArrow" destination="UDB-7f-6tI" id="a2H-0Y-WoI"/>
                         <outlet property="tblDirections" destination="VZS-If-q8g" id="Q6H-sM-GlK"/>
                         <segue destination="B9e-TQ-gtS" kind="show" id="DFD-PM-v7L"/>
-                        <segue destination="Ebm-yV-wF5" kind="show" id="cR0-BE-PFO"/>
+                        <segue destination="Ebm-yV-wF5" kind="show" identifier="routeToReport" id="cR0-BE-PFO"/>
                     </connections>
                 </viewController>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="eC5-MY-sGA" userLabel="normal directions">
@@ -1140,184 +1140,136 @@ God tur og tak fordi du cykler!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-p0-HEI">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlI-Mv-YIJ">
-                                        <rect key="frame" x="17" y="18" width="286" height="44"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="48" maxY="0.0"/>
-                                        <state key="normal" title="choose_a_route_step" backgroundImage="reportPulldown.png">
-                                            <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cUs-WD-TX6">
-                                        <rect key="frame" x="0.0" y="80" width="320" height="195"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportRadioUnchecked" rowHeight="44" id="O3S-2N-5eq" customClass="SMRadioUncheckedCell">
-                                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O3S-2N-5eq" id="dOY-eQ-3yy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="radioUnchecked.png" translatesAutoresizingMaskIntoConstraints="NO" id="LBQ-nc-eaV">
-                                                            <rect key="frame" x="17" y="9" width="25" height="25"/>
-                                                        </imageView>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NT2-Vd-GSc">
-                                                            <rect key="frame" x="46" y="10" width="242" height="21"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </label>
-                                                    </subviews>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="radioTitle" destination="NT2-Vd-GSc" id="XGC-pv-K9s"/>
-                                                </connections>
-                                            </tableViewCell>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportRadioChecked" rowHeight="110" id="Qpb-Ik-3ul" customClass="SMRadioCheckedCell">
-                                                <rect key="frame" x="0.0" y="66" width="320" height="110"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qpb-Ik-3ul" id="fzl-Fj-deX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="radioChecked.png" translatesAutoresizingMaskIntoConstraints="NO" id="1H4-Lb-GJV">
-                                                            <rect key="frame" x="17" y="9" width="25" height="25"/>
-                                                        </imageView>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9Y-ov-NiE">
-                                                            <rect key="frame" x="44" y="10" width="242" height="21"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </label>
-                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="reportTextView.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZF9-Xr-D88">
-                                                            <rect key="frame" x="17" y="46" width="290" height="56"/>
-                                                        </imageView>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DN1-IJ-gZ2">
-                                                            <rect key="frame" x="15" y="47" width="292" height="55"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        </textView>
-                                                    </subviews>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="radioTextBox" destination="DN1-IJ-gZ2" id="PZ4-7Y-ujh"/>
-                                                    <outlet property="radioTitle" destination="F9Y-ov-NiE" id="jKx-BE-DLE"/>
-                                                </connections>
-                                            </tableViewCell>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="reportMailCell" rowHeight="120" id="Mmx-bj-22C" customClass="SMReportMailCell">
-                                                <rect key="frame" x="0.0" y="176" width="320" height="120"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mmx-bj-22C" id="8fS-iO-Dh8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="divider_side_menu_btn.png" translatesAutoresizingMaskIntoConstraints="NO" id="EQi-Su-gTx">
-                                                            <rect key="frame" x="0.0" y="1" width="320" height="1"/>
-                                                        </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6W-3n-mdi">
-                                                            <rect key="frame" x="19" y="4" width="282" height="44"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                            <state key="normal" title="Send back report" image="checkboxUnchecked.png">
-                                                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <state key="selected" image="checkboxChecked.png">
-                                                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            </state>
-                                                            <state key="highlighted">
-                                                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="checkboxSelected:" destination="Mmx-bj-22C" eventType="touchUpInside" id="l0w-VI-RY3"/>
-                                                            </connections>
-                                                        </button>
-                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="reportTextView.png" translatesAutoresizingMaskIntoConstraints="NO" id="DdD-vE-iSu">
-                                                            <rect key="frame" x="18" y="46" width="284" height="40"/>
-                                                        </imageView>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Type your email address..." translatesAutoresizingMaskIntoConstraints="NO" id="U7B-jf-PEy">
-                                                            <rect key="frame" x="18" y="46" width="284" height="40"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        </textView>
-                                                    </subviews>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="checkboxMail" destination="K6W-3n-mdi" id="heZ-aZ-yq1"/>
-                                                    <outlet property="email" destination="U7B-jf-PEy" id="pdw-vY-McS"/>
-                                                </connections>
-                                            </tableViewCell>
-                                        </prototypes>
-                                        <connections>
-                                            <outlet property="dataSource" destination="Ebm-yV-wF5" id="Iyq-ns-TZS"/>
-                                            <outlet property="delegate" destination="Ebm-yV-wF5" id="vPY-pm-J42"/>
-                                        </connections>
-                                    </tableView>
-                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SE2-Sa-GT7">
-                                        <rect key="frame" x="0.0" y="350" width="320" height="59"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KC-fj-RY1" customClass="SMCustomCheckbox">
-                                                <rect key="frame" x="13" y="7" width="27" height="27"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="notify_me_when_fixed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxd-3Q-6mn">
-                                                <rect key="frame" x="58" y="10" width="210" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQZ-O7-h7K" customClass="SMPatternedButton">
-                                <rect key="frame" x="16" y="526" width="568" height="58"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
-                                <state key="normal" title="report_send" backgroundImage="blue_btn_ibike.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlI-Mv-YIJ">
+                                <rect key="frame" x="157" y="84" width="286" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="zvA-Og-Jzi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="48" maxY="0.0"/>
+                                <state key="normal" title="choose_a_route_step" backgroundImage="reportPulldown.png">
+                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" backgroundImage="blue_btn_ibike_pressed.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <connections>
+                                    <action selector="showHidePicker:" destination="Ebm-yV-wF5" eventType="touchUpInside" id="Rzp-ms-WWm"/>
+                                </connections>
                             </button>
-                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nB5-1L-KPd">
-                                <rect key="frame" x="140" y="75" width="320" height="480"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cUs-WD-TX6">
+                                <rect key="frame" x="0.0" y="148" width="600" height="392"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportRadioUnchecked" rowHeight="44" id="O3S-2N-5eq" customClass="SMRadioUncheckedCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O3S-2N-5eq" id="dOY-eQ-3yy">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="radioUnchecked.png" translatesAutoresizingMaskIntoConstraints="NO" id="LBQ-nc-eaV">
+                                                    <rect key="frame" x="17" y="9" width="25" height="25"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NT2-Vd-GSc">
+                                                    <rect key="frame" x="46" y="10" width="242" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="radioTitle" destination="NT2-Vd-GSc" id="XGC-pv-K9s"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportRadioChecked" rowHeight="110" id="Qpb-Ik-3ul" customClass="SMRadioCheckedCell">
+                                        <rect key="frame" x="0.0" y="66" width="320" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qpb-Ik-3ul" id="fzl-Fj-deX">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="radioChecked.png" translatesAutoresizingMaskIntoConstraints="NO" id="1H4-Lb-GJV">
+                                                    <rect key="frame" x="17" y="9" width="25" height="25"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9Y-ov-NiE">
+                                                    <rect key="frame" x="44" y="10" width="242" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="reportTextView.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZF9-Xr-D88">
+                                                    <rect key="frame" x="17" y="46" width="290" height="56"/>
+                                                </imageView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DN1-IJ-gZ2">
+                                                    <rect key="frame" x="15" y="47" width="292" height="55"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="radioTextBox" destination="DN1-IJ-gZ2" id="PZ4-7Y-ujh"/>
+                                            <outlet property="radioTitle" destination="F9Y-ov-NiE" id="jKx-BE-DLE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ebm-yV-wF5" id="Iyq-ns-TZS"/>
+                                    <outlet property="delegate" destination="Ebm-yV-wF5" id="vPY-pm-J42"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVV-zK-Hw7">
+                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                <state key="normal" title="report_send">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doRegister:" destination="cUi-19-l2D" eventType="touchUpInside" id="Xcj-kE-yPD"/>
+                                    <action selector="sendReport:" destination="Ebm-yV-wF5" eventType="touchUpInside" id="MMj-9d-BlL"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nB5-1L-KPd" userLabel="Picker Wrapper View">
+                                <rect key="frame" x="0.0" y="394" width="600" height="206"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gOk-DC-min">
-                                        <rect key="frame" x="0.0" y="264" width="320" height="216"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </pickerView>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="QzH-Xj-9jE">
-                                        <rect key="frame" x="0.0" y="220" width="320" height="44"/>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzH-Xj-9jE">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <items>
-                                            <barButtonItem title="cancel_picker" id="WDi-9w-zvm"/>
+                                            <barButtonItem title="cancel_picker" id="WDi-9w-zvm">
+                                                <connections>
+                                                    <action selector="pickerCancel:" destination="Ebm-yV-wF5" id="BRA-Fo-o57"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="7QU-Y6-NNL"/>
-                                            <barButtonItem title="done_picker" style="done" id="KFP-Ni-cEg"/>
+                                            <barButtonItem title="done_picker" style="done" id="KFP-Ni-cEg">
+                                                <connections>
+                                                    <action selector="pickerDone:" destination="Ebm-yV-wF5" id="Yp2-pl-a5u"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                     </toolbar>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOk-DC-min">
+                                        <rect key="frame" x="0.0" y="44" width="600" height="162"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Ebm-yV-wF5" id="GCt-NT-Dt6"/>
+                                            <outlet property="delegate" destination="Ebm-yV-wF5" id="jij-TB-JoA"/>
+                                        </connections>
+                                    </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="gOk-DC-min" secondAttribute="bottom" id="2aN-dV-bua"/>
+                                    <constraint firstItem="QzH-Xj-9jE" firstAttribute="leading" secondItem="nB5-1L-KPd" secondAttribute="leading" id="3p2-C5-SfP"/>
+                                    <constraint firstItem="QzH-Xj-9jE" firstAttribute="top" secondItem="nB5-1L-KPd" secondAttribute="top" id="5lr-Hi-Lds"/>
+                                    <constraint firstAttribute="trailing" secondItem="QzH-Xj-9jE" secondAttribute="trailing" id="EDc-8o-Vwa"/>
+                                    <constraint firstItem="gOk-DC-min" firstAttribute="leading" secondItem="nB5-1L-KPd" secondAttribute="leading" id="U3z-1H-JbJ"/>
+                                    <constraint firstItem="gOk-DC-min" firstAttribute="top" secondItem="QzH-Xj-9jE" secondAttribute="bottom" id="id6-7d-Pcn"/>
+                                    <constraint firstAttribute="trailing" secondItem="gOk-DC-min" secondAttribute="trailing" id="sxA-aq-Y8Z"/>
+                                </constraints>
                             </view>
-                            <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jLa-hQ-Ox9" userLabel="Report Sent">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLa-hQ-Ox9" userLabel="Report Sent">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="reportBulb.png" translatesAutoresizingMaskIntoConstraints="NO" id="eef-AT-RGx">
@@ -1357,35 +1309,40 @@ God tur og tak fordi du cykler!</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="8CJ-p0-HEI" secondAttribute="trailing" id="8Ee-wD-eIo"/>
+                            <constraint firstItem="nB5-1L-KPd" firstAttribute="leading" secondItem="VYa-Vx-xt7" secondAttribute="leading" id="6jK-ae-nmX"/>
                             <constraint firstItem="jLa-hQ-Ox9" firstAttribute="leading" secondItem="VYa-Vx-xt7" secondAttribute="leading" id="A4x-Tt-eNX"/>
+                            <constraint firstItem="cUs-WD-TX6" firstAttribute="leading" secondItem="VYa-Vx-xt7" secondAttribute="leading" id="B24-RB-PwI"/>
                             <constraint firstItem="ibs-fO-3Dv" firstAttribute="top" secondItem="jLa-hQ-Ox9" secondAttribute="bottom" id="Dfq-wm-EAz"/>
-                            <constraint firstItem="8CJ-p0-HEI" firstAttribute="top" secondItem="eFg-zn-FCt" secondAttribute="bottom" id="PHB-Qm-Bnn"/>
-                            <constraint firstItem="ibs-fO-3Dv" firstAttribute="top" secondItem="HQZ-O7-h7K" secondAttribute="bottom" constant="16" id="Quu-0g-i1a"/>
-                            <constraint firstItem="8CJ-p0-HEI" firstAttribute="leading" secondItem="VYa-Vx-xt7" secondAttribute="leading" id="SIr-J1-v7H"/>
-                            <constraint firstItem="HQZ-O7-h7K" firstAttribute="leading" secondItem="VYa-Vx-xt7" secondAttribute="leading" id="SKQ-n6-kiv"/>
-                            <constraint firstItem="ibs-fO-3Dv" firstAttribute="top" secondItem="8CJ-p0-HEI" secondAttribute="bottom" id="W5H-j9-PGZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HQZ-O7-h7K" secondAttribute="trailing" id="dxp-HA-k7q"/>
-                            <constraint firstAttribute="trailing" secondItem="HQZ-O7-h7K" secondAttribute="trailing" id="ee2-KZ-4GA"/>
-                            <constraint firstItem="HQZ-O7-h7K" firstAttribute="leading" secondItem="VYa-Vx-xt7" secondAttribute="leadingMargin" id="s40-Yd-hoQ"/>
-                            <constraint firstItem="ibs-fO-3Dv" firstAttribute="top" secondItem="HQZ-O7-h7K" secondAttribute="bottom" id="wRJ-rE-mbP"/>
+                            <constraint firstItem="PVV-zK-Hw7" firstAttribute="leading" secondItem="VYa-Vx-xt7" secondAttribute="leading" id="JcF-gp-Qwu"/>
+                            <constraint firstItem="ibs-fO-3Dv" firstAttribute="top" secondItem="nB5-1L-KPd" secondAttribute="bottom" id="M6f-30-RYx"/>
+                            <constraint firstAttribute="trailing" secondItem="cUs-WD-TX6" secondAttribute="trailing" id="O9I-De-eZF"/>
+                            <constraint firstItem="RlI-Mv-YIJ" firstAttribute="leading" secondItem="VYa-Vx-xt7" secondAttribute="leading" constant="10" id="SYL-A4-mrG"/>
+                            <constraint firstAttribute="centerX" secondItem="RlI-Mv-YIJ" secondAttribute="centerX" id="VfA-hD-yQB"/>
+                            <constraint firstAttribute="trailing" secondItem="RlI-Mv-YIJ" secondAttribute="trailing" constant="10" id="Vjs-Fb-8vM"/>
+                            <constraint firstItem="ibs-fO-3Dv" firstAttribute="top" secondItem="PVV-zK-Hw7" secondAttribute="bottom" id="YwC-1z-eHL"/>
+                            <constraint firstItem="cUs-WD-TX6" firstAttribute="top" secondItem="RlI-Mv-YIJ" secondAttribute="bottom" constant="20" id="ZfF-gK-twJ"/>
+                            <constraint firstAttribute="trailing" secondItem="nB5-1L-KPd" secondAttribute="trailing" id="aqo-9N-SXX"/>
+                            <constraint firstAttribute="trailing" secondItem="PVV-zK-Hw7" secondAttribute="trailing" id="bHC-ZS-uj4"/>
+                            <constraint firstItem="RlI-Mv-YIJ" firstAttribute="top" secondItem="eFg-zn-FCt" secondAttribute="bottom" constant="20" id="rzp-ze-9AJ"/>
+                            <constraint firstItem="PVV-zK-Hw7" firstAttribute="top" secondItem="cUs-WD-TX6" secondAttribute="bottom" id="v4r-hk-W24"/>
                             <constraint firstItem="jLa-hQ-Ox9" firstAttribute="top" secondItem="eFg-zn-FCt" secondAttribute="bottom" id="y3h-HA-Vfy"/>
                             <constraint firstAttribute="trailing" secondItem="jLa-hQ-Ox9" secondAttribute="trailing" id="zCc-kU-GyA"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="SKQ-n6-kiv"/>
-                                <exclude reference="ee2-KZ-4GA"/>
-                                <exclude reference="wRJ-rE-mbP"/>
+                                <exclude reference="SYL-A4-mrG"/>
+                                <exclude reference="Vjs-Fb-8vM"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="YAl-JM-w1p"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="btnSelectRouteSegment" destination="RlI-Mv-YIJ" id="IEf-1e-fee"/>
                         <outlet property="pckrView" destination="gOk-DC-min" id="zb7-iJ-65a"/>
+                        <outlet property="pickerWrapperView" destination="nB5-1L-KPd" id="txX-ws-1sU"/>
+                        <outlet property="pickerWrapperViewBottomContstraint" destination="M6f-30-RYx" id="uzu-90-eTV"/>
                         <outlet property="reportSentView" destination="jLa-hQ-Ox9" id="5FV-C0-gHB"/>
-                        <outlet property="scrlView" destination="8CJ-p0-HEI" id="abn-dQ-lhs"/>
                         <outlet property="tblView" destination="cUs-WD-TX6" id="e4W-sv-yNg"/>
                     </connections>
                 </viewController>
@@ -1991,13 +1948,13 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favStarGreySmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Zn-3i-OQU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="49.5" height="49.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="8Zn-3i-OQU" secondAttribute="height" id="vgF-Vm-pEy"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zz-SN-PuR">
-                                                    <rect key="frame" x="49" y="0.0" width="550.5" height="50"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zz-SN-PuR">
+                                                    <rect key="frame" x="49" y="0.0" width="551" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Ji7-8L-Di1"/>
                                                     </constraints>
@@ -2038,7 +1995,7 @@ God tur og tak fordi du cykler!</string>
                                 </items>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="favorites_login" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOn-aF-TRI">
-                                <rect key="frame" x="16" y="291" width="568" height="19.5"/>
+                                <rect key="frame" x="16" y="291" width="568" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -2176,7 +2133,7 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Labelpq" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="jfH-VY-qDg">
-                                                    <rect key="frame" x="270" y="10" width="60.5" height="19.5"/>
+                                                    <rect key="frame" x="270" y="10" width="61" height="20"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2200,7 +2157,7 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="VIS FLERE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYK-EV-QMt">
-                                                    <rect key="frame" x="267" y="15" width="65.5" height="16"/>
+                                                    <rect key="frame" x="267" y="15" width="66" height="16"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2363,13 +2320,13 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Labelpq" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efI-VN-ALf" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="39" y="8" width="59" height="43.5"/>
+                                                    <rect key="frame" x="39" y="8" width="59" height="44"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="findRouteCalendar.png" translatesAutoresizingMaskIntoConstraints="NO" id="TWb-hX-XTW" customClass="AsyncImageView">
-                                                    <rect key="frame" x="8" y="8" width="21" height="43.5"/>
+                                                    <rect key="frame" x="8" y="8" width="21" height="44"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -2408,13 +2365,13 @@ God tur og tak fordi du cykler!</string>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Labelpq" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg2-fN-GIX" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="39" y="30" width="52.5" height="24.5"/>
+                                                    <rect key="frame" x="39" y="30" width="53" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="findRouteCalendar.png" translatesAutoresizingMaskIntoConstraints="NO" id="fTJ-wY-8i9" customClass="AsyncImageView">
-                                                    <rect key="frame" x="8" y="8" width="21" height="51.5"/>
+                                                    <rect key="frame" x="8" y="8" width="21" height="52"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -2452,7 +2409,7 @@ God tur og tak fordi du cykler!</string>
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fRS-fL-W2b">
-                                        <rect key="frame" x="281" y="249.5" width="37" height="37"/>
+                                        <rect key="frame" x="281" y="250" width="37" height="37"/>
                                         <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -2518,13 +2475,13 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favStarGreySmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="B61-4d-LEw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="49.5" height="49.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="B61-4d-LEw" secondAttribute="height" id="jmA-XT-Deo"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jg3-WI-9JP">
-                                                    <rect key="frame" x="49" y="0.0" width="550.5" height="50"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jg3-WI-9JP">
+                                                    <rect key="frame" x="49" y="0.0" width="551" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="mPu-T1-8J9"/>
                                                     </constraints>
@@ -2805,7 +2762,7 @@ God tur og tak fordi du cykler!</string>
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Monday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sL7-65-4Dg">
-                                                    <rect key="frame" x="15" y="8" width="501" height="51.5"/>
+                                                    <rect key="frame" x="15" y="8" width="501" height="52"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="x27-Lb-r8W"/>
                                                     </constraints>
@@ -3057,24 +3014,24 @@ God tur og tak fordi du cykler!</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you_are_logged_in_as" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9q-p7-NIs">
-                                <rect key="frame" x="16" y="104" width="568" height="19.5"/>
+                                <rect key="frame" x="16" y="104" width="568" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOp-R8-QWP">
-                                <rect key="frame" x="16" y="243" width="568" height="19.5"/>
+                                <rect key="frame" x="16" y="243" width="568" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fb_linked_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="9go-vf-wle">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="fb_linked_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="9go-vf-wle">
                                 <rect key="frame" x="286" y="282" width="27" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="27" id="RoP-bX-jIM"/>
                                     <constraint firstAttribute="height" constant="27" id="eyy-0u-5AL"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="account_is_linked_to_facebook" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gof-N0-m8j">
-                                <rect key="frame" x="16" y="329" width="568" height="19.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="account_is_linked_to_facebook" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gof-N0-m8j">
+                                <rect key="frame" x="16" y="329" width="568" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3129,18 +3086,13 @@ God tur og tak fordi du cykler!</string>
         <image name="arrow_small.png" width="20" height="18"/>
         <image name="bike_route.png" width="30" height="39"/>
         <image name="blue_btn.png" width="11" height="11"/>
-        <image name="blue_btn_ibike.png" width="11" height="11"/>
-        <image name="blue_btn_ibike_pressed.png" width="11" height="11"/>
         <image name="blue_btn_pressed.png" width="11" height="11"/>
         <image name="break_route.png" width="36" height="36"/>
         <image name="break_route_info_btn.png" width="243" height="36"/>
         <image name="break_route_press.png" width="36" height="36"/>
         <image name="btnClose.png" width="43" height="43"/>
         <image name="camera.png" width="61" height="61"/>
-        <image name="checkboxChecked.png" width="22" height="22"/>
-        <image name="checkboxUnchecked.png" width="22" height="22"/>
         <image name="distance_white.png" width="91" height="35"/>
-        <image name="divider_side_menu_btn.png" width="1" height="2"/>
         <image name="dotted_line.png" width="16" height="58"/>
         <image name="drop_pin_add_fav_btn.png" width="37" height="77"/>
         <image name="drop_pin_add_fav_btn_active.png" width="37" height="77"/>

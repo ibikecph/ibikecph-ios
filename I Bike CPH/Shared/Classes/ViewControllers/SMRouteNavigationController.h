@@ -36,7 +36,6 @@
     __weak IBOutlet UILabel *overviewDestinationBottom;
     __weak IBOutlet UILabel *overviewDestination;
     __weak IBOutlet UILabel *overviewTimeDistance;
-    __weak IBOutlet UIView *stopView;
     __weak IBOutlet UIButton *closeButton;
     __weak IBOutlet UIImageView *arrivalBG;
     __weak IBOutlet UIImageView *swipeLeftArrow;

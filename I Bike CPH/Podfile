@@ -11,3 +11,4 @@ pod 'TTTAttributedLabel', '~>1.10'
 pod 'DAKeyboardControl', '~>2.0'
 pod 'UIImage-Categories'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+pod 'PSTAlertController', '~>1.1'
