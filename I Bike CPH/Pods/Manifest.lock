@@ -4,24 +4,24 @@ PODS:
     - GoogleAnalytics-iOS-SDK/Core (= 3.10)
   - GoogleAnalytics-iOS-SDK/Core (3.10)
   - PSTAlertController (1.1.0)
-  - Reveal-iOS-SDK (1.0.6)
-  - TTTAttributedLabel (1.10.1)
+  - Reveal-iOS-SDK (1.0.7)
+  - TTTAttributedLabel (1.13.1)
   - UIImage-Categories (0.0.1)
 
 DEPENDENCIES:
-  - DAKeyboardControl (~> 2.0)
+  - DAKeyboardControl (~> 2.4)
   - GoogleAnalytics-iOS-SDK (~> 3.10)
   - PSTAlertController (~> 1.1)
   - Reveal-iOS-SDK
   - TTTAttributedLabel (~> 1.10)
-  - UIImage-Categories
+  - UIImage-Categories (~> 0.0)
 
 SPEC CHECKSUMS:
   DAKeyboardControl: 45a363c85c48a7df76f21f236d9f85800e001775
   GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
   PSTAlertController: 69d94bd6b4954681700f43ab32e99727364e4ef7
-  Reveal-iOS-SDK: 74a39b426dbc915962704ed24f43ee32ae7797f9
-  TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
+  Reveal-iOS-SDK: 7ee5e9b37ef13dcd93ae1736c1b72c7c650da3e3
+  TTTAttributedLabel: 71843ac4178e1ebd6b0950b54325146726a124ae
   UIImage-Categories: 99245612a4725173db4f0a9ed8ba9dbe2a1e0b4f
 
 COCOAPODS: 0.36.0.beta.1

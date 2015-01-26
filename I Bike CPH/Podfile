@@ -7,8 +7,8 @@ link_with 'I Bike CPH', 'CykelPlanen'
 inhibit_all_warnings!
 
 pod 'GoogleAnalytics-iOS-SDK', '~>3.10'
-pod 'TTTAttributedLabel', '~>1.10'
-pod 'DAKeyboardControl', '~>2.0'
-pod 'UIImage-Categories'
+pod 'TTTAttributedLabel', '~>1.13'
+pod 'DAKeyboardControl', '~>2.4'
+pod 'UIImage-Categories', '~>0.0'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'PSTAlertController', '~>1.1'

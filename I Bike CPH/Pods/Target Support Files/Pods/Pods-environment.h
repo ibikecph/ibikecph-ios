@@ -33,7 +33,7 @@
 // TTTAttributedLabel
 #define COCOAPODS_POD_AVAILABLE_TTTAttributedLabel
 #define COCOAPODS_VERSION_MAJOR_TTTAttributedLabel 1
-#define COCOAPODS_VERSION_MINOR_TTTAttributedLabel 10
+#define COCOAPODS_VERSION_MINOR_TTTAttributedLabel 13
 #define COCOAPODS_VERSION_PATCH_TTTAttributedLabel 1
 
 // UIImage-Categories
@@ -49,6 +49,6 @@
   #define COCOAPODS_POD_AVAILABLE_Reveal_iOS_SDK
   #define COCOAPODS_VERSION_MAJOR_Reveal_iOS_SDK 1
   #define COCOAPODS_VERSION_MINOR_Reveal_iOS_SDK 0
-  #define COCOAPODS_VERSION_PATCH_Reveal_iOS_SDK 6
+  #define COCOAPODS_VERSION_PATCH_Reveal_iOS_SDK 7
 
 #endif
