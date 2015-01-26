@@ -47,13 +47,6 @@ class VoicePreferencesViewController: UIViewController {
                 }),
             ]
         ),
-        SectionViewModel(title: nil, footer: SMTranslation.decodeString("Vælg \"oplæs kun ved ruteafvigelse\" hvis du kun vil notificeres hvis du afviger fra den planlagte rute."), items:
-            [
-                VoiceItem(title: SMTranslation.decodeString("favorites"), iconImageName: "voice", action: { voiceViewController in
-                    
-                }),
-            ]
-        )
     ]
     
     

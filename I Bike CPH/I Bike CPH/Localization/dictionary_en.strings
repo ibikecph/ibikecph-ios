@@ -264,3 +264,6 @@
 "vehicle_2" = "Walk";
 "vehicle_3" = "Ferry";
 "vehicle_4" = "Train";
+
+"voice_option" = "Voice guidance";
+"voice_option_detail" = "Voice guidance gives you the option to... Remember to obey the rules of traffic.";
