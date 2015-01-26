@@ -1,5 +1,5 @@
 //
-//  MenuTableViewCell.swift
+//  IconLabelTableViewCell.swift
 //  I Bike CPH
 //
 //  Created by Tobias Due Munk on 08/12/14.

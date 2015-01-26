@@ -319,3 +319,6 @@
 "vehicle_2" = "Gå";
 "vehicle_3" = "Færge";
 "vehicle_4" = "Tog";
+
+"voice_option" = "Oplæs rute";
+"voice_option_detail" = "Stemme guide giver dig mulighed for at få oplæst ruten. Husk at overholde færdselsreglerne.";

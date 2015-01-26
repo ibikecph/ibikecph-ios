@@ -8,13 +8,12 @@
 
 import UIKit
 
-
-struct SectionViewModel {
+private struct SectionViewModel {
     let title: String? = nil
     let items: [MenuItem]
 }
 
-struct MenuItem {
+private struct MenuItem {
     let title: String
     let iconImageName: String
     let action: MenuViewController -> ()
@@ -26,7 +25,7 @@ class MenuViewController: UIViewController {
     
     let cellID = "MenuCellID"
 
-    let sections = [
+    private let sections = [
         SectionViewModel(title: nil, items:
             [
                 MenuItem(title: SMTranslation.decodeString("favorites"), iconImageName: "favorite", action: { menuViewController in
@@ -59,7 +58,7 @@ class MenuViewController: UIViewController {
                 MenuItem(title: SMTranslation.decodeString("bike"), iconImageName: "bike", action: { menuViewController in
                     menuViewController.performSegueWithIdentifier("menuToBike", sender: menuViewController)
                 }),
-                MenuItem(title: SMTranslation.decodeString("voice"), iconImageName: "", action: { menuViewController in
+                MenuItem(title: SMTranslation.decodeString("voice"), iconImageName: "voice", action: { menuViewController in
                     menuViewController.performSegueWithIdentifier("menuToVoice", sender: menuViewController)
                 }),
                 MenuItem(title: SMTranslation.decodeString("speedguide"), iconImageName: "", action: { menuViewController in

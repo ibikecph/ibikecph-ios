@@ -13,7 +13,7 @@ DEPENDENCIES:
   - GoogleAnalytics-iOS-SDK (~> 3.10)
   - PSTAlertController (~> 1.1)
   - Reveal-iOS-SDK
-  - TTTAttributedLabel (~> 1.10)
+  - TTTAttributedLabel (~> 1.13)
   - UIImage-Categories (~> 0.0)
 
 SPEC CHECKSUMS:
