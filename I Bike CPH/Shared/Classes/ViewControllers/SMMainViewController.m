@@ -94,13 +94,18 @@
     
     [SMLocationManager instance];
     
-    [self.mapView setTileSource:TILE_SOURCE];
-    [self.mapView setDelegate:self];
-    [self.mapView setMaxZoom:MAX_MAP_ZOOM];
-
-    self.mapView.userTrackingMode = RMUserTrackingModeFollow;
-    [self.mapView setZoom:16];
-    [self.mapView setEnableBouncing:TRUE];
+    self.mapView.tileSource = TILE_SOURCE;
+    self.mapView.delegate = self;
+    self.mapView.maxZoom = MAX_MAP_ZOOM;
+    self.mapView.enableBouncing = YES;
+    
+    if ([SMLocationManager instance].lastValidLocation) {
+        self.mapView.centerCoordinate = [SMLocationManager instance].lastValidLocation.coordinate;
+        self.mapView.zoom = DEFAULT_MAP_ZOOM;
+    } else {
+        self.mapView.centerCoordinate = INIT_COORDINATE;
+        self.mapView.zoom = INIT_ZOOM_LEVEL;
+    }
     
     // Load overlays
     if (self.appDelegate.mapOverlays == nil) {
@@ -109,28 +114,12 @@
     [self.appDelegate.mapOverlays useMapView:self.mapView];
     [self.appDelegate.mapOverlays loadMarkers];
     
-//    [self.centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:self.menuButton];
-//    [self.centerView addPullView:self.blockingView];
-
-    // TODO: From CykelPlanen
-//    [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:overlayMenuBtn];
-//    
-//    [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:overlayMenuBtn];
-//
-//    UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapMenuBtn:)];
-//    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanMenuBtn:)];
-//    [menuBtn addGestureRecognizer:singleTap];
-//    [menuBtn addGestureRecognizer:panGesture];
-//    
-//    UITapGestureRecognizer* singleTapOverlayMenu = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapOverlayMenuBtn:)];
-//    UIPanGestureRecognizer* panGestureOverlayMenu = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanOverlayMenuBtn:)];
-//    [overlayMenuBtn addGestureRecognizer:singleTapOverlayMenu];
-//    [overlayMenuBtn addGestureRecognizer:panGestureOverlayMenu];
-    
     if([SMTransportation instance].dataLoaded){
         [self loadLastRoute];
     }
 }
+
+
 
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -147,7 +136,7 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
+    self.mapView.userTrackingMode = RMUserTrackingModeNone;
 
     if(_loadStationsView){
         [self.loadStationsView.activityIndicatorView stopAnimating];
@@ -163,9 +152,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [SMUser user].tripRoute = nil;
-    [SMUser user].route = nil;
+
+    // TODO: CykelPlanen
+//    [SMUser user].tripRoute = nil;
+//    [SMUser user].route = nil;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLoadTransformationData:) name:NOTIFICATION_DID_PARSE_DATA_KEY object:nil];
     if(![SMTransportation instance].dataLoaded){
@@ -258,8 +248,6 @@
         [r setAuxParam:d[@"destination"]];
         [r findNearestPointForStart:cStart andEnd:cEnd];                
     }
-    
-    [self.mapView setUserTrackingMode:RMUserTrackingModeFollow];
 }
 
 - (void)longSingleTapOnMap:(RMMapView *)map at:(CGPoint)point {
@@ -417,7 +405,7 @@
 }
 
 - (void)trackingOn {
-    [self.mapView setUserTrackingMode:RMUserTrackingModeFollow];
+    self.mapView.userTrackingMode = RMUserTrackingModeFollow;
 }
 
 - (IBAction)trackUser:(id)sender {
@@ -425,7 +413,7 @@
         debugLog(@"Warning: trackUser button state was invalid: 0x%0x", self.buttonTrackUser.gpsTrackState);
     }
 
-    [self.mapView setUserTrackingMode:RMUserTrackingModeFollow];
+    self.mapView.userTrackingMode = RMUserTrackingModeFollow;
     if ([SMLocationManager instance].hasValidLocation) {
         [self.mapView setCenterCoordinate:[SMLocationManager instance].lastValidLocation.coordinate];
     }

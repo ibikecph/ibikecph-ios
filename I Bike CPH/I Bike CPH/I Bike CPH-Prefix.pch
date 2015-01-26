@@ -20,6 +20,9 @@
 
 #define API_LOCALE @{@"service" : @"settings", @"transferMethod" : @"GET", @"headers" : API_DEFAULT_HEADERS}
 
+#define INIT_COORDINATE CLLocationCoordinate2DMake(55.688, 12.559)
+#define INIT_ZOOM_LEVEL 11.28
+
 /*
  * System Versioning Preprocessor Macros
  */

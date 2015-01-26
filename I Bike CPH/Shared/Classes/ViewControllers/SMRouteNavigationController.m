@@ -116,23 +116,19 @@ typedef enum {
     [SMLocationManager instance];
 
     self.mapView.contentScaleFactor = 0.5;
+    self.mapView.tileSource = TILE_SOURCE;
+    self.mapView.delegate = self;
+    self.mapView.maxZoom = MAX_MAP_ZOOM;
+    self.mapView.userTrackingMode = RMUserTrackingModeNone;
+    self.mapView.triggerUpdateOnHeadingChange = NO;
+    self.mapView.displayHeadingCalibration = NO;
+    self.mapView.enableBouncing = YES;
+    self.mapView.routingDelegate = nil;
     
-    [self.mapView setTileSource:TILE_SOURCE];
-    [self.mapView setDelegate:self];
-    [self.mapView setMaxZoom:MAX_MAP_ZOOM];
-
     [self setDirectionsState:directionsHidden];
     
-    [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
-    [self.mapView setTriggerUpdateOnHeadingChange:NO];
-    [self.mapView setDisplayHeadingCalibration:NO];
-    [self.mapView setEnableBouncing:NO];
-    [self.mapView setRoutingDelegate:nil];
-    
-    [self.mapView setZoom:DEFAULT_MAP_ZOOM];
-    
-    [labelTimeLeft setText:@""];
-    [labelDistanceLeft setText:@""];
+    labelTimeLeft.text = @"";
+    labelDistanceLeft.text = @"";
     
     SMDirectionsFooter * v = [SMDirectionsFooter getFromNib];
     [v.label setText:translateString(@"ride_report_a_problem")];
@@ -154,7 +150,9 @@ typedef enum {
     [self.appDelegate.mapOverlays useMapView:self.mapView];
     [self.appDelegate.mapOverlays loadMarkers];
 
+#if defined(CYKEL_PLANEN)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStationsFetched:) name:NOTIFICATION_STATIONS_FETCHED object:nil];
+#endif
 }
 
 -(void)onStationsFetched:(NSNotification*)notification{}
@@ -184,33 +182,8 @@ typedef enum {
     [self addObserver:self forKeyPath:@"currentlyRouting" options:0 context:nil];
     [swipableView addObserver:self forKeyPath:@"hidden" options:0 context:nil];
     [self.mapFade addObserver:self forKeyPath:@"frame" options:0 context:nil];
-    
-    [self.mapView setTileSource:TILE_SOURCE];
-    [self.mapView setDelegate:self];
-    [self.mapView setMaxZoom:MAX_MAP_ZOOM];
-    
-    self.mapView.userTrackingMode = RMUserTrackingModeFollow;
-    [self.mapView setZoom:16];
-    [self.mapView setEnableBouncing:TRUE];
-    
-    [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
-    
+   
     [self.mapView rotateMap:0.0];
-    
-    [centerView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
-    
-    CGRect rect= self.mapFade.frame;
-    rect.size.height= 0;
-    self.mapFade.frame= rect;
-    
-    [self.mapView setZoom:self.mapView.zoom+0.0001];
-    [self mapViewRegionDidChange:self.mapView];
-    
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.mapView setZoom:self.mapView.zoom+0.0001];
-    });
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -332,10 +305,6 @@ typedef enum {
     if (![SMAnalytics trackEventWithCategory:@"Route" withAction:@"Overview" withLabel:self.destination withValue:0]) {
         debugLog(@"error in trackEvent");
     }
-    
-    CGRect fr = self.mapFade.frame;
-    fr.size.height = 0.0f;
-    self.mapFade.frame = fr;
     
     [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
 //    [self.mpView setShowsUserLocation:YES];
