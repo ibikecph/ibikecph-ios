@@ -24,6 +24,8 @@
 		4E392ADC1A308DBE0076BA86 /* smroute_settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD71A308DBE0076BA86 /* smroute_settings.plist */; };
 		4E392ADD1A308DBE0076BA86 /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD81A308DBE0076BA86 /* smroute_settings_private.plist */; };
 		4E392ADE1A308DBE0076BA86 /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E392AD81A308DBE0076BA86 /* smroute_settings_private.plist */; };
+		4E3A7EF61A7793980020A8B4 /* Speak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A7EF51A7793980020A8B4 /* Speak.swift */; };
+		4E3A7EF71A7793980020A8B4 /* Speak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A7EF51A7793980020A8B4 /* Speak.swift */; };
 		4E3C3A871A39DEFC00C79E52 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C3A861A39DEFC00C79E52 /* FavoriteListViewController.swift */; };
 		4E3C3A881A39DEFC00C79E52 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C3A861A39DEFC00C79E52 /* FavoriteListViewController.swift */; };
 		4E3C3A8A1A39E80300C79E52 /* SharedImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */; };
@@ -1425,6 +1427,7 @@
 		4E392AD61A308DBE0076BA86 /* routeme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = routeme.plist; sourceTree = "<group>"; };
 		4E392AD71A308DBE0076BA86 /* smroute_settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings.plist; sourceTree = "<group>"; };
 		4E392AD81A308DBE0076BA86 /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
+		4E3A7EF51A7793980020A8B4 /* Speak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speak.swift; sourceTree = "<group>"; };
 		4E3C3A861A39DEFC00C79E52 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedImages.xcassets; sourceTree = "<group>"; };
 		4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -2892,6 +2895,7 @@
 				4E3867801A430A0E0018AC5B /* FacebookHandler.swift */,
 				4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */,
 				4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */,
+				4E3A7EF51A7793980020A8B4 /* Speak.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -4635,6 +4639,9 @@
 					4EE05F491A10EBFA00DE4226 = {
 						CreatedOnToolsVersion = 6.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
@@ -4647,6 +4654,9 @@
 					4EE05F781A10EDE700DE4226 = {
 						CreatedOnToolsVersion = 6.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
@@ -5908,6 +5918,7 @@
 				4E23D6DC1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */,
 				4EC56E911A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */,
 				4EC56ED71A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
+				4E3A7EF61A7793980020A8B4 /* Speak.swift in Sources */,
 				4E55A0241A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */,
 				4E59820E1A24AC1200A40484 /* FavoriteItem.swift in Sources */,
 				4EE06CD11A11134C00DE4226 /* SMGeocoder.m in Sources */,
@@ -6128,6 +6139,7 @@
 				4EE06C521A10FC5600DE4226 /* SMUser.m in Sources */,
 				4EBB7B4C1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */,
 				4EE06C441A10FC5600DE4226 /* SMRouteTransportationInfo.m in Sources */,
+				4E3A7EF71A7793980020A8B4 /* Speak.swift in Sources */,
 				4EE06CD81A11134C00DE4226 /* SMNearbyPlaces.m in Sources */,
 				4EC56E4F1A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */,
 				4EE06F041A112F6D00DE4226 /* SMAddressPickerView.m in Sources */,
