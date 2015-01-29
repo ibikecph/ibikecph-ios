@@ -119,11 +119,12 @@ typedef enum {
     self.mapView.tileSource = TILE_SOURCE;
     self.mapView.delegate = self;
     self.mapView.maxZoom = MAX_MAP_ZOOM;
-    self.mapView.userTrackingMode = RMUserTrackingModeNone;
     self.mapView.triggerUpdateOnHeadingChange = NO;
     self.mapView.displayHeadingCalibration = NO;
     self.mapView.enableBouncing = YES;
     self.mapView.routingDelegate = nil;
+    self.mapView.userTrackingMode = RMUserTrackingModeFollow;
+    self.mapView.showsUserLocation = YES;
     
     [self setDirectionsState:directionsHidden];
     
@@ -306,10 +307,7 @@ typedef enum {
         debugLog(@"error in trackEvent");
     }
     
-    [self.mapView setUserTrackingMode:RMUserTrackingModeNone];
-//    [self.mpView setShowsUserLocation:YES];
-
-
+    self.mapView.userTrackingMode = RMUserTrackingModeNone;
 }
 
 - (void)zoomOut:(NSDictionary*)coordinates {

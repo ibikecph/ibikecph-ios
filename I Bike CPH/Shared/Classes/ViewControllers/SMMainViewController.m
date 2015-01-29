@@ -99,6 +99,9 @@
     self.mapView.maxZoom = MAX_MAP_ZOOM;
     self.mapView.enableBouncing = YES;
     
+    self.mapView.userTrackingMode = RMUserTrackingModeFollow;
+    self.mapView.showsUserLocation = YES;
+    
     if ([SMLocationManager instance].lastValidLocation) {
         self.mapView.centerCoordinate = [SMLocationManager instance].lastValidLocation.coordinate;
         self.mapView.zoom = DEFAULT_MAP_ZOOM;
@@ -106,6 +109,7 @@
         self.mapView.centerCoordinate = INIT_COORDINATE;
         self.mapView.zoom = INIT_ZOOM_LEVEL;
     }
+    
     
     // Load overlays
     if (self.appDelegate.mapOverlays == nil) {
@@ -117,6 +121,34 @@
     if([SMTransportation instance].dataLoaded){
         [self loadLastRoute];
     }
+    
+    
+    Speak *speak = [Speak new];
+    [speak speak:@"Lorem ipsum"];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        Speak *speak = [Speak new];
+        speak.language = @"da-DK";
+        [speak speak:@"Lorem ipsum"];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            Speak *speak = [Speak new];
+            speak.language = @"en-GB";
+            [speak speak:@"Lorem ipsum"];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                Speak *speak = [Speak new];
+                speak.language = @"da-DK";
+                [speak speak:@"Lorem ipsum"];
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    Speak *speak = [Speak new];
+                    speak.language = @"en-GB";
+                    [speak speak:@"Lorem ipsum"];
+                });
+            });
+        });
+    });
 }
 
 
@@ -168,6 +200,12 @@
     if (!observersAdded) {
         observersAdded = YES;
         [self.mapView addObserver:self forKeyPath:@"userTrackingMode" options:0 context:nil];
+    }
+    
+    self.mapView.userTrackingMode = RMUserTrackingModeFollow;
+    self.mapView.showsUserLocation = YES;
+    if ([SMLocationManager instance].hasValidLocation) {
+        [self.mapView setCenterCoordinate:[SMLocationManager instance].lastValidLocation.coordinate];
     }
 }
 
