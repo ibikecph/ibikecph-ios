@@ -4,6 +4,7 @@
 
 
 #import "SMRouteConsts.h"
+//#import "SMRoute.h"
 #import "SMLocationManager.h"
 #import "SMAddressParser.h"
 #import "SMRouteUtils.h"
@@ -14,3 +15,11 @@
 #import "SMRouteSettings.h"
 #import "SMMapOverlays.h"
 #import "SMAppDelegate.h"
+
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
+
+#define MOCKITO_SHORTHAND
+#import <OCMockito/OCMockito.h>
+
+#import "SMRoute.h"

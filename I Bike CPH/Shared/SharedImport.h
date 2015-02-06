@@ -43,7 +43,7 @@
 #import "SMNetworkErrorView.h"
 
 #define API_ADDRESS @"www.ibikecph.dk"
-//#define API_SERVER @"http://ibikecph-staging.herokuapp.com/api"
+//#define API_SERVER @"https://ibikecph-staging.herokuapp.com/api"
 #define API_SERVER @"https://www.ibikecph.dk/api"
 
 #define translateString(txt) [SMTranslation decodeString:(txt)]

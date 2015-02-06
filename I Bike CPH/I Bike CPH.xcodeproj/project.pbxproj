@@ -214,6 +214,10 @@
 		4EC56F011A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */; };
 		4EDC4DD31A7A540A00FD37C2 /* nrbrogade-vestergade.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */; };
 		4EDC4DD41A7A540A00FD37C2 /* nrbrogade-vestergade.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */; };
+		4EDC4DDF1A7A773300FD37C2 /* SMRoute_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC4DDE1A7A773300FD37C2 /* SMRoute_Tests.m */; };
+		4EDC4DE01A7A773300FD37C2 /* SMRoute_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC4DDE1A7A773300FD37C2 /* SMRoute_Tests.m */; };
+		4EDC4DE81A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */; };
+		4EDC4DE91A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */; };
 		4EE05F501A10EBFA00DE4226 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F4F1A10EBFA00DE4226 /* main.m */; };
 		4EE05F5E1A10EBFA00DE4226 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */; };
 		4EE05F6A1A10EBFA00DE4226 /* I_Bike_CPHTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F691A10EBFA00DE4226 /* I_Bike_CPHTests.m */; };
@@ -1379,6 +1383,7 @@
 		4EFA28101A2BA1330050450C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFA280F1A2BA1330050450C /* Main.storyboard */; };
 		4EFA28111A2BA1330050450C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFA280F1A2BA1330050450C /* Main.storyboard */; };
 		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
+		8C6742802698F66F487D25EE /* libPods-CykelPlanenTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1587DF3214C490C8E81B6E81 /* libPods-CykelPlanenTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1420,6 +1425,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1587DF3214C490C8E81B6E81 /* libPods-CykelPlanenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CykelPlanenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CCE7D9C77A2B1D31F1CF669 /* Pods-CykelPlanenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E23D6DA1A648E56008998CB /* SMAccountFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountFacebookViewController.h; sourceTree = "<group>"; };
 		4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountFacebookViewController.m; sourceTree = "<group>"; };
 		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
@@ -1572,6 +1579,8 @@
 		4EC56ECD1A2A3AAD00B696B4 /* SMTranslatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTranslatedViewController.h; sourceTree = "<group>"; };
 		4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTranslatedViewController.m; sourceTree = "<group>"; };
 		4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "nrbrogade-vestergade.gpx"; sourceTree = "<group>"; };
+		4EDC4DDE1A7A773300FD37C2 /* SMRoute_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRoute_Tests.m; sourceTree = "<group>"; };
+		4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMRoute_Tests.swift; sourceTree = "<group>"; };
 		4EE05F4A1A10EBFA00DE4226 /* I Bike CPH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I Bike CPH.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EE05F4E1A10EBFA00DE4226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EE05F4F1A10EBFA00DE4226 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -2754,6 +2763,7 @@
 		4EFA280B1A2B871D0050450C /* SMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainViewController.h; sourceTree = "<group>"; };
 		4EFA280C1A2B871D0050450C /* SMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainViewController.m; sourceTree = "<group>"; };
 		4EFA280F1A2BA1330050450C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C40C9EBA1FFAC0ACBC43C5B1 /* Pods-CykelPlanenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.release.xcconfig"; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBE17F41EBD064F1BEE38068 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2791,6 +2801,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C6742802698F66F487D25EE /* libPods-CykelPlanenTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2858,6 +2869,8 @@
 			children = (
 				4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */,
 				4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */,
+				4EDC4DDE1A7A773300FD37C2 /* SMRoute_Tests.m */,
+				4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -4539,6 +4552,7 @@
 			children = (
 				4EE06DF41A1116CF00DE4226 /* MapKit.framework */,
 				FBE17F41EBD064F1BEE38068 /* libPods.a */,
+				1587DF3214C490C8E81B6E81 /* libPods-CykelPlanenTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -4548,6 +4562,8 @@
 			children = (
 				D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */,
 				EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */,
+				1CCE7D9C77A2B1D31F1CF669 /* Pods-CykelPlanenTests.debug.xcconfig */,
+				C40C9EBA1FFAC0ACBC43C5B1 /* Pods-CykelPlanenTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -4617,9 +4633,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4EE05F9C1A10EDE700DE4226 /* Build configuration list for PBXNativeTarget "CykelPlanenTests" */;
 			buildPhases = (
+				D060BD536C924C10FE0EE259 /* Check Pods Manifest.lock */,
 				4EE05F8D1A10EDE700DE4226 /* Sources */,
 				4EE05F8E1A10EDE700DE4226 /* Frameworks */,
 				4EE05F8F1A10EDE700DE4226 /* Resources */,
+				9851AACE0BBCC7D790F8E83A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5878,6 +5896,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9851AACE0BBCC7D790F8E83A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D060BD536C924C10FE0EE259 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		E30B861333E8242813AA62CD /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -6029,8 +6077,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EDC4DDF1A7A773300FD37C2 /* SMRoute_Tests.m in Sources */,
 				4EE05F6A1A10EBFA00DE4226 /* I_Bike_CPHTests.m in Sources */,
 				4E6BD7C71A56FE320049F1DB /* AddressParser_Tests.swift in Sources */,
+				4EDC4DE81A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */,
 				4E7BA9E51A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */,
 				4E5982281A24AC4100A40484 /* SwiftyJSON.swift in Sources */,
 			);
@@ -6197,6 +6247,8 @@
 				4EE05F981A10EDE700DE4226 /* CykelPlanenTests.m in Sources */,
 				4E7BA9E61A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */,
 				4E5982291A24AC4100A40484 /* SwiftyJSON.swift in Sources */,
+				4EDC4DE01A7A773300FD37C2 /* SMRoute_Tests.m in Sources */,
+				4EDC4DE91A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6517,6 +6569,7 @@
 		};
 		4EE05F9D1A10EDE700DE4226 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CCE7D9C77A2B1D31F1CF669 /* Pods-CykelPlanenTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -6539,6 +6592,7 @@
 		};
 		4EE05F9E1A10EDE700DE4226 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C40C9EBA1FFAC0ACBC43C5B1 /* Pods-CykelPlanenTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;

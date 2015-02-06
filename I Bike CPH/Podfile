@@ -12,3 +12,9 @@ pod 'DAKeyboardControl', '~>2.4'
 pod 'UIImage-Categories', '~>0.0'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'PSTAlertController', '~>1.1'
+
+
+
+target :CykelPlanenTests, :exclusive => true do
+    pod 'OCMockito', '~> 1.0'
+end

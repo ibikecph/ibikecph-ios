@@ -3,6 +3,9 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.10):
     - GoogleAnalytics-iOS-SDK/Core (= 3.10)
   - GoogleAnalytics-iOS-SDK/Core (3.10)
+  - OCHamcrest (4.1.1)
+  - OCMockito (1.4.0):
+    - OCHamcrest (~> 4.0)
   - PSTAlertController (1.1.0)
   - Reveal-iOS-SDK (1.0.7)
   - TTTAttributedLabel (1.13.1)
@@ -11,6 +14,7 @@ PODS:
 DEPENDENCIES:
   - DAKeyboardControl (~> 2.4)
   - GoogleAnalytics-iOS-SDK (~> 3.10)
+  - OCMockito (~> 1.0)
   - PSTAlertController (~> 1.1)
   - Reveal-iOS-SDK
   - TTTAttributedLabel (~> 1.13)
@@ -19,9 +23,11 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   DAKeyboardControl: 45a363c85c48a7df76f21f236d9f85800e001775
   GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
+  OCHamcrest: af1c7c5ea345de69ea6c9c2958f65f3044e5c420
+  OCMockito: 991936bb775cc4c27f063d38f5e17b9161fbd21c
   PSTAlertController: 69d94bd6b4954681700f43ab32e99727364e4ef7
   Reveal-iOS-SDK: 7ee5e9b37ef13dcd93ae1736c1b72c7c650da3e3
   TTTAttributedLabel: 71843ac4178e1ebd6b0950b54325146726a124ae
   UIImage-Categories: 99245612a4725173db4f0a9ed8ba9dbe2a1e0b4f
 
-COCOAPODS: 0.36.0.beta.1
+COCOAPODS: 0.36.0.beta.2

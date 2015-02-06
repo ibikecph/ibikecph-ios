@@ -39,7 +39,7 @@ class FoursquareItem_Tests: XCTestCase {
         
         XCTAssert(foursquareItem.name == "Frederiksberg Rådhusplads", "Wrong name")
         XCTAssert(foursquareItem.address == "Smallegade 1", "Wrong address")
-        XCTAssert(foursquareItem.street == "Smallegade 1", "Wrong street")
+        XCTAssert(foursquareItem.street == "Smallegade", "Wrong street")
         XCTAssert(foursquareItem.city == "Frederiksberg", "Wrong city")
         XCTAssert(foursquareItem.country == "Denmark", "Wrong address")
         XCTAssert(foursquareItem.zip == "2000", "Wrong zip code")
