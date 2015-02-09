@@ -33,7 +33,7 @@ class MenuViewController: UIViewController {
         let reminderItem = MenuItem(title: SMTranslation.decodeString("reminder_title"), iconImageName: "Notifications", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
         })
-        let profileItem = MenuItem(title: SMTranslation.decodeString(UserHelper.loggedIn() ? "account" : "account_login"), iconImageName: "User", action: { menuViewController in
+        let profileItem = MenuItem(title: SMTranslation.decodeString(UserHelper.loggedIn() ? "account" : "profile"), iconImageName: "User", action: { menuViewController in
             if UserHelper.loggedIn() {
                 if UserHelper.isFacebook() {
                     menuViewController.performSegueWithIdentifier("menuToAccountFacebook", sender: menuViewController)
@@ -47,7 +47,7 @@ class MenuViewController: UIViewController {
         let overlayItem = MenuItem(title: SMTranslation.decodeString("map_overlays"), iconImageName: "Kortlag", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToOverlays", sender: menuViewController)
         })
-        let bikeItem = MenuItem(title: SMTranslation.decodeString("bike"), iconImageName: "Route type", action: { menuViewController in
+        let bikeItem = MenuItem(title: SMTranslation.decodeString("bike_type"), iconImageName: "Route type", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToBike", sender: menuViewController)
         })
         let voiceItem = MenuItem(title: SMTranslation.decodeString("voice"), iconImageName: "Speaker loud", action: { menuViewController in

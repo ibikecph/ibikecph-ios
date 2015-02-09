@@ -6,6 +6,10 @@
 "about" = "Om CykelPlanen";
 "contacts" = "Kontakter";
 "favorites" = "Favoritter";
+"map_overlays" = "Kortlag";
+"voice" = "Oplæs rute";
+"route_type" = "Rutetype";
+"profile" = "Min profil";
 
 "direction_0" = "";
 "direction_1" = "Fortsæt ad";

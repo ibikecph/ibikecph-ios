@@ -16,6 +16,10 @@ Copenhagen. All rights reserved.
 "about" = "About CykelPlanen";
 "contacts" = "Contacts";
 "favorites" = "Favorites";
+"map_overlays" = "Map Overlays";
+"voice" = "Voice";
+"route_type" = "Route Type";
+"profile" = "My Profile";
 
 "direction_0" = "";
 "direction_1" = "Continue on";
@@ -243,7 +247,7 @@ Copenhagen. All rights reserved.
 //"favorites_text" = "You can save your favorite destinations in the app so it's easy to find your way home, to work or school.";
 //"favorites_home_placeholder" = "Home address ...";
 //"favorites_work_placeholder" = "Work address ...";
-"log_in" = "Log ind";
+"log_in" = "Log In";
 
 "add_favorite" = "Add a favorite";
 "cell_add_favorite" = "Add new favorite";

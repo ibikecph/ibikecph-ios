@@ -3,9 +3,13 @@
 "tomorrow" = "I morgen";
 "accounts" = "Konto";
 "settings" = "Indstillinger";
-"about" = "OM I BIKE CPH";
+"about" = "Om I Bike CPH";
 "contacts" = "Kontakter";
-"favorites" = "FAVORITTER";
+"favorites" = "Favoritter";
+"map_overlays" = "Kortlag";
+"voice" = "Oplæs rute";
+"route_type" = "Rutetype";
+"profile" = "Min profil";
 
 "direction_0" = "";
 "direction_1" = "Fortsæt ad";
@@ -166,7 +170,6 @@
 "register_email_placeholder" = "Email";
 "register_password_placeholder" = "Adgangskode";
 "register_password_repeat_placeholder" = "Gentag adgangskode";
-"login" = "Log ind";
 "choose_image_source" = "Vælg profilbillede";
 "image_source_camera" = "Fra kamera";
 "image_source_library" = "Fra bibliotek";
