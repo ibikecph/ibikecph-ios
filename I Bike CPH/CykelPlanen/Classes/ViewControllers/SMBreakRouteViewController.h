@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#if defined(CYKEL_PLANEN)
 #import "SMTripRoute.h"
 #import "SMStationPickerView.h"
 #import "SMAddressPickerView.h"
+#endif
 
 /**
  * View controller for breaking a route. Has destination address button, source address button, trip route, full route, source station, destination station, source name, destination name, source address, destinaton address
@@ -18,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
 
+#if defined(CYKEL_PLANEN)
 @property(nonatomic, strong) SMTripRoute* tripRoute;
 @property(nonatomic, strong) SMRoute* fullRoute;
 @property(nonatomic, strong) SMStationInfo* sourceStation;
@@ -28,5 +32,6 @@
 
 @property(nonatomic, strong) NSString* sourceAddress;
 @property(nonatomic, strong) NSString* destinationAddress;
+#endif
 
 @end

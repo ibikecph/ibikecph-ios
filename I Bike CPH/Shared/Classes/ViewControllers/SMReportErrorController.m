@@ -10,7 +10,6 @@
 #import "SMRadioCheckedCell.h"
 #import "SMRadioUncheckedCell.h"
 #import "DAKeyboardControl.h"
-#import "SMReportMailCell.h"
 
 @interface SMReportErrorController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, SMAPIRequestDelegate>
 @property (nonatomic, strong) NSString * reportedSegment;
@@ -261,10 +260,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1) {
-        return [SMReportMailCell getHeight];
-    }
-    
     if (indexPath.row == currentSelection) {
         return [SMRadioCheckedCell getHeight];
     } else {

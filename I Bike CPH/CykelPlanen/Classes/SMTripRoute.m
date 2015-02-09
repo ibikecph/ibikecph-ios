@@ -131,63 +131,63 @@
 #pragma mark child notifications
 
 
--(CLLocation *)start{
+- (CLLocation *)start {
     return [self.fullRoute getStartLocation];
 }
 
--(CLLocation *)end{
+- (CLLocation *)end {
     return [self.fullRoute getEndLocation];
 }
 
 #pragma mark - getters&setters
 
--(void)setBrokenRouteInfo:(SMBrokenRouteInfo *)pBrokenRouteInfo{
-    _brokenRouteInfo= pBrokenRouteInfo;
+- (void)setBrokenRouteInfo:(SMBrokenRouteInfo *)pBrokenRouteInfo {
+    _brokenRouteInfo = pBrokenRouteInfo;
     
-    if(pBrokenRouteInfo.sourceStation && pBrokenRouteInfo){
+    if (pBrokenRouteInfo.sourceStation && pBrokenRouteInfo) {
         [self performSelectorOnMainThread:@selector(createSplitRoutes) withObject:nil waitUntilDone:NO];
     }
 }
 
--(void)createSplitRoutes{
+- (void)createSplitRoutes {
     
-    SMRoute* startRoute= [[SMRoute alloc] initWithRouteStart:[self start].coordinate andEnd:self.brokenRouteInfo.sourceStation.location.coordinate andDelegate:self];
-    SMRoute* endRoute= [[SMRoute alloc] initWithRouteStart:self.brokenRouteInfo.destinationStation.location.coordinate andEnd:[self end].coordinate andDelegate:self];
+    SMRoute *startRoute = [[SMRoute alloc] initWithRouteStart:[self start].coordinate andEnd:self.brokenRouteInfo.sourceStation.location.coordinate andDelegate:self];
+    SMRoute *endRoute = [[SMRoute alloc] initWithRouteStart:self.brokenRouteInfo.destinationStation.location.coordinate andEnd:[self end].coordinate andDelegate:self];
 
-    SMRoute* transportRoute= [self newTransportationRoute];
+    SMRoute *transportRoute= [self newTransportationRoute];
     
-    self.brokenRoutes= @[startRoute, transportRoute, endRoute];
+    self.brokenRoutes = @[startRoute, transportRoute, endRoute];
 }
 
--(SMRoute*)newTransportationRoute{
+- (SMRoute *)newTransportationRoute {
     BOOL returning= NO;
-    int sourceIndex= [self.brokenRouteInfo.transportationLine.stations indexOfObject:self.brokenRouteInfo.sourceStation];
-    int destIndex= [self.brokenRouteInfo.transportationLine.stations indexOfObject:self.brokenRouteInfo.destinationStation];
-    if( sourceIndex> destIndex){
+    NSInteger sourceIndex= [self.brokenRouteInfo.transportationLine.stations indexOfObject:self.brokenRouteInfo.sourceStation];
+    NSInteger destIndex= [self.brokenRouteInfo.transportationLine.stations indexOfObject:self.brokenRouteInfo.destinationStation];
+    if (sourceIndex > destIndex) {
         returning= YES;
     }
     
-    NSMutableArray* instructions= [NSMutableArray new];
-    NSMutableArray* waypoints= [NSMutableArray new];
-    if(!returning){
-        for(int i=sourceIndex; i<=destIndex; i++){
+    NSMutableArray *instructions = [NSMutableArray new];
+    NSMutableArray *waypoints = [NSMutableArray new];
+    if (!returning) {
+        for (NSInteger i = sourceIndex; i <= destIndex; i++) {
             SMStationInfo* station= self.brokenRouteInfo.transportationLine.stations[i];
             SMTurnInstruction* turnInstruction= [self newTurnInstructionWithStation:station];
             [instructions addObject:turnInstruction];
             [waypoints addObject:station.location];
         }
-    }else{
-        for(int i=sourceIndex; i>=destIndex; i--){
-            SMStationInfo* station= self.brokenRouteInfo.transportationLine.stations[i];
-            SMTurnInstruction* turnInstruction= [self newTurnInstructionWithStation:station];
+    } else {
+        for (NSInteger i = sourceIndex; i >= destIndex; i--) {
+            SMStationInfo *station= self.brokenRouteInfo.transportationLine.stations[i];
+            SMTurnInstruction *turnInstruction= [self newTurnInstructionWithStation:station];
             [instructions addObject:turnInstruction];
             [waypoints addObject:station.location];
         }
     }
-    SMRoute* transportRoute= [[SMRoute alloc] init];
-    transportRoute.turnInstructions= instructions;
-    transportRoute.waypoints= waypoints;
-    transportRoute.routeType= SMRouteTypeTransport;
+    SMRoute *transportRoute = [[SMRoute alloc] init];
+    transportRoute.turnInstructions = instructions;
+    transportRoute.waypoints = waypoints;
+    transportRoute.routeType = SMRouteTypeTransport;
     
     return transportRoute;
 }
@@ -200,38 +200,39 @@
     return turnInstruction;
 }
 
-- (void) updateTurn:(BOOL)firstElementRemoved{}
-- (void) reachedDestination{}
-- (void) updateRoute{}
+- (void)updateTurn:(BOOL)firstElementRemoved{}
+- (void)reachedDestination{}
+- (void)updateRoute{}
 
-- (void) startRoute:(SMRoute*)route{
+- (void)startRoute:(SMRoute*)route{
 
-    for(SMRoute* route in self.brokenRoutes){
-        if(!route.waypoints){
+    for (SMRoute *route in self.brokenRoutes) {
+        if(!route.waypoints) {
             return;
         }
     }
     
-    for(SMRoute* route in self.brokenRoutes){
-        if(![route getEndLocation] || ![route getStartLocation]){
-            if([self.delegate respondsToSelector:@selector(didFailBreakingRoute:)]){
+    for (SMRoute *route in self.brokenRoutes) {
+        if (![route getEndLocation] || ![route getStartLocation]) {
+            if ([self.delegate respondsToSelector:@selector(didFailBreakingRoute:)]) {
                 [self.delegate didFailBreakingRoute:self];
                 return;
             }
         }
     }
     
-    if([self.delegate respondsToSelector:@selector(didFinishBreakingRoute:)])
+    if ([self.delegate respondsToSelector:@selector(didFinishBreakingRoute:)]) {
         [self.delegate didFinishBreakingRoute:self ];
-    
+    }
 }
-- (void) routeNotFound{
+
+- (void)routeNotFound {
     if([self.delegate respondsToSelector:@selector(didFailBreakingRoute:)] ){
         [self.delegate didFailBreakingRoute:self];
     }
-
 }
-- (void) serverError{
+
+- (void)serverError{
 
 }
 

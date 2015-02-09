@@ -42,7 +42,7 @@ class VoicePreferencesViewController: UIViewController {
     private let sections = [
         SectionViewModel(title: nil, footer: SMTranslation.decodeString("voice_option_detail"), items:
             [
-                VoiceSwitchItem(title: SMTranslation.decodeString("voice_option"), iconImageName: "voice", on: settings.voice.on, switchAction: { voiceViewController, on in
+                VoiceSwitchItem(title: SMTranslation.decodeString("voice_option"), iconImageName: "Speaker loud", on: settings.voice.on, switchAction: { voiceViewController, on in
                         settings.voice.on = on
                 }),
             ]

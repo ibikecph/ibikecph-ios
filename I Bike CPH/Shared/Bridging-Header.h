@@ -11,7 +11,9 @@
 #import "SMTranslation.h"
 #import "SMFavoritesUtil.h"
 #import "SMSearchController.h"
+#if defined(CYKEL_PLANEN)
 #import "SMReminderTableViewCell.h"
+#endif
 #import "SMRouteSettings.h"
 #import "SMMapOverlays.h"
 #import "SMAppDelegate.h"

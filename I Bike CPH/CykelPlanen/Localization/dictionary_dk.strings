@@ -6,7 +6,6 @@
 "about" = "Om CykelPlanen";
 "contacts" = "Kontakter";
 "favorites" = "Favoritter";
-"favorites_search" = "FAVORITTER";
 
 "direction_0" = "";
 "direction_1" = "Fortsæt ad";
@@ -144,7 +143,7 @@
 // these are in the storyboard
 "reminder_title" = "Påmindelser";
 "reminder_text" = "Få hjælp til at komme op på cyklen. Vælg de dage du ønsker at cykle, så hjælper vi dig med at komme igang.";
-"reminder_save_btn" = "GEM PÅMINDELSER";
+"reminder_save_btn" = "Gem påmindelser";
 "reminder_alert_text" = "Husk at tage cyklen i morgen";
 
 // Favorites
@@ -152,11 +151,11 @@
 "favorites_text" = "Nu kan du nemt og hurtigt navigere til dine foretrukne pendlerruter. Start med at tilføje din hjemme- og arbejdsadresse.";
 "favorites_home_address" = "Hjemmeadresse …";
 "favorites_work_address" = "Arbejdsadresse …";
-"favorites_save_btn" = "GEM FAVORITTER";
+"favorites_save_btn" = "Gem favoritter";
 
 // Break route
 "break_route_title" = "Knæk ruten";
-"btn_break_route" = "BREAK ROUTE";
+"btn_break_route" = "Knæk ruten";
 "break_route_text_top" = "Vidste du, at du let kan knække din pendlerrute ved at tage toget noget af vejen.";
 "break_route_text_bottom" = "Når du vælger “Knæk ruten” giver vi dig en ny rute til nærmeste S-togsstation og bringer dig frem til din endelige destination.";
 "break_route_spring" = "Afslut guide og ta’ en tur";
@@ -171,7 +170,6 @@
 "departures_at" = "Afg. kl.";
 "arrival" = "Ank.";
 "shift" = "Skift";
-"btn_skip" = "Spring over";
 "where_are_we_going" = "Ny rute";
 "ibikecph_route_planner" = "Cykelruteplanlægger";
 "Cancel" = "Fortryd";
@@ -197,76 +195,71 @@
 "cancel_picker" = "Annullere";
 "done_picker" = "Vælg";
 
-"recent_results" = "SENESTE";
-"show_more" = "VIS FLERE";
-"show_less" = "VIS MINDRE";
+"recent_results" = "Seneste";
+"show_more" = "Vis flere";
+"show_less" = "Vis mindre";
 
 "good_ride" = "Godt kørt!";
 "hope_you_had_a_good_trip" = "Vi håber du havde en god tur.";
-"back_ride" = "TILBAGE";
-"stop_ride" = "AFSLUT RUTEN";
-"ride_report_a_problem" = "RAPPORTER ET PROBLEM";
+"stop_ride" = "Aflut ruten";
+"ride_report_a_problem" = "Rapporter et problem";
 
-"login_with_fb" = "FACEBOOK LOG IND";
+"login_with_fb" = "Log ind med Facebook";
 "register_with_mail" = "Opret med email";
-"skip" = "SPRING OVER";
-"create_account" = "OPRET KONTO";
+"skip" = "Spring over";
+"create_account" = "Opret konto";
 "create_account_text" = "Ved at oprette en konto, har du muligheden for at gemme favoritter og søgninger på tværs af mobilen og ibikecph.dk ";
-
-"back_splash" = "TILBAGE";
-"register_save" = "OPRET MIG";
-"create_account" = "OPRET DIN KONTO";
-
+"register_save" = "Opret mig";
+"create_account" = "Opret din konto";
 "register_name_placeholder" = "Navn";
 "register_email_placeholder" = "Email";
 "register_password_placeholder" = "Adgangskode";
 "register_password_repeat_placeholder" = "Gentag adgangskode";
-"login" = "LOG IND";
 "choose_image_source" = "Vælg profilbillede";
 "image_source_camera" = "Fra kamera";
 "image_source_library" = "Fra bibliotek";
-"login_new_account" = "OPRET EN KONTO";
-"save_favorites" = "GEM FAVORITTER";
-"favorites_title" = "TILFØJ FAVORITTER";
+"login_new_account" = "Opret en konto";
+"save_favorites" = "Gem favoritter";
+"favorites_title" = "Tilføj favoritter";
 "favorites_text" = "Gem dine favorit destinationer i app’en så er det altid hurtigt og nemt at finde vej hjem, til arbejde eller skole.";
 "favorites_home_placeholder" = "Hjemmeadresse ...";
 "favorites_work_placeholder" = "Arbejdsadresse ...";
 "log_in" = "Log ind";
 
-"add_favorite" = "TILFØJ FAVORIT";
-"cell_add_favorite" = "TILFØJ NY FAVORIT";
-"edit_favorite" = "REDIGER";
+"add_favorite" = "Tilføj favorit";
+"cell_add_favorite" = "Tilføj ny favorit";
+"edit_favorite" = "Rediger";
 "cell_empty_favorite_text" = "Du har ingen favoritter, men du kan hurtigt tilføje en nu.";
-"save_favorite" = "GEM FAVORIT";
-"delete_favorite" = "SLET";
+"save_favorite" = "Gem favorit";
+"delete_favorite" = "Slet";
 "Home" = "Hjem";
 "Work" = "Arbejde";
 "School" = "Skole";
 "Favorite" = "Favorit";
-"back" = "TILBAGE";
-"done" = "FÆRDIG";
+"back" = "Tilbage";
+"done" = "Færdig";
 "add_favorite_name_placeholder" = "Indtast navn ...";
 "add_favorite_address_placeholder" = "Find adresse ...";
 "account" = "Min Profil";
 
-"report_send" = "SEND BESKED";
-"describe_problem" = "BESKRIV PROBLEMET";
-"logout" = "LOG UD";
+"report_send" = "Send besked";
+"describe_problem" = "Beskriv problemet";
+"logout" = "Log ud";
 
 "thank_you_for_feedback" = "Tak for din feedback";
 "feedback_text" = "Din feedback er blevet afsendt. Tak for hjælpen!\n\nDu kan deltage i opfølgning og diskussion af nye funktioner på www.ibikecph.dk/feedback.";
-"report_sent" = "FEEDBACKEN ER AFSENDT";
+"report_sent" = "Feedbacken er afsendt";
 
-"home_find_route" = "SØG RUTE";
+"home_find_route" = "Søg rute";
 
 "intro_subtitle" = "Hurtigt fra A til B";
 
 "about_text" = "CykelPlanen app’en er Region Hovedstadens mobile rutevejleder for dig, der cykler i regionen. App’en kender de gode smutveje i regionen, hvor du må cykle og finder den hurtigste rute for dig. CykelPlanen skal bidrage til at få flere pendlere i regionen til at vælge cyklen frem for bilen.\nKortet er særligt tilpasset cyklister. CykelPlanen udregner den hurtigste rute for dig. Motorveje er tonet ned, hvorimod brosten er fremhævet, så du kan slippe for rysteture. Kortet viser de anlagte supercykelstier og servicestationer. Endvidere har app’en funktionen ”knæk ruten”, som leder dig hen til nærmeste Lokalbane, S- og metrostation, hvis cykelturen bliver for lang eller cyklen går i stykker. \nApp’en anvender kortdata fra det brugerdrevne OpenStreetMap (OSM), der opdateres løbende, fx når der anlægges nye cykelstier i regionen, og brugerne skal være med til at opdatere kortet i regionen.\n\nBemærk at det er tilladt at tage cyklen gratis med i s-toget og lokalbanen (maks. 6 stk) mens det kræver en cykelbillet i metroen. Det er dog ikke tilladt at medbringe cyklen i metroen i myldretiden (kl. 7.00 – kl. 9.00 og 15.30-17.00) eller stå af eller på S-toget med cykel på Nørreport Station på hverdage (mandag-fredag) i tidsrummet kl.7- 8.30 og  kl. 15.30- 17\n\nKom godt i gang:\nDu kan vælge hvor du vil hen på to måder:\nVælg på kort: Find stedet på kortet og hold fingeren nede indtil en nål bliver sat på kortet. Den nærmeste adresse bliver nu vist nederst. Vælg ’Start’ for at beregne ruten fra din nuværende position til destinationen.\nSøg efter adresse: Klik på forstørrelsesglasset i øverste højre hjørne. Indtast adressen hvor du vil hen og klik ’Gå’. Klik derefter på ’Start’ for at beregne ruten.\nNår ruten vises kan du klikke på ’Start’ for at aktivere GPS navigation. Undervejs vil instruktioner om hvornår du skal svinge blive vist nederst. Forventet ankomsttidspunkt vises øverst til højre ud for det lille flag.\n\nVis position:\nTryk på knappen med en pil i nederste højre hjørne, for at se hvor du er på kortet. Kortet vil herefter følge din position indtil du selv manuelt flytter kortet. Funktionen er slået til, når pilen er blå.\n\nLæs mere:\nApp’en kan bl.a. også gemme favorit-steder, hvis du opretter en profil. Læs mere om kort og funktioner på www.supercykelstier.dk.\nGod tur og tak fordi du cykler!";
-"about_ibikecph_title" = "OM CYKELPLANEN";
-"delete_my_account" = "SLET MIN KONTO";
+"about_ibikecph_title" = "Om CykelPlanen";
+"delete_my_account" = "Slet min konto";
 "you_are_logged_in_as" = "Du er logget ind som";
 "edit_my_account" = "Rediger profil";
-"save_changes" = "GEM ÆNDRINGER";
+"save_changes" = "Gem ændringer";
 "account_name_placeholder" = "Navn";
 "account_email_placeholder" = "Email";
 "account_password_placeholder" = "Skriv ny adgangskode";
@@ -281,7 +274,7 @@
 "report_error_problem_not_selected" = "Vælg venligst et problem";
 "report_error_step_not_selected" = "Vælg venligst et trin i ruten";
 
-"start_route" = "START";
+"start_route" = "Start";
 
 
 "delete_account_title" = "Slet konto?";
@@ -290,12 +283,10 @@
 "account_deleted" = "Din konto er blevet slettet";
 "close" = "LUK";
 
-"account_login" = "LOG IND";
 "favorites_login" = "Du har ingen favoritter, men du kan hurtigt tilføje en, hvis du logger ind.";
 
-"fb_login_error" = "Facebook login fejl!";
+"fb_login_error" = "Facebook logind-fejl!";
 "account_is_linked_to_facebook" = "Din konto er linket til Facebook";
-"please_login" = "Du skal logge ind";
 "or" = "eller";
 
 "current_position_cant_be_destination" = "Det er ikke muligt at anvende nuværende position som destination!";

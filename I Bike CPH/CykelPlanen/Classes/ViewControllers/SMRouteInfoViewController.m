@@ -275,7 +275,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -283,12 +283,9 @@
         case 0:
             return 132;
         case 1:
-        case 3:
-        case 5:
-            return 40;
         case 2:
-        case 4:
-            return 5; //29;
+        case 3:
+            return 40;
     }
     return 44;
 }
@@ -331,8 +328,8 @@
             break;
         }
         case 1:
+        case 2:
         case 3:
-        case 5:
         {
             cell= [tableView dequeueReusableCellWithIdentifier:@"CellData"];
             SMRouteTimeInfo* routeTimeInfo;
@@ -358,28 +355,21 @@
             [cell.contentView setBackgroundColor:bgColor];
             break;
         }
-        case 2:
-        case 4:
-        {
-            cell= [tableView dequeueReusableCellWithIdentifier:@"CellText"];
-            UILabel* lbl= (UILabel*)[cell viewWithTag:1];
-            [lbl setText:@"Long text Long text Long text Long text Long text "];
-            break;
-        }
         default:
-            cell= nil;
+            cell = nil;
     }
     cell.selectionStyle= UITableViewCellSelectionStyleNone;
     return cell;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
+
 #pragma mark - parser delegate
 
--(NSString*)eightCharacterFormattedDouble:(double)val{
+- (NSString *)eightCharacterFormattedDouble:(double)val {
     NSString* str= [NSString stringWithFormat:@"%lf",val];
     str= [str stringByReplacingOccurrencesOfString:@"." withString:@""];
     if(str.length>8){

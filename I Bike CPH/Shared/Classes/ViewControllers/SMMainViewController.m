@@ -27,10 +27,12 @@
 
 #import "SMFavoritesUtil.h"
 
+#if defined(CYKEL_PLANEN)
+#import "SMStationInfo.h"
 #import "SMTransportation.h"
 #import "SMTransportationLine.h"
-#import "SMStationInfo.h"
 #import "SMLoadStationsView.h"
+#endif
 
 #import "UIView+LocateSubview.h"
 
@@ -70,7 +72,9 @@
 @property (nonatomic, strong) NSString * endName;
 
 @property (nonatomic, strong) SMAPIRequest * request;
+#if defined(CYKEL_PLANEN)
 @property (nonatomic, strong) SMLoadStationsView *loadStationsView;
+#endif
 
 @end
 
@@ -110,7 +114,7 @@
         self.mapView.zoom = INIT_ZOOM_LEVEL;
     }
     
-    
+#if defined(CYKEL_PLANEN)
     // Load overlays
     if (self.appDelegate.mapOverlays == nil) {
         self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
@@ -121,34 +125,35 @@
     if([SMTransportation instance].dataLoaded){
         [self loadLastRoute];
     }
+#endif
     
     
-    Speak *speak = [Speak new];
-    [speak speak:@"Lorem ipsum"];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        Speak *speak = [Speak new];
-        speak.language = @"da-DK";
-        [speak speak:@"Lorem ipsum"];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            Speak *speak = [Speak new];
-            speak.language = @"en-GB";
-            [speak speak:@"Lorem ipsum"];
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                Speak *speak = [Speak new];
-                speak.language = @"da-DK";
-                [speak speak:@"Lorem ipsum"];
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    Speak *speak = [Speak new];
-                    speak.language = @"en-GB";
-                    [speak speak:@"Lorem ipsum"];
-                });
-            });
-        });
-    });
+//    Speak *speak = [Speak new];
+//    [speak speak:@"Lorem ipsum"];
+//    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        Speak *speak = [Speak new];
+//        speak.language = @"da-DK";
+//        [speak speak:@"Lorem ipsum"];
+//        
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            Speak *speak = [Speak new];
+//            speak.language = @"en-GB";
+//            [speak speak:@"Lorem ipsum"];
+//            
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                Speak *speak = [Speak new];
+//                speak.language = @"da-DK";
+//                [speak speak:@"Lorem ipsum"];
+//                
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    Speak *speak = [Speak new];
+//                    speak.language = @"en-GB";
+//                    [speak speak:@"Lorem ipsum"];
+//                });
+//            });
+//        });
+//    });
 }
 
 
@@ -170,11 +175,13 @@
     
     self.mapView.userTrackingMode = RMUserTrackingModeNone;
 
+#if defined(CYKEL_PLANEN)
     if(_loadStationsView){
         [self.loadStationsView.activityIndicatorView stopAnimating];
         [self.loadStationsView removeFromSuperview];
         _loadStationsView = nil;
     }
+#endif
     
     if(observersAdded){
         observersAdded = NO;
@@ -185,10 +192,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    // TODO: CykelPlanen
-//    [SMUser user].tripRoute = nil;
-//    [SMUser user].route = nil;
-    
+#if defined(CYKEL_PLANEN)
+    [SMUser user].tripRoute = nil;
+    [SMUser user].route = nil;
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLoadTransformationData:) name:NOTIFICATION_DID_PARSE_DATA_KEY object:nil];
     if(![SMTransportation instance].dataLoaded){
         NSLog(@"DATA NOT LOADED... SHOWING VIEW");
@@ -196,7 +203,8 @@
         [self.loadStationsView setup];
         [self.view addSubview:self.loadStationsView];
     }
-    
+#endif
+       
     if (!observersAdded) {
         observersAdded = YES;
         [self.mapView addObserver:self forKeyPath:@"userTrackingMode" options:0 context:nil];
@@ -248,6 +256,7 @@
 
 #pragma mark -
 
+#if defined(CYKEL_PLANEN)
 -(void)didLoadTransformationData:(NSNotification*)notification{
     NSLog(@"NOTIFICATION");
     if(self.loadStationsView){
@@ -267,6 +276,8 @@
         [self performSelectorOnMainThread:@selector(loadLastRoute) withObject:nil waitUntilDone:NO];
     }];
 }
+#endif
+
 -(void)loadLastRoute{
     if ([[NSFileManager defaultManager] fileExistsAtPath: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]]) {
         NSDictionary * d = [NSDictionary dictionaryWithContentsOfFile: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]];
@@ -619,27 +630,28 @@ float lerp(float a, float b, float t) {
     if (annotation.calloutShown)
         visible = YES;
     
-    // TODO: From CykelPlanen
-//    for (SMAnnotation* ann in map.annotations) {
-//        if ([ann isKindOfClass:[SMAnnotation class]]) {
-//            [ann hideCallout];
-//        }
-//    }
-//    NSLog(@"ANNOTATION SELECTED: %@", annotation.annotationType.lowercaseString);
-//    if([annotation.annotationType.lowercaseString isEqualToString:@"station"]){
-//        SMStationInfo* station= [annotation.userInfo objectForKey:@"station"];
-//        //if(station){
-//        [self showPinDrop];
-//        [self displayDestinationNameWithString:station.name];
-//        [self setDestinationAnnotation:annotation withLocation:station.location];
-//        
-//        if (visible)
-//            [annotation hideCallout];
-//        else
-//            [annotation showCallout];
-//        
-//        RMMapLayer* layer= [self mapView:map layerForAnnotation:annotation];
-//    }
+#if defined(CYKEL_PLANEN)
+    for (SMAnnotation* ann in map.annotations) {
+        if ([ann isKindOfClass:[SMAnnotation class]]) {
+            [ann hideCallout];
+        }
+    }
+    NSLog(@"ANNOTATION SELECTED: %@", annotation.annotationType.lowercaseString);
+    if([annotation.annotationType.lowercaseString isEqualToString:@"station"]){
+        SMStationInfo* station= [annotation.userInfo objectForKey:@"station"];
+        //if(station){
+        [self showPinDrop];
+        [self displayDestinationNameWithString:station.name];
+        [self setDestinationAnnotation:annotation withLocation:station.location];
+        
+        if (visible)
+            [annotation hideCallout];
+        else
+            [annotation showCallout];
+        
+        RMMapLayer* layer= [self mapView:map layerForAnnotation:annotation];
+    }
+#endif
 }
 
 #pragma mark - SMAnnotation delegate methods
@@ -666,12 +678,17 @@ float lerp(float a, float b, float t) {
         debugLog(@"error in trackPageview");
     }
     self.startName = CURRENT_POSITION_STRING;
+    
+#if defined(CYKEL_PLANEN)
     SMStationInfo* station= [annotation.userInfo objectForKey:@"station"];
     if(station){
         self.endName= station.name;
     }else{
         self.endName = annotation.title;
     }
+#else
+    self.endName = annotation.title;
+#endif
 
     self.startLoc = cStart;
     self.endLoc = cEnd;

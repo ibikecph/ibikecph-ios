@@ -25,52 +25,65 @@ class MenuViewController: UIViewController {
     
     let cellID = "MenuCellID"
 
-    private let sections = [
-        SectionViewModel(title: nil, items:
-            [
-                MenuItem(title: SMTranslation.decodeString("favorites"), iconImageName: "favorite", action: { menuViewController in
-                    menuViewController.performSegueWithIdentifier("menuToFavorites", sender: menuViewController)
-                }),
-                MenuItem(title: SMTranslation.decodeString("reminder_title"), iconImageName: "reminders", action: { menuViewController in
-                    menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
-                }),
-                MenuItem(title: SMTranslation.decodeString(UserHelper.loggedIn() ? "account" : "account_login"), iconImageName: "profile", action: { menuViewController in
-                    if UserHelper.loggedIn() {
-                        if UserHelper.isFacebook() {
-                            menuViewController.performSegueWithIdentifier("menuToAccountFacebook", sender: menuViewController)
-                        } else {
-                            menuViewController.performSegueWithIdentifier("menuToAccountNative", sender: menuViewController)
-                        }
-                    } else {
-                        menuViewController.performSegueWithIdentifier("menuToLogin", sender: menuViewController)
-                    }
-                }),
-                MenuItem(title: SMTranslation.decodeString("about"), iconImageName: "info", action: { menuViewController in
-                    menuViewController.performSegueWithIdentifier("menuToAbout", sender: menuViewController)
-                })
-            ]
-        ),
-        SectionViewModel(title: SMTranslation.decodeString("preferences"), items:
-            [
-                MenuItem(title: SMTranslation.decodeString("map_overlays"), iconImageName: "", action: { menuViewController in
-                    menuViewController.performSegueWithIdentifier("menuToOverlays", sender: menuViewController)
-                }),
-                MenuItem(title: SMTranslation.decodeString("bike"), iconImageName: "bike", action: { menuViewController in
-                    menuViewController.performSegueWithIdentifier("menuToBike", sender: menuViewController)
-                }),
-                MenuItem(title: SMTranslation.decodeString("voice"), iconImageName: "voice", action: { menuViewController in
-                    menuViewController.performSegueWithIdentifier("menuToVoice", sender: menuViewController)
-                }),
-                MenuItem(title: SMTranslation.decodeString("speedguide"), iconImageName: "", action: { menuViewController in
-                    menuViewController.performSegueWithIdentifier("menuToSpeedGuide", sender: menuViewController)
-                }),
-                MenuItem(title: SMTranslation.decodeString("tracking"), iconImageName: "", action: { menuViewController in
-                    menuViewController.performSegueWithIdentifier("menuToTracking", sender: menuViewController)
-                })
-            ]
-        )
-    ]
+    private lazy var sections: [SectionViewModel] = {
         
+        let favItem = MenuItem(title: SMTranslation.decodeString("favorites"), iconImageName: "favorite", action: { menuViewController in
+            menuViewController.performSegueWithIdentifier("menuToFavorites", sender: menuViewController)
+        })
+        let reminderItem = MenuItem(title: SMTranslation.decodeString("reminder_title"), iconImageName: "Notifications", action: { menuViewController in
+            menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
+        })
+        let profileItem = MenuItem(title: SMTranslation.decodeString(UserHelper.loggedIn() ? "account" : "account_login"), iconImageName: "User", action: { menuViewController in
+            if UserHelper.loggedIn() {
+                if UserHelper.isFacebook() {
+                    menuViewController.performSegueWithIdentifier("menuToAccountFacebook", sender: menuViewController)
+                } else {
+                    menuViewController.performSegueWithIdentifier("menuToAccountNative", sender: menuViewController)
+                }
+            } else {
+                menuViewController.performSegueWithIdentifier("menuToLogin", sender: menuViewController)
+            }
+        })
+        let overlayItem = MenuItem(title: SMTranslation.decodeString("map_overlays"), iconImageName: "Kortlag", action: { menuViewController in
+            menuViewController.performSegueWithIdentifier("menuToOverlays", sender: menuViewController)
+        })
+        let bikeItem = MenuItem(title: SMTranslation.decodeString("bike"), iconImageName: "Route type", action: { menuViewController in
+            menuViewController.performSegueWithIdentifier("menuToBike", sender: menuViewController)
+        })
+        let voiceItem = MenuItem(title: SMTranslation.decodeString("voice"), iconImageName: "Speaker loud", action: { menuViewController in
+            menuViewController.performSegueWithIdentifier("menuToVoice", sender: menuViewController)
+        })
+        let speedItem = MenuItem(title: SMTranslation.decodeString("speedguide"), iconImageName: "fartguide", action: { menuViewController in
+            menuViewController.performSegueWithIdentifier("menuToSpeedGuide", sender: menuViewController)
+        })
+        let trackingItem = MenuItem(title: SMTranslation.decodeString("tracking"), iconImageName: "Tracking", action: { menuViewController in
+            menuViewController.performSegueWithIdentifier("menuToTracking", sender: menuViewController)
+        })
+        let aboutItem = MenuItem(title: SMTranslation.decodeString("about"), iconImageName: "info", action: { menuViewController in
+            menuViewController.performSegueWithIdentifier("menuToAbout", sender: menuViewController)
+        })
+        
+        var menuItems = [favItem]
+        
+        if Macro.isCykelPlanen() {
+            menuItems.append(overlayItem)
+        }
+        menuItems.append(voiceItem)
+        if Macro.isIBikeCph() {
+            menuItems.append(bikeItem)
+        }
+//        menuItems.append(speedItem)
+//        menuItems.append(trackingItem)
+        if Macro.isCykelPlanen() {
+            menuItems.append(reminderItem)
+        }
+        menuItems.append(profileItem)
+        menuItems.append(aboutItem)
+        
+        var firstSection = SectionViewModel(title: nil, items: menuItems)
+        return [firstSection]
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

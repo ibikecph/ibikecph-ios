@@ -398,12 +398,12 @@
 
 - (void)calcMetroData {
     float totalDistance = 0.0f;
-    int numStations = [self.metroMarkers count];
+    NSInteger numStations = self.metroMarkers.count;
    
     float* times = (float*)malloc(numStations * sizeof(float));
     
-    int i=0;
-    for (i=0; i<numStations; i++) {
+    NSInteger i = 0;
+    for (i = 0; i<numStations; i++) {
         SMAnnotation* station = [self.metroMarkers objectAtIndex:i];
         SMAnnotation* nextStation = [self.metroMarkers objectAtIndex:MIN(i+1, numStations-1)];
         
@@ -434,31 +434,31 @@
 
 - (void)toggleMarkers {
     
-    if ( self.pathVisible ) {
+    if (self.pathVisible) {
         [self.mpView addAnnotations:self.bikeRouteAnnotations];
     } else {
         [self.mpView removeAnnotations:self.bikeRouteAnnotations];
     }
     
-    if ( self.metroMarkersVisible ) {
+    if (self.metroMarkersVisible) {
         [self.mpView addAnnotations:self.metroMarkers];
     } else {
         [self.mpView removeAnnotations:self.metroMarkers];
     }
     
-    if ( self.serviceMarkersVisible ) {
+    if ( self.serviceMarkersVisible) {
         [self.mpView addAnnotations:self.serviceMarkers];
     } else {
         [self.mpView removeAnnotations:self.serviceMarkers];
     }
     
-    if ( self.stationMarkersVisible ) {
+    if (self.stationMarkersVisible) {
         [self.mpView addAnnotations:self.stationMarkers];
     } else {
         [self.mpView removeAnnotations:self.stationMarkers];
     }
     
-    if ( self.localTrainMarkersVisible ) {
+    if (self.localTrainMarkersVisible) {
         [self.mpView addAnnotations:self.localTrainMarkers];
     } else {
         [self.mpView removeAnnotations:self.localTrainMarkers];
@@ -482,13 +482,13 @@
 }
 
 - (void)toggleMarkers:(NSString*)markerType state:(BOOL)state {
-    if ( [markerType isEqualToString:@"metro"] ) {
+    if ([markerType isEqualToString:@"metro"]) {
         self.metroMarkersVisible = state;
         
-    } else if ( [markerType isEqualToString:@"service"] ) {
+    } else if ([markerType isEqualToString:@"service"]) {
         self.serviceMarkersVisible = state;
         
-    } else if ( [markerType isEqualToString:@"station"] ) {
+    } else if ([markerType isEqualToString:@"station"] ) {
         self.stationMarkersVisible = state;
         
     }else if([markerType isEqualToString:@"path"]){

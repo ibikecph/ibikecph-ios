@@ -42,7 +42,7 @@
     [self.screenTitle setText:translateString(@"reminder_title")];
     [self.screenText setText:translateString(@"reminder_text")];
     [self.btnSave setTitle:translateString(@"reminder_save_btn") forState:UIControlStateNormal];
-    [self.btnSkip setTitle:translateString(@"btn_skip") forState:UIControlStateNormal];
+    [self.btnSkip setTitle:translateString(@"skip") forState:UIControlStateNormal];
     
     // Translate days of the week
     [self.monday setText:translateString(@"monday")];

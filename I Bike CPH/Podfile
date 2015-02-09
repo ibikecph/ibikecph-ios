@@ -18,3 +18,6 @@ pod 'PSTAlertController', '~>1.1'
 target :CykelPlanenTests, :exclusive => true do
     pod 'OCMockito', '~> 1.0'
 end
+target :'I Bike CPHTests', :exclusive => true do
+    pod 'OCMockito', '~> 1.0'
+end
