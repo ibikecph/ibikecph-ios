@@ -265,4 +265,4 @@
 "vehicle_4" = "Tog";
 
 "voice_option" = "Oplæs rute";
-"voice_option_detail" = "Stemme guide giver dig mulighed for at få oplæst ruten. Husk at overholde færdselsreglerne.";
+"voice_option_detail" = "Oplæsning af rute giver dig mulighed for at få oplæst instruktioner op så du kan finde vej. Bruger du hovedtelefoner? Husk at være opmærksom på trafikken og overhold færdselsreglerne. ";

@@ -333,5 +333,5 @@ Copenhagen. All rights reserved.
 "vehicle_3" = "Ferry";
 "vehicle_4" = "Train";
 
-"voice_option" = "Voice guidance";
-"voice_option_detail" = "Voice guidance gives you the option to... Remember to obey the rules of traffic.";
+"voice_option" = "Voice guide";
+"voice_option_detail" = "Voice guide gives you the possibility to get your route read out loud in order for you to find the way. Are you using headphones? Please be aware of the traffic around you and obey the traffic rules.";

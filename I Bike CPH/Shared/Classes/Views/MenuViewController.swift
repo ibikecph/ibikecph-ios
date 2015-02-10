@@ -47,7 +47,7 @@ class MenuViewController: UIViewController {
         let overlayItem = MenuItem(title: SMTranslation.decodeString("map_overlays"), iconImageName: "Kortlag", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToOverlays", sender: menuViewController)
         })
-        let bikeItem = MenuItem(title: SMTranslation.decodeString("bike_type"), iconImageName: "Route type", action: { menuViewController in
+        let bikeItem = MenuItem(title: SMTranslation.decodeString("route_type"), iconImageName: "Route type", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToBike", sender: menuViewController)
         })
         let voiceItem = MenuItem(title: SMTranslation.decodeString("voice"), iconImageName: "Speaker loud", action: { menuViewController in
