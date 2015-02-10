@@ -2027,7 +2027,7 @@ God tur og tak fordi du cykler!</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d7u-Js-fBo" id="B1G-Uk-I62">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favStarGreySmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="nsI-b7-qPq">
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Route type" translatesAutoresizingMaskIntoConstraints="NO" id="nsI-b7-qPq">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="nsI-b7-qPq" secondAttribute="height" id="fQl-tS-6YP"/>
@@ -3395,6 +3395,7 @@ God tur og tak fordi du cykler!</string>
     </scenes>
     <resources>
         <image name="Logo" width="11" height="11"/>
+        <image name="Route type" width="55" height="30"/>
         <image name="arrow_large.png" width="37" height="32"/>
         <image name="arrow_small.png" width="20" height="18"/>
         <image name="bike_route.png" width="30" height="39"/>
@@ -3433,8 +3434,8 @@ God tur og tak fordi du cykler!</string>
         <image name="select_station_bgr.png" width="243" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yk2-zf-Q1g"/>
-        <segue reference="YD8-cY-nJg"/>
         <segue reference="cR0-BE-PFO"/>
+        <segue reference="YD8-cY-nJg"/>
+        <segue reference="2Vq-ft-HSw"/>
     </inferredMetricsTieBreakers>
 </document>
