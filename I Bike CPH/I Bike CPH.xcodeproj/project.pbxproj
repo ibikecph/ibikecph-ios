@@ -36,6 +36,8 @@
 		4E3C3A8B1A39E80300C79E52 /* SharedImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */; };
 		4E3C3A8D1A3A043900C79E52 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */; };
 		4E3C3A8E1A3A043900C79E52 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */; };
+		4E4566621A8A61FA006563D1 /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */; };
+		4E4566641A8A620E006563D1 /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566631A8A620E006563D1 /* smroute_settings_app_private.plist */; };
 		4E4AC4541A8502E80037A65E /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AC4531A8502E80037A65E /* Logo@2x.png */; };
 		4E4AC4571A8502FC0037A65E /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AC4551A8502FC0037A65E /* Logo@2x.png */; };
 		4E4AC4581A8502FC0037A65E /* Logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AC4561A8502FC0037A65E /* Logo@3x.png */; };
@@ -1445,6 +1447,8 @@
 		4E3C3A861A39DEFC00C79E52 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedImages.xcassets; sourceTree = "<group>"; };
 		4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_app_private.plist; sourceTree = "<group>"; };
+		4E4566631A8A620E006563D1 /* smroute_settings_app_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_app_private.plist; sourceTree = "<group>"; };
 		4E4AC4531A8502E80037A65E /* Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo@2x.png"; sourceTree = "<group>"; };
 		4E4AC4551A8502FC0037A65E /* Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo@2x.png"; sourceTree = "<group>"; };
 		4E4AC4561A8502FC0037A65E /* Logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo@3x.png"; sourceTree = "<group>"; };
@@ -4505,6 +4509,7 @@
 		4EEE91C81A1246920006BD95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E4566631A8A620E006563D1 /* smroute_settings_app_private.plist */,
 				4EEE91C91A1246920006BD95 /* local-trains-timetable.json */,
 				4EEE91CB1A1246920006BD95 /* metro.json */,
 				4EEE91CC1A1246920006BD95 /* s-train-lines.json */,
@@ -4541,6 +4546,7 @@
 		4EEE92561A125F980006BD95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -5148,6 +5154,7 @@
 				4EE064E81A10FAB400DE4226 /* white-bike@2x.png in Resources */,
 				4EE065DD1A10FAB400DE4226 /* mover@2x.png in Resources */,
 				4EE065A51A10FAB400DE4226 /* favTypeSchoolButtonPressed@2x.png in Resources */,
+				4E4566621A8A61FA006563D1 /* smroute_settings_app_private.plist in Resources */,
 				4EE065D31A10FAB400DE4226 /* leftArrow@2x.png in Resources */,
 				4EE065121A10FAB400DE4226 /* icon_locate_me@2x.png in Resources */,
 				4EE066381A10FAB400DE4226 /* routeStartButton.png in Resources */,
@@ -5266,6 +5273,7 @@
 				4EE073451A1178E300DE4226 /* s_station_gray@2x.png in Resources */,
 				4E59822C1A24C4DD00A40484 /* BitBlueprint.gpx in Resources */,
 				4EE072921A1178E200DE4226 /* l-gray.png in Resources */,
+				4E4566641A8A620E006563D1 /* smroute_settings_app_private.plist in Resources */,
 				4E1258D61A7BA63200A82434 /* routeTestStart.gpx in Resources */,
 				4EE0725A1A1178E200DE4226 /* field_password_icon@2x.png in Resources */,
 				4EE071BA1A1178E200DE4226 /* cloud_red_splash.png in Resources */,
@@ -6445,8 +6453,6 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
 					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",
-					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK/FacebookSDK\"",
 					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
 					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
 					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
@@ -6483,8 +6489,6 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
 					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",
-					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK/FacebookSDK\"",
 					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
 					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
 					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
@@ -6563,8 +6567,6 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
 					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",
-					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK/FacebookSDK\"",
 					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
 					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
 					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
@@ -6601,8 +6603,6 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
 					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",
-					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK/FacebookSDK\"",
 					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
 					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
 					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",

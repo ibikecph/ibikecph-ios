@@ -31,3 +31,4 @@ DerivedData
 
 # Private keys
 smroute_settings_private.plist
+smroute_settings_app_private.plist
