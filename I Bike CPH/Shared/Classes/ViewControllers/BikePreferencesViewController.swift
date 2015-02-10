@@ -78,7 +78,7 @@ extension BikePreferencesViewController: UITableViewDelegate {
         tableView .deselectRowAtIndexPath(indexPath, animated: true)
         
         var item = items[indexPath.row]
-        item.selected = !item.selected
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        item.selected = true
+        tableView.reloadData()
     }
 }
