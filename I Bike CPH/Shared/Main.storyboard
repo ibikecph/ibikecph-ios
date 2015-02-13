@@ -3243,7 +3243,11 @@ God tur og tak fordi du cykler!</string>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="i0S-AT-FSV">
-                        <barButtonItem key="rightBarButtonItem" title="logout" id="JKJ-fu-coK"/>
+                        <barButtonItem key="rightBarButtonItem" title="logout" id="JKJ-fu-coK">
+                            <connections>
+                                <action selector="logout:" destination="CaA-EE-oV6" id="Zid-Gd-wff"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="1VZ-Q4-I9e" id="eas-XU-FsZ"/>
@@ -3395,7 +3399,7 @@ God tur og tak fordi du cykler!</string>
     </scenes>
     <resources>
         <image name="Logo" width="11" height="11"/>
-        <image name="Route type" width="55" height="30"/>
+        <image name="Route type" width="27" height="15"/>
         <image name="arrow_large.png" width="37" height="32"/>
         <image name="arrow_small.png" width="20" height="18"/>
         <image name="bike_route.png" width="30" height="39"/>
