@@ -101,7 +101,7 @@ extension FavoriteListViewController: UITableViewDataSource {
                 case .Home: return "favoriteHome"
                 case .School: return "favoriteSchool"
                 case .Work: return "favoriteWork"
-                case .Unknown: return "favorite"
+                case .Unknown: return "favorites"
             }
         }()
         let icon = UIImage(named: imageName)

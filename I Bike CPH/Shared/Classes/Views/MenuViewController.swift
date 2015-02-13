@@ -27,13 +27,13 @@ class MenuViewController: UIViewController {
 
     private lazy var sections: [SectionViewModel] = {
         
-        let favItem = MenuItem(title: SMTranslation.decodeString("favorites"), iconImageName: "favorite", action: { menuViewController in
+        let favItem = MenuItem(title: SMTranslation.decodeString("favorites"), iconImageName: "favorites", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToFavorites", sender: menuViewController)
         })
-        let reminderItem = MenuItem(title: SMTranslation.decodeString("reminder_title"), iconImageName: "Notifications", action: { menuViewController in
+        let reminderItem = MenuItem(title: SMTranslation.decodeString("reminder_title"), iconImageName: "notifications", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
         })
-        let profileItem = MenuItem(title: SMTranslation.decodeString(UserHelper.loggedIn() ? "account" : "profile"), iconImageName: "User", action: { menuViewController in
+        let profileItem = MenuItem(title: SMTranslation.decodeString(UserHelper.loggedIn() ? "account" : "profile"), iconImageName: "user", action: { menuViewController in
             if UserHelper.loggedIn() {
                 if UserHelper.isFacebook() {
                     menuViewController.performSegueWithIdentifier("menuToAccountFacebook", sender: menuViewController)
@@ -44,16 +44,16 @@ class MenuViewController: UIViewController {
                 menuViewController.performSegueWithIdentifier("menuToLogin", sender: menuViewController)
             }
         })
-        let overlayItem = MenuItem(title: SMTranslation.decodeString("map_overlays"), iconImageName: "Kortlag", action: { menuViewController in
+        let overlayItem = MenuItem(title: SMTranslation.decodeString("map_overlays"), iconImageName: "map_overlays", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToOverlays", sender: menuViewController)
         })
-        let bikeItem = MenuItem(title: SMTranslation.decodeString("route_type"), iconImageName: "Route type", action: { menuViewController in
+        let bikeItem = MenuItem(title: SMTranslation.decodeString("route_type"), iconImageName: "route_type", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToBike", sender: menuViewController)
         })
-        let voiceItem = MenuItem(title: SMTranslation.decodeString("voice"), iconImageName: "Speaker loud", action: { menuViewController in
+        let voiceItem = MenuItem(title: SMTranslation.decodeString("voice"), iconImageName: "speaker", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToVoice", sender: menuViewController)
         })
-        let speedItem = MenuItem(title: SMTranslation.decodeString("speedguide"), iconImageName: "fartguide", action: { menuViewController in
+        let speedItem = MenuItem(title: SMTranslation.decodeString("speedguide"), iconImageName: "speed_guide", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToSpeedGuide", sender: menuViewController)
         })
         let trackingItem = MenuItem(title: SMTranslation.decodeString("tracking"), iconImageName: "Tracking", action: { menuViewController in

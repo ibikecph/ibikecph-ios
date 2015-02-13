@@ -27,7 +27,7 @@ struct FavoriteTypeViewModel {
                 iconImage = UIImage(named: "favoriteSchool")
             case .Unknown:
                 title = SMTranslation.decodeString("Favorite")
-                iconImage = UIImage(named: "favorite")
+                iconImage = UIImage(named: "favorites")
         }
     }
 }
