@@ -317,3 +317,7 @@
 
 "voice_option" = "Oplæs rute";
 "voice_option_detail" = "Oplæsning af rute giver dig mulighed for at få oplæst instruktioner op så du kan finde vej. Bruger du hovedtelefoner? Husk at være opmærksom på trafikken og overhold færdselsreglerne. ";
+
+"tracking" = "Tracking";
+"enable_tracking" = "Enable tracking";
+"enable_tracking_description" = "TODO: Description for what tracking does.";

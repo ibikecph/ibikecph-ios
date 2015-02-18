@@ -8,25 +8,39 @@
 
 import UIKit
 
-class VoiceSettings {
-    
-    private let onKey = "on"
-    var on: Bool {
-        get {
-            return Defaults[onKey].bool ?? true
-        }
-        set {
-            Defaults[onKey] = newValue
-        }
-    }
-}
-
 let settings = Settings()
 
-class Settings: NSObject {
-   
-    let voice = VoiceSettings()
+@objc class Settings: NSObject {
     
+    @objc class Voice {
+        private let onKey = "voiceOn"
+        var on: Bool {
+            get { return Defaults[onKey].bool ?? true }
+            set { Defaults[onKey] = newValue }
+        }
+    }
+    
+    @objc class Tracking {
+        private let onKey = "trackingOn"
+        var on: Bool {
+            get { return Defaults[onKey].bool ?? false }
+            set { Defaults[onKey] = newValue }
+        }
+    }
+   
+    let voice = Voice()
+    let tracking = Tracking()
+    
+    func clear() {
+        if let bundleID = NSBundle.mainBundle().bundleIdentifier {
+            Defaults.removePersistentDomainForName(bundleID)
+        }
+    }
+    
+    // MARK: - ObjC compatibility
+    class func sharedInstance() -> Settings {
+        return settings
+    }
 }
 
 

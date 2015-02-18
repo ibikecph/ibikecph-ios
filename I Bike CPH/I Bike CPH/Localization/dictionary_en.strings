@@ -266,3 +266,7 @@
 
 "voice_option" = "Voice guide";
 "voice_option_detail" = "Voice guide gives you the possibility to get your route read out loud in order for you to find the way. Are you using headphones? Please be aware of the traffic around you and obey the traffic rules.";
+
+"tracking" = "Tracking";
+"enable_tracking" = "Enable tracking";
+"enable_tracking_description" = "TODO: Description for what tracking does.";

@@ -21,6 +21,8 @@
     self.currentEvents = @[];
     self.searchHistory = [SMSearchHistory getSearchHistory];
     
+//    [[Settings sharedInstance] clear];
+    
     /**
      * initialize Google Analytics
      */
@@ -68,6 +70,9 @@
     
     [Styler setupAppearance];
     self.window.tintColor = [Styler tintColor];
+    
+//    [RLMRealm deleteDefaultRealmFile];
+    [TrackHandler sharedInstance];
     
     return YES;
 }

@@ -2094,11 +2094,126 @@ God tur og tak fordi du cykler!</string>
                         <segue destination="cdl-a1-MI0" kind="show" identifier="menuToBike" id="C5m-Ce-HY6"/>
                         <segue destination="CaA-EE-oV6" kind="show" identifier="menuToAccountFacebook" id="TIc-7B-BT4"/>
                         <segue destination="hv3-0N-UL0" kind="show" identifier="menuToVoice" id="4W3-LP-Kkg"/>
+                        <segue destination="6SA-JC-lpZ" kind="show" identifier="menuToTracking" id="dc7-Qo-Oev"/>
+                        <segue destination="LFA-zU-Kks" kind="presentation" identifier="menuToTrackingPrompt" id="Mi0-cv-iMd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Szy-D8-DKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2313" y="2789"/>
+        </scene>
+        <!--Tracking View Controller-->
+        <scene sceneID="xBF-30-4NL">
+            <objects>
+                <viewController id="6SA-JC-lpZ" customClass="TrackingViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mdK-ui-jun"/>
+                        <viewControllerLayoutGuide type="bottom" id="iF3-ur-Its"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3MM-4z-J48">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcP-VW-o8X">
+                                <rect key="frame" x="0.0" y="64" width="600" height="40.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxN-OC-5FU">
+                                        <rect key="frame" x="8" y="8" width="68.5" height="32.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="UxN-OC-5FU" firstAttribute="top" secondItem="EcP-VW-o8X" secondAttribute="top" constant="8" id="Z0u-lw-Fbc"/>
+                                    <constraint firstItem="UxN-OC-5FU" firstAttribute="leading" secondItem="EcP-VW-o8X" secondAttribute="leading" constant="8" id="pcU-xU-rBL"/>
+                                    <constraint firstAttribute="bottom" secondItem="UxN-OC-5FU" secondAttribute="bottom" id="veJ-rN-PYn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EcP-VW-o8X" secondAttribute="trailing" id="9Xq-nw-Svi"/>
+                            <constraint firstItem="EcP-VW-o8X" firstAttribute="top" secondItem="mdK-ui-jun" secondAttribute="bottom" id="J2g-EY-nbY"/>
+                            <constraint firstItem="EcP-VW-o8X" firstAttribute="leading" secondItem="3MM-4z-J48" secondAttribute="leading" id="uJz-If-3xz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="value1Label" destination="UxN-OC-5FU" id="lfX-qa-CtD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xsf-pB-a0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-909" y="8122"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jsv-IT-wOl">
+            <objects>
+                <navigationController id="LFA-zU-Kks" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wLD-PD-Vcb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qRK-xb-9iw" kind="relationship" relationship="rootViewController" id="f6R-qI-7D1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oyM-je-rca" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2313" y="8122"/>
+        </scene>
+        <!--Tracking Prompt View Controller-->
+        <scene sceneID="qbo-pC-zA1">
+            <objects>
+                <viewController id="qRK-xb-9iw" customClass="TrackingPromptViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mGx-xo-nol"/>
+                        <viewControllerLayoutGuide type="bottom" id="z0e-kZ-XSz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iiX-SR-5pO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="enable_tracking_description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3X-Gu-FU0">
+                                <rect key="frame" x="20" y="84" width="560" height="458"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dg-yO-IWL">
+                                <rect key="frame" x="0.0" y="542" width="600" height="58"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                <state key="normal" title="enable_tracking">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="EnableTrackingButtonTapped:" destination="qRK-xb-9iw" eventType="touchUpInside" id="8Uj-kS-FaB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="3Dg-yO-IWL" secondAttribute="trailing" id="G0G-wj-qqR"/>
+                            <constraint firstItem="3Dg-yO-IWL" firstAttribute="top" secondItem="Y3X-Gu-FU0" secondAttribute="bottom" id="Lfi-HM-b3X"/>
+                            <constraint firstItem="Y3X-Gu-FU0" firstAttribute="top" secondItem="mGx-xo-nol" secondAttribute="bottom" constant="20" id="REe-7B-Qbf"/>
+                            <constraint firstAttribute="trailing" secondItem="Y3X-Gu-FU0" secondAttribute="trailing" constant="20" id="TRc-BS-shE"/>
+                            <constraint firstItem="Y3X-Gu-FU0" firstAttribute="leading" secondItem="iiX-SR-5pO" secondAttribute="leading" constant="20" id="exL-GC-601"/>
+                            <constraint firstItem="3Dg-yO-IWL" firstAttribute="leading" secondItem="iiX-SR-5pO" secondAttribute="leading" id="hL1-76-B3t"/>
+                            <constraint firstItem="z0e-kZ-XSz" firstAttribute="top" secondItem="3Dg-yO-IWL" secondAttribute="bottom" id="wrc-w1-7Eh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="EWN-mM-Wxy">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BvX-tb-VvB">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="qRK-xb-9iw" id="5AP-VN-aJw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nej-le-cpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1605" y="8122"/>
         </scene>
         <!--Favorite List View Controller-->
         <scene sceneID="vpY-3V-J8n">

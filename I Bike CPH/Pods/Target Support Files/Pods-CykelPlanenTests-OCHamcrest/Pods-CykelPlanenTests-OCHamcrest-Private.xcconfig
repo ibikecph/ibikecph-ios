@@ -1,5 +1,5 @@
 #include "Pods-CykelPlanenTests-OCHamcrest.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/OCHamcrest" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/DAKeyboardControl" "${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK" "${PODS_ROOT}/Headers/Public/OCHamcrest" "${PODS_ROOT}/Headers/Public/OCMockito" "${PODS_ROOT}/Headers/Public/PSTAlertController" "${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK" "${PODS_ROOT}/Headers/Public/TTTAttributedLabel" "${PODS_ROOT}/Headers/Public/UIImage-Categories"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/OCHamcrest" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/DAKeyboardControl" "${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK" "${PODS_ROOT}/Headers/Public/OCHamcrest" "${PODS_ROOT}/Headers/Public/OCMockito" "${PODS_ROOT}/Headers/Public/PSTAlertController" "${PODS_ROOT}/Headers/Public/Realm" "${PODS_ROOT}/Headers/Public/Realm/Realm" "${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK" "${PODS_ROOT}/Headers/Public/TTTAttributedLabel" "${PODS_ROOT}/Headers/Public/UIImage-Categories"
 OTHER_LDFLAGS = -ObjC
 PODS_ROOT = ${SRCROOT}
