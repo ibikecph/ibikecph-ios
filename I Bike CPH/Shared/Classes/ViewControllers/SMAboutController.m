@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = translateString(@"about_title");
+    self.title = translateString(@"about");
     self.textView.text = translateString(@"about_text");
 }
 

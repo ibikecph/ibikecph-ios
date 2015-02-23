@@ -50,6 +50,10 @@
 		4E4F5FDB1A2BAC4700233ACA /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FD91A2BAC4700233ACA /* Styling.swift */; };
 		4E4F5FDE1A2BAE1400233ACA /* StyleCykelPlanen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FDC1A2BAE1400233ACA /* StyleCykelPlanen.swift */; };
 		4E4F5FE01A2BB3A000233ACA /* StyleIBikeCph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FDF1A2BB3A000233ACA /* StyleIBikeCph.swift */; };
+		4E5258AF1A9B616200BE55C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258B21A9B616200BE55C8 /* Localizable.strings */; };
+		4E5258B01A9B616200BE55C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258B21A9B616200BE55C8 /* Localizable.strings */; };
+		4E5258B51A9B6CCA00BE55C8 /* Localizable_IBC.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258B71A9B6CCA00BE55C8 /* Localizable_IBC.strings */; };
+		4E5258BA1A9B6CEE00BE55C8 /* Localizable_CP.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258BC1A9B6CEE00BE55C8 /* Localizable_CP.strings */; };
 		4E55A0241A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */; };
 		4E55A0251A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */; };
 		4E55A0271A36068800386F85 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0261A36068800386F85 /* MenuViewController.swift */; };
@@ -1390,10 +1394,6 @@
 		4EEE924B1A125E690006BD95 /* marker-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE923E1A125E690006BD95 /* marker-red.png */; };
 		4EEE924C1A125E690006BD95 /* marker-blue-withletter.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE923F1A125E690006BD95 /* marker-blue-withletter.png */; };
 		4EEE924D1A125E690006BD95 /* marker-blue-withletter.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE923F1A125E690006BD95 /* marker-blue-withletter.png */; };
-		4EEE92791A12E69D0006BD95 /* dictionary_dk.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92771A12E69D0006BD95 /* dictionary_dk.strings */; };
-		4EEE927A1A12E69D0006BD95 /* dictionary_en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92781A12E69D0006BD95 /* dictionary_en.strings */; };
-		4EEE927E1A12E6B90006BD95 /* dictionary_dk.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */; };
-		4EEE927F1A12E6B90006BD95 /* dictionary_en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */; };
 		4EEE92891A1A4A340006BD95 /* SMTransportationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE92881A1A4A340006BD95 /* SMTransportationCell.m */; };
 		4EEE928C1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE928B1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m */; };
 		4EEE928F1A1A52620006BD95 /* SMCyLwReminderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE928E1A1A52620006BD95 /* SMCyLwReminderVC.m */; };
@@ -2785,10 +2785,6 @@
 		4EEE923D1A125E690006BD95 /* marker-red-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-red-withletter.png"; path = "Resources/marker-red-withletter.png"; sourceTree = "<group>"; };
 		4EEE923E1A125E690006BD95 /* marker-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-red.png"; path = "Resources/marker-red.png"; sourceTree = "<group>"; };
 		4EEE923F1A125E690006BD95 /* marker-blue-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue-withletter.png"; path = "Resources/marker-blue-withletter.png"; sourceTree = "<group>"; };
-		4EEE92771A12E69D0006BD95 /* dictionary_dk.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_dk.strings; sourceTree = "<group>"; };
-		4EEE92781A12E69D0006BD95 /* dictionary_en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_en.strings; sourceTree = "<group>"; };
-		4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_dk.strings; sourceTree = "<group>"; };
-		4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_en.strings; sourceTree = "<group>"; };
 		4EEE92851A12E9800006BD95 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4EEE92871A1A4A340006BD95 /* SMTransportationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationCell.h; sourceTree = "<group>"; };
 		4EEE92881A1A4A340006BD95 /* SMTransportationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationCell.m; sourceTree = "<group>"; };
@@ -2879,6 +2875,14 @@
 				4E392AD81A308DBE0076BA86 /* smroute_settings_private.plist */,
 			);
 			path = "route-me";
+			sourceTree = "<group>";
+		};
+		4E5258A81A9B604400BE55C8 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4E5258B21A9B616200BE55C8 /* Localizable.strings */,
+			);
+			name = Localization;
 			sourceTree = "<group>";
 		};
 		4E5981FF1A24AC1200A40484 /* 3rd party Swift */ = {
@@ -4523,6 +4527,7 @@
 		4EEE91B01A1245610006BD95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E5258A81A9B604400BE55C8 /* Localization */,
 				4E392AD51A308DBE0076BA86 /* route-me */,
 				4EEE91BD1A1245910006BD95 /* Albertslundruten.line */,
 				4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */,
@@ -4586,8 +4591,7 @@
 		4EEE92761A12E69D0006BD95 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				4EEE92771A12E69D0006BD95 /* dictionary_dk.strings */,
-				4EEE92781A12E69D0006BD95 /* dictionary_en.strings */,
+				4E5258B71A9B6CCA00BE55C8 /* Localizable_IBC.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -4595,8 +4599,7 @@
 		4EEE927B1A12E6B90006BD95 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */,
-				4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */,
+				4E5258BC1A9B6CEE00BE55C8 /* Localizable_CP.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -4899,6 +4902,7 @@
 				4EEE924C1A125E690006BD95 /* marker-blue-withletter.png in Resources */,
 				4EE066531A10FAB400DE4226 /* warningIcon@2x.png in Resources */,
 				4EE064CD1A10FAB400DE4226 /* flag.png in Resources */,
+				4E5258AF1A9B616200BE55C8 /* Localizable.strings in Resources */,
 				4EE066261A10FAB400DE4226 /* routeEnterSingleRow.png in Resources */,
 				4EE0654C1A10FAB400DE4226 /* cargo_white.png in Resources */,
 				4EE066351A10FAB400DE4226 /* routeEnterViewMoreRow@2x.png in Resources */,
@@ -4990,7 +4994,6 @@
 				4EE0658D1A10FAB400DE4226 /* favSchoolGrey@2x.png in Resources */,
 				4EE065761A10FAB400DE4226 /* favEditBtn.png in Resources */,
 				4EE064D11A10FAB400DE4226 /* left.png in Resources */,
-				4EEE92791A12E69D0006BD95 /* dictionary_dk.strings in Resources */,
 				4EE065BE1A10FAB400DE4226 /* green_grey.png in Resources */,
 				4EBB7B3A1A5EB4E70064B530 /* farum-route.json in Resources */,
 				4EE0660F1A10FAB400DE4226 /* routeComplete_close_btn@2x.png in Resources */,
@@ -5142,7 +5145,7 @@
 				4EE0661C1A10FAB400DE4226 /* routeEnterInputBG.png in Resources */,
 				4EE065D51A10FAB400DE4226 /* loginBG@2x.png in Resources */,
 				4EE0655A1A10FAB400DE4226 /* drop_pin_add_fav_btn.png in Resources */,
-				4EEE927A1A12E69D0006BD95 /* dictionary_en.strings in Resources */,
+				4E5258B51A9B6CCA00BE55C8 /* Localizable_IBC.strings in Resources */,
 				4EE0653C1A10FAB400DE4226 /* btnClose.png in Resources */,
 				4EE064E51A10FAB400DE4226 /* walk.png in Resources */,
 				4EE0654F1A10FAB400DE4226 /* checkboxChecked@2x.png in Resources */,
@@ -5421,6 +5424,7 @@
 				4EE072441A1178E200DE4226 /* favTypeHomeButton.png in Resources */,
 				4EE072231A1178E200DE4226 /* favHomeBlack@2x.png in Resources */,
 				4EE072BF1A1178E200DE4226 /* normal_grey@2x.png in Resources */,
+				4E5258B01A9B616200BE55C8 /* Localizable.strings in Resources */,
 				4EE072F11A1178E200DE4226 /* reminder_icon@2x.png in Resources */,
 				4EE073281A1178E300DE4226 /* routeEnterMiddleRow.png in Resources */,
 				4EE0716C1A1178E100DE4226 /* arrow_small.png in Resources */,
@@ -5530,7 +5534,6 @@
 				4EE073241A1178E300DE4226 /* routeEnterLocateIcon.png in Resources */,
 				4EE071841A1178E100DE4226 /* bike_route_white@2x.png in Resources */,
 				4EE071661A1178E100DE4226 /* accountMenu.png in Resources */,
-				4EEE927E1A12E6B90006BD95 /* dictionary_dk.strings in Resources */,
 				4EE0720E1A1178E200DE4226 /* favAddBG.png in Resources */,
 				4EE071D41A1178E200DE4226 /* near-destination.png in Resources */,
 				4EE072731A1178E200DE4226 /* home_btn_inactive.png in Resources */,
@@ -5860,7 +5863,7 @@
 				4EE071671A1178E100DE4226 /* accountMenu@2x.png in Resources */,
 				4EE071891A1178E100DE4226 /* blue_btn_ibike.png in Resources */,
 				4EE072B51A1178E200DE4226 /* metro_logo_pin@2x.png in Resources */,
-				4EEE927F1A12E6B90006BD95 /* dictionary_en.strings in Resources */,
+				4E5258BA1A9B6CEE00BE55C8 /* Localizable_CP.strings in Resources */,
 				4EEE92411A125E690006BD95 /* arrow_position.png in Resources */,
 				4EE071CA1A1178E200DE4226 /* field_email_icon@2x.png in Resources */,
 				4EE0717C1A1178E100DE4226 /* back_arrow_btn_white_press.png in Resources */,
@@ -6388,6 +6391,34 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4E5258B21A9B616200BE55C8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E5258B31A9B61B300BE55C8 /* da */,
+				4E5258B41A9B61E400BE55C8 /* en */,
+			);
+			name = Localizable.strings;
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		4E5258B71A9B6CCA00BE55C8 /* Localizable_IBC.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E5258B61A9B6CCA00BE55C8 /* en */,
+				4E5258B91A9B6CD500BE55C8 /* da */,
+			);
+			name = Localizable_IBC.strings;
+			sourceTree = "<group>";
+		};
+		4E5258BC1A9B6CEE00BE55C8 /* Localizable_CP.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E5258BB1A9B6CEE00BE55C8 /* en */,
+				4E5258BD1A9B6CFE00BE55C8 /* da */,
+			);
+			name = Localizable_CP.strings;
+			sourceTree = "<group>";
+		};
 		4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
