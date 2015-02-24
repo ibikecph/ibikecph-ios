@@ -1,5 +1,5 @@
 //
-//  TrackHandler.swift
+//  TrackingHandler.swift
 //  I Bike CPH
 //
 //  Created by Tobias Due Munk on 16/02/15.
@@ -8,13 +8,34 @@
 
 import Foundation
 import CoreLocation
+import CoreMotion
 
-let trackHandler = TrackHandler()
+let trackingHandler = TrackingHandler()
 
-@objc class TrackHandler {
+@objc class TrackingHandler {
 
     private var currentTrack: Track?
     let bikeDetector = BikeDetector()
+    var currentActivity: CMMotionActivity? {
+        didSet {
+            if let activity = currentActivity {
+                if activity.stationary {
+                    self.stopTracking()
+                } else {
+                    self.startTracking()
+                }
+                if let track = currentTrack {
+                    let newActivity = TrackActivity.build(activity)
+                    newActivity.addToRealm()
+                    track.realm.beginWriteTransaction()
+                    track.activity = newActivity
+                    track.realm.commitWriteTransaction()
+                }
+            } else {
+                self.stopTracking()
+            }
+        }
+    }
     
     init() {
         setupMotionTracking()
@@ -23,6 +44,9 @@ let trackHandler = TrackHandler()
     }
     
     func trackingAvailable() -> Bool {
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            return true
+        #endif
         return bikeDetector.isAvailable()
     }
     
@@ -33,13 +57,14 @@ let trackHandler = TrackHandler()
         if !bikeDetector.isAvailable() {
             return
         }
-        bikeDetector.start { [unowned self] isBiking in
-            // Run tracking when biking
-            if isBiking {
-                self.startTracking()
-            } else {
-                self.stopTracking()
-            }
+        bikeDetector.start { [unowned self] isBiking, activity in
+//            // Run tracking when biking
+//            if isBiking {
+//                self.startTracking()
+//            } else {
+//                self.stopTracking()
+//            }
+            self.currentActivity = activity
         }
     }
     
@@ -88,7 +113,7 @@ let trackHandler = TrackHandler()
         SMLocationManager.instance().idle()
         
         // Stop track
-        currentTrack?.recalculateLength()
+        currentTrack?.recalculate()
         currentTrack = nil
     }
     
@@ -96,7 +121,7 @@ let trackHandler = TrackHandler()
         if let currentTrack = currentTrack {
             let location = TrackLocation.build(location)
             currentTrack.locations.add(location)
-            currentTrack.recalculateLength()
+            currentTrack.recalculate()
             println("Tracked location: \(location.location())")
         }
     }
@@ -105,9 +130,9 @@ let trackHandler = TrackHandler()
 
 // MARK: - ObjC compatibility
 
-extension TrackHandler {
+extension TrackingHandler {
     
-    class func sharedInstance() -> TrackHandler {
-        return trackHandler
+    class func sharedInstance() -> TrackingHandler {
+        return trackingHandler
     }
 }

@@ -58,11 +58,9 @@ class MenuViewController: UIViewController {
         })
         let trackingItem = MenuItem(title: SMTranslation.decodeString("tracking"), iconImageName: "tracking", action: { menuViewController in
             let trackingOn = settings.tracking.on
-            let trackingAvailable = trackHandler.trackingAvailable()
+            let trackingAvailable = trackingHandler.trackingAvailable()
             if !trackingAvailable {
-                let alert = PSTAlertController(title: "No tracking", message: "Your device doesn't support automatic tracking", preferredStyle: .Alert);
-                alert.addCancelActionWithHandler(nil)
-                alert.showWithSender(self, controller: self, animated: true, completion: nil)
+                menuViewController.performSegueWithIdentifier("menuToTrackingNotAvailable", sender: menuViewController)
                 return
             }
             if !trackingOn {

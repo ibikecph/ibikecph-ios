@@ -280,6 +280,17 @@
 
 "tracking" = "Tracking";
 "enable_tracking" = "Enable tracking";
-"enable_tracking_description" = "TODO: Description for what tracking does.";
+"enable_tracking_description" = "See how much and how fast you are biking.";
+"enable_tracking_explanation" = "When GPS tracking is turned on, your data is store about your tracks on you phone. Your data are not accessible to others. If you delete this app, you data will also be deleted.\n\nYou can always toggle GPS tracking, notifications and totals on and off under settings for GPS tracking.";
 "no_tracking_description" = "Din telefon understøtter desværre ikke GPS tracking.";
 "no_tracking_explanation" = "GPS tracking understøttes i øjeblikket kun på Apple's iPhone 5s og iPhone 6 og 6+ og på Android telefoner.";
+
+"unit_km" = "km";
+"unit_km_pr_h" = "km/h";
+"unit_km_pr_trip" = "km/trip";
+"unit_h_long" = "hours";
+"unit_h_short" = "h";
+"dum_km" = "55.3";
+"dum_kmh" = "23.3";
+"dum_kmtrip" = "12.4";
+"dum_h" = "14.3";

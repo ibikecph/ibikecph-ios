@@ -13,11 +13,15 @@ extension RLMObject {
     /**
      * Add object to realm within a write transaction
      */
-    func addToRealm(realm: RLMRealm = RLMRealm.defaultRealm()) {
+    func addToRealm(realm: RLMRealm = RLMRealm.defaultRealm(), inWriteTransaction: Bool = true) {
         // Add to the Realm inside a transaction
-        realm.beginWriteTransaction()
+        if inWriteTransaction {
+            realm.beginWriteTransaction()
+        }
         realm.addObject(self)
-        realm.commitWriteTransaction()
+        if inWriteTransaction {
+            realm.commitWriteTransaction()
+        }
     }
     
     /**
@@ -55,6 +59,26 @@ extension RLMArray {
 //        self.realm.addObject(object)
         
         
+    }
+}
+
+extension RLMResults {
+    
+    func toArray() -> [RLMObject] {
+        var array = [RLMObject]()
+        for result in self {
+            array.append(result)
+        }
+        return array
+    }
+    func toArray<T>(ofType: T.Type) -> [T] {
+        var array = [T]()
+        for result in self {
+            if let result = result as? T {
+                array.append(result)
+            }
+        }
+        return array
     }
 }
 

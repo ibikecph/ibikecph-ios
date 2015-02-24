@@ -10,9 +10,19 @@ import UIKit
 
 class TrackingViewController: SMTranslatedViewController {
 
-    @IBOutlet weak var value1Label: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var tripLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     private var token: RLMNotificationToken?
+    
+    lazy var formatter: NSNumberFormatter = {
+        let formatter = NSNumberFormatter()
+        formatter.maximumFractionDigits = 1
+        formatter.minimumFractionDigits = 1
+        return formatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +47,17 @@ class TrackingViewController: SMTranslatedViewController {
     func updateUI() {
         
         let tracks = Track.allObjects()
-        let length = round(tracks.sumOfProperty("length").doubleValue)
-        value1Label.text = "\(length) m"
+        
+        let totalDistance = tracks.sumOfProperty("length").doubleValue / 1000
+        distanceLabel.text = formatter.stringFromNumber(totalDistance)!
+        
+        let totalTime = tracks.sumOfProperty("duration").doubleValue / 3600
+        timeLabel.text = formatter.stringFromNumber(totalTime)!
+        
+        let averageSpeed = totalDistance / totalTime
+        speedLabel.text = formatter.stringFromNumber(averageSpeed)!
+        
+        let averageTripDistance = tracks.averageOfProperty("length").doubleValue
+        tripLabel.text = formatter.stringFromNumber(averageTripDistance)!
     }
 }

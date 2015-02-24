@@ -16,6 +16,9 @@ class TrackLocation: RLMObject {
     dynamic var altitude: Double = 0
     dynamic var horizontalAccuracy: Double = 0
     dynamic var verticalAccuracy: Double = 0
+    var date: NSDate {
+        return NSDate(timeIntervalSince1970: timestamp)
+    }
     
     class func build(location: CLLocation) -> TrackLocation {
         var point = TrackLocation()
@@ -33,6 +36,7 @@ class TrackLocation: RLMObject {
     }
     
     func location() -> CLLocation {
-        return CLLocation(coordinate: coordinate(), altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy, timestamp: NSDate(timeIntervalSince1970: timestamp))
+        return CLLocation(coordinate: coordinate(), altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy, timestamp: date)
     }
 }
+

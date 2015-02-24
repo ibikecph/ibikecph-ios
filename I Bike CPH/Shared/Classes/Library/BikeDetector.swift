@@ -21,7 +21,7 @@ class BikeDetector {
         return CMMotionActivityManager.isActivityAvailable()
     }
     
-    func start(handler: (biking: Bool) -> ()) {
+    func start(handler: (biking: Bool, activity: CMMotionActivity) -> ()) {
         if !isAvailable() {
             return
         }
@@ -29,7 +29,7 @@ class BikeDetector {
         manager.startActivityUpdatesToQueue(NSOperationQueue.mainQueue()) { activity in
             println("stationary: \(activity.stationary), bike: \(activity.cycling),  walk: \(activity.walking), run: \(activity.running), automotive: \(activity.automotive), unkown: \(activity.unknown), confidence: \(activity.confidence.rawValue), start: \(activity.startDate), ")
             let isBiking = activity.cycling
-            handler(biking: isBiking)
+            handler(biking: isBiking, activity: activity)
         }
         self.motionActivityManager = manager
     }

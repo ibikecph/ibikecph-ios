@@ -288,24 +288,12 @@
 "no_tracking_description" = "Din telefon understøtter desværre ikke GPS tracking.";
 "no_tracking_explanation" = "GPS tracking understøttes i øjeblikket kun på Apple's iPhone 5s og iPhone 6 og 6+ og på Android telefoner.";
 
-//
-"delete_my_account" = "Slet min konto";
-"you_are_logged_in_as" = "Du er logget ind som";
-"edit_my_account" = "Rediger profil";
-"save_changes" = "Gem ændringer";
-"account_name_placeholder" = "Navn";
-"account_email_placeholder" = "Email";
-"account_password_placeholder" = "Skriv ny adgangskode";
-"account_repeat_placeholder" = "Gentag ny adgangskode";
-
-
-"login_error_fields" = "Både din email og din adgangskode skal være indtastet!";
-"register_error_fields" = "Alle felter skal være udfyldt!";
-"register_error_passwords" = "Din adgangskode er forkert!";
-
-"error_not_logged_in" = "Du skal være logget ind";
-"report_error_problem_not_selected" = "Vælg venligst et problem";
-"report_error_step_not_selected" = "Vælg venligst et trin i ruten";
-
-"start_route" = "Start";
-
+"unit_km" = "km";
+"unit_km_pr_h" = "km/t";
+"unit_km_pr_trip" = "km/tur";
+"unit_h_long" = "timer";
+"unit_h_short" = "t";
+"dum_km" = "55,3";
+"dum_kmh" = "23,3";
+"dum_kmtrip" = "12,4";
+"dum_h" = "14,3";
