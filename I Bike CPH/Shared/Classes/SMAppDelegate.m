@@ -72,7 +72,21 @@
     self.window.tintColor = [Styler tintColor];
     
 //    [RLMRealm deleteDefaultRealmFile];
-    [TrackHandler sharedInstance];
+
+    // Auto migrate Realm
+    [RLMRealm setSchemaVersion:1 forRealmAtPath:[RLMRealm defaultRealmPath] withMigrationBlock:^(RLMMigration *migration, NSUInteger oldSchemaVersion) {
+        if (oldSchemaVersion < 1) {
+//            [migration enumerateObjects:Track.className
+//                                  block:^(RLMObject *oldObject, RLMObject *newObject) {
+//                                      
+//                                      // combine name fields into a single field
+//                                      newObject[@"activity"] = [Track hello];
+//                                  }];
+        }
+    }];
+    [RLMRealm migrateRealmAtPath:[RLMRealm defaultRealmPath]];
+    
+    [TrackingHandler sharedInstance];
     
     return YES;
 }

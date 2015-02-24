@@ -744,7 +744,7 @@ typedef enum {
 }
 
 - (NSDictionary *)addRouteAnnotation:(SMRoute *)route {
-    return [self addRouteAnnotation:route lineColor:PATH_COLOR];
+    return [self addRouteAnnotation:route lineColor:[Styler tintColor]];
 }
 
 - (NSDictionary *)addRouteAnnotation:(SMRoute *)route lineColor:(UIColor *)color {
@@ -771,7 +771,7 @@ typedef enum {
             [self addRouteAnnotation:route];
         }
         if (route.routeType == SMRouteTypeTransport) {
-            [self addRouteAnnotation:route lineColor:[PATH_COLOR colorWithAlphaComponent:0.3]];
+            [self addRouteAnnotation:route lineColor:[[Styler tintColor] colorWithAlphaComponent:0.3]];
         }
     }
     
@@ -1319,7 +1319,7 @@ typedef enum {
     calculatedPathAnnotation.annotationType = @"path";
     calculatedPathAnnotation.userInfo = @{
                                           @"linePoints" : [NSArray arrayWithArray:arr],
-                                          @"lineColor" : PATH_COLOR,
+                                          @"lineColor" : [Styler tintColor],
                                           @"fillColor" : [UIColor clearColor],
                                           @"lineWidth" : [NSNumber numberWithFloat:10.0f],
                                           };

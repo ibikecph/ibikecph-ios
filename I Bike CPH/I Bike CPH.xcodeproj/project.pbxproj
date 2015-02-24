@@ -16,6 +16,8 @@
 		4E23D6DD1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */; };
 		4E2A92561A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
 		4E2A92571A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
+		4E2CE9EE1A974BA600F4BC4F /* TracksHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */; };
+		4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */; };
 		4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
 		4E33B91E1A640590007D4C82 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91D1A640590007D4C82 /* AppHelper.swift */; };
 		4E33B91F1A6406FD007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
@@ -36,6 +38,8 @@
 		4E3C3A8B1A39E80300C79E52 /* SharedImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */; };
 		4E3C3A8D1A3A043900C79E52 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */; };
 		4E3C3A8E1A3A043900C79E52 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */; };
+		4E3E38A71A979E0A00773285 /* TrackActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E38A61A979E0A00773285 /* TrackActivity.swift */; };
+		4E3E38A81A979E0A00773285 /* TrackActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E38A61A979E0A00773285 /* TrackActivity.swift */; };
 		4E4566621A8A61FA006563D1 /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */; };
 		4E4566641A8A620E006563D1 /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566631A8A620E006563D1 /* smroute_settings_app_private.plist */; };
 		4E4AC4541A8502E80037A65E /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AC4531A8502E80037A65E /* Logo@2x.png */; };
@@ -50,16 +54,26 @@
 		4E4F5FDB1A2BAC4700233ACA /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FD91A2BAC4700233ACA /* Styling.swift */; };
 		4E4F5FDE1A2BAE1400233ACA /* StyleCykelPlanen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FDC1A2BAE1400233ACA /* StyleCykelPlanen.swift */; };
 		4E4F5FE01A2BB3A000233ACA /* StyleIBikeCph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F5FDF1A2BB3A000233ACA /* StyleIBikeCph.swift */; };
+		4E5258A61A9B580000BE55C8 /* TrackingNotAvailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258A51A9B580000BE55C8 /* TrackingNotAvailableViewController.swift */; };
+		4E5258A71A9B580000BE55C8 /* TrackingNotAvailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258A51A9B580000BE55C8 /* TrackingNotAvailableViewController.swift */; };
+		4E5258AF1A9B616200BE55C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258B21A9B616200BE55C8 /* Localizable.strings */; };
+		4E5258B01A9B616200BE55C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258B21A9B616200BE55C8 /* Localizable.strings */; };
+		4E5258B51A9B6CCA00BE55C8 /* Localizable_IBC.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258B71A9B6CCA00BE55C8 /* Localizable_IBC.strings */; };
+		4E5258BA1A9B6CEE00BE55C8 /* Localizable_CP.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258BC1A9B6CEE00BE55C8 /* Localizable_CP.strings */; };
+		4E5258C71A9B9C8400BE55C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C61A9B9C8300BE55C8 /* String.swift */; };
+		4E5258C81A9B9C8400BE55C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C61A9B9C8300BE55C8 /* String.swift */; };
+		4E5258CA1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */; };
+		4E5258CB1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */; };
 		4E55A0241A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */; };
 		4E55A0251A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */; };
 		4E55A0271A36068800386F85 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0261A36068800386F85 /* MenuViewController.swift */; };
 		4E55A0281A36068800386F85 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0261A36068800386F85 /* MenuViewController.swift */; };
 		4E5674561A92383500BF4A28 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5674551A92383500BF4A28 /* Track.swift */; };
-		4E5674591A9238A600BF4A28 /* TrackPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5674581A9238A600BF4A28 /* TrackPoint.swift */; };
-		4E56745A1A9238A600BF4A28 /* TrackPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5674581A9238A600BF4A28 /* TrackPoint.swift */; };
+		4E5674591A9238A600BF4A28 /* TrackLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5674581A9238A600BF4A28 /* TrackLocation.swift */; };
+		4E56745A1A9238A600BF4A28 /* TrackLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5674581A9238A600BF4A28 /* TrackLocation.swift */; };
 		4E56745B1A9238A900BF4A28 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5674551A92383500BF4A28 /* Track.swift */; };
-		4E56745D1A92469000BF4A28 /* TrackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745C1A92469000BF4A28 /* TrackHandler.swift */; };
-		4E56745E1A92469000BF4A28 /* TrackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745C1A92469000BF4A28 /* TrackHandler.swift */; };
+		4E56745D1A92469000BF4A28 /* TrackingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745C1A92469000BF4A28 /* TrackingHandler.swift */; };
+		4E56745E1A92469000BF4A28 /* TrackingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745C1A92469000BF4A28 /* TrackingHandler.swift */; };
 		4E5674601A92521800BF4A28 /* BikeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745F1A92521800BF4A28 /* BikeDetector.swift */; };
 		4E5674611A92521800BF4A28 /* BikeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745F1A92521800BF4A28 /* BikeDetector.swift */; };
 		4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
@@ -96,6 +110,8 @@
 		4E7BD0801A92354E00BFDC7B /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07E1A92354E00BFDC7B /* Realm.swift */; };
 		4E8E34381A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
 		4E8E343A1A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
+		4E90B42E1A9739A900A5F4C5 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */; };
+		4E90B42F1A9739A900A5F4C5 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */; };
 		4EAB12441A769BB60099AC54 /* VoicePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */; };
 		4EAB12451A769BB90099AC54 /* VoicePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */; };
 		4EAB12471A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */; };
@@ -1390,10 +1406,6 @@
 		4EEE924B1A125E690006BD95 /* marker-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE923E1A125E690006BD95 /* marker-red.png */; };
 		4EEE924C1A125E690006BD95 /* marker-blue-withletter.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE923F1A125E690006BD95 /* marker-blue-withletter.png */; };
 		4EEE924D1A125E690006BD95 /* marker-blue-withletter.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE923F1A125E690006BD95 /* marker-blue-withletter.png */; };
-		4EEE92791A12E69D0006BD95 /* dictionary_dk.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92771A12E69D0006BD95 /* dictionary_dk.strings */; };
-		4EEE927A1A12E69D0006BD95 /* dictionary_en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE92781A12E69D0006BD95 /* dictionary_en.strings */; };
-		4EEE927E1A12E6B90006BD95 /* dictionary_dk.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */; };
-		4EEE927F1A12E6B90006BD95 /* dictionary_en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */; };
 		4EEE92891A1A4A340006BD95 /* SMTransportationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE92881A1A4A340006BD95 /* SMTransportationCell.m */; };
 		4EEE928C1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE928B1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m */; };
 		4EEE928F1A1A52620006BD95 /* SMCyLwReminderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE928E1A1A52620006BD95 /* SMCyLwReminderVC.m */; };
@@ -1453,6 +1465,7 @@
 		4E23D6DA1A648E56008998CB /* SMAccountFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountFacebookViewController.h; sourceTree = "<group>"; };
 		4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountFacebookViewController.m; sourceTree = "<group>"; };
 		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksHandler.swift; sourceTree = "<group>"; };
 		4E33B91B1A640579007D4C82 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		4E33B91D1A640590007D4C82 /* AppHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		4E3867801A430A0E0018AC5B /* FacebookHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHandler.swift; sourceTree = "<group>"; };
@@ -1463,6 +1476,7 @@
 		4E3C3A861A39DEFC00C79E52 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedImages.xcassets; sourceTree = "<group>"; };
 		4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		4E3E38A61A979E0A00773285 /* TrackActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackActivity.swift; sourceTree = "<group>"; };
 		4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_app_private.plist; sourceTree = "<group>"; };
 		4E4566631A8A620E006563D1 /* smroute_settings_app_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_app_private.plist; sourceTree = "<group>"; };
 		4E4AC4531A8502E80037A65E /* Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo@2x.png"; sourceTree = "<group>"; };
@@ -1475,11 +1489,20 @@
 		4E4F5FD91A2BAC4700233ACA /* Styling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
 		4E4F5FDC1A2BAE1400233ACA /* StyleCykelPlanen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleCykelPlanen.swift; sourceTree = "<group>"; };
 		4E4F5FDF1A2BB3A000233ACA /* StyleIBikeCph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleIBikeCph.swift; sourceTree = "<group>"; };
+		4E5258A51A9B580000BE55C8 /* TrackingNotAvailableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingNotAvailableViewController.swift; sourceTree = "<group>"; };
+		4E5258B31A9B61B300BE55C8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E5258B41A9B61E400BE55C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E5258B61A9B6CCA00BE55C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable_IBC.strings; sourceTree = "<group>"; };
+		4E5258B91A9B6CD500BE55C8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable_IBC.strings; sourceTree = "<group>"; };
+		4E5258BB1A9B6CEE00BE55C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable_CP.strings; sourceTree = "<group>"; };
+		4E5258BD1A9B6CFE00BE55C8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable_CP.strings; sourceTree = "<group>"; };
+		4E5258C61A9B9C8300BE55C8 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackDetailViewController.swift; sourceTree = "<group>"; };
 		4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabelTableViewCell.swift; sourceTree = "<group>"; };
 		4E55A0261A36068800386F85 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		4E5674551A92383500BF4A28 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
-		4E5674581A9238A600BF4A28 /* TrackPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackPoint.swift; sourceTree = "<group>"; };
-		4E56745C1A92469000BF4A28 /* TrackHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackHandler.swift; sourceTree = "<group>"; };
+		4E5674581A9238A600BF4A28 /* TrackLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackLocation.swift; sourceTree = "<group>"; };
+		4E56745C1A92469000BF4A28 /* TrackingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingHandler.swift; sourceTree = "<group>"; };
 		4E56745F1A92521800BF4A28 /* BikeDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetector.swift; sourceTree = "<group>"; };
 		4E5982001A24AC1200A40484 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationItem.swift; sourceTree = "<group>"; };
@@ -1499,6 +1522,7 @@
 		4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		4E7BD07E1A92354E00BFDC7B /* Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		4E8E34371A272A84004D529B /* OiorestItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OiorestItem.swift; sourceTree = "<group>"; };
+		4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
 		4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoicePreferencesViewController.swift; sourceTree = "<group>"; };
 		4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabelSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandler.swift; sourceTree = "<group>"; };
@@ -1510,6 +1534,7 @@
 		4EBB7B441A5EC0880064B530 /* BikePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikePreferencesViewController.swift; sourceTree = "<group>"; };
 		4EBB7B471A5EC2A00064B530 /* RouteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
 		4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTypeHandler.swift; sourceTree = "<group>"; };
+		4EC282111A9C862B0036AE4E /* SharedConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedConstants.h; sourceTree = "<group>"; };
 		4EC56DA61A2A25E900B696B4 /* SMAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAnalytics.h; sourceTree = "<group>"; };
 		4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAnalytics.m; sourceTree = "<group>"; };
 		4EC56DA81A2A25E900B696B4 /* SMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAnnotation.h; sourceTree = "<group>"; };
@@ -2785,10 +2810,6 @@
 		4EEE923D1A125E690006BD95 /* marker-red-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-red-withletter.png"; path = "Resources/marker-red-withletter.png"; sourceTree = "<group>"; };
 		4EEE923E1A125E690006BD95 /* marker-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-red.png"; path = "Resources/marker-red.png"; sourceTree = "<group>"; };
 		4EEE923F1A125E690006BD95 /* marker-blue-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue-withletter.png"; path = "Resources/marker-blue-withletter.png"; sourceTree = "<group>"; };
-		4EEE92771A12E69D0006BD95 /* dictionary_dk.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_dk.strings; sourceTree = "<group>"; };
-		4EEE92781A12E69D0006BD95 /* dictionary_en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_en.strings; sourceTree = "<group>"; };
-		4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_dk.strings; sourceTree = "<group>"; };
-		4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = dictionary_en.strings; sourceTree = "<group>"; };
 		4EEE92851A12E9800006BD95 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4EEE92871A1A4A340006BD95 /* SMTransportationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationCell.h; sourceTree = "<group>"; };
 		4EEE92881A1A4A340006BD95 /* SMTransportationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationCell.m; sourceTree = "<group>"; };
@@ -2881,6 +2902,14 @@
 			path = "route-me";
 			sourceTree = "<group>";
 		};
+		4E5258A81A9B604400BE55C8 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				4E5258B21A9B616200BE55C8 /* Localizable.strings */,
+			);
+			name = Localization;
+			sourceTree = "<group>";
+		};
 		4E5981FF1A24AC1200A40484 /* 3rd party Swift */ = {
 			isa = PBXGroup;
 			children = (
@@ -2953,8 +2982,10 @@
 				4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */,
 				4E3A7EF51A7793980020A8B4 /* Speak.swift */,
 				4E7BD07E1A92354E00BFDC7B /* Realm.swift */,
-				4E56745C1A92469000BF4A28 /* TrackHandler.swift */,
+				4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */,
+				4E56745C1A92469000BF4A28 /* TrackingHandler.swift */,
 				4E56745F1A92521800BF4A28 /* BikeDetector.swift */,
+				4E5258C61A9B9C8300BE55C8 /* String.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -3085,6 +3116,7 @@
 		4EE05F9F1A10EE7600DE4226 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4EC282111A9C862B0036AE4E /* SharedConstants.h */,
 				4EE06E091A11267D00DE4226 /* SharedImport.h */,
 				4E4F5FD91A2BAC4700233ACA /* Styling.swift */,
 				4E4AC4591A8505BE0037A65E /* Macro.swift */,
@@ -3805,7 +3837,10 @@
 				4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */,
 				4EE671C51A2F25F00037865B /* UINavigationController.swift */,
 				4E651D2E1A93EA5B00497C70 /* TrackingPromptViewController.swift */,
+				4E5258A51A9B580000BE55C8 /* TrackingNotAvailableViewController.swift */,
 				4E651D311A93EB9400497C70 /* TrackingViewController.swift */,
+				4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */,
+				4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -4515,7 +4550,8 @@
 				4E33B91B1A640579007D4C82 /* UserHelper.swift */,
 				4E33B91D1A640590007D4C82 /* AppHelper.swift */,
 				4E5674551A92383500BF4A28 /* Track.swift */,
-				4E5674581A9238A600BF4A28 /* TrackPoint.swift */,
+				4E3E38A61A979E0A00773285 /* TrackActivity.swift */,
+				4E5674581A9238A600BF4A28 /* TrackLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -4523,6 +4559,7 @@
 		4EEE91B01A1245610006BD95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E5258A81A9B604400BE55C8 /* Localization */,
 				4E392AD51A308DBE0076BA86 /* route-me */,
 				4EEE91BD1A1245910006BD95 /* Albertslundruten.line */,
 				4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */,
@@ -4586,8 +4623,7 @@
 		4EEE92761A12E69D0006BD95 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				4EEE92771A12E69D0006BD95 /* dictionary_dk.strings */,
-				4EEE92781A12E69D0006BD95 /* dictionary_en.strings */,
+				4E5258B71A9B6CCA00BE55C8 /* Localizable_IBC.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -4595,8 +4631,7 @@
 		4EEE927B1A12E6B90006BD95 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				4EEE927C1A12E6B90006BD95 /* dictionary_dk.strings */,
-				4EEE927D1A12E6B90006BD95 /* dictionary_en.strings */,
+				4E5258BC1A9B6CEE00BE55C8 /* Localizable_CP.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -4899,6 +4934,7 @@
 				4EEE924C1A125E690006BD95 /* marker-blue-withletter.png in Resources */,
 				4EE066531A10FAB400DE4226 /* warningIcon@2x.png in Resources */,
 				4EE064CD1A10FAB400DE4226 /* flag.png in Resources */,
+				4E5258AF1A9B616200BE55C8 /* Localizable.strings in Resources */,
 				4EE066261A10FAB400DE4226 /* routeEnterSingleRow.png in Resources */,
 				4EE0654C1A10FAB400DE4226 /* cargo_white.png in Resources */,
 				4EE066351A10FAB400DE4226 /* routeEnterViewMoreRow@2x.png in Resources */,
@@ -4990,7 +5026,6 @@
 				4EE0658D1A10FAB400DE4226 /* favSchoolGrey@2x.png in Resources */,
 				4EE065761A10FAB400DE4226 /* favEditBtn.png in Resources */,
 				4EE064D11A10FAB400DE4226 /* left.png in Resources */,
-				4EEE92791A12E69D0006BD95 /* dictionary_dk.strings in Resources */,
 				4EE065BE1A10FAB400DE4226 /* green_grey.png in Resources */,
 				4EBB7B3A1A5EB4E70064B530 /* farum-route.json in Resources */,
 				4EE0660F1A10FAB400DE4226 /* routeComplete_close_btn@2x.png in Resources */,
@@ -5142,7 +5177,7 @@
 				4EE0661C1A10FAB400DE4226 /* routeEnterInputBG.png in Resources */,
 				4EE065D51A10FAB400DE4226 /* loginBG@2x.png in Resources */,
 				4EE0655A1A10FAB400DE4226 /* drop_pin_add_fav_btn.png in Resources */,
-				4EEE927A1A12E69D0006BD95 /* dictionary_en.strings in Resources */,
+				4E5258B51A9B6CCA00BE55C8 /* Localizable_IBC.strings in Resources */,
 				4EE0653C1A10FAB400DE4226 /* btnClose.png in Resources */,
 				4EE064E51A10FAB400DE4226 /* walk.png in Resources */,
 				4EE0654F1A10FAB400DE4226 /* checkboxChecked@2x.png in Resources */,
@@ -5421,6 +5456,7 @@
 				4EE072441A1178E200DE4226 /* favTypeHomeButton.png in Resources */,
 				4EE072231A1178E200DE4226 /* favHomeBlack@2x.png in Resources */,
 				4EE072BF1A1178E200DE4226 /* normal_grey@2x.png in Resources */,
+				4E5258B01A9B616200BE55C8 /* Localizable.strings in Resources */,
 				4EE072F11A1178E200DE4226 /* reminder_icon@2x.png in Resources */,
 				4EE073281A1178E300DE4226 /* routeEnterMiddleRow.png in Resources */,
 				4EE0716C1A1178E100DE4226 /* arrow_small.png in Resources */,
@@ -5530,7 +5566,6 @@
 				4EE073241A1178E300DE4226 /* routeEnterLocateIcon.png in Resources */,
 				4EE071841A1178E100DE4226 /* bike_route_white@2x.png in Resources */,
 				4EE071661A1178E100DE4226 /* accountMenu.png in Resources */,
-				4EEE927E1A12E6B90006BD95 /* dictionary_dk.strings in Resources */,
 				4EE0720E1A1178E200DE4226 /* favAddBG.png in Resources */,
 				4EE071D41A1178E200DE4226 /* near-destination.png in Resources */,
 				4EE072731A1178E200DE4226 /* home_btn_inactive.png in Resources */,
@@ -5860,7 +5895,7 @@
 				4EE071671A1178E100DE4226 /* accountMenu@2x.png in Resources */,
 				4EE071891A1178E100DE4226 /* blue_btn_ibike.png in Resources */,
 				4EE072B51A1178E200DE4226 /* metro_logo_pin@2x.png in Resources */,
-				4EEE927F1A12E6B90006BD95 /* dictionary_en.strings in Resources */,
+				4E5258BA1A9B6CEE00BE55C8 /* Localizable_CP.strings in Resources */,
 				4EEE92411A125E690006BD95 /* arrow_position.png in Resources */,
 				4EE071CA1A1178E200DE4226 /* field_email_icon@2x.png in Resources */,
 				4EE0717C1A1178E100DE4226 /* back_arrow_btn_white_press.png in Resources */,
@@ -6071,6 +6106,7 @@
 				4E59820E1A24AC1200A40484 /* FavoriteItem.swift in Sources */,
 				4EE06CD11A11134C00DE4226 /* SMGeocoder.m in Sources */,
 				4EE06CC11A11134C00DE4226 /* SMKMSPlacesOperation.m in Sources */,
+				4E5258A61A9B580000BE55C8 /* TrackingNotAvailableViewController.swift in Sources */,
 				4EE06CC31A11134C00DE4226 /* SMKMSStreetOperation.m in Sources */,
 				4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */,
 				4E7BD07F1A92354E00BFDC7B /* Realm.swift in Sources */,
@@ -6082,12 +6118,13 @@
 				4E5982101A24AC1200A40484 /* FoursquareItem.swift in Sources */,
 				4EC56E951A2A2C3D00B696B4 /* SMRadioUncheckedCell.m in Sources */,
 				4EC56EAD1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */,
-				4E5674591A9238A600BF4A28 /* TrackPoint.swift in Sources */,
+				4E5674591A9238A600BF4A28 /* TrackLocation.swift in Sources */,
 				4EE06CB91A11134C00DE4226 /* SMAPIOperation.m in Sources */,
 				4EE06CBB1A11134C00DE4226 /* SMAPIQueue.m in Sources */,
 				4EE06C7D1A1110ED00DE4226 /* SMAddressParser.m in Sources */,
 				4EC56DCC1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */,
 				4EC56E8D1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
+				4E90B42E1A9739A900A5F4C5 /* TracksViewController.swift in Sources */,
 				4EC56E791A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
 				4EE06CD51A11134C00DE4226 /* SMLocationManager.m in Sources */,
 				4EC56E591A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
@@ -6095,6 +6132,7 @@
 				4E2A92561A3B43130032ACD4 /* Async.swift in Sources */,
 				4EC56DC01A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
 				4E5982141A24AC1200A40484 /* KortforItem.swift in Sources */,
+				4E3E38A71A979E0A00773285 /* TrackActivity.swift in Sources */,
 				4E4AC45C1A8506540037A65E /* MacroIBikeCph.swift in Sources */,
 				4EE06CE31A11134C00DE4226 /* SMTurnInstruction.m in Sources */,
 				4EC56E3D1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */,
@@ -6110,6 +6148,7 @@
 				4EC56E711A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
 				4EC56EA11A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */,
 				4E5982181A24AC1200A40484 /* User.swift in Sources */,
+				4E5258CA1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */,
 				4EC56DBC1A2A25E900B696B4 /* SMAnnotation.m in Sources */,
 				4EC56EF31A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
 				4EC56E751A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
@@ -6136,7 +6175,7 @@
 				4E5982161A24AC1200A40484 /* SearchListItem.swift in Sources */,
 				4EE06CC51A11134C00DE4226 /* NSString+Relevance.m in Sources */,
 				4EC56DDE1A2A262800B696B4 /* SMAppDelegate.m in Sources */,
-				4E56745D1A92469000BF4A28 /* TrackHandler.swift in Sources */,
+				4E56745D1A92469000BF4A28 /* TrackingHandler.swift in Sources */,
 				4EC56EFF1A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
 				4EBB7B481A5EC2A00064B530 /* RouteType.swift in Sources */,
 				4E33B91E1A640590007D4C82 /* AppHelper.swift in Sources */,
@@ -6155,6 +6194,8 @@
 				4EE06CC91A11134C00DE4226 /* Reachability.m in Sources */,
 				4EC56E691A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */,
 				4E4F5FDA1A2BAC4700233ACA /* Styling.swift in Sources */,
+				4E5258C71A9B9C8400BE55C8 /* String.swift in Sources */,
+				4E2CE9EE1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
 				4EC56DD01A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
 				4EE06CCF1A11134C00DE4226 /* SMAutocomplete.m in Sources */,
 				4EC56E291A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
@@ -6218,7 +6259,7 @@
 				4EC56DC61A2A25E900B696B4 /* SMContacts.m in Sources */,
 				4EC56EA71A2A2C3D00B696B4 /* SMSwipableView.m in Sources */,
 				4EE59AF51A6485BA00B89D71 /* SMAccountNativeViewController.m in Sources */,
-				4E56745A1A9238A600BF4A28 /* TrackPoint.swift in Sources */,
+				4E56745A1A9238A600BF4A28 /* TrackLocation.swift in Sources */,
 				4EE06C491A10FC5600DE4226 /* SMStationPickerView.m in Sources */,
 				4E5982131A24AC1200A40484 /* HistoryItem.swift in Sources */,
 				4E651D301A93EA5B00497C70 /* TrackingPromptViewController.swift in Sources */,
@@ -6251,6 +6292,7 @@
 				4EC56E9B1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4EC56E5B1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
 				4EC56DDA1A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
+				4E5258CB1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */,
 				4EC56EFD1A2A3AAE00B696B4 /* SMSplashController.m in Sources */,
 				4E4F5FDE1A2BAE1400233ACA /* StyleCykelPlanen.swift in Sources */,
 				4EE05F7E1A10EDE700DE4226 /* main.m in Sources */,
@@ -6266,9 +6308,11 @@
 				4EE06C581A10FC5600DE4226 /* SMBreakRouteViewController.m in Sources */,
 				4E651D331A93EB9400497C70 /* TrackingViewController.swift in Sources */,
 				4EC56E971A2A2C3D00B696B4 /* SMRadioUncheckedCell.m in Sources */,
+				4E90B42F1A9739A900A5F4C5 /* TracksViewController.swift in Sources */,
 				4EE06C351A10FC5600DE4226 /* SMBikeWaypointCell.m in Sources */,
 				4EE06CBC1A11134C00DE4226 /* SMAPIQueue.m in Sources */,
 				4EC56E8F1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
+				4E5258C81A9B9C8400BE55C8 /* String.swift in Sources */,
 				4EE06CE51A11135000DE4226 /* SMAddressParser.m in Sources */,
 				4EBB7B461A5EC0880064B530 /* BikePreferencesViewController.swift in Sources */,
 				4EC56E5F1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */,
@@ -6281,7 +6325,7 @@
 				4EC56E931A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */,
 				4EEE92891A1A4A340006BD95 /* SMTransportationCell.m in Sources */,
 				4EE06CE21A11134C00DE4226 /* SMRouteUtils.m in Sources */,
-				4E56745E1A92469000BF4A28 /* TrackHandler.swift in Sources */,
+				4E56745E1A92469000BF4A28 /* TrackingHandler.swift in Sources */,
 				4EE06C3C1A10FC5600DE4226 /* SMLineData.m in Sources */,
 				4EC56E6F1A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */,
 				4EC56EF91A2A3AAE00B696B4 /* SMSettingsController.m in Sources */,
@@ -6289,6 +6333,7 @@
 				4EE06C481A10FC5600DE4226 /* SMStationInfo.m in Sources */,
 				4EC56E431A2A2C3D00B696B4 /* SMCalloutView.m in Sources */,
 				4E4AC45F1A8509590037A65E /* MacroCykelPlanen.swift in Sources */,
+				4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
 				4E56745B1A9238A900BF4A28 /* Track.swift in Sources */,
 				4EC56E731A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
 				4EC56DCA1A2A25E900B696B4 /* SMEvents.m in Sources */,
@@ -6303,6 +6348,7 @@
 				4E4F5FDB1A2BAC4700233ACA /* Styling.swift in Sources */,
 				4EE06CBA1A11134C00DE4226 /* SMAPIOperation.m in Sources */,
 				4EE06C521A10FC5600DE4226 /* SMUser.m in Sources */,
+				4E5258A71A9B580000BE55C8 /* TrackingNotAvailableViewController.swift in Sources */,
 				4EBB7B4C1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */,
 				4EE06C441A10FC5600DE4226 /* SMRouteTransportationInfo.m in Sources */,
 				4E3A7EF71A7793980020A8B4 /* Speak.swift in Sources */,
@@ -6342,6 +6388,7 @@
 				4EE06C401A10FC5600DE4226 /* SMNode.m in Sources */,
 				4EE06CC21A11134C00DE4226 /* SMKMSPlacesOperation.m in Sources */,
 				4EC56ED11A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
+				4E3E38A81A979E0A00773285 /* TrackActivity.swift in Sources */,
 				4EE06CD01A11134C00DE4226 /* SMAutocomplete.m in Sources */,
 				4E3C3A8E1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
 				4EC56EA31A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */,
@@ -6388,6 +6435,34 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4E5258B21A9B616200BE55C8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E5258B31A9B61B300BE55C8 /* da */,
+				4E5258B41A9B61E400BE55C8 /* en */,
+			);
+			name = Localizable.strings;
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		4E5258B71A9B6CCA00BE55C8 /* Localizable_IBC.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E5258B61A9B6CCA00BE55C8 /* en */,
+				4E5258B91A9B6CD500BE55C8 /* da */,
+			);
+			name = Localizable_IBC.strings;
+			sourceTree = "<group>";
+		};
+		4E5258BC1A9B6CEE00BE55C8 /* Localizable_CP.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E5258BB1A9B6CEE00BE55C8 /* en */,
+				4E5258BD1A9B6CFE00BE55C8 /* da */,
+			);
+			name = Localizable_CP.strings;
+			sourceTree = "<group>";
+		};
 		4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -6487,6 +6562,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -6516,6 +6592,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../route-me/MapView/Map";
 			};
 			name = Debug;
 		};
@@ -6523,6 +6600,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -6551,6 +6629,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../route-me/MapView/Map";
 			};
 			name = Release;
 		};
@@ -6558,6 +6637,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A44BC1E9CE220BE043EB736A /* Pods-I Bike CPHTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6568,12 +6648,28 @@
 					"$(inherited)",
 					"I_BIKE_CPH=1",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/OCHamcrest\"",
+					"\"${PODS_ROOT}/Headers/Public/OCMockito\"",
+					"\"${PODS_ROOT}/Headers/Public/PSTAlertController\"",
+					"\"${PODS_ROOT}/Headers/Public/Realm\"",
+					"\"${PODS_ROOT}/Headers/Public/Realm/Realm\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/UIImage-Categories\"",
+				);
 				INFOPLIST_FILE = "I Bike CPHTests/Info.plist";
 				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I Bike CPH.app/I Bike CPH";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../route-me/MapView/Map";
 			};
 			name = Debug;
 		};
@@ -6581,6 +6677,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADB6492F313076A311C7CA75 /* Pods-I Bike CPHTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6588,11 +6685,27 @@
 					"$(inherited)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "I_BIKE_CPH=1";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/OCHamcrest\"",
+					"\"${PODS_ROOT}/Headers/Public/OCMockito\"",
+					"\"${PODS_ROOT}/Headers/Public/PSTAlertController\"",
+					"\"${PODS_ROOT}/Headers/Public/Realm\"",
+					"\"${PODS_ROOT}/Headers/Public/Realm/Realm\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/UIImage-Categories\"",
+				);
 				INFOPLIST_FILE = "I Bike CPHTests/Info.plist";
 				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I Bike CPH.app/I Bike CPH";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../route-me/MapView/Map";
 			};
 			name = Release;
 		};
@@ -6682,6 +6795,21 @@
 					"$(inherited)",
 					"CYKEL_PLANEN=1",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/OCHamcrest\"",
+					"\"${PODS_ROOT}/Headers/Public/OCMockito\"",
+					"\"${PODS_ROOT}/Headers/Public/PSTAlertController\"",
+					"\"${PODS_ROOT}/Headers/Public/Realm\"",
+					"\"${PODS_ROOT}/Headers/Public/Realm/Realm\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/UIImage-Categories\"",
+				);
 				INFOPLIST_FILE = CykelPlanenTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6702,6 +6830,21 @@
 					"$(inherited)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "CYKEL_PLANEN=1";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/OCHamcrest\"",
+					"\"${PODS_ROOT}/Headers/Public/OCMockito\"",
+					"\"${PODS_ROOT}/Headers/Public/PSTAlertController\"",
+					"\"${PODS_ROOT}/Headers/Public/Realm\"",
+					"\"${PODS_ROOT}/Headers/Public/Realm/Realm\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/UIImage-Categories\"",
+				);
 				INFOPLIST_FILE = CykelPlanenTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

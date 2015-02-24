@@ -1,9 +1,16 @@
+/* 
+  localization.strings
+  I Bike CPH
+
+  Created by Tobias Due Munk on 23/02/15.
+  Copyright (c) 2015 I Bike CPH. All rights reserved.
+*/
+
 "current_position" = "Nuværende position";
 "today" = "I dag";
 "tomorrow" = "I morgen";
 "accounts" = "Konto";
 "settings" = "Indstillinger";
-"about" = "Om CykelPlanen";
 "contacts" = "Kontakter";
 "favorites" = "Favoritter";
 "map_overlays" = "Kortlag";
@@ -51,12 +58,6 @@
 "first_direction_17" = "Gå mod %@ og fortsæt på cykele";
 "first_direction_100" = "Du nærmer dig destinationen";
 
-"monday" = "Mandag";
-"tuesday" = "Tirsdag";
-"wednesday" = "Onsdag";
-"thursday" = "Torsdag";
-"friday" = "Fredag";
-
 "direction_N" = "nord";
 "direction_NE" = "nordøst";
 "direction_E" = "øst";
@@ -91,19 +92,21 @@
 "{roundabout:yes}" = "rundkørsel";
 "{area:yes}" = "plads";
 
-"search" = "Søg";
-"search_to_placeholder" = "Indtast vej, gade, post nr.";
+"direction_number_1" = "1.";
+"direction_number_2" = "2.";
+"direction_number_3" = "3.";
+"direction_number_4" = "4.";
+"direction_number_5" = "5.";
+"direction_number_6" = "6.";
+"direction_number_7" = "7.";
+"direction_number_8" = "8.";
+"direction_number_9" = "9.";
+"direction_number_10" = "10.";
+"direction_number_11" = "11.";
 
-"new_route" = "Ny rute";
 "Stop" = "Stop";
 
-"cycle_super_highways" = "Supercykelstier";
-"service_stations" = "Servicestationer";
-"s_train_stations" = "S-togs stationer";
-"metro_stations" = "Metro stationer";
-"local_trains_stations" = "Lokale stationer";
-
-"Error" = "Error";
+"Error" = "Fejl";
 "OK" = "OK";
 "error_no_gps_location" = "Ingen GPS lokation!";
 "error_address_not_found" = "Adressens lokation kan ikke findes!";
@@ -118,7 +121,7 @@
 "route_stop_title" = "Vil du afslutte ruten?";
 "route_stop_text" = "Afbryd ruten ved at trykke på ‘Stop’. Du kan rapportere problemer med ruten ved at trykke på ‘Rapporter et problem’.";
 "report_error" = "Rapporter";
-"report_wrong_address" = "Vejnavn er forkert";
+"report_wrong_address" = "Forkert vejnavn";
 "report_road_closed" = "Vejen er lukket";
 "report_one_way" = "Vejen er ensrettet";
 "report_illegal_turn" = "Ruten foreslår ulovlige sving";
@@ -135,6 +138,7 @@
 "report_sent" = "Tak fordi du rapporterede fejlen!";
 
 "Done" = "Færdig";
+"Cancel" = "Fortryd";
 
 "error_route_not_found" = "Ruten blev ikke fundet!";
 
@@ -143,48 +147,16 @@
 
 "marker_start" = "Start";
 
-
 // these are in the storyboard
-"reminder_title" = "Påmindelser";
-"reminder_text" = "Få hjælp til at komme op på cyklen. Vælg de dage du ønsker at cykle, så hjælper vi dig med at komme igang.";
-"reminder_save_btn" = "Gem påmindelser";
-"reminder_alert_text" = "Husk at tage cyklen i morgen";
 
-// Favorites
-"favorites_title" = "Tilføj favoritter";
-"favorites_text" = "Nu kan du nemt og hurtigt navigere til dine foretrukne pendlerruter. Start med at tilføje din hjemme- og arbejdsadresse.";
-"favorites_home_address" = "Hjemmeadresse …";
-"favorites_work_address" = "Arbejdsadresse …";
-"favorites_save_btn" = "Gem favoritter";
-
-// Break route
-"break_route_title" = "Knæk ruten";
-"btn_break_route" = "Knæk ruten";
-"break_route_text_top" = "Vidste du, at du let kan knække din pendlerrute ved at tage toget noget af vejen.";
-"break_route_text_bottom" = "Når du vælger “Knæk ruten” giver vi dig en ny rute til nærmeste S-togsstation og bringer dig frem til din endelige destination.";
-"break_route_spring" = "Afslut guide og ta’ en tur";
-"break_route_exit" = "Spring over";
-"break_route_header_title" = "Din rute er nu";
-"route_plan_button" = "Find rejse på Rejseplanen";
-
-"break_route_no_route" = "Ingen ruteforslag";
-"break_route_cant_break" = "Denne rute kan desværre ikke knækkes.";
-
-"departure" = "Afg.";
-"departures_at" = "Afg. kl.";
-"arrival" = "Ank.";
-"shift" = "Skift";
 "where_are_we_going" = "Ny rute";
 "ibikecph_route_planner" = "Cykelruteplanlægger";
-"Cancel" = "Fortryd";
 "calculating_new_route" = "Beregner ny rute...";
 "Distance" = "Afstand";
 "Time" = "Tid";
 "you_have_arrived_to" = "Du er nu fremme ved";
 "to_homepage" = "Til forsiden";
 "report_a_problem" = "Rapportér problem";
-"report_email_field" = "Skriv din email adresse";
-"report_email_checkbox" = "Giv mig besked når det er løst";
 "From:" = "Fra:";
 "To:" = "Til:";
 "hello_cyclist" = "Hej cyklist";
@@ -195,7 +167,7 @@
 "notify_me_when_fixed" = "Få besked når fejlen er udbedret";
 "report" = "Rapporter";
 "report_text" = "Ved tryk på “Rapportér” sendes teknisk information om ruten til os.\n\nVælger du at få besked når fejlen er udbedret, bliver din email-adresse sendt til os, så vi kan kontakte dig.";
-"choose_a_route_step" = "Vælg trin i ruten at rapportére";
+"choose_a_route_step" = "Vælg et trin";
 "cancel_picker" = "Annullere";
 "done_picker" = "Vælg";
 
@@ -211,7 +183,7 @@
 "login_with_fb" = "Log ind med Facebook";
 "register_with_mail" = "Opret med email";
 "skip" = "Spring over";
-"create_account" = "Opret konto";
+"create_account" = "Opret kontp";
 "create_account_text" = "Ved at oprette en konto, har du muligheden for at gemme favoritter og søgninger på tværs af mobilen og ibikecph.dk ";
 "register_save" = "Opret mig";
 "create_account" = "Opret din konto";
@@ -251,15 +223,11 @@
 "logout" = "Log ud";
 
 "thank_you_for_feedback" = "Tak for din feedback";
-"feedback_text" = "Din feedback er blevet afsendt. Tak for hjælpen!\n\nDu kan deltage i opfølgning og diskussion af nye funktioner på www.ibikecph.dk/feedback.";
+"feedback_text" = "Din feedback er blevet afsendt.\n\nDu kan deltage i opfølgning og diskussion af nye funktioner på www.ibikecph.dk/feedback.";
 "report_sent" = "Feedbacken er afsendt";
-
+"report_enter_email_address_placeholder" = "Enter you email address";
 "home_find_route" = "Søg rute";
 
-"intro_subtitle" = "Hurtigt fra A til B";
-
-"about_text" = "CykelPlanen app’en er Region Hovedstadens mobile rutevejleder for dig, der cykler i regionen. App’en kender de gode smutveje i regionen, hvor du må cykle og finder den hurtigste rute for dig. CykelPlanen skal bidrage til at få flere pendlere i regionen til at vælge cyklen frem for bilen.\nKortet er særligt tilpasset cyklister. CykelPlanen udregner den hurtigste rute for dig. Motorveje er tonet ned, hvorimod brosten er fremhævet, så du kan slippe for rysteture. Kortet viser de anlagte supercykelstier og servicestationer. Endvidere har app’en funktionen ”knæk ruten”, som leder dig hen til nærmeste Lokalbane, S- og metrostation, hvis cykelturen bliver for lang eller cyklen går i stykker. \nApp’en anvender kortdata fra det brugerdrevne OpenStreetMap (OSM), der opdateres løbende, fx når der anlægges nye cykelstier i regionen, og brugerne skal være med til at opdatere kortet i regionen.\n\nBemærk at det er tilladt at tage cyklen gratis med i s-toget og lokalbanen (maks. 6 stk) mens det kræver en cykelbillet i metroen. Det er dog ikke tilladt at medbringe cyklen i metroen i myldretiden (kl. 7.00 – kl. 9.00 og 15.30-17.00) eller stå af eller på S-toget med cykel på Nørreport Station på hverdage (mandag-fredag) i tidsrummet kl.7- 8.30 og  kl. 15.30- 17\n\nKom godt i gang:\nDu kan vælge hvor du vil hen på to måder:\nVælg på kort: Find stedet på kortet og hold fingeren nede indtil en nål bliver sat på kortet. Den nærmeste adresse bliver nu vist nederst. Vælg ’Start’ for at beregne ruten fra din nuværende position til destinationen.\nSøg efter adresse: Klik på forstørrelsesglasset i øverste højre hjørne. Indtast adressen hvor du vil hen og klik ’Gå’. Klik derefter på ’Start’ for at beregne ruten.\nNår ruten vises kan du klikke på ’Start’ for at aktivere GPS navigation. Undervejs vil instruktioner om hvornår du skal svinge blive vist nederst. Forventet ankomsttidspunkt vises øverst til højre ud for det lille flag.\n\nVis position:\nTryk på knappen med en pil i nederste højre hjørne, for at se hvor du er på kortet. Kortet vil herefter følge din position indtil du selv manuelt flytter kortet. Funktionen er slået til, når pilen er blå.\n\nLæs mere:\nApp’en kan bl.a. også gemme favorit-steder, hvis du opretter en profil. Læs mere om kort og funktioner på www.supercykelstier.dk.\nGod tur og tak fordi du cykler!";
-"about_ibikecph_title" = "Om CykelPlanen";
 "delete_my_account" = "Slet min konto";
 "you_are_logged_in_as" = "Du er logget ind som";
 "edit_my_account" = "Rediger profil";
@@ -268,7 +236,6 @@
 "account_email_placeholder" = "Email";
 "account_password_placeholder" = "Skriv ny adgangskode";
 "account_repeat_placeholder" = "Gentag ny adgangskode";
-
 
 "login_error_fields" = "Både din email og din adgangskode skal være indtastet!";
 "register_error_fields" = "Alle felter skal være udfyldt!";
@@ -280,6 +247,7 @@
 
 "start_route" = "Start";
 
+"error_duplicate_favorite_name" = "Du har allerede en favorit med dette navn. Omdøb din favorit og gem igen.";
 
 "delete_account_title" = "Slet konto?";
 "delete_account_text" = "Alle dine favoritter samt din historik vil blive slettet";
@@ -288,7 +256,6 @@
 "close" = "LUK";
 
 "favorites_login" = "Du har ingen favoritter, men du kan hurtigt tilføje en, hvis du logger ind.";
-
 "fb_login_error" = "Facebook logind-fejl!";
 "account_is_linked_to_facebook" = "Din konto er linket til Facebook";
 "or" = "eller";
@@ -306,9 +273,6 @@
 
 "you_have_reached_your_destination" = "Du har nået din destination";
 
-"bike_type_1"= "Cykel";
-"bike_type_2"= "Ladcykel";
-
 "network_error_text" = "Netværks fejl opstod";
 
 "vehicle_2" = "Gå";
@@ -319,5 +283,17 @@
 "voice_option_detail" = "Oplæsning af rute giver dig mulighed for at få oplæst instruktioner op så du kan finde vej. Bruger du hovedtelefoner? Husk at være opmærksom på trafikken og overhold færdselsreglerne. ";
 
 "tracking" = "Tracking";
-"enable_tracking" = "Enable tracking";
+"enable_tracking" = "Slå GPS tracking til";
 "enable_tracking_description" = "TODO: Description for what tracking does.";
+"no_tracking_description" = "Din telefon understøtter desværre ikke GPS tracking.";
+"no_tracking_explanation" = "GPS tracking understøttes i øjeblikket kun på Apple's iPhone 5s og iPhone 6 og 6+ og på Android telefoner.";
+
+"unit_km" = "km";
+"unit_km_pr_h" = "km/t";
+"unit_km_pr_trip" = "km/tur";
+"unit_h_long" = "timer";
+"unit_h_short" = "t";
+"dum_km" = "55,3";
+"dum_kmh" = "23,3";
+"dum_kmtrip" = "12,4";
+"dum_h" = "14,3";

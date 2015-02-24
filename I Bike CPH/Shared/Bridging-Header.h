@@ -4,6 +4,7 @@
 
 
 #import "SMRouteConsts.h"
+#import "SharedConstants.h"
 #import "Realm/Realm.h"
 //#import "SMRoute.h"
 #import "SMLocationManager.h"
@@ -27,3 +28,8 @@
 
 #import "SMRoute.h"
 #import "PSTAlertController.h"
+
+#import "RouteMe.h"
+#import "RMMapView.h"
+#import "SMiBikeCPHMapTileSource.h"
+#import "RMAnnotation.h"
