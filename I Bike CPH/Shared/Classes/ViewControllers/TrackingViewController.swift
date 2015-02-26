@@ -49,16 +49,16 @@ class TrackingViewController: SMTranslatedViewController {
         
         let tracks = Track.allObjects()
         
-        let totalDistance = tracks.sumOfProperty("length").doubleValue / 1000
-        distanceLabel.text = formatter.stringFromNumber(totalDistance)!
+        let totalDistance = (tracks.sumOfProperty("length")?.doubleValue ?? 0) / 1000
+        distanceLabel.text = formatter.stringFromNumber(totalDistance)
         
-        let totalTime = tracks.sumOfProperty("duration").doubleValue / 3600
-        timeLabel.text = formatter.stringFromNumber(totalTime)!
+        let totalTime = (tracks.sumOfProperty("duration")?.doubleValue ?? 0) / 3600
+        timeLabel.text = formatter.stringFromNumber(totalTime)
         
-        let averageSpeed = totalDistance / totalTime
-        speedLabel.text = formatter.stringFromNumber(averageSpeed)!
+        let averageSpeed = totalTime == 0 ? 0 : totalDistance / totalTime
+        speedLabel.text = formatter.stringFromNumber(averageSpeed)
         
-        let averageTripDistance = tracks.averageOfProperty("length").doubleValue
-        tripLabel.text = formatter.stringFromNumber(averageTripDistance)!
+        let averageTripDistance = tracks.averageOfProperty("length")?.doubleValue ?? 0
+        tripLabel.text = formatter.stringFromNumber(averageTripDistance)
     }
 }
