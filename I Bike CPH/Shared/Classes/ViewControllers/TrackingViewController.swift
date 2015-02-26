@@ -21,6 +21,7 @@ class TrackingViewController: SMTranslatedViewController {
         let formatter = NSNumberFormatter()
         formatter.maximumFractionDigits = 1
         formatter.minimumFractionDigits = 1
+        formatter.minimumIntegerDigits = 1 // "0.0" instead of ".0"
         return formatter
     }()
     
