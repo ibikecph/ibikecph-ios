@@ -24,6 +24,8 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let cellID = "MenuCellID"
+    
+    private var pendingTracking: Bool = false
 
     private lazy var sections: [SectionViewModel] = {
         
@@ -65,6 +67,7 @@ class MenuViewController: UIViewController {
             }
             if !trackingOn {
                 menuViewController.performSegueWithIdentifier("menuToTrackingPrompt", sender: menuViewController)
+                menuViewController.pendingTracking = true
                 return
             }
             menuViewController.performSegueWithIdentifier("menuToTracking", sender: menuViewController)
@@ -102,6 +105,15 @@ class MenuViewController: UIViewController {
 //        self.title = SMTranslation.translateView("menu")
         
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if pendingTracking && settings.tracking.on {
+            performSegueWithIdentifier("menuToTracking", sender: self)
+        }
+        pendingTracking = false
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
