@@ -284,9 +284,12 @@
 
 "tracking" = "Tracking";
 "enable_tracking" = "Slå GPS tracking til";
-"enable_tracking_description" = "TODO: Description for what tracking does.";
-"no_tracking_description" = "Din telefon understøtter desværre ikke GPS tracking.";
-"no_tracking_explanation" = "GPS tracking understøttes i øjeblikket kun på Apple's iPhone 5s og iPhone 6 og 6+ og på Android telefoner.";
+"enable_tracking_description" = "Start indsamling af cykeldata";
+"enable_tracking_explanation" = "Når du har slået indsamling af cykeldata til, lagres der data om din cykeladfærd lokalt på din telefon og på en server. Det er kun dig der har adgang til din data, og alt data slettes hvis du sletter din profil.";
+"no_tracking_description" = "Din telefon understøtter desværre ikke indsamling af cykeldata.";
+"no_tracking_explanation" = "Tracking understøttes pånuværende tidspunkt kun på Apple's iPhone 5s og opefter og på Andriod telefoner.";
+"stats_description" = "Din cykel aktivitet";
+"Since" = "Siden";
 
 "unit_km" = "km";
 "unit_km_pr_h" = "km/t";

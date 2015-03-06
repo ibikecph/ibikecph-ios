@@ -2361,6 +2361,7 @@ God tur og tak fordi du cykler!</string>
                     </view>
                     <connections>
                         <outlet property="distanceLabel" destination="nb6-0k-MoA" id="9rZ-53-ew4"/>
+                        <outlet property="sinceLabel" destination="uX1-zS-B4g" id="mcP-eZ-4zi"/>
                         <outlet property="speedLabel" destination="wOV-HS-88T" id="4GQ-gn-CCE"/>
                         <outlet property="timeLabel" destination="b6I-wy-HE4" id="1Qv-tJ-TSD"/>
                         <outlet property="tripLabel" destination="7hK-V7-aa5" id="Zox-yK-6uD"/>

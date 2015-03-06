@@ -14,14 +14,22 @@ class TrackingViewController: SMTranslatedViewController {
     @IBOutlet weak var speedLabel: UILabel!
     @IBOutlet weak var tripLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var sinceLabel: UILabel!
     
     private var token: RLMNotificationToken?
     
-    lazy var formatter: NSNumberFormatter = {
+    lazy var numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
         formatter.maximumFractionDigits = 1
         formatter.minimumFractionDigits = 1
         formatter.minimumIntegerDigits = 1 // "0.0" instead of ".0"
+        return formatter
+    }()
+    
+    lazy var dateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .LongStyle
+        formatter.timeStyle = .NoStyle
         return formatter
     }()
     
@@ -47,18 +55,24 @@ class TrackingViewController: SMTranslatedViewController {
     
     func updateUI() {
         
-        let tracks = Track.allObjects()
+        let tracks = Track.objectsWhere("activity.cycling == TRUE")
         
         let totalDistance = (tracks.sumOfProperty("length")?.doubleValue ?? 0) / 1000
-        distanceLabel.text = formatter.stringFromNumber(totalDistance)
+        distanceLabel.text = numberFormatter.stringFromNumber(totalDistance)
         
         let totalTime = (tracks.sumOfProperty("duration")?.doubleValue ?? 0) / 3600
-        timeLabel.text = formatter.stringFromNumber(totalTime)
+        timeLabel.text = numberFormatter.stringFromNumber(totalTime)
         
         let averageSpeed = totalTime == 0 ? 0 : totalDistance / totalTime
-        speedLabel.text = formatter.stringFromNumber(averageSpeed)
+        speedLabel.text = numberFormatter.stringFromNumber(averageSpeed)
         
         let averageTripDistance = tracks.averageOfProperty("length")?.doubleValue ?? 0
-        tripLabel.text = formatter.stringFromNumber(averageTripDistance)
+        tripLabel.text = numberFormatter.stringFromNumber(averageTripDistance)
+        
+        if let startDate = (tracks.sortedResultsUsingProperty("startTimestamp", ascending: false).firstObject() as? Track)?.startDate {
+            sinceLabel.text = "Since".localized + " " + dateFormatter.stringFromDate(startDate)
+        } else {
+            sinceLabel.text = "–"
+        }        
     }
 }
