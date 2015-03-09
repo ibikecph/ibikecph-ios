@@ -10,6 +10,11 @@ import UIKit
 import CoreMotion
 
 class TracksHandler {
+    
+    class func hasTrackedBikeData() -> Bool {
+        let hasBikeTracks = Track.objectsWhere("activity.cycling == TRUE").count > 0
+        return hasBikeTracks
+    }
    
     class func cleanUpTracks() {
         Async.background() {

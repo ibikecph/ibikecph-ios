@@ -30,6 +30,7 @@ extension Styler {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Styler.navigationBarContentTintColor()]
         UIToolbar.appearance().barTintColor = Styler.navigationBarTintColor()
         UIToolbar.appearance().tintColor = Styler.navigationBarContentTintColor()
+        UISwitch.appearance().tintColor = Styler.tintColor()
     }
 }
 

@@ -290,6 +290,9 @@
 "no_tracking_explanation" = "Tracking understøttes pånuværende tidspunkt kun på Apple's iPhone 5s og opefter og på Andriod telefoner.";
 "stats_description" = "Din cykel aktivitet";
 "Since" = "Siden";
+"tracking_option" = "Indsamling af cykeldata";
+"tracking_milestone_notifications" = "Besked om milepæle";
+"tracking_weekly_status_notifications" = "Ugentligt status";
 
 "unit_km" = "km";
 "unit_km_pr_h" = "km/t";

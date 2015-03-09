@@ -49,6 +49,14 @@ class TrackingViewController: SMTranslatedViewController {
         self.updateUI()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !settings.tracking.on && !TracksHandler.hasTrackedBikeData() {
+            dismiss()
+        }
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }

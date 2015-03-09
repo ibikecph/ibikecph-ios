@@ -286,6 +286,9 @@
 "no_tracking_explanation" = "Currently tracking is only supported by Apple's iPhone 5s and newer, as well as all Android phones.";
 "stats_description" = "Your cycle activity";
 "Since" = "Since";
+"tracking_option" = "Collect cycling data";
+"tracking_milestone_notifications" = "Notification about milestones";
+"tracking_weekly_status_notifications" = "Weekly status";
 
 "unit_km" = "km";
 "unit_km_pr_h" = "km/h";

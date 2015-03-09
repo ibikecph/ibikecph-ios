@@ -18,6 +18,8 @@
 		4E2A92571A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
 		4E2CE9EE1A974BA600F4BC4F /* TracksHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */; };
 		4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */; };
+		4E32B29B1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */; };
+		4E32B29C1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */; };
 		4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
 		4E33B91E1A640590007D4C82 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91D1A640590007D4C82 /* AppHelper.swift */; };
 		4E33B91F1A6406FD007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
@@ -1466,6 +1468,7 @@
 		4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountFacebookViewController.m; sourceTree = "<group>"; };
 		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksHandler.swift; sourceTree = "<group>"; };
+		4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingPreferencesViewController.swift; sourceTree = "<group>"; };
 		4E33B91B1A640579007D4C82 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		4E33B91D1A640590007D4C82 /* AppHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		4E3867801A430A0E0018AC5B /* FacebookHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHandler.swift; sourceTree = "<group>"; };
@@ -3841,6 +3844,7 @@
 				4E651D311A93EB9400497C70 /* TrackingViewController.swift */,
 				4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */,
 				4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */,
+				4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -6185,6 +6189,7 @@
 				4EAB124A1A76AEF50099AC54 /* SettingsHandler.swift in Sources */,
 				4EC56EFB1A2A3AAE00B696B4 /* SMSplashController.m in Sources */,
 				4E5674601A92521800BF4A28 /* BikeDetector.swift in Sources */,
+				4E32B29B1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */,
 				4EE06CBD1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
 				4EC56EA51A2A2C3D00B696B4 /* SMSwipableView.m in Sources */,
 				4EC56E551A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
@@ -6271,6 +6276,7 @@
 				4EE06F061A112F6D00DE4226 /* SMBreakRouteHeader.m in Sources */,
 				4EE06C3F1A10FC5600DE4226 /* SMMetroStationInfo.m in Sources */,
 				4EE06CD61A11134C00DE4226 /* SMLocationManager.m in Sources */,
+				4E32B29C1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */,
 				4EC56DBA1A2A25E900B696B4 /* SMAnalytics.m in Sources */,
 				4EC56E331A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
 				4EE06F051A112F6D00DE4226 /* SMBreakRouteButtonCell.m in Sources */,

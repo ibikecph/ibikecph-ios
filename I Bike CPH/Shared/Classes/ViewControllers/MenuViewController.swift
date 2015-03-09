@@ -65,8 +65,8 @@ class MenuViewController: UIViewController {
                 return
             }
             let trackingOn = settings.tracking.on
-            // TODO: If any tracks are available, don't show prompt.
-            if !trackingOn {
+            let hasBikeTracks = TracksHandler.hasTrackedBikeData()
+            if !(trackingOn || hasBikeTracks) {
                 menuViewController.performSegueWithIdentifier("menuToTrackingPrompt", sender: menuViewController)
                 menuViewController.pendingTracking = true
                 return
