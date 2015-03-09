@@ -28,4 +28,23 @@ class TrackActivity: RLMObject {
         newActivity.startDate = activity.startDate
         return newActivity
     }
+    
+    func sameActivityTypeAs(activity: TrackActivity) -> Bool {
+        let stationary = self.stationary == activity.stationary
+        let walking = self.walking == activity.walking
+        let cycling = self.cycling == activity.cycling
+        let running = self.running == activity.running
+        let automotive = self.automotive == activity.automotive
+        return stationary && walking && cycling && running && automotive
+    }
+    
+    func moving() -> Bool {
+        let movingType = walking || cycling || running || automotive
+        return !stationary && movingType
+    }
+    
+    func empty() -> Bool {
+        let hasContent = unknown || stationary || walking || cycling || running || automotive
+        return !hasContent
+    }
 }

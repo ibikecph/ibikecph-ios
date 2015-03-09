@@ -71,4 +71,52 @@ class Track: RLMObject {
         }
         realm.commitWriteTransaction()
     }
+    
+    
+    func speeding(#speedLimit: Double, minLength: Double = 0.050) -> Bool {
+        let duration = self.duration / 3600
+        if duration <= 0 {
+            return false
+        }
+        let length = self.length / 1000
+        if length < minLength {
+            return false
+        }
+        let speed = length/duration
+        if speed < speedLimit {
+            return false
+        }
+        return true
+    }
+    
+    func slow(#speedLimit: Double, minLength: Double = 0.05) -> Bool {
+        let duration = self.duration / 3600
+        if duration <= 0 {
+            return false
+        }
+        let length = self.length / 1000
+        if length < minLength {
+            return false
+        }
+        let speed = length/duration
+        if speed > speedLimit {
+            return false
+        }
+        return true
+    }
+    
+    func lowAccuracy(#minAccuracy: Double = 100) -> Bool {
+        let horizontal = self.locations.objectsWithPredicate(nil).averageOfProperty("horizontalAccuracy").doubleValue
+        let vertical = self.locations.objectsWithPredicate(nil).averageOfProperty("verticalAccuracy").doubleValue
+        return min(horizontal, vertical) > minAccuracy
+    }
+    
+    func flightDistance() -> Double {
+        if let firstLocation = locations.firstObject() as? TrackLocation {
+            if let lastLocation = locations.lastObject() as? TrackLocation {
+                return firstLocation.location().distanceFromLocation(lastLocation.location())
+            }
+        }
+        return 0
+    }
 }

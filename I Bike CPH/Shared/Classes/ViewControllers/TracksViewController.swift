@@ -66,7 +66,7 @@ extension TracksViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as TrackTableViewCell
-        cell.updateToTrack(track(indexPath))
+        cell.updateToTrack(track(indexPath), index: indexPath.row)
         return cell
     }
 }
@@ -75,8 +75,6 @@ extension TracksViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let track = track(indexPath) {
-//            track.recalculate()
-//            tableView.reloadData()
             selectedTrack = track
             performSegueWithIdentifier("trackListToDetail", sender: self)
         }
@@ -98,25 +96,27 @@ class TrackTableViewCell: UITableViewCell {
     let dateFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
         formatter.dateStyle = .ShortStyle
-        formatter.timeStyle = .ShortStyle
+        formatter.timeStyle = .MediumStyle
         return formatter
-        }()
+    }()
     
-    func updateToTrack(track: Track?) {
+    func updateToTrack(track: Track?, index: Int = 0) {
         if let track = track {
-            var title = ""
+            var title = "\(index)) "
             if let date = track.startDate {
                 title += dateFormatter.stringFromDate(date)
             }
             if let date = track.endDate {
                 title += " to " + dateFormatter.stringFromDate(date)
             }
-            var subtitle = "\(Int(round(track.length)))m, \(Int(round(track.duration)))s"
-            if track.activity.stationary { subtitle += ", stat" }
-            if track.activity.cycling { subtitle += ", bike" }
-            if track.activity.walking { subtitle += ", walk" }
-            if track.activity.running { subtitle += ", run" }
-            if track.activity.automotive { subtitle += ", auto" }
+            var subtitle = "\(Int(round(track.length)))m,\(Int(round(track.length)))s,\(round(track.length/1000/(track.duration/3600)))kmh"
+            subtitle += ",fy:\(round(track.flightDistance()))m"
+            if track.activity.stationary { subtitle += ",st" }
+            if track.activity.cycling { subtitle += ",bik" }
+            if track.activity.walking { subtitle += ",wlk" }
+            if track.activity.running { subtitle += ",rn" }
+            if track.activity.automotive { subtitle += ",aut" }
+            if track.activity.unknown { subtitle += ",unk" }
             subtitle += " " + dateFormatter.stringFromDate(track.activity.startDate)
             
             fromLabel.text = title
