@@ -299,3 +299,19 @@
 "dum_kmh" = "23.3";
 "dum_kmtrip" = "12.4";
 "dum_h" = "14.3";
+
+"milestone_distance_1_description" = "Alright! You have cycled your first %d km.";
+"milestone_distance_2_description" = "%d km, it's starting to look good!";
+"milestone_distance_3_description" = "Look at you! %d km cycled, keep up the good style!";
+"milestone_distance_4_description" = "Wow, %d km cycled, you are breaking away from the crowd!";
+"milestone_distance_5_description" = "Yes, %d km cycled!";
+"milestone_distance_6_description" = "%d km on the bike, you're on your way to the stars!";
+"milestone_distance_7_description" = "Give yourself a big cheer, you have cycled %d km! Congratulations!";
+
+"milestone_daystreak_1_description" = "You have cycled %d days in a row, you are on a streak!";
+"milestone_daystreak_2_description" = "%d days on the bike in a row, that's cool.";
+"milestone_daystreak_3_description" = "Strike! %d days in a row, way to go!";
+"milestone_daystreak_4_description" = "There is just no stopping to you, %d days cyling in a row!";
+"milestone_daystreak_5_description" = "Full speed, you've cycled %d days in a row!";
+"milestone_daystreak_6_description" = "You have cycled %d days in a row, that's impressive!";
+"milestone_daystreak_7_description" = "Wow, on you bike every day for a month, you are a star!";

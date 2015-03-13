@@ -292,7 +292,7 @@
 "Since" = "Siden";
 "tracking_option" = "Indsamling af cykeldata";
 "tracking_milestone_notifications" = "Besked om milepæle";
-"tracking_weekly_status_notifications" = "Ugentligt status";
+"tracking_weekly_status_notifications" = "Ugentlig status";
 
 "unit_km" = "km";
 "unit_km_pr_h" = "km/t";
@@ -303,3 +303,19 @@
 "dum_kmh" = "23,3";
 "dum_kmtrip" = "12,4";
 "dum_h" = "14,3";
+
+"milestone_distance_1_description" = "Sådan! Du har cyklet dine første %d km.";
+"milestone_distance_2_description" = "%d km, det begynder at ligne noget!";
+"milestone_distance_3_description" = "Se lige dig! %d km cyklet, fortsæt den gode stil!";
+"milestone_distance_4_description" = "Wow, det ruller, %d km cyklet, vi kan slet ikke følge med!";
+"milestone_distance_5_description" = "Yes, %d km cyklet!";
+"milestone_distance_6_description" = "%d km på cyklen, du er på vej mod stjernerne!";
+"milestone_distance_7_description" = "Klap dig selv på lårerne, du har cyklet %d km! Tillykke!";
+
+"milestone_daystreak_1_description" = "Du har cyklet %d dage i træk, du er inde i en stime!";
+"milestone_daystreak_2_description" = "%d dage i træk på cyklen, det er sejt.";
+"milestone_daystreak_3_description" = "Strike! %d dage i træk, sådan!";
+"milestone_daystreak_4_description" = "Du fortsætter derude af, %d dages cykling i træk!";
+"milestone_daystreak_5_description" = "Fuld pedal, du har cyklet %d dages i træk!";
+"milestone_daystreak_6_description" = "Du har cyklet %d dage i træk, det er imponerende!";
+"milestone_daystreak_7_description" = "Wow, på cyklen hver dag i en måned, du er en stjerne!";

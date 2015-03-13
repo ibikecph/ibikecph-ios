@@ -10,13 +10,18 @@ import UIKit
 
 let settings = Settings()
 
+let settingsUpdatedNotification = "settingsUpdatedNotification"
+
 @objc class Settings: NSObject {
     
     @objc class Voice {
         private let onKey = "voiceOn"
         var on: Bool {
             get { return Defaults[onKey].bool ?? true }
-            set { Defaults[onKey] = newValue }
+            set {
+                Defaults[onKey] = newValue
+                NotificationCenter.post(settingsUpdatedNotification, object: self)
+            }
         }
     }
     
@@ -24,7 +29,10 @@ let settings = Settings()
         private let onKey = "trackingOn"
         var on: Bool {
             get { return Defaults[onKey].bool ?? false }
-            set { Defaults[onKey] = newValue }
+            set {
+                Defaults[onKey] = newValue
+                NotificationCenter.post(settingsUpdatedNotification, object: self)
+            }
         }
     }
    

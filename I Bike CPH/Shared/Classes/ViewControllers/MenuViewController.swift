@@ -59,7 +59,7 @@ class MenuViewController: UIViewController {
             menuViewController.performSegueWithIdentifier("menuToSpeedGuide", sender: menuViewController)
         })
         let trackingItem = MenuItem(title: SMTranslation.decodeString("tracking"), iconImageName: "tracking", action: { menuViewController in
-            let trackingAvailable = trackingHandler.trackingAvailable()
+            let trackingAvailable = trackingHandler.trackingAvailable
             if !trackingAvailable {
                 menuViewController.performSegueWithIdentifier("menuToTrackingNotAvailable", sender: menuViewController)
                 return

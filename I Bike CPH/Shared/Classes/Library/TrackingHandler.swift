@@ -36,18 +36,28 @@ let trackingHandler = TrackingHandler()
             }
         }
     }
-    
-    init() {
-        setupMotionTracking()
-        setupBackgroundHandling()
-        setupLocationObserver()
-    }
-    
-    func trackingAvailable() -> Bool {
+    var trackingAvailable: Bool {
         #if (arch(i386) || arch(x86_64)) && os(iOS)
             return true
         #endif
         return bikeDetector.isAvailable()
+    }
+    
+    init() {
+        setup()
+    }
+    func setup() {
+        setupSettingsObserver()
+        setupMotionTracking()
+        setupBackgroundHandling()
+        setupLocationObserver()
+        setupMilestoneNotification()
+    }
+    
+    func setupSettingsObserver() {
+        NotificationCenter.observe(settingsUpdatedNotification) { [unowned self] notification in
+            self.setup()
+        }
     }
     
     func setupMotionTracking() {
@@ -92,6 +102,13 @@ let trackingHandler = TrackingHandler()
                 self.add(location)
             }
         }
+    }
+    
+    func setupMilestoneNotification() {
+        if !settings.tracking.on {
+            return
+        }
+        statsNotificationHandler.checkPresentNotificationToUser()
     }
     
     func startTracking() {
