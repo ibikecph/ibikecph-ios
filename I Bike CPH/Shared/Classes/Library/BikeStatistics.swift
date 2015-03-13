@@ -18,7 +18,7 @@ class BikeStatistics {
     }
     
     /**
-    Total distance of bike all tracks
+    Total distance of bike tracks
     
     :returns: Total distance in meters [m]
      */
@@ -27,7 +27,7 @@ class BikeStatistics {
     }
     
     /**
-    Total duration of bike all tracks
+    Total duration of bike tracks
     
     :returns: Total duration in seconds [s]
     */
@@ -36,7 +36,7 @@ class BikeStatistics {
     }
     
     /**
-    Average speed of bike all tracks
+    Average speed of bike tracks
     
     :returns: Average speed in meter pr. second [m/s]
     */
@@ -46,11 +46,60 @@ class BikeStatistics {
     }
     
     /**
-    Average distance of bike all tracks
+    Average distance of bike tracks
     
     :returns: Average track distance in meters [m]
     */
     class func averageTrackDistance() -> Double {
         return tracks().averageOfProperty("length")?.doubleValue ?? 0
+    }
+    
+    /**
+    Current day streak of bike tracks
+    
+    :returns: Day streak in days
+    */
+    class func currentDayStreak() -> Int {
+        var date = NSDate()
+        var streak = 0
+        
+        while tracksForDayOfDate(date)?.count > 0 {
+            streak++
+            date = date.dateByAddingTimeInterval(-60*60*24)
+        }
+        return streak
+    }
+    
+    
+    private class func tracksForDayOfDate(date: NSDate) -> RLMResults? {
+        if let timestampDayStart = date.beginningOfDay()?.timeIntervalSince1970 {
+            if let timestampDayEnd = date.endOfDay()?.timeIntervalSince1970 {
+                return tracks().objectsWhere("(startTimestamp > %d OR endTimestamp > %d) AND (startTimestamp < %d OR endTimestamp < %d)", timestampDayStart, timestampDayStart, timestampDayEnd, timestampDayEnd)
+            }
+        }
+        return nil
+    }
+}
+
+extension NSDate {
+    
+    func beginningOfDay() -> NSDate? {
+        let calendar = NSCalendar.currentCalendar()
+        let unitFlags: NSCalendarUnit = .MonthCalendarUnit | .YearCalendarUnit | .DayCalendarUnit | .HourCalendarUnit | .MinuteCalendarUnit | .SecondCalendarUnit
+        let components = calendar.components(unitFlags, fromDate: self)
+        components.hour = 0
+        components.minute = 0
+        components.second = 0
+        return calendar.dateFromComponents(components)
+    }
+    
+    func endOfDay() -> NSDate? {
+        let calendar = NSCalendar.currentCalendar()
+        let unitFlags: NSCalendarUnit = .MonthCalendarUnit | .YearCalendarUnit | .DayCalendarUnit | .HourCalendarUnit | .MinuteCalendarUnit | .SecondCalendarUnit
+        let components = calendar.components(unitFlags, fromDate: self)
+        components.hour = 23
+        components.minute = 59
+        components.second = 59
+        return calendar.dateFromComponents(components)
     }
 }
