@@ -65,13 +65,13 @@ class TrackingViewController: SMTranslatedViewController {
         
         let tracks = Track.objectsWhere("activity.cycling == TRUE")
         
-        let totalDistance = (tracks.sumOfProperty("length")?.doubleValue ?? 0) / 1000
+        let totalDistance = BikeStatistics.totalDistance() / 1000
         distanceLabel.text = numberFormatter.stringFromNumber(totalDistance)
         
-        let totalTime = (tracks.sumOfProperty("duration")?.doubleValue ?? 0) / 3600
+        let totalTime = BikeStatistics.totalDuration() / 3600
         timeLabel.text = numberFormatter.stringFromNumber(totalTime)
         
-        let averageSpeed = totalTime == 0 ? 0 : totalDistance / totalTime
+        let averageSpeed = BikeStatistics.averageSpeed() / 1000 * 3600
         speedLabel.text = numberFormatter.stringFromNumber(averageSpeed)
         
         let averageTripDistance = tracks.averageOfProperty("length")?.doubleValue ?? 0

@@ -20,6 +20,8 @@
 		4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */; };
 		4E32B29B1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */; };
 		4E32B29C1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */; };
+		4E32B2A11AADCC8A00583811 /* BikeStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */; };
+		4E32B2A21AADCC8A00583811 /* BikeStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */; };
 		4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
 		4E33B91E1A640590007D4C82 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91D1A640590007D4C82 /* AppHelper.swift */; };
 		4E33B91F1A6406FD007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
@@ -1469,6 +1471,7 @@
 		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksHandler.swift; sourceTree = "<group>"; };
 		4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingPreferencesViewController.swift; sourceTree = "<group>"; };
+		4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStatistics.swift; sourceTree = "<group>"; };
 		4E33B91B1A640579007D4C82 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		4E33B91D1A640590007D4C82 /* AppHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		4E3867801A430A0E0018AC5B /* FacebookHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHandler.swift; sourceTree = "<group>"; };
@@ -2989,6 +2992,7 @@
 				4E56745C1A92469000BF4A28 /* TrackingHandler.swift */,
 				4E56745F1A92521800BF4A28 /* BikeDetector.swift */,
 				4E5258C61A9B9C8300BE55C8 /* String.swift */,
+				4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -6168,6 +6172,7 @@
 				4E4AC45D1A85091C0037A65E /* Macro.swift in Sources */,
 				4EBB7B451A5EC0880064B530 /* BikePreferencesViewController.swift in Sources */,
 				4EE06CBF1A11134C00DE4226 /* SMKMSAddressOperation.m in Sources */,
+				4E32B2A11AADCC8A00583811 /* BikeStatistics.swift in Sources */,
 				4EE671C61A2F25F00037865B /* UINavigationController.swift in Sources */,
 				4EE06CDF1A11134C00DE4226 /* SMRouteSettings.m in Sources */,
 				4EC56E7D1A2A2C3D00B696B4 /* SMGPSTrackButton.m in Sources */,
@@ -6373,6 +6378,7 @@
 				4EE06C471A10FC5600DE4226 /* SMSingleRouteInfo.m in Sources */,
 				4EC56E2F1A2A2C3D00B696B4 /* FlickableView.m in Sources */,
 				4E7BD0801A92354E00BFDC7B /* Realm.swift in Sources */,
+				4E32B2A21AADCC8A00583811 /* BikeStatistics.swift in Sources */,
 				4EC56E571A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
 				4E5982111A24AC1200A40484 /* FoursquareItem.swift in Sources */,
 				4EE06C321A10FC5600DE4226 /* SMArrivalInfo.m in Sources */,
