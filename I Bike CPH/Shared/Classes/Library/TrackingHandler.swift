@@ -46,6 +46,11 @@ let trackingHandler = TrackingHandler()
     init() {
         setup()
     }
+    
+    deinit {
+        NotificationCenter.unobserve(self)
+    }
+    
     func setup() {
         setupSettingsObserver()
         setupMotionTracking()

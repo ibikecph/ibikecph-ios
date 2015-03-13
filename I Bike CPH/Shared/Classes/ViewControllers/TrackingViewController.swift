@@ -33,6 +33,10 @@ class TrackingViewController: SMTranslatedViewController {
         return formatter
     }()
     
+    deinit {
+        RLMRealm.removeNotification(token)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

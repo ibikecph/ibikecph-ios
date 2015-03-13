@@ -92,4 +92,8 @@ extension RLMRealm {
     class func addNotificationBlock(block: RLMNotificationBlock) -> RLMNotificationToken {
         return RLMRealm.defaultRealm().addNotificationBlock(block)
     }
+    
+    class func removeNotification(token: RLMNotificationToken?) {
+        return RLMRealm.defaultRealm().removeNotification(token)
+    }
 }

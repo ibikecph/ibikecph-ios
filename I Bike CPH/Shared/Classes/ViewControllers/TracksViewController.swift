@@ -15,6 +15,10 @@ class TracksViewController: SMTranslatedViewController {
     private var tracks: RLMResults?
     private var selectedTrack: Track?
     
+    deinit {
+        RLMRealm.removeNotification(token)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
