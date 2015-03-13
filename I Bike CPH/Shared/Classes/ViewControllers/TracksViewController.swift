@@ -114,7 +114,7 @@ class TrackTableViewCell: UITableViewCell {
                 title += " to " + dateFormatter.stringFromDate(date)
             }
             var subtitle = "\(Int(round(track.length)))m,\(Int(round(track.length)))s,\(round(track.length/1000/(track.duration/3600)))kmh"
-            subtitle += ",fy:\(round(track.flightDistance()))m"
+            subtitle += ",fy:\(round(track.flightDistance() ?? 0))m"
             if track.activity.stationary { subtitle += ",st" }
             if track.activity.cycling { subtitle += ",bik" }
             if track.activity.walking { subtitle += ",wlk" }

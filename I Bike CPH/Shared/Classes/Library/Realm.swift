@@ -27,13 +27,17 @@ extension RLMObject {
     /**
      * Delete object from its Realm within a write transaction
      */
-    func deleteFromRealm() {
+    func deleteFromRealm(inWriteTransaction: Bool = true) {
         // Get the Realm
         if let realm = self.realm {
+            if inWriteTransaction {
+                realm.beginWriteTransaction()
+            }
             // Remove from the Realm inside a transaction
-            realm.beginWriteTransaction()
             realm.deleteObject(self)
-            realm.commitWriteTransaction()
+            if inWriteTransaction {
+                realm.commitWriteTransaction()
+            }
         }
     }
 }

@@ -28,21 +28,25 @@ class Track: RLMObject {
         return (locations.lastObject() as? TrackLocation)?.date
     }
     
-    func recalculate() {
+    func recalculate(inWriteTransaction: Bool = true) {
+        if inWriteTransaction {
+            realm.beginWriteTransaction()
+        }
         recalculateTimestamps()
         recalculateDuration()
         recalculateLength()
+        if inWriteTransaction {
+            realm.commitWriteTransaction()
+        }
     }
     
     private func recalculateTimestamps() {
-        realm.beginWriteTransaction()
         if let location = locations.firstObject() as? TrackLocation {
             startTimestamp = location.timestamp
         }
         if let location = locations.lastObject() as? TrackLocation {
             endTimestamp = location.timestamp
         }
-        realm.commitWriteTransaction()
     }
     
     private func recalculateLength() {
@@ -57,21 +61,16 @@ class Track: RLMObject {
                 }
             }
         }
-        realm.beginWriteTransaction()
         length = newLength
-        realm.commitWriteTransaction()
     }
     
     private func recalculateDuration() {
-        realm.beginWriteTransaction()
         if let newDuration = endDate?.timeIntervalSinceDate(startDate ?? endDate!) {
             duration = newDuration
         } else {
             duration = 0
         }
-        realm.commitWriteTransaction()
     }
-    
     
     func speeding(#speedLimit: Double, minLength: Double = 0.050) -> Bool {
         let duration = self.duration / 3600
@@ -111,12 +110,32 @@ class Track: RLMObject {
         return min(horizontal, vertical) > minAccuracy
     }
     
-    func flightDistance() -> Double {
+    func flightDistance() -> Double? {
+        if locations.count <= 1 {
+            return nil
+        }
         if let firstLocation = locations.firstObject() as? TrackLocation {
             if let lastLocation = locations.lastObject() as? TrackLocation {
                 return firstLocation.location().distanceFromLocation(lastLocation.location())
             }
         }
-        return 0
+        return nil
+    }
+    
+    func flightWithOneMedianStopDistance() -> Double? {
+        if locations.count <= 2 {
+            return nil
+        }
+        if let firstLocation = locations.firstObject() as? TrackLocation {
+            let centerIndex = UInt(floor(Double(locations.count)/2))
+            if let centerLocation = locations[centerIndex] as? TrackLocation {
+                if let lastLocation = locations.lastObject() as? TrackLocation {
+                    let distance1 = firstLocation.location().distanceFromLocation(centerLocation.location())
+                    let distance2 = centerLocation.location().distanceFromLocation(lastLocation.location())
+                    return distance1 + distance2
+                }
+            }
+        }
+        return nil
     }
 }
