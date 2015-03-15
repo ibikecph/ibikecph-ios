@@ -80,8 +80,8 @@
 		4E56745B1A9238A900BF4A28 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5674551A92383500BF4A28 /* Track.swift */; };
 		4E56745D1A92469000BF4A28 /* TrackingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745C1A92469000BF4A28 /* TrackingHandler.swift */; };
 		4E56745E1A92469000BF4A28 /* TrackingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745C1A92469000BF4A28 /* TrackingHandler.swift */; };
-		4E5674601A92521800BF4A28 /* BikeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745F1A92521800BF4A28 /* BikeDetector.swift */; };
-		4E5674611A92521800BF4A28 /* BikeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745F1A92521800BF4A28 /* BikeDetector.swift */; };
+		4E5674601A92521800BF4A28 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745F1A92521800BF4A28 /* MotionDetector.swift */; };
+		4E5674611A92521800BF4A28 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745F1A92521800BF4A28 /* MotionDetector.swift */; };
 		4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820B1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820C1A24AC1200A40484 /* CurrentLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */; };
@@ -1514,7 +1514,7 @@
 		4E5674551A92383500BF4A28 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		4E5674581A9238A600BF4A28 /* TrackLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackLocation.swift; sourceTree = "<group>"; };
 		4E56745C1A92469000BF4A28 /* TrackingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingHandler.swift; sourceTree = "<group>"; };
-		4E56745F1A92521800BF4A28 /* BikeDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetector.swift; sourceTree = "<group>"; };
+		4E56745F1A92521800BF4A28 /* MotionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		4E5982001A24AC1200A40484 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationItem.swift; sourceTree = "<group>"; };
 		4E5982031A24AC1200A40484 /* FavoriteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
@@ -2994,7 +2994,7 @@
 				4E7BD07E1A92354E00BFDC7B /* Realm.swift */,
 				4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */,
 				4E56745C1A92469000BF4A28 /* TrackingHandler.swift */,
-				4E56745F1A92521800BF4A28 /* BikeDetector.swift */,
+				4E56745F1A92521800BF4A28 /* MotionDetector.swift */,
 				4E5258C61A9B9C8300BE55C8 /* String.swift */,
 				4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */,
 				4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */,
@@ -6199,7 +6199,7 @@
 				4EC56EE31A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
 				4EAB124A1A76AEF50099AC54 /* SettingsHandler.swift in Sources */,
 				4EC56EFB1A2A3AAE00B696B4 /* SMSplashController.m in Sources */,
-				4E5674601A92521800BF4A28 /* BikeDetector.swift in Sources */,
+				4E5674601A92521800BF4A28 /* MotionDetector.swift in Sources */,
 				4E32B29B1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */,
 				4EE06CBD1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
 				4EC56EA51A2A2C3D00B696B4 /* SMSwipableView.m in Sources */,
@@ -6283,7 +6283,7 @@
 				4EE06CE01A11134C00DE4226 /* SMRouteSettings.m in Sources */,
 				4E23D6DD1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */,
 				4EC56DD21A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
-				4E5674611A92521800BF4A28 /* BikeDetector.swift in Sources */,
+				4E5674611A92521800BF4A28 /* MotionDetector.swift in Sources */,
 				4EE06F061A112F6D00DE4226 /* SMBreakRouteHeader.m in Sources */,
 				4EE06C3F1A10FC5600DE4226 /* SMMetroStationInfo.m in Sources */,
 				4EE06CD61A11134C00DE4226 /* SMLocationManager.m in Sources */,
