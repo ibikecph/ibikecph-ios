@@ -1671,7 +1671,6 @@
 		4EE05F911A10EDE700DE4226 /* CykelPlanenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CykelPlanenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EE05F961A10EDE700DE4226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EE05F971A10EDE700DE4226 /* CykelPlanenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CykelPlanenTests.m; sourceTree = "<group>"; };
-		4EE05FD81A10F61200DE4226 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4EE0631B1A10FA4900DE4226 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4EE0631F1A10FAB300DE4226 /* autocompleteHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autocompleteHeader.png; sourceTree = "<group>"; };
 		4EE063201A10FAB300DE4226 /* autocompleteHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "autocompleteHeader@2x.png"; sourceTree = "<group>"; };
@@ -2822,7 +2821,6 @@
 		4EEE923D1A125E690006BD95 /* marker-red-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-red-withletter.png"; path = "Resources/marker-red-withletter.png"; sourceTree = "<group>"; };
 		4EEE923E1A125E690006BD95 /* marker-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-red.png"; path = "Resources/marker-red.png"; sourceTree = "<group>"; };
 		4EEE923F1A125E690006BD95 /* marker-blue-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue-withletter.png"; path = "Resources/marker-blue-withletter.png"; sourceTree = "<group>"; };
-		4EEE92851A12E9800006BD95 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4EEE92871A1A4A340006BD95 /* SMTransportationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationCell.h; sourceTree = "<group>"; };
 		4EEE92881A1A4A340006BD95 /* SMTransportationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationCell.m; sourceTree = "<group>"; };
 		4EEE928A1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCyLwFirstTimeIntro.h; sourceTree = "<group>"; };
@@ -3034,7 +3032,6 @@
 			isa = PBXGroup;
 			children = (
 				4EE05F731A10EC2E00DE4226 /* Classes */,
-				4EEE92851A12E9800006BD95 /* MainStoryboard_iPhone.storyboard */,
 				4E4F5FDF1A2BB3A000233ACA /* StyleIBikeCph.swift */,
 				4E4AC45B1A8506540037A65E /* MacroIBikeCph.swift */,
 				4EE0631B1A10FA4900DE4226 /* Images.xcassets */,
@@ -3088,7 +3085,6 @@
 			isa = PBXGroup;
 			children = (
 				4EE05FA11A10EEC900DE4226 /* Classes */,
-				4EE05FD81A10F61200DE4226 /* MainStoryboard_iPhone.storyboard */,
 				4E4F5FDC1A2BAE1400233ACA /* StyleCykelPlanen.swift */,
 				4E4AC45E1A8509590037A65E /* MacroCykelPlanen.swift */,
 				4EE05F881A10EDE700DE4226 /* Images.xcassets */,
