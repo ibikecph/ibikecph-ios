@@ -62,7 +62,6 @@ class BikeStatistics {
     class func currentDayStreak() -> Int {
         var date = NSDate()
         var streak = 0
-        
         while tracksForDayOfDate(date)?.count > 0 {
             streak++
             date = date.dateByAddingTimeInterval(-60*60*24)
@@ -74,7 +73,8 @@ class BikeStatistics {
     private class func tracksForDayOfDate(date: NSDate) -> RLMResults? {
         if let timestampDayStart = date.beginningOfDay()?.timeIntervalSince1970 {
             if let timestampDayEnd = date.endOfDay()?.timeIntervalSince1970 {
-                return tracks().objectsWhere("(startTimestamp > %d OR endTimestamp > %d) AND (startTimestamp < %d OR endTimestamp < %d)", timestampDayStart, timestampDayStart, timestampDayEnd, timestampDayEnd)
+                // Start time or end time should be within day
+                return tracks().objectsWhere("startTimestamp BETWEEN %@ OR endTimestamp BETWEEN %@", [timestampDayStart, timestampDayEnd], [timestampDayEnd, timestampDayEnd])
             }
         }
         return nil
