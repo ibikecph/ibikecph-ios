@@ -1,5 +1,5 @@
 //
-//  BikeDetector.swift
+//  MotionDetector.swift
 //  I Bike CPH
 //
 //  Created by Tobias Due Munk on 16/02/15.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreMotion
 
-class BikeDetector {
+class MotionDetector {
     
     var motionActivityManager: CMMotionActivityManager?
     
@@ -21,15 +21,14 @@ class BikeDetector {
         return CMMotionActivityManager.isActivityAvailable()
     }
     
-    func start(handler: (biking: Bool, activity: CMMotionActivity) -> ()) {
+    func start(handler: (activity: CMMotionActivity) -> ()) {
         if !isAvailable() {
             return
         }
         let manager = CMMotionActivityManager()
         manager.startActivityUpdatesToQueue(NSOperationQueue.mainQueue()) { activity in
             println("stationary: \(activity.stationary), bike: \(activity.cycling),  walk: \(activity.walking), run: \(activity.running), automotive: \(activity.automotive), unkown: \(activity.unknown), confidence: \(activity.confidence.rawValue), start: \(activity.startDate), ")
-            let isBiking = activity.cycling
-            handler(biking: isBiking, activity: activity)
+            handler(activity: activity)
         }
         self.motionActivityManager = manager
     }

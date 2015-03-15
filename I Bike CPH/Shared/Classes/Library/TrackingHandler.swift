@@ -15,7 +15,7 @@ let trackingHandler = TrackingHandler()
 @objc class TrackingHandler {
 
     private var currentTrack: Track?
-    let bikeDetector = BikeDetector()
+    let motionDetector = MotionDetector()
     var currentActivity: CMMotionActivity? {
         didSet {
             if let activity = currentActivity {
@@ -24,6 +24,7 @@ let trackingHandler = TrackingHandler()
                 } else {
                     self.startTracking()
                 }
+                // Add activity to current track
                 if let track = currentTrack {
                     let newActivity = TrackActivity.build(activity)
                     newActivity.addToRealm()
@@ -40,7 +41,7 @@ let trackingHandler = TrackingHandler()
         #if (arch(i386) || arch(x86_64)) && os(iOS)
             return true
         #endif
-        return bikeDetector.isAvailable()
+        return motionDetector.isAvailable()
     }
     
     init() {
@@ -69,16 +70,10 @@ let trackingHandler = TrackingHandler()
         if !settings.tracking.on {
             return
         }
-        if !bikeDetector.isAvailable() {
+        if !motionDetector.isAvailable() {
             return
         }
-        bikeDetector.start { [unowned self] isBiking, activity in
-//            // Run tracking when biking
-//            if isBiking {
-//                self.startTracking()
-//            } else {
-//                self.stopTracking()
-//            }
+        motionDetector.start { [unowned self] activity in
             self.currentActivity = activity
         }
     }
