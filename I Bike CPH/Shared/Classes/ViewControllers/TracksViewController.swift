@@ -113,14 +113,14 @@ class TrackTableViewCell: UITableViewCell {
             if let date = track.endDate {
                 title += " to " + dateFormatter.stringFromDate(date)
             }
-            var subtitle = "\(Int(round(track.length)))m,\(Int(round(track.length)))s,\(round(track.length/1000/(track.duration/3600)))kmh"
+            var subtitle = "\(track.activity.confidence),\(Int(round(track.length)))m,\(Int(round(track.length)))s,\(round(track.length/1000/(track.duration/3600)))kmh"
             subtitle += ",fy:\(round(track.flightDistance() ?? 0))m"
             if track.activity.stationary { subtitle += ",st" }
-            if track.activity.cycling { subtitle += ",bik" }
-            if track.activity.walking { subtitle += ",wlk" }
+            if track.activity.cycling { subtitle += ",bk" }
+            if track.activity.walking { subtitle += ",wk" }
             if track.activity.running { subtitle += ",rn" }
             if track.activity.automotive { subtitle += ",aut" }
-            if track.activity.unknown { subtitle += ",unk" }
+            if track.activity.unknown { subtitle += ",un" }
             subtitle += " " + dateFormatter.stringFromDate(track.activity.startDate)
             
             fromLabel.text = title

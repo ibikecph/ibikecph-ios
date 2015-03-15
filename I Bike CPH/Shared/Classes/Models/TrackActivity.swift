@@ -16,6 +16,7 @@ class TrackActivity: RLMObject {
     dynamic var automotive = false
     dynamic var cycling = false
     dynamic var startDate = NSDate()
+    dynamic var confidence = 0
     
     class func build(activity: CMMotionActivity) -> TrackActivity {
         var newActivity = TrackActivity()
@@ -26,6 +27,7 @@ class TrackActivity: RLMObject {
         newActivity.automotive = activity.automotive
         newActivity.cycling = activity.cycling
         newActivity.startDate = activity.startDate
+        newActivity.confidence = activity.confidence.rawValue
         return newActivity
     }
     
