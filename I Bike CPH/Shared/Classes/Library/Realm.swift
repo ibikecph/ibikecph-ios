@@ -100,4 +100,11 @@ extension RLMRealm {
     class func removeNotification(token: RLMNotificationToken?) {
         return RLMRealm.defaultRealm().removeNotification(token)
     }
+    
+    class func beginWriteTransaction() {
+        return RLMRealm.defaultRealm().beginWriteTransaction()
+    }
+    class func commitWriteTransaction() {
+        return RLMRealm.defaultRealm().commitWriteTransaction()
+    }
 }

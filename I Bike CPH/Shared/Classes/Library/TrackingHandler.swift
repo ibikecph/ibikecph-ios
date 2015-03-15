@@ -74,6 +74,15 @@ let trackingHandler = TrackingHandler()
             return
         }
         motionDetector.start { [unowned self] activity in
+            if let currentTrack = self.currentTrack {
+                if currentTrack.activity.sameActivityTypeAs(cmMotionActivity: activity) {
+                    // Activity just updated it's confidence
+                    currentTrack.realm.beginWriteTransaction()
+                    currentTrack.activity.confidence = activity.confidence.rawValue
+                    currentTrack.realm.commitWriteTransaction()
+                    return
+                }
+            }
             self.currentActivity = activity
         }
     }
@@ -132,6 +141,8 @@ let trackingHandler = TrackingHandler()
         // Stop track
         currentTrack?.recalculate()
         currentTrack = nil
+        
+        TracksHandler.cleanUpSmallStuff()
     }
     
     func add(location: CLLocation) {
@@ -139,7 +150,7 @@ let trackingHandler = TrackingHandler()
             let location = TrackLocation.build(location)
             currentTrack.locations.add(location)
             currentTrack.recalculate()
-            println("Tracked location: \(location.location())")
+//            println("Tracked location: \(location.location())")
         }
     }
 }
