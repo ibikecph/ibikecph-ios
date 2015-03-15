@@ -78,7 +78,7 @@ class TrackingViewController: SMTranslatedViewController {
         let averageSpeed = BikeStatistics.averageSpeed() / 1000 * 3600
         speedLabel.text = numberFormatter.stringFromNumber(averageSpeed)
         
-        let averageTripDistance = tracks.averageOfProperty("length")?.doubleValue ?? 0
+        let averageTripDistance = BikeStatistics.averageTrackDistance() / 1000
         tripLabel.text = numberFormatter.stringFromNumber(averageTripDistance)
         
         if let startDate = (tracks.sortedResultsUsingProperty("startTimestamp", ascending: false).firstObject() as? Track)?.startDate {
