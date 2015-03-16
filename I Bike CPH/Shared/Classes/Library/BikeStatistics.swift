@@ -79,6 +79,17 @@ class BikeStatistics {
         }
         return nil
     }
+    
+    
+    /**
+    First day that has bike track
+
+    :returns: The date of the first bike track
+    */
+    class func firstTrackDate() -> NSDate? {
+        let startDate = (tracks().sortedResultsUsingProperty("startTimestamp", ascending: true).firstObject() as? Track)?.startDate
+        return startDate
+    }
 }
 
 extension NSDate {

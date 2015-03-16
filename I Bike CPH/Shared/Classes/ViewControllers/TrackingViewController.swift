@@ -67,8 +67,6 @@ class TrackingViewController: SMTranslatedViewController {
     
     func updateUI() {
         
-        let tracks = Track.objectsWhere("activity.cycling == TRUE")
-        
         let totalDistance = BikeStatistics.totalDistance() / 1000
         distanceLabel.text = numberFormatter.stringFromNumber(totalDistance)
         
@@ -81,7 +79,7 @@ class TrackingViewController: SMTranslatedViewController {
         let averageTripDistance = BikeStatistics.averageTrackDistance() / 1000
         tripLabel.text = numberFormatter.stringFromNumber(averageTripDistance)
         
-        if let startDate = (tracks.sortedResultsUsingProperty("startTimestamp", ascending: false).firstObject() as? Track)?.startDate {
+        if let startDate = BikeStatistics.firstTrackDate() {
             sinceLabel.text = "Since".localized + " " + dateFormatter.stringFromDate(startDate)
         } else {
             sinceLabel.text = "–"
