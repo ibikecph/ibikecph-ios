@@ -18,8 +18,9 @@ class TrackingViewController: SMTranslatedViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var token: RLMNotificationToken?
-    private var tracks: RLMResults?
+    private var tracks: [RLMResults]?
     private var selectedTrack: Track?
+    private var swipeEditing: Bool = false
     
     lazy var numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
@@ -29,8 +30,15 @@ class TrackingViewController: SMTranslatedViewController {
         return formatter
     }()
     
-    lazy var dateFormatter: NSDateFormatter = {
+    lazy var sinceFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
+        formatter.dateStyle = .LongStyle
+        formatter.timeStyle = .NoStyle
+        return formatter
+    }()
+    
+    lazy var headerDateFormatter: RelativeDateFormatter = {
+        let formatter = RelativeDateFormatter()
         formatter.dateStyle = .LongStyle
         formatter.timeStyle = .NoStyle
         return formatter
@@ -83,44 +91,48 @@ class TrackingViewController: SMTranslatedViewController {
         tripLabel.text = numberFormatter.stringFromNumber(averageTripDistance)
         
         if let startDate = BikeStatistics.firstTrackDate() {
-            sinceLabel.text = "Since".localized + " " + dateFormatter.stringFromDate(startDate)
+            sinceLabel.text = "Since".localized + " " + sinceFormatter.stringFromDate(startDate)
         } else {
             sinceLabel.text = "–"
         }
         
         updateTracks()
-        tableView.reloadData()
+        if !swipeEditing {
+            tableView.reloadData()
+        }
         
         if let tracks = tracks {
-            for track in tracks {
-                let track = track as Track
-                if track.start == "" {
-                    if let startLocation = track.locations.firstObject() as? TrackLocation {
-                        let coordinate = startLocation.coordinate()
-                        SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
-                            if track.invalidated {
-                                return
+            for tracksInSection in tracks {
+                for track in tracksInSection {
+                    let track = track as Track
+                    if track.start == "" {
+                        if let startLocation = track.locations.firstObject() as? TrackLocation {
+                            let coordinate = startLocation.coordinate()
+                            SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
+                                if track.invalidated {
+                                    return
+                                }
+                                track.realm.beginWriteTransaction()
+                                if let item = item { println("\(item.street) \(track.start)")
+                                    track.start = item.street
+                                }
+                                track.realm.commitWriteTransaction()
                             }
-                            track.realm.beginWriteTransaction()
-                            if let item = item { println("\(item.street) \(track.start)")
-                                track.start = item.street
-                            }
-                            track.realm.commitWriteTransaction()
                         }
                     }
-                }
-                if track.end == "" {
-                    if let endLocation = track.locations.lastObject() as? TrackLocation {
-                        let coordinate = endLocation.coordinate()
-                        SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
-                            if track.invalidated {
-                                return
+                    if track.end == "" {
+                        if let endLocation = track.locations.lastObject() as? TrackLocation {
+                            let coordinate = endLocation.coordinate()
+                            SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
+                                if track.invalidated {
+                                    return
+                                }
+                                track.realm.beginWriteTransaction()
+                                if let item = item {
+                                    track.end = item.street
+                                }
+                                track.realm.commitWriteTransaction()
                             }
-                            track.realm.beginWriteTransaction()
-                            if let item = item {
-                                track.end = item.street
-                            }
-                            track.realm.commitWriteTransaction()
                         }
                     }
                 }
@@ -129,7 +141,23 @@ class TrackingViewController: SMTranslatedViewController {
     }
     
     func updateTracks() {
-        tracks = Track.objectsWhere("activity.cycling == TRUE").sortedResultsUsingProperty("startTimestamp", ascending: false)
+        var date = NSDate()
+        var updatedTracks: [RLMResults]? = nil
+        if let oldestDate = BikeStatistics.firstTrackDate() {
+            while date.laterDate(oldestDate) == date {
+                if let tracksForDate = BikeStatistics.tracksForDayOfDate(date) {
+                    if let tracks = tracksForDate.sortedResultsUsingProperty("startTimestamp", ascending: false) {
+                        if updatedTracks == nil {
+                            updatedTracks = [tracks]
+                        } else {
+                            updatedTracks?.append(tracks)
+                        }
+                    }
+                }
+                date = date.dateByAddingTimeInterval(-60*60*24) // Go one day back
+            }
+        }
+        tracks = updatedTracks
     }
 }
 
@@ -138,21 +166,58 @@ private let cellID = "TrackCell"
 
 extension TrackingViewController: UITableViewDataSource {
     
+    func tracks(inSection section: Int) -> RLMResults? {
+        return tracks?[section]
+    }
+    
     func track(indexPath: NSIndexPath?) -> Track? {
         if let indexPath = indexPath {
-            return tracks?[UInt(indexPath.row)] as? Track
+            return tracks(inSection: indexPath.section)?[UInt(indexPath.row)] as? Track
         }
         return nil
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int(tracks?.count ?? 0)
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return tracks?.count ?? 0
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let tracks = tracks(inSection: section) {
+            return Int(tracks.count)
+        }
+        return 0
+    }
+    
+    // Section header title
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let aDateInSection = (tracks(inSection: section)?.firstObject() as? Track)?.startDate {
+            return headerDateFormatter.stringFromDate(aDateInSection)
+        }
+        return nil
+    }
+    
+    // Cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as TrackTableViewCell
         cell.updateToTrack(track(indexPath))
         return cell
+    }
+    
+    // Delete track
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            track(indexPath)?.deleteFromRealm()
+        }
+    }
+    func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
+        swipeEditing = true
+    }
+    func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
+        swipeEditing = false
+        updateUI()
     }
 }
 

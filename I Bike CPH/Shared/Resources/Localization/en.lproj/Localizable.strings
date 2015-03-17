@@ -322,3 +322,7 @@
 "Distance" = "Dist.";
 "Average" = "Avg.";
 "Max" = "Top";
+
+"yesterday" = "yesterday";
+"today" = "today";
+"tomorrow" = "tomorrow";

@@ -1425,6 +1425,10 @@
 		4EFA280E1A2B871D0050450C /* SMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA280C1A2B871D0050450C /* SMMainViewController.m */; };
 		4EFA28101A2BA1330050450C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFA280F1A2BA1330050450C /* Main.storyboard */; };
 		4EFA28111A2BA1330050450C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFA280F1A2BA1330050450C /* Main.storyboard */; };
+		4EFDA4821AB87A6D00522A41 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
+		4EFDA4831AB87A6E00522A41 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
+		4EFDA4861AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */; };
+		4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */; };
 		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
 		8C6742802698F66F487D25EE /* libPods-CykelPlanenTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1587DF3214C490C8E81B6E81 /* libPods-CykelPlanenTests.a */; };
 		C4A71A5319538E5AB78E9021 /* libPods-I Bike CPHTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A61C36B8120DAF2349FDEB /* libPods-I Bike CPHTests.a */; };
@@ -2833,6 +2837,8 @@
 		4EFA280B1A2B871D0050450C /* SMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainViewController.h; sourceTree = "<group>"; };
 		4EFA280C1A2B871D0050450C /* SMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainViewController.m; sourceTree = "<group>"; };
 		4EFA280F1A2BA1330050450C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4EFDA4811AB87A6D00522A41 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
+		4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativeDateFormatter.swift; sourceTree = "<group>"; };
 		A44BC1E9CE220BE043EB736A /* Pods-I Bike CPHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-I Bike CPHTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-I Bike CPHTests/Pods-I Bike CPHTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADB6492F313076A311C7CA75 /* Pods-I Bike CPHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-I Bike CPHTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-I Bike CPHTests/Pods-I Bike CPHTests.release.xcconfig"; sourceTree = "<group>"; };
 		C40C9EBA1FFAC0ACBC43C5B1 /* Pods-CykelPlanenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -3002,6 +3008,8 @@
 				4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */,
 				4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */,
 				4ECA91A01AB2EED800F4BB4F /* NotificationCenter.swift */,
+				4EFDA4811AB87A6D00522A41 /* NSDate.swift */,
+				4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -6205,8 +6213,10 @@
 				4EC56EE31A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
 				4EAB124A1A76AEF50099AC54 /* SettingsHandler.swift in Sources */,
 				4EC56EFB1A2A3AAE00B696B4 /* SMSplashController.m in Sources */,
+				4EFDA4821AB87A6D00522A41 /* NSDate.swift in Sources */,
 				4E5674601A92521800BF4A28 /* MotionDetector.swift in Sources */,
 				4E32B29B1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */,
+				4EFDA4861AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */,
 				4EE06CBD1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
 				4EC56EA51A2A2C3D00B696B4 /* SMSwipableView.m in Sources */,
 				4EC56E551A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
@@ -6357,6 +6367,7 @@
 				4EE06C481A10FC5600DE4226 /* SMStationInfo.m in Sources */,
 				4EC56E431A2A2C3D00B696B4 /* SMCalloutView.m in Sources */,
 				4E4AC45F1A8509590037A65E /* MacroCykelPlanen.swift in Sources */,
+				4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */,
 				4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
 				4E56745B1A9238A900BF4A28 /* Track.swift in Sources */,
 				4EC56E731A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
@@ -6409,6 +6420,7 @@
 				4EE06C4B1A10FC5600DE4226 /* SMTime.m in Sources */,
 				4EE06C5F1A10FC5600DE4226 /* SMRouteInfoViewController.m in Sources */,
 				4E33B91F1A6406FD007D4C82 /* UserHelper.swift in Sources */,
+				4EFDA4831AB87A6E00522A41 /* NSDate.swift in Sources */,
 				4EE671CB1A2F3CCC0037865B /* SMMenuViewController.m in Sources */,
 				4E3867821A430CBB0018AC5B /* FacebookHandler.swift in Sources */,
 				4EE06C511A10FC5600DE4226 /* SMTripRoute.m in Sources */,

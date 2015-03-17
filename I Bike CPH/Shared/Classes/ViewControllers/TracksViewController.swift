@@ -73,6 +73,14 @@ extension TracksViewController: UITableViewDataSource {
         cell.updateToTrack(track(indexPath), index: indexPath.row)
         return cell
     }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        track(indexPath)?.deleteFromRealm()
+    }
 }
 
 extension TracksViewController: UITableViewDelegate {

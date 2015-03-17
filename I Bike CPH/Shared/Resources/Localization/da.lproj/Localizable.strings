@@ -326,3 +326,7 @@
 "Distance" = "Afstand";
 "Average" = "Gns.";
 "Max" = "Top";
+
+"yesterday" = "i går";
+"today" = "i dag";
+"tomorrow" = "i morgen";

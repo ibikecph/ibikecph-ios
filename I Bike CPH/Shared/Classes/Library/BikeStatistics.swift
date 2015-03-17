@@ -70,7 +70,7 @@ class BikeStatistics {
     }
     
     
-    private class func tracksForDayOfDate(date: NSDate) -> RLMResults? {
+    class func tracksForDayOfDate(date: NSDate) -> RLMResults? {
         if let timestampDayStart = date.beginningOfDay()?.timeIntervalSince1970 {
             if let timestampDayEnd = date.endOfDay()?.timeIntervalSince1970 {
                 // Start time or end time should be within day
@@ -89,28 +89,5 @@ class BikeStatistics {
     class func firstTrackDate() -> NSDate? {
         let startDate = (tracks().sortedResultsUsingProperty("startTimestamp", ascending: true).firstObject() as? Track)?.startDate
         return startDate
-    }
-}
-
-extension NSDate {
-    
-    func beginningOfDay() -> NSDate? {
-        let calendar = NSCalendar.currentCalendar()
-        let unitFlags: NSCalendarUnit = .MonthCalendarUnit | .YearCalendarUnit | .DayCalendarUnit | .HourCalendarUnit | .MinuteCalendarUnit | .SecondCalendarUnit
-        let components = calendar.components(unitFlags, fromDate: self)
-        components.hour = 0
-        components.minute = 0
-        components.second = 0
-        return calendar.dateFromComponents(components)
-    }
-    
-    func endOfDay() -> NSDate? {
-        let calendar = NSCalendar.currentCalendar()
-        let unitFlags: NSCalendarUnit = .MonthCalendarUnit | .YearCalendarUnit | .DayCalendarUnit | .HourCalendarUnit | .MinuteCalendarUnit | .SecondCalendarUnit
-        let components = calendar.components(unitFlags, fromDate: self)
-        components.hour = 23
-        components.minute = 59
-        components.second = 59
-        return calendar.dateFromComponents(components)
     }
 }
