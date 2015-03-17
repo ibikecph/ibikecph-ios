@@ -138,4 +138,40 @@ class Track: RLMObject {
         }
         return nil
     }
+    
+    /**
+    Smoothed top speed of track
+
+    :returns: Top speed in meters per second [m/s]
+    */
+    func topSpeed() -> Double {
+        var smoothSpeed: Double = length / duration // Begin at average speed
+        var topSpeed: Double = 0
+        let lowpass = 0.01
+        println("")
+        for (index, location) in enumerate(locations) {
+            if index + 1 >= locations.count {
+                continue
+            }
+            if let nextLocation = locations[index+1] as? TrackLocation {
+                if let location = location as? TrackLocation {
+                    let length = location.location().distanceFromLocation(nextLocation.location())
+                    let duration = nextLocation.date.timeIntervalSinceDate(location.date)
+                    let speed = length / duration
+                    let fraction = min(lowpass * duration, 0.5)
+                    smoothSpeed = fraction * speed + (1 - fraction) * smoothSpeed
+                    // Check for top speed
+                    if smoothSpeed > topSpeed {
+                        topSpeed = smoothSpeed
+                    }
+//                    println("\(smoothSpeed) \(topSpeed) \(speed) \(fraction)")
+//                    
+//                    if speed > 1000 {
+//                        println("\(location.location()) \n \(nextLocation.location())\n\(length) \(duration)")
+//                    }
+                }
+            }
+        }
+        return topSpeed
+    }
 }

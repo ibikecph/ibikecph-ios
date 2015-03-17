@@ -69,7 +69,7 @@ extension TracksViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as TrackTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as DebugTrackTableViewCell
         cell.updateToTrack(track(indexPath), index: indexPath.row)
         return cell
     }
@@ -91,7 +91,7 @@ extension TracksViewController: UITableViewDelegate {
 
 
 
-class TrackTableViewCell: UITableViewCell {
+class DebugTrackTableViewCell: UITableViewCell {
     
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!

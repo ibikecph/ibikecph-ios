@@ -360,10 +360,11 @@
 }
 
 - (void)displayDestinationNameWithLocation:(CLLocation*)loc{
-    [SMGeocoder reverseGeocode:loc.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
+    [SMGeocoder reverseGeocode:loc.coordinate completionHandler:^(KortforItem *item, NSError *error) {
         NSLog(@"reverse geocode error: %@", error);
-        NSString *title = response[@"title"];
-        NSString *subtitle = response[@"subtitle"];
+        NSString *title = [NSString stringWithFormat:@"%@ %@", item.street, item.number];
+        NSString *subtitle = [NSString stringWithFormat:@"%@ %@", item.zip, item.city];
+        
         NSString *text = title;
         if (subtitle.length) {
             text = [text stringByAppendingFormat:@"\n%@", subtitle];

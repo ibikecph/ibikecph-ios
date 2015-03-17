@@ -299,6 +299,7 @@
 "unit_km_pr_trip" = "km/tur";
 "unit_h_long" = "timer";
 "unit_h_short" = "t";
+"unit_min" = "min";
 "dum_km" = "55,3";
 "dum_kmh" = "23,3";
 "dum_kmtrip" = "12,4";
@@ -319,3 +320,9 @@
 "milestone_daystreak_5_description" = "Fuld pedal, du har cyklet %d dages i træk!";
 "milestone_daystreak_6_description" = "Du har cyklet %d dage i træk, det er imponerende!";
 "milestone_daystreak_7_description" = "Wow, på cyklen hver dag i en måned, du er en stjerne!";
+
+"to" = "til";
+"Duration" = "Tid";
+"Distance" = "Afstand";
+"Average" = "Gns.";
+"Max" = "Top";

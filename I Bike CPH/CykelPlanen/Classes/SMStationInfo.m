@@ -73,12 +73,11 @@
     return;
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(_latitude, _longitude);
     __weak SMStationInfo* selfRef= self;
-    [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
+    [SMGeocoder reverseGeocode:coord completionHandler:^(KortforItem *item, NSError *error) {
         
-        NSString* streetName = [response objectForKey:@"title"];
+        NSString* streetName = item.street;
         if (!streetName || [streetName isEqual:[NSNull null]] || [streetName isEqualToString:@""]) {
             streetName = [NSString stringWithFormat:@"Station %f, %f", coord.latitude, coord.longitude];
-
         }
         selfRef.name= streetName;
         

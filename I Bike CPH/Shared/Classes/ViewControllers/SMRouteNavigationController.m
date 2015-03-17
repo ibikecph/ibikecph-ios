@@ -1493,20 +1493,20 @@ typedef enum {
         brVC.sourceName = self.source;
         brVC.destinationName = self.destination;
         
-        [SMGeocoder reverseGeocode:self.startLocation.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
-            NSString* address = [response objectForKey:@"title"];
+        [SMGeocoder reverseGeocode:self.startLocation.coordinate completionHandler:^(KortforItem *item, NSError *error) {
+            NSString* address = [NSString stringWithFormat:@"%@ %@", item.street, item.number];
             if ( [address isEqualToString:self.source] ) {
-                brVC.sourceAddress = [response objectForKey:@"subtitle"];
+                brVC.sourceAddress = [NSString stringWithFormat:@"%@ %@", item.zip, item.city];
             } else {
                 brVC.sourceAddress = address;
             }
             [brVC.tableView reloadData];
         }];
         
-        [SMGeocoder reverseGeocode:self.endLocation.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
-            NSString* address = [response objectForKey:@"title"];
+        [SMGeocoder reverseGeocode:self.endLocation.coordinate completionHandler:^(NSDictionary *response, NSError *error) {            
+            NSString* address = [NSString stringWithFormat:@"%@ %@", item.street, item.number];
             if ( [address isEqualToString:self.destination] ) {
-                brVC.destinationAddress = [response objectForKey:@"subtitle"];
+                brVC.destinationAddress = [NSString stringWithFormat:@"%@ %@", item.zip, item.city];
             } else {
                 brVC.destinationAddress = address;
             }

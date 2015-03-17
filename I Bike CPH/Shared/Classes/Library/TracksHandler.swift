@@ -28,14 +28,13 @@ class TracksHandler {
         tracksHandler.processing = true
         
         println("START")
-        Async.background() { println("Remove empty tracks")
+        Async.main() { println("Remove empty tracks")
             TracksHandler.removeEmptyTracks()
-        }.background() { println("Merge close to same activity")
+        }.main() { println("Merge close to same activity")
             TracksHandler.mergeCloseSameActivityTracks(seconds: 60)
         }.main {
             println("DONE")
             tracksHandler.processing = false
-
         }
     }
     
