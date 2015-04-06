@@ -34,6 +34,14 @@ let settingsUpdatedNotification = "settingsUpdatedNotification"
                 NotificationCenter.post(settingsUpdatedNotification, object: self)
             }
         }
+        private let milestoneNotificationsKey = "milestoneNotifications"
+        var milestoneNotifications: Bool {
+            get { return Defaults[milestoneNotificationsKey].bool ?? false }
+            set {
+                Defaults[milestoneNotificationsKey] = newValue
+                NotificationCenter.post(settingsUpdatedNotification, object: self)
+            }
+        }
     }
    
     let voice = Voice()

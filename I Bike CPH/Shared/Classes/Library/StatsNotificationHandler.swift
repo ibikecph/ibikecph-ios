@@ -145,6 +145,9 @@ class StatsNotificationHandler {
     }
     
     func checkPresentNotificationToUser() {
+        if !settings.tracking.milestoneNotifications {
+            return
+        }
         for milestone in [distanceMilestone, daystreakMilestone] {
             if let descripionToPresent = Defaults[storeKeyForMilestone(milestone)].string {
                 let succeeded = tryPresentNotification(descripionToPresent)
