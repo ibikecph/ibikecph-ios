@@ -25,11 +25,19 @@ class TrackTableViewCell: UITableViewCell {
         return formatter
     }()
     
-    lazy var numberFormatter: NSNumberFormatter = {
+    lazy var minutesFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
         formatter.maximumFractionDigits = 0
         formatter.minimumFractionDigits = 0
-//        formatter.minimumIntegerDigits = 1 // "0.0" instead of ".0"
+        return formatter
+    }()
+    
+    lazy var numberFormatter: NSNumberFormatter = {
+        let formatter = NSNumberFormatter()
+        formatter.maximumFractionDigits = 1
+        formatter.minimumFractionDigits = 1
+        formatter.alwaysShowsDecimalSeparator = true
+        formatter.minimumIntegerDigits = 1 // "0.0" instead of ".0"
         return formatter
     }()
     
@@ -46,7 +54,7 @@ class TrackTableViewCell: UITableViewCell {
             
             // Duration in minutes
             let duration = track.duration
-            durationLabel.text = numberFormatter.stringFromNumber(duration / 60)
+            durationLabel.text = minutesFormatter.stringFromNumber(duration / 60)
             // Distance in km
             let distance = track.length
             distanceLabel.text = numberFormatter.stringFromNumber(distance / 1000)
