@@ -37,16 +37,25 @@ extension NSDate {
         case Other(Int)
     }
     
-    func relativeDay() -> Day {
+    func relativeDay(#fromDate : NSDate) -> Int {
         let calendar = NSCalendar.currentCalendar()
         let unitFlags: NSCalendarUnit = .DayCalendarUnit
-        let components = calendar.components(unitFlags, fromDate: NSDate(), toDate: self, options: .allZeros)
+        let components = calendar.components(unitFlags, fromDate: fromDate, toDate: self, options: .allZeros)
         let days = components.day
+        return days
+    }
+    
+    func relativeDay() -> Day {
+        let days = relativeDay(fromDate: NSDate())
         switch days {
             case -1: return .Yesterday
             case 0: return .Today
             case 1: return .Tomorrow
             default: return .Other(days)
         }
+    }
+    
+    func laterOrEqualDay(thanDate date: NSDate) -> Bool {
+        return relativeDay(fromDate: date) >= 0
     }
 }

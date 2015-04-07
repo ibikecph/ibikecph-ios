@@ -144,7 +144,7 @@ class TrackingViewController: SMTranslatedViewController {
         var date = NSDate()
         var updatedTracks: [RLMResults]? = nil
         if let oldestDate = BikeStatistics.firstTrackDate() {
-            while date.laterDate(oldestDate) == date {
+            while date.laterOrEqualDay(thanDate: oldestDate) {
                 if let tracksForDate = BikeStatistics.tracksForDayOfDate(date) {
                     if let tracks = tracksForDate.sortedResultsUsingProperty("startTimestamp", ascending: false) {
                         if updatedTracks == nil {
