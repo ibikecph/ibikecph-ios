@@ -139,15 +139,8 @@ class Track: RLMObject {
         return nil
     }
     
-    /**
-    Smoothed top speed of track
-
-    :returns: Top speed in meters per second [m/s]
-    */
-    func topSpeed() -> Double {
-        var smoothSpeed: Double = length / duration // Begin at average speed
-        var topSpeed: Double = 0
-        let lowpass = 0.01
+    func speeds() -> [Double] {
+        var speeds = [Double]()
         for (index, location) in enumerate(locations) {
             if index + 1 >= locations.count {
                 continue
@@ -157,20 +150,36 @@ class Track: RLMObject {
                     let length = location.location().distanceFromLocation(nextLocation.location())
                     let duration = nextLocation.date.timeIntervalSinceDate(location.date)
                     let speed = length / duration
-                    let fraction = min(lowpass * duration, 0.5)
-                    smoothSpeed = fraction * speed + (1 - fraction) * smoothSpeed
-                    // Check for top speed
-                    if smoothSpeed > topSpeed {
-                        topSpeed = smoothSpeed
-                    }
-//                    println("\(smoothSpeed) \(topSpeed) \(speed) \(fraction)")
-//                    
-//                    if speed > 1000 {
-//                        println("\(location.location()) \n \(nextLocation.location())\n\(length) \(duration)")
-//                    }
+                    speeds.append(speed)
                 }
             }
         }
-        return topSpeed
+        return speeds
+    }
+    
+    func smoothSpeeds() -> [Double] {
+        var smoothSpeed: Double = length / duration // Begin at average speed
+        let lowpass = 0.01
+        var smoothSpeeds = [Double]()
+        for speed in speeds() {
+            // Ignore extreme jumps in speed
+            if speed > 20*smoothSpeed {
+                // Do nothing
+            } else {
+                smoothSpeed = lowpass * speed + (1 - lowpass) * smoothSpeed
+            }
+            smoothSpeeds.append(smoothSpeed)
+        }
+        return smoothSpeeds
+    }
+    
+    /**
+    Smoothed top speed of track
+    
+    :returns: Top speed in meters per second [m/s]
+    */
+    func topSpeed() -> Double {
+        let speeds = smoothSpeeds()
+        return speeds.count > 0 ? maxElement(speeds) : 0
     }
 }

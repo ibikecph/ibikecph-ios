@@ -55,15 +55,17 @@ class TracksHandler {
         }.background() { println("Merge close to same activity")
             TracksHandler.mergeCloseSameActivityTracks(seconds: 60)
         }.background() { println("Merge track between bike tracks")
-            TracksHandler.mergeTrackBetweenBike(seconds: 60*5)
+            TracksHandler.mergeTrackBetweenBike(seconds: 60*3)
         }.background() { println("Infer bike from speed from automotive")
             TracksHandler.inferBikingFromSpeed(activity: { $0.automotive }, minSpeedLimit: 10, maxSpeedLimit: 20, minLength: 0.200)
         }.background() { println("Merge bike close with non-stationary tracks")
-            TracksHandler.mergeBikeCloseWithMoveTracks(seconds: 60)
+            TracksHandler.mergeBikeCloseWithMoveTracks(seconds: 30)
         }.background() { println("Merge track between bike tracks – again")
-            TracksHandler.mergeTrackBetweenBike(seconds: 60*5)
+            TracksHandler.mergeTrackBetweenBike(seconds: 60*3)
         }.background() { println("Clear left overs")
             TracksHandler.clearLeftOvers()
+        }.background() { println("Prune slow ends")
+            TracksHandler.pruneSlowEnds()
         }.background() { println("Recalculate")
             TracksHandler.recalculateTracks()
         }.main() {
@@ -178,6 +180,37 @@ class TracksHandler {
                 
                 continue
             }
+        }
+    }
+    
+    private class func pruneSlowEnds() {
+        for track in Track.allObjects() {
+            let track = track as Track
+            
+            let cycling = track.activity.cycling
+            if !cycling {
+                continue
+            }
+            let speeds = track.smoothSpeeds()
+            
+            let speedLimit: Double = 7 * 1000 / 3600 // 10 km/h
+            for speed in speeds {
+                if speed > speedLimit {
+                    break
+                }
+                if let firstLocation = track.locations.firstObject() as? TrackLocation {
+                    firstLocation.deleteFromRealm()
+                }
+            }
+            for speed in speeds.reverse() {
+                if speed > speedLimit {
+                    break
+                }
+                if let lastLocation = track.locations.lastObject() as? TrackLocation {
+                    lastLocation.deleteFromRealm()
+                }
+            }
+            track.recalculate()
         }
     }
     
