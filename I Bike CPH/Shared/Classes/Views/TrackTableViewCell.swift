@@ -31,7 +31,7 @@ class TrackTableViewCell: UITableViewCell {
         formatter.minimumFractionDigits = 0
 //        formatter.minimumIntegerDigits = 1 // "0.0" instead of ".0"
         return formatter
-        }()
+    }()
     
     func updateToTrack(track: Track?) {
         if let track = track {

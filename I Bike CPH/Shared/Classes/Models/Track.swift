@@ -148,7 +148,6 @@ class Track: RLMObject {
         var smoothSpeed: Double = length / duration // Begin at average speed
         var topSpeed: Double = 0
         let lowpass = 0.01
-        println("")
         for (index, location) in enumerate(locations) {
             if index + 1 >= locations.count {
                 continue
