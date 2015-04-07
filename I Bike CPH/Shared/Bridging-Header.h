@@ -33,4 +33,6 @@
 #import "RMMapView.h"
 #import "SMiBikeCPHMapTileSource.h"
 #import "RMAnnotation.h"
+#import "SMAnnotation.h"
+#import "RMShape.h"
 #import "SMGeocoder.h"

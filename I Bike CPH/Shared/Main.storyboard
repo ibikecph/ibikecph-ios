@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qyQ-LZ-vdu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qyQ-LZ-vdu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -2134,7 +2133,7 @@ God tur og tak fordi du cykler!</string>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcP-VW-o8X" userLabel="StatsContainer">
-                                            <rect key="frame" x="0.0" y="25.5" width="600" height="249"/>
+                                            <rect key="frame" x="0.0" y="25" width="600" height="249"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stats_description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxN-OC-5FU">
                                                     <rect key="frame" x="20" y="0.0" width="560" height="19.5"/>
@@ -2750,25 +2749,18 @@ God tur og tak fordi du cykler!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pU2-Ik-Dzf" customClass="RMMapView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="89.5"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eum-0U-yqy" customClass="TrackMapView" customModule="CykelPlanen" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="153.5" width="600" height="446.5"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="eum-0U-yqy" secondAttribute="trailing" id="24p-FI-GW3"/>
-                            <constraint firstItem="pU2-Ik-Dzf" firstAttribute="height" secondItem="eum-0U-yqy" secondAttribute="height" multiplier="0.2" id="2xM-fw-hie"/>
                             <constraint firstItem="pU2-Ik-Dzf" firstAttribute="leading" secondItem="aLl-ru-SeD" secondAttribute="leading" id="648-6j-XBr"/>
                             <constraint firstItem="pU2-Ik-Dzf" firstAttribute="top" secondItem="0a1-Yw-Wl0" secondAttribute="bottom" id="B7Q-KQ-cr7"/>
-                            <constraint firstItem="eum-0U-yqy" firstAttribute="leading" secondItem="aLl-ru-SeD" secondAttribute="leading" id="CSK-qz-q72"/>
                             <constraint firstAttribute="trailing" secondItem="pU2-Ik-Dzf" secondAttribute="trailing" id="Ma9-RA-jfw"/>
-                            <constraint firstItem="eum-0U-yqy" firstAttribute="top" secondItem="pU2-Ik-Dzf" secondAttribute="bottom" id="SXx-SD-p0Q"/>
                             <constraint firstItem="4OE-0D-VTD" firstAttribute="top" secondItem="pU2-Ik-Dzf" secondAttribute="bottom" id="Sl5-hd-u9q"/>
+                            <constraint firstItem="4OE-0D-VTD" firstAttribute="top" secondItem="pU2-Ik-Dzf" secondAttribute="bottom" id="iMx-Ea-Ryd"/>
                             <constraint firstItem="pU2-Ik-Dzf" firstAttribute="top" secondItem="aLl-ru-SeD" secondAttribute="top" id="rhV-o3-ebX"/>
-                            <constraint firstItem="4OE-0D-VTD" firstAttribute="top" secondItem="eum-0U-yqy" secondAttribute="bottom" id="sIq-yY-SQc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -2779,7 +2771,6 @@ God tur og tak fordi du cykler!</string>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="pU2-Ik-Dzf" id="upy-bU-81W"/>
-                        <outlet property="mapView2" destination="eum-0U-yqy" id="ejf-y6-HBc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRt-ZO-TZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
