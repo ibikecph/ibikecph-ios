@@ -56,20 +56,8 @@ class TrackTableViewCell: UITableViewCell {
             let topSpeed = track.topSpeed()
             topSpeedLabel.text = numberFormatter.stringFromNumber(topSpeed / 1000 * 3600)
             
-//            if track.start == "" || track.end == "" {
-//                track.updateStartAndEnd()
-//            }
             fromAddressLabel.text = track.start
             toAddressLabel.text = track.end
-            
-//            track.updateStartAndEnd() { [unowned self] start, end in
-//                if let start = start {
-//                    self.fromAddressLabel.text = start
-//                }
-//                if let end = end {
-//                    self.toAddressLabel.text = end
-//                }
-//            }
         }
         SMTranslation.translateView(contentView)
     }

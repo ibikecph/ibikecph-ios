@@ -96,10 +96,12 @@ class TrackingViewController: SMTranslatedViewController {
             sinceLabel.text = "–"
         }
         
-        updateTracks()
-        if !swipeEditing {
-            tableView.reloadData()
+        if swipeEditing {
+            return
         }
+        
+        updateTracks()
+        tableView.reloadData()
         
         if let tracks = tracks {
             for tracksInSection in tracks {
@@ -112,11 +114,11 @@ class TrackingViewController: SMTranslatedViewController {
                                 if track.invalidated {
                                     return
                                 }
-                                track.realm.beginWriteTransaction()
-                                if let item = item { println("\(item.street) \(track.start)")
+                                if let item = item {
+                                    track.realm.beginWriteTransaction()
                                     track.start = item.street
+                                    track.realm.commitWriteTransaction()
                                 }
-                                track.realm.commitWriteTransaction()
                             }
                         }
                     }
@@ -127,11 +129,11 @@ class TrackingViewController: SMTranslatedViewController {
                                 if track.invalidated {
                                     return
                                 }
-                                track.realm.beginWriteTransaction()
                                 if let item = item {
+                                    track.realm.beginWriteTransaction()
                                     track.end = item.street
+                                    track.realm.commitWriteTransaction()
                                 }
-                                track.realm.commitWriteTransaction()
                             }
                         }
                     }
@@ -209,7 +211,10 @@ extension TrackingViewController: UITableViewDataSource {
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            tableView.beginUpdates()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
             track(indexPath)?.deleteFromRealm()
+            tableView.endUpdates()
         }
     }
     func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
