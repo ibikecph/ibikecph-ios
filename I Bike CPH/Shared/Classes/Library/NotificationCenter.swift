@@ -14,10 +14,6 @@ class NotificationCenter {
         NSNotificationCenter.defaultCenter().postNotificationName(name, object: object)
     }
     
-    class func observe(name: String, usingBlock block: NSNotification! -> ()) {
-        NSNotificationCenter.defaultCenter().addObserverForName(name, object: nil, queue: nil, usingBlock: block)
-    }
-    
     class func observe(name: String, object: AnyObject? = nil, queue: NSOperationQueue? = nil, usingBlock block: NSNotification! -> ()) {
         NSNotificationCenter.defaultCenter().addObserverForName(name, object: object, queue: queue, usingBlock: block)
     }

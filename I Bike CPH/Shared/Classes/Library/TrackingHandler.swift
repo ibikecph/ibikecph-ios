@@ -107,8 +107,10 @@ let trackingHandler = TrackingHandler()
     
     func setupLocationObserver() {
         NSNotificationCenter.defaultCenter().addObserverForName("refreshPosition", object: nil, queue: nil) { notification in
-            for location in notification.userInfo?["locations"] as [CLLocation] {
-                self.add(location)
+            if let locations = notification.userInfo?["locations"] as? [CLLocation] {
+                for location in locations {
+                    self.add(location)
+                }
             }
         }
     }

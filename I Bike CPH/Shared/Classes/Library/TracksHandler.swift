@@ -76,8 +76,9 @@ class TracksHandler {
     
     private class func recalculateTracks() {
         for track in Track.allObjects() {
-            let track = track as Track
-            track.recalculate()
+            if let track = track as? Track {
+                track.recalculate()
+            }
         }
     }
     
@@ -85,8 +86,7 @@ class TracksHandler {
         let tracks = Track.allObjects()
         RLMRealm.beginWriteTransaction()
         for track in tracks {
-            let track = track as Track
-            if track.locations.count == 0 {
+            if let track = track as? Track where track.locations.count == 0 {
                 track.deleteFromRealm(inWriteTransaction: false)
             }
         }
@@ -185,32 +185,32 @@ class TracksHandler {
     
     private class func pruneSlowEnds() {
         for track in Track.allObjects() {
-            let track = track as Track
-            
-            let cycling = track.activity.cycling
-            if !cycling {
-                continue
+            if let track = track as? Track {
+                let cycling = track.activity.cycling
+                if !cycling {
+                    continue
+                }
+                let speeds = track.smoothSpeeds()
+                
+                let speedLimit: Double = 7 * 1000 / 3600 // 10 km/h
+                for speed in speeds {
+                    if speed > speedLimit {
+                        break
+                    }
+                    if let firstLocation = track.locations.firstObject() as? TrackLocation {
+                        firstLocation.deleteFromRealm()
+                    }
+                }
+                for speed in speeds.reverse() {
+                    if speed > speedLimit {
+                        break
+                    }
+                    if let lastLocation = track.locations.lastObject() as? TrackLocation {
+                        lastLocation.deleteFromRealm()
+                    }
+                }
+                track.recalculate()
             }
-            let speeds = track.smoothSpeeds()
-            
-            let speedLimit: Double = 7 * 1000 / 3600 // 10 km/h
-            for speed in speeds {
-                if speed > speedLimit {
-                    break
-                }
-                if let firstLocation = track.locations.firstObject() as? TrackLocation {
-                    firstLocation.deleteFromRealm()
-                }
-            }
-            for speed in speeds.reverse() {
-                if speed > speedLimit {
-                    break
-                }
-                if let lastLocation = track.locations.lastObject() as? TrackLocation {
-                    lastLocation.deleteFromRealm()
-                }
-            }
-            track.recalculate()
         }
     }
     
@@ -275,19 +275,18 @@ class TracksHandler {
         
         var count = UInt(0)
         while count < tracks.count - 1 {
-            let track = tracks[count] as Track
-            let nextTrack = tracks[count+1] as Track
-            let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
-            let sameType = track.activity.sameActivityTypeAs(nextTrack.activity)
-            let merge = close && sameType
-            if merge {
-                print("Close tracks: \(track.endDate) to \(nextTrack.startDate)")
-                let mergedTrack = mergeTrack(track, toTrack: nextTrack)
-                tracks = tracksSorted_()
-            } else {
-                count++
+            if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
+                let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
+                let sameType = track.activity.sameActivityTypeAs(nextTrack.activity)
+                let merge = close && sameType
+                if merge {
+                    print("Close tracks: \(track.endDate) to \(nextTrack.startDate)")
+                    let mergedTrack = mergeTrack(track, toTrack: nextTrack)
+                    tracks = tracksSorted_()
+                } else {
+                    count++
+                }
             }
-//            println(" \(count) / \(tracks.count)")
         }
     }
     
@@ -296,23 +295,22 @@ class TracksHandler {
         
         var count = UInt(0)
         while count < tracks.count - 1 {
-            let track = tracks[count] as Track
-            let nextTrack = tracks[count+1] as Track
-            let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
-            let cycling = track.activity.cycling
-            let cyclingNext = nextTrack.activity.cycling
-            let move = track.activity.moving() || track.speeding(speedLimit: 10, minLength: 0.1)
-            let moveNext = nextTrack.activity.moving() || nextTrack.speeding(speedLimit: 10, minLength: 0.1)
-            let bikeCloseAndMoving = (cycling && moveNext) || (cyclingNext && move)
-            let merge = close && bikeCloseAndMoving
-            if merge {
-                let mergedTrack = mergeTrack(track, toTrack: nextTrack, forceBike: true)
-                tracks = tracksSorted_()
-                print("Bike close w. move: \(mergedTrack.startDate)")
-            } else {
-                count++
+            if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
+                let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
+                let cycling = track.activity.cycling
+                let cyclingNext = nextTrack.activity.cycling
+                let move = track.activity.moving() || track.speeding(speedLimit: 10, minLength: 0.1)
+                let moveNext = nextTrack.activity.moving() || nextTrack.speeding(speedLimit: 10, minLength: 0.1)
+                let bikeCloseAndMoving = (cycling && moveNext) || (cyclingNext && move)
+                let merge = close && bikeCloseAndMoving
+                if merge {
+                    let mergedTrack = mergeTrack(track, toTrack: nextTrack, forceBike: true)
+                    tracks = tracksSorted_()
+                    print("Bike close w. move: \(mergedTrack.startDate)")
+                } else {
+                    count++
+                }
             }
-//            println(" \(count) / \(tracks.count)")
         }
     }
     
@@ -321,22 +319,22 @@ class TracksHandler {
         
         var count = UInt(0)
         while count < tracks.count - 1 {
-            let track = tracks[count] as Track
-            let nextTrack = tracks[count+1] as Track
-            let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
-            let unknown = track.activity.unknown || track.activity.completelyUnknown()
-            let unkownNext = nextTrack.activity.unknown || nextTrack.activity.completelyUnknown()
-            let eitherIsUnkown = unknown || unkownNext
-            let merge = close && eitherIsUnkown
-            if merge {
-                let forceActivity = unkownNext ? track.activity : nextTrack.activity
-                let mergedTrack = mergeTrack(track, toTrack: nextTrack, forceActivity: forceActivity)
-                tracks = tracksSorted_()
-                print("Close to empty activity: \(mergedTrack.startDate)")
-            } else {
-                count++
+            if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
+                let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
+                let unknown = track.activity.unknown || track.activity.completelyUnknown()
+                let unkownNext = nextTrack.activity.unknown || nextTrack.activity.completelyUnknown()
+                let eitherIsUnkown = unknown || unkownNext
+                let merge = close && eitherIsUnkown
+                if merge {
+                    let forceActivity = unkownNext ? track.activity : nextTrack.activity
+                    let mergedTrack = mergeTrack(track, toTrack: nextTrack, forceActivity: forceActivity)
+                    tracks = tracksSorted_()
+                    print("Close to empty activity: \(mergedTrack.startDate)")
+                } else {
+                    count++
+                }
+                println(" \(count) / \(tracks.count)")
             }
-            println(" \(count) / \(tracks.count)")
         }
     }
     

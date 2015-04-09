@@ -52,10 +52,10 @@ class Track: RLMObject {
     private func recalculateLength() {
         var newLength: Double = 0
         for (index, location) in enumerate(locations) {
-            if index + 1 >= locations.count {
+            if index + 1 >= Int(locations.count) {
                 continue
             }
-            if let nextLocation = locations[index+1] as? TrackLocation {
+            if let nextLocation = locations[UInt(index+1)] as? TrackLocation {
                 if let location = location as? TrackLocation {
                     newLength += location.location().distanceFromLocation(nextLocation.location())
                 }
@@ -142,10 +142,10 @@ class Track: RLMObject {
     func speeds() -> [Double] {
         var speeds = [Double]()
         for (index, location) in enumerate(locations) {
-            if index + 1 >= locations.count {
+            if index + 1 >= Int(locations.count) {
                 continue
             }
-            if let nextLocation = locations[index+1] as? TrackLocation {
+            if let nextLocation = locations[UInt(index+1)] as? TrackLocation {
                 if let location = location as? TrackLocation {
                     let length = location.location().distanceFromLocation(nextLocation.location())
                     let duration = nextLocation.date.timeIntervalSinceDate(location.date)

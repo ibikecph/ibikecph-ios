@@ -9,12 +9,6 @@
 import UIKit
 
 
-private struct SectionViewModel {
-    let title: String? = nil
-    let footer: String? = nil
-    let items: [TrackingItemProtocol]
-}
-
 private protocol TrackingItemProtocol {
     var title: String { get }
     var iconImageName: String { get }
@@ -41,8 +35,8 @@ class TrackingPreferencesViewController: UIViewController {
     let cellID = "TrackingCellID"
     let cellSwitchID = "TrackingSwitchCellID"
     
-    private let sections = [
-        SectionViewModel(title: nil, footer: nil, items:
+    private let sections: [SectionViewModel<TrackingItemProtocol>] = [
+        SectionViewModel(title: "", footer: "hello", items:
             [
                 TrackingSwitchItem(title: SMTranslation.decodeString("tracking_option"), iconImageName: "tracking", on: settings.tracking.on, switchAction: { voiceViewController, on in
                     settings.tracking.on = on
@@ -102,13 +96,13 @@ extension TrackingPreferencesViewController: UITableViewDataSource {
         let item = sections[indexPath.section].items[indexPath.row]
         
         if let item = item as? TrackingSwitchItem {
-            let cell = tableView.dequeueReusableCellWithIdentifier(cellSwitchID, forIndexPath: indexPath) as IconLabelSwitchTableViewCell
+            let cell = tableView.cellWithIdentifier(cellSwitchID, forIndexPath: indexPath) as IconLabelSwitchTableViewCell
             cell.configure(text: item.title, icon: UIImage(named: item.iconImageName))
             cell.switcher.on = item.on
             cell.switchChanged = { on in item.switchAction(self, on) }
             return cell
         }
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
+        let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
         cell.configure(text: item.title, icon: UIImage(named: item.iconImageName))
         return cell
     }

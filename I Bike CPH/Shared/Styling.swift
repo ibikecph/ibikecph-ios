@@ -11,15 +11,15 @@ import UIKit
 
 @objc protocol StyleProtocol {
     
-    class func setupAppearance()
+    static func setupAppearance()
     
-    class func backgroundColor() -> UIColor
-    class func tintColor() -> UIColor
-    class func foregroundColor() -> UIColor
-    class func navigationBarTintColor() -> UIColor
-    class func navigationBarContentTintColor() -> UIColor
+    static func backgroundColor() -> UIColor
+    static func tintColor() -> UIColor
+    static func foregroundColor() -> UIColor
+    static func navigationBarTintColor() -> UIColor
+    static func navigationBarContentTintColor() -> UIColor
     
-    class func logo() -> UIImage?
+    static func logo() -> UIImage?
 }
 
 extension Styler {

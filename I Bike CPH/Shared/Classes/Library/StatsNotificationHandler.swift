@@ -13,7 +13,15 @@ struct Milestone {
     let uniqueKey: String
     let values: [Int]
     let descriptions: [String]
-    let valueDividerForDescription = 1
+    let valueDividerForDescription: Int
+    
+    init (uniqueKey: String, values: [Int], descriptions: [String], valueDividerForDescription: Int = 0) {
+        self.uniqueKey = uniqueKey
+        self.values = values
+        self.descriptions = descriptions
+        self.valueDividerForDescription = valueDividerForDescription
+    }
+    
     private var storeKey: String { return "MilestoneLatest" + uniqueKey }
     /// Last milestone presented to the user
     func latestPresentedValue() -> Int? {

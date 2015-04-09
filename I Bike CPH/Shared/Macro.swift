@@ -10,7 +10,7 @@ import Foundation
 
 @objc protocol MacroProtocol {
     
-    class func isCykelPlanen() -> Bool
-    class func isIBikeCph() -> Bool
+    static func isCykelPlanen() -> Bool
+    static func isIBikeCph() -> Bool
 }
 

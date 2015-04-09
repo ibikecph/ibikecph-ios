@@ -106,33 +106,34 @@ class TrackingViewController: SMTranslatedViewController {
         if let tracks = tracks {
             for tracksInSection in tracks {
                 for track in tracksInSection {
-                    let track = track as Track
-                    if track.start == "" {
-                        if let startLocation = track.locations.firstObject() as? TrackLocation {
-                            let coordinate = startLocation.coordinate()
-                            SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
-                                if track.invalidated {
-                                    return
-                                }
-                                if let item = item {
-                                    track.realm.beginWriteTransaction()
-                                    track.start = item.street
-                                    track.realm.commitWriteTransaction()
+                    if let let track = track as? Track {
+                        if track.start == "" {
+                            if let startLocation = track.locations.firstObject() as? TrackLocation {
+                                let coordinate = startLocation.coordinate()
+                                SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
+                                    if track.invalidated {
+                                        return
+                                    }
+                                    if let item = item {
+                                        track.realm.beginWriteTransaction()
+                                        track.start = item.street
+                                        track.realm.commitWriteTransaction()
+                                    }
                                 }
                             }
                         }
-                    }
-                    if track.end == "" {
-                        if let endLocation = track.locations.lastObject() as? TrackLocation {
-                            let coordinate = endLocation.coordinate()
-                            SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
-                                if track.invalidated {
-                                    return
-                                }
-                                if let item = item {
-                                    track.realm.beginWriteTransaction()
-                                    track.end = item.street
-                                    track.realm.commitWriteTransaction()
+                        if track.end == "" {
+                            if let endLocation = track.locations.lastObject() as? TrackLocation {
+                                let coordinate = endLocation.coordinate()
+                                SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
+                                    if track.invalidated {
+                                        return
+                                    }
+                                    if let item = item {
+                                        track.realm.beginWriteTransaction()
+                                        track.end = item.street
+                                        track.realm.commitWriteTransaction()
+                                    }
                                 }
                             }
                         }
@@ -200,7 +201,7 @@ extension TrackingViewController: UITableViewDataSource {
     
     // Cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as TrackTableViewCell
+        let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as TrackTableViewCell
         cell.updateToTrack(track(indexPath))
         return cell
     }
@@ -240,8 +241,7 @@ extension TrackingViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "trackingToDetail" {
-            if let track = selectedTrack {
-                let trackDetailViewController = segue.destinationViewController as TrackDetailViewController
+            if let track = selectedTrack, trackDetailViewController = segue.destinationViewController as? TrackDetailViewController {
                 trackDetailViewController.track = track
             }
         }

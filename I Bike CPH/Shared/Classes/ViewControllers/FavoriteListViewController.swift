@@ -28,7 +28,7 @@ class FavoriteListViewController: SMTranslatedViewController {
         super.viewDidLoad()
         
         if UserHelper.loggedIn() {
-            items = SMFavoritesUtil.favorites() as [FavoriteItem] // Get local favorites
+            items = SMFavoritesUtil.favorites() as! [FavoriteItem] // Get local favorites
             SMFavoritesUtil.instance().delegate = self
             SMFavoritesUtil.instance().fetchFavoritesFromServer() // Fetch favorites from server
             tableView.hidden = false
@@ -82,7 +82,7 @@ extension FavoriteListViewController: SMFavoritesDelegate {
     
     func favoritesOperationFinishedSuccessfully(req: AnyObject!, withData data: AnyObject!) {
         // TODO: Update favorites
-        items = SMFavoritesUtil.favorites() as [FavoriteItem] // Update favorites
+        items = SMFavoritesUtil.favorites() as! [FavoriteItem] // Update favorites
     }
 }
 
@@ -94,7 +94,7 @@ extension FavoriteListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
+        let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
         let item = items[indexPath.row]
         let imageName: String = {
             switch item.origin {

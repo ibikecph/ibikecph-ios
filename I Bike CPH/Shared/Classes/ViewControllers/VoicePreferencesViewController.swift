@@ -8,12 +8,6 @@
 
 import UIKit
 
-private struct SectionViewModel {
-    let title: String? = nil
-    let footer: String? = nil
-    let items: [VoiceItemProtocol]
-}
-
 private protocol VoiceItemProtocol {
     var title: String { get }
     var iconImageName: String { get }
@@ -39,7 +33,7 @@ class VoicePreferencesViewController: UIViewController {
     let cellID = "VoiceCellID"
     let cellSwitchID = "VoiceSwitchCellID"
     
-    private let sections = [
+    private let sections: [SectionViewModel<VoiceItemProtocol>] = [
         SectionViewModel(title: nil, footer: SMTranslation.decodeString("voice_option_detail"), items:
             [
                 VoiceSwitchItem(title: SMTranslation.decodeString("voice_option"), iconImageName: "speaker", on: settings.voice.on, switchAction: { voiceViewController, on in
@@ -94,13 +88,14 @@ extension VoicePreferencesViewController: UITableViewDataSource {
         let item = sections[indexPath.section].items[indexPath.row]
         
         if let item = item as? VoiceSwitchItem {
-            let cell = tableView.dequeueReusableCellWithIdentifier(cellSwitchID, forIndexPath: indexPath) as IconLabelSwitchTableViewCell
+            tableView.cellWithIdentifier(reuseIdentifier: cellSwitchID)
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellSwitchID, forIndexPath: indexPath) as! IconLabelSwitchTableViewCell
             cell.configure(text: item.title, icon: UIImage(named: item.iconImageName))
             cell.switcher.on = item.on
             cell.switchChanged = { on in item.switchAction(self, on) }
             return cell
         }
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! IconLabelTableViewCell
         cell.configure(text: item.title, icon: UIImage(named: item.iconImageName))
         return cell
     }

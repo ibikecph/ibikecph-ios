@@ -37,7 +37,7 @@ import Social
     }
     
     public func request(completion: Completion) {
-        let options = [
+        let options: [NSObject : AnyObject] = [
             ACFacebookAppIdKey as String : SMRouteSettings.sharedInstance().fb_app_id,
             ACFacebookPermissionsKey as String : ["email"]
         ]

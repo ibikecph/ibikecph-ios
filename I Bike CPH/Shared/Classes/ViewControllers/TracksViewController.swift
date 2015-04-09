@@ -40,8 +40,7 @@ class TracksViewController: SMTranslatedViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "trackListToDetail" {
-            if let track = selectedTrack {
-                let trackDetailViewController = segue.destinationViewController as TrackDetailViewController
+            if let track = selectedTrack, let trackDetailViewController = segue.destinationViewController as? TrackDetailViewController {
                 trackDetailViewController.track = track
             }
         }
@@ -69,7 +68,7 @@ extension TracksViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as DebugTrackTableViewCell
+        let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as DebugTrackTableViewCell
         cell.updateToTrack(track(indexPath), index: indexPath.row)
         return cell
     }
@@ -199,7 +198,7 @@ class TrackMapView: MKMapView {
             }
         }
         if let zoomRect = zoomRect {
-            setVisibleMapRect(zoomRect)
+            setVisibleMapRectPadded(zoomRect)
         }
     }
     
@@ -235,8 +234,7 @@ extension MKMapRect {
 
 extension MKMapView {
     
-    func setVisibleMapRect(mapRect: MKMapRect) {
-        
+    func setVisibleMapRectPadded(mapRect: MKMapRect) {
         let padding: CGFloat = 10
         let edgePadding = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         setVisibleMapRect(mapRect.minimumRect, edgePadding: edgePadding, animated: false)

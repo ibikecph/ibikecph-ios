@@ -8,11 +8,6 @@
 
 import UIKit
 
-private struct SectionViewModel {
-    let title: String? = nil
-    let items: [MenuItem]
-}
-
 private struct MenuItem {
     let title: String
     let iconImageName: String
@@ -27,7 +22,7 @@ class MenuViewController: UIViewController {
     
     private var pendingTracking: Bool = false
 
-    private lazy var sections: [SectionViewModel] = {
+    private lazy var sections: [SectionViewModel<MenuItem>] = {
         
         let favItem = MenuItem(title: SMTranslation.decodeString("favorites"), iconImageName: "favorites", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToFavorites", sender: menuViewController)
@@ -95,7 +90,7 @@ class MenuViewController: UIViewController {
         menuItems.append(profileItem)
         menuItems.append(aboutItem)
         
-        var firstSection = SectionViewModel(title: nil, items: menuItems)
+        var firstSection = SectionViewModel(items: menuItems)
         return [firstSection]
     }()
     
@@ -148,7 +143,7 @@ extension MenuViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
+        let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
         let item = sections[indexPath.section].items[indexPath.row]
         cell.configure(text: item.title, icon: UIImage(named: item.iconImageName))
         

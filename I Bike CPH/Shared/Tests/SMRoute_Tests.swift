@@ -78,7 +78,7 @@ class SMRoute_Tests: XCTestCase {
         return [ [ "55.691319", "12.553331" ], [ "55.677849", "12.570681" ] ]
     }
     
-    func jsonRoute() -> NSDictionary {
+    func jsonRoute() -> [NSObject : AnyObject] {
         return [
             "found_alternative": 0,
             "hint_data": hintData(),
