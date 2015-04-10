@@ -52,13 +52,11 @@ struct Milestone {
 
     func shouldPresent(forValue value: Int) -> Response {
         let nextMilestone = nextMilestoneToPresentToUser()
-        if value >= nextMilestone {
-            if let index = find(values, nextMilestone) {
-                let reducedValue = nextMilestone / valueDividerForDescription
-                let description = String(format: descriptions[index].localized, reducedValue)
-                setLatestPresentedValue(value)
-                return .Present(description: description, milestone: self)
-            }
+        if value >= nextMilestone, let index = find(values, nextMilestone) {
+            let reducedValue = nextMilestone / valueDividerForDescription
+            let description = String(format: descriptions[index].localized, reducedValue)
+            setLatestPresentedValue(value)
+            return .Present(description: description, milestone: self)
         }
         return .False
     }

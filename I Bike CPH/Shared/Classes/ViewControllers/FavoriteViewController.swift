@@ -113,12 +113,13 @@ class FavoriteViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == searchAddressSegue {
-            if let searchViewController = segue.destinationViewController as? SMSearchController {
-                searchViewController.shouldAllowCurrentPosition = false
-                searchViewController.locationItem = favoriteItem
-                searchViewController.delegate = self
-            }
+        if
+            segue.identifier == searchAddressSegue,
+            let searchViewController = segue.destinationViewController as? SMSearchController
+        {
+            searchViewController.shouldAllowCurrentPosition = false
+            searchViewController.locationItem = favoriteItem
+            searchViewController.delegate = self
         }
     }
     

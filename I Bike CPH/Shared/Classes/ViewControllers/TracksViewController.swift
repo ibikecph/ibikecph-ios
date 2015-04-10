@@ -39,15 +39,17 @@ class TracksViewController: SMTranslatedViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "trackListToDetail" {
-            if let track = selectedTrack, let trackDetailViewController = segue.destinationViewController as? TrackDetailViewController {
-                trackDetailViewController.track = track
-            }
+        if
+            segue.identifier == "trackListToDetail",
+            let track = selectedTrack,
+            trackDetailViewController = segue.destinationViewController as? TrackDetailViewController
+        {
+            trackDetailViewController.track = track
         }
     }
     
     @IBAction func didTapCleanUp(sender: AnyObject) {
-        TracksHandler.cleanUpTracks()
+        TracksHandler.setNeedsProcessData(force: true)
     }
 }
 
@@ -210,7 +212,7 @@ extension TrackMapView: MKMapViewDelegate {
         if let polyline = overlay as? MKPolyline {
             let renderer = MKPolylineRenderer(polyline: polyline)
             renderer.strokeColor = Styler.tintColor()
-            renderer.lineWidth = 5
+            renderer.lineWidth = 4
             return renderer
         }
         return nil

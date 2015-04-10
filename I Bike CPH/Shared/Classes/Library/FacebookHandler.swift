@@ -131,19 +131,15 @@ import Social
     
     func succeededWithUserData(data: NSDictionary, token: String, completion: Completion) {
         println("Facebook succeeded with user data \(data)")
-        if let userID = data["id"] as? String {
-            if let email = data["email"] as? String {
-                let user = UserInfo(id: userID, email: email, token: token)
-                Async.main {
-                    completion(user, nil)
-                }
-                return
+        if let
+            userID = data["id"] as? String,
+            email = data["email"] as? String
+        {
+            let user = UserInfo(id: userID, email: email, token: token)
+            Async.main {
+                completion(user, nil)
             }
-//            if let firstName = data["first_name"] {
-//                if let lastName = data["lastName"] {
-//                    
-//                }
-//            }
+            return
         }
         self.failed(error: nil, completion: completion)
     }

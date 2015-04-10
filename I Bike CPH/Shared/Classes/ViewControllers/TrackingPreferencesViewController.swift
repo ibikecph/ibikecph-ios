@@ -36,7 +36,7 @@ class TrackingPreferencesViewController: UIViewController {
     let cellSwitchID = "TrackingSwitchCellID"
     
     private let sections: [SectionViewModel<TrackingItemProtocol>] = [
-        SectionViewModel(title: "", footer: "hello", items:
+        SectionViewModel(items:
             [
                 TrackingSwitchItem(title: SMTranslation.decodeString("tracking_option"), iconImageName: "tracking", on: settings.tracking.on, switchAction: { voiceViewController, on in
                     settings.tracking.on = on

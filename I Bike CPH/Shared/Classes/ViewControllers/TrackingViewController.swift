@@ -44,6 +44,8 @@ class TrackingViewController: SMTranslatedViewController {
         return formatter
     }()
     
+    var lastUpdate: NSDate?
+    
     deinit {
         RLMRealm.removeNotification(token)
     }
@@ -54,7 +56,7 @@ class TrackingViewController: SMTranslatedViewController {
         title = SMTranslation.decodeString("tracking")
         
         token = RLMRealm.addNotificationBlock() { [unowned self] note, realm in
-            self.view.setNeedsLayout()
+            self.setNeedsUpdateUI()
         }
     }
     
@@ -76,6 +78,23 @@ class TrackingViewController: SMTranslatedViewController {
         return .LightContent
     }
     
+    func setNeedsUpdateUI() {
+        if let lastUpdate = self.lastUpdate {
+            if NSDate().timeIntervalSinceDate(lastUpdate) > 5 {
+                self.lastUpdate = NSDate()
+                self.view.setNeedsLayout()
+                return
+            }
+        } else {
+            self.lastUpdate = NSDate()
+            self.view.setNeedsLayout()
+            return
+        }
+        Async.main(after: 6) {
+            self.setNeedsUpdateUI()
+        }
+    }
+    
     func updateUI() {
         
         let totalDistance = BikeStatistics.totalDistance() / 1000
@@ -90,7 +109,7 @@ class TrackingViewController: SMTranslatedViewController {
         let averageTripDistance = BikeStatistics.averageTrackDistance() / 1000
         tripLabel.text = numberFormatter.stringFromNumber(averageTripDistance)
         
-        if let startDate = BikeStatistics.firstTrackDate() {
+        if let startDate = BikeStatistics.firstTrackStartDate() {
             sinceLabel.text = "Since".localized + " " + sinceFormatter.stringFromDate(startDate)
         } else {
             sinceLabel.text = "–"
@@ -146,7 +165,7 @@ class TrackingViewController: SMTranslatedViewController {
     func updateTracks() {
         var date = NSDate()
         var updatedTracks: [RLMResults]? = nil
-        if let oldestDate = BikeStatistics.firstTrackDate() {
+        if let oldestDate = BikeStatistics.firstTrackStartDate() {
             while date.laterOrEqualDay(thanDate: oldestDate) {
                 if let tracksForDate = BikeStatistics.tracksForDayOfDate(date) {
                     if let tracks = tracksForDate.sortedResultsUsingProperty("startTimestamp", ascending: false) {
@@ -240,10 +259,12 @@ extension TrackingViewController: UITableViewDelegate {
 extension TrackingViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "trackingToDetail" {
-            if let track = selectedTrack, trackDetailViewController = segue.destinationViewController as? TrackDetailViewController {
-                trackDetailViewController.track = track
-            }
+        if
+            segue.identifier == "trackingToDetail",
+            let track = selectedTrack,
+            trackDetailViewController = segue.destinationViewController as? TrackDetailViewController
+        {
+            trackDetailViewController.track = track
         }
     }
 }

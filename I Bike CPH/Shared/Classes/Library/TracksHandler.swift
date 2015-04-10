@@ -18,50 +18,84 @@ class TracksHandler {
         return hasBikeTracks
     }
     
-    private var processing: Bool = false
-   
-    class func cleanUpSmallStuff() {
+    private var processing: Bool = false {
+        didSet {
+            processingHandler?(processing)
+        }
+    }
+    var processingHandler: ((Bool) -> ())?
+
+    var lastProcessedSmall: NSDate = NSDate()
+    var lastProcessedBig: NSDate = NSDate()
+    
+    class func setNeedsProcessData(force: Bool = false) {
+        if force {
+            self.cleanUpSmall()
+            self.cleanUpBig()
+            return
+        }
+        if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedSmall) > 10 {
+            tracksHandler.lastProcessedSmall = NSDate()
+            self.cleanUpSmall()
+        }
+        if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedBig) > 60 {
+            tracksHandler.lastProcessedBig = NSDate()
+            self.cleanUpBig()
+            return
+        }
+        Async.main(after: 6) {
+            self.setNeedsProcessData()
+        }
+    }
+    
+    private class func cleanUpSmall() {
         if tracksHandler.processing {
             println("Already processing")
+            Async.main(after: 10) { // Check again after 10 seconds
+                self.cleanUpSmall()
+            }
             return
         }
         tracksHandler.processing = true
         
-        println("START")
+        println("Start processing small")
         Async.main() { println("Remove empty tracks")
             TracksHandler.removeEmptyTracks()
         }.main() { println("Merge close to same activity")
             TracksHandler.mergeCloseSameActivityTracks(seconds: 60)
         }.main {
-            println("DONE")
+            println("Done processing small")
             tracksHandler.processing = false
         }
     }
     
-    class func cleanUpTracks() {
+    private class func cleanUpBig() {
         if tracksHandler.processing {
             println("Already processing")
+            Async.main(after: 10) { // Check again after 10 seconds
+                self.cleanUpBig()
+            }
             return
         }
         tracksHandler.processing = true
         
-        println("START")
+        println("Start processing big")
         Async.background() { println("Remove empty tracks")
             TracksHandler.removeEmptyTracks()
-        }.background() {
+        }.background() { println("Merge close to unknown activity tracks")
             TracksHandler.mergeCloseToUnknownActivityTracks(seconds: 30)
         }.background() { println("Infer bike from speed from walking")
-            TracksHandler.inferBikingFromSpeed(activity: { $0.walking }, minSpeedLimit: 10, minLength: 0.05)
+            TracksHandler.inferBikingFromSpeed(activity: { $0.walking }, minSpeedLimit: 7, minLength: 0.050)
+        }.background() { println("Infer bike from speed from automotive")
+            TracksHandler.inferBikingFromSpeed(activity: { $0.automotive }, minSpeedLimit: 10, maxSpeedLimit: 20, minLength: 0.200)
         }.background() { println("Merge close to same activity")
             TracksHandler.mergeCloseSameActivityTracks(seconds: 60)
         }.background() { println("Merge track between bike tracks")
-            TracksHandler.mergeTrackBetweenBike(seconds: 60*3)
-        }.background() { println("Infer bike from speed from automotive")
-            TracksHandler.inferBikingFromSpeed(activity: { $0.automotive }, minSpeedLimit: 10, maxSpeedLimit: 20, minLength: 0.200)
+            TracksHandler.mergeTracksBetweenBike(seconds: 60*5)
         }.background() { println("Merge bike close with non-stationary tracks")
-            TracksHandler.mergeBikeCloseWithMoveTracks(seconds: 30)
+            TracksHandler.mergeBikeCloseWithMoveTracks(seconds: 60)
         }.background() { println("Merge track between bike tracks – again")
-            TracksHandler.mergeTrackBetweenBike(seconds: 60*3)
+            TracksHandler.mergeTracksBetweenBike(seconds: 60*5)
         }.background() { println("Clear left overs")
             TracksHandler.clearLeftOvers()
         }.background() { println("Prune slow ends")
@@ -69,7 +103,7 @@ class TracksHandler {
         }.background() { println("Recalculate")
             TracksHandler.recalculateTracks()
         }.main() {
-            println("DONE")
+            println("Done processing big")
             tracksHandler.processing = false
         }
     }
@@ -107,12 +141,10 @@ class TracksHandler {
                 track.deleteFromRealm()
                 continue
             }
-            // Not bike nor auto
-            let cycling = track.activity.cycling
-            let auto = track.activity.automotive
-            let neitherBikeOrAuto = !(auto || cycling)
-            if neitherBikeOrAuto {
-                println("Deleted neitherBikeOrAuto: \(track.startDate)")
+            // Not moving activity
+            let moving = track.activity.moving()
+            if !moving {
+                println("Deleted not moving activity: \(track.startDate)")
                 track.deleteFromRealm()
                 continue
             }
@@ -171,15 +203,6 @@ class TracksHandler {
                 track.deleteFromRealm()
                 continue
             }
-            
-            // Not biking + nearly no content
-            if !cycling {
-                
-                
-//                println("QQ \(track.length) \(track.flightWithOneMedianStopDistance()) \(track.duration) \(track.locations.count) \(formatter.stringFromDate(track.startDate!)) to \(formatter.stringFromDate(track.endDate!)) \(track.startTimestamp)")
-                
-                continue
-            }
         }
     }
     
@@ -214,26 +237,48 @@ class TracksHandler {
         }
     }
     
-    private class func mergeTrackBetweenBike(#seconds: NSTimeInterval) {
+    private class func mergeTracksBetweenBike(#seconds: NSTimeInterval) {
         var tracks = tracksSorted()
+        
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        formatter.timeStyle = .MediumStyle
         
         var count = 0
         while count < tracks.count - 2 {
-            let track1 = tracks[count]
-            let track2 = tracks[count+1]
-            let track3 = tracks[count+2]
-            let close = closeTracks(track: track1, toTrack: track3, closerThanSeconds: seconds)
-            let betweenBikes = track1.activity.cycling && track3.activity.cycling
-            let merge = close && betweenBikes
-            if merge {
-                let mergedTrack12 = mergeTrack(track1, toTrack: track2)
-                let mergedTrack123 = mergeTrack(mergedTrack12, toTrack: track3)
+            let track = tracks[count]
+            if !track.activity.cycling { // Is not biking
+                count++
+                continue
+            }
+            // Find next bike track within time interval
+            var nextCount = count
+            var nextTrack: Track?
+            while nextCount < tracks.count - 3 {
+                let _nextTrack = tracks[nextCount+1]
+                if !_nextTrack.activity.cycling {
+                    break
+                }
+                if !closeTracks(track: track, toTrack: _nextTrack, closerThanSeconds: seconds) {
+                    break
+                }
+                println("\(formatter.stringFromDate(track.endDate!)) | \(formatter.stringFromDate(_nextTrack.startDate!))")
+                nextTrack = _nextTrack
+                nextCount++
+            }
+            if let nextTrack = nextTrack where nextCount > count {
+                // Merge tracks between bike tracks
+                println("MERGEEEEE")
+                let tracksToMerge = Array(tracks[count...nextCount])
+                
+                for track in tracksToMerge {
+                    println("\(formatter.stringFromDate(track.startDate!)) -> \(formatter.stringFromDate(track.endDate!))")
+                }
+                mergeTracks(tracksToMerge)
                 tracks = tracksSorted()
-                print("Between bike tracks: \(mergedTrack123.activity.startDate)")
             } else {
                 count++
             }
-//            println(" \(count) / \(tracks.count)")
         }
     }
     
@@ -280,12 +325,13 @@ class TracksHandler {
                 let sameType = track.activity.sameActivityTypeAs(nextTrack.activity)
                 let merge = close && sameType
                 if merge {
-                    print("Close tracks: \(track.endDate) to \(nextTrack.startDate)")
+                    println("Close tracks: \(track.endDate) to \(nextTrack.startDate)")
                     let mergedTrack = mergeTrack(track, toTrack: nextTrack)
                     tracks = tracksSorted_()
                 } else {
                     count++
                 }
+//                println(" \(count) / \(tracks.count)")
             }
         }
     }
@@ -306,10 +352,11 @@ class TracksHandler {
                 if merge {
                     let mergedTrack = mergeTrack(track, toTrack: nextTrack, forceBike: true)
                     tracks = tracksSorted_()
-                    print("Bike close w. move: \(mergedTrack.startDate)")
+                    println("Bike close w. move: \(mergedTrack.startDate)")
                 } else {
                     count++
                 }
+//                println(" \(count) / \(tracks.count)")
             }
         }
     }
@@ -329,22 +376,23 @@ class TracksHandler {
                     let forceActivity = unkownNext ? track.activity : nextTrack.activity
                     let mergedTrack = mergeTrack(track, toTrack: nextTrack, forceActivity: forceActivity)
                     tracks = tracksSorted_()
-                    print("Close to empty activity: \(mergedTrack.startDate)")
+                    println("Close to empty activity: \(mergedTrack.startDate)")
                 } else {
                     count++
                 }
-                println(" \(count) / \(tracks.count)")
+//                println(" \(count) / \(tracks.count)")
             }
         }
     }
     
     private class func closeTracks(track track1: Track, toTrack track2: Track, closerThanSeconds seconds: NSTimeInterval) -> Bool {
-        if let track1EndDate = track1.endDate {
-            if let track2StartDate = track2.startDate {
-                let timeIntervalBetweenTracks = track2StartDate.timeIntervalSinceDate(track1EndDate)
-                if timeIntervalBetweenTracks < seconds {
-                    return true
-                }
+        if let
+            track1EndDate = track1.endDate,
+            track2StartDate = track2.startDate
+        {
+            let timeIntervalBetweenTracks = track2StartDate.timeIntervalSinceDate(track1EndDate)
+            if timeIntervalBetweenTracks < seconds {
+                return true
             }
         }
         return false
@@ -365,8 +413,9 @@ class TracksHandler {
             track1.activity.running = false
             track1.activity.confidence = 0
         } else if let forceActivity = forceActivity {
+            let startDate = track1.activity.startDate
             track1.activity = forceActivity;
-            track1.activity.startDate = track1.activity.startDate
+            track1.activity.startDate = startDate
         }
         // Clean up
         track1.recalculate(inWriteTransaction: false)
@@ -375,5 +424,16 @@ class TracksHandler {
         track1.realm.commitWriteTransaction()
         
         return track1
+    }
+    
+    private class func mergeTracks(tracks: [Track]) -> Track? {
+        var tracks = tracks
+        while tracks.count > 1 {
+            let track1 = tracks[0]
+            let track2 = tracks[1]
+            mergeTrack(track1, toTrack: track2)
+            tracks.removeAtIndex(1)
+        }
+        return tracks.first
     }
 }

@@ -18,11 +18,7 @@ class NotificationCenter {
         NSNotificationCenter.defaultCenter().addObserverForName(name, object: object, queue: queue, usingBlock: block)
     }
     
-    class func unobserve(name: String, observer: AnyObject, object: AnyObject? = nil) {
+    class func unobserve(observer: AnyObject, name: String? = nil, object: AnyObject? = nil) {
         NSNotificationCenter.defaultCenter().removeObserver(observer, name: name, object: object)
-    }
-    
-    class func unobserve(observer: AnyObject) {
-        NSNotificationCenter.defaultCenter().removeObserver(observer)
     }
 }

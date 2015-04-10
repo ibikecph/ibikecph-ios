@@ -114,10 +114,11 @@ class Track: RLMObject {
         if locations.count <= 1 {
             return nil
         }
-        if let firstLocation = locations.firstObject() as? TrackLocation {
-            if let lastLocation = locations.lastObject() as? TrackLocation {
-                return firstLocation.location().distanceFromLocation(lastLocation.location())
-            }
+        if let
+            firstLocation = locations.firstObject() as? TrackLocation,
+            lastLocation = locations.lastObject() as? TrackLocation
+        {
+            return firstLocation.location().distanceFromLocation(lastLocation.location())
         }
         return nil
     }

@@ -1503,8 +1503,8 @@ typedef enum {
             [brVC.tableView reloadData];
         }];
         
-        [SMGeocoder reverseGeocode:self.endLocation.coordinate completionHandler:^(NSDictionary *response, NSError *error) {            
-            NSString* address = [NSString stringWithFormat:@"%@ %@", item.street, item.number];
+        [SMGeocoder reverseGeocode:self.endLocation.coordinate completionHandler:^(KortforItem *item, NSError *error) {
+            NSString *address = [NSString stringWithFormat:@"%@ %@", item.street, item.number];
             if ( [address isEqualToString:self.destination] ) {
                 brVC.destinationAddress = [NSString stringWithFormat:@"%@ %@", item.zip, item.city];
             } else {

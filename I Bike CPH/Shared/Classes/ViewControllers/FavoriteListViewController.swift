@@ -66,10 +66,11 @@ class FavoriteListViewController: SMTranslatedViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == editFavoriteSegue {
-            if let favoriteViewController = segue.destinationViewController as? FavoriteViewController {
-                favoriteViewController.favoriteItem = selectedItem ?? nil
-            }
+        if
+            segue.identifier == editFavoriteSegue,
+            let favoriteViewController = segue.destinationViewController as? FavoriteViewController
+        {
+            favoriteViewController.favoriteItem = selectedItem ?? nil
         }
     }
 }

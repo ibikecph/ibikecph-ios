@@ -71,23 +71,30 @@ class BikeStatistics {
     
     
     class func tracksForDayOfDate(date: NSDate) -> RLMResults? {
-        if let timestampDayStart = date.beginningOfDay()?.timeIntervalSince1970 {
-            if let timestampDayEnd = date.endOfDay()?.timeIntervalSince1970 {
-                // Start time or end time should be within day
-                return tracks().objectsWhere("startTimestamp BETWEEN %@ OR endTimestamp BETWEEN %@", [timestampDayStart, timestampDayEnd], [timestampDayEnd, timestampDayEnd])
-            }
+        if let timestampDayStart = date.beginningOfDay()?.timeIntervalSince1970, timestampDayEnd = date.endOfDay()?.timeIntervalSince1970 {
+            // Start time or end time should be within day
+            return tracks().objectsWhere("startTimestamp BETWEEN %@ OR endTimestamp BETWEEN %@", [timestampDayStart, timestampDayEnd], [timestampDayEnd, timestampDayEnd])
         }
         return nil
     }
     
+    /**
+    Start date of first bike track
+
+    :returns: The start date of the first bike track
+    */
+    class func firstTrackStartDate() -> NSDate? {
+        let startDate = (tracks().sortedResultsUsingProperty("startTimestamp", ascending: true).firstObject() as? Track)?.startDate
+        return startDate
+    }
     
     /**
-    First day that has bike track
-
-    :returns: The date of the first bike track
+    End date of latest bike track
+    
+    :returns: The end date of the latest bike track
     */
-    class func firstTrackDate() -> NSDate? {
-        let startDate = (tracks().sortedResultsUsingProperty("startTimestamp", ascending: true).firstObject() as? Track)?.startDate
+    class func lastTrackEndDate() -> NSDate? {
+        let startDate = (tracks().sortedResultsUsingProperty("startTimestamp", ascending: true).firstObject() as? Track)?.endDate
         return startDate
     }
 }

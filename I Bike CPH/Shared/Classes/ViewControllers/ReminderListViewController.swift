@@ -33,7 +33,7 @@ extension ReminderListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as SMReminderTableViewCell
+        let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as SMReminderTableViewCell
         let weekday = weekdays[indexPath.row]
         cell.currentDay = Day(Int32(indexPath.row))
         cell.setupWithTitle(weekday)
