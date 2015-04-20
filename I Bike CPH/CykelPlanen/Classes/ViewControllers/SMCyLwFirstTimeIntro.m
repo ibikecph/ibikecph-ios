@@ -31,10 +31,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.screenTitle setText:translateString(@"break_route_title")];
-    [self.screenTopText setText:translateString(@"break_route_text_top")];
-    [self.screenBottomText setText:translateString(@"break_route_text_bottom")];
-    [self.exitButton setTitle:translateString(@"break_route_exit") forState:UIControlStateNormal];
+    [self.screenTitle setText:@"break_route_title".localized];
+    [self.screenTopText setText:@"break_route_text_top".localized];
+    [self.screenBottomText setText:@"break_route_text_bottom".localized];
+    [self.exitButton setTitle:@"break_route_exit".localized forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning

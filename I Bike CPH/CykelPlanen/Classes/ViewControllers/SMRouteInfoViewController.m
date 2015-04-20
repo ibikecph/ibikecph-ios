@@ -35,7 +35,7 @@
 {
     [super viewDidLoad];
     
-    self.title = translateString(@"route_info");
+    self.title = @"route_info".localized;
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     dateFormatter= [[NSDateFormatter alloc] init];
@@ -308,23 +308,23 @@
             lbl= (UILabel*)[cell viewWithTag:2];
             [lbl setText:self.singleRouteInfo.destStation.name];
             lbl= (UILabel*)[cell viewWithTag:3];
-            [lbl setText:[NSString stringWithFormat:@"%@, %@ %@", [dateFormatter stringFromDate:[NSDate new]], translateString(@"departures_at"), currentTime ]];
+            [lbl setText:[NSString stringWithFormat:@"%@, %@ %@", [dateFormatter stringFromDate:[NSDate new]], @"departures_at".localized, currentTime ]];
             
             lbl= (UILabel*)[cell viewWithTag:11];
-            [lbl setText:translateString(@"departure")];
+            [lbl setText:@"departure".localized];
             lbl= (UILabel*)[cell viewWithTag:12];
-            [lbl setText:translateString(@"arrival")];
+            [lbl setText:@"arrival".localized];
             lbl= (UILabel*)[cell viewWithTag:13];
-            [lbl setText:translateString(@"Time")];
+            [lbl setText:@"Time".localized];
             lbl= (UILabel*)[cell viewWithTag:14];
-            [lbl setText:translateString(@"shift")];
+            [lbl setText:@"shift".localized];
             
             lbl= (UILabel*)[cell viewWithTag:21];
-            [lbl setText:translateString(@"From:")];
+            lbl.text = [From.localized stringByAppendingString:@":"]];
             lbl= (UILabel*)[cell viewWithTag:22];
-            [lbl setText:translateString(@"To:")];
+            lbl.text = [To.localized stringByAppendingString:@":"]];
             lbl= (UILabel*)[cell viewWithTag:23];
-            [lbl setText:[translateString(@"Time") stringByAppendingString:@":"]];
+            lbl.text = [Time.localized stringByAppendingString:@":"]];
             break;
         }
         case 1:

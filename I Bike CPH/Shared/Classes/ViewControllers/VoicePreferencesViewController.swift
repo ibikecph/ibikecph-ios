@@ -34,9 +34,9 @@ class VoicePreferencesViewController: UIViewController {
     let cellSwitchID = "VoiceSwitchCellID"
     
     private let sections: [SectionViewModel<VoiceItemProtocol>] = [
-        SectionViewModel(title: nil, footer: SMTranslation.decodeString("voice_option_detail"), items:
+        SectionViewModel(title: nil, footer: "voice_option_detail".localized, items:
             [
-                VoiceSwitchItem(title: SMTranslation.decodeString("voice_option"), iconImageName: "speaker", on: settings.voice.on, switchAction: { voiceViewController, on in
+                VoiceSwitchItem(title: "voice_option".localized, iconImageName: "speaker", on: settings.voice.on, switchAction: { voiceViewController, on in
                         settings.voice.on = on
                 }),
             ]
@@ -47,7 +47,7 @@ class VoicePreferencesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = SMTranslation.decodeString("voice")
+        self.title = "voice".localized
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

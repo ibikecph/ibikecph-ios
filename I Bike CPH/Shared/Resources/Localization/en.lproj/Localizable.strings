@@ -1,11 +1,3 @@
-/* 
-  localization.strings
-  I Bike CPH
-
-  Created by Tobias Due Munk on 23/02/15.
-  Copyright (c) 2015 I Bike CPH. All rights reserved.
-*/
-
 "current_position" = "Current position";
 "today" = "Today";
 "tomorrow" = "Tomorrow";
@@ -154,8 +146,8 @@
 "you_have_arrived_to" = "You have arrived to";
 "to_homepage" = "To homepage";
 "report_a_problem" = "Report a problem";
-"From:" = "From:";
-"To:" = "To:";
+"From" = "From";
+"To" = "To";
 "hello_cyclist" = "Hello cyclist";
 "thanks_for_testing_text" = "Thank you for helping us test.";
 "start_text" = "Cykelruteplanlæggeren.\nWe are glad you are helping us test the app, and in order to get in touch with you, we would like to ask for your email address:";
@@ -326,3 +318,65 @@
 "yesterday" = "yesterday";
 "today" = "today";
 "tomorrow" = "tomorrow";
+
+"bike_type_1"= "Get there fast";
+"bike_type_2"= "Fit for cargobikes";
+"bike_type_3"= "Enjoy the greenery";
+
+/* I Bike CPH */
+
+"about_app_ibc" = "About I Bike CPH";
+"about_text_ibc" = "The I Bike CPH app is the City of Copenhagen’s mobile route planner for everyone cycling in Copenhagen. The app is part of Copenhagen's goal of becoming the world's best bicycle city. The app knows the nice shortcuts in Copenhagen, which parks you’re allowed to bicycle through and where you’re allowed to ride against the one way direction for cars.\n\nThe app uses map data from the crowd-sourced OpenStreetMap (OSM), which is continuously updated, for example when a new bicycle bridge opens. The City of Copenhagen has contributed to OpenStreetMap with quality assurance of the bicycle data for the Copenhagen area.\n\nThe map is specifically adapted to cyclists. Motorways are toned down, whereas cobblestones are highlighted so you can avoid bumpy rides. The map also includes things like bicycle barriers, so you know where you cannot pass with your cargo bike.\n\nNote: The directions offered by the I Bike CPH app are only suggestions - remember to adhere to traffic laws and use a phone holder if you use the app while riding.\n\nGetting Started:\nYou can choose where to go in two ways:\n\nLocate on map: Find the place on the map and hold down your finger until a pin is placed on the map. The nearest address will be displayed at the bottom. Select 'Start' to calculate the route from your current location to the destination.\n\nSearch by address: Click on the magnifying glass in the upper right corner. Enter the destination address and click 'Go'. Then click 'Start' to calculate the route.\n\nWhen the route is displayed, click 'Start' to activate GPS navigation. While your ride, turn instructions will be shown at the bottom. Estimated arrival time is shown in the upper right corner, next to the small flag.\n\nRoutes for cargo bikes:\nWhen you have calculated a route or GPS navigation is active, you can click the small black bar with three dots at the bottom left to select the type of route. When cargo bike is selected, the route will avoid steps, barriers and cobblestones, and the estimated travel time will be adjusted to cargo bikes.\n\nShow location:\nPress the button with an arrow in the lower-right corner to see where you are on the map. The map will follow your location, until you manually pan the map. The function is enabled when the arrow is blue.\n\nRead more:\nThe app includes additional features, like the ability to save favorite locations. Read more about the map and features on www.ibikecph.dk/about.\n\nHave a nice ride and thank you for cycling!";
+
+/* CykelPlanen */
+
+"about_app_cp" = "About CykelPlanen";
+"about_text_cp" = "The CykelPlanen app is the Capital Region of Denmark mobile route planner for everyone cycling in the region.\nThe app knows the nice shortcuts in the region where you’re allowed to bicycle. The app should help to get more commuters in the region to choose the bike instead of the car.\nThe map is specifically adapted to cyclists and the app calculates the fastest route. Motorways are toned down, whereas cobblestones are highlighted so you can avoid bumpy rides. The map shows the Cycle Super Highways, the service stations and train stations in the region. The app also has a function “Less Biking” which guides you to the nearest train station if your bike breaks down or the route is too long.\nThe app uses map data from the crowd-sourced OpenStreetMap (OSM), which is continuously updated, for example when a new bike lane or new bicycle bridge opens and the users in region can update the map if something is missing.\n\nNote: It’s free to bring the bicycle in the S-train and on the local trains (max 6) but you have to buy a bicycle ticket if you want to bring your bicycle in the metro. You are not allowed to bring your bike in the Metro during rush hour (between 07:00 and 09.00 and between 15.30 and 17:30) or to/from Nørreport station between 07:00 and 08:30 and between 15:30-17:00 during weekdays.\n\nGetting Started:\nYou can choose where to go in two ways:\nLocate on map: Find the place on the map and hold down your finger until a pin is placed on the map. The nearest address will be displayed at the bottom. Select ‘Start’ to calculate the route from your current location to the destination.\nSearch by address: Click on the magnifying glass in the upper right corner. Enter the destination address and click ‘Go’. Then click ‘Start’ to calculate the route.\nWhen the route is displayed, click ‘Start’ to activate GPS navigation. While your ride, turn instructions will be shown at the bottom. Estimated arrival time is shown in the upper right corner, next to the small flag.\n\nShow location:\nPress the button with an arrow in the lower-right corner to see where you are on the map. The map will follow your location, until you manually pan the map. The function is enabled when the arrow is blue.\n\nRead more:\nThe app includes additional features, like the ability to save favorite locations if you are logged in. Read more about the map and features on www.supercykelstier.dk\nHave a nice ride and thank you for cycling!";
+
+"monday" = "Monday";
+"tuesday" = "Tuesday";
+"wednesday" = "Wednesday";
+"thursday" = "Thursday";
+"friday" = "Friday";
+
+"search" = "Search";
+"search_to_placeholder" = "Enter road, street, postal code";
+
+"loading_stations_data" = "Loading station data";
+
+// markers
+"cycle_super_highways" = "Cycle super highways";
+"service_stations" = "Service stations";
+"s_train_stations" = "S-train stations";
+"metro_stations" = "Metro stations";
+"local_trains_stations" = "Local trains stations";
+
+// these are in the storyboard
+"register_with_mail" = "Register with email";
+
+"reminder_title" = "Reminder";
+"reminder_text" = "Get help to start biking. Please select the day(s) you want to bike and we will help you get started.";
+"reminder_save_btn" = "Save reminder";
+"reminder_alert_text" = "Remember to cycle in the morning";
+
+// Break route
+"break_route_title" = "Less biking";
+"btn_break_route" = "Less biking";
+"break_route_text_top" = "Did you know that you can easily do less biking by replacing some of the route with public transportation.";
+"break_route_text_bottom" = "When you choose \"Less biking\", we will provide a new and alternative route to the nearest train station that will bring you to your final destination.";
+"break_route_exit" = "Got it - let's go biking";
+"break_route_header_title" = "Your route is now";
+"break_route_no_route" = "No Route";
+"break_route_cant_break" = "Route cannot be broken.";
+"route_plan_button" = "Transportation info";
+"route_info"= "Route Information";
+
+"departure" = "Dep.";
+"departures_at" = "Dep. at";
+"arrival" = "Arr.";
+
+"thanks_for_testing_text" = "Thank you for helping testing.";
+"start_text" = "Cykelruteplanlæggeren.\nWe are happy that you will help us test the app. To get in contact with you, we will need your e-mail please:";
+"report_text" = "By tapping \"Report\" the information of the route will be sent to us. \n\nIf you choose to get notified once the error is correct, your e-mail will be included.";
+
+"intro_subtitle" = "Quickly from A to B";

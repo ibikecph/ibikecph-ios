@@ -18,11 +18,11 @@
 
 - (void)renderViewFromInstruction:(SMTurnInstruction *)turn {
     if ([turn.shortDescriptionString rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
-        [self.lblWayname setText:translateString(turn.shortDescriptionString)];
+        [self.lblWayname setText:turn.shortDescriptionString.localized];
     } else {
         NSString* value=turn.shortDescriptionString;
         if([value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0){
-            value= translateString(@"direction_15");
+            value= @"direction_15".localized;
         }
         [self.lblWayname setText:value];
     }

@@ -29,7 +29,7 @@
     self.loadingView.layer.cornerRadius= 5.0;
     [self.loadingView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5]];
     self.loadingView.opaque= NO;
-    self.textLabel.text = translateString(@"loading_stations_data");
+    self.textLabel.text = @"loading_stations_data".localized;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

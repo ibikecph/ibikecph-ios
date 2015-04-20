@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = translateString(@"account");
+    self.title = @"account".localized;
     
     // Rounded corners for images
     self.imageView.layer.cornerRadius = 5;
@@ -88,7 +88,7 @@
  
 - (IBAction)saveChanges:(id)sender {
     if ([self.passwordField.text isEqualToString:self.passwordConfirmField.text] == NO) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"register_error_passwords") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"register_error_passwords".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
         return;
     }
@@ -125,7 +125,7 @@
  
 - (IBAction)changeImage:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == YES){
-        UIActionSheet * ac  = [[UIActionSheet alloc] initWithTitle:translateString(@"choose_image_source") delegate:self cancelButtonTitle:translateString(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:translateString(@"image_source_camera"), translateString(@"image_source_library"), nil];
+        UIActionSheet * ac  = [[UIActionSheet alloc] initWithTitle:@"choose_image_source".localized delegate:self cancelButtonTitle:@"Cancel".localized destructiveButtonTitle:nil otherButtonTitles:@"image_source_camera".localized, @"image_source_library".localized, nil];
         [ac showInView:self.view];
     } else {
         [self takePictureFromSource:UIImagePickerControllerSourceTypePhotoLibrary];
@@ -153,7 +153,7 @@
 }
  
 - (IBAction)deleteAccount:(id)sender {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:translateString(@"delete_account_title") message:translateString(@"delete_account_text") delegate:self cancelButtonTitle:translateString(@"Cancel") otherButtonTitles:translateString(@"Delete"), nil];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"delete_account_title".localized message:@"delete_account_text".localized delegate:self cancelButtonTitle:@"Cancel".localized otherButtonTitles:@"Delete".localized, nil];
     av.tag = 101;
     [av show];
     
@@ -194,7 +194,7 @@
 
 - (void)request:(SMAPIRequest *)req failedWithError:(NSError *)error {
     if (error.code > 0) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[error description] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:[error description] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
     }
 }
@@ -226,7 +226,7 @@
                 debugLog(@"error in trackEvent");
             }
             debugLog(@"Account deleted!!!");
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"account_deleted") message:@"" delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"account_deleted".localized message:@"" delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
             [self.appDelegate.appSettings removeObjectForKey:@"auth_token"];
             [self.appDelegate.appSettings removeObjectForKey:@"id"];
@@ -242,7 +242,7 @@
             return;
         }
     } else {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
     }
 }

@@ -24,13 +24,13 @@ class MenuViewController: UIViewController {
 
     private lazy var sections: [SectionViewModel<MenuItem>] = {
         
-        let favItem = MenuItem(title: SMTranslation.decodeString("favorites"), iconImageName: "favorites", action: { menuViewController in
+        let favItem = MenuItem(title: "favorites".localized, iconImageName: "favorites", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToFavorites", sender: menuViewController)
         })
-        let reminderItem = MenuItem(title: SMTranslation.decodeString("reminder_title"), iconImageName: "notifications", action: { menuViewController in
+        let reminderItem = MenuItem(title: "reminder_title".localized, iconImageName: "notifications", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
         })
-        let profileItem = MenuItem(title: SMTranslation.decodeString(UserHelper.loggedIn() ? "account" : "profile"), iconImageName: "user", action: { menuViewController in
+        let profileItem = MenuItem(title: (UserHelper.loggedIn() ? "account" : "profile").localized, iconImageName: "user", action: { menuViewController in
             if UserHelper.loggedIn() {
                 if UserHelper.isFacebook() {
                     menuViewController.performSegueWithIdentifier("menuToAccountFacebook", sender: menuViewController)
@@ -41,19 +41,19 @@ class MenuViewController: UIViewController {
                 menuViewController.performSegueWithIdentifier("menuToLogin", sender: menuViewController)
             }
         })
-        let overlayItem = MenuItem(title: SMTranslation.decodeString("map_overlays"), iconImageName: "map_overlays", action: { menuViewController in
+        let overlayItem = MenuItem(title: "map_overlays".localized, iconImageName: "map_overlays", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToOverlays", sender: menuViewController)
         })
-        let bikeItem = MenuItem(title: SMTranslation.decodeString("route_type"), iconImageName: "route_type", action: { menuViewController in
+        let bikeItem = MenuItem(title: "route_type".localized, iconImageName: "route_type", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToBike", sender: menuViewController)
         })
-        let voiceItem = MenuItem(title: SMTranslation.decodeString("voice"), iconImageName: "speaker", action: { menuViewController in
+        let voiceItem = MenuItem(title: "voice".localized, iconImageName: "speaker", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToVoice", sender: menuViewController)
         })
-        let speedItem = MenuItem(title: SMTranslation.decodeString("speedguide"), iconImageName: "speed_guide", action: { menuViewController in
+        let speedItem = MenuItem(title: "speedguide".localized, iconImageName: "speed_guide", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToSpeedGuide", sender: menuViewController)
         })
-        let trackingItem = MenuItem(title: SMTranslation.decodeString("tracking"), iconImageName: "tracking", action: { menuViewController in
+        let trackingItem = MenuItem(title: "tracking".localized, iconImageName: "tracking", action: { menuViewController in
             let trackingAvailable = trackingHandler.trackingAvailable
             if !trackingAvailable {
                 menuViewController.performSegueWithIdentifier("menuToTrackingNotAvailable", sender: menuViewController)
@@ -68,7 +68,7 @@ class MenuViewController: UIViewController {
             }
             menuViewController.performSegueWithIdentifier("menuToTracking", sender: menuViewController)
         })
-        let aboutItem = MenuItem(title: SMTranslation.decodeString("about"), iconImageName: "info", action: { menuViewController in
+        let aboutItem = MenuItem(title: (Macro.isIBikeCph() ? "about_app_ibc" : "about_app_cp").localized, iconImageName: "info", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToAbout", sender: menuViewController)
         })
         

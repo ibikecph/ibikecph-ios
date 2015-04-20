@@ -101,7 +101,7 @@
             notification.soundName= UILocalNotificationDefaultSoundName;
             notification.repeatInterval= NSWeekCalendarUnit;
             [notification setAlertAction:@"Open App"];
-            [notification setAlertBody:translateString(@"reminder_alert_text")];
+            [notification setAlertBody:@"reminder_alert_text".localized];
             
             NSLog(@"Alarm set %@", [dayBefore8pm descriptionWithLocale:[NSLocale systemLocale]]);
 

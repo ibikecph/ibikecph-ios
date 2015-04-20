@@ -39,17 +39,17 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.screenTitle setText:translateString(@"reminder_title")];
-    [self.screenText setText:translateString(@"reminder_text")];
-    [self.btnSave setTitle:translateString(@"reminder_save_btn") forState:UIControlStateNormal];
-    [self.btnSkip setTitle:translateString(@"skip") forState:UIControlStateNormal];
+    [self.screenTitle setText:@"reminder_title".localized];
+    [self.screenText setText:@"reminder_text".localized];
+    [self.btnSave setTitle:@"reminder_save_btn".localized forState:UIControlStateNormal];
+    [self.btnSkip setTitle:@"skip".localized forState:UIControlStateNormal];
     
     // Translate days of the week
-    [self.monday setText:translateString(@"monday")];
-    [self.tuesday setText:translateString(@"tuesday")];
-    [self.wednesday setText:translateString(@"wednesday")];
-    [self.thursday setText:translateString(@"thursday")];
-    [self.friday setText:translateString(@"friday")];
+    [self.monday setText:@"monday".localized];
+    [self.tuesday setText:@"tuesday".localized];
+    [self.wednesday setText:@"wednesday".localized];
+    [self.thursday setText:@"thursday".localized];
+    [self.friday setText:@"friday".localized];
     
     // Set tint color for switches
     UIColor* orange = [UIColor colorWithRed:232.0f/255.0f green:123.0f/255.0f blue:30.0f/255.0f alpha:1.0f];

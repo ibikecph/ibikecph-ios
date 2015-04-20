@@ -13,11 +13,11 @@ class ReminderListViewController: SMTranslatedViewController {
     let cellID = "reminderTableCell"
     
     let weekdays = [
-        SMTranslation.decodeString("monday"),
-        SMTranslation.decodeString("tuesday"),
-        SMTranslation.decodeString("wednesday"),
-        SMTranslation.decodeString("thursday"),
-        SMTranslation.decodeString("friday")
+        "monday".localized,
+        "tuesday".localized,
+        "wednesday".localized,
+        "thursday".localized,
+        "friday".localized
     ]
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

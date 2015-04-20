@@ -78,7 +78,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = translateString(@"search");
+    self.title = @"search".localized;
     
     [self.searchField setText:self.searchText];
     self.autocomp = [[SMAutocomplete alloc] initWithDelegate:self];

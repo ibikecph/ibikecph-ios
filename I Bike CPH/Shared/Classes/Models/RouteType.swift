@@ -14,8 +14,8 @@ enum RouteType {
     
     var localizedDescription: String {
         switch self {
-            case .Regular: return SMTranslation.decodeString("bike_type_1")
-            case .Cargo: return SMTranslation.decodeString("bike_type_2")
+            case .Regular: return "bike_type_1".localized
+            case .Cargo: return "bike_type_2".localized
         }
     }
 }

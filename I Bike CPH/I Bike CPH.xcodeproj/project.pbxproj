@@ -69,8 +69,6 @@
 		4E5258A71A9B580000BE55C8 /* TrackingNotAvailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258A51A9B580000BE55C8 /* TrackingNotAvailableViewController.swift */; };
 		4E5258AF1A9B616200BE55C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258B21A9B616200BE55C8 /* Localizable.strings */; };
 		4E5258B01A9B616200BE55C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258B21A9B616200BE55C8 /* Localizable.strings */; };
-		4E5258B51A9B6CCA00BE55C8 /* Localizable_IBC.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258B71A9B6CCA00BE55C8 /* Localizable_IBC.strings */; };
-		4E5258BA1A9B6CEE00BE55C8 /* Localizable_CP.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258BC1A9B6CEE00BE55C8 /* Localizable_CP.strings */; };
 		4E5258C71A9B9C8400BE55C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C61A9B9C8300BE55C8 /* String.swift */; };
 		4E5258C81A9B9C8400BE55C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C61A9B9C8300BE55C8 /* String.swift */; };
 		4E5258CA1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */; };
@@ -1517,10 +1515,6 @@
 		4E5258A51A9B580000BE55C8 /* TrackingNotAvailableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingNotAvailableViewController.swift; sourceTree = "<group>"; };
 		4E5258B31A9B61B300BE55C8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E5258B41A9B61E400BE55C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4E5258B61A9B6CCA00BE55C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable_IBC.strings; sourceTree = "<group>"; };
-		4E5258B91A9B6CD500BE55C8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable_IBC.strings; sourceTree = "<group>"; };
-		4E5258BB1A9B6CEE00BE55C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable_CP.strings; sourceTree = "<group>"; };
-		4E5258BD1A9B6CFE00BE55C8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable_CP.strings; sourceTree = "<group>"; };
 		4E5258C61A9B9C8300BE55C8 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackDetailViewController.swift; sourceTree = "<group>"; };
 		4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabelTableViewCell.swift; sourceTree = "<group>"; };
@@ -3061,7 +3055,6 @@
 				4EE0631E1A10FAB300DE4226 /* Images */,
 				4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */,
 				4EEE92561A125F980006BD95 /* Resources */,
-				4EEE92761A12E69D0006BD95 /* Localization */,
 				4EE05F4D1A10EBFA00DE4226 /* Supporting Files */,
 			);
 			path = "I Bike CPH";
@@ -3114,7 +3107,6 @@
 				4EE06F141A1178DE00DE4226 /* Images */,
 				4EE05F8A1A10EDE700DE4226 /* LaunchScreen.xib */,
 				4EEE91C81A1246920006BD95 /* Resources */,
-				4EEE927B1A12E6B90006BD95 /* Localization */,
 				4EE05F7B1A10EDE700DE4226 /* Supporting Files */,
 			);
 			path = CykelPlanen;
@@ -4656,22 +4648,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		4EEE92761A12E69D0006BD95 /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				4E5258B71A9B6CCA00BE55C8 /* Localizable_IBC.strings */,
-			);
-			path = Localization;
-			sourceTree = "<group>";
-		};
-		4EEE927B1A12E6B90006BD95 /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				4E5258BC1A9B6CEE00BE55C8 /* Localizable_CP.strings */,
-			);
-			path = Localization;
-			sourceTree = "<group>";
-		};
 		C83673E4C34341FF10FF5705 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -4703,6 +4679,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4EE05F6D1A10EBFA00DE4226 /* Build configuration list for PBXNativeTarget "I Bike CPH" */;
 			buildPhases = (
+				4EEEE6C51AE53D3D00D5E088 /* ShellScript */,
 				28AEC9528EF0FB7CF480BF26 /* Check Pods Manifest.lock */,
 				4EE05F461A10EBFA00DE4226 /* Sources */,
 				4EE05F471A10EBFA00DE4226 /* Frameworks */,
@@ -4743,6 +4720,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4EE05F991A10EDE700DE4226 /* Build configuration list for PBXNativeTarget "CykelPlanen" */;
 			buildPhases = (
+				4EEEE6C61AE541A300D5E088 /* ShellScript */,
 				FAE064F4971BDC7FBCB998BB /* Check Pods Manifest.lock */,
 				4EE05F751A10EDE700DE4226 /* Sources */,
 				4EE05F761A10EDE700DE4226 /* Frameworks */,
@@ -5214,7 +5192,6 @@
 				4EE0661C1A10FAB400DE4226 /* routeEnterInputBG.png in Resources */,
 				4EE065D51A10FAB400DE4226 /* loginBG@2x.png in Resources */,
 				4EE0655A1A10FAB400DE4226 /* drop_pin_add_fav_btn.png in Resources */,
-				4E5258B51A9B6CCA00BE55C8 /* Localizable_IBC.strings in Resources */,
 				4EE0653C1A10FAB400DE4226 /* btnClose.png in Resources */,
 				4EE064E51A10FAB400DE4226 /* walk.png in Resources */,
 				4EE0654F1A10FAB400DE4226 /* checkboxChecked@2x.png in Resources */,
@@ -5932,7 +5909,6 @@
 				4EE071671A1178E100DE4226 /* accountMenu@2x.png in Resources */,
 				4EE071891A1178E100DE4226 /* blue_btn_ibike.png in Resources */,
 				4EE072B51A1178E200DE4226 /* metro_logo_pin@2x.png in Resources */,
-				4E5258BA1A9B6CEE00BE55C8 /* Localizable_CP.strings in Resources */,
 				4EEE92411A125E690006BD95 /* arrow_position.png in Resources */,
 				4EE071CA1A1178E200DE4226 /* field_email_icon@2x.png in Resources */,
 				4EE0717C1A1178E100DE4226 /* back_arrow_btn_white_press.png in Resources */,
@@ -6030,6 +6006,32 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4EEEE6C51AE53D3D00D5E088 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -f ../strings/en.strings Shared/Resources/Localization/en.lproj/Localizable.strings\ncp -f ../strings/da.strings Shared/Resources/Localization/da.lproj/Localizable.strings";
+		};
+		4EEEE6C61AE541A300D5E088 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -f ../strings/en.strings Shared/Resources/Localization/en.lproj/Localizable.strings\ncp -f ../strings/da.strings Shared/Resources/Localization/da.lproj/Localizable.strings";
 		};
 		9851AACE0BBCC7D790F8E83A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6500,24 +6502,6 @@
 			);
 			name = Localizable.strings;
 			path = Localization;
-			sourceTree = "<group>";
-		};
-		4E5258B71A9B6CCA00BE55C8 /* Localizable_IBC.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4E5258B61A9B6CCA00BE55C8 /* en */,
-				4E5258B91A9B6CD500BE55C8 /* da */,
-			);
-			name = Localizable_IBC.strings;
-			sourceTree = "<group>";
-		};
-		4E5258BC1A9B6CEE00BE55C8 /* Localizable_CP.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4E5258BB1A9B6CEE00BE55C8 /* en */,
-				4E5258BD1A9B6CFE00BE55C8 /* da */,
-			);
-			name = Localizable_CP.strings;
 			sourceTree = "<group>";
 		};
 		4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */ = {

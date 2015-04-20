@@ -53,7 +53,7 @@ class TrackingViewController: SMTranslatedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = SMTranslation.decodeString("tracking")
+        title = "tracking".localized
         
         token = RLMRealm.addNotificationBlock() { [unowned self] note, realm in
             self.setNeedsUpdateUI()
