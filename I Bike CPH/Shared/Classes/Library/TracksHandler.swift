@@ -34,16 +34,16 @@ class TracksHandler {
             self.cleanUpBig()
             return
         }
-        if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedSmall) > 10 {
+        if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedSmall) > 60*5 { // Do small stuff every 5 min
             tracksHandler.lastProcessedSmall = NSDate()
             self.cleanUpSmall()
         }
-        if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedBig) > 60 {
+        if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedBig) > 60*60*1 { // Do big stuff every hour
             tracksHandler.lastProcessedBig = NSDate()
             self.cleanUpBig()
             return
         }
-        Async.main(after: 6) {
+        Async.main(after: 10) {
             self.setNeedsProcessData()
         }
     }
@@ -102,6 +102,8 @@ class TracksHandler {
             TracksHandler.pruneSlowEnds()
         }.background() { println("Recalculate")
             TracksHandler.recalculateTracks()
+        }.background() { println("Clear unowned data")
+            TracksHandler.removeUnownedData()
         }.main() {
             println("Done processing big")
             tracksHandler.processing = false
@@ -124,6 +126,41 @@ class TracksHandler {
                 track.deleteFromRealm(inWriteTransaction: false)
             }
         }
+        RLMRealm.commitWriteTransaction()
+    }
+    
+    private class func removeUnownedData() {
+        RLMRealm.beginWriteTransaction()
+        let locations = TrackLocation.allObjects()
+        for location in locations {
+            if let location = location as? TrackLocation {
+                location.owned = false
+            }
+        }
+        let activities = TrackActivity.allObjects()
+        for activity in activities {
+            if let activity = activity as? TrackLocation {
+                activity.owned = false
+            }
+        }
+        
+        let tracks = Track.allObjects()
+        for track in tracks {
+            if let track = track as? Track {
+                let _locations = track.locations
+                for _location in _locations {
+                    if let _location = _location as? TrackLocation {
+                        _location.owned = true
+                    }
+                }
+                track.activity.owned = true
+            }
+        }
+        
+        let unownedLocations = TrackLocation.objectsWhere("owned == FALSE").toArray()
+        RLMRealm.defaultRealm().deleteObjects(unownedLocations)
+        let unownedActivities = TrackActivity.objectsWhere("owned == FALSE").toArray()
+        RLMRealm.defaultRealm().deleteObjects(unownedActivities)
         RLMRealm.commitWriteTransaction()
     }
     
@@ -319,7 +356,7 @@ class TracksHandler {
         var tracks = tracksSorted_()
         
         var count = UInt(0)
-        while count < tracks.count - 1 {
+        while count + 1 < tracks.count {
             if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
                 let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
                 let sameType = track.activity.sameActivityTypeAs(nextTrack.activity)
@@ -340,7 +377,7 @@ class TracksHandler {
         var tracks = tracksSorted_()
         
         var count = UInt(0)
-        while count < tracks.count - 1 {
+        while count + 1 < tracks.count {
             if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
                 let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
                 let cycling = track.activity.cycling
@@ -365,15 +402,15 @@ class TracksHandler {
         var tracks = tracksSorted_()
         
         var count = UInt(0)
-        while count < tracks.count - 1 {
+        while count + 1 < tracks.count {
             if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
                 let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
                 let unknown = track.activity.unknown || track.activity.completelyUnknown()
-                let unkownNext = nextTrack.activity.unknown || nextTrack.activity.completelyUnknown()
-                let eitherIsUnkown = unknown || unkownNext
-                let merge = close && eitherIsUnkown
+                let unknownNext = nextTrack.activity.unknown || nextTrack.activity.completelyUnknown()
+                let eitherIsUnknown = unknown || unknownNext
+                let merge = close && eitherIsUnknown
                 if merge {
-                    let forceActivity = unkownNext ? track.activity : nextTrack.activity
+                    let forceActivity = unknownNext ? track.activity : nextTrack.activity
                     let mergedTrack = mergeTrack(track, toTrack: nextTrack, forceActivity: forceActivity)
                     tracks = tracksSorted_()
                     println("Close to empty activity: \(mergedTrack.startDate)")

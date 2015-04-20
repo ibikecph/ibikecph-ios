@@ -72,6 +72,8 @@ class TrackingViewController: SMTranslatedViewController {
         if !settings.tracking.on && !TracksHandler.hasTrackedBikeData() {
             dismiss()
         }
+        
+        TracksHandler.setNeedsProcessData(force: true)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

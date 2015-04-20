@@ -21,6 +21,7 @@ class TrackLocation: RLMObject {
     var date: NSDate {
         return NSDate(timeIntervalSince1970: timestamp)
     }
+    dynamic var owned: Bool = true
     
     class func build(location: CLLocation) -> TrackLocation {
         var point = TrackLocation()
