@@ -112,8 +112,7 @@ class StatsNotificationHandler {
     }
     
     private func setupLocalNotifications() {
-        let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        Notifications.register()
     }
     
     private func setupTracksObserver() {
@@ -166,11 +165,7 @@ class StatsNotificationHandler {
     
     private func tryPresentNotification(description: String) -> Bool {
         let fireDate = NSDate().dateByAddingTimeInterval(1)
-        let notification = UILocalNotification()
-        notification.fireDate = fireDate
-        notification.alertBody = description
-        notification.applicationIconBadgeNumber = 0
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        Notifications.localNotification(description, fireDate: fireDate)
         return true
     }
 }

@@ -15,6 +15,8 @@
 		4E1258D61A7BA63200A82434 /* routeTestStart.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E1258D41A7BA63200A82434 /* routeTestStart.gpx */; };
 		4E1522C41A84FC0600E62BFA /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982041A24AC1200A40484 /* FoursquareItem.swift */; };
 		4E1522C51A84FC1900E62BFA /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982081A24AC1200A40484 /* SearchListItem.swift */; };
+		4E20BA691ADC065A00738CA8 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20BA681ADC065A00738CA8 /* Notifications.swift */; };
+		4E20BA6A1ADC065A00738CA8 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20BA681ADC065A00738CA8 /* Notifications.swift */; };
 		4E23D6DC1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */; };
 		4E23D6DD1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */; };
 		4E2A92561A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
@@ -1481,6 +1483,7 @@
 		1CCE7D9C77A2B1D31F1CF669 /* Pods-CykelPlanenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		4E1258D41A7BA63200A82434 /* routeTestStart.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = routeTestStart.gpx; sourceTree = "<group>"; };
+		4E20BA681ADC065A00738CA8 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		4E23D6DA1A648E56008998CB /* SMAccountFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountFacebookViewController.h; sourceTree = "<group>"; };
 		4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountFacebookViewController.m; sourceTree = "<group>"; };
 		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
@@ -3018,6 +3021,7 @@
 				4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */,
 				4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */,
 				4EB610E41AD69D2500CEC994 /* UITableView.swift */,
+				4E20BA681ADC065A00738CA8 /* Notifications.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -6132,6 +6136,7 @@
 				4EC56E991A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4EC56E811A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
 				4E23D6DC1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */,
+				4E20BA691ADC065A00738CA8 /* Notifications.swift in Sources */,
 				4EC56E911A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */,
 				4EC56ED71A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
 				4E3A7EF61A7793980020A8B4 /* Speak.swift in Sources */,
@@ -6397,6 +6402,7 @@
 				4EBB7B4C1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */,
 				4E32B29F1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */,
 				4EE06C441A10FC5600DE4226 /* SMRouteTransportationInfo.m in Sources */,
+				4E20BA6A1ADC065A00738CA8 /* Notifications.swift in Sources */,
 				4E3A7EF71A7793980020A8B4 /* Speak.swift in Sources */,
 				4EE06CD81A11134C00DE4226 /* SMNearbyPlaces.m in Sources */,
 				4EC56E4F1A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */,
