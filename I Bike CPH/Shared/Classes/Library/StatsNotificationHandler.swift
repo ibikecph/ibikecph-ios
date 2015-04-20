@@ -116,7 +116,7 @@ class StatsNotificationHandler {
     }
     
     private func setupTracksObserver() {
-        token = RLMRealm.addNotificationBlock() { [unowned self] note, realm in
+        NotificationCenter.observe(processedBigNoticationKey) { notification in
             self.updateToTrackData()
         }
     }
@@ -150,9 +150,15 @@ class StatsNotificationHandler {
     }
     
     func checkPresentNotificationToUser() {
+        // Check if milestones is even on
         if !settings.tracking.milestoneNotifications {
             return
         }
+        // Check that user didn't bike within last 5 min.
+        if let interval = BikeStatistics.lastTrackEndDate()?.timeIntervalSinceNow where -interval < 5*60 {
+            return
+        }
+        // Present pending milestones
         for milestone in [distanceMilestone, daystreakMilestone] {
             if let descripionToPresent = Defaults[storeKeyForMilestone(milestone)].string {
                 let succeeded = tryPresentNotification(descripionToPresent)

@@ -10,6 +10,7 @@ import UIKit
 import CoreMotion
 
 let tracksHandler = TracksHandler()
+let processedBigNoticationKey = "processedBigNoticationKey"
 
 class TracksHandler {
     
@@ -107,6 +108,8 @@ class TracksHandler {
         }.main() {
             println("Done processing big")
             tracksHandler.processing = false
+            
+            NotificationCenter.post(processedBigNoticationKey, object: self)
         }
     }
     
