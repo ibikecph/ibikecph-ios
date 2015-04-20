@@ -34,19 +34,19 @@
 #define COCOAPODS_POD_AVAILABLE_Realm
 #define COCOAPODS_VERSION_MAJOR_Realm 0
 #define COCOAPODS_VERSION_MINOR_Realm 91
-#define COCOAPODS_VERSION_PATCH_Realm 1
+#define COCOAPODS_VERSION_PATCH_Realm 3
 
 // Realm/Headers
 #define COCOAPODS_POD_AVAILABLE_Realm_Headers
 #define COCOAPODS_VERSION_MAJOR_Realm_Headers 0
 #define COCOAPODS_VERSION_MINOR_Realm_Headers 91
-#define COCOAPODS_VERSION_PATCH_Realm_Headers 1
+#define COCOAPODS_VERSION_PATCH_Realm_Headers 3
 
 // TTTAttributedLabel
 #define COCOAPODS_POD_AVAILABLE_TTTAttributedLabel
 #define COCOAPODS_VERSION_MAJOR_TTTAttributedLabel 1
 #define COCOAPODS_VERSION_MINOR_TTTAttributedLabel 13
-#define COCOAPODS_VERSION_PATCH_TTTAttributedLabel 1
+#define COCOAPODS_VERSION_PATCH_TTTAttributedLabel 3
 
 // UIImage-Categories
 #define COCOAPODS_POD_AVAILABLE_UIImage_Categories
@@ -60,7 +60,7 @@
   // Reveal-iOS-SDK
   #define COCOAPODS_POD_AVAILABLE_Reveal_iOS_SDK
   #define COCOAPODS_VERSION_MAJOR_Reveal_iOS_SDK 1
-  #define COCOAPODS_VERSION_MINOR_Reveal_iOS_SDK 0
-  #define COCOAPODS_VERSION_PATCH_Reveal_iOS_SDK 7
+  #define COCOAPODS_VERSION_MINOR_Reveal_iOS_SDK 5
+  #define COCOAPODS_VERSION_PATCH_Reveal_iOS_SDK 1
 
 #endif

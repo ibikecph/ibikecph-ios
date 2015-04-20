@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1EEED384110D35DC5028BAF9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
+		152E43CAE4ADCC77288F6375 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE249E8DB6D2630241D78166 /* libPods.a */; };
+		2A1EFBB6ED56C55A5EA8C703 /* libPods-I Bike CPHTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 024E93BC40EA6C8C1E7D073C /* libPods-I Bike CPHTests.a */; };
 		4E0176881AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */; };
 		4E0176891AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */; };
 		4E1258D51A7BA63200A82434 /* routeTestStart.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E1258D41A7BA63200A82434 /* routeTestStart.gpx */; };
@@ -1433,9 +1434,8 @@
 		4EFDA4831AB87A6E00522A41 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
 		4EFDA4861AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */; };
 		4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */; };
-		6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE17F41EBD064F1BEE38068 /* libPods.a */; };
-		8C6742802698F66F487D25EE /* libPods-CykelPlanenTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1587DF3214C490C8E81B6E81 /* libPods-CykelPlanenTests.a */; };
-		C4A71A5319538E5AB78E9021 /* libPods-I Bike CPHTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A61C36B8120DAF2349FDEB /* libPods-I Bike CPHTests.a */; };
+		914E910C61C8A02FE9823AA4 /* libPods-CykelPlanenTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F59263157BA541D0E97628F5 /* libPods-CykelPlanenTests.a */; };
+		CBB78EC39B066CA0779C3D9D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE249E8DB6D2630241D78166 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1477,7 +1477,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1587DF3214C490C8E81B6E81 /* libPods-CykelPlanenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CykelPlanenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		024E93BC40EA6C8C1E7D073C /* libPods-I Bike CPHTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-I Bike CPHTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCE7D9C77A2B1D31F1CF669 /* Pods-CykelPlanenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		4E1258D41A7BA63200A82434 /* routeTestStart.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = routeTestStart.gpx; sourceTree = "<group>"; };
@@ -2847,11 +2847,11 @@
 		4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativeDateFormatter.swift; sourceTree = "<group>"; };
 		A44BC1E9CE220BE043EB736A /* Pods-I Bike CPHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-I Bike CPHTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-I Bike CPHTests/Pods-I Bike CPHTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADB6492F313076A311C7CA75 /* Pods-I Bike CPHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-I Bike CPHTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-I Bike CPHTests/Pods-I Bike CPHTests.release.xcconfig"; sourceTree = "<group>"; };
+		AE249E8DB6D2630241D78166 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40C9EBA1FFAC0ACBC43C5B1 /* Pods-CykelPlanenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.release.xcconfig"; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		D6A61C36B8120DAF2349FDEB /* libPods-I Bike CPHTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-I Bike CPHTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		FBE17F41EBD064F1BEE38068 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F59263157BA541D0E97628F5 /* libPods-CykelPlanenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CykelPlanenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2861,7 +2861,7 @@
 			files = (
 				4EE06CE61A11137A00DE4226 /* libMapView.a in Frameworks */,
 				4EE06DF51A1116CF00DE4226 /* MapKit.framework in Frameworks */,
-				6D6EE7F5477A6D00F7A8380A /* libPods.a in Frameworks */,
+				152E43CAE4ADCC77288F6375 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2869,7 +2869,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4A71A5319538E5AB78E9021 /* libPods-I Bike CPHTests.a in Frameworks */,
+				2A1EFBB6ED56C55A5EA8C703 /* libPods-I Bike CPHTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2879,7 +2879,7 @@
 			files = (
 				4EE06DF71A1116FC00DE4226 /* libMapView.a in Frameworks */,
 				4EE06DF61A1116DB00DE4226 /* MapKit.framework in Frameworks */,
-				1EEED384110D35DC5028BAF9 /* libPods.a in Frameworks */,
+				CBB78EC39B066CA0779C3D9D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2887,7 +2887,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C6742802698F66F487D25EE /* libPods-CykelPlanenTests.a in Frameworks */,
+				914E910C61C8A02FE9823AA4 /* libPods-CykelPlanenTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4672,9 +4672,9 @@
 			isa = PBXGroup;
 			children = (
 				4EE06DF41A1116CF00DE4226 /* MapKit.framework */,
-				FBE17F41EBD064F1BEE38068 /* libPods.a */,
-				1587DF3214C490C8E81B6E81 /* libPods-CykelPlanenTests.a */,
-				D6A61C36B8120DAF2349FDEB /* libPods-I Bike CPHTests.a */,
+				AE249E8DB6D2630241D78166 /* libPods.a */,
+				F59263157BA541D0E97628F5 /* libPods-CykelPlanenTests.a */,
+				024E93BC40EA6C8C1E7D073C /* libPods-I Bike CPHTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
