@@ -541,19 +541,19 @@
         <!--About Controller-->
         <scene sceneID="Thj-33-Faw">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="xNM-kw-qFI" customClass="SMAboutController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuickOpen" id="xNM-kw-qFI" customClass="SMAboutController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5O4-g9-wkH"/>
                         <viewControllerLayoutGuide type="bottom" id="bIj-Ks-mgw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="53v-pG-Bc8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tc5-hv-9ng">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc5-hv-9ng">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">CykelPlanen app’en er Region Hovedstadens mobile rutevejleder for dig, der cykler i regionen. App’en kender de gode smutveje i regionen, hvor du må cykle og finder den hurtigste rute for dig. CykelPlanen skal bidrage til at få flere pendlere i regionen til at vælge cyklen frem for bilen.
+                                <mutableString key="text">CykelPlanen app’en er Region Hovedstadens mobile rutevejleder for dig, der cykler i regionen. App’en kender de gode smutveje i regionen, hvor du må cykle og finder den hurtigste rute for dig. CykelPlanen skal bidrage til at få flere pendlere i regionen til at vælge cyklen frem for bilen.
 
 Kortet er særligt tilpasset cyklister. CykelPlanen udregner den hurtigste rute for dig. Motorveje er tonet ned, hvorimod brosten er fremhævet, så du kan slippe for rysteture. Kortet viser de anlagte cykelsuperstier og servicestationer. Endvidere har app’en funktionen ”knæk ruten”, som leder dig hen til nærmeste Lokalbane, S- og metrostation, hvis cykelturen bliver for lang eller cyklen går i stykker.
 App’en anvender kortdata fra det brugerdrevne OpenStreetMap (OSM), der opdateres løbende, fx når der anlægges nye cykelstier i regionen, og brugerne skal være med til at opdatere kortet i regionen.
@@ -575,24 +575,27 @@ Tryk på knappen med en pil i nederste højre hjørne, for at se hvor du er på 
 Læs mere:
 App’en kan bl.a. også gemme favorit-steder, hvis du opretter en profil. Læs mere om kort og funktioner på www.cykelsuperstier.dk.
   
-God tur og tak fordi du cykler!</string>
+God tur og tak fordi du cykler!</mutableString>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Tc5-hv-9ng" firstAttribute="top" secondItem="53v-pG-Bc8" secondAttribute="topMargin" id="1Xf-n7-RuN"/>
                             <constraint firstItem="Tc5-hv-9ng" firstAttribute="top" secondItem="53v-pG-Bc8" secondAttribute="topMargin" id="6Qd-Od-gre"/>
+                            <constraint firstItem="Tc5-hv-9ng" firstAttribute="top" secondItem="53v-pG-Bc8" secondAttribute="topMargin" id="DVf-Ei-5Xv"/>
                             <constraint firstItem="Tc5-hv-9ng" firstAttribute="top" secondItem="5O4-g9-wkH" secondAttribute="bottom" id="KiP-Wj-c7g"/>
                             <constraint firstAttribute="bottom" secondItem="Tc5-hv-9ng" secondAttribute="bottom" id="KlZ-IV-Yvj"/>
                             <constraint firstItem="Tc5-hv-9ng" firstAttribute="top" secondItem="5O4-g9-wkH" secondAttribute="bottom" id="RPH-TU-Oic"/>
                             <constraint firstItem="Tc5-hv-9ng" firstAttribute="leading" secondItem="53v-pG-Bc8" secondAttribute="leading" id="Sg9-DE-XyI"/>
                             <constraint firstAttribute="trailing" secondItem="Tc5-hv-9ng" secondAttribute="trailing" id="wcw-qC-LMz"/>
-                            <constraint firstItem="Tc5-hv-9ng" firstAttribute="top" secondItem="5O4-g9-wkH" secondAttribute="bottom" id="wvD-P8-9fx"/>
+                            <constraint firstItem="5O4-g9-wkH" firstAttribute="bottom" secondItem="Tc5-hv-9ng" secondAttribute="top" id="wvD-P8-9fx"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="wvD-P8-9fx"/>
                                 <exclude reference="1Xf-n7-RuN"/>
                                 <exclude reference="6Qd-Od-gre"/>
                                 <exclude reference="KiP-Wj-c7g"/>
@@ -600,7 +603,6 @@ God tur og tak fordi du cykler!</string>
                             </mask>
                         </variation>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="textView" destination="Tc5-hv-9ng" id="uou-rf-uZV"/>
@@ -2109,7 +2111,7 @@ God tur og tak fordi du cykler!</string>
         <!--Tracking View Controller-->
         <scene sceneID="xBF-30-4NL">
             <objects>
-                <viewController storyboardIdentifier="QuickOpen" id="6SA-JC-lpZ" customClass="TrackingViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6SA-JC-lpZ" customClass="TrackingViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mdK-ui-jun"/>
                         <viewControllerLayoutGuide type="bottom" id="iF3-ur-Its"/>

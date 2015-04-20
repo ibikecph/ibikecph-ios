@@ -20,11 +20,14 @@
     
     self.title = ([Macro isIBikeCph] ? @"about_app_ibc" : @"about_app_cp").localized;
     self.textView.text = ([Macro isIBikeCph] ? @"about_text_ibc" : @"about_text_cp").localized;
+    self.textView.textContainerInset = UIEdgeInsetsMake(20, 10, 20, 10);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    CGPoint offset = CGPointMake(0, -self.textView.contentInset.top);
+    [self.textView setContentOffset:offset];
 }
 
 
