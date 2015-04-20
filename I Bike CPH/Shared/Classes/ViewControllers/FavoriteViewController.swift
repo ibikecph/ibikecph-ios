@@ -17,16 +17,16 @@ struct FavoriteTypeViewModel {
         self.type = type
         switch type {
             case .Home:
-                title = SMTranslation.decodeString("Home")
+                title = "Home".localized
                 iconImage = UIImage(named: "favoriteHome")
             case .Work:
-                title = SMTranslation.decodeString("Work")
+                title = "Work".localized
                 iconImage = UIImage(named: "favoriteWork")
             case .School:
-                title = SMTranslation.decodeString("School")
+                title = "School".localized
                 iconImage = UIImage(named: "favoriteSchool")
             case .Unknown:
-                title = SMTranslation.decodeString("Favorite")
+                title = "Favorite".localized
                 iconImage = UIImage(named: "favorites")
         }
     }

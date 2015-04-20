@@ -13,7 +13,7 @@ class TrackingPromptViewController: SMTranslatedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = SMTranslation.decodeString("tracking")
+        title = "tracking".localized
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

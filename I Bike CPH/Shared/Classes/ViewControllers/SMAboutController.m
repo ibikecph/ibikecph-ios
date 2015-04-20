@@ -18,8 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = translateString(@"about");
-    self.textView.text = translateString(@"about_text");
+    self.title = ([Macro isIBikeCph] ? @"about_app_ibc" : @"about_app_cp").localized;
+    self.textView.text = ([Macro isIBikeCph] ? @"about_text_ibc" : @"about_text_cp").localized;
 }
 
 - (void)didReceiveMemoryWarning {

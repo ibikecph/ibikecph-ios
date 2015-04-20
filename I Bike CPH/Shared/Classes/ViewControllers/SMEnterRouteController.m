@@ -115,7 +115,7 @@ typedef enum {
         if (self.fromItem) {
             title = [self textFromItem:self.fromItem];
         } else {
-            title = translateString(@"search_to_placeholder");
+            title = @"search_to_placeholder";
         }
         [self.fromButton setTitle:title forState:UIControlStateNormal];
         
@@ -132,7 +132,7 @@ typedef enum {
         if (self.toItem) {
             title = [self textFromItem:self.toItem];
         } else {
-            title = translateString(@"search_to_placeholder");
+            title = @"search_to_placeholder".localized;
         }
         [self.toButton setTitle:title forState:UIControlStateNormal];
         
@@ -159,7 +159,7 @@ typedef enum {
 
 - (IBAction)swapFields:(id)sender {
     if (self.fromItem == nil || self.fromItem.type == SearchListItemTypeCurrentLocation) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"current_position_cant_be_destination") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"current_position_cant_be_destination".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
         return;
     }
@@ -175,14 +175,14 @@ typedef enum {
     }
     
     if (self.toItem.type == SearchListItemTypeCurrentLocation) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_invalid_to_address") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:@"error_invalid_to_address".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
         return;
     }
     
     if (self.fromItem == nil) {
         if ([SMLocationManager instance].hasValidLocation == NO) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_no_gps_location") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:@"error_no_gps_location".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
             return;            
         } else {
@@ -258,7 +258,7 @@ typedef enum {
     } else if ([req.auxParam isEqualToString:@"startRoute"]){
         id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingAllowFragments error:nil];
         if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([jsonRoot[@"status"] intValue] != 0)) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_route_not_found") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:@"error_route_not_found".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
             
         } else {
@@ -384,15 +384,15 @@ typedef enum {
         SMViewMoreCell * cell = [tableView dequeueReusableCellWithIdentifier:@"viewMoreCell"];
         if (indexPath.section == 0) {
             if (favoritesOpen) {
-                [cell.buttonLabel setText:translateString(@"show_less")];
+                [cell.buttonLabel setText:@"show_less".localized];
             } else {
-                [cell.buttonLabel setText:translateString(@"show_more")];
+                [cell.buttonLabel setText:@"show_more".localized];
             }
         } else {
             if (historyOpen) {
-                [cell.buttonLabel setText:translateString(@"show_less")];
+                [cell.buttonLabel setText:@"show_less".localized];
             } else {
-                [cell.buttonLabel setText:translateString(@"show_more")];
+                [cell.buttonLabel setText:@"show_more".localized];
             }            
         }
         return cell;
@@ -510,10 +510,10 @@ typedef enum {
     SMAutocompleteHeader * cell = [tableView dequeueReusableCellWithIdentifier:@"autocompleteHeader"];
     switch (section) {
         case 0:
-            [cell.headerTitle setText:translateString(@"favorites")];
+            [cell.headerTitle setText:@"favorites".localized];
             break;
         case 1:
-            [cell.headerTitle setText:translateString(@"recent_results")];
+            [cell.headerTitle setText:@"recent_results".localized];
             break;            
         default:
             break;

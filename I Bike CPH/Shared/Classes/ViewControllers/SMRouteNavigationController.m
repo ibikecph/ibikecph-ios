@@ -146,7 +146,7 @@ typedef enum {
     labelDistanceLeft.text = @"";
     
     SMDirectionsFooter * v = [SMDirectionsFooter getFromNib];
-    [v.label setText:translateString(@"ride_report_a_problem")];
+    [v.label setText:@"ride_report_a_problem".localized];
     [v setDelegate:self];
     [tblDirections setTableFooterView:v];
     
@@ -521,7 +521,7 @@ typedef enum {
 - (IBAction)onBreakRoute:(id)sender {
 
     if ([SMLocationManager instance].hasValidLocation == NO) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_no_gps_location") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:@"error_no_gps_location".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
         return;
     } else {
@@ -541,7 +541,7 @@ typedef enum {
 
 - (IBAction)startRouting:(id)sender {
     if ([SMLocationManager instance].hasValidLocation == NO) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_no_gps_location") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:@"error_no_gps_location".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
         return;
     }else{
@@ -672,7 +672,7 @@ typedef enum {
     NSMutableArray *arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
     NSString *startTitle = [[arr objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [arr removeObjectAtIndex:0];
-    [self addMarkerToMapView:self.mapView withCoordinate:from title:@"A" imageName:@"a_pin" annotationTitle:startTitle alternateTitle:translateString(@"marker_start")];
+    [self addMarkerToMapView:self.mapView withCoordinate:from title:@"A" imageName:@"a_pin" annotationTitle:startTitle alternateTitle:@"marker_start".localized];
     
     // end marker (B)
     arr = [[self.destination componentsSeparatedByString:@","] mutableCopy];
@@ -695,7 +695,7 @@ typedef enum {
     NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
     startMarkerAnnotation.title = [[arr objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if ([startMarkerAnnotation.title isEqualToString:@""]) {
-        startMarkerAnnotation.title = translateString(@"marker_start");
+        startMarkerAnnotation.title = @"marker_start".localized;
     }
     [arr removeObjectAtIndex:0];
     startMarkerAnnotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -1133,7 +1133,7 @@ typedef enum {
     
     [self setDirectionsState:directionsHidden];
     
-    UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"error_route_not_found") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+    UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"error_route_not_found".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
     [av show];
 }
 
@@ -1399,14 +1399,14 @@ typedef enum {
 }
 
 - (IBAction)tappedCloseButton:(id)sender {
-    PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:translateString(@"route_stop_title") message:nil preferredStyle:PSTAlertControllerStyleActionSheet];
+    PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:@"route_stop_title".localized message:nil preferredStyle:PSTAlertControllerStyleActionSheet];
     [alertController addCancelActionWithHandler:nil];
     
-    [alertController addAction:[PSTAlertAction actionWithTitle:translateString(@"ride_report_a_problem") handler:^(PSTAlertAction *action) {
+    [alertController addAction:[PSTAlertAction actionWithTitle:@"ride_report_a_problem".localized handler:^(PSTAlertAction *action) {
         [self performSegueWithIdentifier:@"routeToReport" sender:nil];
     }]];
     
-    [alertController addAction:[PSTAlertAction actionWithTitle:translateString(@"stop_ride") handler:^(PSTAlertAction *action) {
+    [alertController addAction:[PSTAlertAction actionWithTitle:@"stop_ride".localized handler:^(PSTAlertAction *action) {
         [self goBack];
     }]];
     
@@ -1896,7 +1896,7 @@ typedef enum {
     if ([req.auxParam isEqualToString:@"startRoute"]){
         id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingAllowFragments error:nil];
         if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([jsonRoot[@"status"] intValue] != 0)) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_route_not_found") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:@"error_route_not_found".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
         } else {
             self.jsonRoot = jsonRoot;

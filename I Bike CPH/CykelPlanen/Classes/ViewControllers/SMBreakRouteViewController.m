@@ -61,7 +61,7 @@
     breakRouteFailed = NO;
     displayed = NO;
     
-    self.title = translateString(@"break_route_title");
+    self.title = @"break_route_title".localized;
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 
@@ -97,7 +97,7 @@
 }
 
 - (void)displayBreakRouteError {
-    UIAlertView* noRouteAlertView= [[UIAlertView alloc] initWithTitle:translateString(@"break_route_no_route") message:translateString(@"break_route_cant_break") delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    UIAlertView* noRouteAlertView= [[UIAlertView alloc] initWithTitle:@"break_route_no_route".localized message:@"break_route_cant_break".localized delegate:self cancelButtonTitle:@"OK".localized otherButtonTitles: nil];
     [noRouteAlertView show];
 }
 
@@ -137,7 +137,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         SMBreakRouteHeader* header = [tableView dequeueReusableCellWithIdentifier:@"breakRouteHeader"];
-        [header.title setText:translateString(@"break_route_header_title")];
+        [header.title setText:@"break_route_header_title".localized];
         [header.title sizeToFit];
         CGRect frame = header.title.frame;
         CGRect newFrame = header.routeDistance.frame;
@@ -203,7 +203,7 @@
             tCell.selectionStyle= UITableViewCellSelectionStyleNone;
             
             // Translatations
-            [tCell.buttonAddressInfo setTitle:translateString(@"route_plan_button") forState:UIControlStateNormal];
+            [tCell.buttonAddressInfo setTitle:@"route_plan_button".localized forState:UIControlStateNormal];
             
             CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.sourceStation.latitude, self.sourceStation.longitude); 
             [SMGeocoder reverseGeocode:coord completionHandler:^(KortforItem *item, NSError *error) {
@@ -299,7 +299,7 @@
         case 3: {
             CellId = @"ButtonCell";
             SMBreakRouteButtonCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
-            [cell.btnBreakRoute setTitle:translateString(@"break_route_title") forState:UIControlStateNormal];
+            [cell.btnBreakRoute setTitle:@"break_route_title".localized forState:UIControlStateNormal];
             cell.btnBreakRoute.enabled = self.sourceStation && self.destinationStation;
             return cell;
         }

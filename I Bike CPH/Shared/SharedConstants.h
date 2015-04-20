@@ -13,8 +13,6 @@
 //#define API_SERVER @"https://ibikecph-staging.herokuapp.com/api"
 #define API_SERVER @"https://www.ibikecph.dk/api"
 
-#define translateString(txt) [SMTranslation decodeString:(txt)]
-
 #define CURRENT_POSITION_STRING [SMTranslation decodeString:@"current_position"]
 
 #define ORG_NAME @"ibikecph"

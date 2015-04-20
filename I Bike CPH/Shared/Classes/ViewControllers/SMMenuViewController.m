@@ -96,7 +96,7 @@ typedef enum {
     
     self.tableFooter = [SMAddFavoriteCell getFromNib];
     [self.tableFooter setDelegate:self];
-    [self.tableFooter.text setText:translateString(@"cell_add_favorite")];
+    [self.tableFooter.text setText:@"cell_add_favorite".localized];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(favoritesChanged:) name:kFAVORITES_CHANGED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidToken:) name:@"invalidToken" object:nil];
@@ -129,10 +129,10 @@ typedef enum {
 
 - (void)checkLoginStatus {
     if ([self isLoggedIn]) {
-        self.accountLabel.text = translateString(@"account");
+        self.accountLabel.text = @"account".localized;
     } else {
         [SMFavoritesUtil saveFavorites:@[]];
-        self.accountLabel.text = translateString(@"account_login");
+        self.accountLabel.text = @"account_login".localized;
     }
     self.favoritesList = [SMFavoritesUtil getFavorites];
 }
@@ -269,7 +269,7 @@ typedef enum {
         // TODO: Move to SMFavoritesViewController
 //        addFavAddress.text = self.locItem.address;
 //        addFavName.text = self.locItem.name;
-//        editTitle.text = translateString(@"edit_favorite");
+//        editTitle.text = @"edit_favorite".localized;
 //        [addSaveButton setHidden:YES];
 //        [editSaveButton setHidden:NO];
 //        [editDeleteButton setHidden:NO];
@@ -294,7 +294,7 @@ typedef enum {
 //        }
 //        [self animateEditViewShow];
     } else {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"error_not_logged_in") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"error_not_logged_in".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
     }
 }
@@ -311,13 +311,13 @@ typedef enum {
 //        addFavName.text = @"";
 //        currentFav = typeFavorite;
 //        [self addSelectFavorite:nil];
-//        editTitle.text = translateString(@"add_favorite");
+//        editTitle.text = @"add_favorite".localized;
 //        [addSaveButton setHidden:NO];
 //        [editSaveButton setHidden:YES];
 //        [editDeleteButton setHidden:YES];
 //        [self animateEditViewShow];
     } else {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"error_not_logged_in") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"error_not_logged_in".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
     }
 }
@@ -520,14 +520,14 @@ typedef enum {
             }
         } else {
             SMEmptyFavoritesCell * cell = [tableView dequeueReusableCellWithIdentifier:@"favoritesEmptyCell"];
-            [cell.text setText:translateString(@"cell_add_favorite")];
+            [cell.text setText:@"cell_add_favorite".localized];
             if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
-                [cell.addFavoritesText setText:translateString(@"cell_empty_favorite_text")];
+                [cell.addFavoritesText setText:@"cell_empty_favorite_text".localized];
                 [cell.addFavoritesText setTextColor:[UIColor whiteColor]];
                 [cell.text setTextColor:[UIColor colorWithRed:0.0f/255.0f green:174.0f/255.0f blue:239.0f/255.0f alpha:1.0f]];
                 [cell.addFavoritesSymbol setImage:[UIImage imageNamed:@"favAdd"]];
             } else {
-                [cell.addFavoritesText setText:translateString(@"favorites_login")];
+                [cell.addFavoritesText setText:@"favorites_login".localized];
                 [cell.addFavoritesText setTextColor:[UIColor colorWithRed:123.0f/255.0f green:123.0f/255.0f blue:123.0f/255.0f alpha:1.0f]];
                 [cell.text setTextColor:[UIColor colorWithRed:123.0f/255.0f green:123.0f/255.0f blue:123.0f/255.0f alpha:1.0f]];
                 [cell.addFavoritesSymbol setImage:[UIImage imageNamed:@"fav_plus_none_grey"]];

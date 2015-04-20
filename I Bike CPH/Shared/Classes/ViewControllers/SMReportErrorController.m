@@ -40,7 +40,7 @@
     
     [scrlView setContentSize:CGSizeMake(scrlView.frame.size.width, tblView.contentSize.height + tblView.frame.origin.y + 50.0f)];
     self.reportedSegment = @"";
-    self.possibleErrors = @[translateString(@"report_wrong_address"), translateString(@"report_road_closed"), translateString(@"report_one_way"), translateString(@"report_illegal_turn"), translateString(@"report_wrong_instruction"), translateString(@"report_other")];
+    self.possibleErrors = @[@"report_wrong_address".localized, @"report_road_closed".localized, @"report_one_way".localized, @"report_illegal_turn".localized, @"report_wrong_instruction".localized, @"report_other".localized];
     currentSelection = -1;
     
 //    UITableView * tableView = tblView;
@@ -129,7 +129,7 @@
 
 - (IBAction)sendAPIReport:(id)sender {
     if (currentSelection < 0) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"report_error_problem_not_selected") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"report_error_problem_not_selected".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
         return;
     }
@@ -140,21 +140,21 @@
     
     NSString *str = @"";
 
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", translateString(@"report_from")]];
+    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", @"report_from".localized]];
     str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n%@\n\n", self.source, self.sourceLoc]];
     
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", translateString(@"report_to")]];
+    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", @"report_to".localized]];
     str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n%@\n\n", self.destination, self.destinationLoc]];
     
     
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", translateString(@"report_reason")]];
+    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", @"report_reason".localized]];
     str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n\n", [self.possibleErrors objectAtIndex:currentSelection]]];
     str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n\n", self.reportText]];
     
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", translateString(@"report_instruction")]];
+    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", @"report_instruction".localized]];
     str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n\n", self.reportedSegment]];
     
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", translateString(@"report_tbt_instructions")]];
+    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", @"report_tbt_instructions".localized]];
     for (NSString * s in self.routeDirections) {
         str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", s]];
     }
@@ -230,7 +230,7 @@
         numberToolbar.barStyle = UIBarStyleBlackTranslucent;
         numberToolbar.items = [NSArray arrayWithObjects:
                                [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                               [[UIBarButtonItem alloc]initWithTitle:translateString(@"Done") style:UIBarButtonItemStyleDone target:self action:@selector(hideKeyboard:)],
+                               [[UIBarButtonItem alloc]initWithTitle:@"Done".localized style:UIBarButtonItemStyleDone target:self action:@selector(hideKeyboard:)],
                                nil];
         [numberToolbar sizeToFit];
         cell.radioTextBox.inputAccessoryView = numberToolbar;
@@ -300,7 +300,7 @@
 
 - (void)request:(SMAPIRequest *)req failedWithError:(NSError *)error {
     if (error.code > 0) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[error description] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:[error description] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
     }
 }
@@ -315,7 +315,7 @@
             [reportSentView setAlpha:1.0f];
         }];
     } else {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
     }
 }

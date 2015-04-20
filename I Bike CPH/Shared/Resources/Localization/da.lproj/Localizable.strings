@@ -1,10 +1,6 @@
-/* 
-  localization.strings
-  I Bike CPH
-
-  Created by Tobias Due Munk on 23/02/15.
-  Copyright (c) 2015 I Bike CPH. All rights reserved.
-*/
+"language_dan" = "Dansk";
+"language_eng" = "English";
+"choose_language" = "Change language";
 
 "current_position" = "Nuværende position";
 "today" = "I dag";
@@ -157,8 +153,8 @@
 "you_have_arrived_to" = "Du er nu fremme ved";
 "to_homepage" = "Til forsiden";
 "report_a_problem" = "Rapportér problem";
-"From:" = "Fra:";
-"To:" = "Til:";
+"From" = "Fra";
+"To" = "Til";
 "hello_cyclist" = "Hej cyklist";
 "thanks_for_testing_text" = "Tak fordi du hjælper os med at teste.";
 "start_text" = "Cykelruteplanlæggeren.\nVi er glade for, at du hjælper os med at teste app’en, og for at vi kan komme i kontakt med dig, vil vi gerne bede om din email-adresse:";
@@ -330,3 +326,78 @@
 "yesterday" = "i går";
 "today" = "i dag";
 "tomorrow" = "i morgen";
+
+"bike_type_1"= "Kom hurtigt frem";
+"bike_type_2"= "God til ladcykel";
+"bike_type_3"= "Nyd det grønne";
+
+/* I Bike CPH */
+
+"about_app_ibc" = "Om I Bike CPH";
+"about_text_ibc" = "I Bike CPH app’en er Københavns Kommunes mobile rutevejleder for dig, der cykler i København. App’en er del af Københavns målsætning om at blive verdens bedste cykelby. App’en kender de gode smutveje i København, ved hvilke parker man må cykle i og hvor man må cykle mod ensretningen for biler.\n\nApp’en anvender kortdata fra det brugerdrevne OpenStreetMap (OSM), der opdateres løbende, fx når nye cykelbroer åbner. Københavns Kommune har bidraget til OpenStreetMap ved at kvalitetssikre cykeldata for Københavnområdet.\n\nKortet er særligt tilpasset cyklister. Motorveje er derfor tonet ned, hvorimod brosten er fremhævet, så du kan slippe for rysteture. Kortet viser bl.a. også cykelbomme, så du ved hvor du ikke kan komme igennem med ladcykel.\n\nBemærk: Rutevejledningen i I Bike CPH app’en er vejledende – husk at følge færdselsloven, og anvend en telefonholder hvis du bruger app’en når du er ude at cykle.\n\nKom godt i gang:\nDu kan vælge hvor du vil hen på to måder:\n\nVælg på kort: Find stedet på kortet og hold fingeren nede indtil en nål bliver sat på kortet. Den nærmeste adresse bliver nu vist nederst. Vælg ’Start’ for at beregne ruten fra din nuværende position til destinationen.\n\nSøg efter adresse: Klik på forstørrelsesglasset i øverste højre hjørne. Indtast adressen hvor du vil hen og klik ’Gå’. Klik derefter på ’Start’ for at beregne ruten.\n\nNår ruten vises kan du klikke på ’Start’ for at aktivere GPS navigation. Undervejs vil instruktioner om hvornår du skal svinge blive vist nederst. Forventet ankomsttidspunkt vises øverst til højre ud for det lille flag.\n\nRuter for ladcykler:\nNår du har beregnet en rute eller har GPS navigation aktiv, kan du klikke på den lille sorte bjælke med tre prikker nederst til venstre for at vælge rutetype. Vælges ladcykel bliver du ført uden om trapper, bomme og brosten, og forventet rejsetid vil være tilpasset ladcykler.\n\nVis position:\nTryk på knappen med en pil i nederste højre hjørne, for at se hvor du er på kortet. Kortet vil herefter følge din position indtil du selv manuelt flytter kortet. Funktionen er slået til, når pilen er blå.\n\nLæs mere:\nApp’en kan bl.a. også gemme favorit-steder. Læs mere om kort og funktioner på www.ibikecph.dk/about.\n\nGod tur og tak fordi du cykler!";
+
+/* CykelPlanen */
+
+"about_app_cp" = "Om CykelPlanen";
+"about_text_cp" = "CykelPlanen app’en er Region Hovedstadens mobile rutevejleder for dig, der cykler i regionen. App’en kender de gode smutveje i regionen, hvor du må cykle og finder den hurtigste rute for dig. CykelPlanen skal bidrage til at få flere pendlere i regionen til at vælge cyklen frem for bilen.\nKortet er særligt tilpasset cyklister. CykelPlanen udregner den hurtigste rute for dig. Motorveje er tonet ned, hvorimod brosten er fremhævet, så du kan slippe for rysteture. Kortet viser de anlagte supercykelstier og servicestationer. Endvidere har app’en funktionen ”knæk ruten”, som leder dig hen til nærmeste Lokalbane, S- og metrostation, hvis cykelturen bliver for lang eller cyklen går i stykker. \nApp’en anvender kortdata fra det brugerdrevne OpenStreetMap (OSM), der opdateres løbende, fx når der anlægges nye cykelstier i regionen, og brugerne skal være med til at opdatere kortet i regionen.\n\nBemærk at det er tilladt at tage cyklen gratis med i s-toget og lokalbanen (maks. 6 stk) mens det kræver en cykelbillet i metroen. Det er dog ikke tilladt at medbringe cyklen i metroen i myldretiden (kl. 7.00 – kl. 9.00 og 15.30-17.00) eller stå af eller på S-toget med cykel på Nørreport Station på hverdage (mandag-fredag) i tidsrummet kl.7- 8.30 og  kl. 15.30- 17\n\nKom godt i gang:\nDu kan vælge hvor du vil hen på to måder:\nVælg på kort: Find stedet på kortet og hold fingeren nede indtil en nål bliver sat på kortet. Den nærmeste adresse bliver nu vist nederst. Vælg ’Start’ for at beregne ruten fra din nuværende position til destinationen.\nSøg efter adresse: Klik på forstørrelsesglasset i øverste højre hjørne. Indtast adressen hvor du vil hen og klik ’Gå’. Klik derefter på ’Start’ for at beregne ruten.\nNår ruten vises kan du klikke på ’Start’ for at aktivere GPS navigation. Undervejs vil instruktioner om hvornår du skal svinge blive vist nederst. Forventet ankomsttidspunkt vises øverst til højre ud for det lille flag.\n\nVis position:\nTryk på knappen med en pil i nederste højre hjørne, for at se hvor du er på kortet. Kortet vil herefter følge din position indtil du selv manuelt flytter kortet. Funktionen er slået til, når pilen er blå.\n\nLæs mere:\nApp’en kan bl.a. også gemme favorit-steder, hvis du opretter en profil. Læs mere om kort og funktioner på www.supercykelstier.dk.\nGod tur og tak fordi du cykler!";
+
+"monday" = "Mandag";
+"tuesday" = "Tirsdag";
+"wednesday" = "Onsdag";
+"thursday" = "Torsdag";
+"friday" = "Fredag";
+
+"search" = "Søg";
+"search_to_placeholder" = "Indtast vej, gade, post nr.";
+
+"Stop" = "Stop";
+
+"cycle_super_highways" = "Supercykelstier";
+"service_stations" = "Servicestationer";
+"s_train_stations" = "S-togs stationer";
+"metro_stations" = "Metro stationer";
+"local_trains_stations" = "Lokale stationer";
+
+"Error" = "Error";
+"OK" = "OK";
+"error_no_gps_location" = "Ingen GPS lokation!";
+"error_address_not_found" = "Adressens lokation kan ikke findes!";
+"error_from_address_not_found" = "START adressens lokation kan ikke findes!";
+"error_to_address_not_found" = "SLUT adressens lokation kan ikke findes!";
+"error_invalid_email" = "Ugyldig email!";
+"error_favorites_name_exists" = "Navn er allerede brugt";
+
+"route_info"= "Rejseforslag";
+
+// these are in the storyboard
+"reminder_title" = "Påmindelser";
+"reminder_text" = "Få hjælp til at komme op på cyklen. Vælg de dage du ønsker at cykle, så hjælper vi dig med at komme igang.";
+"reminder_save_btn" = "Gem påmindelser";
+"reminder_alert_text" = "Husk at tage cyklen i morgen";
+
+// Favorites
+"favorites_title" = "Tilføj favoritter";
+"favorites_text" = "Nu kan du nemt og hurtigt navigere til dine foretrukne pendlerruter. Start med at tilføje din hjemme- og arbejdsadresse.";
+"favorites_home_address" = "Hjemmeadresse...";
+"favorites_work_address" = "Arbejdsadresse...";
+"favorites_save_btn" = "Gem favoritter";
+
+// Break route
+"break_route_title" = "Knæk ruten";
+"btn_break_route" = "Knæk ruten";
+"break_route_text_top" = "Vidste du, at du let kan knække din pendlerrute ved at tage toget noget af vejen.";
+"break_route_text_bottom" = "Når du vælger “Knæk ruten” giver vi dig en ny rute til nærmeste S-togsstation og bringer dig frem til din endelige destination.";
+"break_route_spring" = "Afslut guide og ta’ en tur";
+"break_route_exit" = "Spring over";
+"break_route_header_title" = "Din rute er nu";
+"route_plan_button" = "Find rejse på Rejseplanen";
+
+"break_route_no_route" = "Ingen ruteforslag";
+"break_route_cant_break" = "Denne rute kan desværre ikke knækkes.";
+
+"departure" = "Afg.";
+"departures_at" = "Afg. kl.";
+"arrival" = "Ank.";
+"shift" = "Skift";
+
+"intro_subtitle" = "Hurtigt fra A til B";

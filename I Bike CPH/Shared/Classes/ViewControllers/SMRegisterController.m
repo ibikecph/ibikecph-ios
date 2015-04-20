@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = translateString(@"create_account");
+    self.title = @"create_account";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -99,7 +99,7 @@
 
 - (IBAction)selectImageSource:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == YES){
-        UIActionSheet * ac  = [[UIActionSheet alloc] initWithTitle:translateString(@"choose_image_source") delegate:self cancelButtonTitle:translateString(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:translateString(@"image_source_camera"), translateString(@"image_source_library"), nil];
+        UIActionSheet * ac  = [[UIActionSheet alloc] initWithTitle:@"choose_image_source".localized delegate:self cancelButtonTitle:@"Cancel".localized destructiveButtonTitle:nil otherButtonTitles:@"image_source_camera".localized, @"image_source_library".localized, nil];
         [ac showInView:self.view];
     } else {
         [self takePictureFromSource:UIImagePickerControllerSourceTypePhotoLibrary];
@@ -152,7 +152,7 @@
 
 -(void)request:(SMAPIRequest *)req failedWithError:(NSError *)error {
     if (error.code > 0) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[error description] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:[error description] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
     }
 }
@@ -166,7 +166,7 @@
 //            [self.appDelegate.appSettings setValue:self.passwordField.text forKey:@"password"];
 //            [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
 //            [self.appDelegate saveSettings];
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"" message:translateString(@"register_successful") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"" message:@"register_successful".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
             [self.navigationController popToRootViewControllerAnimated:YES];
             if (![SMAnalytics trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:self.emailField.text withValue:0]) {
@@ -174,7 +174,7 @@
             }
         }
     } else {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
     }
 }

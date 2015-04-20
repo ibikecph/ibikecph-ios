@@ -24,7 +24,7 @@
     for(id currentObject in topLevelObjects) {
         if([currentObject isKindOfClass:[SMNetworkErrorView class]]) {
             xx = (SMNetworkErrorView *)currentObject;
-            xx.warningText.text = translateString(@"network_error_text");
+            xx.warningText.text = @"network_error_text".localized;
             break;
         }
     }

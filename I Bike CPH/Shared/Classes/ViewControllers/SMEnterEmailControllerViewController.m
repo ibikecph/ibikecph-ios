@@ -56,7 +56,7 @@
 
 - (IBAction)saveEmail:(id)sender {
     if ([self isEmailValid:emailField.text] == NO) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"error_invalid_email") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"error_invalid_email".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
         return;
     }

@@ -14,7 +14,7 @@
 
 - (void)renderViewFromInstruction:(SMTurnInstruction *)turn {
     if ([turn.shortDescriptionString rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
-        [self.lblWayname setText:translateString(turn.shortDescriptionString)];
+        [self.lblWayname setText:turn.shortDescriptionString.localized];
     } else {
         [self.lblWayname setText:turn.shortDescriptionString];
     }

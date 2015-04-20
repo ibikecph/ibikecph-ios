@@ -38,14 +38,14 @@ class TrackingPreferencesViewController: UIViewController {
     private let sections: [SectionViewModel<TrackingItemProtocol>] = [
         SectionViewModel(items:
             [
-                TrackingSwitchItem(title: SMTranslation.decodeString("tracking_option"), iconImageName: "tracking", on: settings.tracking.on, switchAction: { voiceViewController, on in
+                TrackingSwitchItem(title: "tracking_option".localized, iconImageName: "tracking", on: settings.tracking.on, switchAction: { voiceViewController, on in
                     settings.tracking.on = on
                 }),
                 // TODO: Add icon for milestones
-                TrackingSwitchItem(title: SMTranslation.decodeString("tracking_milestone_notifications"), iconImageName: "", on: settings.tracking.on, switchAction: { voiceViewController, on in
+                TrackingSwitchItem(title: "tracking_milestone_notifications".localized, iconImageName: "", on: settings.tracking.on, switchAction: { voiceViewController, on in
                     settings.tracking.milestoneNotifications = on
                 }),
-//                TrackingSwitchItem(title: SMTranslation.decodeString("tracking_weekly_status_notifications"), iconImageName: "", on: settings.tracking.on, switchAction: { voiceViewController, on in
+//                TrackingSwitchItem(title: "tracking_weekly_status_notifications".localized, iconImageName: "", on: settings.tracking.on, switchAction: { voiceViewController, on in
 ////                    settings.tracking.weeklyNotifications = on
 //                }),
             ]
@@ -55,7 +55,7 @@ class TrackingPreferencesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.title = SMTranslation.decodeString("tracking_preferences")
+//        self.title = "tracking_preferences".localized
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

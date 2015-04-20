@@ -15,3 +15,10 @@ extension String {
         return NSLocalizedString(self, comment: "")
     }
 }
+
+extension NSString {
+    
+    var localized: NSString {
+        return NSLocalizedString(self as String, comment: "")
+    }
+}

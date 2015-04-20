@@ -17,11 +17,11 @@ enum OverlayType {
     
     var localizedDescription: String {
         switch self {
-            case .CycleSuperHighways: return SMTranslation.decodeString("cycle_super_highways")
-            case .BikeServiceStations: return SMTranslation.decodeString("service_stations")
-            case .STrainStations: return SMTranslation.decodeString("s_train_stations")
-            case .MetroStations: return SMTranslation.decodeString("metro_stations")
-            case .LocalTrainStation: return SMTranslation.decodeString("local_trains_stations")
+            case .CycleSuperHighways: return "cycle_super_highways".localized
+            case .BikeServiceStations: return "service_stations".localized
+            case .STrainStations: return "s_train_stations".localized
+            case .MetroStations: return "metro_stations".localized
+            case .LocalTrainStation: return "local_trains_stations".localized
         }
     }
     var key: String {

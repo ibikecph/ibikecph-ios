@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = translateString(@"log_in");
+    self.title = @"log_in".localized;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -49,7 +49,7 @@
     [self.loginEmail resignFirstResponder];
     [self.loginPassword resignFirstResponder];
     if ([self.loginEmail.text isEqualToString:@""] || [self.loginPassword.text isEqualToString:@""]) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"login_error_fields") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"login_error_fields".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
         return;
     }
@@ -75,7 +75,7 @@
     FacebookHandler *faceboookHandler = [FacebookHandler new];
     [faceboookHandler request:^(NSString *identifier, NSString *email, NSString *token, NSError *error) {
         if (error) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"fb_login_error") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
             NSLog(@"Couldn't sign in to Facebook %@", error.localizedDescription);
             return;
@@ -109,7 +109,7 @@
 
 -(void)request:(SMAPIRequest *)req failedWithError:(NSError *)error {
     if (error.code > 0) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[error description] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:[error description] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
     }
 }
@@ -148,10 +148,10 @@
         }
     } else {
         if (result[@"info_title"]) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:result[@"info_title"] message:result[@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:result[@"info_title"] message:result[@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
         } else {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:result[@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:result[@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
         }
     }
