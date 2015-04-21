@@ -11,19 +11,21 @@ import UIKit
 class TracksViewController: SMTranslatedViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    private var token: RLMNotificationToken?
     private var tracks: RLMResults?
     private var selectedTrack: Track?
     
     deinit {
-        RLMRealm.removeNotification(token)
+        NotificationCenter.unobserve(self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        token = RLMRealm.addNotificationBlock() { [unowned self] note, realm in
+        NotificationCenter.observe(processedSmallNoticationKey) { notification in
+            self.updateUI()
+        }
+        NotificationCenter.observe(processedBigNoticationKey) { notification in
             self.updateUI()
         }
         updateUI()

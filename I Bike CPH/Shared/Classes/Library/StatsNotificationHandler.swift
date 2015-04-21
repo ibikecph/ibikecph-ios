@@ -72,8 +72,6 @@ class StatsNotificationHandler {
         case TotalDistance
         case DayStreak
     }
-   
-    private var token: RLMNotificationToken?
     
     private var distanceMilestone = Milestone(
         uniqueKey: "distanceMilestone",
@@ -109,7 +107,6 @@ class StatsNotificationHandler {
     }
     
     deinit {
-        RLMRealm.removeNotification(token)
         NotificationCenter.unobserve(self)
     }
     

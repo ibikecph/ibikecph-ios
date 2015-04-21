@@ -17,7 +17,6 @@ class TrackingViewController: SMTranslatedViewController {
     @IBOutlet weak var sinceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    private var token: RLMNotificationToken?
     private var tracks: [RLMResults]?
     private var selectedTrack: Track?
     private var swipeEditing: Bool = false
@@ -47,7 +46,7 @@ class TrackingViewController: SMTranslatedViewController {
     var lastUpdate: NSDate?
     
     deinit {
-        RLMRealm.removeNotification(token)
+        NotificationCenter.unobserve(self)
     }
     
     override func viewDidLoad() {
@@ -55,21 +54,24 @@ class TrackingViewController: SMTranslatedViewController {
         
         title = "tracking".localized
         
-        token = RLMRealm.addNotificationBlock() { [unowned self] note, realm in
+        NotificationCenter.observe(processedBigNoticationKey) { notification in
             self.setNeedsUpdateUI()
         }
+        self.updateUI()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.updateUI()
+        Async.main {
+            self.updateUI()
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !settings.tracking.on && !TracksHandler.hasTrackedBikeData() {
+        if !settings.tracking.on && !BikeStatistics.hasTrackedBikeData() {
             dismiss()
         }
         
@@ -139,6 +141,7 @@ class TrackingViewController: SMTranslatedViewController {
                                         track.realm.beginWriteTransaction()
                                         track.start = item.street
                                         track.realm.commitWriteTransaction()
+                                        self.setNeedsUpdateUI()
                                     }
                                 }
                             }
@@ -154,6 +157,7 @@ class TrackingViewController: SMTranslatedViewController {
                                         track.realm.beginWriteTransaction()
                                         track.end = item.street
                                         track.realm.commitWriteTransaction()
+                                        self.setNeedsUpdateUI()
                                     }
                                 }
                             }

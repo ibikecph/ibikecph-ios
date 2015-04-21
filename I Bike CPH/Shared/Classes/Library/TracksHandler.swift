@@ -10,38 +10,43 @@ import UIKit
 import CoreMotion
 
 let tracksHandler = TracksHandler()
+let processedSmallNoticationKey = "processedSmallNoticationKey"
 let processedBigNoticationKey = "processedBigNoticationKey"
 
 class TracksHandler {
     
-    class func hasTrackedBikeData() -> Bool {
-        let hasBikeTracks = Track.objectsWhere("activity.cycling == TRUE").count > 0
-        return hasBikeTracks
+    private var processing: Bool = false
+
+    private let lastProcessedSmallKey = "lastProcessedSmallKey"
+    var lastProcessedSmall: NSDate {
+        get { return Defaults[lastProcessedSmallKey].date ?? NSDate(timeIntervalSince1970: 0) }
+        set { Defaults[lastProcessedSmallKey] = newValue }
+    }
+    private let lastProcessedBigKey = "lastProcessedBigKey"
+    var lastProcessedBig: NSDate {
+        get { return Defaults[lastProcessedBigKey].date ?? NSDate(timeIntervalSince1970: 0) }
+        set { Defaults[lastProcessedBigKey] = newValue }
     }
     
-    private var processing: Bool = false {
-        didSet {
-            processingHandler?(processing)
-        }
-    }
-    var processingHandler: ((Bool) -> ())?
-
-    var lastProcessedSmall: NSDate = NSDate()
-    var lastProcessedBig: NSDate = NSDate()
+    private lazy var operationQueue: NSOperationQueue = {
+        let queue = NSOperationQueue.mainQueue()
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }()
     
     class func setNeedsProcessData(force: Bool = false) {
         if force {
-            self.cleanUpSmall()
-            self.cleanUpBig()
+            tracksHandler.cleanUpBig()
             return
         }
-        if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedSmall) > 60*5 { // Do small stuff every 5 min
-            tracksHandler.lastProcessedSmall = NSDate()
-            self.cleanUpSmall()
-        }
         if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedBig) > 60*60*1 { // Do big stuff every hour
+            tracksHandler.cleanUpBig()
             tracksHandler.lastProcessedBig = NSDate()
-            self.cleanUpBig()
+            return
+        }
+        if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedSmall) > 1 { //60*5 { // Do small stuff every 5 min
+            tracksHandler.cleanUpSmall()
+            tracksHandler.lastProcessedSmall = NSDate()
             return
         }
         Async.main(after: 10) {
@@ -49,7 +54,7 @@ class TracksHandler {
         }
     }
     
-    private class func cleanUpSmall() {
+    private func cleanUpSmall() {
         if tracksHandler.processing {
             println("Already processing")
             Async.main(after: 10) { // Check again after 10 seconds
@@ -60,17 +65,21 @@ class TracksHandler {
         tracksHandler.processing = true
         
         println("Start processing small")
-        Async.main() { println("Remove empty tracks")
-            TracksHandler.removeEmptyTracks()
-        }.main() { println("Merge close to same activity")
-            TracksHandler.mergeCloseSameActivityTracks(seconds: 60)
-        }.main {
+        let fromDate = lastProcessedSmall.dateByAddingTimeInterval(-60*15) // Go 15 minutes back
+        let operations = [
+            MergeCloseSameActivityTracksOperation(fromDate: fromDate, seconds: 60),
+            RecalculateTracksOperation(fromDate: fromDate)
+        ]
+        operations.last?.completionBlock = {
             println("Done processing small")
             tracksHandler.processing = false
+            NotificationCenter.post(processedSmallNoticationKey, object: self)
         }
+        TracksOperation.addDependencies(operations)
+        operationQueue.addOperations(operations, waitUntilFinished: false)
     }
     
-    private class func cleanUpBig() {
+    private func cleanUpBig() {
         if tracksHandler.processing {
             println("Already processing")
             Async.main(after: 10) { // Check again after 10 seconds
@@ -81,74 +90,113 @@ class TracksHandler {
         tracksHandler.processing = true
         
         println("Start processing big")
-        Async.background() { println("Remove empty tracks")
-            TracksHandler.removeEmptyTracks()
-        }.background() { println("Merge close to unknown activity tracks")
-            TracksHandler.mergeCloseToUnknownActivityTracks(seconds: 30)
-        }.background() { println("Infer bike from speed from walking")
-            TracksHandler.inferBikingFromSpeed(activity: { $0.walking }, minSpeedLimit: 7, minLength: 0.050)
-        }.background() { println("Infer bike from speed from automotive")
-            TracksHandler.inferBikingFromSpeed(activity: { $0.automotive }, minSpeedLimit: 10, maxSpeedLimit: 20, minLength: 0.200)
-        }.background() { println("Merge close to same activity")
-            TracksHandler.mergeCloseSameActivityTracks(seconds: 60)
-        }.background() { println("Merge track between bike tracks")
-            TracksHandler.mergeTracksBetweenBike(seconds: 60*5)
-        }.background() { println("Merge bike close with non-stationary tracks")
-            TracksHandler.mergeBikeCloseWithMoveTracks(seconds: 60)
-        }.background() { println("Merge track between bike tracks – again")
-            TracksHandler.mergeTracksBetweenBike(seconds: 60*5)
-        }.background() { println("Clear left overs")
-            TracksHandler.clearLeftOvers()
-        }.background() { println("Prune slow ends")
-            TracksHandler.pruneSlowEnds()
-        }.background() { println("Recalculate")
-            TracksHandler.recalculateTracks()
-        }.background() { println("Clear unowned data")
-            TracksHandler.removeUnownedData()
-        }.main() {
+        let fromDate = lastProcessedBig.dateByAddingTimeInterval(-60*15) // Go 15 minutes back
+        let operations = [
+            RemoveEmptyTracksOperation(fromDate: fromDate),
+            MergeCloseToUnknownActivityTracksOperation(fromDate: fromDate, seconds: 30),
+            InferBikingFromSpeedOperation(fromDate: fromDate, activity: { $0.walking }, minSpeedLimit: 7, minLength: 0.050),
+            InferBikingFromSpeedOperation(fromDate: fromDate, activity: { $0.automotive }, minSpeedLimit: 10, maxSpeedLimit: 20, minLength: 0.200),
+            MergeCloseSameActivityTracksOperation(fromDate: fromDate, seconds: 60),
+            MergeTracksBetweenBikeTracksOperation(fromDate: fromDate, seconds: 60*5),
+            MergeBikeCloseWithMoveTracksOperation(fromDate: fromDate, seconds: 60),
+            MergeTracksBetweenBikeTracksOperation(fromDate: fromDate, seconds: 60*5), // again
+            ClearLeftOversOperation(fromDate: fromDate),
+            PruneSlowEndsOperation(fromDate: fromDate),
+            RecalculateTracksOperation(fromDate: fromDate),
+            RemoveUnownedDataOperation(fromDate: fromDate)
+        ]
+        
+        operations.last?.completionBlock = {
             println("Done processing big")
             tracksHandler.processing = false
-            
             NotificationCenter.post(processedBigNoticationKey, object: self)
         }
+        TracksOperation.addDependencies(operations)
+        operationQueue.addOperations(operations, waitUntilFinished: false)
+    }
+}
+
+
+class TracksOperation: NSOperation {
+    
+    private let fromDate: NSDate?
+    init(fromDate: NSDate? = nil) {
+        self.fromDate = fromDate
+        super.init()
     }
     
-    private class func recalculateTracks() {
-        for track in Track.allObjects() {
-            if let track = track as? Track {
-                track.recalculate()
+    private func tracks() -> RLMResults {
+        let tracks = Track.allObjects()
+        if let fromDate = fromDate {
+            let timestamp = fromDate.timeIntervalSince1970
+            return tracks.objectsWhere("endTimestamp > %lf", timestamp)
+        }
+        return tracks
+    }
+    
+    private func tracksSorted() -> RLMResults {
+        return tracks().sortedResultsUsingProperty("startTimestamp", ascending: true)
+    }
+    
+    private func tracksSortedAsTracks() -> [Track] {
+        return tracksSorted().toArray(Track.self)
+    }
+    
+    /// Add dependency to previous operation in array
+    class func addDependencies(operations: [TracksOperation]) {
+        for (index, operation) in enumerate(operations) {
+            if index + 1 >= operations.count {
+                continue
             }
+            let nextOperation = operations[index+1]
+            nextOperation.addDependency(operation)
         }
     }
+}
+
+
+class RecalculateTracksOperation: TracksOperation {
     
-    private class func removeEmptyTracks() {
-        let tracks = Track.allObjects()
+    override func main() {
+        println("Recalculating tracks")
         RLMRealm.beginWriteTransaction()
-        for track in tracks {
+        for track in tracks()  {
+            if let track = track as? Track {
+                track.recalculate(inWriteTransaction: false)
+            }
+        }
+        RLMRealm.commitWriteTransaction()
+    }
+}
+
+
+class RemoveEmptyTracksOperation: TracksOperation {
+    
+    override func main() {
+        RLMRealm.beginWriteTransaction()
+        for track in tracks() {
             if let track = track as? Track where track.locations.count == 0 {
                 track.deleteFromRealm(inWriteTransaction: false)
             }
         }
         RLMRealm.commitWriteTransaction()
     }
+}
+
+
+class RemoveUnownedDataOperation: TracksOperation {
     
-    private class func removeUnownedData() {
+    override func main() {
+        println("Clear unowned data")
         RLMRealm.beginWriteTransaction()
-        let locations = TrackLocation.allObjects()
+        // Mark locations
+        let locations = tracks()
         for location in locations {
             if let location = location as? TrackLocation {
                 location.owned = false
             }
         }
-        let activities = TrackActivity.allObjects()
-        for activity in activities {
-            if let activity = activity as? TrackLocation {
-                activity.owned = false
-            }
-        }
-        
-        let tracks = Track.allObjects()
-        for track in tracks {
+        for track in tracks() {
             if let track = track as? Track {
                 let _locations = track.locations
                 for _location in _locations {
@@ -156,19 +204,78 @@ class TracksHandler {
                         _location.owned = true
                     }
                 }
+            }
+        }
+        // Mark acctivities
+        let activities = TrackActivity.allObjects()
+        for activity in activities {
+            if let activity = activity as? TrackLocation {
+                activity.owned = false
+            }
+        }
+        for track in Track.allObjects() {
+            if let track = track as? Track {
                 track.activity.owned = true
             }
         }
         
         let unownedLocations = TrackLocation.objectsWhere("owned == FALSE").toArray()
+        println("Deleting \(unownedLocations.count) unowned locations")
         RLMRealm.defaultRealm().deleteObjects(unownedLocations)
         let unownedActivities = TrackActivity.objectsWhere("owned == FALSE").toArray()
+        println("Deleting \(unownedActivities.count) unowned activities")
         RLMRealm.defaultRealm().deleteObjects(unownedActivities)
         RLMRealm.commitWriteTransaction()
     }
+}
+
+
+class InferBikingFromSpeedOperation: TracksOperation {
+
+    private let activity: (TrackActivity) -> Bool
+    private let minSpeedLimit: Double?
+    private let maxSpeedLimit: Double?
+    private let minLength: Double
+    init(fromDate: NSDate? = nil, activity: (TrackActivity) -> Bool, minSpeedLimit: Double? = nil, maxSpeedLimit: Double? = nil, minLength: Double) {
+        self.activity = activity
+        self.minSpeedLimit = minSpeedLimit
+        self.maxSpeedLimit = maxSpeedLimit
+        self.minLength = minLength
+        super.init(fromDate: fromDate)
+    }
     
-    private class func clearLeftOvers() {
+    override func main() {
+        println("Infer bike from speed from other activity")
         for track in Track.allObjects().toArray(Track.self) {
+            if !activity(track.activity) {
+                continue
+            }
+            if let minSpeedLimit = minSpeedLimit {
+                if !track.speeding(speedLimit: minSpeedLimit, minLength: minLength) {
+                    continue
+                }
+            }
+            if let maxSpeedLimit = maxSpeedLimit {
+                if !track.slow(speedLimit: maxSpeedLimit, minLength: minLength) {
+                    continue
+                }
+            }
+            track.realm.beginWriteTransaction()
+            track.activity.automotive = false
+            track.activity.running = false
+            track.activity.walking = false
+            track.activity.cycling = true
+            track.realm.commitWriteTransaction()
+            println("Infered biking \(track.startDate)")
+        }
+    }
+}
+
+class ClearLeftOversOperation: TracksOperation {
+    
+    override func main() {
+        println("Clear left overs")
+        for track in tracksSortedAsTracks() {
             track.recalculate()
             
             let formatter = NSDateFormatter()
@@ -222,7 +329,7 @@ class TracksHandler {
                 let shortFlight = track.flightDistance() < 50
                 let flightLengthRatio = track.length / flightWithOneMedianStopDistance
                 let flightSuspicious = 10 < flightLengthRatio
-//                println("PP \(shortFlight) \(flightSuspicious) \(track.flightDistance()) \(flightLengthRatio) \(track.duration) \(track.locations.count) \(formatter.stringFromDate(track.startDate!))")
+                //                println("PP \(shortFlight) \(flightSuspicious) \(track.flightDistance()) \(flightLengthRatio) \(track.duration) \(track.locations.count) \(formatter.stringFromDate(track.startDate!))")
                 if flightSuspicious {
                     println("Deleted short flight distance: \(track.startDate)")
                     track.deleteFromRealm()
@@ -245,9 +352,14 @@ class TracksHandler {
             }
         }
     }
+}
+
+
+class PruneSlowEndsOperation: TracksOperation {
     
-    private class func pruneSlowEnds() {
-        for track in Track.allObjects() {
+    override func main() {
+        println("Prune slow ends")
+        for track in tracks() {
             if let track = track as? Track {
                 let cycling = track.activity.cycling
                 if !cycling {
@@ -276,16 +388,142 @@ class TracksHandler {
             }
         }
     }
+}
+
+
+class MergeTracksOperation: TracksOperation {
     
-    private class func mergeTracksBetweenBike(#seconds: NSTimeInterval) {
+    private func mergeTrack(track1: Track, toTrack track2: Track, forceBike: Bool = false, forceActivity: TrackActivity? = nil) -> Track {
+        // Merge locations
+        track1.realm.beginWriteTransaction()
+        for location in track2.locations {
+            track1.locations.addObject(location)
+        }
+        // Combine
+        track1.end = track2.end
+        if forceBike {
+            track1.activity.cycling = true
+            track1.activity.automotive = false
+            track1.activity.walking = false
+            track1.activity.running = false
+            track1.activity.confidence = 0
+        } else if let forceActivity = forceActivity {
+            let startDate = track1.activity.startDate
+            track1.activity = forceActivity;
+            track1.activity.startDate = startDate
+        }
+        // Clean up
+        track1.recalculate(inWriteTransaction: false)
+        track2.deleteFromRealm(inWriteTransaction: false)
+        
+        track1.realm.commitWriteTransaction()
+        
+        return track1
+    }
+    
+    private func mergeTracks(tracks: [Track]) -> Track? {
+        var tracks = tracks
+        while tracks.count > 1 {
+            let track1 = tracks[0]
+            let track2 = tracks[1]
+            mergeTrack(track1, toTrack: track2)
+            tracks.removeAtIndex(1)
+        }
+        return tracks.first
+    }
+    
+    private func closeTracks(track track1: Track, toTrack track2: Track, closerThanSeconds seconds: NSTimeInterval) -> Bool {
+        if let
+            track1EndDate = track1.endDate,
+            track2StartDate = track2.startDate
+        {
+            let timeIntervalBetweenTracks = track2StartDate.timeIntervalSinceDate(track1EndDate)
+            if timeIntervalBetweenTracks < seconds {
+                return true
+            }
+        }
+        return false
+    }
+}
+
+
+class MergeTimeTracksOperation: MergeTracksOperation {
+    
+    private let seconds: NSTimeInterval
+    init(fromDate: NSDate? = nil, seconds: NSTimeInterval) {
+        self.seconds = seconds
+        super.init(fromDate: fromDate)
+    }
+}
+
+
+class MergeCloseSameActivityTracksOperation : MergeTimeTracksOperation {
+    
+    override func main() {
+        println("Merge close to same activity")
         var tracks = tracksSorted()
+        
+        var count = UInt(0)
+        while count + 1 < tracks.count {
+            if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
+                let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
+                let sameType = track.activity.sameActivityTypeAs(nextTrack.activity)
+                let merge = close && sameType
+                if merge {
+                    println("Close tracks: \(track.endDate) to \(nextTrack.startDate)")
+                    let mergedTrack = mergeTrack(track, toTrack: nextTrack)
+                    tracks = tracksSorted()
+                } else {
+                    count++
+                }
+                //                println(" \(count) / \(tracks.count)")
+            }
+        }
+    }
+}
+
+
+class MergeCloseToUnknownActivityTracksOperation: MergeTimeTracksOperation {
+    
+    override func main() {
+        println("Merge close to unknown activity tracks")
+        var tracks = tracksSorted()
+            
+        var count = UInt(0)
+        while count + 1 < tracks.count {
+            if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
+                let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
+                let unknown = track.activity.unknown || track.activity.completelyUnknown()
+                let unknownNext = nextTrack.activity.unknown || nextTrack.activity.completelyUnknown()
+                let eitherIsUnknown = unknown || unknownNext
+                let merge = close && eitherIsUnknown
+                if merge {
+                    let forceActivity = unknownNext ? track.activity : nextTrack.activity
+                    let mergedTrack = mergeTrack(track, toTrack: nextTrack, forceActivity: forceActivity)
+                    tracks = tracksSorted()
+                    println("Close to empty activity: \(mergedTrack.startDate)")
+                } else {
+                    count++
+                }
+                //                println(" \(count) / \(tracks.count)")
+            }
+        }
+    }
+}
+
+
+class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
+    
+    override func main() {
+        println("Merge track between bike tracks")
+        var tracks = tracksSortedAsTracks()
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = .ShortStyle
         formatter.timeStyle = .MediumStyle
         
         var count = 0
-        while count < tracks.count - 2 {
+        while count + 2 < tracks.count {
             let track = tracks[count]
             if !track.activity.cycling { // Is not biking
                 count++
@@ -315,70 +553,20 @@ class TracksHandler {
                     println("\(formatter.stringFromDate(track.startDate!)) -> \(formatter.stringFromDate(track.endDate!))")
                 }
                 mergeTracks(tracksToMerge)
-                tracks = tracksSorted()
+                tracks = tracksSortedAsTracks()
             } else {
                 count++
             }
         }
     }
+}
+
+class MergeBikeCloseWithMoveTracksOperation: MergeTimeTracksOperation {
     
-    private class func inferBikingFromSpeed(#activity: (TrackActivity) -> Bool, minSpeedLimit: Double? = nil, maxSpeedLimit: Double? = nil, minLength: Double) {
-        for track in Track.allObjects().toArray(Track.self) {
-            if !activity(track.activity) {
-                continue
-            }
-            if let minSpeedLimit = minSpeedLimit {
-                if !track.speeding(speedLimit: minSpeedLimit, minLength: minLength) {
-                    continue
-                }
-            }
-            if let maxSpeedLimit = maxSpeedLimit {
-                if !track.slow(speedLimit: maxSpeedLimit, minLength: minLength) {
-                    continue
-                }
-            }
-            track.realm.beginWriteTransaction()
-            track.activity.automotive = false
-            track.activity.running = false
-            track.activity.walking = false
-            track.activity.cycling = true
-            track.realm.commitWriteTransaction()
-            println("Infered biking \(track.startDate)")
-        }
-    }
+    override func main() {
+        println("Merge bike close with non-stationary tracks")
+        var tracks = tracksSorted()
     
-    private class func tracksSorted_() -> RLMResults {
-        return Track.allObjects().sortedResultsUsingProperty("startTimestamp", ascending: true)
-    }
-    
-    private class func tracksSorted() -> [Track] {
-        return Track.allObjects().sortedResultsUsingProperty("startTimestamp", ascending: true).toArray(Track.self)
-    }
-    
-    private class func mergeCloseSameActivityTracks(#seconds: NSTimeInterval) {
-        var tracks = tracksSorted_()
-        
-        var count = UInt(0)
-        while count + 1 < tracks.count {
-            if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
-                let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
-                let sameType = track.activity.sameActivityTypeAs(nextTrack.activity)
-                let merge = close && sameType
-                if merge {
-                    println("Close tracks: \(track.endDate) to \(nextTrack.startDate)")
-                    let mergedTrack = mergeTrack(track, toTrack: nextTrack)
-                    tracks = tracksSorted_()
-                } else {
-                    count++
-                }
-//                println(" \(count) / \(tracks.count)")
-            }
-        }
-    }
-    
-    private class func mergeBikeCloseWithMoveTracks(#seconds: NSTimeInterval) {
-        var tracks = tracksSorted_()
-        
         var count = UInt(0)
         while count + 1 < tracks.count {
             if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
@@ -391,89 +579,16 @@ class TracksHandler {
                 let merge = close && bikeCloseAndMoving
                 if merge {
                     let mergedTrack = mergeTrack(track, toTrack: nextTrack, forceBike: true)
-                    tracks = tracksSorted_()
+                    tracks = tracksSorted()
                     println("Bike close w. move: \(mergedTrack.startDate)")
                 } else {
                     count++
                 }
-//                println(" \(count) / \(tracks.count)")
+                //                println(" \(count) / \(tracks.count)")
             }
         }
-    }
-    
-    private class func mergeCloseToUnknownActivityTracks(#seconds: NSTimeInterval) {
-        var tracks = tracksSorted_()
-        
-        var count = UInt(0)
-        while count + 1 < tracks.count {
-            if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
-                let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
-                let unknown = track.activity.unknown || track.activity.completelyUnknown()
-                let unknownNext = nextTrack.activity.unknown || nextTrack.activity.completelyUnknown()
-                let eitherIsUnknown = unknown || unknownNext
-                let merge = close && eitherIsUnknown
-                if merge {
-                    let forceActivity = unknownNext ? track.activity : nextTrack.activity
-                    let mergedTrack = mergeTrack(track, toTrack: nextTrack, forceActivity: forceActivity)
-                    tracks = tracksSorted_()
-                    println("Close to empty activity: \(mergedTrack.startDate)")
-                } else {
-                    count++
-                }
-//                println(" \(count) / \(tracks.count)")
-            }
-        }
-    }
-    
-    private class func closeTracks(track track1: Track, toTrack track2: Track, closerThanSeconds seconds: NSTimeInterval) -> Bool {
-        if let
-            track1EndDate = track1.endDate,
-            track2StartDate = track2.startDate
-        {
-            let timeIntervalBetweenTracks = track2StartDate.timeIntervalSinceDate(track1EndDate)
-            if timeIntervalBetweenTracks < seconds {
-                return true
-            }
-        }
-        return false
-    }
-    
-    private class func mergeTrack(track1: Track, toTrack track2: Track, forceBike: Bool = false, forceActivity: TrackActivity? = nil) -> Track {
-        // Merge locations
-        track1.realm.beginWriteTransaction()
-        for location in track2.locations {
-            track1.locations.addObject(location)
-        }
-        // Combine
-        track1.end = track2.end
-        if forceBike {
-            track1.activity.cycling = true
-            track1.activity.automotive = false
-            track1.activity.walking = false
-            track1.activity.running = false
-            track1.activity.confidence = 0
-        } else if let forceActivity = forceActivity {
-            let startDate = track1.activity.startDate
-            track1.activity = forceActivity;
-            track1.activity.startDate = startDate
-        }
-        // Clean up
-        track1.recalculate(inWriteTransaction: false)
-        track2.deleteFromRealm(inWriteTransaction: false)
-        
-        track1.realm.commitWriteTransaction()
-        
-        return track1
-    }
-    
-    private class func mergeTracks(tracks: [Track]) -> Track? {
-        var tracks = tracks
-        while tracks.count > 1 {
-            let track1 = tracks[0]
-            let track2 = tracks[1]
-            mergeTrack(track1, toTrack: track2)
-            tracks.removeAtIndex(1)
-        }
-        return tracks.first
     }
 }
+
+
+

@@ -18,6 +18,13 @@ class BikeStatistics {
     }
     
     /**
+    :returns: True if any bike tracks exists
+    */
+    class func hasTrackedBikeData() -> Bool {
+        return tracks().count > 0
+    }
+    
+    /**
     Total distance of bike tracks
     
     :returns: Total distance in meters [m]
