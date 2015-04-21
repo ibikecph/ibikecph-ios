@@ -11,7 +11,9 @@ import UIKit
 class NotificationCenter {
     
     class func post(name: String, object: AnyObject? = nil) {
-        NSNotificationCenter.defaultCenter().postNotificationName(name, object: object)
+        Async.main {
+            NSNotificationCenter.defaultCenter().postNotificationName(name, object: object)
+        }
     }
     
     class func observe(name: String, object: AnyObject? = nil, queue: NSOperationQueue? = nil, usingBlock block: NSNotification! -> ()) {

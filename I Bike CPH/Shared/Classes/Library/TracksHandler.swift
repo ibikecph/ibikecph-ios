@@ -44,7 +44,7 @@ class TracksHandler {
             tracksHandler.lastProcessedBig = NSDate()
             return
         }
-        if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedSmall) > 1 { //60*5 { // Do small stuff every 5 min
+        if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedSmall) > 60*5 { // Do small stuff every 5 min
             tracksHandler.cleanUpSmall()
             tracksHandler.lastProcessedSmall = NSDate()
             return
@@ -129,7 +129,7 @@ class TracksOperation: NSOperation {
         let tracks = Track.allObjects()
         if let fromDate = fromDate {
             let timestamp = fromDate.timeIntervalSince1970
-            return tracks.objectsWhere("endTimestamp > %lf", timestamp)
+            return tracks.objectsWhere("endTimestamp >= %lf", timestamp)
         }
         return tracks
     }

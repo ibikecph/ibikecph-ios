@@ -28,7 +28,7 @@ class BikeStatistics {
     Total distance of bike tracks
     
     :returns: Total distance in meters [m]
-     */
+    */
     class func totalDistance() -> Double {
         return (tracks().sumOfProperty("length")?.doubleValue ?? 0)
     }
@@ -91,7 +91,9 @@ class BikeStatistics {
     :returns: The start date of the first bike track
     */
     class func firstTrackStartDate() -> NSDate? {
-        let startDate = (tracks().sortedResultsUsingProperty("startTimestamp", ascending: true).firstObject() as? Track)?.startDate
+        let sortedTracks = tracks().sortedResultsUsingProperty("startTimestamp", ascending: true)
+        let firstTrack = sortedTracks.firstObject() as? Track
+        let startDate = firstTrack?.startDate
         return startDate
     }
     

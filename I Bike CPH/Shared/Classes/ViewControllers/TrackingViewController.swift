@@ -43,8 +43,6 @@ class TrackingViewController: SMTranslatedViewController {
         return formatter
     }()
     
-    var lastUpdate: NSDate?
-    
     deinit {
         NotificationCenter.unobserve(self)
     }
@@ -55,17 +53,9 @@ class TrackingViewController: SMTranslatedViewController {
         title = "tracking".localized
         
         NotificationCenter.observe(processedBigNoticationKey) { notification in
-            self.setNeedsUpdateUI()
-        }
-        self.updateUI()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        Async.main {
             self.updateUI()
         }
+        self.updateUI()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -80,23 +70,6 @@ class TrackingViewController: SMTranslatedViewController {
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
-    }
-    
-    func setNeedsUpdateUI() {
-        if let lastUpdate = self.lastUpdate {
-            if NSDate().timeIntervalSinceDate(lastUpdate) > 5 {
-                self.lastUpdate = NSDate()
-                self.view.setNeedsLayout()
-                return
-            }
-        } else {
-            self.lastUpdate = NSDate()
-            self.view.setNeedsLayout()
-            return
-        }
-        Async.main(after: 6) {
-            self.setNeedsUpdateUI()
-        }
     }
     
     func updateUI() {
@@ -141,7 +114,7 @@ class TrackingViewController: SMTranslatedViewController {
                                         track.realm.beginWriteTransaction()
                                         track.start = item.street
                                         track.realm.commitWriteTransaction()
-                                        self.setNeedsUpdateUI()
+                                        self.updateUI()
                                     }
                                 }
                             }
@@ -157,7 +130,7 @@ class TrackingViewController: SMTranslatedViewController {
                                         track.realm.beginWriteTransaction()
                                         track.end = item.street
                                         track.realm.commitWriteTransaction()
-                                        self.setNeedsUpdateUI()
+                                        self.updateUI()
                                     }
                                 }
                             }
