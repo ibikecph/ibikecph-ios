@@ -42,12 +42,12 @@ class TrackingPreferencesViewController: UIViewController {
                     settings.tracking.on = on
                 }),
                 // TODO: Add icon for milestones
-                TrackingSwitchItem(title: "tracking_milestone_notifications".localized, iconImageName: "", on: settings.tracking.on, switchAction: { voiceViewController, on in
+                TrackingSwitchItem(title: "tracking_milestone_notifications".localized, iconImageName: "", on: settings.tracking.milestoneNotifications, switchAction: { voiceViewController, on in
                     settings.tracking.milestoneNotifications = on
                 }),
-//                TrackingSwitchItem(title: "tracking_weekly_status_notifications".localized, iconImageName: "", on: settings.tracking.on, switchAction: { voiceViewController, on in
-////                    settings.tracking.weeklyNotifications = on
-//                }),
+                TrackingSwitchItem(title: "tracking_weekly_status_notifications".localized, iconImageName: "", on: settings.tracking.weeklyStatusNotifications, switchAction: { voiceViewController, on in
+                    settings.tracking.weeklyStatusNotifications = on
+                }),
             ]
         ),
     ]
@@ -114,6 +114,6 @@ extension TrackingPreferencesViewController: UITableViewDelegate {
         if let item = sections[indexPath.section].items[indexPath.row] as? TrackingItem {
             item.action(self)
         }
-        tableView .deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
