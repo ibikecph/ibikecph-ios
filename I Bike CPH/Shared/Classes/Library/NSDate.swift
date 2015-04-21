@@ -40,7 +40,9 @@ extension NSDate {
     func relativeDay(#fromDate : NSDate) -> Int {
         let calendar = NSCalendar.currentCalendar()
         let unitFlags: NSCalendarUnit = .DayCalendarUnit
-        let components = calendar.components(unitFlags, fromDate: fromDate, toDate: self, options: .allZeros)
+        let fromDate = fromDate.withComponents(hour: 12, minute: 0, second: 0)!
+        let toDate = self.withComponents(hour: 12, minute: 0, second: 0)!
+        let components = calendar.components(unitFlags, fromDate: fromDate, toDate: toDate, options: .allZeros)
         let days = components.day
         return days
     }
