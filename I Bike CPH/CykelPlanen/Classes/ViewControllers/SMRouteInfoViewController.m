@@ -320,11 +320,11 @@
             [lbl setText:@"shift".localized];
             
             lbl= (UILabel*)[cell viewWithTag:21];
-            lbl.text = [From.localized stringByAppendingString:@":"]];
+            lbl.text = [@"From".localized stringByAppendingString:@":"];
             lbl= (UILabel*)[cell viewWithTag:22];
-            lbl.text = [To.localized stringByAppendingString:@":"]];
+            lbl.text = [@"To".localized stringByAppendingString:@":"];
             lbl= (UILabel*)[cell viewWithTag:23];
-            lbl.text = [Time.localized stringByAppendingString:@":"]];
+            lbl.text = [@"Time".localized stringByAppendingString:@":"];
             break;
         }
         case 1:
