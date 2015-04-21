@@ -36,9 +36,17 @@ let settingsUpdatedNotification = "settingsUpdatedNotification"
         }
         private let milestoneNotificationsKey = "milestoneNotifications"
         var milestoneNotifications: Bool {
-            get { return Defaults[milestoneNotificationsKey].bool ?? false }
+            get { return Defaults[milestoneNotificationsKey].bool ?? true }
             set {
                 Defaults[milestoneNotificationsKey] = newValue
+                NotificationCenter.post(settingsUpdatedNotification, object: self)
+            }
+        }
+        private let weeklyStatusNotificationsKey = "weeklyStatusNotifications"
+        var weeklyStatusNotifications: Bool {
+            get { return Defaults[weeklyStatusNotificationsKey].bool ?? true }
+            set {
+                Defaults[weeklyStatusNotificationsKey] = newValue
                 NotificationCenter.post(settingsUpdatedNotification, object: self)
             }
         }

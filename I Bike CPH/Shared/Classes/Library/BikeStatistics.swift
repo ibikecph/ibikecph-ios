@@ -97,4 +97,33 @@ class BikeStatistics {
         let startDate = (tracks().sortedResultsUsingProperty("startTimestamp", ascending: true).lastObject() as? Track)?.endDate
         return startDate
     }
+    
+    private class func tracksThisWeek() -> RLMResults? {
+        if let
+            endOfToday = NSDate().endOfDay(),
+            nextSunday = NSDate.nextWeekday(1, fromDate: endOfToday),
+            thisMonday = NSCalendar.currentCalendar().dateByAddingUnit(.WeekOfYearCalendarUnit, value: -1, toDate: nextSunday, options: nil)
+        {
+            return tracks().objectsWhere("endTimestamp BETWEEN %@", [thisMonday.timeIntervalSince1970, nextSunday.timeIntervalSince1970])
+        }
+        return nil
+    }
+    
+    /**
+    Duration of bike tracks this week
+    
+    :returns: Total duration in seconds [s]
+    */
+    class func durationThisWeek() -> Double {
+        return tracksThisWeek()?.sumOfProperty("duration")?.doubleValue ?? 0
+    }
+    
+    /**
+    Distance of bike tracks this week
+    
+    :returns: Total distance in meters [m]
+    */
+    class func distanceThisWeek() -> Double {
+        return tracksThisWeek()?.sumOfProperty("length")?.doubleValue ?? 0
+    }
 }

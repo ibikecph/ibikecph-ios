@@ -109,6 +109,7 @@ class StatsNotificationHandler {
     
     deinit {
         RLMRealm.removeNotification(token)
+        NotificationCenter.unobserve(self)
     }
     
     private func setupLocalNotifications() {
@@ -122,6 +123,27 @@ class StatsNotificationHandler {
     }
     
     private func updateToTrackData() {
+        // Weekly
+        if settings.tracking.weeklyStatusNotifications {
+            // Update notification with latest statistics
+            let durationThisWeek = round(BikeStatistics.durationThisWeek()/60)*60 // Round to minutes
+            let calendar = NSCalendar.currentCalendar()
+            let unitFlags: NSCalendarUnit = .HourCalendarUnit | .MinuteCalendarUnit
+            let components = calendar.components(unitFlags, fromDate: NSDate(), toDate: NSDate(timeIntervalSinceNow: durationThisWeek), options: nil)
+            let description = String(format: "weekly_status_description".localized, BikeStatistics.distanceThisWeek()/1000, components.hour, components.minute)
+            if let
+                correctTimeToday = NSDate().withComponents(hour: 18, minute: 0, second: 0),
+                nextSundayAt18 = NSDate.nextWeekday(1, fromDate: correctTimeToday)
+            {
+                // Cancel previously set notification
+                if let existingNotification = Notifications.localNotificationScheduledAtDate(nextSundayAt18) {
+                    Notifications.cancelScheduledLocalNotification(existingNotification)
+                }
+                //  Schedule new notification
+                Notifications.scheduleLocalNotification(description, fireDate: nextSundayAt18)
+            }
+        }
+        
         // Distance
         let currentTotalDistance = Int(floor(BikeStatistics.totalDistance()))
         switch distanceMilestone.shouldPresent(forValue: currentTotalDistance) {
@@ -129,6 +151,7 @@ class StatsNotificationHandler {
                 addNotificationToQueue(description, milestone: milestone)
             case .False: break // Do nothing
         }
+        
         // Day streak
         let currentDaystreak = BikeStatistics.currentDayStreak()
         switch daystreakMilestone.shouldPresent(forValue: currentDaystreak) {
@@ -171,7 +194,7 @@ class StatsNotificationHandler {
     
     private func tryPresentNotification(description: String) -> Bool {
         let fireDate = NSDate().dateByAddingTimeInterval(1)
-        Notifications.localNotification(description, fireDate: fireDate)
+        Notifications.scheduleLocalNotification(description, fireDate: fireDate)
         return true
     }
 }

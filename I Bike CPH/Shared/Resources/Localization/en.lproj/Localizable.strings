@@ -96,6 +96,7 @@
 "direction_number_10" = "10th";
 "direction_number_11" = "11th";
 
+"new_route" = "Route";
 "Stop" = "Stop";
 
 "Error" = "Error";
@@ -308,6 +309,8 @@
 "milestone_daystreak_5_description" = "Full speed, you've cycled %d days in a row!";
 "milestone_daystreak_6_description" = "You have cycled %d days in a row, that's impressive!";
 "milestone_daystreak_7_description" = "Wow, on you bike every day for a month, you are a star!";
+
+"weekly_status_description" = "This week you have cycled %.1f km in %02d:%02d hours.";
 
 "to" = "to";
 "Duration" = "Dur.";

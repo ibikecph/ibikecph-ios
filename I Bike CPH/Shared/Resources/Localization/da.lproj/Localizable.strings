@@ -1,7 +1,3 @@
-"language_dan" = "Dansk";
-"language_eng" = "English";
-"choose_language" = "Change language";
-
 "current_position" = "Nuværende position";
 "today" = "I dag";
 "tomorrow" = "I morgen";
@@ -100,6 +96,7 @@
 "direction_number_10" = "10.";
 "direction_number_11" = "11.";
 
+"new_route" = "Ny rute";
 "Stop" = "Stop";
 
 "Error" = "Fejl";
@@ -316,6 +313,8 @@
 "milestone_daystreak_5_description" = "Fuld pedal, du har cyklet %d dages i træk!";
 "milestone_daystreak_6_description" = "Du har cyklet %d dage i træk, det er imponerende!";
 "milestone_daystreak_7_description" = "Wow, på cyklen hver dag i en måned, du er en stjerne!";
+
+"weekly_status_description" = "Denne uge har du har cyklet %.1f km på %02d:%02d timer.";
 
 "to" = "til";
 "Duration" = "Tid";
