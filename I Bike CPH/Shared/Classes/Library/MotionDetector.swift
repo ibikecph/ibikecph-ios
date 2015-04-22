@@ -27,7 +27,7 @@ class MotionDetector {
         }
         let manager = CMMotionActivityManager()
         manager.startActivityUpdatesToQueue(NSOperationQueue.mainQueue()) { activity in
-            println("stationary: \(activity.stationary), bike: \(activity.cycling),  walk: \(activity.walking), run: \(activity.running), automotive: \(activity.automotive), unkown: \(activity.unknown), confidence: \(activity.confidence.rawValue), start: \(activity.startDate), ")
+            println("stationary: \(activity.stationary), bike: \(activity.cycling),  walk: \(activity.walking), run: \(activity.running), automotive: \(activity.automotive), unknown: \(activity.unknown), confidence: \(activity.confidence.rawValue), start: \(activity.startDate), ")
             handler(activity: activity)
         }
         self.motionActivityManager = manager
