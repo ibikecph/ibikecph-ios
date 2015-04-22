@@ -1,0 +1,20 @@
+//
+//  SMNetworkErrorView.h
+//  I Bike CPH
+//
+//  Created by Ivan Pavlovic on 06/06/2013.
+//  Copyright (c) 2013 City of Copenhagen. All rights reserved.
+//
+
+/**
+ * View for displaying a network error. Has convenience function to load from SMNetworkErrorView.xib
+ */
+@interface SMNetworkErrorView : UIView
+
+@property (weak, nonatomic) IBOutlet UILabel *warningText;
+
++ (CGSize)getSize;
++ (SMNetworkErrorView*) getFromNib;
+
+
+@end

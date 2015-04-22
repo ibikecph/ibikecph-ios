@@ -1,0 +1,35 @@
+//
+// Prefix header for all source files of the 'I Bike CPH' target in the 'I Bike CPH' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import "SharedImport.h"
+#endif
+
+#define BUILD_VERSION [NSString stringWithUTF8String:__DATE__" "__TIME__"\x0"]
+
+#define API_DEFAULT_ACCEPT @{@"key": @"Accept", @"value" : @"application/vnd.ibikecph.v1"}
+#define API_USER_AGENT @{@"key": @"User-Agent", @"value" : USER_AGENT}
+#define API_DEFAULT_HEADERS @[API_DEFAULT_ACCEPT, API_USER_AGENT, @{@"key": @"Content-Type", @"value" : @"application/json"}]
+
+#define API_LOCALE @{@"service" : @"settings", @"transferMethod" : @"GET", @"headers" : API_DEFAULT_HEADERS}
+
+#define INIT_COORDINATE CLLocationCoordinate2DMake(55.688, 12.559)
+#define INIT_ZOOM_LEVEL 11.28
+
+/*
+ * System Versioning Preprocessor Macros
+ */
+
+#define SYSTEM_VERSION_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+

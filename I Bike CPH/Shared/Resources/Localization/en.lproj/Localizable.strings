@@ -1,0 +1,388 @@
+"current_position" = "Current position";
+"today" = "Today";
+"tomorrow" = "Tomorrow";
+"account" = "Account";
+"settings" = "Settings";
+"contacts" = "Contacts";
+"favorites" = "Favorites";
+"map_overlays" = "Map Overlays";
+"voice" = "Voice";
+"route_type" = "Route type";
+"profile" = "My Profile";
+
+"direction_0" = "";
+"direction_1" = "Continue on";
+"direction_2" = "Turn slightly right to";
+"direction_3" = "Turn right to";
+"direction_4" = "Turn sharp right to";
+"direction_5" = "U-Turn on";
+"direction_6" = "Turn sharp left to";
+"direction_7" = "Turn left to";
+"direction_8" = "Turn slightly left to";
+"direction_9" = "Reach via point";
+"direction_10" = "Head on";
+"direction_11" = "Enter roundabout and take %@ exit to";
+"direction_12" = "Leave roundabout to";
+"direction_13" = "Stay on roundabout to";
+"direction_14" = "Start on";
+"direction_15" = "You have reached your destination";
+"direction_16" = "Start pushing your bike on";
+"direction_17" = "Stop pushing your bike";
+"direction_100" = "Reaching destination";
+
+"first_direction_0" = "";
+"first_direction_1" = "Head %@ and continue to";
+"first_direction_2" = "Head %@ and turn slightly right to";
+"first_direction_3" = "Head %@ and turn right to";
+"first_direction_4" = "Head %@ and turn sharp right to";
+"first_direction_5" = "Head %@ and make a U-Turn on";
+"first_direction_6" = "Head %@ and turn sharp left to";
+"first_direction_7" = "Head %@ and turn left to";
+"first_direction_8" = "Head %@ and turn slightly left to";
+"first_direction_9" = "Head %@ and reach via point";
+"first_direction_10" = "Head %@ to";
+"first_direction_11" = "Head %@ and enter roundabout and take %@ exit to";
+"first_direction_12" = "Head %@ and leave roundabout to";
+"first_direction_13" = "Head %@ and stay on roundabout to";
+"first_direction_14" = "Head %@ and start on";
+"first_direction_15" = "You have reached your destination";
+"first_direction_16" = "Head %@ and start pushing your bike on";
+"first_direction_17" = "Head %@ and stop pushing your bike";
+"first_direction_100" = "Reaching destination";
+
+"direction_N" = "north";
+"direction_NE" = "northeast";
+"direction_E" = "east";
+"direction_SE" = "southeast";
+"direction_S" = "south";
+"direction_SW" = "southwest";
+"direction_W" = "west";
+"direction_NW" = "northwest";
+
+"{highway:motorway}" = "motorway";
+"{highway:motorway_link}" = "motorway";
+"{highway:trunk}" = "trunk road";
+"{highway:trunk_link}" = "trunk road";
+"{highway:primary}" = "primary road";
+"{highway:primary_link}" = "primary road";
+"{highway:secondary}" = "road";
+"{highway:secondary_link}" = "road";
+"{highway:tertiary}" = "street";
+"{highway:tertiary_link}" = "street";
+"{highway:living_street}" = "street";
+"{highway:pedestrian}" = "pedestrian street";
+"{highway:residential}" = "residential street";
+"{highway:unclassified}" = "street";
+"{highway:service}" = "service street";
+"{highway:track}" = "track";
+"{highway:road}" = "road";
+"{highway:path}" = "path";
+"{highway:footway}" = "footway";
+"{highway:cycleway}" = "cycleway";
+"{highway:bridleway}" = "bridleway";
+"{highway:steps}" = "steps";
+"{roundabout:yes}" = "roundabout";
+"{area:yes}" = "area";
+
+"direction_number_1" = "1st";
+"direction_number_2" = "2nd";
+"direction_number_3" = "3rd";
+"direction_number_4" = "4th";
+"direction_number_5" = "5th";
+"direction_number_6" = "6th";
+"direction_number_7" = "7th";
+"direction_number_8" = "8th";
+"direction_number_9" = "9th";
+"direction_number_10" = "10th";
+"direction_number_11" = "11th";
+
+"new_route" = "Route";
+"Stop" = "Stop";
+
+"Error" = "Error";
+"OK" = "OK";
+"error_no_gps_location" = "No GPS location!";
+"error_address_not_found" = "Location of address not found!";
+"error_from_address_not_found" = "Location of START address not found!";
+"error_to_address_not_found" = "Location of END address not found!";
+"error_invalid_email" = "Invalid e-mail!";
+"error_invalid_to_address" = "The destination address is invalid!";
+
+"route_stop_title" = "Want to stop the routing?";
+"route_stop_text" = "Stop the routing by tapping the 'Stop'. You can report a problem with the route to us by tapping on 'Report'.";
+"report_error" = "Report";
+"report_wrong_address" = "Address is wrong";
+"report_road_closed" = "Road closed";
+"report_one_way" = "Street is one way";
+"report_illegal_turn" = "Route suggests illegal turn";
+"report_wrong_instruction" = "Wrong instruction";
+"report_other" = "Other";
+
+"report_subject" = "Error report";
+"report_from" = "Start:";
+"report_to" = "Finish:";
+"report_tbt_instructions" = "Turn by turn instruction list:";
+"report_reason" = "Reason for report:";
+"report_instruction" = "Instruction in question:";
+"report_contact_me" = "Please contact me when the issue is resolved";
+"report_sent" = "Thank you for reporting this error!";
+
+"Done" = "Done";
+"Cancel" = "Cancel";
+
+"error_route_not_found" = "Route not found!";
+
+"calculating" = "Calculating...";
+"recalculating" = "Recalculating...";
+
+"marker_start" = "Start";
+
+// these are in the storyboard
+
+"where_are_we_going" = "Where should we go?";
+"ibikecph_route_planner" = "I Bike CPH";
+"calculating_new_route" = "Calculating new route...";
+"Distance" = "Distance";
+"Time" = "Time";
+"you_have_arrived_to" = "You have arrived to";
+"to_homepage" = "To homepage";
+"report_a_problem" = "Report a problem";
+"From" = "From";
+"To" = "To";
+"hello_cyclist" = "Hello cyclist";
+"thanks_for_testing_text" = "Thank you for helping us test.";
+"start_text" = "Cykelruteplanlæggeren.\nWe are glad you are helping us test the app, and in order to get in touch with you, we would like to ask for your email address:";
+"e_mail_address" = "E-mail address";
+"start_app" = "Start";
+"notify_me_when_fixed" = "Notify me when fixed";
+"report" = "Report";
+"report_text" = "By pressing the \"Report\" you will send route information to us. When the fault has been corrected you will be notified by e-mail.";
+"choose_a_route_step" = "Choose a route step";
+"cancel_picker" = "Cancel";
+"done_picker" = "Done";
+
+"recent_results" = "Recent";
+"show_more" = "Show more";
+"show_less" = "Show less";
+
+"good_ride" = "Good ride!";
+"hope_you_had_a_good_trip" = "Hope you had a good trip.";
+"stop_ride" = "Stop ride";
+"ride_report_a_problem" = "Report a problem";
+
+"login_with_fb" = "Log in with Facebook";
+"register_with_mail" = "Register";
+"skip" = "Skip";
+"create_account" = "Create an account";
+"create_account_text" = "Save favorites and searches across mobile and ibikecph.dk";
+"register_save" = "Register";
+"create_account" = "Create account";
+"register_name_placeholder" = "Name";
+"register_email_placeholder" = "E-mail";
+"register_password_placeholder" = "Password";
+"register_password_repeat_placeholder" = "Repeat password";
+"choose_image_source" = "Select image source";
+"image_source_camera" = "Camera";
+"image_source_library" = "Library";
+"login_new_account" = "Create account";
+"save_favorites" = "Save favorites";
+"favorites_title" = "Add favorites";
+"favorites_text" = "You can save your favorite destinations in the app so it's easy to find your way home, to work or school.";
+"favorites_home_placeholder" = "Home address ...";
+"favorites_work_placeholder" = "Work address ...";
+"log_in" = "Log In";
+
+"add_favorite" = "Add a favorite";
+"cell_add_favorite" = "Add new favorite";
+"edit_favorite" = "Edit";
+"cell_empty_favorite_text" = "You have no favorites, but you can easily add one now.";
+"save_favorite" = "Save";
+"delete_favorite" = "Delete";
+"Home" = "Home";
+"Work" = "Work";
+"School" = "School";
+"Favorite" = "Favorite";
+"back" = "Back";
+"done" = "Done";
+"add_favorite_name_placeholder" = "Enter name ...";
+"add_favorite_address_placeholder" = "Find address ...";
+"account" = "My profile";
+
+"report_send" = "Send report";
+"describe_problem" = "Describe a problem";
+"logout" = "Log out";
+
+"thank_you_for_feedback" = "Thank you for your feedback";
+"feedback_text" = "Your feedback has been sent. Thanks for your help!\n\nYou can participate in follow-up and discussion of new features on www.ibikecph.dk/feedback.";
+"report_sent" = "Feedback sent";
+"report_enter_email_address_placeholder" = "Enter you email address";
+"home_find_route" = "Find route";
+
+"delete_my_account" = "Delete account";
+"you_are_logged_in_as" = "You are logged in as";
+"edit_my_account" = "Edit account";
+"save_changes" = "Save changes";
+"account_name_placeholder" = "Name";
+"account_email_placeholder" = "Email";
+"account_password_placeholder" = "New password";
+"account_repeat_placeholder" = "Repeat new password";
+"accept_user_terms" = "I accept the Terms of Service";
+"accept_user_terms_link_highlight" = "Terms of Service";
+
+"login_error_fields" = "You must enter both your e-mail and your password!";
+"register_error_fields" = "You must fill out all the fields!";
+"register_error_passwords" = "Your passwords don't match!";
+"register_error_user_terms" = "You must accept Terms of Service!";
+
+"error_not_logged_in" = "You have to be logged in first";
+"report_error_problem_not_selected" = "You have to select a type of problem.";
+"report_error_step_not_selected" = "You have to select a step where the problem occured";
+
+"error_duplicate_favorite_name" = "You already have a favorite with this name. Please rename your favorite and save again.";
+"start_route" = "Start";
+
+"delete_account_title" = "Delete account?";
+"delete_account_text" = "All your favorites and history will be deleted as well";
+"Delete" = "Delete";
+"account_deleted" = "Your account has been deleted";
+"close" = "Close";
+
+"favorites_login" = "You have no favorites, but you can easily add one if you login.";
+"fb_login_error" = "Error while using FB to log in.";
+"account_is_linked_to_facebook" = "Your account is linked to the Facebook";
+"or" = "or";
+
+"current_position_cant_be_destination" = "You can't use current position as destination!";
+
+"register_error_passwords_short" = "Your passwords is too short";
+"register_error_invalid_email" = "Email address is not valid";
+
+"register_successful" = "Account created. A message with a confirmation link has been sent to your email address. Please open the link to activate your account.";
+
+"account_not_saved" = "You have unsaved changes.";
+"account_cancel" = "Cancel";
+"account_dont_save" = "Don't save";
+
+"you_have_reached_your_destination" = "You have reached your destination";
+
+"network_error_text" = "Network error occured";
+
+"vehicle_2" = "Walk";
+"vehicle_3" = "Ferry";
+"vehicle_4" = "Train";
+
+"voice_option" = "Voice guide";
+"voice_option_detail" = "Voice guide gives you the possibility to get your route read out loud in order for you to find the way. Are you using headphones? Please be aware of the traffic around you and obey the traffic rules.";
+
+"tracking" = "Tracking";
+"enable_tracking" = "Enable tracking";
+"enable_tracking_description" = "Start collecting cycling data";
+"enable_tracking_explanation" = "Once you have enabled the collection of cycle data, data about your cycling behavior are stored locally on your phone and on a server. Only you will have access to your data, and all data will be deleted if you delete your profile.";
+"no_tracking_description" = "Your phone unfortunately dosen't support the collection of cycling data.";
+"no_tracking_explanation" = "Currently tracking is only supported by Apple's iPhone 5s and newer, as well as all Android phones.";
+"stats_description" = "Your cycle activity";
+"Since" = "Since";
+"tracking_option" = "Collect cycling data";
+"tracking_milestone_notifications" = "Notification about milestones";
+"tracking_weekly_status_notifications" = "Weekly status";
+
+"unit_km" = "km";
+"unit_km_pr_h" = "km/h";
+"unit_km_pr_trip" = "km/trip";
+"unit_h_long" = "hours";
+"unit_h_short" = "h";
+"unit_min" = "min";
+"dum_km" = "55.3";
+"dum_kmh" = "23.3";
+"dum_kmtrip" = "12.4";
+"dum_h" = "14.3";
+
+"milestone_distance_1_description" = "Alright! You have cycled your first %d km.";
+"milestone_distance_2_description" = "%d km, it's starting to look good!";
+"milestone_distance_3_description" = "Look at you! %d km cycled, keep up the good style!";
+"milestone_distance_4_description" = "Wow, %d km cycled, you are breaking away from the crowd!";
+"milestone_distance_5_description" = "Yes, %d km cycled!";
+"milestone_distance_6_description" = "%d km on the bike, you're on your way to the stars!";
+"milestone_distance_7_description" = "Give yourself a big cheer, you have cycled %d km! Congratulations!";
+
+"milestone_daystreak_1_description" = "You have cycled %d days in a row, you are on a streak!";
+"milestone_daystreak_2_description" = "%d days on the bike in a row, that's cool.";
+"milestone_daystreak_3_description" = "Strike! %d days in a row, way to go!";
+"milestone_daystreak_4_description" = "There is just no stopping to you, %d days cyling in a row!";
+"milestone_daystreak_5_description" = "Full speed, you've cycled %d days in a row!";
+"milestone_daystreak_6_description" = "You have cycled %d days in a row, that's impressive!";
+"milestone_daystreak_7_description" = "Wow, on you bike every day for a month, you are a star!";
+
+"weekly_status_description" = "This week you have cycled %.1f km in %02d:%02d hours.";
+
+"to" = "to";
+"Duration" = "Dur.";
+"Distance" = "Dist.";
+"Average" = "Avg.";
+"Max" = "Top";
+
+"yesterday" = "yesterday";
+"today" = "today";
+"tomorrow" = "tomorrow";
+
+"bike_type_1"= "Get there fast";
+"bike_type_2"= "Fit for cargobikes";
+"bike_type_3"= "Enjoy the greenery";
+
+/* I Bike CPH */
+
+"about_app_ibc" = "About I Bike CPH";
+"about_text_ibc" = "The I Bike CPH app is the City of Copenhagen’s mobile route planner for everyone cycling in Copenhagen. The app is part of Copenhagen's goal of becoming the world's best bicycle city. The app knows the nice shortcuts in Copenhagen, which parks you’re allowed to bicycle through and where you’re allowed to ride against the one way direction for cars.\n\nThe app uses map data from the crowd-sourced OpenStreetMap (OSM), which is continuously updated, for example when a new bicycle bridge opens. The City of Copenhagen has contributed to OpenStreetMap with quality assurance of the bicycle data for the Copenhagen area.\n\nThe map is specifically adapted to cyclists. Motorways are toned down, whereas cobblestones are highlighted so you can avoid bumpy rides. The map also includes things like bicycle barriers, so you know where you cannot pass with your cargo bike.\n\nNote: The directions offered by the I Bike CPH app are only suggestions - remember to adhere to traffic laws and use a phone holder if you use the app while riding.\n\nGetting Started:\nYou can choose where to go in two ways:\n\nLocate on map: Find the place on the map and hold down your finger until a pin is placed on the map. The nearest address will be displayed at the bottom. Select 'Start' to calculate the route from your current location to the destination.\n\nSearch by address: Click on the magnifying glass in the upper right corner. Enter the destination address and click 'Go'. Then click 'Start' to calculate the route.\n\nWhen the route is displayed, click 'Start' to activate GPS navigation. While your ride, turn instructions will be shown at the bottom. Estimated arrival time is shown in the upper right corner, next to the small flag.\n\nRoutes for cargo bikes:\nWhen you have calculated a route or GPS navigation is active, you can click the small black bar with three dots at the bottom left to select the type of route. When cargo bike is selected, the route will avoid steps, barriers and cobblestones, and the estimated travel time will be adjusted to cargo bikes.\n\nShow location:\nPress the button with an arrow in the lower-right corner to see where you are on the map. The map will follow your location, until you manually pan the map. The function is enabled when the arrow is blue.\n\nRead more:\nThe app includes additional features, like the ability to save favorite locations. Read more about the map and features on www.ibikecph.dk/about.\n\nHave a nice ride and thank you for cycling!";
+
+/* CykelPlanen */
+
+"about_app_cp" = "About CykelPlanen";
+"about_text_cp" = "The CykelPlanen app is the Capital Region of Denmark mobile route planner for everyone cycling in the region.\nThe app knows the nice shortcuts in the region where you’re allowed to bicycle. The app should help to get more commuters in the region to choose the bike instead of the car.\nThe map is specifically adapted to cyclists and the app calculates the fastest route. Motorways are toned down, whereas cobblestones are highlighted so you can avoid bumpy rides. The map shows the Cycle Super Highways, the service stations and train stations in the region. The app also has a function “Less Biking” which guides you to the nearest train station if your bike breaks down or the route is too long.\nThe app uses map data from the crowd-sourced OpenStreetMap (OSM), which is continuously updated, for example when a new bike lane or new bicycle bridge opens and the users in region can update the map if something is missing.\n\nNote: It’s free to bring the bicycle in the S-train and on the local trains (max 6) but you have to buy a bicycle ticket if you want to bring your bicycle in the metro. You are not allowed to bring your bike in the Metro during rush hour (between 07:00 and 09.00 and between 15.30 and 17:30) or to/from Nørreport station between 07:00 and 08:30 and between 15:30-17:00 during weekdays.\n\nGetting Started:\nYou can choose where to go in two ways:\nLocate on map: Find the place on the map and hold down your finger until a pin is placed on the map. The nearest address will be displayed at the bottom. Select ‘Start’ to calculate the route from your current location to the destination.\nSearch by address: Click on the magnifying glass in the upper right corner. Enter the destination address and click ‘Go’. Then click ‘Start’ to calculate the route.\nWhen the route is displayed, click ‘Start’ to activate GPS navigation. While your ride, turn instructions will be shown at the bottom. Estimated arrival time is shown in the upper right corner, next to the small flag.\n\nShow location:\nPress the button with an arrow in the lower-right corner to see where you are on the map. The map will follow your location, until you manually pan the map. The function is enabled when the arrow is blue.\n\nRead more:\nThe app includes additional features, like the ability to save favorite locations if you are logged in. Read more about the map and features on www.supercykelstier.dk\nHave a nice ride and thank you for cycling!";
+
+"monday" = "Monday";
+"tuesday" = "Tuesday";
+"wednesday" = "Wednesday";
+"thursday" = "Thursday";
+"friday" = "Friday";
+
+"search" = "Search";
+"search_to_placeholder" = "Enter road, street, postal code";
+
+"loading_stations_data" = "Loading station data";
+
+// markers
+"cycle_super_highways" = "Cycle super highways";
+"service_stations" = "Service stations";
+"s_train_stations" = "S-train stations";
+"metro_stations" = "Metro stations";
+"local_trains_stations" = "Local trains stations";
+
+// these are in the storyboard
+"register_with_mail" = "Register with email";
+
+"reminder_title" = "Reminder";
+"reminder_text" = "Get help to start biking. Please select the day(s) you want to bike and we will help you get started.";
+"reminder_save_btn" = "Save reminder";
+"reminder_alert_text" = "Remember to cycle in the morning";
+
+// Break route
+"break_route_title" = "Less biking";
+"btn_break_route" = "Less biking";
+"break_route_text_top" = "Did you know that you can easily do less biking by replacing some of the route with public transportation.";
+"break_route_text_bottom" = "When you choose \"Less biking\", we will provide a new and alternative route to the nearest train station that will bring you to your final destination.";
+"break_route_exit" = "Got it - let's go biking";
+"break_route_header_title" = "Your route is now";
+"break_route_no_route" = "No Route";
+"break_route_cant_break" = "Route cannot be broken.";
+"route_plan_button" = "Transportation info";
+"route_info"= "Route Information";
+
+"departure" = "Dep.";
+"departures_at" = "Dep. at";
+"arrival" = "Arr.";
+
+"thanks_for_testing_text" = "Thank you for helping testing.";
+"start_text" = "Cykelruteplanlæggeren.\nWe are happy that you will help us test the app. To get in contact with you, we will need your e-mail please:";
+"report_text" = "By tapping \"Report\" the information of the route will be sent to us. \n\nIf you choose to get notified once the error is correct, your e-mail will be included.";
+
+"intro_subtitle" = "Quickly from A to B";

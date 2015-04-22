@@ -1,0 +1,27 @@
+{
+"routes": [
+		{
+		"stations":["Vanløse", "Flintholm", "Lindevang", "Fasanvej", "Frederiksberg", "Forum", "Nørreport", "Kongens Nytorv", "Christianshavn"],
+		"rushhour":2,
+		"normal-and-weekends":3,
+		"weekday-at-night":20,
+		"weekend-at-night":7.5
+	},
+		{
+		"stations":["Islands Brygge", "DR Byen", "Sundby", "Bella Center", "Ørestad", "Vestamager"],
+		"rushhour":4,
+		"normal-and-weekends":6,
+		"weekday-at-night":30,
+		"weekend-at-night":15
+	},
+		{
+		"stations":["Amagerbro", "Lergravsparken", "Øresund", "Amager Strand", "Femoren", "Kastrup", "Lufthavnen"],
+		"rushhour":4,
+		"normal-and-weekends":6,
+		"weekday-at-night":20,
+		"weekend-at-night":15
+	}
+	]
+}
+
+ 

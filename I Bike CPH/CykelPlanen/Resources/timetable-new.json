@@ -1,0 +1,1899 @@
+{
+  "timetable" : [
+    {
+      "line" : "A",
+      "first-station" : "Farum",
+      "last-station" : "Hundige,Solrød Strand",
+
+      "weekdays" : {
+
+        "departure" : [
+          { "start":"Farum", "stop":"København H", "night":"4.56 0.16", "day":"6.06 18.26" },
+          { "start":"København H", "stop":"Hundige", "night":"5.14 0.54", "day":"6.24 18.44" },
+          { "start":"København H", "stop":"Solrød Strand", "night":"5.54 17.54", "day":"" }
+        ],
+
+        "arrival" : [
+          { "start":"Solrød Strand", "stop":"København H", "night":"6.38 18.38", "day":"" },
+          { "start":"Hundige", "stop":"København H", "night":"4.47 0.47", "day":"5.57 18.17" },
+          { "start":"København H", "stop":"Farum", "night":"5.13 0.33", "day":" 6.23 18.23" }
+        ],
+
+        "data" : [
+          {
+            "departure":"16 26 36 46 56 06",
+            "station":"Farum",
+            "arrival":"10 20 30 40 50 00"
+          },
+          {
+            "departure":"20 30 40 50 00 10",
+            "station":"Værløse",
+            "arrival":"06 16 26 36 46 56"
+          },
+          {
+            "departure":"23 33 43 53 03 13",
+            "station":"Hareskov",
+            "arrival":"03 13 23 33 43 53"
+          },
+          {
+            "departure":"25 35 45 55 05 15",
+            "station":"Skovbrynet",
+            "arrival":"00 10 20 30 40 50"
+          },
+          {
+            "departure":"27 37 47 57 07 17",
+            "station":"Bagsværd",
+            "arrival":"58 08 18 28 38 48"
+          },
+          {
+            "departure":"29 39 49 59 09 19",
+            "station":"Stengården",
+            "arrival":"57 07 17 27 37 47"
+          },
+          {
+            "departure":"31 41 51 01 11 21",
+            "station":"Buddinge",
+            "arrival":"55 05 15 25 35 45"
+          },
+          {
+            "departure":"32 42 52 02 12 22",
+            "station":"Kildebakke",
+            "arrival":"53 03 13 23 33 43"
+          },
+          {
+            "departure":"34 44 54 04 14 24",
+            "station":"Vangede",
+            "arrival":"51 01 11 21 31 41"
+          },
+          {
+            "departure":"36 46 56 06 16 26",
+            "station":"Dyssegård",
+            "arrival":"49 59 09 19 29 39"
+          },
+          {
+            "departure":"38 48 58 08 18 28",
+            "station":"Emdrup",
+            "arrival":"47 57 07 17 27 37"
+          },
+          {
+            "departure":"40 50 00 10 20 30",
+            "station":"Ryparken",
+            "arrival":"45 55 05 15 25 35"
+          },
+          {
+            "departure":"42 52 02 12 22 32",
+            "station":"Svanemøllen",
+            "arrival":"43 53 03 13 23 33"
+          },
+          {
+            "departure":"44 54 04 14 24 34",
+            "station":"Nordhavn",
+            "arrival":"41 51 01 11 21 31"
+          },
+          {
+            "departure":"47 57 07 17 27 37",
+            "station":"Østerport",
+            "arrival":"39 49 59 09 19 29"
+          },
+          {
+            "departure":"49 59 09 19 29 39",
+            "station":"Nørreport",
+            "arrival":"36 46 56 06 16 26"
+          },
+          {
+            "departure":"51 01 11 21 31 41",
+            "station":"Vesterport",
+            "arrival":"34 44 54 04 14 24"
+          },
+          {
+            "departure":"54 04 14 24 34 44",
+            "station":"København H",
+            "arrival":"33 43 53 03 13 23"
+          },
+          {
+            "departure":"55 05 15 25 35 45",
+            "station":"Dybbølsbro",
+            "arrival":"29 39 49 59 09 19"
+          },
+          {
+            "departure":"58 08 18 28 38 48",
+            "station":"Sydhavn",
+            "arrival":"27 37 47 57 07 17"
+          },
+          {
+            "departure":"00 10 20 30 40 50",
+            "station":"Sjælør",
+            "arrival":"25 35 45 55 05 15"
+          },
+          {
+            "departure":"01 11 21 31 41 51",
+            "station":"Ny Ellebjerg",
+            "arrival":"23 33 43 53 03 13"
+          },
+          {
+            "departure":"04 14 24 34 44 54",
+            "station":"Åmarken",
+            "arrival":"21 31 41 51 01 11"
+          },
+          {
+            "departure":"06 16 26 36 46 56",
+            "station":"Friheden",
+            "arrival":"19 29 39 49 59 09"
+          },
+          {
+            "departure":"08 18 28 38 48 58",
+            "station":"Avedøre",
+            "arrival":"17 27 37 47 57 07"
+          },
+          {
+            "departure":"10 20 30 40 50 00",
+            "station":"Brøndby Strand",
+            "arrival":"15 25 35 45 55 05"
+          },
+          {
+            "departure":"13 23 33 43 53 03",
+            "station":"Vallensbæk",
+            "arrival":"12 22 32 42 52 02"
+          },
+          {
+            "departure":"15 25 35 45 55 05",
+            "station":"Ishøj",
+            "arrival":"10 20 30 40 50 00"
+          },
+          {
+            "departure":"18 28 38 48 58 08",
+            "station":"Hundige",
+            "arrival":"07 17 27 37 47 57"
+          },
+          {
+            "departure":"20 -1 40 -1 00 -1",
+            "station":"Greve",
+            "arrival":"04 -1 24 -1 44 -1"
+          },
+          {
+            "departure":"23 -1 43 -1 03 -1",
+            "station":"Karlslunde",
+            "arrival":"02 -1 22 -1 42 -1"
+          },
+          {
+            "departure":"27 -1 47 -1 07 -1",
+            "station":"Solrød Strand",
+            "arrival":"58 -1 18 -1 38 -1"
+          }
+        ]
+      },
+
+      "weekend" : {
+
+        "departure" : [
+          { "start":"Farum", "stop":"København H", "night":"5.56 0.16", "day":"9.26 18.46" },
+          { "start":"København H", "stop":"Køge", "night":"6.14 0.54", "day":"9.44 18.44" }
+        ],
+
+        "arrival" : [
+          { "start":"Køge", "stop":"København H", "night":"5.49 0.29", "day":"9.19 18.19" },
+          { "start":"København H", "stop":"Farum", "night":"6.33 0.33", "day":"9.43 19.03" }
+        ],
+
+        "data" : [
+          {
+            "departure":"16 26 36 46 56 06",
+            "station":"Farum",
+            "arrival":"10 20 30 40 50 00"
+          },
+          {
+            "departure":"20 30 40 50 00 10",
+            "station":"Værløse",
+            "arrival":"06 16 26 36 46 56"
+          },
+          {
+            "departure":"23 33 43 53 03 13",
+            "station":"Hareskov",
+            "arrival":"03 13 23 33 43 53"
+          },
+          {
+            "departure":"25 35 45 55 05 15",
+            "station":"Skovbrynet",
+            "arrival":"00 10 20 30 40 50"
+          },
+          {
+            "departure":"27 37 47 57 07 17",
+            "station":"Bagsværd",
+            "arrival":"58 08 18 28 38 48"
+          },
+          {
+            "departure":"29 39 49 59 09 19",
+            "station":"Stengården",
+            "arrival":"57 07 17 27 37 47"
+          },
+          {
+            "departure":"31 41 51 01 11 21",
+            "station":"Buddinge",
+            "arrival":"55 05 15 25 35 45"
+          },
+          {
+            "departure":"32 42 52 02 12 22",
+            "station":"Kildebakke",
+            "arrival":"53 03 13 23 33 43"
+          },
+          {
+            "departure":"34 44 54 04 14 24",
+            "station":"Vangede",
+            "arrival":"51 01 11 21 31 41"
+          },
+          {
+            "departure":"36 46 56 06 16 26",
+            "station":"Dyssegård",
+            "arrival":"49 59 09 19 29 39"
+          },
+          {
+            "departure":"38 48 58 08 18 28",
+            "station":"Emdrup",
+            "arrival":"47 57 07 17 27 37"
+          },
+          {
+            "departure":"40 50 00 10 20 30",
+            "station":"Ryparken",
+            "arrival":"45 55 05 15 25 35"
+          },
+          {
+            "departure":"42 52 02 12 22 32",
+            "station":"Svanemøllen",
+            "arrival":"43 53 03 13 23 33"
+          },
+          {
+            "departure":"44 54 04 14 24 34",
+            "station":"Nordhavn",
+            "arrival":"41 51 01 11 21 31"
+          },
+          {
+            "departure":"47 57 07 17 27 37",
+            "station":"Østerport",
+            "arrival":"39 49 59 09 19 29"
+          },
+          {
+            "departure":"49 59 09 19 29 39",
+            "station":"Nørreport",
+            "arrival":"36 46 56 06 16 26"
+          },
+          {
+            "departure":"51 01 11 21 31 41",
+            "station":"Vesterport",
+            "arrival":"34 44 54 04 14 24"
+          },
+          {
+            "departure":"54 04 14 24 34 44",
+            "station":"København H",
+            "arrival":"33 43 53 03 13 23"
+          },
+          {
+            "departure":"55 05 15 25 35 45",
+            "station":"Dybbølsbro",
+            "arrival":"29 39 49 59 09 19"
+          },
+          {
+            "departure":"58 08 18 28 38 48",
+            "station":"Sydhavn",
+            "arrival":"27 37 47 57 07 17"
+          },
+          {
+            "departure":"00 10 20 30 40 50",
+            "station":"Sjælør",
+            "arrival":"25 35 45 55 05 15"
+          },
+          {
+            "departure":"01 11 21 31 41 51",
+            "station":"Ny Ellebjerg",
+            "arrival":"23 33 43 53 03 13"
+          },
+          {
+            "departure":"04 14 24 34 44 54",
+            "station":"Åmarken",
+            "arrival":"21 31 41 51 01 11"
+          },
+          {
+            "departure":"06 16 26 36 46 56",
+            "station":"Friheden",
+            "arrival":"19 29 39 49 59 09"
+          },
+          {
+            "departure":"08 18 28 38 48 58",
+            "station":"Avedøre",
+            "arrival":"17 27 37 47 57 07"
+          },
+          {
+            "departure":"10 20 30 40 50 00",
+            "station":"Brøndby Strand",
+            "arrival":"15 25 35 45 55 05"
+          },
+          {
+            "departure":"13 23 33 43 53 03",
+            "station":"Vallensbæk",
+            "arrival":"12 22 32 42 52 02"
+          },
+          {
+            "departure":"15 25 35 45 55 05",
+            "station":"Ishøj",
+            "arrival":"10 20 30 40 50 00"
+          },
+          {
+            "departure":"18 28 38 48 58 08",
+            "station":"Hundige",
+            "arrival":"07 17 27 37 47 57"
+          },
+          {
+            "departure":"21 31 41 51 01 11",
+            "station":"Greve",
+            "arrival":"04 14 24 34 44 54"
+          },
+          {
+            "departure":"23 33 43 53 03 13",
+            "station":"Karlslunde",
+            "arrival":"02 12 22 32 42 52"
+          },
+          {
+            "departure":"27 37 47 57 07 17",
+            "station":"Solrød Strand",
+            "arrival":"58 08 18 28 38 48"
+          },
+          {
+            "departure":"29 39 49 59 09 19",
+            "station":"Jersie",
+            "arrival":"56 06 16 26 36 46"
+          },
+          {
+            "departure":"33 43 53 03 13 23",
+            "station":"Ølby",
+            "arrival":"52 02 12 22 32 42"
+          }
+        ]
+      },
+
+      "night-after-friday-saturday" : {
+
+        "departure" : [
+          { "start":"Farum", "stop":"København H", "night":"0.46 5.16", "day":"" },
+          { "start":"København H", "stop":"Køge", "night":"1.24 5.54", "day":"" }
+        ],
+
+        "arrival" : [
+          { "start":"Køge", "stop":"København H", "night":"0.49 5.19", "day":"" },
+          { "start":"København H", "stop":"Farum", "night":"1.33 6.03", "day":"" }
+        ],
+
+        "data" : [
+          {
+            "departure":"16 46",
+            "station":"Farum",
+            "arrival":"40 10"
+          },
+          {
+            "departure":"20 50",
+            "station":"Værløse",
+            "arrival":"36 06"
+          },
+          {
+            "departure":"23 53",
+            "station":"Hareskov",
+            "arrival":"33 03"
+          },
+          {
+            "departure":"25 55",
+            "station":"Skovbrynet",
+            "arrival":"30 00"
+          },
+          {
+            "departure":"27 57",
+            "station":"Bagsværd",
+            "arrival":"28 58"
+          },
+          {
+            "departure":"29 59",
+            "station":"Stengården",
+            "arrival":"27 57"
+          },
+          {
+            "departure":"31 01",
+            "station":"Buddinge",
+            "arrival":"25 55"
+          },
+          {
+            "departure":"32 02",
+            "station":"Kildebakke",
+            "arrival":"23 53"
+          },
+          {
+            "departure":"34 04",
+            "station":"Vangede",
+            "arrival":"21 51"
+          },
+          {
+            "departure":"36 06",
+            "station":"Dyssegård",
+            "arrival":"19 49"
+          },
+          {
+            "departure":"38 08",
+            "station":"Emdrup",
+            "arrival":"17 47"
+          },
+          {
+            "departure":"40 10",
+            "station":"Ryparken",
+            "arrival":"15 45"
+          },
+          {
+            "departure":"42 12",
+            "station":"Svanemøllen",
+            "arrival":"13 43"
+          },
+          {
+            "departure":"44 14",
+            "station":"Nordhavn",
+            "arrival":"11 41"
+          },
+          {
+            "departure":"47 17",
+            "station":"Østerport",
+            "arrival":"09 39"
+          },
+          {
+            "departure":"49 19",
+            "station":"Nørreport",
+            "arrival":"06 36"
+          },
+          {
+            "departure":"51 21",
+            "station":"Vesterport",
+            "arrival":"04 34"
+          },
+          {
+            "departure":"54 24",
+            "station":"København H",
+            "arrival":"03 33"
+          },
+          {
+            "departure":"55 25",
+            "station":"Dybbølsbro",
+            "arrival":"59 29"
+          },
+          {
+            "departure":"58 28",
+            "station":"Sydhavn",
+            "arrival":"57 27"
+          },
+          {
+            "departure":"00 30",
+            "station":"Sjælør",
+            "arrival":"55 25"
+          },
+          {
+            "departure":"01 31",
+            "station":"Ny Ellebjerg",
+            "arrival":"53 23"
+          },
+          {
+            "departure":"04 34",
+            "station":"Åmarken",
+            "arrival":"51 21"
+          },
+          {
+            "departure":"06 36",
+            "station":"Friheden",
+            "arrival":"49 19"
+          },
+          {
+            "departure":"08 38",
+            "station":"Avedøre",
+            "arrival":"47 17"
+          },
+          {
+            "departure":"10 40",
+            "station":"Brøndby Strand",
+            "arrival":"45 15"
+          },
+          {
+            "departure":"13 43",
+            "station":"Vallensbæk",
+            "arrival":"42 12"
+          },
+          {
+            "departure":"15 45",
+            "station":"Ishøj",
+            "arrival":"40 10"
+          },
+          {
+            "departure":"18 48",
+            "station":"Hundige",
+            "arrival":"37 07"
+          },
+          {
+            "departure":"21 51",
+            "station":"Greve",
+            "arrival":"34 04"
+          },
+          {
+            "departure":"23 53",
+            "station":"Karlslunde",
+            "arrival":"32 02"
+          },
+          {
+            "departure":"27 57",
+            "station":"Solrød Strand",
+            "arrival":"28 58"
+          },
+          {
+            "departure":"29 59",
+            "station":"Jersie",
+            "arrival":"26 56"
+          },
+          {
+            "departure":"33 03",
+            "station":"Ølby"
+          },
+          {
+            "departure":"37 07",
+            "station":"Køge",
+            "arrival":"19 49"
+          }
+        ]
+      }
+    },
+
+    {
+      "line" : "B",
+      "first-station" : "Holte",
+      "last-station" : "Høje Taastrup",
+
+      "weekdays" : {
+
+        "departure" : [
+          { "start":"Holte", "stop":"København H", "night":"5.21 0.41", "day":"6.31 19.11" },
+          { "start":"København H", "stop":"Høje Taastrup", "night":"5.10 0.50", "day":"6.20 19.00" }
+        ],
+
+        "arrival" : [
+          { "start":"Høje Taastrup", "stop":"København H", "night":"4.50 0.30", "day":"6.00 18.20" },
+          { "start":"København H", "stop":"Holte", "night":"5.17 0.37", "day":"6.07 18.47" }
+        ],    
+
+        "data" : [
+          {
+            "departure":"01 11 21 31 41 51",
+            "station":"Holte",
+            "arrival":"54 04 14 24 34 44"
+          },
+          {
+            "departure":"03 13 23 33 43 53",
+            "station":"Virum",
+            "arrival":"52 02 12 22 32 42"
+          },
+          {
+            "departure":"05 15 25 35 45 55",
+            "station":"Sorgenfri",
+            "arrival":"50 00 10 20 30 40"
+          },
+          {
+            "departure":"07 17 27 37 47 57",
+            "station":"Lyngby",
+            "arrival":"47 57 07 17 27 37"
+          },
+          {
+            "departure":"09 19 29 39 49 59",
+            "station":"Jægersborg",
+            "arrival":"45 55 05 15 25 35"
+          },
+          {
+            "departure":"11 21 31 41 51 01",
+            "station":"Gentofte",
+            "arrival":"43 53 03 13 23 33"
+          },
+          {
+            "departure":"13 23 33 43 53 03",
+            "station":"Bernstorsvej",
+            "arrival":"41 51 01 11 21 31"
+          },
+          {
+            "departure":"16 26 36 46 56 06",
+            "station":"Hellerup",
+            "arrival":"39 49 59 09 19 29"
+          },
+          {
+            "departure":"18 28 38 48 58 08",
+            "station":"Svanemøllen",
+            "arrival":"37 47 57 07 17 27"
+          },
+          {
+            "departure":"20 30 40 50 00 10",
+            "station":"Nordhavn",
+            "arrival":"35 45 55 05 15 25"
+          },
+          {
+            "departure":"23 33 43 53 03 13",
+            "station":"Østerport",
+            "arrival":"33 43 53 03 13 23"
+          },
+          {
+            "departure":"25 35 45 55 05 15",
+            "station":"Nørreport",
+            "arrival":"30 40 50 00 10 20"
+          },
+          {
+            "departure":"27 37 47 57 07 17",
+            "station":"Vesterport",
+            "arrival":"28 38 48 58 08 18"
+          },
+          {
+            "departure":"30 40 50 00 10 20",
+            "station":"København H",
+            "arrival":"27 37 47 57 07 17"
+          },
+          {
+            "departure":"31 41 51 01 11 21",
+            "station":"Dybbølsbro",
+            "arrival":"23 33 43 53 03 13"
+          },
+          {
+            "departure":"33 43 53 03 13 23",
+            "station":"Enghave",
+            "arrival":"21 31 41 51 01 11"
+          },
+          {
+            "departure":"36 46 56 06 16 26",
+            "station":"Valby",
+            "arrival":"19 29 39 49 59 09"
+          },
+          {
+            "departure":"38 48 58 08 18 28",
+            "station":"Danshøj",
+            "arrival":"17 27 37 47 57 07"
+          },
+          {
+            "departure":"40 50 00 10 20 30",
+            "station":"Hvidovre",
+            "arrival":"15 25 35 45 55 05"
+          },
+          {
+            "departure":"41 51 01 11 21 31",
+            "station":"Rødovre",
+            "arrival":"14 24 34 44 54 04"
+          },
+          {
+            "departure":"43 53 03 13 23 33",
+            "station":"Brøndbyøster",
+            "arrival":"12 22 32 42 52 02"
+          },
+          {
+            "departure":"46 56 06 16 26 36",
+            "station":"Glostrup",
+            "arrival":"09 19 29 39 49 59"
+          },
+          {
+            "departure":"49 59 09 19 29 39",
+            "station":"Albertslund",
+            "arrival":"06 16 26 36 46 56"
+          },
+          {
+            "departure":"52 02 12 22 32 42",
+            "station":"Taastrup",
+            "arrival":"03 13 23 33 43 53"
+          },
+          {
+            "departure":"55 05 15 25 35 45",
+            "station":"Høje Taastrup",
+            "arrival":"00 10 20 30 40 50"
+          }
+        ]
+      },
+
+      "weekend" : { 
+
+        "departure" : [
+          { "start":"Hillerød", "stop":"København H", "night":"5.46 0.26", "day":"9.36 18.16" },
+          { "start":"København H", "stop":"Høje Taastrup", "night":"6.30 0.50", "day":"10.20 19.00" }
+        ],
+
+        "arrival" : [
+          { "start":"Høje Taastrup", "stop":"København H", "night":"5.50 0.30", "day":"10.00 18.40" },
+          { "start":"København H", "stop":"Hillerød", "night":"6.17 0.37", "day":"10.07 18.47" }
+        ],   
+      
+        "data" : [
+          {
+            "departure":"46 56 06 16 26 36",
+            "station":"Hillerød",
+            "arrival":"09 19 29 39 49 59"
+          },
+          {
+            "departure":"52 02 12 22 32 42",
+            "station":"Allerød",
+            "arrival":"03 13 23 33 43 53"
+          },
+          {
+            "departure":"56 06 16 26 36 46",
+            "station":"Birkerød",
+            "arrival":"58 08 18 28 38 48"
+          },
+          {
+            "departure":"01 11 21 31 41 51",
+            "station":"Holte",
+            "arrival":"54 04 14 24 34 44"
+          },
+          {
+            "departure":"03 13 23 33 43 53",
+            "station":"Virum",
+            "arrival":"52 02 12 22 32 42"
+          },
+          {
+            "departure":"05 15 25 35 45 55",
+            "station":"Sorgenfri",
+            "arrival":"50 00 10 20 30 40"
+          },
+          {
+            "departure":"07 17 27 37 47 57",
+            "station":"Lyngby",
+            "arrival":"47 57 07 17 27 37"
+          },
+          {
+            "departure":"09 19 29 39 49 59",
+            "station":"Jægersborg",
+            "arrival":"45 55 05 15 25 35"
+          },
+          {
+            "departure":"11 21 31 41 51 01",
+            "station":"Gentofte",
+            "arrival":"43 53 03 13 23 33"
+          },
+          {
+            "departure":"13 23 33 43 53 03",
+            "station":"Bernstorsvej",
+            "arrival":"41 51 01 11 21 31"
+          },
+          {
+            "departure":"16 26 36 46 56 06",
+            "station":"Hellerup",
+            "arrival":"39 49 59 09 19 29"
+          },
+          {
+            "departure":"18 28 38 48 58 08",
+            "station":"Svanemøllen",
+            "arrival":"37 47 57 07 17 27"
+          },
+          {
+            "departure":"20 30 40 50 00 10",
+            "station":"Nordhavn",
+            "arrival":"35 45 55 05 15 25"
+          },
+          {
+            "departure":"23 33 43 53 03 13",
+            "station":"Østerport",
+            "arrival":"33 43 53 03 13 23"
+          },
+          {
+            "departure":"25 35 45 55 05 15",
+            "station":"Nørreport",
+            "arrival":"30 40 50 00 10 20"
+          },
+          {
+            "departure":"27 37 47 57 07 17",
+            "station":"Vesterport",
+            "arrival":"28 38 48 58 08 18"
+          },
+          {
+            "departure":"30 40 50 00 10 20",
+            "station":"København H",
+            "arrival":"27 37 47 57 07 17"
+          },
+          {
+            "departure":"31 41 51 01 11 21",
+            "station":"Dybbølsbro",
+            "arrival":"23 33 43 53 03 13"
+          },
+          {
+            "departure":"33 43 53 03 13 23",
+            "station":"Enghave",
+            "arrival":"21 31 41 51 01 11"
+          },
+          {
+            "departure":"36 46 56 06 16 26",
+            "station":"Valby",
+            "arrival":"19 29 39 49 59 09"
+          },
+          {
+            "departure":"38 48 58 08 18 28",
+            "station":"Danshøj",
+            "arrival":"17 27 37 47 57 07"
+          },
+          {
+            "departure":"40 50 00 10 20 30",
+            "station":"Hvidovre",
+            "arrival":"15 25 35 45 55 05"
+          },
+          {
+            "departure":"41 51 01 11 21 31",
+            "station":"Rødovre",
+            "arrival":"14 24 34 44 54 04"
+          },
+          {
+            "departure":"43 53 03 13 23 33",
+            "station":"Brøndbyøster",
+            "arrival":"12 22 32 42 52 02"
+          },
+          {
+            "departure":"46 56 06 16 26 36",
+            "station":"Glostrup",
+            "arrival":"09 19 29 39 49 59"
+          },
+          {
+            "departure":"49 59 09 19 29 39",
+            "station":"Albertslund",
+            "arrival":"06 16 26 36 46 56"
+          },
+          {
+            "departure":"52 02 12 22 32 42",
+            "station":"Taastrup",
+            "arrival":"03 13 23 33 43 53"
+          },
+          {
+            "departure":"55 05 15 25 35 45",
+            "station":"Høje Taastrup",
+            "arrival":"00 10 20 30 40 50"
+          }
+        ]
+      },
+
+      "night-after-friday-saturday" : {
+
+        "departure" : [
+          { "start":"Hillerød", "stop":"København H", "night":"1.06 5.06", "day":"" },
+          { "start":"København H", "stop":"Høje Taastrup", "night":"1.50 5.50", "day":"" }
+        ],
+
+        "arrival" : [
+          { "start":"Høje Taastrup", "stop":"København H", "night":"1.00 5.30", "day":"" },
+          { "start":"København H", "stop":"Hillerød", "night":"0.57 5.57", "day":"" }
+        ],
+
+        "data" : [
+          {
+            "departure":"06 36",
+            "station":"Hillerød",
+            "arrival":"09 39"
+          },
+          {
+            "departure":"12 42",
+            "station":"Allerød",
+            "arrival":"03 33"
+          },
+          {
+            "departure":"16 46",
+            "station":"Birkerød",
+            "arrival":"58 28"
+          },
+          {
+            "departure":"21 51",
+            "station":"Holte",
+            "arrival":"54 24"
+          },
+          {
+            "departure":"23 53",
+            "station":"Virum",
+            "arrival":"52 22"
+          },
+          {
+            "departure":"25 55",
+            "station":"Sorgenfri",
+            "arrival":"50 20"
+          },
+          {
+            "departure":"27 57",
+            "station":"Lyngby",
+            "arrival":"47 17"
+          },
+          {
+            "departure":"29 59",
+            "station":"Jægersborg",
+            "arrival":"45 15"
+          },
+          {
+            "departure":"31 01",
+            "station":"Gentofte",
+            "arrival":"43 13"
+          },
+          {
+            "departure":"33 03",
+            "station":"Bernstorsvej",
+            "arrival":"41 11"
+          },
+          {
+            "departure":"36 06",
+            "station":"Hellerup",
+            "arrival":"39 09"
+          },
+          {
+            "departure":"38 08",
+            "station":"Svanemøllen",
+            "arrival":"37 07"
+          },
+          {
+            "departure":"40 10",
+            "station":"Nordhavn",
+            "arrival":"35 05"
+          },
+          {
+            "departure":"43 13",
+            "station":"Østerport",
+            "arrival":"33 03"
+          },
+          {
+            "departure":"45 15",
+            "station":"Nørreport",
+            "arrival":"30 00"
+          },
+          {
+            "departure":"47 17",
+            "station":"Vesterport",
+            "arrival":"28 58"
+          },
+          {
+            "departure":"50 20",
+            "station":"København H",
+            "arrival":"27 57"
+          },
+          {
+            "departure":"51 21",
+            "station":"Dybbølsbro",
+            "arrival":"23 53"
+          },
+          {
+            "departure":"53 23",
+            "station":"Enghave",
+            "arrival":"21 51"
+          },
+          {
+            "departure":"56 26",
+            "station":"Valby",
+            "arrival":"19 49"
+          },
+          {
+            "departure":"58 28",
+            "station":"Danshøj",
+            "arrival":"17 47"
+          },
+          {
+            "departure":"00 30",
+            "station":"Hvidovre",
+            "arrival":"15 45"
+          },
+          {
+            "departure":"01 31",
+            "station":"Rødovre",
+            "arrival":"14 44"
+          },
+          {
+            "departure":"03 33",
+            "station":"Brøndbyøster",
+            "arrival":"12 42"
+          },
+          {
+            "departure":"06 36",
+            "station":"Glostrup",
+            "arrival":"09 39"
+          },
+          {
+            "departure":"09 39",
+            "station":"Albertslund",
+            "arrival":"06 36"
+          },
+          {
+            "departure":"12 42",
+            "station":"Taastrup",
+            "arrival":"03 33"
+          },
+          {
+            "departure":"15 45",
+            "station":"Høje Taastrup",
+            "arrival":"00 30"
+          }
+        ]
+      }
+    },
+
+    {
+      "line" : "C",
+      "first-station" : "Klampenborg",
+      "last-station" : "Ballerup,Frederikssund",
+
+      "weekdays" : {
+
+        "departure" : [
+          { "start":"Klampenborg", "stop":"København H", "night":"5.36 0.56", "day":"6.26 19.26" },
+          { "start":"København H", "stop":"Ballerup", "night":"4.58 0.38", "day":"6.08 18.48" },
+          { "start":"København H", "stop":"Frederikssund", "night":"", "day":"6.08 18.48" }
+        ],
+
+        "arrival" : [
+          { "start":"Frederikssund", "stop":"København H", "night":"", "day":"5.50 18.10" },
+          { "start":"Ballerup", "stop":"København H", "night":"5.01 0.41", "day":"6.11 18.31" },
+          { "start":"København H", "stop":"Klampenborg", "night":"5.09 0.29", "day":" 5.59 18.59" }
+        ],
+
+        "data" : [
+          {
+            "departure":"06 16 26 36 46 56",
+            "station":"Klampenborg",
+            "arrival":"49 59 09 19 29 39"
+          },
+          {
+            "departure":"08 18 28 38 48 58",
+            "station":"Ordrup",
+            "arrival":"46 56 06 16 26 36"
+          },
+          {
+            "departure":"10 20 30 40 50 00",
+            "station":"Charlottenlund",
+            "arrival":"44 54 04 14 24 34"
+          },
+          {
+            "departure":"14 24 34 44 54 04",
+            "station":"Hellerup",
+            "arrival":"41 51 01 11 21 31"
+          },
+          {
+            "departure":"16 26 36 46 56 06",
+            "station":"Svanemøllen",
+            "arrival":"39 49 59 09 19 29"
+          },
+          {
+            "departure":"18 28 38 48 58 08",
+            "station":"Nordhavn",
+            "arrival":"37 47 57 07 17 27"
+          },
+          {
+            "departure":"21 31 41 51 01 11",
+            "station":"Østerport",
+            "arrival":"35 45 55 05 15 25"
+          },
+          {
+            "departure":"23 33 43 53 03 13",
+            "station":"Nørreport",
+            "arrival":"32 42 52 02 12 22"
+          },
+          {
+            "departure":"25 35 45 55 05 15",
+            "station":"Vesterport",
+            "arrival":"30 40 50 00 10 20"
+          },
+          {
+            "departure":"28 38 48 58 08 18",
+            "station":"København H",
+            "arrival":"29 39 49 59 09 19"
+          },
+          {
+            "departure":"29 39 49 59 09 19",
+            "station":"Dybbølsbro",
+            "arrival":"25 35 45 55 05 15"
+          },
+          {
+            "departure":"31 41 51 01 11 21",
+            "station":"Enghave",
+            "arrival":"23 33 43 53 03 13"
+          },
+          {
+            "departure":"34 44 54 04 14 24",
+            "station":"Valby",
+            "arrival":"21 31 41 51 01 11"
+          },
+          {
+            "departure":"35 45 55 05 15 25",
+            "station":"Langgade",
+            "arrival":"20 30 40 50 00 10"
+          },
+          {
+            "departure":"37 47 57 07 17 27",
+            "station":"Peter Bangs Vej",
+            "arrival":"18 28 38 48 58 08"
+          },
+          {
+            "departure":"39 49 59 09 19 29",
+            "station":"Flintholm",
+            "arrival":"16 26 36 46 56 06"
+          },
+          {
+            "departure":"40 50 00 10 20 30",
+            "station":"Vanløse",
+            "arrival":"15 25 35 45 55 05"
+          },
+          {
+            "departure":"42 52 02 12 22 32",
+            "station":"Jyllingevej",
+            "arrival":"13 23 33 43 53 03"
+          },
+          {
+            "departure":"43 53 03 13 23 33",
+            "station":"Islev",
+            "arrival":"12 22 32 42 52 02"
+          },
+          {
+            "departure":"45 55 05 15 25 35",
+            "station":"Husum",
+            "arrival":"10 20 30 40 50 00"
+          },
+          {
+            "departure":"47 57 07 17 27 37",
+            "station":"Herlev",
+            "arrival":"08 18 28 38 48 58"
+          },
+          {
+            "departure":"50 00 10 20 30 40",
+            "station":"Skovlunde",
+            "arrival":"05 15 25 35 45 55"
+          },
+          {
+            "departure":"52 02 12 22 32 42",
+            "station":"Malmparken",
+            "arrival":"03 13 23 33 43 53"
+          },
+          {
+            "departure":"54 04 14 24 34 44",
+            "station":"Ballerup",
+            "arrival":"01 11 21 31 41 51"
+          },
+          {
+            "departure":"57 -1 17 -1 37 -1",
+            "station":"Måløv",
+            "arrival":"-1 08 -1 28 -1 48"
+          },
+          {
+            "departure":"00 -1 20 -1 40 -1",
+            "station":"Kildedal",
+            "arrival":"-1 06 -1 26 -1 46"
+          },
+          {
+            "departure":"02 -1 22 -1 42 -1",
+            "station":"Veksø",
+            "arrival":"-1 03 -1 23 -1 43"
+          },
+          {
+            "departure":"06 -1 26 -1 46 -1",
+            "station":"Stenløse",
+            "arrival":"-1 00 -1 20 -1 40"
+          },
+          {
+            "departure":"08 -1 28 -1 48 -1",
+            "station":"Egedal",
+            "arrival":"-1 58 -1 18 -1 38"
+          },
+          {
+            "departure":"10 -1 30 -1 50 -1",
+            "station":"Ølstykke",
+            "arrival":"-1 55 -1 15 -1 35"
+          },
+          {
+            "departure":"16 -1 36 -1 56 -1",
+            "station":"Frederikssund",
+            "arrival":"-1 50 -1 10 -1 30"
+          }
+        ]
+      },
+
+      "weekend" : {
+
+        "departure" : [
+          { "start":"Klampenborg", "stop":"København H", "night":"6.36 0.56", "day":"10.06 18.26" },
+          { "start":"København H", "stop":"Frederikssund", "night":"6.18 0.38", "day":"10.08 18.48" }
+        ],
+
+        "arrival" : [
+          { "start":"Frederikssund", "stop":"København H", "night":"6.00 0.20", "day":"9.30 18.10" },
+          { "start":"København H", "stop":"Klampenborg", "night":"6.09 0.29", "day":"9.39 17.59" }
+        ],
+
+        "data" : [
+          {
+            "departure":"06 16 26 36 46 56",
+            "station":"Klampenborg",
+            "arrival":"49 59 09 19 29 39"
+          },
+          {
+            "departure":"08 18 28 38 48 58",
+            "station":"Ordrup",
+            "arrival":"46 56 06 16 26 36"
+          },
+          {
+            "departure":"10 20 30 40 50 00",
+            "station":"Charlottenlund",
+            "arrival":"44 54 04 14 24 34"
+          },
+          {
+            "departure":"14 24 34 44 54 04",
+            "station":"Hellerup",
+            "arrival":"41 51 01 11 21 31"
+          },
+          {
+            "departure":"16 26 36 46 56 06",
+            "station":"Svanemøllen",
+            "arrival":"39 49 59 09 19 29"
+          },
+          {
+            "departure":"18 28 38 48 58 08",
+            "station":"Nordhavn",
+            "arrival":"37 47 57 07 17 27"
+          },
+          {
+            "departure":"21 31 41 51 01 11",
+            "station":"Østerport",
+            "arrival":"35 45 55 05 15 25"
+          },
+          {
+            "departure":"23 33 43 53 03 13",
+            "station":"Nørreport",
+            "arrival":"32 42 52 02 12 22"
+          },
+          {
+            "departure":"25 35 45 55 05 15",
+            "station":"Vesterport",
+            "arrival":"30 40 50 00 10 20"
+          },
+          {
+            "departure":"28 38 48 58 08 18",
+            "station":"København H",
+            "arrival":"29 39 49 59 09 19"
+          },
+          {
+            "departure":"29 39 49 59 09 19",
+            "station":"Dybbølsbro",
+            "arrival":"25 35 45 55 05 15"
+          },
+          {
+            "departure":"31 41 51 01 11 21",
+            "station":"Enghave",
+            "arrival":"23 33 43 53 03 13"
+          },
+          {
+            "departure":"34 44 54 04 14 24",
+            "station":"Valby",
+            "arrival":"21 31 41 51 01 11"
+          },
+          {
+            "departure":"35 45 55 05 15 25",
+            "station":"Langgade",
+            "arrival":"20 30 40 50 00 10"
+          },
+          {
+            "departure":"37 47 57 07 17 27",
+            "station":"Peter Bangs Vej",
+            "arrival":"18 28 38 48 58 08"
+          },
+          {
+            "departure":"39 49 59 09 19 29",
+            "station":"Flintholm",
+            "arrival":"16 26 36 46 56 06"
+          },
+          {
+            "departure":"40 50 00 10 20 30",
+            "station":"Vanløse",
+            "arrival":"15 25 35 45 55 05"
+          },
+          {
+            "departure":"42 52 02 12 22 32",
+            "station":"Jyllingevej",
+            "arrival":"13 23 33 43 53 03"
+          },
+          {
+            "departure":"43 53 03 13 23 33",
+            "station":"Islev",
+            "arrival":"12 22 32 42 52 02"
+          },
+          {
+            "departure":"45 55 05 15 25 35",
+            "station":"Husum",
+            "arrival":"10 20 30 40 50 00"
+          },
+          {
+            "departure":"47 57 07 17 27 37",
+            "station":"Herlev",
+            "arrival":"08 18 28 38 48 58"
+          },
+          {
+            "departure":"50 00 10 20 30 40",
+            "station":"Skovlunde",
+            "arrival":"05 15 25 35 45 55"
+          },
+          {
+            "departure":"52 02 12 22 32 42",
+            "station":"Malmparken",
+            "arrival":"03 13 23 33 43 53"
+          },
+          {
+            "departure":"54 04 14 24 34 44",
+            "station":"Ballerup",
+            "arrival":"01 11 21 31 41 51"
+          },
+          {
+            "departure":"57 07 17 27 37 47",
+            "station":"Måløv",
+            "arrival":"58 08 18 28 38 48"
+          },
+          {
+            "departure":"00 10 20 30 40 50",
+            "station":"Kildedal",
+            "arrival":"56 06 16 26 36 46"
+          },
+          {
+            "departure":"02 12 22 32 42 52",
+            "station":"Veksø",
+            "arrival":"53 03 13 23 33 43"
+          },
+          {
+            "departure":"06 16 26 36 46 56",
+            "station":"Stenløse",
+            "arrival":"50 00 10 20 30 40"
+          },
+          {
+            "departure":"08 18 28 38 48 58",
+            "station":"Egedal",
+            "arrival":"48 58 08 18 28 38"
+          },
+          {
+            "departure":"10 20 30 40 50 00 ",
+            "station":"Ølstykke",
+            "arrival":"45 55 05 15 25 35 "
+          },
+          {
+            "departure":"16 26 36 46 56 06",
+            "station":"Frederikssund",
+            "arrival":"40 50 00 10 20 30"
+          }
+        ]
+      },
+
+      "night-after-friday-saturday" : {
+
+        "departure" : [
+          { "start":"København H", "stop":"Frederikssund", "night":"0.58 5.58", "day":"" }
+        ],
+
+        "arrival" : [
+          { "start":"Frederikssund", "stop":"København H", "night":"1.00 5.30", "day":"" }
+        ],
+
+        "data" : [
+          {
+            "departure":"28 58",
+            "station":"København H",
+            "arrival":"49 19"
+          },
+          {
+            "departure":"29 59",
+            "station":"Dybbølsbro",
+            "arrival":"45 15"
+          },
+          {
+            "departure":"31 01",
+            "station":"Enghave",
+            "arrival":"43 13"
+          },
+          {
+            "departure":"34 04",
+            "station":"Valby",
+            "arrival":"41 11"
+          },
+          {
+            "departure":"35 05",
+            "station":"Langgade",
+            "arrival":"40 10"
+          },
+          {
+            "departure":"37 07",
+            "station":"Peter Bangs Vej",
+            "arrival":"38 08"
+          },
+          {
+            "departure":"39 09",
+            "station":"Flintholm",
+            "arrival":"36 06"
+          },
+          {
+            "departure":"40 10",
+            "station":"Vanløse",
+            "arrival":"35 05"
+          },
+          {
+            "departure":"42 12",
+            "station":"Jyllingevej",
+            "arrival":"33 03"
+          },
+          {
+            "departure":"43 13",
+            "station":"Islev",
+            "arrival":"32 02"
+          },
+          {
+            "departure":"45 15",
+            "station":"Husum",
+            "arrival":"30 00"
+          },
+          {
+            "departure":"47 17",
+            "station":"Herlev",
+            "arrival":"28 58"
+          },
+          {
+            "departure":"50 20",
+            "station":"Skovlunde",
+            "arrival":"25 55"
+          },
+          {
+            "departure":"52 22",
+            "station":"Malmparken",
+            "arrival":"23 53"
+          },
+          {
+            "departure":"54 24",
+            "station":"Ballerup",
+            "arrival":"21 51"
+          },
+          {
+            "departure":"57 27",
+            "station":"Måløv",
+            "arrival":"18 48"
+          },
+          {
+            "departure":"00 30",
+            "station":"Kildedal",
+            "arrival":"16 46"
+          },
+          {
+            "departure":"02 32",
+            "station":"Veksø",
+            "arrival":"13 43"
+          },
+          {
+            "departure":"06 36",
+            "station":"Stenløse",
+            "arrival":"10 40"
+          },
+          {
+            "departure":"08 38",
+            "station":"Egedal",
+            "arrival":"08 38"
+          },
+          {
+            "departure":"10 40",
+            "station":"Ølstykke",
+            "arrival":"05 35"
+          },
+          {
+            "departure":"16 46",
+            "station":"Frederikssund",
+            "arrival":"00 30"
+          }
+        ]
+      }
+    },
+
+    {
+      "line" : "E",
+      "first-station" : "Hillerød",
+      "last-station" : "Køge",
+
+      "weekdays" : {
+
+        "departure" : [
+          { "start":"Hillerød", "stop":"København H", "night":"5.02 0.02", "day":"5.52 18.32" },
+          { "start":"København H", "stop":"Køge", "night":"5.22 0.22", "day":"6.12 18.52" }
+        ],
+
+        "arrival" : [
+          { "start":"Køge", "stop":"København H", "night":"4.46 23.46", "day":"5.56 18.16" },
+          { "start":"København H", "stop":"Hillerød", "night":"5.05 0.25", "day":"6.15 18.55" }
+        ],
+
+        "data": [
+          {
+            "departure":"02 12 22 32 42 52",
+            "station":"Hillerød",
+            "arrival":"25 35 45 55 05 15"
+          },
+          {
+            "departure":"08 18 28 38 48 58",
+            "station":"Allerød",
+            "arrival":"18 28 38 48 58 08"
+          },
+          {
+            
+            "departure":"13 23 33 43 53 03",
+            "station":"Birkerød",
+            "arrival":"13 23 33 43 53 03"
+          },
+          {
+            "departure":"17 27 37 47 57 07",
+            "station":"Holte",
+            "arrival":"08 18 28 38 48 58"
+          },
+          {
+            "departure":"",
+            "station":"Virum",
+            "arrival":""
+          },
+          {
+            "departure":"",
+            "station":"Sorgenfri",
+            "arrival":""
+          },
+          {
+            "departure":"22 32 42 52 02 12",
+            "station":"Lyngby",
+            "arrival":"03 13 23 33 43 53"
+          },
+          {
+            "departure":"",
+            "station":"Jægersborg",
+            "arrival":""
+          },
+          {
+            "departure":"",
+            "station":"Gentofte",
+            "arrival":""
+          },
+          {
+            "departure":"",
+            "station":"Bernstorsvej",
+            "arrival":""
+          },
+          {
+            "departure":"28 38 48 58 08 18",
+            "station":"Hellerup",
+            "arrival":"57 07 17 27 37 47"
+          },
+          {
+            "departure":"30 40 50 00 10 20",
+            "station":"Svanemøllen",
+            "arrival":"55 05 15 25 35 45"
+          },
+          {
+            "departure":"32 42 52 02 12 22",
+            "station":"Nordhavn",
+            "arrival":"53 03 13 23 33 43"
+          },
+          {
+            "departure":"35 45 55 05 15 25",
+            "station":"Østerport",
+            "arrival":"51 01 11 21 31 41"
+          },
+          {
+            "departure":"37 47 57 07 17 27",
+            "station":"Nørreport",
+            "arrival":"48 58 08 18 28 38"
+          },
+          {
+            "departure":"39 49 59 09 19 29",
+            "station":"Vesterport",
+            "arrival":"46 56 06 16 26 36"
+          },
+          {
+            "departure":"42 52 02 12 22 32",
+            "station":"København H",
+            "arrival":"45 55 05 15 25 35"
+          },
+          {
+            "departure":"43 53 03 13 23 33",
+            "station":"Dybbølsbro",
+            "arrival":"41 51 01 11 21 31"
+          },
+          {
+            "departure":"46 56 06 16 26 36",
+            "station":"Sydhavn",
+            "arrival":"39 49 59 09 19 29"
+          },
+          {
+            "departure":"47 57 07 17 27 37",
+            "station":"Sjælør",
+            "arrival":"38 48 58 08 18 28"
+          },
+          {
+            "departure":"49 59 09 19 29 39",
+            "station":"Ny Ellebjerg",
+            "arrival":"36 46 56 06 16 26"
+          },
+          {
+            "departure":"",
+            "station":"Åmarken",
+            "arrival":""
+          },
+          {
+            "departure":"53 03 13 23 33 43",
+            "station":"Friheden",
+            "arrival":"32 42 52 02 12 22"
+          },
+          {
+            "departure":"",
+            "station":"Avedøre",
+            "arrival":""
+          },
+          {
+            "departure":"",
+            "station":"Brøndby Strand",
+            "arrival":""
+          },
+          {
+            "departure":"",
+            "station":"Vallensbæk",
+            "arrival":""
+          },
+          {
+            "departure":"59 09 19 29 39 49",
+            "station":"Ishøj",
+            "arrival":"26 36 46 56 06 16"
+          },
+          {
+            "departure":"02 12 22 32 42 52",
+            "station":"Hundige",
+            "arrival":"24 34 44 54 04 14"
+          },
+          {
+            "departure":"07 17 27 37 47 57",
+            "station":"Karlslunde",
+            "arrival":"18 28 38 48 58 08"
+          },
+          {
+            "departure":"11 21 31 41 51 01",
+            "station":"Solrød Strand",
+            "arrival":"14 24 34 44 54 04"
+          },
+          {
+            "departure":"13 23 33 43 53 03",
+            "station":"Jersie",
+            "arrival":"12 22 32 42 52 02"
+          },
+          {
+            "departure":"17 27 37 47 57 07",
+            "station":"Ølby",
+            "arrival":"08 18 28 38 48 58"
+          }
+        ]
+      }
+    },
+
+    {
+      "line" : "H",
+      "first-station" : "Farum, Østerport",
+      "last-station" : "Frederikssund",
+
+      "weekdays" : {
+                 "departure" : [
+                                { "start":"Farum", "stop":"København H", "night":"", "day":"6.51 8.51" },
+                                { "start":"Farum", "stop":"København H", "night":"", "day":"14.11 17.11" },
+                                { "start":"Østerport", "stop":"København H", "night":"", "day":"5.59 23.39" },
+                                { "start":"København H", "stop":"Frederikssund", "night":"", "day":"5.06 23.46" }
+                                ],
+                 
+                 "arrival" : [
+                              { "start":"Frederikssund", "stop":"København H", "night":"", "day":"5.16 23.56" },
+                              { "start":"København H", "stop":"Østerport", "night":"", "day":"5.41 23.21" },
+                              { "start":"København H", "stop":"Farum", "night":"", "day":"7.01 9.01" },
+                              { "start":"København H", "stop":"Farum", "night":"", "day":"14.21 17.21" }
+                              ],
+                 
+        "data" : [
+          {
+            "departure":"11 31 51",
+            "station":"Farum",
+            "arrival":"35 55 15"
+          },
+          {
+            "departure":"15 35 55",
+            "station":"Værløse",
+            "arrival":"30 50 10"
+          },
+          {
+            "departure":"18 38 58",
+            "station":"Hareskov",
+            "arrival":"27 47 07"
+          },
+          {
+            "departure":"",
+            "station":"Skovbrynet",
+            "arrival":""
+          },
+          {
+            "departure":"22 42 02",
+            "station":"Bagsværd",
+            "arrival":"24 44 04"
+          },
+          {
+            "departure":"23 43 03",
+            "station":"Stengården",
+            "arrival":"22 42 02"
+          },
+          {
+            "departure":"25 45 05",
+            "station":"Buddinge",
+            "arrival":"20 40 00"
+          },
+          {
+            "departure":"",
+            "station":"Kildebakke",
+            "arrival":""
+          },
+          {
+            "departure":"28 48 08",
+            "station":"Vangede",
+            "arrival":"17 37 57"
+          },
+          {
+            "departure":"",
+            "station":"Dyssegård",
+            "arrival":""
+          },
+          {
+            "departure":"",
+            "station":"Emdrup",
+            "arrival":""
+          },
+          {
+            "departure":"32 52 12",
+            "station":"Ryparken",
+            "arrival":"13 33 53"
+          },
+          {
+            "departure":"34 54 14",
+            "station":"Svanemøllen",
+            "arrival":"11 31 51"
+          },
+          {
+            "departure":"36 56 16",
+            "station":"Nordhavn",
+            "arrival":"09 29 49"
+          },
+          {
+            "departure":"39 59 19",
+            "station":"Østerport",
+            "arrival":"07 27 47"
+          },
+          {
+            "departure":"41 01 21",
+            "station":"Nørreport",
+            "arrival":"04 24 44"
+          },
+          {
+            "departure":"43 03 23",
+            "station":"Vesterport",
+            "arrival":"02 22 42"
+          },
+          {
+            "departure":"46 06 26",
+            "station":"København H",
+            "arrival":"01 21 41"
+          },
+          {
+            "departure":"47 07 27",
+            "station":"Dybbølsbro",
+            "arrival":"57 17 37"
+          },
+          {
+            "departure":"49 09 29",
+            "station":"Enghave",
+            "arrival":"55 15 35"
+          },
+          {
+            "departure":"52 12 32",
+            "station":"Valby",
+            "arrival":"53 13 33"
+          },
+          {
+            "departure":"",
+            "station":"Langgade",
+            "arrival":""
+          },
+          {
+            "departure":"",
+            "station":"Peter Bangs Vej",
+            "arrival":""
+          },
+          {
+            "departure":"56 16 36",
+            "station":"Flintholm",
+            "arrival":"49 09 29"
+          },
+          {
+            "departure":"57 17 37",
+            "station":"Vanløse",
+            "arrival":"48 08 28"
+          },
+          {
+            "departure":"",
+            "station":"Jyllingevej",
+            "arrival":""
+          },
+          {
+            "departure":"",
+            "station":"Islev",
+            "arrival":""
+          },
+          {
+            "departure":"01 21 41",
+            "station":"Husum",
+            "arrival":"44 04 24"
+          },
+          {
+            "departure":"03 23 43",
+            "station":"Herlev",
+            "arrival":"42 02 22"
+          },
+          {
+            "departure":"",
+            "station":"Skovlunde",
+            "arrival":""
+          },
+          {
+            "departure":"06 26 46",
+            "station":"Malmparken",
+            "arrival":"39 59 19"
+          },
+          {
+            "departure":"09 29 49",
+            "station":"Ballerup",
+            "arrival":"37 57 17"
+          },
+          {
+            "departure":"12 32 52",
+            "station":"Måløv",
+            "arrival":"34 54 14"
+          },
+          {
+            "departure":"",
+            "station":"Kildedal",
+            "arrival":""
+          },
+          {
+            "departure":"16 36 56",
+            "station":"Veksø",
+            "arrival":"30 50 10"
+          },
+          {
+            "departure":"19 39 59",
+            "station":"Stenløse",
+            "arrival":"26 46 06"
+          },
+          {
+            "departure":"21 41 01",
+            "station":"Egedal",
+            "arrival":"24 44 04"
+          },
+          {
+            "departure":"24 44 04",
+            "station":"Ølstykke",
+            "arrival":"22 42 02"
+          },
+          {
+            "departure":"30 50 10",
+            "station":"Frederikssund",
+            "arrival":"16 36 56"
+          }
+        ]
+      }
+    }
+  ]
+}
