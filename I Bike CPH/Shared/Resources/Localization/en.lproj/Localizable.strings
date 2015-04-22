@@ -226,10 +226,13 @@
 "account_email_placeholder" = "Email";
 "account_password_placeholder" = "New password";
 "account_repeat_placeholder" = "Repeat new password";
+"accept_user_terms" = "I accept the Terms of Service";
+"accept_user_terms_link_highlight" = "Terms of Service";
 
 "login_error_fields" = "You must enter both your e-mail and your password!";
 "register_error_fields" = "You must fill out all the fields!";
 "register_error_passwords" = "Your passwords don't match!";
+"register_error_user_terms" = "You must accept Terms of Service!";
 
 "error_not_logged_in" = "You have to be logged in first";
 "report_error_problem_not_selected" = "You have to select a type of problem.";

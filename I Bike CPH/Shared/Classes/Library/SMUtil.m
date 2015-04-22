@@ -278,7 +278,7 @@
     return [regExPredicate evaluateWithObject:[email lowercaseString]];
 }
 
-+ (eRegistrationValidationResult) validateRegistrationName:(NSString*)name Email:(NSString*) email Password:(NSString*) pass AndRepeatedPassword:(NSString*)repPass{
++ (eRegistrationValidationResult) validateRegistrationName:(NSString*)name Email:(NSString*) email Password:(NSString*) pass AndRepeatedPassword:(NSString*)repPass userTerms:(BOOL)userTerms {
     if (!name       || name.length      == 0 ||
         !email      || email.length     == 0 ||
         !pass       || pass.length      == 0 ||
@@ -304,6 +304,12 @@
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"register_error_passwords".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
         return RVR_PASSWORDS_DOESNT_MATCH;
+    }
+    
+    if (!userTerms) {
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"register_error_user_terms".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
+        [av show];
+        return RVR_USER_TERMS_NOT_ACCEPTED;
     }
     
     return RVR_REGISTRATION_DATA_VALID;

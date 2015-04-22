@@ -13,8 +13,10 @@
 #import "SMUtil.h"
 #import "SMAppDelegate.h"
 #import "UIImage+Resize.h"
+#import "TTTAttributedLabel.h"
 
-@interface SMRegisterController () <SMAPIRequestDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface SMRegisterController () <SMAPIRequestDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
+    TTTAttributedLabelDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
@@ -22,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordConfirmField;
+@property (weak, nonatomic) IBOutlet UISwitch *termSwitch;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
 
 @property (nonatomic, strong) SMAPIRequest * apr;
 @property (nonatomic, strong) UIImage * profileImage;
@@ -34,7 +38,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"create_account";
+    self.title = @"create_account".localized;
+    
+    NSURL *url = [NSURL URLWithString: @"http://www.ibikecph.dk/terms"];
+    self.termsLabel.delegate = self;
+    self.termsLabel.linkAttributes = @{ NSForegroundColorAttributeName : self.termsLabel.textColor, NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle) };
+    [SMTranslation translateView:self.termsLabel];
+    NSRange range = [self.termsLabel.text rangeOfString:@"accept_user_terms_link_highlight".localized];
+    [self.termsLabel addLinkToURL:url withRange:range]; // Embedding a custom link in a substring
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -60,9 +71,10 @@
     [self.passwordConfirmField resignFirstResponder];
     [self.nameField resignFirstResponder];
     
-    if([SMUtil validateRegistrationName:self.nameField.text Email:self.emailField.text Password:self.passwordField.text AndRepeatedPassword:self.passwordConfirmField.text] != RVR_REGISTRATION_DATA_VALID){
+    if([SMUtil validateRegistrationName:self.nameField.text Email:self.emailField.text Password:self.passwordField.text AndRepeatedPassword:self.passwordConfirmField.text userTerms:self.termSwitch.on] != RVR_REGISTRATION_DATA_VALID){
         return;
     }
+    
     
     NSMutableDictionary * user = [NSMutableDictionary dictionaryWithDictionary:@{
                                   @"name": self.nameField.text,
@@ -218,6 +230,13 @@
         default:
             break;
     }
+}
+
+
+#pragma mark - TTTAttributedLabelDelegate
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 #pragma mark - statusbar style

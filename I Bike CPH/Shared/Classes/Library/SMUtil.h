@@ -13,7 +13,8 @@ typedef enum _registrationValidationResult{
     RVR_EMPTY_FIELDS,
     RVR_INVALID_EMAIL,
     RVR_PASSWORD_TOO_SHORT,
-    RVR_PASSWORDS_DOESNT_MATCH
+    RVR_PASSWORDS_DOESNT_MATCH,
+    RVR_USER_TERMS_NOT_ACCEPTED
     
 } eRegistrationValidationResult;
 
@@ -55,6 +56,6 @@ typedef enum _registrationValidationResult{
 /**
  * registration validation
  */
-+ (eRegistrationValidationResult) validateRegistrationName:(NSString*)name Email:(NSString*) email Password:(NSString*) pass AndRepeatedPassword:(NSString*)repPass;
++ (eRegistrationValidationResult) validateRegistrationName:(NSString*)name Email:(NSString*) email Password:(NSString*) pass AndRepeatedPassword:(NSString*)repPass userTerms:(BOOL)userTerms;
 
 @end

@@ -229,10 +229,13 @@
 "account_email_placeholder" = "Email";
 "account_password_placeholder" = "Skriv ny adgangskode";
 "account_repeat_placeholder" = "Gentag ny adgangskode";
+"accept_user_terms" = "Jeg accepterer brugerbetingelser";
+"accept_user_terms_link_highlight" = "brugerbetingelser";
 
 "login_error_fields" = "Både din email og din adgangskode skal være indtastet!";
 "register_error_fields" = "Alle felter skal være udfyldt!";
 "register_error_passwords" = "Din adgangskode er forkert!";
+"register_error_user_terms" = "Du skal acceptere brugerbetingelser!";
 
 "error_not_logged_in" = "Du skal være logget ind";
 "report_error_problem_not_selected" = "Vælg venligst et problem";
