@@ -40,7 +40,13 @@
     
     self.title = @"create_account".localized;
     
-    NSURL *url = [NSURL URLWithString: @"http://www.ibikecph.dk/terms"];
+    // Terms
+    NSString *language = [NSBundle mainBundle].preferredLocalizations.firstObject;
+    NSString *urlString = @"http://www.ibikecph.dk/terms";
+    if (![language isEqualToString:@"da"]) {
+        urlString = @"http://www.ibikecph.dk/en/terms";
+    }
+    NSURL *url = [NSURL URLWithString:urlString];
     self.termsLabel.delegate = self;
     self.termsLabel.linkAttributes = @{ NSForegroundColorAttributeName : self.termsLabel.textColor, NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle) };
     [SMTranslation translateView:self.termsLabel];
