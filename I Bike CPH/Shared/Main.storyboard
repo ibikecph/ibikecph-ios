@@ -3077,6 +3077,9 @@ God tur og tak fordi du cykler!</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="h7b-VQ-XtA" kind="show" identifier="trackingPromptToLogin" id="xbN-fl-Cnv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nej-le-cpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4630,9 +4633,9 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cR0-BE-PFO"/>
         <segue reference="YD8-cY-nJg"/>
-        <segue reference="2Vq-ft-HSw"/>
+        <segue reference="xbN-fl-Cnv"/>
         <segue reference="t11-Tv-7cG"/>
+        <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>
 </document>

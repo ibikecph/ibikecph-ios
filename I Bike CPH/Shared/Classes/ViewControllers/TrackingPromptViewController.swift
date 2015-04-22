@@ -24,6 +24,11 @@ class TrackingPromptViewController: SMTranslatedViewController {
         dismiss()
     }
     @IBAction func EnableTrackingButtonTapped(sender: UIButton) {
+        let isLoggedIn = self.appDelegate.appSettings["auth_token"] != nil
+        if !isLoggedIn {
+            performSegueWithIdentifier("trackingPromptToLogin", sender: self)
+            return
+        }
         settings.tracking.on = true
         dismiss()
     }
