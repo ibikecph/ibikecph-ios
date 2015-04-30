@@ -173,6 +173,7 @@ class RecalculateTracksOperation: TracksOperation {
 class RemoveEmptyTracksOperation: TracksOperation {
     
     override func main() {
+        println("Remove empty tracks")
         RLMRealm.beginWriteTransaction()
         for track in tracks() {
             if let track = track as? Track where track.locations.count == 0 {
@@ -206,7 +207,7 @@ class RemoveUnownedDataOperation: TracksOperation {
                 }
             }
         }
-        // Mark acctivities
+        // Mark activities
         let activities = TrackActivity.allObjects()
         for activity in activities {
             if let activity = activity as? TrackLocation {
