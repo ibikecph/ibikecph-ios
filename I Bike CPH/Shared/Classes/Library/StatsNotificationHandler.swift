@@ -128,9 +128,10 @@ class StatsNotificationHandler {
     
     private func updateToTrackData() {
         // Weekly
+        let now = NSDate()
         if let
-            correctTimeToday = NSDate().withComponents(hour: 18, minute: 0, second: 0),
-            nextSundayAt18 = NSDate.nextWeekday(1, fromDate: correctTimeToday)
+            correctTimeToday = now.withComponents(hour: 18, minute: 0, second: 0),
+            nextSundayAt18 = now.nextWeekday(1, fromDate: correctTimeToday)
         {
             // Cancel previously set notification
             if let existingNotification = Notifications.localNotificationScheduledAtDate(nextSundayAt18) {

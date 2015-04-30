@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension NSDate {
+public extension NSDate {
     
     func beginningOfDay() -> NSDate? {
         let calendar = NSCalendar.currentCalendar()
@@ -61,13 +61,13 @@ extension NSDate {
         return relativeDay(fromDate: date) >= 0
     }
     
-    class func nextWeekday(weekday: Int, fromDate: NSDate = NSDate()) -> NSDate? {
+    func nextWeekday(weekday: Int, fromDate: NSDate = NSDate()) -> NSDate? {
         let calendar = NSCalendar.currentCalendar()
         let unitFlags: NSCalendarUnit = .MonthCalendarUnit | .YearCalendarUnit | .WeekdayCalendarUnit | .DayCalendarUnit | .HourCalendarUnit | .MinuteCalendarUnit | .SecondCalendarUnit
         let components = calendar.components(unitFlags, fromDate: fromDate)
         
         // Early on correct weekday, return fromDate
-        if components.weekday == weekday && fromDate.timeIntervalSinceNow < 0 {
+        if components.weekday == weekday && self.timeIntervalSinceDate(fromDate) < 0 {
             return fromDate
         }
         // Go one week forward subtracting weekday offset

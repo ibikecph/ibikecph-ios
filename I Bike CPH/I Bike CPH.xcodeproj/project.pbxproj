@@ -1367,6 +1367,10 @@
 		4EE671C71A2F25F00037865B /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C51A2F25F00037865B /* UINavigationController.swift */; };
 		4EE671CA1A2F3CCC0037865B /* SMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */; };
 		4EE671CB1A2F3CCC0037865B /* SMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */; };
+		4EED548F1AF2417E00A1DBB1 /* NSDate_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */; };
+		4EED54901AF2417E00A1DBB1 /* NSDate_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */; };
+		4EED54911AF249B000A1DBB1 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
+		4EED54921AF249B000A1DBB1 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
 		4EEE91B51A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */; };
 		4EEE91B61A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */; };
 		4EEE91B71A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B21A1245610006BD95 /* copenhagen_withtimestamps.gpx */; };
@@ -2801,6 +2805,7 @@
 		4EE671C51A2F25F00037865B /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		4EE671C81A2F3CCC0037865B /* SMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMenuViewController.h; sourceTree = "<group>"; };
 		4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMenuViewController.m; sourceTree = "<group>"; };
+		4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate_Tests.swift; sourceTree = "<group>"; };
 		4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = copenhagen2_withtimestamps.gpx; sourceTree = "<group>"; };
 		4EEE91B21A1245610006BD95 /* copenhagen_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = copenhagen_withtimestamps.gpx; sourceTree = "<group>"; };
 		4EEE91B31A1245610006BD95 /* test2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test2.gpx; sourceTree = "<group>"; };
@@ -2962,6 +2967,7 @@
 				4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */,
 				4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */,
 				4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */,
+				4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -6272,8 +6278,10 @@
 				4E6BD7C71A56FE320049F1DB /* AddressParser_Tests.swift in Sources */,
 				4EDC4DE81A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */,
 				4E1522C51A84FC1900E62BFA /* SearchListItem.swift in Sources */,
+				4EED54911AF249B000A1DBB1 /* NSDate.swift in Sources */,
 				4E7BA9E51A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */,
 				4E5982281A24AC4100A40484 /* SwiftyJSON.swift in Sources */,
+				4EED548F1AF2417E00A1DBB1 /* NSDate_Tests.swift in Sources */,
 				4E1522C41A84FC0600E62BFA /* FoursquareItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6462,8 +6470,10 @@
 				4E6BD7C81A56FE320049F1DB /* AddressParser_Tests.swift in Sources */,
 				4EFA28091A2B7B120050450C /* SearchListItem.swift in Sources */,
 				4EE05F981A10EDE700DE4226 /* CykelPlanenTests.m in Sources */,
+				4EED54921AF249B000A1DBB1 /* NSDate.swift in Sources */,
 				4E7BA9E61A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */,
 				4E5982291A24AC4100A40484 /* SwiftyJSON.swift in Sources */,
+				4EED54901AF2417E00A1DBB1 /* NSDate_Tests.swift in Sources */,
 				4EDC4DE91A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
