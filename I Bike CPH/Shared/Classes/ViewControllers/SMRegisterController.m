@@ -41,11 +41,7 @@
     self.title = @"create_account".localized;
     
     // Terms
-    NSString *language = [NSBundle mainBundle].preferredLocalizations.firstObject;
-    NSString *urlString = @"http://www.ibikecph.dk/terms";
-    if (![language isEqualToString:@"da"]) {
-        urlString = @"http://www.ibikecph.dk/en/terms";
-    }
+    NSString *urlString = @"accept_user_terms_link".localized;
     NSURL *url = [NSURL URLWithString:urlString];
     self.termsLabel.delegate = self;
     self.termsLabel.linkAttributes = @{ NSForegroundColorAttributeName : self.termsLabel.textColor, NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle) };

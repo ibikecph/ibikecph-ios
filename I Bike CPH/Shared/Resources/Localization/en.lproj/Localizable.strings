@@ -224,10 +224,13 @@
 "save_changes" = "Save changes";
 "account_name_placeholder" = "Name";
 "account_email_placeholder" = "Email";
+
+"old_password" = "Old password";
 "account_password_placeholder" = "New password";
 "account_repeat_placeholder" = "Repeat new password";
 "accept_user_terms" = "I accept the Terms of Service";
 "accept_user_terms_link_highlight" = "Terms of Service";
+"accept_user_terms_link" = "http://www.ibikecph.dk/en/terms";
 
 "login_error_fields" = "You must enter both your e-mail and your password!";
 "register_error_fields" = "You must fill out all the fields!";
@@ -249,7 +252,8 @@
 
 "favorites_login" = "You have no favorites, but you can easily add one if you login.";
 "fb_login_error" = "Error while using FB to log in.";
-"account_is_linked_to_facebook" = "Your account is linked to the Facebook";
+"please_login" = "Please log in";
+"account_is_linked_to_facebook" = "Your account is linked to Facebook";
 "or" = "or";
 
 "current_position_cant_be_destination" = "You can't use current position as destination!";
@@ -265,7 +269,7 @@
 
 "you_have_reached_your_destination" = "You have reached your destination";
 
-"network_error_text" = "Network error occured";
+"network_error_text" = "Network error occurred";
 
 "vehicle_2" = "Walk";
 "vehicle_3" = "Ferry";
@@ -278,7 +282,7 @@
 "enable_tracking" = "Enable tracking";
 "enable_tracking_description" = "Start collecting cycling data";
 "enable_tracking_explanation" = "Once you have enabled the collection of cycle data, data about your cycling behavior are stored locally on your phone and on a server. Only you will have access to your data, and all data will be deleted if you delete your profile.";
-"no_tracking_description" = "Your phone unfortunately dosen't support the collection of cycling data.";
+"no_tracking_description" = "Your phone unfortunately doesn't support the collection of cycling data.";
 "no_tracking_explanation" = "Currently tracking is only supported by Apple's iPhone 5s and newer, as well as all Android phones.";
 "stats_description" = "Your cycle activity";
 "Since" = "Since";
@@ -326,7 +330,7 @@
 "tomorrow" = "tomorrow";
 
 "bike_type_1"= "Get there fast";
-"bike_type_2"= "Fit for cargobikes";
+"bike_type_2"= "Fit for cargo bikes";
 "bike_type_3"= "Enjoy the greenery";
 
 /* I Bike CPH */
