@@ -221,7 +221,6 @@ extension TrackingViewController: UITableViewDataSource {
     }
     func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
         swipeEditing = false
-        updateUI()
     }
 }
 
