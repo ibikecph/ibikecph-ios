@@ -24,11 +24,11 @@ private struct TrackingSwitchItem: TrackingItemProtocol {
     let title: String
     let iconImageName: String
     let on: Bool
-    let switchAction: (TrackingPreferencesViewController, Bool) -> ()
+    let switchAction: (TrackingPreferencesViewController, UISwitch, Bool) -> ()
 }
 
 
-class TrackingPreferencesViewController: UIViewController {
+class TrackingPreferencesViewController: SMTranslatedViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -38,14 +38,26 @@ class TrackingPreferencesViewController: UIViewController {
     private let sections: [SectionViewModel<TrackingItemProtocol>] = [
         SectionViewModel(items:
             [
-                TrackingSwitchItem(title: "tracking_option".localized, iconImageName: "tracking", on: settings.tracking.on, switchAction: { voiceViewController, on in
+                TrackingSwitchItem(title: "tracking_option".localized, iconImageName: "tracking", on: settings.tracking.on, switchAction: { viewController, switcher, on in
+                    let isLoggedIn = viewController.appDelegate.appSettings["auth_token"] != nil
+                    if !isLoggedIn && on {
+                        let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
+                        alertController.addCancelActionWithHandler(nil)
+                        let loginAction = PSTAlertAction(title: "log_in".localized) { action in
+                            viewController.performSegueWithIdentifier("trackingPreferencesToLogin", sender: viewController)
+                        }
+                        alertController.addAction(loginAction)
+                        alertController.showWithSender(viewController, controller: viewController, animated: true, completion: nil)
+                        switcher.setOn(false, animated: true)
+                        return
+                    }
                     settings.tracking.on = on
                 }),
                 // TODO: Add icon for milestones
-                TrackingSwitchItem(title: "tracking_milestone_notifications".localized, iconImageName: "", on: settings.tracking.milestoneNotifications, switchAction: { voiceViewController, on in
+                TrackingSwitchItem(title: "tracking_milestone_notifications".localized, iconImageName: "", on: settings.tracking.milestoneNotifications, switchAction: { voiceViewController, switcher, on in
                     settings.tracking.milestoneNotifications = on
                 }),
-                TrackingSwitchItem(title: "tracking_weekly_status_notifications".localized, iconImageName: "", on: settings.tracking.weeklyStatusNotifications, switchAction: { voiceViewController, on in
+                TrackingSwitchItem(title: "tracking_weekly_status_notifications".localized, iconImageName: "", on: settings.tracking.weeklyStatusNotifications, switchAction: { voiceViewController, switcher, on in
                     settings.tracking.weeklyStatusNotifications = on
                 }),
             ]
@@ -99,7 +111,7 @@ extension TrackingPreferencesViewController: UITableViewDataSource {
             let cell = tableView.cellWithIdentifier(cellSwitchID, forIndexPath: indexPath) as IconLabelSwitchTableViewCell
             cell.configure(text: item.title, icon: UIImage(named: item.iconImageName))
             cell.switcher.on = item.on
-            cell.switchChanged = { on in item.switchAction(self, on) }
+            cell.switchChanged = { on in item.switchAction(self, cell.switcher, on) }
             return cell
         }
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell

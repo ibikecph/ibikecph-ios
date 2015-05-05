@@ -102,7 +102,7 @@ class TrackingViewController: SMTranslatedViewController {
         if let tracks = tracks {
             for tracksInSection in tracks {
                 for track in tracksInSection {
-                    if let let track = track as? Track {
+                    if let track = track as? Track {
                         if track.start == "" {
                             if let startLocation = track.locations.firstObject() as? TrackLocation {
                                 let coordinate = startLocation.coordinate()
@@ -221,7 +221,6 @@ extension TrackingViewController: UITableViewDataSource {
     }
     func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
         swipeEditing = false
-        updateUI()
     }
 }
 

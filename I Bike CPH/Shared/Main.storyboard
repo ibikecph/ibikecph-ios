@@ -4395,7 +4395,7 @@ God tur og tak fordi du cykler!</string>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P1R-RK-cMl">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="P1R-RK-cMl">
                                                     <rect key="frame" x="541" y="9.5" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
@@ -4523,7 +4523,7 @@ God tur og tak fordi du cykler!</string>
                                                         <constraint firstAttribute="width" secondItem="trc-XW-hsp" secondAttribute="height" id="wmC-oK-Igm"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ic-ya-na0">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Ic-ya-na0">
                                                     <rect key="frame" x="50" y="0.0" width="481" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="flT-em-8PI"/>
@@ -4532,8 +4532,8 @@ God tur og tak fordi du cykler!</string>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ges-Nx-Q2r">
-                                                    <rect key="frame" x="541" y="9.5" width="51" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ges-Nx-Q2r">
+                                                    <rect key="frame" x="543" y="9" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -4585,6 +4585,9 @@ God tur og tak fordi du cykler!</string>
                         </variation>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <segue destination="h7b-VQ-XtA" kind="show" identifier="trackingPreferencesToLogin" id="XyX-Jg-6Fy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRP-lT-7He" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4633,9 +4636,10 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cR0-BE-PFO"/>
         <segue reference="YD8-cY-nJg"/>
         <segue reference="xbN-fl-Cnv"/>
         <segue reference="t11-Tv-7cG"/>
-        <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="1" green="0.050980392156862744" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -48,30 +48,83 @@ class TrackDetailViewController: SMTranslatedViewController {
             return
         }
         
-        var shape = RMShape(view: mapView)
-        var pathAnnotation = RMAnnotation()
-        pathAnnotation.mapView = mapView
-        if let firstLocation = track.locations.firstObject() as? TrackLocation {
-            pathAnnotation.coordinate = firstLocation.coordinate()
+        var coordinates = [CLLocationCoordinate2D]()
+        for location in track.locations {
+            let location = location as! TrackLocation
+            coordinates.append(location.coordinate())
         }
-        shape.lineColor = Styler.tintColor()
-        shape.lineWidth = 5.0
+        let pathAnnotation = mapView.addPath(coordinates)
+        
+//        let speedLimit: Double = 3
+//        var slowStartIndex = 0
+//        for speed in track.smoothSpeeds() {
+//            if speed > speedLimit {
+//                break
+//            }
+//            slowStartIndex++
+//        }
+//        let slowStartCoordinates = Array(coordinates[0...slowStartIndex])
+//        mapView.addPath(slowStartCoordinates, lineColor: .redColor())
+//        
+//        var slowEndIndex = coordinates.count - 1
+//        for speed in track.smoothSpeeds().reverse() {
+//            if speed > speedLimit {
+//                break
+//            }
+//            slowEndIndex--
+//        }
+//        let slowEndCoordinates = Array(coordinates[slowEndIndex...(coordinates.count-1)])
+//        mapView.addPath(slowEndCoordinates, lineColor: .greenColor())
+        
+        mapView.userTrackingMode = RMUserTrackingModeNone;
+        
+        Async.main {
+            
+            // Padding
+            var ne = pathAnnotation.neCoordinate.coordinate
+            var sw = pathAnnotation.swCoordinate.coordinate
+            
+            let latitudeDiff = abs(ne.latitude - sw.latitude)
+            let longitudeDiff = abs(ne.longitude - sw.longitude)
+            
+            let padding = 0.2
+            ne.latitude += latitudeDiff * padding;
+            ne.longitude += longitudeDiff * padding;
+            
+            sw.latitude -= latitudeDiff * padding;
+            sw.longitude -= longitudeDiff * padding;
+            
+            // Zoom
+            self.mapView.zoomWithLatitudeLongitudeBoundsSouthWest(sw, northEast: ne, animated: false)
+        }
+    }
+}
+
+extension RMMapView {
+    
+    func addPath(coordinates: [CLLocationCoordinate2D], lineColor: UIColor = Styler.tintColor()) -> RMAnnotation {
+    
+        var shape = RMShape(view: self)
+        var pathAnnotation = RMAnnotation()
+        pathAnnotation.mapView = self
+        if let firstCoordinate = coordinates.first {
+            pathAnnotation.coordinate = firstCoordinate
+        }
+        shape.lineColor = lineColor
+        shape.lineWidth = 4.0
         
         var waypoints: [CLLocation] = [CLLocation]()
-        for location in track.locations {
-            let location = location as TrackLocation
-            waypoints.append(location.location())
-            shape.addLineToCoordinate(location.coordinate())
+        for coordinate in coordinates {
+            shape.addLineToCoordinate(coordinate)
+            let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            waypoints.append(location)
         }
         
         pathAnnotation.layer = shape
         
         pathAnnotation.setBoundingBoxFromLocations(waypoints)
-        mapView.addAnnotation(pathAnnotation)
+        self.addAnnotation(pathAnnotation)
         
-        mapView.zoomWithLatitudeLongitudeBoundsSouthWest(pathAnnotation.swCoordinate.coordinate, northEast:pathAnnotation.neCoordinate.coordinate, animated: false)
-        
-        mapView.userTrackingMode = RMUserTrackingModeNone;
+        return pathAnnotation
     }
-
 }

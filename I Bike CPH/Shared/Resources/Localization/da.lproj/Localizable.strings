@@ -227,10 +227,12 @@
 "save_changes" = "Gem ændringer";
 "account_name_placeholder" = "Navn";
 "account_email_placeholder" = "Email";
+"old_password" = "Gammel adgangskode";
 "account_password_placeholder" = "Skriv ny adgangskode";
 "account_repeat_placeholder" = "Gentag ny adgangskode";
 "accept_user_terms" = "Jeg accepterer brugerbetingelser";
 "accept_user_terms_link_highlight" = "brugerbetingelser";
+"accept_user_terms_link" = "http://www.ibikecph.dk/terms";
 
 "login_error_fields" = "Både din email og din adgangskode skal være indtastet!";
 "register_error_fields" = "Alle felter skal være udfyldt!";
@@ -252,7 +254,8 @@
 "close" = "LUK";
 
 "favorites_login" = "Du har ingen favoritter, men du kan hurtigt tilføje en, hvis du logger ind.";
-"fb_login_error" = "Facebook logind-fejl!";
+"fb_login_error" = "Facebook login-fejl!";
+"please_login" = "Du skal logge ind";
 "account_is_linked_to_facebook" = "Din konto er linket til Facebook";
 "or" = "eller";
 
@@ -289,6 +292,7 @@
 "tracking_option" = "Indsamling af cykeldata";
 "tracking_milestone_notifications" = "Besked om milepæle";
 "tracking_weekly_status_notifications" = "Ugentlig status";
+"log_in_to_track_prompt" = "For at starte opsamling af data, skal du være logget ind.";
 
 "unit_km" = "km";
 "unit_km_pr_h" = "km/t";
