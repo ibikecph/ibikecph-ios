@@ -391,3 +391,7 @@
 "report_text" = "By tapping \"Report\" the information of the route will be sent to us. \n\nIf you choose to get notified once the error is correct, your e-mail will be included.";
 
 "intro_subtitle" = "Quickly from A to B";
+
+"gps_off" = "GPS is turned off";
+"activate_gps" = "Turn GPS On";
+"leave_no_gps" = "Leave GPS off";
