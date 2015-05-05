@@ -3261,6 +3261,8 @@ God tur og tak fordi du cykler!</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addBarButtonItem" destination="PYp-1d-zoI" id="FaK-uO-ptD"/>
+                        <outlet property="editBarButtonItem" destination="v2d-iP-aHw" id="rdY-3N-RBn"/>
                         <outlet property="noProfileLabel" destination="qOn-aF-TRI" id="1Nt-DB-Gua"/>
                         <outlet property="tableView" destination="ZdZ-FV-Ztv" id="30G-7O-jpT"/>
                         <outlet property="toolbar" destination="M5o-Du-DdS" id="kMp-t1-uZZ"/>
