@@ -37,6 +37,7 @@ class TracksHandler {
     class func setNeedsProcessData(force: Bool = false) {
         if force {
             tracksHandler.cleanUpBig()
+            tracksHandler.lastProcessedBig = NSDate()
             return
         }
         if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedBig) > 60*60*1 { // Do big stuff every hour
@@ -90,7 +91,7 @@ class TracksHandler {
         tracksHandler.processing = true
         
         println("Start processing big")
-        let fromDate = lastProcessedBig.dateByAddingTimeInterval(-60*15) // Go 15 minutes back
+        let fromDate = lastProcessedBig.dateByAddingTimeInterval(-60*60*24) // Go 24 hours back
         let operations = [
             RemoveEmptyTracksOperation(fromDate: fromDate),
             MergeCloseToUnknownActivityTracksOperation(fromDate: fromDate, seconds: 30),
@@ -103,7 +104,8 @@ class TracksHandler {
             ClearLeftOversOperation(fromDate: fromDate),
             PruneSlowEndsOperation(fromDate: fromDate),
             RecalculateTracksOperation(fromDate: fromDate),
-            RemoveUnownedDataOperation(fromDate: fromDate)
+            RemoveUnownedDataOperation(fromDate: fromDate),
+            RemoveEmptyTracksOperation()
         ]
         
         operations.last?.completionBlock = {
@@ -311,6 +313,14 @@ class ClearLeftOversOperation: TracksOperation {
                 track.deleteFromRealm()
                 continue
             }
+            
+            // Delete inacurate locations
+            let inaccurateLocations = track.locations.objectsWhere("horizontalAccuracy > 200 OR verticalAccuracy > 200")
+            for inaccurateLocation in inaccurateLocations {
+                println("Deleted inacurate location in track: \(track.startDate)")
+                inaccurateLocation.deleteFromRealm(inWriteTransaction: true)
+            }
+            
             // Somewhat slow + long distance
             let someWhatSlowLongDistance = track.slow(speedLimit: 5, minLength: 0.200)
             if someWhatSlowLongDistance {
