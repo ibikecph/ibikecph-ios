@@ -252,6 +252,7 @@
 
 "favorites_login" = "You have no favorites, but you can easily add one if you login.";
 "fb_login_error" = "Error while using FB to log in.";
+"fb_login_error_no_access" = "The app couldn't get access to your Facebook Account. Please enable access in System Settings.";
 "please_login" = "Please log in";
 "account_is_linked_to_facebook" = "Your account is linked to Facebook";
 "or" = "or";
@@ -318,7 +319,7 @@
 "milestone_daystreak_6_description" = "You have cycled %d days in a row, that's impressive!";
 "milestone_daystreak_7_description" = "Wow, on you bike every day for a month, you are a star!";
 
-"weekly_status_description" = "This week you have cycled %.1f km in %02d:%02d hours.";
+"weekly_status_description" = "This week you have cycled %.1f km in %dh %02m.";
 
 "to" = "to";
 "Duration" = "Dur.";
@@ -329,6 +330,8 @@
 "yesterday" = "yesterday";
 "today" = "today";
 "tomorrow" = "tomorrow";
+
+"hour_minute_format" = "%dh %02dm";
 
 "bike_type_1"= "Get there fast";
 "bike_type_2"= "Fit for cargo bikes";

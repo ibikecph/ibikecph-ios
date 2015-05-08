@@ -25,12 +25,7 @@ class TrackTableViewCell: UITableViewCell {
         return formatter
     }()
     
-    lazy var minutesFormatter: NSNumberFormatter = {
-        let formatter = NSNumberFormatter()
-        formatter.maximumFractionDigits = 0
-        formatter.minimumFractionDigits = 0
-        return formatter
-    }()
+    let hourMinutesFormatter = HourMinuteFormatter()
     
     lazy var numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
@@ -48,21 +43,16 @@ class TrackTableViewCell: UITableViewCell {
                 time += dateFormatter.stringFromDate(date)
             }
             if let date = track.endDate {
-                time += "-" + dateFormatter.stringFromDate(date)
+                time += " - " + dateFormatter.stringFromDate(date)
             }
             timeLabel.text = time
             
             // Duration in minutes
             let duration = track.duration
-            durationLabel.text = minutesFormatter.stringFromNumber(duration / 60)
+            durationLabel.text = hourMinutesFormatter.string(seconds: duration)
             // Distance in km
             let distance = track.length
-            distanceLabel.text = numberFormatter.stringFromNumber(distance / 1000)
-            // Average speed in km/h
-            avgSpeedLabel.text = numberFormatter.stringFromNumber(distance / duration / 1000 * 3600)
-            // Top speed in km/h
-            let topSpeed = track.topSpeed()
-            topSpeedLabel.text = numberFormatter.stringFromNumber(topSpeed / 1000 * 3600)
+            distanceLabel.text = (numberFormatter.stringFromNumber(distance / 1000) ?? "") + " " + "unit_km_pr_h".localized
             
             fromAddressLabel.text = track.start
             toAddressLabel.text = track.end

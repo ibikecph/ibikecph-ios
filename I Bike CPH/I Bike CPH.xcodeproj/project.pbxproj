@@ -109,6 +109,8 @@
 		4E651D301A93EA5B00497C70 /* TrackingPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E651D2E1A93EA5B00497C70 /* TrackingPromptViewController.swift */; };
 		4E651D321A93EB9400497C70 /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E651D311A93EB9400497C70 /* TrackingViewController.swift */; };
 		4E651D331A93EB9400497C70 /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E651D311A93EB9400497C70 /* TrackingViewController.swift */; };
+		4E65D2A21AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */; };
+		4E65D2A31AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */; };
 		4E6BD7C71A56FE320049F1DB /* AddressParser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */; };
 		4E6BD7C81A56FE320049F1DB /* AddressParser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */; };
 		4E7BA9E51A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */; };
@@ -1539,6 +1541,7 @@
 		4E59822A1A24C4DD00A40484 /* BitBlueprint.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BitBlueprint.gpx; sourceTree = "<group>"; };
 		4E651D2E1A93EA5B00497C70 /* TrackingPromptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingPromptViewController.swift; sourceTree = "<group>"; };
 		4E651D311A93EB9400497C70 /* TrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingViewController.swift; sourceTree = "<group>"; };
+		4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourMinuteFormatter.swift; sourceTree = "<group>"; };
 		4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParser_Tests.swift; sourceTree = "<group>"; };
 		4E7BA9D01A1E1AD100F9744A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareItem_Tests.swift; sourceTree = "<group>"; };
@@ -3019,6 +3022,7 @@
 				4ECA91A01AB2EED800F4BB4F /* NotificationCenter.swift */,
 				4EFDA4811AB87A6D00522A41 /* NSDate.swift */,
 				4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */,
+				4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */,
 				4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */,
 				4EB610E41AD69D2500CEC994 /* UITableView.swift */,
 				4E20BA681ADC065A00738CA8 /* Notifications.swift */,
@@ -6200,6 +6204,7 @@
 				4E5982181A24AC1200A40484 /* User.swift in Sources */,
 				4E5258CA1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */,
 				4EC56DBC1A2A25E900B696B4 /* SMAnnotation.m in Sources */,
+				4E65D2A21AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */,
 				4EC56EF31A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
 				4EC56E751A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
 				4E7BD07B1A9234EF00BFDC7B /* RLMSupport.swift in Sources */,
@@ -6342,6 +6347,7 @@
 				4EC56EE51A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
 				4EC56E671A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */,
 				4EE06CD21A11134C00DE4226 /* SMGeocoder.m in Sources */,
+				4E65D2A31AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */,
 				4EC56E871A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
 				4EE06C341A10FC5600DE4226 /* SMArrivalMapping.m in Sources */,
 				4EC56E831A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
