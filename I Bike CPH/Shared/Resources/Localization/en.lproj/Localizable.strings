@@ -252,6 +252,7 @@
 
 "favorites_login" = "You have no favorites, but you can easily add one if you login.";
 "fb_login_error" = "Error while using FB to log in.";
+"fb_login_error_no_access" = "The app couldn't get access to your Facebook Account. Please enable access in System Settings.";
 "please_login" = "Please log in";
 "account_is_linked_to_facebook" = "Your account is linked to Facebook";
 "or" = "or";
