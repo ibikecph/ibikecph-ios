@@ -68,6 +68,7 @@ let trackingHandler = TrackingHandler()
     
     func setupMotionTracking() {
         if !settings.tracking.on {
+            motionDetector.stop()
             return
         }
         if !motionDetector.isAvailable() {
@@ -104,6 +105,10 @@ let trackingHandler = TrackingHandler()
     }
     
     func setupLocationObserver() {
+        if !settings.tracking.on {
+            self.stopTracking()
+        }
+        
         NSNotificationCenter.defaultCenter().addObserverForName("refreshPosition", object: nil, queue: nil) { notification in
             if let locations = notification.userInfo?["locations"] as? [CLLocation] {
                 for location in locations {
@@ -134,9 +139,13 @@ let trackingHandler = TrackingHandler()
     func stopTracking() {
         println("Stop tracking")
         
-        // Stop location manager
-        // TODO: Check that other functionality doesn't depend on it, else only idle down (to allow bike detection in background)
-        SMLocationManager.instance().idle()
+        if settings.tracking.on {
+            // Idle location manager
+            SMLocationManager.instance().idle()
+        } else {
+            // Stop location manager
+            SMLocationManager.instance().stop()
+        }
         
         // Stop track
         if let currentTrack = currentTrack where !currentTrack.invalidated {
