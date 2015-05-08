@@ -2155,11 +2155,11 @@ God tur og tak fordi du cykler!</string>
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EcP-VW-o8X" userLabel="StatsContainer">
-                                            <rect key="frame" x="0.0" y="25" width="600" height="249"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcP-VW-o8X" userLabel="StatsContainer">
+                                            <rect key="frame" x="0.0" y="24" width="600" height="252"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stats_description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxN-OC-5FU">
-                                                    <rect key="frame" x="20" y="0.0" width="560" height="19.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="560" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19.5" id="YBJ-MZ-dSd"/>
                                                     </constraints>
@@ -2171,22 +2171,33 @@ God tur og tak fordi du cykler!</string>
                                                         </mask>
                                                     </variation>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since February 18th 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uX1-zS-B4g">
+                                                    <rect key="frame" x="20" y="238" width="560" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="13.5" id="j4e-ze-mXi"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="j4e-ze-mXi"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wwy-ct-0Fe" userLabel="Stats">
-                                                    <rect key="frame" x="167" y="39" width="265" height="176"/>
+                                                    <rect key="frame" x="167" y="36" width="266" height="177"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-5V-kbj" userLabel="TopLeft">
-                                                            <rect key="frame" x="0.0" y="0.0" width="132.5" height="88"/>
+                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-5V-kbj" userLabel="TopLeft">
+                                                            <rect key="frame" x="0.0" y="0.0" width="133" height="88"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55.3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nb6-0k-MoA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="112.5" height="48"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="55.3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nb6-0k-MoA">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="113" height="48"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTd-rN-3Fr">
-                                                                    <rect key="frame" x="0.0" y="48" width="112.5" height="19.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="unit_km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTd-rN-3Fr">
+                                                                    <rect key="frame" x="0.0" y="48" width="113" height="20"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -2201,18 +2212,16 @@ God tur og tak fordi du cykler!</string>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHW-V6-3Ie" userLabel="BottomLeft">
-                                                            <rect key="frame" x="0.0" y="88" width="132.5" height="88"/>
+                                                            <rect key="frame" x="0.0" y="88" width="133" height="89"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12.4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hK-V7-aa5">
-                                                                    <rect key="frame" x="0.0" y="20" width="112.5" height="48"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="18.4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hK-V7-aa5">
+                                                                    <rect key="frame" x="0.0" y="20" width="113" height="48"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_km_pr_trip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SK4-ag-aOR">
-                                                                    <rect key="frame" x="0.0" y="68" width="112.5" height="19.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="unit_km_pr_h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SK4-ag-aOR">
+                                                                    <rect key="frame" x="0.0" y="68" width="113" height="20"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -2228,18 +2237,16 @@ God tur og tak fordi du cykler!</string>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-Bw-2Ta" userLabel="BottomRight">
-                                                            <rect key="frame" x="132" y="88" width="132.5" height="88"/>
+                                                            <rect key="frame" x="132" y="88" width="133" height="89"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14.3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6I-wy-HE4">
-                                                                    <rect key="frame" x="20" y="20" width="112.5" height="48.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.4" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6I-wy-HE4">
+                                                                    <rect key="frame" x="20" y="20" width="113" height="49"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="unit_h_long" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-j2-stB">
-                                                                    <rect key="frame" x="20" y="68" width="112.5" height="19.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" misplaced="YES" text="unit_km_pr_trip" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-j2-stB">
+                                                                    <rect key="frame" x="20" y="68" width="113" height="20"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -2253,19 +2260,17 @@ God tur og tak fordi du cykler!</string>
                                                                 <constraint firstAttribute="trailing" secondItem="b6I-wy-HE4" secondAttribute="trailing" id="s1R-0X-Ouh"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grm-Q4-pR7" userLabel="TopRight">
-                                                            <rect key="frame" x="132" y="0.0" width="132.5" height="88.5"/>
+                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grm-Q4-pR7" userLabel="TopRight">
+                                                            <rect key="frame" x="132" y="0.0" width="133" height="89"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="24.3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOV-HS-88T">
-                                                                    <rect key="frame" x="20" y="0.0" width="112.5" height="48"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" misplaced="YES" text="24.3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOV-HS-88T">
+                                                                    <rect key="frame" x="20" y="0.0" width="113" height="48"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_km_pr_h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNo-Ym-Rr0">
-                                                                    <rect key="frame" x="20" y="48" width="112.5" height="20.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="unit_h_long" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNo-Ym-Rr0">
+                                                                    <rect key="frame" x="20" y="48" width="113" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -2281,14 +2286,14 @@ God tur og tak fordi du cykler!</string>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dr8-0C-aIY" userLabel="HorizontalLine">
-                                                            <rect key="frame" x="0.0" y="88" width="265" height="1"/>
+                                                            <rect key="frame" x="0.0" y="88" width="266" height="1"/>
                                                             <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="eLD-wj-BUC"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ke4-kU-8v5" userLabel="VerticalLine">
-                                                            <rect key="frame" x="132" y="0.0" width="1" height="176"/>
+                                                            <rect key="frame" x="132" y="0.0" width="1" height="177"/>
                                                             <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="Cup-Aa-9UC"/>
@@ -2349,19 +2354,6 @@ God tur og tak fordi du cykler!</string>
                                                         </mask>
                                                     </variation>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Since February 18th 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uX1-zS-B4g">
-                                                    <rect key="frame" x="20" y="235" width="560" height="13.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="13.5" id="j4e-ze-mXi"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="j4e-ze-mXi"/>
-                                                        </mask>
-                                                    </variation>
-                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -2397,28 +2389,28 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiO-A9-08P" userLabel="LeftView">
-                                                    <rect key="frame" x="16" y="10" width="162" height="59.5"/>
+                                                    <rect key="frame" x="16" y="10" width="164" height="60"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalCompressionResistancePriority="749" text="Havnegårdsvænget" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWG-Yv-i2r" userLabel="FromAddress">
-                                                            <rect key="frame" x="0.0" y="15" width="141.5" height="19.5"/>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalCompressionResistancePriority="749" misplaced="YES" text="Havnegårdsvænget" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWG-Yv-i2r" userLabel="FromAddress">
+                                                            <rect key="frame" x="0.0" y="16" width="142" height="20"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalCompressionResistancePriority="749" misplaced="YES" text="Hegnsvejen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17O-ge-iwH" userLabel="ToAddress">
-                                                            <rect key="frame" x="0.0" y="36" width="162" height="19.5"/>
+                                                            <rect key="frame" x="0.0" y="36" width="164" height="20"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalCompressionResistancePriority="751" misplaced="YES" text="15:30-16:05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggp-G3-fnX" userLabel="Time">
-                                                            <rect key="frame" x="0.0" y="0.0" width="162" height="13.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="164" height="14"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" misplaced="YES" text="to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAl-8H-lsK" userLabel="To">
-                                                            <rect key="frame" x="151" y="19" width="10.5" height="13.5"/>
+                                                            <rect key="frame" x="152" y="21" width="11" height="14"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -2446,26 +2438,26 @@ God tur og tak fordi du cykler!</string>
                                                         </mask>
                                                     </variation>
                                                 </view>
-                                                <view contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="chb-qw-vtD" userLabel="RightView">
-                                                    <rect key="frame" x="327.5" y="10" width="256.5" height="59.5"/>
+                                                <view contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="752" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="chb-qw-vtD" userLabel="RightView">
+                                                    <rect key="frame" x="328" y="10" width="256" height="59"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cee-Cg-b5E" userLabel="Time">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="59.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="59"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gac-GI-AwV" userLabel="description">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="44" height="13.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="44" height="14"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Csn-jr-Ucb" userLabel="value">
-                                                                    <rect key="frame" x="0.0" y="14" width="44" height="19.5"/>
+                                                                    <rect key="frame" x="0.0" y="14" width="44" height="20"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QN-aq-6Lf" userLabel="unit">
-                                                                    <rect key="frame" x="0.0" y="38" width="44" height="13.5"/>
+                                                                    <rect key="frame" x="0.0" y="38" width="44" height="14"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -2486,22 +2478,22 @@ God tur og tak fordi du cykler!</string>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XIh-5e-BmP" userLabel="Distance">
-                                                            <rect key="frame" x="54" y="0.0" width="45" height="51.5"/>
+                                                            <rect key="frame" x="54" y="0.0" width="45" height="52"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOp-IO-4FQ" userLabel="description">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="13.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="14"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVd-Ax-u4J" userLabel="value">
-                                                                    <rect key="frame" x="0.0" y="14" width="45" height="19.5"/>
+                                                                    <rect key="frame" x="0.0" y="14" width="45" height="20"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4W-xW-0ET" userLabel="unit">
-                                                                    <rect key="frame" x="0.0" y="38" width="45" height="13.5"/>
+                                                                    <rect key="frame" x="0.0" y="38" width="45" height="14"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -2521,23 +2513,23 @@ God tur og tak fordi du cykler!</string>
                                                                 <constraint firstItem="hVd-Ax-u4J" firstAttribute="baseline" secondItem="p4W-xW-0ET" secondAttribute="baseline" constant="-19" id="qmR-lr-au0"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hri-m4-WpI" userLabel="AverageSpeed">
-                                                            <rect key="frame" x="109" y="0.0" width="75.5" height="59.5"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hri-m4-WpI" userLabel="AverageSpeed">
+                                                            <rect key="frame" x="109" y="0.0" width="69" height="59"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foF-1N-1Sg" userLabel="description">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="75.5" height="13.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foF-1N-1Sg" userLabel="description">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="69" height="14"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="16" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UK0-fa-Auk" userLabel="value">
-                                                                    <rect key="frame" x="0.0" y="14" width="75.5" height="19.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UK0-fa-Auk" userLabel="value">
+                                                                    <rect key="frame" x="0.0" y="14" width="69" height="20"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="unit_km_pr_h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPe-PY-b7Z" userLabel="unit">
-                                                                    <rect key="frame" x="0.0" y="38" width="75.5" height="13.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_km_pr_h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPe-PY-b7Z" userLabel="unit">
+                                                                    <rect key="frame" x="0.0" y="38" width="69" height="14"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -2558,22 +2550,22 @@ God tur og tak fordi du cykler!</string>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ve3-07-qEf" userLabel="TopSpeed">
-                                                            <rect key="frame" x="194" y="0.0" width="69" height="59.5"/>
+                                                            <rect key="frame" x="187" y="0.0" width="69" height="59"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5u-of-X8r" userLabel="description">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="69" height="13.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="69" height="14"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUu-P6-5aX" userLabel="value">
-                                                                    <rect key="frame" x="0.0" y="14" width="69" height="19.5"/>
+                                                                    <rect key="frame" x="0.0" y="14" width="69" height="20"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="unit_km_pr_h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyy-oI-OUX" userLabel="unit">
-                                                                    <rect key="frame" x="0.0" y="37" width="69" height="13.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_km_pr_h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyy-oI-OUX" userLabel="unit">
+                                                                    <rect key="frame" x="0.0" y="38" width="69" height="14"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -2657,12 +2649,12 @@ God tur og tak fordi du cykler!</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="distanceLabel" destination="nb6-0k-MoA" id="9rZ-53-ew4"/>
+                        <outlet property="distanceLabel" destination="nb6-0k-MoA" id="53E-01-6FI"/>
                         <outlet property="sinceLabel" destination="uX1-zS-B4g" id="mcP-eZ-4zi"/>
-                        <outlet property="speedLabel" destination="wOV-HS-88T" id="4GQ-gn-CCE"/>
+                        <outlet property="speedLabel" destination="7hK-V7-aa5" id="033-hh-2oq"/>
                         <outlet property="tableView" destination="FOn-aj-wdi" id="zWr-ld-Geg"/>
-                        <outlet property="timeLabel" destination="b6I-wy-HE4" id="1Qv-tJ-TSD"/>
-                        <outlet property="tripLabel" destination="7hK-V7-aa5" id="Zox-yK-6uD"/>
+                        <outlet property="timeLabel" destination="wOV-HS-88T" id="dEz-Lu-tUj"/>
+                        <outlet property="tripLabel" destination="b6I-wy-HE4" id="QbX-HI-ie6"/>
                         <segue destination="DLt-LQ-2q9" kind="show" identifier="trackingToDetail" id="t11-Tv-7cG"/>
                     </connections>
                 </viewController>
@@ -4643,5 +4635,4 @@ God tur og tak fordi du cykler!</string>
         <segue reference="xbN-fl-Cnv"/>
         <segue reference="t11-Tv-7cG"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="1" green="0.050980392156862744" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
