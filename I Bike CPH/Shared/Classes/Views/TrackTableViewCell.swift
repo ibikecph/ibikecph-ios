@@ -52,7 +52,7 @@ class TrackTableViewCell: UITableViewCell {
             durationLabel.text = hourMinutesFormatter.string(seconds: duration)
             // Distance in km
             let distance = track.length
-            distanceLabel.text = (numberFormatter.stringFromNumber(distance / 1000) ?? "") + " " + "unit_km_pr_h".localized
+            distanceLabel.text = (numberFormatter.stringFromNumber(distance / 1000) ?? "") + " " + "unit_km".localized
             
             fromAddressLabel.text = track.start
             toAddressLabel.text = track.end
