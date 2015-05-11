@@ -43,7 +43,7 @@ class FoursquareItem_Tests: XCTestCase {
         XCTAssert(foursquareItem.city == "Frederiksberg", "Wrong city")
         XCTAssert(foursquareItem.country == "Denmark", "Wrong address")
         XCTAssert(foursquareItem.zip == "2000", "Wrong zip code")
-        XCTAssert(foursquareItem.location.coordinate.latitude == 55.67815305484223, "Wrong latitude")
-        XCTAssert(foursquareItem.location.coordinate.longitude == 12.53254652023315, "Wrong latitude")
+        XCTAssert(foursquareItem.location!.coordinate.latitude == 55.67815305484223, "Wrong latitude")
+        XCTAssert(foursquareItem.location!.coordinate.longitude == 12.53254652023315, "Wrong latitude")
     }
 }
