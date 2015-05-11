@@ -44,9 +44,6 @@ class MenuViewController: UIViewController {
         let overlayItem = MenuItem(title: "map_overlays".localized, iconImageName: "map_overlays", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToOverlays", sender: menuViewController)
         })
-        let bikeItem = MenuItem(title: "route_type".localized, iconImageName: "route_type", action: { menuViewController in
-            menuViewController.performSegueWithIdentifier("menuToBike", sender: menuViewController)
-        })
         let voiceItem = MenuItem(title: "voice".localized, iconImageName: "speaker", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToVoice", sender: menuViewController)
         })
@@ -80,7 +77,6 @@ class MenuViewController: UIViewController {
         }
         menuItems.append(voiceItem)
         if Macro.isIBikeCph() {
-            menuItems.append(bikeItem)
         }
 //        menuItems.append(speedItem)
         menuItems.append(trackingItem)

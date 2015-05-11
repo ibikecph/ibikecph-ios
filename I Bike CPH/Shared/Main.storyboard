@@ -2114,7 +2114,6 @@ God tur og tak fordi du cykler!</string>
                         <segue destination="HgL-f2-3Al" kind="show" identifier="menuToAccountNative" id="UPU-A9-0r1"/>
                         <segue destination="1AN-tD-MKu" kind="show" identifier="menuToReminders" id="eTH-4h-mt7"/>
                         <segue destination="hsI-UY-mY8" kind="show" identifier="menuToOverlays" id="meI-YB-opB"/>
-                        <segue destination="cdl-a1-MI0" kind="show" identifier="menuToBike" id="C5m-Ce-HY6"/>
                         <segue destination="CaA-EE-oV6" kind="show" identifier="menuToAccountFacebook" id="TIc-7B-BT4"/>
                         <segue destination="hv3-0N-UL0" kind="show" identifier="menuToVoice" id="4W3-LP-Kkg"/>
                         <segue destination="6SA-JC-lpZ" kind="show" identifier="menuToTracking" id="dc7-Qo-Oev"/>
@@ -2520,7 +2519,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsf-pB-a0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1605" y="9605.5"/>
+            <point key="canvasLocation" x="-1605" y="8836"/>
         </scene>
         <!--Tracks View Controller-->
         <scene sceneID="QL3-aQ-Dhy">
@@ -2609,7 +2608,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXG-dy-QeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="9624"/>
+            <point key="canvasLocation" x="-909" y="8855"/>
         </scene>
         <!--Track Detail View Controller-->
         <scene sceneID="Px9-Br-HLr">
@@ -2650,7 +2649,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRt-ZO-TZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-202" y="9606"/>
+            <point key="canvasLocation" x="-202" y="8837"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jsv-IT-wOl">
@@ -2666,7 +2665,7 @@ God tur og tak fordi du cykler!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyM-je-rca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1605" y="8114"/>
+            <point key="canvasLocation" x="-1605" y="7345"/>
         </scene>
         <!--Tracking Prompt View Controller-->
         <scene sceneID="qbo-pC-zA1">
@@ -2935,7 +2934,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nej-le-cpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="8114"/>
+            <point key="canvasLocation" x="-909" y="7345"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="p9i-xj-h3t">
@@ -2951,7 +2950,7 @@ God tur og tak fordi du cykler!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ker-Mw-zOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1605" y="8844"/>
+            <point key="canvasLocation" x="-1605" y="8075"/>
         </scene>
         <!--Tracking Not Available View Controller-->
         <scene sceneID="kQN-iq-8Zn">
@@ -3007,7 +3006,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ya2-Xi-SzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="8844"/>
+            <point key="canvasLocation" x="-909" y="8075"/>
         </scene>
         <!--Favorite List View Controller-->
         <scene sceneID="vpY-3V-J8n">
@@ -3977,94 +3976,6 @@ God tur og tak fordi du cykler!</string>
             </objects>
             <point key="canvasLocation" x="-1605" y="5829"/>
         </scene>
-        <!--Bike Preferences View Controller-->
-        <scene sceneID="yg8-xT-Hyc">
-            <objects>
-                <viewController id="cdl-a1-MI0" customClass="BikePreferencesViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Pms-m9-lhs"/>
-                        <viewControllerLayoutGuide type="bottom" id="Tr8-C9-gyR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1Od-WE-LmC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACK-NA-ykA">
-                                <rect key="frame" x="215" y="290.5" width="170" height="20.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="hB2-Lp-VIQ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RouteCellID" id="XpD-Li-mPD" customClass="IconLabelTableViewCell" customModule="CykelPlanen" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XpD-Li-mPD" id="qEV-HK-tO1">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favStarGreySmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="P92-mW-zUf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="P92-mW-zUf" secondAttribute="height" id="OjA-Ty-6Vt"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQD-rU-OCB">
-                                                    <rect key="frame" x="50" y="0.0" width="550" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Wi2-Ou-jTw"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="fQD-rU-OCB" secondAttribute="bottom" id="5Kv-xX-5FU"/>
-                                                <constraint firstItem="fQD-rU-OCB" firstAttribute="top" secondItem="qEV-HK-tO1" secondAttribute="top" id="LkZ-JH-MdL"/>
-                                                <constraint firstItem="P92-mW-zUf" firstAttribute="leading" secondItem="qEV-HK-tO1" secondAttribute="leading" id="aL7-m7-D0Z"/>
-                                                <constraint firstItem="fQD-rU-OCB" firstAttribute="leading" secondItem="P92-mW-zUf" secondAttribute="trailing" id="bM4-5z-KdA"/>
-                                                <constraint firstAttribute="bottom" secondItem="P92-mW-zUf" secondAttribute="bottom" id="jlm-WP-hQu"/>
-                                                <constraint firstItem="P92-mW-zUf" firstAttribute="top" secondItem="qEV-HK-tO1" secondAttribute="top" id="kL5-sy-czb"/>
-                                                <constraint firstAttribute="trailing" secondItem="fQD-rU-OCB" secondAttribute="trailing" id="xnR-Hd-wLf"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="iconImageView" destination="P92-mW-zUf" id="VOI-tv-HoF"/>
-                                            <outlet property="label" destination="fQD-rU-OCB" id="kTv-WR-vuc"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                                <connections>
-                                    <outlet property="dataSource" destination="cdl-a1-MI0" id="T61-uv-g6y"/>
-                                    <outlet property="delegate" destination="cdl-a1-MI0" id="kQz-ME-fan"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="Tr8-C9-gyR" firstAttribute="top" secondItem="hB2-Lp-VIQ" secondAttribute="bottom" id="4qn-2t-Jsy"/>
-                            <constraint firstItem="hB2-Lp-VIQ" firstAttribute="leading" secondItem="1Od-WE-LmC" secondAttribute="leading" id="8e0-Xq-YSN"/>
-                            <constraint firstAttribute="centerX" secondItem="ACK-NA-ykA" secondAttribute="centerX" id="SCF-CL-VmQ"/>
-                            <constraint firstAttribute="centerY" secondItem="ACK-NA-ykA" secondAttribute="centerY" id="prb-no-Ief"/>
-                            <constraint firstItem="hB2-Lp-VIQ" firstAttribute="top" secondItem="1Od-WE-LmC" secondAttribute="top" id="uNe-MI-ztI"/>
-                            <constraint firstAttribute="trailing" secondItem="hB2-Lp-VIQ" secondAttribute="trailing" id="v7i-Hb-kzj"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="ACK-NA-ykA"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TGU-YF-XgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1605" y="6595"/>
-        </scene>
         <!--Account Facebook View Controller-->
         <scene sceneID="Bu9-CF-6Yc">
             <objects>
@@ -4305,7 +4216,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ba1-bS-fbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1605" y="7355"/>
+            <point key="canvasLocation" x="-1605" y="6586"/>
         </scene>
         <!--Tracking Preferences View Controller-->
         <scene sceneID="q6a-qV-KeS">
@@ -4445,7 +4356,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRP-lT-7He" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="10370"/>
+            <point key="canvasLocation" x="-909" y="9601"/>
         </scene>
     </scenes>
     <resources>
@@ -4490,9 +4401,9 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cR0-BE-PFO"/>
-        <segue reference="YD8-cY-nJg"/>
         <segue reference="xbN-fl-Cnv"/>
-        <segue reference="t11-Tv-7cG"/>
+        <segue reference="mOB-IN-cna"/>
+        <segue reference="YD8-cY-nJg"/>
+        <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>
 </document>
