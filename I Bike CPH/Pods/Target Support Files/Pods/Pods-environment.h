@@ -33,14 +33,14 @@
 // Realm
 #define COCOAPODS_POD_AVAILABLE_Realm
 #define COCOAPODS_VERSION_MAJOR_Realm 0
-#define COCOAPODS_VERSION_MINOR_Realm 91
-#define COCOAPODS_VERSION_PATCH_Realm 5
+#define COCOAPODS_VERSION_MINOR_Realm 92
+#define COCOAPODS_VERSION_PATCH_Realm 2
 
 // Realm/Headers
 #define COCOAPODS_POD_AVAILABLE_Realm_Headers
 #define COCOAPODS_VERSION_MAJOR_Realm_Headers 0
-#define COCOAPODS_VERSION_MINOR_Realm_Headers 91
-#define COCOAPODS_VERSION_PATCH_Realm_Headers 5
+#define COCOAPODS_VERSION_MINOR_Realm_Headers 92
+#define COCOAPODS_VERSION_PATCH_Realm_Headers 2
 
 // TTTAttributedLabel
 #define COCOAPODS_POD_AVAILABLE_TTTAttributedLabel
@@ -50,9 +50,9 @@
 
 // UIImage-Categories
 #define COCOAPODS_POD_AVAILABLE_UIImage_Categories
-#define COCOAPODS_VERSION_MAJOR_UIImage_Categories 0
+#define COCOAPODS_VERSION_MAJOR_UIImage_Categories 1
 #define COCOAPODS_VERSION_MINOR_UIImage_Categories 0
-#define COCOAPODS_VERSION_PATCH_UIImage_Categories 1
+#define COCOAPODS_VERSION_PATCH_UIImage_Categories 0
 
 // Debug build configuration
 #ifdef DEBUG

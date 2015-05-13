@@ -1,1 +1,1 @@
-../../../UIImage-Categories/UIImage+RoundedCorner.h
+../../../UIImage-Categories/Classes/UIImage+RoundedCorner.h
