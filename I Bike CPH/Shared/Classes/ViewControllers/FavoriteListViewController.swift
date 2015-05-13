@@ -131,8 +131,10 @@ extension FavoriteListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            tableView.beginUpdates()
             let item = items.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.endUpdates()
             SMFavoritesUtil.instance().deleteFavoriteFromServer(item)
         }
     }
