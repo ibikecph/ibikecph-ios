@@ -749,8 +749,6 @@
 		4EE06CCA1A11134C00DE4226 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C9D1A11134C00DE4226 /* Reachability.m */; };
 		4EE06CCB1A11134C00DE4226 /* SMTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C9F1A11134C00DE4226 /* SMTranslation.m */; };
 		4EE06CCC1A11134C00DE4226 /* SMTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C9F1A11134C00DE4226 /* SMTranslation.m */; };
-		4EE06CCF1A11134C00DE4226 /* SMAutocomplete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CA21A11134C00DE4226 /* SMAutocomplete.m */; };
-		4EE06CD01A11134C00DE4226 /* SMAutocomplete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CA21A11134C00DE4226 /* SMAutocomplete.m */; };
 		4EE06CD11A11134C00DE4226 /* SMGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CA41A11134C00DE4226 /* SMGeocoder.m */; };
 		4EE06CD21A11134C00DE4226 /* SMGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CA41A11134C00DE4226 /* SMGeocoder.m */; };
 		4EE06CD31A11134C00DE4226 /* SMGPSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CA61A11134C00DE4226 /* SMGPSUtil.m */; };
@@ -2186,8 +2184,6 @@
 		4EE06C9E1A11134C00DE4226 /* SMTranslation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTranslation.h; sourceTree = "<group>"; };
 		4EE06C9F1A11134C00DE4226 /* SMTranslation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTranslation.m; sourceTree = "<group>"; };
 		4EE06CA01A11134C00DE4226 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
-		4EE06CA11A11134C00DE4226 /* SMAutocomplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAutocomplete.h; sourceTree = "<group>"; };
-		4EE06CA21A11134C00DE4226 /* SMAutocomplete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAutocomplete.m; sourceTree = "<group>"; };
 		4EE06CA31A11134C00DE4226 /* SMGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGeocoder.h; sourceTree = "<group>"; };
 		4EE06CA41A11134C00DE4226 /* SMGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGeocoder.m; sourceTree = "<group>"; };
 		4EE06CA51A11134C00DE4226 /* SMGPSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGPSUtil.h; sourceTree = "<group>"; };
@@ -3749,8 +3745,6 @@
 				4EE06CA01A11134C00DE4226 /* README.markdown */,
 				4E5981FF1A24AC1200A40484 /* 3rd party Swift */,
 				4E5982011A24AC1200A40484 /* Models */,
-				4EE06CA11A11134C00DE4226 /* SMAutocomplete.h */,
-				4EE06CA21A11134C00DE4226 /* SMAutocomplete.m */,
 				4EE06CA31A11134C00DE4226 /* SMGeocoder.h */,
 				4EE06CA41A11134C00DE4226 /* SMGeocoder.m */,
 				4EE06CA51A11134C00DE4226 /* SMGPSUtil.h */,
@@ -6264,7 +6258,6 @@
 				4E5258C71A9B9C8400BE55C8 /* String.swift in Sources */,
 				4E2CE9EE1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
 				4EC56DD01A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
-				4EE06CCF1A11134C00DE4226 /* SMAutocomplete.m in Sources */,
 				4EC56E291A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
 				4EE6337A1A5E8B6D009DA49B /* Overlays.swift in Sources */,
 				4EC56E511A2A2C3D00B696B4 /* SMCustomButton.m in Sources */,
@@ -6470,7 +6463,6 @@
 				4EE06CC21A11134C00DE4226 /* SMKMSPlacesOperation.m in Sources */,
 				4EC56ED11A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
 				4E3E38A81A979E0A00773285 /* TrackActivity.swift in Sources */,
-				4EE06CD01A11134C00DE4226 /* SMAutocomplete.m in Sources */,
 				4E3C3A8E1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
 				4EC56EA31A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */,
 			);

@@ -17,8 +17,7 @@
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *nameLabel;
 @property (weak, nonatomic) IBOutlet AsyncImageView *iconImage;
 
-+ (CGFloat)getHeight;
-- (void)setImageWithType:(SearchListItemType)type;
+- (void)setImageWithType:(SearchListItemType)type isFromStreetSearch:(BOOL)isFromStreetSearch;
 - (void)setImageWithFavoriteType:(FavoriteItemType)type;
 
 @end
