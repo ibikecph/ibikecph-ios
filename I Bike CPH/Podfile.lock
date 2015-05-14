@@ -7,9 +7,9 @@ PODS:
   - OCMockito (1.4.0):
     - OCHamcrest (~> 4.0)
   - PSTAlertController (1.1.0)
-  - Realm (0.92.2):
-    - Realm/Headers (= 0.92.2)
-  - Realm/Headers (0.92.2)
+  - Realm (0.92.3):
+    - Realm/Headers (= 0.92.3)
+  - Realm/Headers (0.92.3)
   - Reveal-iOS-SDK (1.5.1)
   - TTTAttributedLabel (1.13.3)
   - UIImage-Categories (1.0.0)
@@ -30,7 +30,7 @@ SPEC CHECKSUMS:
   OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   PSTAlertController: cb21afcfa76c3229feec7db044afd4f60dab5892
-  Realm: fa8e8f7f788dd63744485c15b453487bc7546c8e
+  Realm: bf604805d5e897850da488260f93889f510924b3
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
   TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
   UIImage-Categories: a0593f6a7991c99016b9ecadfbd38b3717ff1a73
