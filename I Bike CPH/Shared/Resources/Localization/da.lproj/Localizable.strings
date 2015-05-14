@@ -1,6 +1,4 @@
 "current_position" = "Nuværende position";
-"today" = "I dag";
-"tomorrow" = "I morgen";
 "accounts" = "Konto";
 "settings" = "Indstillinger";
 "contacts" = "Kontakter";
@@ -299,6 +297,7 @@
 "unit_km_pr_h" = "km/t";
 "unit_km_pr_trip" = "km/tur";
 "unit_h_long" = "timer";
+"unit_h_long_singular" = "time";
 "unit_h_short" = "t";
 "unit_min" = "min";
 "dum_km" = "55,3";
@@ -322,19 +321,20 @@
 "milestone_daystreak_6_description" = "Du har cyklet %d dage i træk, det er imponerende!";
 "milestone_daystreak_7_description" = "Wow, på cyklen hver dag i en måned, du er en stjerne!";
 
-"weekly_status_description" = "Denne uge har du har cyklet %.1f km på %dt %02dm.";
+"weekly_status_description" = "Denne uge har du har cyklet %.1f km på %dt %2dm.";
 
 "to" = "til";
 "Duration" = "Tid";
 "Distance" = "Afstand";
 "Average" = "Gns.";
 "Max" = "Top";
+"track_list_date_format" = "d. MMMM";
 
-"yesterday" = "i går";
-"today" = "i dag";
-"tomorrow" = "i morgen";
+"Yesterday" = "I går";
+"Today" = "I dag";
+"Tomorrow" = "I morgen";
 
-"hour_minute_format" = "%dt %02dm";
+"hour_minute_format" = "%dt %2dm";
 
 "bike_type_1"= "Kom hurtigt frem";
 "bike_type_2"= "God til ladcykel";

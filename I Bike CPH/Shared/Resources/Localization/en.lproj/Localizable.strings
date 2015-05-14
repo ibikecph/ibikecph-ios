@@ -1,6 +1,4 @@
 "current_position" = "Current position";
-"today" = "Today";
-"tomorrow" = "Tomorrow";
 "account" = "Account";
 "settings" = "Settings";
 "contacts" = "Contacts";
@@ -296,6 +294,7 @@
 "unit_km_pr_h" = "km/h";
 "unit_km_pr_trip" = "km/trip";
 "unit_h_long" = "hours";
+"unit_h_long_singular" = "hour";
 "unit_h_short" = "h";
 "unit_min" = "min";
 "dum_km" = "55.3";
@@ -319,19 +318,20 @@
 "milestone_daystreak_6_description" = "You have cycled %d days in a row, that's impressive!";
 "milestone_daystreak_7_description" = "Wow, on you bike every day for a month, you are a star!";
 
-"weekly_status_description" = "This week you have cycled %.1f km in %dh %02m.";
+"weekly_status_description" = "This week you have cycled %.1f km in %dh %2m.";
 
 "to" = "to";
 "Duration" = "Dur.";
 "Distance" = "Dist.";
 "Average" = "Avg.";
 "Max" = "Top";
+"track_list_date_format" = "MMMM d";
 
-"yesterday" = "yesterday";
-"today" = "today";
-"tomorrow" = "tomorrow";
+"Yesterday" = "Yesterday";
+"Today" = "Today";
+"Tomorrow" = "Tomorrow";
 
-"hour_minute_format" = "%dh %02dm";
+"hour_minute_format" = "%dh %2dm";
 
 "bike_type_1"= "Get there fast";
 "bike_type_2"= "Fit for cargo bikes";
