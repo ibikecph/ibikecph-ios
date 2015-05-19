@@ -1367,6 +1367,8 @@
 		4EE671C71A2F25F00037865B /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C51A2F25F00037865B /* UINavigationController.swift */; };
 		4EE671CA1A2F3CCC0037865B /* SMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */; };
 		4EE671CB1A2F3CCC0037865B /* SMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */; };
+		4EE82FB51B0BCE300089147A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */; };
+		4EE82FB61B0BCE350089147A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F8A1A10EDE700DE4226 /* LaunchScreen.xib */; };
 		4EED548F1AF2417E00A1DBB1 /* NSDate_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */; };
 		4EED54901AF2417E00A1DBB1 /* NSDate_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */; };
 		4EED54911AF249B000A1DBB1 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
@@ -4947,6 +4949,7 @@
 				4EE065101A10FAB400DE4226 /* icon_locate_heading@2x.png in Resources */,
 				4EE065141A10FAB400DE4226 /* icon_locate_no_tracking@2x.png in Resources */,
 				4EE0654A1A10FAB400DE4226 /* cargo_slider.png in Resources */,
+				4EE82FB51B0BCE300089147A /* LaunchScreen.xib in Resources */,
 				4EE0664F1A10FAB400DE4226 /* splashDialog@2x.png in Resources */,
 				4EE065D11A10FAB400DE4226 /* input_field__scalable@2x.png in Resources */,
 				4EE065BA1A10FAB400DE4226 /* gray_btn.png in Resources */,
@@ -5637,6 +5640,7 @@
 				4EE0733C1A1178E300DE4226 /* routeEnterViewMoreRow.png in Resources */,
 				4EE072E41A1178E200DE4226 /* red_btn.png in Resources */,
 				4EE072DB1A1178E200DE4226 /* pullHandle@2x.png in Resources */,
+				4EE82FB61B0BCE350089147A /* LaunchScreen.xib in Resources */,
 				4EC56E631A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */,
 				4EE071801A1178E100DE4226 /* bike_route@2x.png in Resources */,
 				4EE072211A1178E200DE4226 /* favHandle@2x.png in Resources */,
