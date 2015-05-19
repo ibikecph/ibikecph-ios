@@ -118,9 +118,14 @@ class TrackingViewController: SMTranslatedViewController {
                                         return
                                     }
                                     if let item = item {
-                                        track.realm.beginWriteTransaction()
+                                        let transact = !track.realm.inWriteTransaction
+                                        if transact {
+                                            track.realm.beginWriteTransaction()
+                                        }
                                         track.start = item.street
-                                        track.realm.commitWriteTransaction()
+                                        if transact {
+                                            track.realm.commitWriteTransaction()
+                                        }
                                         self.updateUI()
                                     }
                                 }
@@ -134,9 +139,14 @@ class TrackingViewController: SMTranslatedViewController {
                                         return
                                     }
                                     if let item = item {
-                                        track.realm.beginWriteTransaction()
+                                        let transact = !track.realm.inWriteTransaction
+                                        if transact {
+                                            track.realm.beginWriteTransaction()
+                                        }
                                         track.end = item.street
-                                        track.realm.commitWriteTransaction()
+                                        if transact {
+                                            track.realm.commitWriteTransaction()
+                                        }
                                         self.updateUI()
                                     }
                                 }
@@ -219,7 +229,7 @@ extension TrackingViewController: UITableViewDataSource {
         if editingStyle == .Delete {
             tableView.beginUpdates()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
-            track(indexPath)?.deleteFromRealm()
+            track(indexPath)?.deleteFromRealmWithRelationships()
             tableView.endUpdates()
         }
     }

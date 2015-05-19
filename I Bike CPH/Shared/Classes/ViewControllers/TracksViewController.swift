@@ -84,7 +84,7 @@ extension TracksViewController: UITableViewDataSource {
         if editingStyle == .Delete {
             tableView.beginUpdates()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
-            track(indexPath)?.deleteFromRealm()
+            track(indexPath)?.deleteFromRealmWithRelationships()
             tableView.endUpdates()
         }
     }

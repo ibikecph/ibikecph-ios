@@ -11,58 +11,36 @@
 extension RLMObject {
     
     /**
-     * Add object to realm within a write transaction
+     * Add object to realm within a write transaction if necessary
      */
-    func addToRealm(realm: RLMRealm = RLMRealm.defaultRealm(), inWriteTransaction: Bool = true) {
+    func addToRealm(realm: RLMRealm = RLMRealm.defaultRealm()) {
         // Add to the Realm inside a transaction
-        if inWriteTransaction {
+        let transact = !realm.inWriteTransaction
+        if transact {
             realm.beginWriteTransaction()
         }
         realm.addObject(self)
-        if inWriteTransaction {
+        if transact {
             realm.commitWriteTransaction()
         }
     }
     
     /**
-     * Delete object from its Realm within a write transaction
+     * Delete object from its Realm within a write transaction if necessary
      */
-    func deleteFromRealm(inWriteTransaction: Bool = true) {
+    func deleteFromRealm() {
         // Get the Realm
         if let realm = self.realm {
-            if inWriteTransaction {
+            let transact = !realm.inWriteTransaction
+            if transact {
                 realm.beginWriteTransaction()
             }
             // Remove from the Realm inside a transaction
             realm.deleteObject(self)
-            if inWriteTransaction {
+            if transact {
                 realm.commitWriteTransaction()
             }
         }
-    }
-}
-
-extension RLMArray {
-    
-    /**
-     * Add object to array within a write transaction
-     */
-    func add(object: RLMObject) {
-        
-        realm.beginWriteTransaction()
-        
-        // Add object to realm
-        realm.addObject(object)
-        
-        // Add to array
-        self.addObject(object)
-        
-        realm.commitWriteTransaction()
-        
-        // Add to the Realm inside a transaction
-//        self.realm.addObject(object)
-        
-        
     }
 }
 
@@ -86,6 +64,8 @@ extension RLMResults {
     }
 }
 
+
+var compressingRealm = false
 extension RLMRealm {
     
     class func deleteDefaultRealmFile() {
@@ -106,5 +86,35 @@ extension RLMRealm {
     }
     class func commitWriteTransaction() {
         return RLMRealm.defaultRealm().commitWriteTransaction()
+    }
+    
+    class func compress(ifNecessary: Bool = true) {
+        compressingRealm = true
+        
+        let defaultPath = defaultRealmPath()
+        var sizeError: NSError? = nil
+        if let
+            attributes = NSFileManager.defaultManager().attributesOfItemAtPath(defaultPath, error: &sizeError),
+            size = attributes[NSFileSize] as? Int
+            where size < 100*1024*1024 // 100 mb
+        {
+            return
+        }
+        
+        var error: NSError? = nil
+        let tempPath = defaultPath + "_copy"
+        NSFileManager.defaultManager().removeItemAtPath(tempPath, error: nil)
+        RLMRealm.defaultRealm().writeCopyToPath(tempPath, error: &error)
+        println(error)
+        RLMRealm.deleteDefaultRealmFile()
+        let version = UInt(REALM_SCHEMA_VERSION)
+        RLMRealm.setSchemaVersion(version, forRealmAtPath: tempPath) { migration, oldSchemaVersion in }
+        let tempRealm = RLMRealm(path: tempPath)
+        tempRealm.writeCopyToPath(defaultPath, error: &error)
+        println(error)
+        NSFileManager.defaultManager().removeItemAtPath(tempPath, error: &error)
+        println(error)
+        
+        compressingRealm = false
     }
 }

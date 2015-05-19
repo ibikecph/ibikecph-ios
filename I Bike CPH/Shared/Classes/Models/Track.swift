@@ -28,14 +28,34 @@ class Track: RLMObject {
         return (locations.lastObject() as? TrackLocation)?.date
     }
     
-    func recalculate(inWriteTransaction: Bool = true) {
-        if inWriteTransaction {
+    func recalculate() {
+        let realm = RLMRealm.defaultRealm()
+        let transact = !realm.inWriteTransaction
+        if transact {
             realm.beginWriteTransaction()
         }
         recalculateTimestamps()
         recalculateDuration()
         recalculateLength()
-        if inWriteTransaction {
+        if transact {
+            realm.commitWriteTransaction()
+        }
+    }
+    
+    func deleteFromRealmWithRelationships(keepLocations: Bool = false, keepActivity: Bool = false) {
+        let realm = RLMRealm.defaultRealm()
+        let transact = !realm.inWriteTransaction
+        if transact {
+            realm.beginWriteTransaction()
+        }
+        if !keepLocations {
+            realm.deleteObjects(locations)
+        }
+        if !keepLocations {
+            realm.deleteObject(activity)
+        }
+        deleteFromRealm()
+        if transact {
             realm.commitWriteTransaction()
         }
     }
