@@ -1,6 +1,4 @@
 "current_position" = "Nuværende position";
-"today" = "I dag";
-"tomorrow" = "I morgen";
 "accounts" = "Konto";
 "settings" = "Indstillinger";
 "contacts" = "Kontakter";
@@ -161,7 +159,7 @@
 "report" = "Rapporter";
 "report_text" = "Ved tryk på “Rapportér” sendes teknisk information om ruten til os.\n\nVælger du at få besked når fejlen er udbedret, bliver din email-adresse sendt til os, så vi kan kontakte dig.";
 "choose_a_route_step" = "Vælg et trin";
-"cancel_picker" = "Annullere";
+"cancel_picker" = "Annuller";
 "done_picker" = "Vælg";
 
 "recent_results" = "Seneste";
@@ -170,7 +168,7 @@
 
 "good_ride" = "Godt kørt!";
 "hope_you_had_a_good_trip" = "Vi håber du havde en god tur.";
-"stop_ride" = "Aflut ruten";
+"stop_ride" = "Afslut ruten";
 "ride_report_a_problem" = "Rapporter et problem";
 
 "login_with_fb" = "Log ind med Facebook";
@@ -255,6 +253,7 @@
 
 "favorites_login" = "Du har ingen favoritter, men du kan hurtigt tilføje en, hvis du logger ind.";
 "fb_login_error" = "Facebook login-fejl!";
+"fb_login_error_no_access" = "Appen kunne ikke få adgang til din Facebook-konto. Slå adgang til i systemindstillinger.";
 "please_login" = "Du skal logge ind";
 "account_is_linked_to_facebook" = "Din konto er linket til Facebook";
 "or" = "eller";
@@ -267,7 +266,7 @@
 "register_successful" = "Konto oprettet. En bekræftelse er blevet sendt til din email-adresse, følg venligst linket i emailen for at aktivere din konto.";
 
 "account_not_saved" = "Dine ændringer blev ikke gemt.";
-"account_cancel" = "Annullere";
+"account_cancel" = "Annuller";
 "account_dont_save" = "Gem ikke";
 
 "you_have_reached_your_destination" = "Du har nået din destination";
@@ -287,7 +286,7 @@
 "enable_tracking_explanation" = "Når du har slået indsamling af cykeldata til, lagres der data om din cykeladfærd lokalt på din telefon og på en server. Det er kun dig der har adgang til din data, og alt data slettes hvis du sletter din profil.";
 "no_tracking_description" = "Din telefon understøtter desværre ikke indsamling af cykeldata.";
 "no_tracking_explanation" = "Tracking understøttes pånuværende tidspunkt kun på Apple's iPhone 5s og opefter og på Andriod telefoner.";
-"stats_description" = "Din cykel aktivitet";
+"stats_description" = "Din cykelaktivitet";
 "Since" = "Siden";
 "tracking_option" = "Indsamling af cykeldata";
 "tracking_milestone_notifications" = "Besked om milepæle";
@@ -298,6 +297,7 @@
 "unit_km_pr_h" = "km/t";
 "unit_km_pr_trip" = "km/tur";
 "unit_h_long" = "timer";
+"unit_h_long_singular" = "time";
 "unit_h_short" = "t";
 "unit_min" = "min";
 "dum_km" = "55,3";
@@ -321,17 +321,20 @@
 "milestone_daystreak_6_description" = "Du har cyklet %d dage i træk, det er imponerende!";
 "milestone_daystreak_7_description" = "Wow, på cyklen hver dag i en måned, du er en stjerne!";
 
-"weekly_status_description" = "Denne uge har du har cyklet %.1f km på %02d:%02d timer.";
+"weekly_status_description" = "Denne uge har du har cyklet %.1f km på %dt %2dm.";
 
 "to" = "til";
 "Duration" = "Tid";
 "Distance" = "Afstand";
 "Average" = "Gns.";
 "Max" = "Top";
+"track_list_date_format" = "d. MMMM";
 
-"yesterday" = "i går";
-"today" = "i dag";
-"tomorrow" = "i morgen";
+"Yesterday" = "I går";
+"Today" = "I dag";
+"Tomorrow" = "I morgen";
+
+"hour_minute_format" = "%dt %2dm";
 
 "bike_type_1"= "Kom hurtigt frem";
 "bike_type_2"= "God til ladcykel";
@@ -407,3 +410,7 @@
 "shift" = "Skift";
 
 "intro_subtitle" = "Hurtigt fra A til B";
+
+"gps_off" = "GPS'en er deaktiveret. For at kunne lokalisere din position skal GPS'en være aktiveret.";
+"activate_gps" = "Aktiver GPS";
+"leave_no_gps" = "Deaktiver GPS";

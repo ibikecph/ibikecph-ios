@@ -10,11 +10,6 @@
 
 @implementation SMSearchCell
 
-
-+ (CGFloat)getHeight {
-    return 40.0f;
-}
-
 - (void)setImageWithFavoriteType:(FavoriteItemType)type {
     
     NSString *imageName;
@@ -41,16 +36,19 @@
     self.iconImage.highlightedImage = [UIImage imageNamed:imageNameHighlight];
 }
 
-- (void)setImageWithType:(SearchListItemType)type {
+- (void)setImageWithType:(SearchListItemType)type isFromStreetSearch:(BOOL)isFromStreetSearch {
     NSString *imageName;
     switch (type) {
         case SearchListItemTypeFavorite: [self setImageWithFavoriteType:FavoriteItemTypeUnknown]; return;
         case SearchListItemTypeHistory: imageName = @"findHistory"; break;
         case SearchListItemTypeCalendar: imageName = @"findRouteCalendar"; break;
         case SearchListItemTypeContact: imageName = @"findRouteContacts"; break;
-        case SearchListItemTypeFoursquare:
-        case SearchListItemTypeCurrentLocation:
-        case SearchListItemTypeKortfor: imageName = @"findLocation"; break;
+        case SearchListItemTypeFoursquare: imageName = @"findLocation"; break;
+        case SearchListItemTypeCurrentLocation: imageName = @"findLocation"; break;
+        case SearchListItemTypeKortfor: {
+            imageName = isFromStreetSearch ? @"findAutocomplete" : @"findLocation";
+            break;
+        }
         default:
             break;
     }

@@ -80,9 +80,13 @@ extension TracksViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        track(indexPath)?.deleteFromRealm()
+        if editingStyle == .Delete {
+            tableView.beginUpdates()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+            track(indexPath)?.deleteFromRealmWithRelationships()
+            tableView.endUpdates()
+        }
     }
 }
 
@@ -131,6 +135,9 @@ class DebugTrackTableViewCell: UITableViewCell {
             if track.activity.running { subtitle += ",rn" }
             if track.activity.automotive { subtitle += ",aut" }
             if track.activity.unknown { subtitle += ",un" }
+            let horizontal = track.locations.objectsWithPredicate(nil).maxOfProperty("horizontalAccuracy").intValue
+            let vertical = track.locations.objectsWithPredicate(nil).maxOfProperty("verticalAccuracy").intValue
+            subtitle += "\(horizontal) \(vertical)"
             subtitle += ",\(Int(round(track.length)))m,\(Int(round(track.length)))s,\(round(track.length/1000/(track.duration/3600)))kmh"
             subtitle += ",fy:\(round(track.flightDistance() ?? 0))m"
             

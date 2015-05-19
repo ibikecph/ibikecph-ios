@@ -19,8 +19,8 @@
 
 + (NSArray*)getSearchHistory {
     SMAppDelegate * appd = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"searchHistory.plist"]]) {
-        NSArray * arr = [NSArray arrayWithContentsOfFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"searchHistory.plist"]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent: @"searchHistory.plist"]]) {
+        NSArray * arr = [NSArray arrayWithContentsOfFile:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent: @"searchHistory.plist"]];
         NSMutableArray * arr2 = [NSMutableArray array];
         if (arr) {
             for (NSDictionary * d in arr) {
@@ -49,7 +49,7 @@
         [r addObject:item.plistRepresentation];
     }
 
-    return [r writeToFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"searchHistory.plist"] atomically:YES];
+    return [r writeToFile:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@"searchHistory.plist"] atomically:YES];
 }
 
 + (BOOL)saveToSearchHistory:(HistoryItem *)item {

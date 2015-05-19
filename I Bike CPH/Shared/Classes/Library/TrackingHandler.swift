@@ -26,11 +26,16 @@ let trackingHandler = TrackingHandler()
                 }
                 // Add activity to current track
                 if let track = currentTrack {
+                    let transact = !track.realm.inWriteTransaction
+                    if transact {
+                        track.realm.beginWriteTransaction()
+                    }
                     let newActivity = TrackActivity.build(activity)
                     newActivity.addToRealm()
-                    track.realm.beginWriteTransaction()
                     track.activity = newActivity
-                    track.realm.commitWriteTransaction()
+                    if transact {
+                        track.realm.commitWriteTransaction()
+                    }
                 }
             } else {
                 self.stopTracking()
@@ -68,6 +73,7 @@ let trackingHandler = TrackingHandler()
     
     func setupMotionTracking() {
         if !settings.tracking.on {
+            motionDetector.stop()
             return
         }
         if !motionDetector.isAvailable() {
@@ -76,9 +82,14 @@ let trackingHandler = TrackingHandler()
         motionDetector.start { [unowned self] activity in
             if let currentTrack = self.currentTrack where !currentTrack.invalidated && currentTrack.activity.sameActivityTypeAs(cmMotionActivity: activity){
                 // Activity just updated it's confidence
-                currentTrack.realm.beginWriteTransaction()
+                let transact = !currentTrack.realm.inWriteTransaction
+                if transact {
+                    currentTrack.realm.beginWriteTransaction()
+                }
                 currentTrack.activity.confidence = activity.confidence.rawValue
-                currentTrack.realm.commitWriteTransaction()
+                if transact {
+                    currentTrack.realm.commitWriteTransaction()
+                }
                 return
             }
             self.currentActivity = activity
@@ -104,6 +115,10 @@ let trackingHandler = TrackingHandler()
     }
     
     func setupLocationObserver() {
+        if !settings.tracking.on {
+            self.stopTracking()
+        }
+        
         NSNotificationCenter.defaultCenter().addObserverForName("refreshPosition", object: nil, queue: nil) { notification in
             if let locations = notification.userInfo?["locations"] as? [CLLocation] {
                 for location in locations {
@@ -132,11 +147,13 @@ let trackingHandler = TrackingHandler()
     }
     
     func stopTracking() {
-        println("Stop tracking")
-        
-        // Stop location manager
-        // TODO: Check that other functionality doesn't depend on it, else only idle down (to allow bike detection in background)
-        SMLocationManager.instance().idle()
+        if settings.tracking.on {
+            // Idle location manager
+            SMLocationManager.instance().idle()
+        } else {
+            // Stop location manager
+            SMLocationManager.instance().stop()
+        }
         
         // Stop track
         if let currentTrack = currentTrack where !currentTrack.invalidated {
@@ -149,8 +166,16 @@ let trackingHandler = TrackingHandler()
     
     func add(location: CLLocation) {
         if let currentTrack = currentTrack where !currentTrack.invalidated {
+            let realm = RLMRealm.defaultRealm()
+            let transact = !realm.inWriteTransaction
+            if transact {
+                currentTrack.realm.beginWriteTransaction()
+            }
             let location = TrackLocation.build(location)
-            currentTrack.locations.add(location)
+            currentTrack.locations.addObject(location)
+            if transact {
+                currentTrack.realm.commitWriteTransaction()
+            }
             currentTrack.recalculate()
 //            println("Tracked location: \(location.location())")
         }

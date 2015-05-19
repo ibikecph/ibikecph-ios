@@ -15,13 +15,13 @@
 // GoogleAnalytics-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_GoogleAnalytics_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_GoogleAnalytics_iOS_SDK 3
-#define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK 10
+#define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK 11
 #define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK 0
 
 // GoogleAnalytics-iOS-SDK/Core
 #define COCOAPODS_POD_AVAILABLE_GoogleAnalytics_iOS_SDK_Core
 #define COCOAPODS_VERSION_MAJOR_GoogleAnalytics_iOS_SDK_Core 3
-#define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK_Core 10
+#define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK_Core 11
 #define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK_Core 0
 
 // PSTAlertController
@@ -33,13 +33,13 @@
 // Realm
 #define COCOAPODS_POD_AVAILABLE_Realm
 #define COCOAPODS_VERSION_MAJOR_Realm 0
-#define COCOAPODS_VERSION_MINOR_Realm 91
+#define COCOAPODS_VERSION_MINOR_Realm 92
 #define COCOAPODS_VERSION_PATCH_Realm 3
 
 // Realm/Headers
 #define COCOAPODS_POD_AVAILABLE_Realm_Headers
 #define COCOAPODS_VERSION_MAJOR_Realm_Headers 0
-#define COCOAPODS_VERSION_MINOR_Realm_Headers 91
+#define COCOAPODS_VERSION_MINOR_Realm_Headers 92
 #define COCOAPODS_VERSION_PATCH_Realm_Headers 3
 
 // TTTAttributedLabel
@@ -50,9 +50,9 @@
 
 // UIImage-Categories
 #define COCOAPODS_POD_AVAILABLE_UIImage_Categories
-#define COCOAPODS_VERSION_MAJOR_UIImage_Categories 0
+#define COCOAPODS_VERSION_MAJOR_UIImage_Categories 1
 #define COCOAPODS_VERSION_MINOR_UIImage_Categories 0
-#define COCOAPODS_VERSION_PATCH_UIImage_Categories 1
+#define COCOAPODS_VERSION_PATCH_UIImage_Categories 0
 
 // Debug build configuration
 #ifdef DEBUG

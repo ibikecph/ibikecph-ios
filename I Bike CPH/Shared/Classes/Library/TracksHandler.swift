@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import CoreLocation
 
 let tracksHandler = TracksHandler()
 let processedSmallNoticationKey = "processedSmallNoticationKey"
@@ -15,7 +16,12 @@ let processedBigNoticationKey = "processedBigNoticationKey"
 
 class TracksHandler {
     
-    private var processing: Bool = false
+    private var processing: Bool = false {
+        didSet {
+            println("Processing \(processing)")
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = processing
+        }
+    }
 
     private let lastProcessedSmallKey = "lastProcessedSmallKey"
     var lastProcessedSmall: NSDate {
@@ -29,18 +35,25 @@ class TracksHandler {
     }
     
     private lazy var operationQueue: NSOperationQueue = {
-        let queue = NSOperationQueue.mainQueue()
+        let queue = NSOperationQueue() // Create background queue
         queue.maxConcurrentOperationCount = 1
         return queue
     }()
     
-    class func setNeedsProcessData(force: Bool = false) {
+    class func setNeedsProcessData(force: Bool = true) { //false) {
+        if compressingRealm {
+            Async.main(after: 10) {
+                self.setNeedsProcessData()
+            }
+            return
+        }
         if force {
-            tracksHandler.cleanUpBig()
+            tracksHandler.cleanUpBig(asap: true)
+            tracksHandler.lastProcessedBig = NSDate()
             return
         }
         if NSDate().timeIntervalSinceDate(tracksHandler.lastProcessedBig) > 60*60*1 { // Do big stuff every hour
-            tracksHandler.cleanUpBig()
+            tracksHandler.cleanUpBig(asap: false)
             tracksHandler.lastProcessedBig = NSDate()
             return
         }
@@ -57,7 +70,7 @@ class TracksHandler {
     private func cleanUpSmall() {
         if tracksHandler.processing {
             println("Already processing")
-            Async.main(after: 10) { // Check again after 10 seconds
+            Async.main(after: 30) { // Check again after 30 seconds
                 self.cleanUpSmall()
             }
             return
@@ -70,6 +83,10 @@ class TracksHandler {
             MergeCloseSameActivityTracksOperation(fromDate: fromDate, seconds: 60),
             RecalculateTracksOperation(fromDate: fromDate)
         ]
+        for operation in operations {
+            operation.queuePriority = .Low
+            operation.qualityOfService = .Background
+        }
         operations.last?.completionBlock = {
             println("Done processing small")
             tracksHandler.processing = false
@@ -79,18 +96,18 @@ class TracksHandler {
         operationQueue.addOperations(operations, waitUntilFinished: false)
     }
     
-    private func cleanUpBig() {
+    private func cleanUpBig(#asap: Bool) {
         if tracksHandler.processing {
             println("Already processing")
-            Async.main(after: 10) { // Check again after 10 seconds
-                self.cleanUpBig()
+            Async.main(after: 60*1) { // Check again after 1 minute
+                self.cleanUpBig(asap: asap)
             }
             return
         }
         tracksHandler.processing = true
         
         println("Start processing big")
-        let fromDate = lastProcessedBig.dateByAddingTimeInterval(-60*15) // Go 15 minutes back
+        let fromDate = lastProcessedBig.dateByAddingTimeInterval(-60*60*24) // Go 24 hours back
         let operations = [
             RemoveEmptyTracksOperation(fromDate: fromDate),
             MergeCloseToUnknownActivityTracksOperation(fromDate: fromDate, seconds: 30),
@@ -103,9 +120,13 @@ class TracksHandler {
             ClearLeftOversOperation(fromDate: fromDate),
             PruneSlowEndsOperation(fromDate: fromDate),
             RecalculateTracksOperation(fromDate: fromDate),
-            RemoveUnownedDataOperation(fromDate: fromDate)
+            RemoveUnownedDataOperation(fromDate: fromDate),
+            RemoveEmptyTracksOperation()
         ]
-        
+        for operation in operations {
+            operation.queuePriority = .Low
+            operation.qualityOfService = asap ? .UserInitiated : .Background
+        }
         operations.last?.completionBlock = {
             println("Done processing big")
             tracksHandler.processing = false
@@ -120,14 +141,23 @@ class TracksHandler {
 class TracksOperation: NSOperation {
     
     private let fromDate: NSDate?
-    init(fromDate: NSDate? = nil) {
+    private var realm: RLMRealm = RLMRealm.defaultRealm()
+    override var asynchronous: Bool {
+        return true
+    }
+
+    init(fromDate: NSDate? = nil ) {
         self.fromDate = fromDate
         super.init()
     }
     
-    private func tracks() -> RLMResults {
+    override func main() {
+        realm = RLMRealm.defaultRealm()
+    }
+    
+    private func tracks(useFromDate: Bool = true) -> RLMResults {
         let tracks = Track.allObjects()
-        if let fromDate = fromDate {
+        if useFromDate, let fromDate = fromDate {
             let timestamp = fromDate.timeIntervalSince1970
             return tracks.objectsWhere("endTimestamp >= %lf", timestamp)
         }
@@ -136,10 +166,6 @@ class TracksOperation: NSOperation {
     
     private func tracksSorted() -> RLMResults {
         return tracks().sortedResultsUsingProperty("startTimestamp", ascending: true)
-    }
-    
-    private func tracksSortedAsTracks() -> [Track] {
-        return tracksSorted().toArray(Track.self)
     }
     
     /// Add dependency to previous operation in array
@@ -158,14 +184,16 @@ class TracksOperation: NSOperation {
 class RecalculateTracksOperation: TracksOperation {
     
     override func main() {
+        super.main()
         println("Recalculating tracks")
-        RLMRealm.beginWriteTransaction()
+//        realm.beginWriteTransaction()
         for track in tracks()  {
             if let track = track as? Track {
-                track.recalculate(inWriteTransaction: false)
+                track.recalculate()
             }
         }
-        RLMRealm.commitWriteTransaction()
+//        realm.commitWriteTransaction()
+        println("Recalculating tracks DONE")
     }
 }
 
@@ -173,14 +201,16 @@ class RecalculateTracksOperation: TracksOperation {
 class RemoveEmptyTracksOperation: TracksOperation {
     
     override func main() {
+        super.main()
         println("Remove empty tracks")
-        RLMRealm.beginWriteTransaction()
+//        realm.beginWriteTransaction()
         for track in tracks() {
             if let track = track as? Track where track.locations.count == 0 {
-                track.deleteFromRealm(inWriteTransaction: false)
+                track.deleteFromRealmWithRelationships()
             }
         }
-        RLMRealm.commitWriteTransaction()
+//        realm.commitWriteTransaction()
+        println("Remove empty tracks DONE")
     }
 }
 
@@ -188,45 +218,78 @@ class RemoveEmptyTracksOperation: TracksOperation {
 class RemoveUnownedDataOperation: TracksOperation {
     
     override func main() {
+        super.main()
         println("Clear unowned data")
-        RLMRealm.beginWriteTransaction()
-        // Mark locations
-        let locations = tracks()
-        for location in locations {
+        realm.beginWriteTransaction()
+        
+        let allTracks = tracks(useFromDate: false)
+        // Mark locations onowned
+        for location in TrackLocation.allObjects() {
             if let location = location as? TrackLocation {
                 location.owned = false
             }
         }
-        for track in tracks() {
-            if let track = track as? Track {
-                let _locations = track.locations
-                for _location in _locations {
-                    if let _location = _location as? TrackLocation {
-                        _location.owned = true
-                    }
-                }
-            }
-        }
-        // Mark activities
+        // Mark activities unowned
         let activities = TrackActivity.allObjects()
         for activity in activities {
             if let activity = activity as? TrackLocation {
                 activity.owned = false
             }
         }
-        for track in Track.allObjects() {
+        // Mark locations and activities owned
+        for track in allTracks {
             if let track = track as? Track {
+                let locations = track.locations
+                for location in locations {
+                    if let location = location as? TrackLocation {
+                        location.owned = true
+                    }
+                }
                 track.activity.owned = true
             }
         }
+        realm.commitWriteTransaction()
         
-        let unownedLocations = TrackLocation.objectsWhere("owned == FALSE").toArray()
+        // Delete unowned data
+        let unownedLocations = TrackLocation.objectsWhere("owned == FALSE")
         println("Deleting \(unownedLocations.count) unowned locations")
-        RLMRealm.defaultRealm().deleteObjects(unownedLocations)
-        let unownedActivities = TrackActivity.objectsWhere("owned == FALSE").toArray()
+        deleteObjectsInParts(unownedLocations)
+        let unownedActivities = TrackActivity.objectsWhere("owned == FALSE")
         println("Deleting \(unownedActivities.count) unowned activities")
-        RLMRealm.defaultRealm().deleteObjects(unownedActivities)
-        RLMRealm.commitWriteTransaction()
+        deleteObjectsInParts(unownedActivities)
+        
+        println("Clear unowned data DONE")
+    }
+}
+
+func deleteObjectsInParts(results: RLMResults) {
+    let realm = results.realm
+    let max = 1000
+    let count = Int(results.count)
+    if count > max {
+        let array = results.toArray(RLMObject.self)
+        let parts = Int(floor(Double(count) / Double(max)))
+        for i in 0..<parts {
+            let date = NSDate()
+            realm.beginWriteTransaction()
+            let slicedArray = Array(array[i*max..<((i+1)*max)])
+            realm.deleteObjects(slicedArray)
+            realm.commitWriteTransaction()
+            println("\(results.count) \(NSDate().timeIntervalSinceDate(date))")
+        }
+    }
+    while results.count > 0 {
+        let date = NSDate()
+        realm.beginWriteTransaction()
+        if Int(results.count) > max {
+            let array = results.toArray(RLMObject.self)
+            let slicedArray = Array(array[0..<max])
+            realm.deleteObjects(slicedArray)
+        } else {
+            (results.firstObject() as? RLMObject)?.deleteFromRealm()
+        }
+        realm.commitWriteTransaction()
+        println("\(results.count) \(NSDate().timeIntervalSinceDate(date))")
     }
 }
 
@@ -246,112 +309,130 @@ class InferBikingFromSpeedOperation: TracksOperation {
     }
     
     override func main() {
+        super.main()
         println("Infer bike from speed from other activity")
-        for track in Track.allObjects().toArray(Track.self) {
-            if !activity(track.activity) {
-                continue
-            }
-            if let minSpeedLimit = minSpeedLimit {
-                if !track.speeding(speedLimit: minSpeedLimit, minLength: minLength) {
+        for track in tracks() {
+            if let track = track as? Track {
+                if !activity(track.activity) {
                     continue
                 }
-            }
-            if let maxSpeedLimit = maxSpeedLimit {
-                if !track.slow(speedLimit: maxSpeedLimit, minLength: minLength) {
-                    continue
+                if let minSpeedLimit = minSpeedLimit {
+                    if !track.speeding(speedLimit: minSpeedLimit, minLength: minLength) {
+                        continue
+                    }
                 }
+                if let maxSpeedLimit = maxSpeedLimit {
+                    if !track.slow(speedLimit: maxSpeedLimit, minLength: minLength) {
+                        continue
+                    }
+                }
+                track.realm.beginWriteTransaction()
+                track.activity.automotive = false
+                track.activity.running = false
+                track.activity.walking = false
+                track.activity.cycling = true
+                track.realm.commitWriteTransaction()
+                println("Infered biking \(track.startDate)")
             }
-            track.realm.beginWriteTransaction()
-            track.activity.automotive = false
-            track.activity.running = false
-            track.activity.walking = false
-            track.activity.cycling = true
-            track.realm.commitWriteTransaction()
-            println("Infered biking \(track.startDate)")
         }
+        println("Infer bike from speed from other activity DONE")
     }
 }
 
 class ClearLeftOversOperation: TracksOperation {
     
     override func main() {
+        super.main()
         println("Clear left overs")
-        for track in tracksSortedAsTracks() {
-            track.recalculate()
-            
-            let formatter = NSDateFormatter()
-            formatter.dateStyle = .ShortStyle
-            formatter.timeStyle = .MediumStyle
-            
-            // Empty
-            if track.locations.count <= 1 {
-                println("Deleted no (to 1) locations: \(track.startDate)")
-                track.deleteFromRealm()
-                continue
-            }
-            // Not moving activity
-            let moving = track.activity.moving()
-            if !moving {
-                println("Deleted not moving activity: \(track.startDate)")
-                track.deleteFromRealm()
-                continue
-            }
-            // Very slow
-            let verySlow = track.slow(speedLimit: 2, minLength: 0.020)
-            if verySlow {
-                println("Deleted slow: \(track.startDate)")
-                track.deleteFromRealm()
-                continue
-            }
-            // Somewhat slow + low accuracy
-            let someWhatSlow = track.slow(speedLimit: 5, minLength: 0.020)
-            let lowAccuracy = track.lowAccuracy(minAccuracy: 50)
-            if someWhatSlow && lowAccuracy {
-                println("Deleted low accuracy: \(track.startDate)")
-                track.deleteFromRealm()
-                continue
-            }
-            // Somewhat slow + long distance
-            let someWhatSlowLongDistance = track.slow(speedLimit: 5, minLength: 0.200)
-            if someWhatSlowLongDistance {
-                println("Deleted someWhatSlowLongDistance: \(track.startDate)")
-                track.deleteFromRealm()
-                continue
-            }
-            // Very fast
-            let veryFast = track.speeding(speedLimit: 50, minLength: 0.200)
-            if veryFast {
-                println("Deleted fast: \(track.startDate) - \(track.endDate)")
-                track.deleteFromRealm()
-                continue
-            }
-            // Odd flight distance (for stationary device with fluctuating data)
-            if let flightWithOneMedianStopDistance = track.flightWithOneMedianStopDistance() {
-                let shortFlight = track.flightDistance() < 50
-                let flightLengthRatio = track.length / flightWithOneMedianStopDistance
-                let flightSuspicious = 10 < flightLengthRatio
-                //                println("PP \(shortFlight) \(flightSuspicious) \(track.flightDistance()) \(flightLengthRatio) \(track.duration) \(track.locations.count) \(formatter.stringFromDate(track.startDate!))")
-                if flightSuspicious {
-                    println("Deleted short flight distance: \(track.startDate)")
-                    track.deleteFromRealm()
+//        realm.beginWriteTransaction()
+        for track in tracksSorted() {
+            if let track = track as? Track {
+                track.recalculate()
+                
+                let formatter = NSDateFormatter()
+                formatter.dateStyle = .ShortStyle
+                formatter.timeStyle = .MediumStyle
+                
+                // Empty
+                if track.locations.count <= 1 {
+                    println("Deleted no (to 1) locations: \(track.startDate)")
+                    track.deleteFromRealmWithRelationships()
+                    continue
+                }
+                // Not moving activity
+                let moving = track.activity.moving()
+                if !moving {
+                    println("Deleted not moving activity: \(track.startDate)")
+                    track.deleteFromRealmWithRelationships()
+                    continue
+                }
+                // Very slow
+                let verySlow = track.slow(speedLimit: 2, minLength: 0.020)
+                if verySlow {
+                    println("Deleted slow: \(track.startDate)")
+                    track.deleteFromRealmWithRelationships()
+                    continue
+                }
+                // Somewhat slow + low accuracy
+                let someWhatSlow = track.slow(speedLimit: 5, minLength: 0.020)
+                let lowAccuracy = track.lowAccuracy(minAccuracy: 50)
+                if someWhatSlow && lowAccuracy {
+                    println("Deleted low accuracy: \(track.startDate)")
+                    track.deleteFromRealmWithRelationships()
+                    continue
+                }
+                
+                // Delete inacurate locations
+                let inaccurateLocations = track.locations.objectsWhere("horizontalAccuracy > 200 OR verticalAccuracy > 200")
+                for inaccurateLocation in inaccurateLocations {
+                    println("Deleted inacurate location in track: \(track.startDate)")
+                    inaccurateLocation.deleteFromRealm()
+                }
+                
+                // Somewhat slow + long distance
+                let someWhatSlowLongDistance = track.slow(speedLimit: 5, minLength: 0.200)
+                if someWhatSlowLongDistance {
+                    println("Deleted someWhatSlowLongDistance: \(track.startDate)")
+                    track.deleteFromRealmWithRelationships()
+                    continue
+                }
+                // Very fast
+                let veryFast = track.speeding(speedLimit: 50, minLength: 0.200)
+                if veryFast {
+                    println("Deleted fast: \(track.startDate) - \(track.endDate)")
+                    track.deleteFromRealmWithRelationships()
+                    continue
+                }
+                // Odd flight distance (for stationary device with fluctuating data)
+                if let flightWithOneMedianStopDistance = track.flightWithOneMedianStopDistance() {
+                    let shortFlight = track.flightDistance() < 50
+                    let flightLengthRatio = track.length / flightWithOneMedianStopDistance
+                    let flightSuspicious = 10 < flightLengthRatio
+                    //                println("PP \(shortFlight) \(flightSuspicious) \(track.flightDistance()) \(flightLengthRatio) \(track.duration) \(track.locations.count) \(formatter.stringFromDate(track.startDate!))")
+                    if flightSuspicious {
+                        println("Deleted short flight distance: \(track.startDate)")
+                        track.deleteFromRealmWithRelationships()
+                        continue
+                    }
+                }
+                // No length
+                let noLength = track.length == 0
+                if noLength {
+                    println("Deleted no length: \(track.startDate)")
+                    track.deleteFromRealmWithRelationships()
+                    continue
+                }
+                // No duration
+                let noDuration = track.duration == 0
+                if noDuration {
+                    println("Deleted no duration: \(track.startDate)")
+                    track.deleteFromRealmWithRelationships()
                     continue
                 }
             }
-            // No length
-            let noLength = track.length == 0
-            if noLength {
-                println("Deleted no length: \(track.startDate)")
-                track.deleteFromRealm()
-                continue
-            }
-            // No duration
-            let noDuration = track.duration == 0
-            if noDuration {
-                println("Deleted no duration: \(track.startDate)")
-                track.deleteFromRealm()
-                continue
-            }
         }
+//        realm.commitWriteTransaction()
+        println("Clear left overs DONE")
     }
 }
 
@@ -359,6 +440,7 @@ class ClearLeftOversOperation: TracksOperation {
 class PruneSlowEndsOperation: TracksOperation {
     
     override func main() {
+        super.main()
         println("Prune slow ends")
         for track in tracks() {
             if let track = track as? Track {
@@ -368,13 +450,15 @@ class PruneSlowEndsOperation: TracksOperation {
                 }
                 let speeds = track.smoothSpeeds()
                 
-                let speedLimit: Double = 7 * 1000 / 3600 // 10 km/h
+                var changed = false
+                let speedLimit: Double = 7 * 1000 / 3600 // 7 km/h
                 for speed in speeds {
                     if speed > speedLimit {
                         break
                     }
                     if let firstLocation = track.locations.firstObject() as? TrackLocation {
                         firstLocation.deleteFromRealm()
+                        changed = true
                     }
                 }
                 for speed in speeds.reverse() {
@@ -383,18 +467,21 @@ class PruneSlowEndsOperation: TracksOperation {
                     }
                     if let lastLocation = track.locations.lastObject() as? TrackLocation {
                         lastLocation.deleteFromRealm()
+                        changed = true
                     }
                 }
-                track.recalculate()
+                if changed {
+                    track.recalculate()
+                }
             }
         }
+        println("Prune slow ends DONE")
     }
 }
 
-
 class MergeTracksOperation: TracksOperation {
     
-    private func mergeTrack(track1: Track, toTrack track2: Track, forceBike: Bool = false, forceActivity: TrackActivity? = nil) -> Track {
+    private func mergeTrack(track1: Track, toTrack track2: Track, forceBike: Bool = false, useFirstTrackActivity: Bool = true) -> Track {
         // Merge locations
         track1.realm.beginWriteTransaction()
         for location in track2.locations {
@@ -402,21 +489,25 @@ class MergeTracksOperation: TracksOperation {
         }
         // Combine
         track1.end = track2.end
+        if !useFirstTrackActivity {
+            let startDate = track1.activity.startDate // Take date from 1st activity
+            track1.activity.deleteFromRealm() // Delete 1st activity
+            track1.activity = track2.activity // Use 2nd activity
+            track1.activity.startDate = startDate // Update date
+        }
         if forceBike {
             track1.activity.cycling = true
             track1.activity.automotive = false
             track1.activity.walking = false
             track1.activity.running = false
             track1.activity.confidence = 0
-        } else if let forceActivity = forceActivity {
-            let startDate = track1.activity.startDate
-            track1.activity = forceActivity;
-            track1.activity.startDate = startDate
         }
         // Clean up
-        track1.recalculate(inWriteTransaction: false)
-        track2.deleteFromRealm(inWriteTransaction: false)
-        
+        track1.recalculate()
+        if useFirstTrackActivity {
+            track2.activity.deleteFromRealm()
+        }
+        track2.deleteFromRealm()
         track1.realm.commitWriteTransaction()
         
         return track1
@@ -461,6 +552,7 @@ class MergeTimeTracksOperation: MergeTracksOperation {
 class MergeCloseSameActivityTracksOperation : MergeTimeTracksOperation {
     
     override func main() {
+        super.main()
         println("Merge close to same activity")
         var tracks = tracksSorted()
         
@@ -480,6 +572,7 @@ class MergeCloseSameActivityTracksOperation : MergeTimeTracksOperation {
                 //                println(" \(count) / \(tracks.count)")
             }
         }
+        println("Merge close to same activity DONE")
     }
 }
 
@@ -487,6 +580,7 @@ class MergeCloseSameActivityTracksOperation : MergeTimeTracksOperation {
 class MergeCloseToUnknownActivityTracksOperation: MergeTimeTracksOperation {
     
     override func main() {
+        super.main()
         println("Merge close to unknown activity tracks")
         var tracks = tracksSorted()
             
@@ -499,8 +593,7 @@ class MergeCloseToUnknownActivityTracksOperation: MergeTimeTracksOperation {
                 let eitherIsUnknown = unknown || unknownNext
                 let merge = close && eitherIsUnknown
                 if merge {
-                    let forceActivity = unknownNext ? track.activity : nextTrack.activity
-                    let mergedTrack = mergeTrack(track, toTrack: nextTrack, forceActivity: forceActivity)
+                    let mergedTrack = mergeTrack(track, toTrack: nextTrack, useFirstTrackActivity: !unknownNext)
                     tracks = tracksSorted()
                     println("Close to empty activity: \(mergedTrack.startDate)")
                 } else {
@@ -509,6 +602,7 @@ class MergeCloseToUnknownActivityTracksOperation: MergeTimeTracksOperation {
                 //                println(" \(count) / \(tracks.count)")
             }
         }
+        println("Merge close to unknown activity tracks DONE")
     }
 }
 
@@ -516,8 +610,9 @@ class MergeCloseToUnknownActivityTracksOperation: MergeTimeTracksOperation {
 class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
     
     override func main() {
+        super.main()
         println("Merge track between bike tracks")
-        var tracks = tracksSortedAsTracks()
+        var tracks = tracksSorted().toArray(Track.self)
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = .ShortStyle
@@ -554,17 +649,19 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
                     println("\(formatter.stringFromDate(track.startDate!)) -> \(formatter.stringFromDate(track.endDate!))")
                 }
                 mergeTracks(tracksToMerge)
-                tracks = tracksSortedAsTracks()
+                tracks = tracksSorted().toArray(Track.self)
             } else {
                 count++
             }
         }
+        println("Merge track between bike tracks DONE")
     }
 }
 
 class MergeBikeCloseWithMoveTracksOperation: MergeTimeTracksOperation {
     
     override func main() {
+        super.main()
         println("Merge bike close with non-stationary tracks")
         var tracks = tracksSorted()
     
@@ -588,6 +685,7 @@ class MergeBikeCloseWithMoveTracksOperation: MergeTimeTracksOperation {
                 //                println(" \(count) / \(tracks.count)")
             }
         }
+        println("Merge bike close with non-stationary tracks DONE")
     }
 }
 

@@ -1,6 +1,4 @@
 "current_position" = "Current position";
-"today" = "Today";
-"tomorrow" = "Tomorrow";
 "account" = "Account";
 "settings" = "Settings";
 "contacts" = "Contacts";
@@ -252,6 +250,7 @@
 
 "favorites_login" = "You have no favorites, but you can easily add one if you login.";
 "fb_login_error" = "Error while using FB to log in.";
+"fb_login_error_no_access" = "The app couldn't get access to your Facebook Account. Please enable access in System Settings.";
 "please_login" = "Please log in";
 "account_is_linked_to_facebook" = "Your account is linked to Facebook";
 "or" = "or";
@@ -295,6 +294,7 @@
 "unit_km_pr_h" = "km/h";
 "unit_km_pr_trip" = "km/trip";
 "unit_h_long" = "hours";
+"unit_h_long_singular" = "hour";
 "unit_h_short" = "h";
 "unit_min" = "min";
 "dum_km" = "55.3";
@@ -318,17 +318,20 @@
 "milestone_daystreak_6_description" = "You have cycled %d days in a row, that's impressive!";
 "milestone_daystreak_7_description" = "Wow, on you bike every day for a month, you are a star!";
 
-"weekly_status_description" = "This week you have cycled %.1f km in %02d:%02d hours.";
+"weekly_status_description" = "This week you have cycled %.1f km in %dh %2m.";
 
 "to" = "to";
 "Duration" = "Dur.";
 "Distance" = "Dist.";
 "Average" = "Avg.";
 "Max" = "Top";
+"track_list_date_format" = "MMMM d";
 
-"yesterday" = "yesterday";
-"today" = "today";
-"tomorrow" = "tomorrow";
+"Yesterday" = "Yesterday";
+"Today" = "Today";
+"Tomorrow" = "Tomorrow";
+
+"hour_minute_format" = "%dh %2dm";
 
 "bike_type_1"= "Get there fast";
 "bike_type_2"= "Fit for cargo bikes";
@@ -391,3 +394,7 @@
 "report_text" = "By tapping \"Report\" the information of the route will be sent to us. \n\nIf you choose to get notified once the error is correct, your e-mail will be included.";
 
 "intro_subtitle" = "Quickly from A to B";
+
+"gps_off" = "GPS is turned off";
+"activate_gps" = "Turn GPS On";
+"leave_no_gps" = "Leave GPS off";

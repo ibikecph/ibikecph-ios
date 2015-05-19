@@ -1,1 +1,1 @@
-../../../UIImage-Categories/UIImage+Alpha.h
+../../../UIImage-Categories/Classes/UIImage+Alpha.h

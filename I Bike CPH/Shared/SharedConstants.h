@@ -69,4 +69,6 @@
 
 #define kFAVORITES_CHANGED @"favoritesChanged"
 
+#define REALM_SCHEMA_VERSION 7
+
 #endif

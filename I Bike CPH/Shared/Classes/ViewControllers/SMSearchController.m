@@ -13,7 +13,6 @@
 #import "SMGeocoder.h"
 #import <MapKit/MapKit.h>
 #import "SMAppDelegate.h"
-#import "SMAutocomplete.h"
 #import "DAKeyboardControl.h"
 #import "TTTAttributedLabel.h"
 #import "SMLocationManager.h"
@@ -32,10 +31,9 @@
 
 @property (nonatomic, strong) NSArray * searchResults;
 @property (nonatomic, strong) NSMutableArray * tempSearch;
-@property (nonatomic, strong) SMAutocomplete * autocomp;
 @property (nonatomic, strong) NSArray * favorites;
 
-@property (nonatomic, strong) NSMutableArray * terms;
+@property (nonatomic, strong) NSArray * terms;
 @property (nonatomic, strong) NSString * srchString;
 @property (nonatomic, strong) SMRequestOSRM * req;
 
@@ -81,7 +79,6 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
     self.title = @"search".localized;
     
     [self.searchField setText:self.searchText];
-    self.autocomp = [[SMAutocomplete alloc] initWithDelegate:self];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self.searchField becomeFirstResponder];
     [self setFavorites:[SMFavoritesUtil getFavorites]];
@@ -167,6 +164,8 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
    
     NSArray * words = [self getSearchTerms];
 
+    BOOL isFromStreetSearch = false;
+    
     SMSearchCell * cell;
     if (item.type == SearchListItemTypeCurrentLocation)
     {
@@ -176,11 +175,11 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
     else if (item.type == SearchListItemTypeKortfor) {
         SMSearchTwoRowCell *twoCell = [tableView dequeueReusableCellWithIdentifier:TwoRowSearchCellIdentifier];
         
-        NSString *name;
-        NSString *address;
+        KortforItem *kortforItem = (KortforItem *)item;
+        isFromStreetSearch = kortforItem.isFromStreetSearch;
         
-        name = item.name;
-        address = [NSString stringWithFormat:@"%@ %@", item.zip, item.city];
+        NSString *name = isFromStreetSearch ? item.street : [NSString stringWithFormat:@"%@ %@", item.street, item.number];
+        NSString *address = [NSString stringWithFormat:@"%@ %@", item.zip, item.city];
         
         [twoCell.nameLabel setText:name afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
             for (NSString * srch in words) {
@@ -265,9 +264,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
             return mutableAttributedString;
         }];
         cell = twoCell;
-    }
-    else
-    {
+    } else {
         cell = [tableView dequeueReusableCellWithIdentifier:SingleRowSearchCellIdentifier];
         
         [cell.nameLabel setText:item.name afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
@@ -291,7 +288,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
     if (item.type == SearchListItemTypeFavorite) {
         [cell setImageWithFavoriteType:((FavoriteItem *)item).origin];
     } else {
-        [cell setImageWithType:item.type];
+        [cell setImageWithType:item.type isFromStreetSearch:isFromStreetSearch];
     }
     
     return cell;
@@ -299,19 +296,17 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSObject<SearchListItem> *currentItem = [self.searchResults objectAtIndex:indexPath.row];
+    NSObject<SearchListItem> *currentItem = self.searchResults[indexPath.row];
     self.locationItem = currentItem;
     [self setReturnKey];
-    
 
-    if (currentItem.type == SearchListItemTypeKortfor) { // TODO: Check if oiorest/kortfor + autocomplete
+    if (currentItem.type == SearchListItemTypeKortfor && ((KortforItem *)currentItem).isFromStreetSearch) {
         self.searchField.text = currentItem.address;
-        NSString * street = currentItem.street;
+        NSString *street = currentItem.street;
         if(street.length > 0) {
             [self stopAll];
             [self delayedAutocomplete:self.searchField.text];
-            // TODO: Carret position doesn't set correctly
-            [self setCaretForSearchFieldOnPosition:@(street.length+1)];
+            [self setCaretForSearchFieldOnPosition:street.length+1];
         } else {
             [self checkLocation];
         }
@@ -328,47 +323,8 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         }
         [self dismiss];
     }
-    
-    // TODO: From CykelPlanen for l283-308
-//    if ([[currentRow objectForKey:@"source"] isEqualToString:@"autocomplete"] && [[currentRow objectForKey:@"subsource"] isEqualToString:@"oiorest"]) {
-//        self.searchField.text = [currentRow objectForKey:@"address"];
-//        NSString * street = [currentRow objectForKey:@"street"];
-//        if(street.length > 0){
-//            [self setCaretForSearchFieldOnPosition:[NSNumber numberWithInt:street.length+1]];
-//        } else {
-//            [self checkLocation];
-//        }
-//    } else if (currentItem.type == SearchListItemTypeCurrentLocation) {
-//        SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
-//        [r setRequestIdentifier:@"getNearestForPinDrop"];
-//        [r findNearestPointForLocation:[[CLLocation alloc] initWithLatitude:[[currentRow objectForKey:@"lat"] doubleValue] longitude:[[currentRow objectForKey:@"long"] doubleValue]]];
-//    } else {
-//        if ([currentRow objectForKey:@"subsource"]) {
-//            [self setLocationData:@{
-//                                    @"name" : [currentRow objectForKey:@"name"],
-//                                    @"address" : [currentRow objectForKey:@"address"],
-//                                    @"location" : [[CLLocation alloc] initWithLatitude:[[currentRow objectForKey:@"lat"] doubleValue] longitude:[[currentRow objectForKey:@"long"] doubleValue]],
-//                                    @"source" : [currentRow objectForKey:@"source"],
-//                                    @"subsource" : [currentRow objectForKey:@"subsource"]
-//                                    }];
-//        } else {
-//            [self setLocationData:@{
-//                                    @"name" : [currentRow objectForKey:@"name"],
-//                                    @"address" : [currentRow objectForKey:@"address"],
-//                                    @"location" : [[CLLocation alloc] initWithLatitude:[[currentRow objectForKey:@"lat"] doubleValue] longitude:[[currentRow objectForKey:@"long"] doubleValue]],
-//                                    @"source" : [currentRow objectForKey:@"source"]
-//                                    }];
-//        }
-//        if (self.delegate) {
-//            [self.delegate locationFound:self.locationItem];
-//        }
-//        [self goBack:nil];
-//    }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [SMSearchCell getHeight];
-}
 
 #pragma mark - custom methods 
 
@@ -383,9 +339,6 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
     [self.loaderView setAlpha:1.0f];
     [self.tableView reloadData];
     [self.queue addTasks:[text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-    
-    // TODO: From Cykelplanen for l362-363
-//    [self.autocomp getAutocomplete:text];
 }
 
 - (void)showFade {
@@ -433,29 +386,6 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 
                 }
             }
-            
-            // TODO: From CykelPlanel for l386-413
-//            [SMGeocoder geocode:self.searchField.text completionHandler:^(NSArray *placemarks, NSError *error) {
-//                if ([placemarks count] > 0) {
-//                    MKPlacemark *coord = [placemarks objectAtIndex:0];
-//                    [self dismiss];
-//                    if (self.delegate) {
-//                        [self.delegate locationFound:@{
-//                                                       @"name" : self.searchField.text,
-//                                                       @"address" : self.searchField.text,
-//                                                       @"location" : [[CLLocation alloc] initWithLatitude:coord.coordinate.latitude longitude:coord.coordinate.longitude],
-//                                                       @"source" : @"typedIn"
-//                                                       }];
-//                    }
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        [self performSelector:@selector(hideFade) withObject:nil afterDelay:0.01f];
-//                    });
-//                } else {
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        [self performSelector:@selector(hideFade) withObject:nil afterDelay:0.01f];
-//                    });
-//                }
-//            }];
         }
     } else {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -466,43 +396,30 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 
 
 
-- (void) setCaretForSearchFieldOnPosition:(NSNumber*) pos{
-    //If pos is > 0 that means that this is a first call.
-    //First call will be used to set cursor to begining and call recursively this method again with delay to set real position
-    int num = [pos intValue];
-    if(num > 0){
-        UITextPosition * from = [self.searchField positionFromPosition:[self.searchField beginningOfDocument] offset:0];
-        UITextPosition * to =[self.searchField positionFromPosition:[self.searchField beginningOfDocument] offset:0];
-        [self.searchField setSelectedTextRange:[self.searchField textRangeFromPosition:from toPosition:to]];
-        NSNumber * newPos = [NSNumber numberWithInt:-num];
-        [self performSelector:@selector(setCaretForSearchFieldOnPosition:) withObject:newPos afterDelay:0.3];
-    } else {
-        num = -num;
-        UITextPosition * from = [self.searchField positionFromPosition:[self.searchField beginningOfDocument] offset:num];
-        UITextPosition * to =[self.searchField positionFromPosition:[self.searchField beginningOfDocument] offset:num];
-        [self.searchField setSelectedTextRange:[self.searchField textRangeFromPosition:from toPosition:to]];
-    }
+- (void)setCaretForSearchFieldOnPosition:(NSInteger)num {
+    UITextPosition *position = [self.searchField positionFromPosition:self.searchField.beginningOfDocument
+                                                 offset:num];
+    UITextRange *textRange = [self.searchField textRangeFromPosition:position toPosition:position];
+    [self.searchField setSelectedTextRange:textRange];
 }
 
 #pragma mark - textfield delegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSString * s = [[textField.text stringByReplacingCharactersInRange:range withString:string] capitalizedString];
-    if ([[s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] == NO) {
+    NSString *searchString = [textField.text stringByReplacingCharactersInRange:range withString:string].capitalizedString;
+    if ([[searchString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] == NO) {
         _locationItem = nil;
-//        [self setReturnKey];
     }
     [self stopAll];
-    if ([s length] >= 2) {
-        [self delayedAutocomplete:s];
-        [self performSelector:@selector(delayedAutocomplete:) withObject:s afterDelay:0.5f];
-    } else if ([s length] == 1) {
-        NSMutableArray * r = [NSMutableArray array];
+    if (searchString.length >= 2) {
+        [self delayedAutocomplete:searchString];
+    } else if (searchString.length == 1) {
         if (self.shouldAllowCurrentPosition) {
             CurrentLocationItem *currentLocationItem = [CurrentLocationItem new];
-            [r insertObject:currentLocationItem atIndex:0];
+            self.searchResults = @[currentLocationItem];
+        } else {
+            self.searchResults = nil;
         }
-        self.searchResults = r;
         [self.tableView reloadData];
         self.loaderView.alpha = 0.0f;
     } else {
@@ -510,32 +427,6 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         [self.tableView reloadData];
         self.loaderView.alpha = 0.0f;
     }
-    
-    // TODO: From CykelPlanen for l478-499
-//    if ([s isEqualToString:@""]) {
-//        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(delayedAutocomplete:) object:nil];
-//        [self autocompleteEntriesFound:@[] forString:@""];
-//    } else {
-//        if ([s length] >= 2) {
-//            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(delayedAutocomplete:) object:nil];
-//            [self performSelector:@selector(delayedAutocomplete:) withObject:s afterDelay:0.5f];
-//        } else if ([s length] >= 1) {
-//            NSMutableArray * r = [NSMutableArray array];
-//            if (self.shouldAllowCurrentPosition) {
-//                [r insertObject:@{
-//                                  @"name" : CURRENT_POSITION_STRING,
-//                                  @"address" : CURRENT_POSITION_STRING,
-//                                  @"startDate" : [NSDate date],
-//                                  @"endDate" : [NSDate date],
-//                                  @"lat" : [NSNumber numberWithDouble:[SMLocationManager instance].lastValidLocation.coordinate.latitude],
-//                                  @"long" : [NSNumber numberWithDouble:[SMLocationManager instance].lastValidLocation.coordinate.longitude],
-//                                  @"source" : @"currentPosition",
-//                                  } atIndex:0];
-//            }
-//            self.searchResults = r;
-//            [self.tableView reloadData];
-//        }
-//    }
     
     return YES;
 }
@@ -555,51 +446,39 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 
 #pragma mark - smautocomplete delegate
 
-- (void)autocompleteEntriesFound:(NSArray *)arr forString:(NSString*) str {
+- (void)autocompleteEntriesFound:(NSArray *)foundEntires forString:(NSString*) str {
     @synchronized(self.searchResults) {
-        
-        SMAppDelegate * appd = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
-        NSMutableArray * r = [NSMutableArray array];
+        SMAppDelegate *appDelegate = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
+        NSMutableArray *combinedResults = [NSMutableArray new];
         
         if ([str isEqualToString:@""]) {
-            self.searchResults = r;
+            self.searchResults = combinedResults;
             [self.tableView reloadData];
             [self.loaderView setAlpha:0.0f];
             return;
         }
         
-//        if ([[str lowercaseString] isEqualToString:[self.searchField.text lowercaseString]] == NO) {
-//            return;
-//        }
+        self.terms =  [self.srchString componentsSeparatedByString:@" "];
         
-        self.terms = [NSMutableArray array];
-        self.srchString = [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        for (NSString * str in [self.srchString componentsSeparatedByString:@" "]) {
-            if ([self.terms indexOfObject:str] == NSNotFound) {
-                [self.terms addObject:str];
+        // Current location
+        if (self.shouldAllowCurrentPosition) {
+            CurrentLocationItem *currentLocationItem = [CurrentLocationItem new];
+            [combinedResults insertObject:currentLocationItem atIndex:0];
+        }
+        
+        // Favorites
+        for (int i = 0; i < self.favorites.count; i++) {
+            id<SearchListItem> d = self.favorites[i];
+            if ([SMRouteUtils pointsForName:d.name andAddress:d.address andTerms:str] > 0) {
+                [combinedResults addObject:d];
             }
         }
         
-        // Check if address and name isn't already in results array
-        for (id<SearchListItem> d in arr) {
+        // History
+        for (int i = 0; i < appDelegate.searchHistory.count; i++) {
             BOOL found = NO;
-            for (id<SearchListItem> d1 in r) {
-                if ([d1.name isEqualToString:d.name] &&
-                    [d1.address isEqualToString:d.address]) {
-                    found = YES;
-                    break;
-                }
-            }
-            if (found == NO) {
-                [r addObject:d];                
-            }
-        }
-        
-        
-        for (int i = 0; i < [self.favorites count]; i++) {
-            BOOL found = NO;
-            id<SearchListItem> d = [self.favorites objectAtIndex:i];
-            for (id<SearchListItem>  d1 in r) {
+            id<SearchListItem> d = appDelegate.searchHistory[i];
+            for (id<SearchListItem> d1 in combinedResults) {
                 if ([d1.name isEqualToString:d.name] &&
                     [d1.address isEqualToString:d.address]) {
                     found = YES;
@@ -607,27 +486,13 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
                 }
             }
             if (found == NO && [SMRouteUtils pointsForName:d.name andAddress:d.address andTerms:str] > 0) {
-                [r addObject:d];
+                [combinedResults addObject:d];
             }
         }
         
-        for (int i = 0; i < [appd.searchHistory count]; i++) {
-            BOOL found = NO;
-            id<SearchListItem> d = [appd.searchHistory objectAtIndex:i];
-            for (id<SearchListItem> d1 in r) {
-                if ([d1.name isEqualToString:d.name] &&
-                    [d1.address isEqualToString:d.address]) {
-                    found = YES;
-                    break;
-                }
-            }
-            if (found == NO && [SMRouteUtils pointsForName:d.name andAddress:d.address andTerms:str] > 0) {
-                debugLog(@"Object: %@\nString: %@\npoints: %ld\n", d, str, (long)[SMRouteUtils pointsForName:d.name andAddress:d.address andTerms:str]);
-                [r addObject:d];
-            }
-        }
-        
-        [r sortUsingComparator:^NSComparisonResult(NSObject<SearchListItem> *obj1, NSObject<SearchListItem> *obj2) {
+        // From external search
+        NSMutableArray *externalResults = foundEntires.mutableCopy;
+        [externalResults sortUsingComparator:^NSComparisonResult(NSObject<SearchListItem> *obj1, NSObject<SearchListItem> *obj2) {
             CLLocation *currentLocation = [SMLocationManager instance].lastValidLocation;
             
             SEL distanceSelector = @selector(distance);
@@ -653,18 +518,26 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
                 return NSOrderedSame;
             }
         }];
-        
-        if (self.shouldAllowCurrentPosition) {
-            CurrentLocationItem *currentLocationItem = [CurrentLocationItem new];
-            [r insertObject:currentLocationItem atIndex:0];
+        for (id<SearchListItem> d in externalResults) {
+            BOOL found = NO;
+            for (id<SearchListItem> d1 in combinedResults) {
+                if ([d1.name isEqualToString:d.name] &&
+                    [d1.address isEqualToString:d.address]) {
+                    found = YES;
+                    break;
+                }
+            }
+            if (found == NO) {
+                [combinedResults addObject:d];                
+            }
         }
         
-        
-        self.searchResults = r;
+        self.searchResults = combinedResults;
         [self.tableView reloadData];
         [self.loaderView setAlpha:0.0f];
     }
 }
+
 
 #pragma mark - api operation delegate
 
@@ -672,7 +545,6 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
     [self autocompleteEntriesFound:self.tempSearch forString:object.searchString];
     [self hideFade];
 }
-
 
 static NSString *const sourceOiorest = @"oiorest";
 
@@ -682,165 +554,6 @@ static NSString *const sourceOiorest = @"oiorest";
     
     [self hideFade];
 }
-
-// TODO: From CykelPlanen for l545- 671
-//- (void)autocompleteEntriesFound:(NSArray *)arr forString:(NSString*) str {
-//    [self hideFade];
-//    
-//    SMAppDelegate * appd = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
-//    NSMutableArray * r = [NSMutableArray array];
-//    
-//    if ([str isEqualToString:@""]) {
-//        self.searchResults = r;
-//        [self.tableView reloadData];
-//        [self.loaderView setAlpha:0.0f];
-//        return;
-//    }
-//    
-//    if ([[str lowercaseString] isEqualToString:[self.searchField.text lowercaseString]] == NO) {
-//        return;
-//    }
-//    
-//    self.terms = [NSMutableArray array];
-//    self.srchString = [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-//    for (NSString * str in [self.srchString componentsSeparatedByString:@" "]) {
-//        if ([self.terms indexOfObject:str] == NSNotFound) {
-//            [self.terms addObject:str];
-//        }
-//    }
-//    
-//    for (NSDictionary * d in arr) {
-//        [r addObject:d];
-//    }
-//    
-//    for (int i = 0; i < [self.favorites count]; i++) {
-//        BOOL found = NO;
-//        NSDictionary * d = [self.favorites objectAtIndex:i];
-//        for (NSDictionary * d1 in r) {
-//            if ([[d1 objectForKey:@"address"] isEqualToString:[d objectForKey:@"address"]]) {
-//                found = YES;
-//                break;
-//            }
-//        }
-//        if (found == NO && [SMRouteUtils pointsForName:[d objectForKey:@"name"] andAddress:[d objectForKey:@"address"] andTerms:str] > 0) {
-//            [r addObject:d];
-//        }
-//    }
-//    
-//    for (int i = 0; i < [appd.searchHistory count]; i++) {
-//        BOOL found = NO;
-//        NSDictionary * d = [appd.searchHistory objectAtIndex:i];
-//        for (NSDictionary * d1 in r) {
-//            if ([[d1 objectForKey:@"address"] isEqualToString:[d objectForKey:@"address"]]) {
-//                found = YES;
-//                break;
-//            }
-//        }
-//        if (found == NO && [SMRouteUtils pointsForName:[d objectForKey:@"name"] andAddress:[d objectForKey:@"address"] andTerms:str] > 0) {
-//            [r addObject:d];
-//        }
-//    }
-//    
-//    [r sortUsingComparator:^NSComparisonResult(NSDictionary* obj1, NSDictionary* obj2) {
-//        NSComparisonResult cmp = [[obj1 objectForKey:@"order"] compare:[obj2 objectForKey:@"order"]];
-//        if (cmp == NSOrderedSame) {
-//            cmp = [[obj2 objectForKey:@"relevance"] compare:[obj1 objectForKey:@"relevance"]];
-//            if (cmp == NSOrderedSame) {
-//                if ([obj1 objectForKey:@"lat"] && [obj1 objectForKey:@"long"] && [obj2 objectForKey:@"lat"] && [obj2 objectForKey:@"long"] && [SMLocationManager instance].hasValidLocation) {
-//                    CGFloat dist1 = [[[CLLocation alloc] initWithLatitude:[[obj1 objectForKey:@"lat"] doubleValue]  longitude:[[obj1 objectForKey:@"long"] doubleValue]] distanceFromLocation:[SMLocationManager instance].lastValidLocation];
-//                    CGFloat dist2 = [[[CLLocation alloc] initWithLatitude:[[obj2 objectForKey:@"lat"] doubleValue]  longitude:[[obj2 objectForKey:@"long"] doubleValue]] distanceFromLocation:[SMLocationManager instance].lastValidLocation];
-//                    
-//                    if (dist1 > dist2) {
-//                        cmp = NSOrderedDescending;
-//                    } else if (dist1 < dist2) {
-//                        cmp = NSOrderedAscending;
-//                    }
-//                }
-//            }
-//        }
-//        return cmp;
-//    }];
-//    
-//    if (self.shouldAllowCurrentPosition) {
-//        [r insertObject:@{
-//                          @"name" : CURRENT_POSITION_STRING,
-//                          @"address" : CURRENT_POSITION_STRING,
-//                          @"1Date" : [NSDate date],
-//                          @"endDate" : [NSDate date],
-//                          @"lat" : [NSNumber numberWithDouble:[SMLocationManager instance].lastValidLocation.coordinate.latitude],
-//                          @"long" : [NSNumber numberWithDouble:[SMLocationManager instance].lastValidLocation.coordinate.longitude],
-//                          @"source" : @"currentPosition",
-//                          } atIndex:0];
-//    }
-//    
-//    
-//    self.searchResults = r;
-//    [self.tableView reloadData];
-//    [self.loaderView setAlpha:0.0f];
-//}
-//
-//#pragma mark - osrm request delegate
-//
-//- (void)request:(SMRequestOSRM *)req finishedWithResult:(id)res {
-//    if ([req.requestIdentifier isEqualToString:@"getNearestForPinDrop"]) {
-//        NSDictionary * r = res;
-//        CLLocation * coord;
-//        if ([r objectForKey:@"mapped_coordinate"] && [[r objectForKey:@"mapped_coordinate"] isKindOfClass:[NSArray class]] && ([[r objectForKey:@"mapped_coordinate"] count] > 1)) {
-//            coord = [[CLLocation alloc] initWithLatitude:[[[r objectForKey:@"mapped_coordinate"] objectAtIndex:0] doubleValue] longitude:[[[r objectForKey:@"mapped_coordinate"] objectAtIndex:1] doubleValue]];
-//        } else {
-//            coord = req.coord;
-//        }
-//        SMNearbyPlaces * np = [[SMNearbyPlaces alloc] initWithDelegate:self];
-//        [np findPlacesForLocation:[[CLLocation alloc] initWithLatitude:coord.coordinate.latitude longitude:coord.coordinate.longitude]];
-//    }
-//}
-//
-//- (void)request:(SMRequestOSRM *)req failedWithError:(NSError *)error {
-//}
-//
-//- (void)serverNotReachable {
-//    SMNetworkErrorView * v = [SMNetworkErrorView getFromNib];
-//    CGRect frame = v.frame;
-//    frame.origin.x = roundf((self.view.frame.size.width - v.frame.size.width) / 2.0f);
-//    frame.origin.y = roundf((self.view.frame.size.height - v.frame.size.height) / 2.0f);
-//    [v setFrame: frame];
-//    [v setAlpha:0.0f];
-//    [self.view addSubview:v];
-//    [UIView animateWithDuration:ERROR_FADE animations:^{
-//        v.alpha = 1.0f;
-//    } completion:^(BOOL finished) {
-//        [UIView animateWithDuration:ERROR_FADE delay:ERROR_WAIT options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-//            v.alpha = 0.0f;
-//        } completion:^(BOOL finished) {
-//            [v removeFromSuperview];
-//        }];
-//    }];
-//}
-//
-//
-//#pragma mark - nearby places delegate
-//
-//- (void) nearbyPlaces:(SMNearbyPlaces *)owner foundLocations:(NSArray *)locations {
-//    NSMutableArray * arr = [NSMutableArray array];
-//    if ([[owner.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] == NO) {
-//        [arr addObject:[owner.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-//    }
-//    if ([[owner.subtitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] == NO) {
-//        [arr addObject:[owner.subtitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-//    }
-//    NSString * s = [arr componentsJoinedByString:@", "];
-//    [self setLocationData:@{
-//                            @"name" : CURRENT_POSITION_STRING,
-//                            @"address" : ([s isEqualToString:@""]?CURRENT_POSITION_STRING:s),
-//                            @"location" : owner.coord,
-//                            @"source" : @"currentPosition",
-//                            @"subsource" : @""
-//                            }];
-//    if (self.delegate) {
-//        [self.delegate locationFound:self.locationData];
-//    }
-//    [self dismiss];
-//}
 
 
 #pragma mark - UIStatusBarStyle

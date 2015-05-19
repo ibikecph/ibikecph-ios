@@ -12,6 +12,8 @@ class FavoriteListViewController: SMTranslatedViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noProfileLabel: UILabel!
+    @IBOutlet weak var addBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
     
     private var items: [FavoriteItem] = [FavoriteItem]() {
         didSet {
@@ -27,16 +29,17 @@ class FavoriteListViewController: SMTranslatedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if UserHelper.loggedIn() {
+        let userIsLoggedIn = UserHelper.loggedIn()
+        if userIsLoggedIn {
             items = SMFavoritesUtil.favorites() as! [FavoriteItem] // Get local favorites
             SMFavoritesUtil.instance().delegate = self
             SMFavoritesUtil.instance().fetchFavoritesFromServer() // Fetch favorites from server
-            tableView.hidden = false
-            noProfileLabel.hidden = true
-        } else {
-            tableView.hidden = true
-            noProfileLabel.hidden = false
         }
+        
+        tableView.hidden = !userIsLoggedIn
+        noProfileLabel.hidden = userIsLoggedIn
+        addBarButtonItem.enabled = userIsLoggedIn
+        editBarButtonItem.enabled = userIsLoggedIn
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,8 +131,10 @@ extension FavoriteListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            tableView.beginUpdates()
             let item = items.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.endUpdates()
             SMFavoritesUtil.instance().deleteFavoriteFromServer(item)
         }
     }

@@ -108,7 +108,7 @@
 
 - (void)deleteFavoriteFromServer:(FavoriteItem *)favItem {
     NSMutableArray * a = [SMFavoritesUtil getFavorites];
-    NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF.id = %@", favItem.identifier];
+    NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF.identifier = %@", favItem.identifier];
     NSArray * arr = [a filteredArrayUsingPredicate:pred];
     if ([arr count] > 0) {
         [a removeObjectsInArray:arr];

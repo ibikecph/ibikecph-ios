@@ -11,6 +11,8 @@
 		2A1EFBB6ED56C55A5EA8C703 /* libPods-I Bike CPHTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 024E93BC40EA6C8C1E7D073C /* libPods-I Bike CPHTests.a */; };
 		4E0176881AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */; };
 		4E0176891AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */; };
+		4E1000E01B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1000DF1B00A6EC005C7FE7 /* RouteTypeViewModel.swift */; };
+		4E1000E11B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1000DF1B00A6EC005C7FE7 /* RouteTypeViewModel.swift */; };
 		4E1258D51A7BA63200A82434 /* routeTestStart.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E1258D41A7BA63200A82434 /* routeTestStart.gpx */; };
 		4E1258D61A7BA63200A82434 /* routeTestStart.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E1258D41A7BA63200A82434 /* routeTestStart.gpx */; };
 		4E1522C41A84FC0600E62BFA /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982041A24AC1200A40484 /* FoursquareItem.swift */; };
@@ -109,6 +111,8 @@
 		4E651D301A93EA5B00497C70 /* TrackingPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E651D2E1A93EA5B00497C70 /* TrackingPromptViewController.swift */; };
 		4E651D321A93EB9400497C70 /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E651D311A93EB9400497C70 /* TrackingViewController.swift */; };
 		4E651D331A93EB9400497C70 /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E651D311A93EB9400497C70 /* TrackingViewController.swift */; };
+		4E65D2A21AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */; };
+		4E65D2A31AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */; };
 		4E6BD7C71A56FE320049F1DB /* AddressParser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */; };
 		4E6BD7C81A56FE320049F1DB /* AddressParser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */; };
 		4E7BA9E51A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */; };
@@ -141,8 +145,6 @@
 		4EBB7B411A5EB4E70064B530 /* service_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B381A5EB4E70064B530 /* service_stations.json */; };
 		4EBB7B421A5EB4E70064B530 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B391A5EB4E70064B530 /* stations.json */; };
 		4EBB7B431A5EB4E70064B530 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B391A5EB4E70064B530 /* stations.json */; };
-		4EBB7B451A5EC0880064B530 /* BikePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B441A5EC0880064B530 /* BikePreferencesViewController.swift */; };
-		4EBB7B461A5EC0880064B530 /* BikePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B441A5EC0880064B530 /* BikePreferencesViewController.swift */; };
 		4EBB7B481A5EC2A00064B530 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B471A5EC2A00064B530 /* RouteType.swift */; };
 		4EBB7B491A5EC2A00064B530 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B471A5EC2A00064B530 /* RouteType.swift */; };
 		4EBB7B4B1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */; };
@@ -747,8 +749,6 @@
 		4EE06CCA1A11134C00DE4226 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C9D1A11134C00DE4226 /* Reachability.m */; };
 		4EE06CCB1A11134C00DE4226 /* SMTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C9F1A11134C00DE4226 /* SMTranslation.m */; };
 		4EE06CCC1A11134C00DE4226 /* SMTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C9F1A11134C00DE4226 /* SMTranslation.m */; };
-		4EE06CCF1A11134C00DE4226 /* SMAutocomplete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CA21A11134C00DE4226 /* SMAutocomplete.m */; };
-		4EE06CD01A11134C00DE4226 /* SMAutocomplete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CA21A11134C00DE4226 /* SMAutocomplete.m */; };
 		4EE06CD11A11134C00DE4226 /* SMGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CA41A11134C00DE4226 /* SMGeocoder.m */; };
 		4EE06CD21A11134C00DE4226 /* SMGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CA41A11134C00DE4226 /* SMGeocoder.m */; };
 		4EE06CD31A11134C00DE4226 /* SMGPSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CA61A11134C00DE4226 /* SMGPSUtil.m */; };
@@ -1484,6 +1484,7 @@
 		024E93BC40EA6C8C1E7D073C /* libPods-I Bike CPHTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-I Bike CPHTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCE7D9C77A2B1D31F1CF669 /* Pods-CykelPlanenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		4E1000DF1B00A6EC005C7FE7 /* RouteTypeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTypeViewModel.swift; sourceTree = "<group>"; };
 		4E1258D41A7BA63200A82434 /* routeTestStart.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = routeTestStart.gpx; sourceTree = "<group>"; };
 		4E20BA681ADC065A00738CA8 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		4E23D6DA1A648E56008998CB /* SMAccountFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountFacebookViewController.h; sourceTree = "<group>"; };
@@ -1539,6 +1540,7 @@
 		4E59822A1A24C4DD00A40484 /* BitBlueprint.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BitBlueprint.gpx; sourceTree = "<group>"; };
 		4E651D2E1A93EA5B00497C70 /* TrackingPromptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingPromptViewController.swift; sourceTree = "<group>"; };
 		4E651D311A93EB9400497C70 /* TrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingViewController.swift; sourceTree = "<group>"; };
+		4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourMinuteFormatter.swift; sourceTree = "<group>"; };
 		4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParser_Tests.swift; sourceTree = "<group>"; };
 		4E7BA9D01A1E1AD100F9744A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareItem_Tests.swift; sourceTree = "<group>"; };
@@ -1556,7 +1558,6 @@
 		4EBB7B371A5EB4E70064B530 /* s-train-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-stations.json"; sourceTree = "<group>"; };
 		4EBB7B381A5EB4E70064B530 /* service_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service_stations.json; sourceTree = "<group>"; };
 		4EBB7B391A5EB4E70064B530 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
-		4EBB7B441A5EC0880064B530 /* BikePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikePreferencesViewController.swift; sourceTree = "<group>"; };
 		4EBB7B471A5EC2A00064B530 /* RouteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
 		4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTypeHandler.swift; sourceTree = "<group>"; };
 		4EC282111A9C862B0036AE4E /* SharedConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedConstants.h; sourceTree = "<group>"; };
@@ -2183,8 +2184,6 @@
 		4EE06C9E1A11134C00DE4226 /* SMTranslation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTranslation.h; sourceTree = "<group>"; };
 		4EE06C9F1A11134C00DE4226 /* SMTranslation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTranslation.m; sourceTree = "<group>"; };
 		4EE06CA01A11134C00DE4226 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
-		4EE06CA11A11134C00DE4226 /* SMAutocomplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAutocomplete.h; sourceTree = "<group>"; };
-		4EE06CA21A11134C00DE4226 /* SMAutocomplete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAutocomplete.m; sourceTree = "<group>"; };
 		4EE06CA31A11134C00DE4226 /* SMGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGeocoder.h; sourceTree = "<group>"; };
 		4EE06CA41A11134C00DE4226 /* SMGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGeocoder.m; sourceTree = "<group>"; };
 		4EE06CA51A11134C00DE4226 /* SMGPSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGPSUtil.h; sourceTree = "<group>"; };
@@ -2896,6 +2895,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E1000DD1B00A6B0005C7FE7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4E1000DF1B00A6EC005C7FE7 /* RouteTypeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		4E2A92541A3B43050032ACD4 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
@@ -3019,6 +3026,7 @@
 				4ECA91A01AB2EED800F4BB4F /* NotificationCenter.swift */,
 				4EFDA4811AB87A6D00522A41 /* NSDate.swift */,
 				4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */,
+				4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */,
 				4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */,
 				4EB610E41AD69D2500CEC994 /* UITableView.swift */,
 				4E20BA681ADC065A00738CA8 /* Notifications.swift */,
@@ -3167,6 +3175,7 @@
 			children = (
 				4EC56DDC1A2A262800B696B4 /* SMAppDelegate.h */,
 				4EC56DDD1A2A262800B696B4 /* SMAppDelegate.m */,
+				4E1000DD1B00A6B0005C7FE7 /* ViewModels */,
 				4EC56DA51A2A25E900B696B4 /* Library */,
 				4EE633781A5E8B54009DA49B /* Models */,
 				4EE06E001A11251C00DE4226 /* ViewControllers */,
@@ -3736,8 +3745,6 @@
 				4EE06CA01A11134C00DE4226 /* README.markdown */,
 				4E5981FF1A24AC1200A40484 /* 3rd party Swift */,
 				4E5982011A24AC1200A40484 /* Models */,
-				4EE06CA11A11134C00DE4226 /* SMAutocomplete.h */,
-				4EE06CA21A11134C00DE4226 /* SMAutocomplete.m */,
 				4EE06CA31A11134C00DE4226 /* SMGeocoder.h */,
 				4EE06CA41A11134C00DE4226 /* SMGeocoder.m */,
 				4EE06CA51A11134C00DE4226 /* SMGPSUtil.h */,
@@ -3865,7 +3872,6 @@
 				4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */,
 				4E4BA4881A3F17A5006FF0FD /* ReminderListViewController.swift */,
 				4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */,
-				4EBB7B441A5EC0880064B530 /* BikePreferencesViewController.swift */,
 				4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */,
 				4EE671C51A2F25F00037865B /* UINavigationController.swift */,
 				4E651D2E1A93EA5B00497C70 /* TrackingPromptViewController.swift */,
@@ -6200,6 +6206,7 @@
 				4E5982181A24AC1200A40484 /* User.swift in Sources */,
 				4E5258CA1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */,
 				4EC56DBC1A2A25E900B696B4 /* SMAnnotation.m in Sources */,
+				4E65D2A21AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */,
 				4EC56EF31A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
 				4EC56E751A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
 				4E7BD07B1A9234EF00BFDC7B /* RLMSupport.swift in Sources */,
@@ -6212,7 +6219,6 @@
 				4EC56DD41A2A25E900B696B4 /* SMUtil.m in Sources */,
 				4E8E34381A272A84004D529B /* OiorestItem.swift in Sources */,
 				4E4AC45D1A85091C0037A65E /* Macro.swift in Sources */,
-				4EBB7B451A5EC0880064B530 /* BikePreferencesViewController.swift in Sources */,
 				4EE06CBF1A11134C00DE4226 /* SMKMSAddressOperation.m in Sources */,
 				4E32B2A11AADCC8A00583811 /* BikeStatistics.swift in Sources */,
 				4EE671C61A2F25F00037865B /* UINavigationController.swift in Sources */,
@@ -6224,6 +6230,7 @@
 				4E3C3A871A39DEFC00C79E52 /* FavoriteListViewController.swift in Sources */,
 				4E5674561A92383500BF4A28 /* Track.swift in Sources */,
 				4E5982161A24AC1200A40484 /* SearchListItem.swift in Sources */,
+				4E1000E01B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */,
 				4EE06CC51A11134C00DE4226 /* NSString+Relevance.m in Sources */,
 				4EC56DDE1A2A262800B696B4 /* SMAppDelegate.m in Sources */,
 				4E56745D1A92469000BF4A28 /* TrackingHandler.swift in Sources */,
@@ -6251,7 +6258,6 @@
 				4E5258C71A9B9C8400BE55C8 /* String.swift in Sources */,
 				4E2CE9EE1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
 				4EC56DD01A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
-				4EE06CCF1A11134C00DE4226 /* SMAutocomplete.m in Sources */,
 				4EC56E291A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
 				4EE6337A1A5E8B6D009DA49B /* Overlays.swift in Sources */,
 				4EC56E511A2A2C3D00B696B4 /* SMCustomButton.m in Sources */,
@@ -6342,6 +6348,7 @@
 				4EC56EE51A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
 				4EC56E671A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */,
 				4EE06CD21A11134C00DE4226 /* SMGeocoder.m in Sources */,
+				4E65D2A31AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */,
 				4EC56E871A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
 				4EE06C341A10FC5600DE4226 /* SMArrivalMapping.m in Sources */,
 				4EC56E831A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
@@ -6373,7 +6380,6 @@
 				4EC56E8F1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
 				4E5258C81A9B9C8400BE55C8 /* String.swift in Sources */,
 				4EE06CE51A11135000DE4226 /* SMAddressParser.m in Sources */,
-				4EBB7B461A5EC0880064B530 /* BikePreferencesViewController.swift in Sources */,
 				4EC56E5F1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */,
 				4EC56EF51A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
 				4EC56DC21A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
@@ -6424,6 +6430,7 @@
 				4EC56DBE1A2A25E900B696B4 /* SMAnnotation.m in Sources */,
 				4EE06C3E1A10FC5600DE4226 /* SMMapOverlays.m in Sources */,
 				4EE671C71A2F25F00037865B /* UINavigationController.swift in Sources */,
+				4E1000E11B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */,
 				4E7BD07C1A9234EF00BFDC7B /* RLMSupport.swift in Sources */,
 				4E5982151A24AC1200A40484 /* KortforItem.swift in Sources */,
 				4EC56F011A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
@@ -6456,7 +6463,6 @@
 				4EE06CC21A11134C00DE4226 /* SMKMSPlacesOperation.m in Sources */,
 				4EC56ED11A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
 				4E3E38A81A979E0A00773285 /* TrackActivity.swift in Sources */,
-				4EE06CD01A11134C00DE4226 /* SMAutocomplete.m in Sources */,
 				4E3C3A8E1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
 				4EC56EA31A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */,
 			);

@@ -23,6 +23,13 @@ class TrackingViewController: SMTranslatedViewController {
     
     lazy var numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
+        formatter.maximumFractionDigits = 0
+        formatter.minimumFractionDigits = 0
+        return formatter
+    }()
+    
+    lazy var decimalFormatter: NSNumberFormatter = {
+        let formatter = NSNumberFormatter()
         formatter.maximumFractionDigits = 1
         formatter.minimumFractionDigits = 1
         formatter.minimumIntegerDigits = 1 // "0.0" instead of ".0"
@@ -81,10 +88,10 @@ class TrackingViewController: SMTranslatedViewController {
         timeLabel.text = numberFormatter.stringFromNumber(totalTime)
         
         let averageSpeed = BikeStatistics.averageSpeed() / 1000 * 3600
-        speedLabel.text = numberFormatter.stringFromNumber(averageSpeed)
+        speedLabel.text = decimalFormatter.stringFromNumber(averageSpeed)
         
         let averageTripDistance = BikeStatistics.averageTrackDistance() / 1000
-        tripLabel.text = numberFormatter.stringFromNumber(averageTripDistance)
+        tripLabel.text = decimalFormatter.stringFromNumber(averageTripDistance)
         
         if let startDate = BikeStatistics.firstTrackStartDate() {
             sinceLabel.text = "Since".localized + " " + sinceFormatter.stringFromDate(startDate)
@@ -111,9 +118,14 @@ class TrackingViewController: SMTranslatedViewController {
                                         return
                                     }
                                     if let item = item {
-                                        track.realm.beginWriteTransaction()
+                                        let transact = !track.realm.inWriteTransaction
+                                        if transact {
+                                            track.realm.beginWriteTransaction()
+                                        }
                                         track.start = item.street
-                                        track.realm.commitWriteTransaction()
+                                        if transact {
+                                            track.realm.commitWriteTransaction()
+                                        }
                                         self.updateUI()
                                     }
                                 }
@@ -127,9 +139,14 @@ class TrackingViewController: SMTranslatedViewController {
                                         return
                                     }
                                     if let item = item {
-                                        track.realm.beginWriteTransaction()
+                                        let transact = !track.realm.inWriteTransaction
+                                        if transact {
+                                            track.realm.beginWriteTransaction()
+                                        }
                                         track.end = item.street
-                                        track.realm.commitWriteTransaction()
+                                        if transact {
+                                            track.realm.commitWriteTransaction()
+                                        }
                                         self.updateUI()
                                     }
                                 }
@@ -212,7 +229,7 @@ extension TrackingViewController: UITableViewDataSource {
         if editingStyle == .Delete {
             tableView.beginUpdates()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
-            track(indexPath)?.deleteFromRealm()
+            track(indexPath)?.deleteFromRealmWithRelationships()
             tableView.endUpdates()
         }
     }

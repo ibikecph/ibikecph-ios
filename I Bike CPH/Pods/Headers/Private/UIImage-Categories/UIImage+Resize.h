@@ -1,1 +1,1 @@
-../../../UIImage-Categories/UIImage+Resize.h
+../../../UIImage-Categories/Classes/UIImage+Resize.h

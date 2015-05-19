@@ -7,7 +7,6 @@
 //
 
 #import "SMTranslatedViewController.h"
-#import "SMAutocomplete.h"
 #import "SMRequestOSRM.h"
 #import "SMNearbyPlaces.h"
 #import "SMAPIOperation.h"
@@ -23,7 +22,7 @@
 /**
  * View controller to search for address. Has search field, and results list. FIXME: Merge.
  */
-@interface SMSearchController : SMTranslatedViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SMAutocompleteDelegate, SMAPIOperationDelegate, SMRequestOSRMDelegate, SMNearbyPlacesDelegate>
+@interface SMSearchController : SMTranslatedViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SMAPIOperationDelegate, SMRequestOSRMDelegate, SMNearbyPlacesDelegate>
 
 @property (nonatomic, strong) NSString * searchText;
 @property (nonatomic, weak) id<SMSearchDelegate> delegate;

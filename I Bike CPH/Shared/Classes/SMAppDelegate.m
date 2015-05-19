@@ -27,28 +27,26 @@
      * initialize Google Analytics
      */
     [GAI sharedInstance].dispatchInterval = GOOGLE_ANALYTICS_DISPATCH_INTERVAL;
-#ifdef TEST_VERSION
     [GAI sharedInstance].trackUncaughtExceptions = YES;
-#endif
     self.tracker = [[GAI sharedInstance] trackerWithTrackingId:GOOGLE_ANALYTICS_KEY];
-    [[GAI sharedInstance] setDefaultTracker:self.tracker];
+    [GAI sharedInstance].defaultTracker = self.tracker;
     [[GAI sharedInstance].defaultTracker set:kGAISampleRate value:GOOGLE_ANALYTICS_SAMPLE_RATE];
     [[GAI sharedInstance].defaultTracker set:kGAIAnonymizeIp value:GOOGLE_ANALYTICS_ANONYMIZE];
 
     [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@""];
-    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView]  build]];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createScreenView]  build]];
 
 
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"settings.plist"]] == NO) {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"settings.plist"]] == NO) {
         NSDictionary * d = @{
-                             @"introSeen" : [NSNumber numberWithBool:NO],
-                             @"permanentTileCache" : [NSNumber numberWithBool:NO]
+                             @"introSeen" : @NO,
+                             @"permanentTileCache" : @NO
                              };
-        [d writeToFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"settings.plist"] atomically:NO];
+        [d writeToFile:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"settings.plist"] atomically:NO];
     }
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"routeme.plist"]] == NO) {
-        [[NSFileManager defaultManager] copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"routeme" ofType:@"plist"] toPath:[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"routeme.plist"] error:nil];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"routeme.plist"]] == NO) {
+        [[NSFileManager defaultManager] copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"routeme" ofType:@"plist"] toPath:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"routeme.plist"] error:nil];
     }
     
     [self loadSettings];
@@ -58,9 +56,8 @@
         /**
          * init default settings
          */
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         NSArray* languages = [defaults objectForKey:@"AppleLanguages"];
-        if ([[languages objectAtIndex:0] isEqualToString:@"da"] || [[languages objectAtIndex:0] isEqualToString:@"dan"]) {
+        if ([languages.firstObject isEqualToString:@"da"] || [languages.firstObject isEqualToString:@"dan"]) {
             [defaults setObject:@"dk" forKey:@"appLanguage"];
         } else {
             [defaults setObject:@"en" forKey:@"appLanguage"];

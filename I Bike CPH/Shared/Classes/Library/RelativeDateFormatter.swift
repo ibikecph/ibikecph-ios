@@ -26,9 +26,9 @@ class RelativeDateFormatter: NSDateFormatter {
     
     override func stringFromDate(date: NSDate) -> String {
         switch date.relativeDay() {
-            case .Yesterday: return "yesterday".localized.capitalizedString
-            case .Today: return "today".localized.capitalizedString
-            case .Tomorrow: return "tomorrow".localized.capitalizedString
+            case .Yesterday: return "Yesterday".localized
+            case .Today: return "Today".localized
+            case .Tomorrow: return "Tomorrow".localized
             default:
                 let fallback = super.stringFromDate(date)
                 if let beforeFallback = beforeFallback {
