@@ -208,7 +208,7 @@
         range.length = [s length] - range.location;
         NSString* sLatitude = [s substringWithRange:range];
         
-        NSLog(@"METRO STATION: %f %f", [sLongitude floatValue], [sLatitude floatValue]);
+//        NSLog(@"METRO STATION: %f %f", [sLongitude floatValue], [sLatitude floatValue]);
         
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([sLongitude floatValue], [sLatitude floatValue]); //lon, lat);
             //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
@@ -310,7 +310,7 @@
         
         NSString* type = [station objectForKey:@"type"];
         
-        NSLog(@"STATION: %f %f", [sLongitude floatValue], [sLatitude floatValue]);
+//        NSLog(@"STATION: %f %f", [sLongitude floatValue], [sLatitude floatValue]);
         
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([sLongitude floatValue], [sLatitude floatValue]); //lon, lat);
         //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
@@ -415,14 +415,14 @@
         float y1 = nextStation.coordinate.latitude;
         
         float distance = sqrtf((x1 - x0)*(x1 - x0) + (y1 - y0)*(y1 - y0));
-        NSLog(@"%@ -> %@ Distance: %4.4f", station.title, nextStation.title, distance*100);
+//        NSLog(@"%@ -> %@ Distance: %4.4f", station.title, nextStation.title, distance*100);
         
         totalDistance += distance;
         times[i] = distance;
     }
     
-    NSLog(@"Total distance: %4.4f", totalDistance*100);
-    NSLog(@"Average distance: %4.4f", totalDistance*100 / i);
+//    NSLog(@"Total distance: %4.4f", totalDistance*100);
+//    NSLog(@"Average distance: %4.4f", totalDistance*100 / i);
     
     self.metroTimingConst = [[NSMutableArray alloc] init];
     

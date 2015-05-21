@@ -20,7 +20,7 @@
     if(st.count==0){
         arrivalInfo= [SMArrivalInformation new];
         arrivalInfo.station= station;
-        NSLog(@"New station %@",station.name);
+//        NSLog(@"New station %@",station.name);
         
         [self.arrivalInformation addObject:arrivalInfo];
     }else{

@@ -463,10 +463,10 @@ static NSOperationQueue* stationQueue;
         SMTransportationLine* line= [[SMTransportationLine alloc] init];
         
         line.name= lineName;
-        NSLog(@"Line %@, stations: ", lineName);
+//        NSLog(@"Line %@, stations: ", lineName);
         for (NSNumber* stationIndex in stations) {
             [lineStations addObject:[tempStations objectAtIndex:stationIndex.intValue]];
-            NSLog(@"%@ %d", ((SMStationInfo*)[tempStations objectAtIndex:stationIndex.intValue]).name, stationIndex.intValue);
+//            NSLog(@"%@ %d", ((SMStationInfo*)[tempStations objectAtIndex:stationIndex.intValue]).name, stationIndex.intValue);
         }
         
         SMStationInfoType stationType= SMStationInfoTypeUndefined;
@@ -482,16 +482,16 @@ static NSOperationQueue* stationQueue;
         
         line.type= stationType;
         
-        NSLog(@"=====\n\n");
+//        NSLog(@"=====\n\n");
         [line setStations:[NSArray arrayWithArray:lineStations]];
         [tempLines addObject:line];
     }
     
     self.allStations= [NSArray arrayWithArray:tempStations];
     self.lines= [NSArray arrayWithArray:tempLines];
-    NSLog(@"Stations:");
+//    NSLog(@"Stations:");
     for(SMStationInfo* stat in self.allStations){
-        NSLog(@"%@",stat.name);
+//        NSLog(@"%@",stat.name);
     }
 }
 

@@ -398,3 +398,5 @@
 "gps_off" = "GPS is turned off";
 "activate_gps" = "Turn GPS On";
 "leave_no_gps" = "Leave GPS off";
+
+"play_services_version_error" = "Please update Google Play Services";
