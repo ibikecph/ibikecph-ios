@@ -22,6 +22,9 @@ import Social
         let token: String
     }
     
+    let errorDomain = "facebook"
+    let errorAccessNotAllowed = 3001
+    
     private let accountStore = ACAccountStore()
     
     // Wrapper function for public method for Objective-C compatibility
@@ -44,13 +47,13 @@ import Social
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierFacebook)
         accountStore.requestAccessToAccountsWithType(accountType, options: options) { (granted, error) -> Void in
             if !granted {
-                print("Facebook request access failed")
-                if let error = error {
-                    println("... with error: \(error)")
-                }
+                let error = error ?? NSError(domain: self.errorDomain, code: self.errorAccessNotAllowed, userInfo:[NSLocalizedDescriptionKey : "Access to facebook is not allowed"])
+                print("Facebook request access failed with error: \(error)")
+                
                 self.failed(error: error, completion: completion)
                 return
             }
+            
             println("Facebook granted access")
             if let account = self.accountStore.accountsWithAccountType(accountType).first as? ACAccount {
                 println("Facebook has account")
