@@ -4782,13 +4782,13 @@
 				TargetAttributes = {
 					4EE05F491A10EBFA00DE4226 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = PFQ4698325;
+						DevelopmentTeam = SP46WFGATT;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 							com.apple.Maps.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -4798,7 +4798,7 @@
 					};
 					4EE05F781A10EDE700DE4226 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = PFQ4698325;
+						DevelopmentTeam = SP46WFGATT;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
