@@ -46,7 +46,6 @@
 @property (weak, nonatomic) IBOutlet UIView *blockingView;
 @property (weak, nonatomic) IBOutlet SMGPSTrackButton *buttonTrackUser;
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
-@property (weak, nonatomic) IBOutlet UIView *loaderView;
 
 @property (weak, nonatomic) IBOutlet UIView *bottomDrawerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomDrawerViewConstraint;
@@ -82,6 +81,14 @@
 @implementation SMMainViewController {
     BOOL observersAdded;
 }
+
+
+- (IBAction)openMenuAction:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"openMenu" object:nil];
+}
+
+
+
 
 
 #pragma mark - view lifecycle
@@ -162,16 +169,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    
     self.findFrom = @"";
     self.findTo = @"";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     self.mapView.userTrackingMode = RMUserTrackingModeNone;
 
@@ -663,10 +666,7 @@ float lerp(float a, float b, float t) {
     self.findTo = [NSString stringWithFormat:@"%@, %@", annotation.title, annotation.subtitle];
     self.findMatches = annotation.nearbyObjects;
     
-    [self.view bringSubviewToFront:self.loaderView];
-    [UIView animateWithDuration:0.4f animations:^{
-        [self.loaderView setAlpha:1.0f];
-    }];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     CLLocation * cEnd = [[CLLocation alloc] initWithLatitude:annotation.routingCoordinate.coordinate.latitude longitude:annotation.routingCoordinate.coordinate.longitude];
     CLLocation * cStart = [[CLLocation alloc] initWithLatitude:[SMLocationManager instance].lastValidLocation.coordinate.latitude longitude:[SMLocationManager instance].lastValidLocation.coordinate.longitude];
@@ -763,16 +763,12 @@ float lerp(float a, float b, float t) {
         } else {
             [self findRouteFrom:self.startLoc.coordinate to:self.endLoc.coordinate fromAddress:self.startName toAddress:self.endName withJSON:jsonRoot];
         }
-        [UIView animateWithDuration:0.4f animations:^{
-            [self.loaderView setAlpha:0.0f];
-        }];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
 }
 
 - (void)request:(SMRequestOSRM *)req failedWithError:(NSError *)error {
-    [UIView animateWithDuration:0.4f animations:^{
-        [self.loaderView setAlpha:0.0f];
-    }];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 #pragma mark - observers
@@ -819,7 +815,7 @@ float lerp(float a, float b, float t) {
 #pragma mark - UIStatusBarStyle
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
+    return UIStatusBarStyleLightContent;
 }
 
 @end

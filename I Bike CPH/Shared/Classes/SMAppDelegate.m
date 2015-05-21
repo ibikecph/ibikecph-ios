@@ -16,6 +16,13 @@
 @implementation SMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSString *locationLaunch = launchOptions[UIApplicationLaunchOptionsLocationKey];
+    if (locationLaunch) {
+        [Notifications scheduleLocalNotification:@"Launched from significant location change" fireDate:[NSDate new]];
+    } else {
+        [Notifications scheduleLocalNotification:@"Didn't launch from significant location change" fireDate:[NSDate new]];
+    }
+    
     self.pastRoutes = @[];
     self.currentContacts = @[];
     self.currentEvents = @[];
@@ -71,7 +78,7 @@
 //    [RLMRealm deleteDefaultRealmFile];
 
     // Auto migrate Realm
-    [RLMRealm setSchemaVersion:6 forRealmAtPath:[RLMRealm defaultRealmPath] withMigrationBlock:^(RLMMigration *migration, NSUInteger oldSchemaVersion) {
+    [RLMRealm setDefaultRealmSchemaVersion:REALM_SCHEMA_VERSION withMigrationBlock:^(RLMMigration *migration, NSUInteger oldSchemaVersion) {
         if (oldSchemaVersion < 1) {
 //            [migration enumerateObjects:Track.className
 //                                  block:^(RLMObject *oldObject, RLMObject *newObject) {
@@ -82,8 +89,20 @@
         }
     }];
     [RLMRealm migrateRealmAtPath:[RLMRealm defaultRealmPath]];
+//    [RLMRealm compressWithIfNecessary:true];
     
     [TrackingHandler sharedInstance];
+    
+    // DEBUG ONLY
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        UIViewController *debug = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"QuickOpen"];
+//        if (!debug) {
+//            return;
+//        }
+//        UINavigationController *debugNC = [[UINavigationController alloc] initWithRootViewController:debug];
+//        [self.window.rootViewController presentViewController:debugNC animated:NO completion:nil];
+//    });
+    //
     
     return YES;
 }
@@ -91,11 +110,17 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+//    [Notifications scheduleLocalNotification:@"Will resign active" fireDate:nil];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+//    [Notifications scheduleLocalNotification:@"Did enter background" fireDate:nil];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    [Notifications scheduleLocalNotification:@"Will terminate" fireDate:nil];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
