@@ -4463,9 +4463,9 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cR0-BE-PFO"/>
-        <segue reference="2Vq-ft-HSw"/>
-        <segue reference="mOB-IN-cna"/>
+        <segue reference="yk2-zf-Q1g"/>
         <segue reference="YD8-cY-nJg"/>
+        <segue reference="mOB-IN-cna"/>
+        <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>
 </document>
