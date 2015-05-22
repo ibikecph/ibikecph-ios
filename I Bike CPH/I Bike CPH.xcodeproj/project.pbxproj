@@ -273,6 +273,8 @@
 		4EC56F011A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */; };
 		4ECA91A11AB2EED800F4BB4F /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA91A01AB2EED800F4BB4F /* NotificationCenter.swift */; };
 		4ECA91A21AB2EED800F4BB4F /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA91A01AB2EED800F4BB4F /* NotificationCenter.swift */; };
+		4ED672501B0F61A00025DFDF /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED6724F1B0F61A00025DFDF /* Thread.swift */; };
+		4ED672511B0F61A00025DFDF /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED6724F1B0F61A00025DFDF /* Thread.swift */; };
 		4EDC4DD31A7A540A00FD37C2 /* nrbrogade-vestergade.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */; };
 		4EDC4DD41A7A540A00FD37C2 /* nrbrogade-vestergade.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */; };
 		4EDC4DE81A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */; };
@@ -1671,6 +1673,7 @@
 		4EC56ECD1A2A3AAD00B696B4 /* SMTranslatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTranslatedViewController.h; sourceTree = "<group>"; };
 		4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTranslatedViewController.m; sourceTree = "<group>"; };
 		4ECA91A01AB2EED800F4BB4F /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		4ED6724F1B0F61A00025DFDF /* Thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
 		4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "nrbrogade-vestergade.gpx"; sourceTree = "<group>"; };
 		4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMRoute_Tests.swift; sourceTree = "<group>"; };
 		4EE05F4A1A10EBFA00DE4226 /* I Bike CPH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I Bike CPH.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3032,6 +3035,7 @@
 				4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */,
 				4EB610E41AD69D2500CEC994 /* UITableView.swift */,
 				4E20BA681ADC065A00738CA8 /* Notifications.swift */,
+				4ED6724F1B0F61A00025DFDF /* Thread.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -6225,6 +6229,7 @@
 				4E4AC45D1A85091C0037A65E /* Macro.swift in Sources */,
 				4EE06CBF1A11134C00DE4226 /* SMKMSAddressOperation.m in Sources */,
 				4E32B2A11AADCC8A00583811 /* BikeStatistics.swift in Sources */,
+				4ED672501B0F61A00025DFDF /* Thread.swift in Sources */,
 				4EE671C61A2F25F00037865B /* UINavigationController.swift in Sources */,
 				4EE06CDF1A11134C00DE4226 /* SMRouteSettings.m in Sources */,
 				4EC56E7D1A2A2C3D00B696B4 /* SMGPSTrackButton.m in Sources */,
@@ -6311,6 +6316,7 @@
 				4E4BA48A1A3F1B12006FF0FD /* ReminderListViewController.swift in Sources */,
 				4E3C3A881A39DEFC00C79E52 /* FavoriteListViewController.swift in Sources */,
 				4E59820D1A24AC1200A40484 /* CurrentLocationItem.swift in Sources */,
+				4ED672511B0F61A00025DFDF /* Thread.swift in Sources */,
 				4EC56EAF1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */,
 				4E55A0251A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */,
 				4EE06C3D1A10FC5600DE4226 /* SMMapManager.m in Sources */,

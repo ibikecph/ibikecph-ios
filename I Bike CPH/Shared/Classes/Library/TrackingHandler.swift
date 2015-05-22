@@ -15,6 +15,13 @@ let trackingHandler = TrackingHandler()
 @objc class TrackingHandler {
 
     private var currentTrack: Track?
+    
+    private let thread: Thread = {
+        let thread = Thread()
+        thread.start()
+        return thread
+    }()
+    
     let motionDetector = MotionDetector()
     var currentActivity: CMMotionActivity? {
         didSet {
@@ -25,16 +32,13 @@ let trackingHandler = TrackingHandler()
                     self.startTracking()
                 }
                 // Add activity to current track
-                if let track = currentTrack {
-                    let transact = !track.realm.inWriteTransaction
-                    if transact {
-                        track.realm.beginWriteTransaction()
-                    }
-                    let newActivity = TrackActivity.build(activity)
-                    newActivity.addToRealm()
-                    track.activity = newActivity
-                    if transact {
-                        track.realm.commitWriteTransaction()
+                thread.enqueue() { [weak self] in
+                    RLMRealm.defaultRealm().transactionWithBlock() {
+                        if let track = self?.currentTrack where !track.invalidated {
+                            let newActivity = TrackActivity.build(activity)
+                            newActivity.addToRealm()
+                            track.activity = newActivity
+                        }
                     }
                 }
             } else {
@@ -79,20 +83,19 @@ let trackingHandler = TrackingHandler()
         if !motionDetector.isAvailable() {
             return
         }
-        motionDetector.start { [unowned self] activity in
-            if let currentTrack = self.currentTrack where !currentTrack.invalidated && currentTrack.activity.sameActivityTypeAs(cmMotionActivity: activity){
-                // Activity just updated it's confidence
-                let transact = !currentTrack.realm.inWriteTransaction
-                if transact {
-                    currentTrack.realm.beginWriteTransaction()
+        motionDetector.start { [weak self] activity in
+            self!.thread.enqueue() {
+                RLMRealm.defaultRealm().transactionWithBlock() {
+                    if let currentTrack = self?.currentTrack where !currentTrack.invalidated && currentTrack.activity.sameActivityTypeAs(cmMotionActivity: activity){
+                        // Activity just updated it's confidence
+                        currentTrack.activity.confidence = activity.confidence.rawValue
+                        return
+                    }
+                    Async.main {
+                        self?.currentActivity = activity
+                    }
                 }
-                currentTrack.activity.confidence = activity.confidence.rawValue
-                if transact {
-                    currentTrack.realm.commitWriteTransaction()
-                }
-                return
             }
-            self.currentActivity = activity
         }
     }
     
@@ -142,8 +145,12 @@ let trackingHandler = TrackingHandler()
         SMLocationManager.instance().start()
         
         // Initialize track
-        currentTrack = Track()
-        currentTrack!.addToRealm()
+        thread.enqueue() { [weak self] in
+            RLMRealm.defaultRealm().transactionWithBlock() {
+                self?.currentTrack = Track()
+                self?.currentTrack!.addToRealm()
+            }
+        }
     }
     
     func stopTracking() {
@@ -155,29 +162,29 @@ let trackingHandler = TrackingHandler()
             SMLocationManager.instance().stop()
         }
         
-        // Stop track
-        if let currentTrack = currentTrack where !currentTrack.invalidated {
-            currentTrack.recalculate()
+        thread.enqueue() { [weak self] in
+            // Stop track
+            RLMRealm.defaultRealm().transactionWithBlock() {
+                if let currentTrack = self?.currentTrack where !currentTrack.invalidated {
+                    currentTrack.recalculate()
+                }
+            }
+            self?.currentTrack = nil
+            
+            TracksHandler.setNeedsProcessData()
         }
-        currentTrack = nil
-        
-        TracksHandler.setNeedsProcessData()
     }
     
     func add(location: CLLocation) {
-        if let currentTrack = currentTrack where !currentTrack.invalidated {
-            let realm = RLMRealm.defaultRealm()
-            let transact = !realm.inWriteTransaction
-            if transact {
-                currentTrack.realm.beginWriteTransaction()
+        thread.enqueue() { [weak self] in
+            RLMRealm.defaultRealm().transactionWithBlock() {
+                if let currentTrack = self?.currentTrack where !currentTrack.invalidated {
+                    let location = TrackLocation.build(location)
+                    currentTrack.locations.addObject(location)
+                    currentTrack.recalculate()
+                }
+                //            println("Tracked location: \(location.location())")
             }
-            let location = TrackLocation.build(location)
-            currentTrack.locations.addObject(location)
-            if transact {
-                currentTrack.realm.commitWriteTransaction()
-            }
-            currentTrack.recalculate()
-//            println("Tracked location: \(location.location())")
         }
     }
 }
