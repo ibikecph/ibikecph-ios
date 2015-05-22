@@ -71,15 +71,7 @@
 //    [RLMRealm deleteDefaultRealmFile];
 
     // Auto migrate Realm
-    [RLMRealm setSchemaVersion:6 forRealmAtPath:[RLMRealm defaultRealmPath] withMigrationBlock:^(RLMMigration *migration, NSUInteger oldSchemaVersion) {
-        if (oldSchemaVersion < 1) {
-//            [migration enumerateObjects:Track.className
-//                                  block:^(RLMObject *oldObject, RLMObject *newObject) {
-//                                      
-//                                      // combine name fields into a single field
-//                                      newObject[@"activity"] = [Track hello];
-//                                  }];
-        }
+    [RLMRealm setSchemaVersion:REALM_SCHEMA_VERSION forRealmAtPath:[RLMRealm defaultRealmPath] withMigrationBlock:^(RLMMigration *migration, NSUInteger oldSchemaVersion) {
     }];
     [RLMRealm migrateRealmAtPath:[RLMRealm defaultRealmPath]];
     
