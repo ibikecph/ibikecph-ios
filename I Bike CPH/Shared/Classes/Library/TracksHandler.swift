@@ -526,8 +526,8 @@ class MergeTracksOperation: TracksOperation {
     
     private func closeTracks(track track1: Track, toTrack track2: Track, closerThanSeconds seconds: NSTimeInterval) -> Bool {
         if let
-            track1EndDate = track1.endDate,
-            track2StartDate = track2.startDate
+            track1EndDate = track1.endDate(),
+            track2StartDate = track2.startDate()
         {
             let timeIntervalBetweenTracks = track2StartDate.timeIntervalSinceDate(track1EndDate)
             if timeIntervalBetweenTracks < seconds {
@@ -636,7 +636,7 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
                 if !closeTracks(track: track, toTrack: _nextTrack, closerThanSeconds: seconds) {
                     break
                 }
-                println("\(formatter.stringFromDate(track.endDate!)) | \(formatter.stringFromDate(_nextTrack.startDate!))")
+                println("\(formatter.stringFromDate(track.endDate()!)) | \(formatter.stringFromDate(_nextTrack.startDate()!))")
                 nextTrack = _nextTrack
                 nextCount++
             }
@@ -646,7 +646,7 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
                 let tracksToMerge = Array(tracks[count...nextCount])
                 
                 for track in tracksToMerge {
-                    println("\(formatter.stringFromDate(track.startDate!)) -> \(formatter.stringFromDate(track.endDate!))")
+                    println("\(formatter.stringFromDate(track.startDate()!)) -> \(formatter.stringFromDate(track.endDate()!))")
                 }
                 mergeTracks(tracksToMerge)
                 tracks = tracksSorted().toArray(Track.self)

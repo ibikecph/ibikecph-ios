@@ -8,6 +8,7 @@
 
 import CoreLocation
 
+// Mirrors CLLocation in a Realm object
 class TrackLocation: RLMObject {
     
     dynamic var timestamp: NSTimeInterval = 0
@@ -18,10 +19,15 @@ class TrackLocation: RLMObject {
     dynamic var verticalAccuracy: Double = 0
     dynamic var course: Double = 0
     dynamic var speed: Double = 0
-    var date: NSDate {
+	
+	// TODO: Remove when data model doesn't get corrupted by Realm
+	dynamic var owned: Bool = true
+}
+
+extension TrackLocation {
+    func date() -> NSDate {
         return NSDate(timeIntervalSince1970: timestamp)
     }
-    dynamic var owned: Bool = true
     
     class func build(location: CLLocation) -> TrackLocation {
         var point = TrackLocation()
@@ -41,7 +47,7 @@ class TrackLocation: RLMObject {
     }
     
     func location() -> CLLocation {
-        return CLLocation(coordinate: coordinate(), altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy, course: course, speed: speed, timestamp: date)
+        return CLLocation(coordinate: coordinate(), altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy, course: course, speed: speed, timestamp: date())
     }
 }
 

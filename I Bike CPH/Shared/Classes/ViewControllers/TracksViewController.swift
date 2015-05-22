@@ -122,10 +122,10 @@ class DebugTrackTableViewCell: UITableViewCell {
     func updateToTrack(track: Track?, index: Int = 0) {
         if let track = track {
             var title = "\(index)) "
-            if let date = track.startDate {
+            if let date = track.startDate() {
                 title += dateFormatter.stringFromDate(date)
             }
-            if let date = track.endDate {
+            if let date = track.endDate() {
                 title += " to " + dateFormatter.stringFromDate(date)
             }
             var subtitle = "\(track.activity.confidence)"

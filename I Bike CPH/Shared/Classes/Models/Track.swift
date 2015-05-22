@@ -8,26 +8,31 @@
 
 import CoreLocation
 
-class Track: RLMObject {
-    
-    dynamic var activity: TrackActivity = TrackActivity()
 
+class Track: RLMObject {
+    dynamic var activity: TrackActivity = TrackActivity()
     dynamic var locations = RLMArray(objectClassName: TrackLocation.className())
     dynamic var start = ""
     dynamic var end = ""
     dynamic var length: Double = 0
     dynamic var duration: Double = 0
-    
+    dynamic var hasBeenGeocoded: Bool = false
+    // Calculated from first and last location object
     dynamic var startTimestamp: Double = 0
     dynamic var endTimestamp: Double = 0
-    
-    var startDate: NSDate? {
-        return (locations.firstObject() as? TrackLocation)?.date
+}
+
+
+extension Track {
+	
+    func startDate() -> NSDate? {
+        return (locations.firstObject() as? TrackLocation)?.date()
     }
-    var endDate: NSDate? {
-        return (locations.lastObject() as? TrackLocation)?.date
+	
+    func endDate() -> NSDate? {
+        return (locations.lastObject() as? TrackLocation)?.date()
     }
-    
+	
     func recalculate() {
         let realm = RLMRealm.defaultRealm()
         let transact = !realm.inWriteTransaction
@@ -85,7 +90,7 @@ class Track: RLMObject {
     }
     
     private func recalculateDuration() {
-        if let newDuration = endDate?.timeIntervalSinceDate(startDate ?? endDate!) {
+        if let newDuration = endDate()?.timeIntervalSinceDate(startDate() ?? endDate()!) {
             duration = newDuration
         } else {
             duration = 0
@@ -169,7 +174,7 @@ class Track: RLMObject {
             if let nextLocation = locations[UInt(index+1)] as? TrackLocation {
                 if let location = location as? TrackLocation {
                     let length = location.location().distanceFromLocation(nextLocation.location())
-                    let duration = nextLocation.date.timeIntervalSinceDate(location.date)
+                    let duration = nextLocation.date().timeIntervalSinceDate(location.date())
                     let speed = length / duration
                     speeds.append(speed)
                 }
