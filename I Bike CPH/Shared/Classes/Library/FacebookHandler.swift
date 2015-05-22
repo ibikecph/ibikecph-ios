@@ -57,46 +57,45 @@ import Social
             println("Facebook granted access")
             if let account = self.accountStore.accountsWithAccountType(accountType).first as? ACAccount {
                 println("Facebook has account")
-                let facebookCredential = account.credential
-                let accessToken = facebookCredential.oauthToken // TODO: Verify that this token is the correct one to use
-                self.renewAccount(account, token: accessToken, completion: completion)
+                self.renewAccount(account, completion: completion)
                 return
             }
             println("Facebook has no account")
         }
     }
     
-    private func renewAccount(account: ACAccount, token: String, completion: Completion) {
+    private func renewAccount(account: ACAccount, completion: Completion) {
         accountStore.renewCredentialsForAccount(account) {(result: ACAccountCredentialRenewResult, error) -> Void in
             
             switch result {
-            case .Failed:
-                print("Facebook failed renew credentials for account: \(account)")
-                if let error = error {
-                    println("...with error: \(error)")
-                }
-                self.failed(account: account, error: error, completion: completion)
-            case .Rejected:
-                print("Facebook rejected renew credentials for account: \(account)")
-                if let error = error {
-                    println("...with error: \(error)")
-                }
-                self.failed(account: account, error: error, completion: completion)
-            case .Renewed:
-                println("Facebook renewed credentials for account: \(account)")
-                self.accountStore.saveAccount(account) { (success, error) -> Void in
-                    if !success {
-                        print("Facebook account save failed")
-                        if let error = error {
-                            println("... with error: \(error)")
-                        }
-                        self.failed(account: account, error: error, completion: completion)
-                        return
+                case .Failed:
+                    print("Facebook failed renew credentials for account: \(account)")
+                    if let error = error {
+                        println("...with error: \(error)")
                     }
-                    println("Facebook account saved")
-                    self.getInfoFromAccount(account, token: token, completion: completion)
+                    self.failed(account: account, error: error, completion: completion)
+                case .Rejected:
+                    print("Facebook rejected renew credentials for account: \(account)")
+                    if let error = error {
+                        println("...with error: \(error)")
+                    }
+                    self.failed(account: account, error: error, completion: completion)
+                case .Renewed:
+                    println("Facebook renewed credentials for account: \(account)")
+                    self.accountStore.saveAccount(account) { (success, error) -> Void in
+                        if !success {
+                            print("Facebook account save failed")
+                            if let error = error {
+                                println("... with error: \(error)")
+                            }
+                            self.failed(account: account, error: error, completion: completion)
+                            return
+                        }
+                        println("Facebook account saved")
+                        let token = account.credential.oauthToken
+                        self.getInfoFromAccount(account, token: token, completion: completion)
+                    }
                 }
-            }
         }
     }
     
