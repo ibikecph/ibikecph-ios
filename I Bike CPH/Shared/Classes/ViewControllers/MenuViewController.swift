@@ -119,7 +119,7 @@ class MenuViewController: UIViewController {
     // Mark: - Actions
     
     @IBAction func doneButtonPressed(sender: AnyObject) {
-        dismiss()
+        NotificationCenter.post("closeMenu")
     }
 }
 

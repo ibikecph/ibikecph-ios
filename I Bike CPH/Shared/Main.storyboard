@@ -337,10 +337,10 @@
             </objects>
             <point key="canvasLocation" x="-909" y="418"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Menu Navigation View Controller-->
         <scene sceneID="icz-p2-mgu">
             <objects>
-                <navigationController id="9Pp-Y2-dkg" sceneMemberID="viewController">
+                <navigationController id="9Pp-Y2-dkg" customClass="MenuNavigationViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Ji-Ml-p6R">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -412,6 +412,10 @@
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBn-aK-DJZ" userLabel="BlockingView">
+                                                <rect key="frame" x="0.0" y="-483" width="600" height="600"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -435,10 +439,6 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBn-aK-DJZ" userLabel="BlockingView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klf-Mb-BmK" userLabel="Compass" customClass="SMGPSTrackButton">
                                         <rect key="frame" x="525" y="407" width="75" height="75"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -457,18 +457,14 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="HBn-aK-DJZ" firstAttribute="top" secondItem="TYw-0Z-9ac" secondAttribute="top" id="0Pi-3i-PqZ"/>
                                     <constraint firstItem="g6B-ap-OTz" firstAttribute="top" secondItem="TYw-0Z-9ac" secondAttribute="top" id="6TH-Kl-Ziu"/>
                                     <constraint firstItem="klf-Mb-BmK" firstAttribute="leading" secondItem="R1t-dt-yrc" secondAttribute="trailing" id="EWu-vn-xxw"/>
                                     <constraint firstAttribute="trailing" secondItem="R1t-dt-yrc" secondAttribute="trailing" id="HbZ-la-0ea"/>
-                                    <constraint firstAttribute="bottom" secondItem="HBn-aK-DJZ" secondAttribute="bottom" id="aK8-8R-hRa"/>
                                     <constraint firstAttribute="bottom" secondItem="klf-Mb-BmK" secondAttribute="bottom" id="aLr-Sl-KrZ"/>
                                     <constraint firstItem="R1t-dt-yrc" firstAttribute="leading" secondItem="TYw-0Z-9ac" secondAttribute="leading" id="e57-sk-sSk"/>
-                                    <constraint firstAttribute="trailing" secondItem="HBn-aK-DJZ" secondAttribute="trailing" id="gKO-Qs-Q7s"/>
                                     <constraint firstItem="g6B-ap-OTz" firstAttribute="leading" secondItem="TYw-0Z-9ac" secondAttribute="leading" id="iqT-Wx-CQI"/>
                                     <constraint firstAttribute="trailing" secondItem="g6B-ap-OTz" secondAttribute="trailing" id="ncV-YE-byt"/>
                                     <constraint firstAttribute="trailing" secondItem="klf-Mb-BmK" secondAttribute="trailing" id="tPN-bx-Olq"/>
-                                    <constraint firstItem="HBn-aK-DJZ" firstAttribute="leading" secondItem="TYw-0Z-9ac" secondAttribute="leading" id="u8x-PE-SSd"/>
                                     <constraint firstItem="R1t-dt-yrc" firstAttribute="top" secondItem="TYw-0Z-9ac" secondAttribute="top" constant="482" id="vMg-24-gJt"/>
                                     <constraint firstAttribute="bottom" secondItem="g6B-ap-OTz" secondAttribute="bottom" id="vhi-OH-YeN"/>
                                     <constraint firstItem="R1t-dt-yrc" firstAttribute="top" secondItem="klf-Mb-BmK" secondAttribute="bottom" id="wXI-Uo-h1C"/>
@@ -480,74 +476,33 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvv-bx-a3P" userLabel="Search">
-                                <rect key="frame" x="535" y="20" width="65" height="75"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="20" maxX="10" maxY="10"/>
-                                <state key="normal" image="homeSearchSmall">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="SEARCH"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="qMR-FD-gOs" kind="show" identifier="enterRouteSegue" id="sli-qt-kjO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ie-Ul-T2D" userLabel="Menu">
-                                <rect key="frame" x="0.0" y="40" width="80" height="80"/>
-                                <state key="normal" image="home_btn_active.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="dpN-FW-2C5" kind="presentation" id="VX2-eA-dwU"/>
-                                </connections>
-                            </button>
-                            <view opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SNF-YL-Ldt" userLabel="LoaderView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="i93-dI-ejr">
-                                        <rect key="frame" x="282" y="281" width="37" height="37"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.68000000000000005" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="i93-dI-ejr" secondAttribute="centerX" id="aYA-mV-PyE"/>
-                                    <constraint firstAttribute="centerY" secondItem="i93-dI-ejr" secondAttribute="centerY" id="pbs-zi-5oc"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="0Ie-Ul-T2D" firstAttribute="top" secondItem="pq5-8Y-pYM" secondAttribute="bottom" constant="20" id="1A3-d3-oum"/>
-                            <constraint firstItem="n5L-U0-x2m" firstAttribute="top" secondItem="SNF-YL-Ldt" secondAttribute="bottom" id="59v-MX-EBE"/>
                             <constraint firstItem="TYw-0Z-9ac" firstAttribute="leading" secondItem="Dha-kl-JcM" secondAttribute="leading" id="IqF-9i-cYP"/>
-                            <constraint firstItem="SNF-YL-Ldt" firstAttribute="leading" secondItem="Dha-kl-JcM" secondAttribute="leading" id="K8c-1W-yg2"/>
                             <constraint firstItem="n5L-U0-x2m" firstAttribute="top" secondItem="TYw-0Z-9ac" secondAttribute="bottom" id="MKu-RA-432"/>
-                            <constraint firstItem="0Ie-Ul-T2D" firstAttribute="leading" secondItem="Dha-kl-JcM" secondAttribute="leading" id="NpG-QS-m1y"/>
-                            <constraint firstItem="gvv-bx-a3P" firstAttribute="leading" secondItem="TYw-0Z-9ac" secondAttribute="trailing" id="Z55-Ps-Ido"/>
                             <constraint firstItem="TYw-0Z-9ac" firstAttribute="top" secondItem="Dha-kl-JcM" secondAttribute="top" id="ati-NA-XMa"/>
-                            <constraint firstItem="gvv-bx-a3P" firstAttribute="top" secondItem="pq5-8Y-pYM" secondAttribute="bottom" id="c8z-s3-KNz"/>
-                            <constraint firstItem="SNF-YL-Ldt" firstAttribute="top" secondItem="Dha-kl-JcM" secondAttribute="top" id="ktz-x8-iqN"/>
                             <constraint firstItem="TYw-0Z-9ac" firstAttribute="trailing" secondItem="Dha-kl-JcM" secondAttribute="trailing" id="ms1-dv-P2X"/>
-                            <constraint firstItem="gvv-bx-a3P" firstAttribute="trailing" secondItem="Dha-kl-JcM" secondAttribute="trailing" id="u7N-9e-EYN"/>
-                            <constraint firstAttribute="trailing" secondItem="SNF-YL-Ldt" secondAttribute="trailing" id="uun-MN-nqq"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Z55-Ps-Ido"/>
-                            </mask>
-                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="bo8-oP-37X"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" id="bo8-oP-37X">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="pdk-8g-Iip">
+                            <connections>
+                                <action selector="openMenuAction:" destination="T3l-69-wdf" id="1JZ-kv-xPS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="Kvg-2m-COx">
+                            <connections>
+                                <segue destination="qMR-FD-gOs" kind="show" identifier="enterRouteSegue" id="hGb-e2-eVV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="blockingView" destination="HBn-aK-DJZ" id="K7a-dz-K4H"/>
                         <outlet property="bottomDrawerView" destination="R1t-dt-yrc" id="DiN-LQ-KCf"/>
                         <outlet property="bottomDrawerViewConstraint" destination="vMg-24-gJt" id="squ-MR-beq"/>
                         <outlet property="buttonTrackUser" destination="klf-Mb-BmK" id="crb-89-B9f"/>
                         <outlet property="centerView" destination="TYw-0Z-9ac" id="XQN-fn-jlf"/>
-                        <outlet property="loaderView" destination="SNF-YL-Ldt" id="vwQ-oD-tLC"/>
                         <outlet property="mapView" destination="g6B-ap-OTz" id="ycV-pH-bgU"/>
-                        <outlet property="menuButton" destination="0Ie-Ul-T2D" id="jj6-Si-FvA"/>
                         <outlet property="routeStreet" destination="yIO-vH-rvn" id="l4c-8P-ky9"/>
                         <segue destination="0iY-Gd-Bo4" kind="show" identifier="mainToRoute" id="UFp-ED-3bC"/>
                     </connections>
@@ -2015,7 +1970,7 @@ God tur og tak fordi du cykler!</string>
         <!--Navigation Controller-->
         <scene sceneID="TIH-g9-kG8">
             <objects>
-                <navigationController id="dpN-FW-2C5" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MenuNavigationViewController" id="dpN-FW-2C5" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IVB-Wo-fGc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2106,7 +2061,7 @@ God tur og tak fordi du cykler!</string>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="2SX-FL-5Vy">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="2NQ-8A-moN">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="2NQ-8A-moN">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="8aC-F1-czZ" id="NU2-A7-xix"/>
                             </connections>
@@ -3474,12 +3429,12 @@ God tur og tak fordi du cykler!</string>
                                                         <constraint firstAttribute="width" constant="5" id="anb-5A-PW9"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Heldbjergvej" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhV-Kq-zHr" customClass="TTTAttributedLabel">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Heldbjergvej" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhV-Kq-zHr" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="46" y="5" width="531" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6200 Aabenraa" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg2-fN-GIX" customClass="TTTAttributedLabel">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="6200 Aabenraa" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg2-fN-GIX" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="46" y="25" width="539" height="13"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -4442,8 +4397,6 @@ God tur og tak fordi du cykler!</string>
         <image name="favStarGreySmall.png" width="22" height="22"/>
         <image name="fb_linked_icon.png" width="54" height="54"/>
         <image name="findRouteCalendar.png" width="21" height="22"/>
-        <image name="homeSearchSmall" width="45" height="45"/>
-        <image name="home_btn_active.png" width="80" height="80"/>
         <image name="icon_locate_me.png" width="55" height="55"/>
         <image name="leftArrow.png" width="7" height="12"/>
         <image name="list_find_icon.png" width="34" height="34"/>
@@ -4463,9 +4416,9 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cR0-BE-PFO"/>
-        <segue reference="2Vq-ft-HSw"/>
-        <segue reference="mOB-IN-cna"/>
+        <segue reference="yk2-zf-Q1g"/>
         <segue reference="YD8-cY-nJg"/>
+        <segue reference="mOB-IN-cna"/>
+        <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>
 </document>

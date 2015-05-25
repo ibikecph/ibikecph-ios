@@ -93,7 +93,7 @@ class BikeStatistics {
     class func firstTrackStartDate() -> NSDate? {
         let sortedTracks = tracks().sortedResultsUsingProperty("startTimestamp", ascending: true)
         let firstTrack = sortedTracks.firstObject() as? Track
-        let startDate = firstTrack?.startDate
+        let startDate = firstTrack?.startDate()
         return startDate
     }
     
@@ -103,7 +103,7 @@ class BikeStatistics {
     :returns: The end date of the latest bike track
     */
     class func lastTrackEndDate() -> NSDate? {
-        let startDate = (tracks().sortedResultsUsingProperty("startTimestamp", ascending: true).lastObject() as? Track)?.endDate
+        let startDate = (tracks().sortedResultsUsingProperty("startTimestamp", ascending: true).lastObject() as? Track)?.endDate()
         return startDate
     }
     

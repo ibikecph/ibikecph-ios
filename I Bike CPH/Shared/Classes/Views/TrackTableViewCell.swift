@@ -39,10 +39,10 @@ class TrackTableViewCell: UITableViewCell {
     func updateToTrack(track: Track?) {
         if let track = track {
             var time = ""
-            if let date = track.startDate {
+            if let date = track.startDate() {
                 time += dateFormatter.stringFromDate(date)
             }
-            if let date = track.endDate {
+            if let date = track.endDate() {
                 time += " - " + dateFormatter.stringFromDate(date)
             }
             timeLabel.text = time

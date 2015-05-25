@@ -208,7 +208,7 @@ extension TrackingViewController: UITableViewDataSource {
     
     // Section header title
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let aDateInSection = (tracks(inSection: section)?.firstObject() as? Track)?.startDate {
+        if let aDateInSection = (tracks(inSection: section)?.firstObject() as? Track)?.startDate() {
             return headerDateFormatter.stringFromDate(aDateInSection)
         }
         return nil

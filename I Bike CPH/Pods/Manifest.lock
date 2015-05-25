@@ -1,8 +1,8 @@
 PODS:
   - DAKeyboardControl (2.4.0)
-  - GoogleAnalytics-iOS-SDK (3.11):
-    - GoogleAnalytics-iOS-SDK/Core (= 3.11)
-  - GoogleAnalytics-iOS-SDK/Core (3.11)
+  - GoogleAnalytics-iOS-SDK (3.12):
+    - GoogleAnalytics-iOS-SDK/Core (= 3.12)
+  - GoogleAnalytics-iOS-SDK/Core (3.12)
   - OCHamcrest (4.1.1)
   - OCMockito (1.4.0):
     - OCHamcrest (~> 4.0)
@@ -26,7 +26,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
-  GoogleAnalytics-iOS-SDK: fb15cc7e3d01d06d531653f37443fda90274d53d
+  GoogleAnalytics-iOS-SDK: 0a3327a993b8ed2b8fe1c6c4a8dcf5b76d2237a8
   OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   PSTAlertController: cb21afcfa76c3229feec7db044afd4f60dab5892
