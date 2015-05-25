@@ -24,13 +24,13 @@ class MenuViewController: UIViewController {
 
     private lazy var sections: [SectionViewModel<MenuItem>] = {
         
-        let favItem = MenuItem(title: "favorites".localized, iconImageName: "favorites", action: { menuViewController in
+        let favItem = MenuItem(title: "favorites".localized, iconImageName: "Favorite", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToFavorites", sender: menuViewController)
         })
         let reminderItem = MenuItem(title: "reminder_title".localized, iconImageName: "notifications", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
         })
-        let profileItem = MenuItem(title: (UserHelper.loggedIn() ? "account" : "profile").localized, iconImageName: "user", action: { menuViewController in
+        let profileItem = MenuItem(title: (UserHelper.loggedIn() ? "account" : "profile").localized, iconImageName: "User", action: { menuViewController in
             if UserHelper.loggedIn() {
                 if UserHelper.isFacebook() {
                     menuViewController.performSegueWithIdentifier("menuToAccountFacebook", sender: menuViewController)
@@ -41,16 +41,16 @@ class MenuViewController: UIViewController {
                 menuViewController.performSegueWithIdentifier("menuToLogin", sender: menuViewController)
             }
         })
-        let overlayItem = MenuItem(title: "map_overlays".localized, iconImageName: "map_overlays", action: { menuViewController in
+        let overlayItem = MenuItem(title: "map_overlays".localized, iconImageName: "Maps overlay", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToOverlays", sender: menuViewController)
         })
-        let voiceItem = MenuItem(title: "voice".localized, iconImageName: "speaker", action: { menuViewController in
+        let voiceItem = MenuItem(title: "voice".localized, iconImageName: "Speaker", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToVoice", sender: menuViewController)
         })
-        let speedItem = MenuItem(title: "speedguide".localized, iconImageName: "speed_guide", action: { menuViewController in
+        let speedItem = MenuItem(title: "speedguide".localized, iconImageName: "Fartguide", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToSpeedGuide", sender: menuViewController)
         })
-        let trackingItem = MenuItem(title: "tracking".localized, iconImageName: "tracking", action: { menuViewController in
+        let trackingItem = MenuItem(title: "tracking".localized, iconImageName: "Bikedata", action: { menuViewController in
             let trackingAvailable = trackingHandler.trackingAvailable
             if !trackingAvailable {
                 menuViewController.performSegueWithIdentifier("menuToTrackingNotAvailable", sender: menuViewController)
@@ -65,7 +65,7 @@ class MenuViewController: UIViewController {
             }
             menuViewController.performSegueWithIdentifier("menuToTracking", sender: menuViewController)
         })
-        let aboutItem = MenuItem(title: (Macro.isIBikeCph() ? "about_app_ibc" : "about_app_cp").localized, iconImageName: "info", action: { menuViewController in
+        let aboutItem = MenuItem(title: (Macro.isIBikeCph() ? "about_app_ibc" : "about_app_cp").localized, iconImageName: "information", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToAbout", sender: menuViewController)
         })
         

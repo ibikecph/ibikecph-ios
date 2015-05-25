@@ -38,7 +38,7 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
     private let sections: [SectionViewModel<TrackingItemProtocol>] = [
         SectionViewModel(items:
             [
-                TrackingSwitchItem(title: "tracking_option".localized, iconImageName: "tracking", on: settings.tracking.on, switchAction: { viewController, switcher, on in
+                TrackingSwitchItem(title: "tracking_option".localized, iconImageName: "Bikedata", on: settings.tracking.on, switchAction: { viewController, switcher, on in
                     let isLoggedIn = viewController.appDelegate.appSettings["auth_token"] != nil
                     if !isLoggedIn && on {
                         let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
@@ -53,22 +53,15 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
                     }
                     settings.tracking.on = on
                 }),
-                // TODO: Add icon for milestones
-                TrackingSwitchItem(title: "tracking_milestone_notifications".localized, iconImageName: "", on: settings.tracking.milestoneNotifications, switchAction: { voiceViewController, switcher, on in
+                TrackingSwitchItem(title: "tracking_milestone_notifications".localized, iconImageName: "Milestones", on: settings.tracking.milestoneNotifications, switchAction: { voiceViewController, switcher, on in
                     settings.tracking.milestoneNotifications = on
                 }),
-                TrackingSwitchItem(title: "tracking_weekly_status_notifications".localized, iconImageName: "", on: settings.tracking.weeklyStatusNotifications, switchAction: { voiceViewController, switcher, on in
+                TrackingSwitchItem(title: "tracking_weekly_status_notifications".localized, iconImageName: "Weekday", on: settings.tracking.weeklyStatusNotifications, switchAction: { voiceViewController, switcher, on in
                     settings.tracking.weeklyStatusNotifications = on
                 }),
             ]
         ),
     ]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-//        self.title = "tracking_preferences".localized
-    }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent

@@ -8,13 +8,15 @@
 
 import UIKit
 
-class MenuNavigationViewController: ENSideMenuNavigationController {
+class NavigationWithSideMenuViewController: UINavigationController {
 
+    var sideMenu: ENSideMenu?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let menuNavigationViewController = storyboard?.instantiateViewControllerWithIdentifier("MenuNavigationViewController") as? UIViewController {
-            sideMenu = ENSideMenu(sourceView: self.view, menuViewController: menuNavigationViewController, menuPosition:.Left)
+            sideMenu = ENSideMenu(sourceViewController: self, menuViewController: menuNavigationViewController, menuPosition:.Left)
         }
         
         NotificationCenter.observe("openMenu") { [unowned self] notification in
