@@ -40,7 +40,7 @@ class TracksHandler {
         return queue
     }()
     
-    class func setNeedsProcessData(force: Bool = true) { //false) {
+    class func setNeedsProcessData(force: Bool = false) {
         if compressingRealm {
             Async.main(after: 10) {
                 self.setNeedsProcessData()
