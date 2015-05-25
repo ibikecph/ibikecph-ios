@@ -30,7 +30,7 @@ class MenuViewController: UIViewController {
         let reminderItem = MenuItem(title: "reminder_title".localized, iconImageName: "notifications", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
         })
-        let profileItem = MenuItem(title: (UserHelper.loggedIn() ? "account" : "profile").localized, iconImageName: "User", action: { menuViewController in
+        let profileItem = MenuItem(title: (UserHelper.loggedIn() ? "account" : "profile").localized, iconImageName: "user", action: { menuViewController in
             if UserHelper.loggedIn() {
                 if UserHelper.isFacebook() {
                     menuViewController.performSegueWithIdentifier("menuToAccountFacebook", sender: menuViewController)
