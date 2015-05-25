@@ -110,7 +110,7 @@ class TrackingViewController: SMTranslatedViewController {
             for tracksInSection in tracks {
                 for track in tracksInSection {
                     if let track = track as? Track {
-                        if track.start == "" {
+                        if !track.hasBeenGeocoded {
                             if let startLocation = track.locations.firstObject() as? TrackLocation {
                                 let coordinate = startLocation.coordinate()
                                 SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
@@ -123,6 +123,7 @@ class TrackingViewController: SMTranslatedViewController {
                                             track.realm.beginWriteTransaction()
                                         }
                                         track.start = item.street
+                                        track.hasBeenGeocoded = true
                                         if transact {
                                             track.realm.commitWriteTransaction()
                                         }
@@ -130,8 +131,6 @@ class TrackingViewController: SMTranslatedViewController {
                                     }
                                 }
                             }
-                        }
-                        if track.end == "" {
                             if let endLocation = track.locations.lastObject() as? TrackLocation {
                                 let coordinate = endLocation.coordinate()
                                 SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
@@ -144,6 +143,7 @@ class TrackingViewController: SMTranslatedViewController {
                                             track.realm.beginWriteTransaction()
                                         }
                                         track.end = item.street
+                                        track.hasBeenGeocoded = true
                                         if transact {
                                             track.realm.commitWriteTransaction()
                                         }
