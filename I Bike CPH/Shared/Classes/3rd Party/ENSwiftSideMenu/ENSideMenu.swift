@@ -90,8 +90,8 @@ public class ENSideMenu: NSObject {
     private(set) var isMenuOpen: Bool = false
     public var allowLeftSwipe: Bool = true
     public var allowRightSwipe: Bool = true
-    private var screenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer?
-    private var panGestureRecognizer: UIPanGestureRecognizer?
+    private var screenEdgePan1GestureRecognizer: UIScreenEdgePanGestureRecognizer?
+    private var screenEdgePan2GestureRecognizer: UIScreenEdgePanGestureRecognizer?
     private var panInitialProgress: CGFloat?
     private var leftConstraint: NSLayoutConstraint?
     
@@ -103,14 +103,15 @@ public class ENSideMenu: NSObject {
         self.setupMenuView()
     
         // Edge swipe
-        screenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "handlePan:")
-        screenEdgePanGestureRecognizer!.delegate = self
-        screenEdgePanGestureRecognizer!.edges = (menuPosition == .Left) ? .Left : .Right
-        sourceView.addGestureRecognizer(screenEdgePanGestureRecognizer!)
+        screenEdgePan1GestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "handlePan:")
+        screenEdgePan1GestureRecognizer!.delegate = self
+        screenEdgePan1GestureRecognizer!.edges = (menuPosition == .Left) ? .Left : .Right
+        sourceView.addGestureRecognizer(screenEdgePan1GestureRecognizer!)
         // Add swipe gesture recognizer to container
-        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
-        panGestureRecognizer!.delegate = self
-        sideMenuContainerView.addGestureRecognizer(panGestureRecognizer!)
+        screenEdgePan2GestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "handlePan:")
+        screenEdgePan2GestureRecognizer!.delegate = self
+        screenEdgePan2GestureRecognizer!.edges = (menuPosition == .Left) ? .Right : .Left
+        sideMenuContainerView.addGestureRecognizer(screenEdgePan2GestureRecognizer!)
         
         setMenu(isMenuOpen, animated: false)
     }
@@ -124,7 +125,6 @@ public class ENSideMenu: NSObject {
         sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Left, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Left, multiplier: 1, constant: 0))
         sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Right, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Right, multiplier: 1, constant: 0))
         sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Bottom, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Bottom, multiplier: 1, constant: 0))
-//        sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Top, relatedBy: .Equal, toItem: sourceViewController.topLayoutGuide, attribute: .Bottom, multiplier: 1, constant: 0))
         sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Top, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Top, multiplier: 1, constant: 0))
     }
     
@@ -246,9 +246,32 @@ public class ENSideMenu: NSObject {
 extension ENSideMenu: UIGestureRecognizerDelegate {
     
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailByGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if gestureRecognizer == screenEdgePanGestureRecognizer {
-            return true
+        // Screen edge pan should overrule all other gestures
+        if gestureRecognizer == screenEdgePan1GestureRecognizer {
+            let menuIsClosed = !isMenuOpen
+            return menuIsClosed
         }
+//        if gestureRecognizer == panGestureRecognizer {
+//            return false
+//        }
         return false
     }
+    
+//    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        if gestureRecognizer == panGestureRecognizer {
+//            if let pan = otherGestureRecognizer as? UIPanGestureRecognizer {
+//                return true
+//            }
+//        }
+//        return false
+//    }
+    
+//    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        if gestureRecognizer == panGestureRecognizer {
+//            if let pan = otherGestureRecognizer as? UIPanGestureRecognizer {
+//                return true
+//            }
+//        }
+//        return false
+//    }
 }
