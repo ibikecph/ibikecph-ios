@@ -337,10 +337,10 @@
             </objects>
             <point key="canvasLocation" x="-909" y="418"/>
         </scene>
-        <!--Menu Navigation View Controller-->
+        <!--Navigation With Side Menu View Controller-->
         <scene sceneID="icz-p2-mgu">
             <objects>
-                <navigationController id="9Pp-Y2-dkg" customClass="MenuNavigationViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="9Pp-Y2-dkg" customClass="NavigationWithSideMenuViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Ji-Ml-p6R">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

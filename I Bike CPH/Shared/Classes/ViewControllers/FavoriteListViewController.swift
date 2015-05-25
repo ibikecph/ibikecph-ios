@@ -29,6 +29,8 @@ class FavoriteListViewController: SMTranslatedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "favorites".localized
+        
         let userIsLoggedIn = UserHelper.loggedIn()
         if userIsLoggedIn {
             items = SMFavoritesUtil.favorites() as! [FavoriteItem] // Get local favorites
@@ -105,7 +107,7 @@ extension FavoriteListViewController: UITableViewDataSource {
                 case .Home: return "favoriteHome"
                 case .School: return "favoriteSchool"
                 case .Work: return "favoriteWork"
-                case .Unknown: return "favorites"
+                case .Unknown: return "Favorite"
             }
         }()
         let icon = UIImage(named: imageName)

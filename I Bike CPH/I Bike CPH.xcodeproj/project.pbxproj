@@ -91,8 +91,6 @@
 		4E58C30B1B0E15DC0041255B /* MenuNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3091B0E15DC0041255B /* MenuNavigationViewController.swift */; };
 		4E58C3191B0E35000041255B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3171B0E35000041255B /* ENSideMenu.swift */; };
 		4E58C31A1B0E35000041255B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3171B0E35000041255B /* ENSideMenu.swift */; };
-		4E58C31B1B0E35000041255B /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3181B0E35000041255B /* ENSideMenuNavigationController.swift */; };
-		4E58C31C1B0E35000041255B /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3181B0E35000041255B /* ENSideMenuNavigationController.swift */; };
 		4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820B1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820C1A24AC1200A40484 /* CurrentLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */; };
@@ -127,6 +125,8 @@
 		4E7BD07C1A9234EF00BFDC7B /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */; };
 		4E7BD07F1A92354E00BFDC7B /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07E1A92354E00BFDC7B /* Realm.swift */; };
 		4E7BD0801A92354E00BFDC7B /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07E1A92354E00BFDC7B /* Realm.swift */; };
+		4E7CEDC81B13797D00FA154F /* TrackingDot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CEDC71B13797D00FA154F /* TrackingDot@3x.png */; };
+		4E7CEDC91B13797D00FA154F /* TrackingDot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CEDC71B13797D00FA154F /* TrackingDot@3x.png */; };
 		4E8E34381A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
 		4E8E343A1A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
 		4E90B42E1A9739A900A5F4C5 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */; };
@@ -1407,8 +1407,6 @@
 		4EEE920E1A125E250006BD95 /* LoadingTile.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91F21A125E250006BD95 /* LoadingTile.png */; };
 		4EEE920F1A125E250006BD95 /* LoadingTileZoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91F31A125E250006BD95 /* LoadingTileZoom.png */; };
 		4EEE92101A125E250006BD95 /* LoadingTileZoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91F31A125E250006BD95 /* LoadingTileZoom.png */; };
-		4EEE92111A125E250006BD95 /* TrackingDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91F41A125E250006BD95 /* TrackingDot.png */; };
-		4EEE92121A125E250006BD95 /* TrackingDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91F41A125E250006BD95 /* TrackingDot.png */; };
 		4EEE92131A125E250006BD95 /* TrackingDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91F51A125E250006BD95 /* TrackingDot@2x.png */; };
 		4EEE92141A125E250006BD95 /* TrackingDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91F51A125E250006BD95 /* TrackingDot@2x.png */; };
 		4EEE92151A125E250006BD95 /* TrackingDotHalo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91F61A125E250006BD95 /* TrackingDotHalo.png */; };
@@ -1542,7 +1540,6 @@
 		4E56745F1A92521800BF4A28 /* MotionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		4E58C3091B0E15DC0041255B /* MenuNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigationViewController.swift; sourceTree = "<group>"; };
 		4E58C3171B0E35000041255B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenu.swift; path = ENSwiftSideMenu/ENSideMenu.swift; sourceTree = "<group>"; };
-		4E58C3181B0E35000041255B /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenuNavigationController.swift; path = ENSwiftSideMenu/ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		4E5982001A24AC1200A40484 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationItem.swift; sourceTree = "<group>"; };
 		4E5982031A24AC1200A40484 /* FavoriteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
@@ -1561,6 +1558,7 @@
 		4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareItem_Tests.swift; sourceTree = "<group>"; };
 		4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		4E7BD07E1A92354E00BFDC7B /* Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
+		4E7CEDC71B13797D00FA154F /* TrackingDot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingDot@3x.png"; sourceTree = "<group>"; };
 		4E8E34371A272A84004D529B /* OiorestItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OiorestItem.swift; sourceTree = "<group>"; };
 		4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
 		4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoicePreferencesViewController.swift; sourceTree = "<group>"; };
@@ -2837,7 +2835,6 @@
 		4EEE91F11A125E250006BD95 /* HeadingAngleSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HeadingAngleSmall@2x.png"; path = "../../../../route-me/MapView/Map/Resources/HeadingAngleSmall@2x.png"; sourceTree = "<group>"; };
 		4EEE91F21A125E250006BD95 /* LoadingTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingTile.png; path = "../../../../route-me/MapView/Map/Resources/LoadingTile.png"; sourceTree = "<group>"; };
 		4EEE91F31A125E250006BD95 /* LoadingTileZoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingTileZoom.png; path = "../../../../route-me/MapView/Map/Resources/LoadingTileZoom.png"; sourceTree = "<group>"; };
-		4EEE91F41A125E250006BD95 /* TrackingDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TrackingDot.png; path = "../../../../route-me/MapView/Map/Resources/TrackingDot.png"; sourceTree = "<group>"; };
 		4EEE91F51A125E250006BD95 /* TrackingDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TrackingDot@2x.png"; path = "../../../../route-me/MapView/Map/Resources/TrackingDot@2x.png"; sourceTree = "<group>"; };
 		4EEE91F61A125E250006BD95 /* TrackingDotHalo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TrackingDotHalo.png; path = "../../../../route-me/MapView/Map/Resources/TrackingDotHalo.png"; sourceTree = "<group>"; };
 		4EEE91F71A125E250006BD95 /* TrackingDotHalo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TrackingDotHalo@2x.png"; path = "../../../../route-me/MapView/Map/Resources/TrackingDotHalo@2x.png"; sourceTree = "<group>"; };
@@ -2938,8 +2935,8 @@
 				4EEE91F11A125E250006BD95 /* HeadingAngleSmall@2x.png */,
 				4EEE91F21A125E250006BD95 /* LoadingTile.png */,
 				4EEE91F31A125E250006BD95 /* LoadingTileZoom.png */,
-				4EEE91F41A125E250006BD95 /* TrackingDot.png */,
 				4EEE91F51A125E250006BD95 /* TrackingDot@2x.png */,
+				4E7CEDC71B13797D00FA154F /* TrackingDot@3x.png */,
 				4EEE91F61A125E250006BD95 /* TrackingDotHalo.png */,
 				4EEE91F71A125E250006BD95 /* TrackingDotHalo@2x.png */,
 				4EEE91F81A125E250006BD95 /* TrackingHeading.png */,
@@ -2966,7 +2963,6 @@
 			isa = PBXGroup;
 			children = (
 				4E58C3171B0E35000041255B /* ENSideMenu.swift */,
-				4E58C3181B0E35000041255B /* ENSideMenuNavigationController.swift */,
 			);
 			name = ENSwiftSideMenu;
 			sourceTree = "<group>";
@@ -4893,7 +4889,6 @@
 				4EE065EE1A10FAB400DE4226 /* radioChecked.png in Resources */,
 				4EE0658F1A10FAB400DE4226 /* favSchoolWhite@2x.png in Resources */,
 				4EEE92441A125E690006BD95 /* marker-X.png in Resources */,
-				4EEE92111A125E250006BD95 /* TrackingDot.png in Resources */,
 				4EE066291A10FAB400DE4226 /* routeEnterSingleRowPressed@2x.png in Resources */,
 				4EE064C91A10FAB400DE4226 /* down-right.png in Resources */,
 				4EE066041A10FAB400DE4226 /* reportInput.png in Resources */,
@@ -5168,6 +5163,7 @@
 				4EE065311A10FAB400DE4226 /* back_arrow_btn_white.png in Resources */,
 				4EE065F21A10FAB400DE4226 /* red_btn.png in Resources */,
 				4EE064EC1A10FAB400DE4226 /* white-down-right@2x.png in Resources */,
+				4E7CEDC81B13797D00FA154F /* TrackingDot@3x.png in Resources */,
 				4EE06CDD1A11134C00DE4226 /* smroute_settings_example.plist in Resources */,
 				4EE064FB1A10FAB400DE4226 /* white-right.png in Resources */,
 				4EE0658A1A10FAB400DE4226 /* favReorder.png in Resources */,
@@ -5421,7 +5417,6 @@
 				4EE073561A1178E300DE4226 /* service_station_gray_old.png in Resources */,
 				4EE0719E1A1178E200DE4226 /* break_route_white_press.png in Resources */,
 				4EE072A81A1178E200DE4226 /* loginFacebook.png in Resources */,
-				4EEE92121A125E250006BD95 /* TrackingDot.png in Resources */,
 				4EE071BD1A1178E200DE4226 /* css_logo@2x.png in Resources */,
 				4EE072721A1178E200DE4226 /* home_btn_active@2x.png in Resources */,
 				4EE06E5F1A11298800DE4226 /* SMAddressPickerView.xib in Resources */,
@@ -5767,6 +5762,7 @@
 				4EE072031A1178E200DE4226 /* enterRouteSearchBG@2x.png in Resources */,
 				4EE0736E1A1178E300DE4226 /* splash_bg_btn_blue_pressed.png in Resources */,
 				4EE072B81A1178E200DE4226 /* metro_station_white.png in Resources */,
+				4E7CEDC91B13797D00FA154F /* TrackingDot@3x.png in Resources */,
 				4EE073331A1178E300DE4226 /* routeEnterStart_inactive@2x.png in Resources */,
 				4EE072401A1178E200DE4226 /* favTypeFavoriteButton.png in Resources */,
 				4EE0716D1A1178E100DE4226 /* arrow_small@2x.png in Resources */,
@@ -6198,7 +6194,6 @@
 				4E4F5FE01A2BB3A000233ACA /* StyleIBikeCph.swift in Sources */,
 				4EC56E9D1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */,
 				4EC56EE71A2A3AAE00B696B4 /* SMRegisterController.m in Sources */,
-				4E58C31B1B0E35000041255B /* ENSideMenuNavigationController.swift in Sources */,
 				4ECA91A11AB2EED800F4BB4F /* NotificationCenter.swift in Sources */,
 				4EE06CC71A11134C00DE4226 /* NSString+URLEncode.m in Sources */,
 				4EB610E21AD69B8800CEC994 /* SectionViewModel.swift in Sources */,
@@ -6377,7 +6372,6 @@
 				4ED672581B0F74E00025DFDF /* MapToMapStoryboardSegue.swift in Sources */,
 				4E32B29C1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */,
 				4EC56DBA1A2A25E900B696B4 /* SMAnalytics.m in Sources */,
-				4E58C31C1B0E35000041255B /* ENSideMenuNavigationController.swift in Sources */,
 				4EC56E331A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
 				4EE06F051A112F6D00DE4226 /* SMBreakRouteButtonCell.m in Sources */,
 				4E59820F1A24AC1200A40484 /* FavoriteItem.swift in Sources */,

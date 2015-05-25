@@ -44,19 +44,8 @@ public extension UIViewController {
     }
     
     public func isSideMenuOpen () -> Bool {
-        let sieMenuOpen = self.sideMenuController()?.sideMenu?.isMenuOpen
-        return sieMenuOpen!
-    }
-    
-    /**
-     * You must call this method from viewDidLayoutSubviews in your content view controlers so it fixes size and position of the side menu when the screen
-     * rotates.
-     * A convenient way to do it might be creating a subclass of UIViewController that does precisely that and then subclassing your view controllers from it.
-     */
-    func fixSideMenuSize() {
-        if let navController = self.navigationController as? ENSideMenuNavigationController {
-            navController.sideMenu?.updateFrame()
-        }
+        let sideMenuOpen = self.sideMenuController()?.sideMenu?.isMenuOpen
+        return sideMenuOpen!
     }
     
     public func sideMenuController () -> ENSideMenuProtocol? {
@@ -87,18 +76,14 @@ public extension UIViewController {
     }
 }
 
+
 public class ENSideMenu: NSObject {
     
-    public var menuWidth: CGFloat = UIScreen.mainScreen().bounds.width {
-        didSet {
-            needUpdateApperance = true
-            updateFrame()
-        }
-    }
     private var menuPosition:ENSideMenuPosition = .Left
     public var animationDuration = 0.2
     private let sideMenuContainerView =  UIView()
     private var menuViewController : UIViewController!
+    private var sourceViewController : UIViewController!
     private var sourceView : UIView!
     private var needUpdateApperance : Bool = false
     public weak var delegate : ENSideMenuDelegate?
@@ -106,11 +91,14 @@ public class ENSideMenu: NSObject {
     public var allowLeftSwipe: Bool = true
     public var allowRightSwipe: Bool = true
     private var screenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer?
+    private var panGestureRecognizer: UIPanGestureRecognizer?
     private var panInitialProgress: CGFloat?
+    private var leftConstraint: NSLayoutConstraint?
     
-    public init(sourceView: UIView, menuPosition: ENSideMenuPosition) {
+    public init(sourceViewController: UIViewController, menuPosition: ENSideMenuPosition) {
         super.init()
-        self.sourceView = sourceView
+        self.sourceViewController = sourceViewController
+        self.sourceView = self.sourceViewController.view
         self.menuPosition = menuPosition
         self.setupMenuView()
     
@@ -120,65 +108,51 @@ public class ENSideMenu: NSObject {
         screenEdgePanGestureRecognizer!.edges = (menuPosition == .Left) ? .Left : .Right
         sourceView.addGestureRecognizer(screenEdgePanGestureRecognizer!)
         // Add swipe gesture recognizer to container
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
-        panGestureRecognizer.delegate = self
-        sideMenuContainerView.addGestureRecognizer(panGestureRecognizer)
+        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
+        panGestureRecognizer!.delegate = self
+        sideMenuContainerView.addGestureRecognizer(panGestureRecognizer!)
+        
+        setMenu(isMenuOpen, animated: false)
     }
 
-    public convenience init(sourceView: UIView, menuViewController: UIViewController, menuPosition: ENSideMenuPosition) {
-        self.init(sourceView: sourceView, menuPosition: menuPosition)
+    public convenience init(sourceViewController: UIViewController, menuViewController: UIViewController, menuPosition: ENSideMenuPosition) {
+        self.init(sourceViewController: sourceViewController, menuPosition: menuPosition)
         self.menuViewController = menuViewController
-        self.menuViewController.view.frame = sideMenuContainerView.bounds
-        self.menuViewController.view.autoresizingMask = .FlexibleHeight | .FlexibleWidth
         sideMenuContainerView.addSubview(self.menuViewController.view)
-    }
-
-    public convenience init(sourceView: UIView, view: UIView, menuPosition: ENSideMenuPosition) {
-        self.init(sourceView: sourceView, menuPosition: menuPosition)
-        view.frame = sideMenuContainerView.bounds
-        view.autoresizingMask = .FlexibleHeight | .FlexibleWidth
-        sideMenuContainerView.addSubview(view)
-    }
-
-    /**
-     * Do not make this function private, it must be called from your own UIViewControllers (using the fixSideMenuSize function of the extension).
-     */
-    func updateFrame() {
-        let width = sourceView.frame.size.width
-        let height = sourceView.frame.size.height
-        let menuFrame = CGRectMake(
-            (menuPosition == .Left) ?
-                isMenuOpen ? 0 : -menuWidth-1.0 :
-                isMenuOpen ? width - menuWidth : width+1.0,
-            sourceView.frame.origin.y,
-            menuWidth,
-            height
-        )
-        sideMenuContainerView.frame = menuFrame
+        let menuView = self.menuViewController.view
+        menuView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Left, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Left, multiplier: 1, constant: 0))
+        sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Right, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Right, multiplier: 1, constant: 0))
+        sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Bottom, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Bottom, multiplier: 1, constant: 0))
+//        sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Top, relatedBy: .Equal, toItem: sourceViewController.topLayoutGuide, attribute: .Bottom, multiplier: 1, constant: 0))
+        sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Top, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Top, multiplier: 1, constant: 0))
     }
     
     private func setupMenuView() {
         
         // Configure side menu container
-        updateFrame()
-
-        sideMenuContainerView.backgroundColor = UIColor.clearColor()
+        sideMenuContainerView.backgroundColor = .clearColor()
         sideMenuContainerView.clipsToBounds = false
         sideMenuContainerView.layer.masksToBounds = false
         sideMenuContainerView.layer.shadowOffset = (menuPosition == .Left) ? CGSizeMake(1.0, 1.0) : CGSizeMake(-1.0, -1.0)
         sideMenuContainerView.layer.shadowRadius = 0.5
         sideMenuContainerView.layer.shadowOpacity = 0.125
-        sideMenuContainerView.layer.shadowPath = UIBezierPath(rect: sideMenuContainerView.bounds).CGPath
         
         sourceView.addSubview(sideMenuContainerView)
+        
+        sideMenuContainerView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        leftConstraint = NSLayoutConstraint(item: sideMenuContainerView, attribute: .Left, relatedBy: .Equal, toItem: sourceView, attribute: .Left, multiplier: 1, constant: 0)
+        sourceView.addConstraint(leftConstraint!)
+        sourceView.addConstraint(NSLayoutConstraint(item: sideMenuContainerView, attribute: .Width, relatedBy: .Equal, toItem: sourceView, attribute: .Width, multiplier: 1, constant: 0))
+        sourceView.addConstraint(NSLayoutConstraint(item: sideMenuContainerView, attribute: .Top, relatedBy: .Equal, toItem: sourceView, attribute: .Top, multiplier: 1, constant: 0))
+        sourceView.addConstraint(NSLayoutConstraint(item: sideMenuContainerView, attribute: .Bottom, relatedBy: .Equal, toItem: sourceView, attribute: .Bottom, multiplier: 1, constant: 0))
     }
     
     
-    func animateMenu(shouldOpen: Bool) {
+    func setMenu(shouldOpen: Bool, animated: Bool = true) {
         if (shouldOpen && delegate?.sideMenuShouldOpenSideMenu?() == false) {
             return
         }
-        updateSideMenuApperanceIfNeeded()
         isMenuOpen = shouldOpen
         
         if (shouldOpen) {
@@ -188,25 +162,24 @@ public class ENSideMenu: NSObject {
         }
         
         let position: CGFloat = shouldOpen ? 1 : 0
-        updateToPositionOpen(position, animated: true)
+        updateToPositionOpen(position, animated: animated)
     }
     
     private func updateToPositionOpen(open: CGFloat, animated: Bool) {
         let open = min(max(open, 0), 1)
         
-        let width = sourceView.frame.size.width
-        let height = sourceView.frame.size.height
-        let xPosition = (menuPosition == .Left) ? progress(open, from: -menuWidth, to: 0) : progress(open, from: width, to: width - menuWidth)
-        let destFrame = CGRectMake(xPosition, 0, menuWidth, height)
+        let width = sourceView.frame.width
+        let xPosition = (menuPosition == .Left) ? progress(open, from: -width, to: 0) : progress(open, from: width, to: 0)
         
         let shadowAlpha = min(Float(open), 0.125)
+        self.leftConstraint?.constant = xPosition
+        sourceView.setNeedsUpdateConstraints()
         if animated {
             UIView.animateWithDuration(animationDuration, animations: {
-                self.sideMenuContainerView.frame = destFrame
+                self.sourceView.layoutIfNeeded()
                 self.sideMenuContainerView.layer.shadowOpacity = shadowAlpha
             })
         } else {
-            sideMenuContainerView.frame = destFrame
             self.sideMenuContainerView.layer.shadowOpacity = shadowAlpha
         }
     }
@@ -216,7 +189,8 @@ public class ENSideMenu: NSObject {
     }
     
     internal func handlePan(gesture: UIPanGestureRecognizer) {
-        var progress = gesture.translationInView(gesture.view!).x / self.menuWidth
+        let width = sourceView.frame.width
+        var progress = gesture.translationInView(gesture.view!).x / width
         let shouldReverse = self.menuPosition == .Right
         if shouldReverse {
             progress *= -1
@@ -228,7 +202,7 @@ public class ENSideMenu: NSObject {
         switch gesture.state {
             case .Began: break
             case .Changed:
-                var progress = gesture.translationInView(gesture.view!).x / self.menuWidth
+                var progress = gesture.translationInView(gesture.view!).x / width
                 let shouldReverse = self.menuPosition == .Right
                 if shouldReverse {
                     progress *= -1
@@ -241,41 +215,29 @@ public class ENSideMenu: NSObject {
                 fallthrough
             case .Ended:
                 let endOpen = progress > 0.5
-                animateMenu(endOpen)
+                setMenu(endOpen)
             default: break
-        }
-    }
-    
-    private func updateSideMenuApperanceIfNeeded () {
-        if (needUpdateApperance) {
-            var frame = sideMenuContainerView.frame
-            frame.size.width = menuWidth
-            sideMenuContainerView.frame = frame
-            sideMenuContainerView.layer.shadowPath = UIBezierPath(rect: sideMenuContainerView.bounds).CGPath
-
-            needUpdateApperance = false
         }
     }
     
     public func toggleMenu () {
         if (isMenuOpen) {
-            animateMenu(false)
+            setMenu(false)
         }
         else {
-            updateSideMenuApperanceIfNeeded()
-            animateMenu(true)
+            setMenu(true)
         }
     }
     
     public func showSideMenu () {
         if (!isMenuOpen) {
-            animateMenu(true)
+            setMenu(true)
         }
     }
     
     public func hideSideMenu () {
         if (isMenuOpen) {
-            animateMenu(false)
+            setMenu(false)
         }
     }
 }
