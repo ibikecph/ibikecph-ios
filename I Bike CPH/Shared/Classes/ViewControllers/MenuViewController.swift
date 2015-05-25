@@ -75,7 +75,7 @@ class MenuViewController: UIViewController {
         if Macro.isCykelPlanen() {
             menuItems.append(overlayItem)
         }
-        menuItems.append(voiceItem)
+//        menuItems.append(voiceItem)
         if Macro.isIBikeCph() {
         }
 //        menuItems.append(speedItem)
