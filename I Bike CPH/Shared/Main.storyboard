@@ -2350,22 +2350,16 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wiO-A9-08P" userLabel="LeftView">
-                                                    <rect key="frame" x="28" y="10" width="161.5" height="59"/>
+                                                    <rect key="frame" x="28" y="10" width="141.5" height="59"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalCompressionResistancePriority="749" text="Hegnsvejen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17O-ge-iwH" userLabel="BottomAddress">
-                                                            <rect key="frame" x="0.0" y="35.5" width="161.5" height="19.5"/>
+                                                            <rect key="frame" x="0.0" y="35" width="141.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalCompressionResistancePriority="749" misplaced="YES" text="15:30-16:05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggp-G3-fnX" userLabel="Time">
-                                                            <rect key="frame" x="0.0" y="0.0" width="163" height="14"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalCompressionResistancePriority="749" text="to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAl-8H-lsK" userLabel="To">
-                                                            <rect key="frame" x="151" y="19" width="10.5" height="13.5"/>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalCompressionResistancePriority="749" text="15:30-16:05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggp-G3-fnX" userLabel="Time">
+                                                            <rect key="frame" x="0.0" y="0.0" width="141.5" height="13.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -2379,19 +2373,17 @@ God tur og tak fordi du cykler!</string>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="dWG-Yv-i2r" secondAttribute="trailing" id="2HH-3r-wes"/>
                                                         <constraint firstItem="dWG-Yv-i2r" firstAttribute="leading" secondItem="wiO-A9-08P" secondAttribute="leading" id="CoW-I7-MDO"/>
                                                         <constraint firstItem="17O-ge-iwH" firstAttribute="baseline" secondItem="dWG-Yv-i2r" secondAttribute="baseline" constant="20" id="ESq-QI-NSU"/>
                                                         <constraint firstItem="17O-ge-iwH" firstAttribute="leading" secondItem="wiO-A9-08P" secondAttribute="leading" id="HGg-eY-kTQ"/>
                                                         <constraint firstItem="Ggp-G3-fnX" firstAttribute="top" secondItem="wiO-A9-08P" secondAttribute="top" id="S9I-1i-N2L"/>
-                                                        <constraint firstItem="bAl-8H-lsK" firstAttribute="leading" secondItem="dWG-Yv-i2r" secondAttribute="trailing" constant="10" id="bpI-gs-z7w"/>
                                                         <constraint firstAttribute="trailing" secondItem="17O-ge-iwH" secondAttribute="trailing" id="f7W-Tz-0lM"/>
                                                         <constraint firstItem="Ggp-G3-fnX" firstAttribute="leading" secondItem="wiO-A9-08P" secondAttribute="leading" id="fBX-lE-WAc"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="17O-ge-iwH" secondAttribute="bottom" id="kng-cR-Nyk"/>
-                                                        <constraint firstAttribute="trailing" secondItem="bAl-8H-lsK" secondAttribute="trailing" id="qvP-hH-3GN"/>
                                                         <constraint firstItem="dWG-Yv-i2r" firstAttribute="baseline" secondItem="Ggp-G3-fnX" secondAttribute="baseline" constant="20" id="t2e-Uy-pUm"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ggp-G3-fnX" secondAttribute="trailing" id="tjN-Lo-ZcJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="dWG-Yv-i2r" secondAttribute="trailing" constant="99" id="wmU-cI-cgs"/>
-                                                        <constraint firstItem="dWG-Yv-i2r" firstAttribute="baseline" secondItem="bAl-8H-lsK" secondAttribute="baseline" id="wq9-EW-pd1"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -2446,9 +2438,9 @@ God tur og tak fordi du cykler!</string>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="f6F-F1-g2Q"/>
                                                     <exclude reference="XJs-Sw-b1a"/>
                                                     <exclude reference="bZ3-ut-d3u"/>
-                                                    <exclude reference="f6F-F1-g2Q"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -4395,7 +4387,7 @@ God tur og tak fordi du cykler!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="From to" width="22" height="22"/>
+        <image name="From to" width="22" height="20"/>
         <image name="Logo" width="11" height="11"/>
         <image name="arrow_large.png" width="37" height="32"/>
         <image name="arrow_small.png" width="20" height="18"/>
