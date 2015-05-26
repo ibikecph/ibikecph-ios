@@ -71,6 +71,12 @@ class OverlaysViewController: UIViewController {
         OverlayTypeViewModel(type: .LocalTrainStation),
     ]
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "map_overlays".localized
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }

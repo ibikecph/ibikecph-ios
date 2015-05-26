@@ -27,7 +27,7 @@ struct FavoriteTypeViewModel {
                 iconImage = UIImage(named: "favoriteSchool")
             case .Unknown:
                 title = "Favorite".localized
-                iconImage = UIImage(named: "favorites")
+                iconImage = UIImage(named: "Favorite")
         }
     }
 }

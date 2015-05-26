@@ -27,6 +27,12 @@ class ReminderListViewController: SMTranslatedViewController {
 
 extension ReminderListViewController: UITableViewDataSource {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "reminder_title".localized
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weekdays.count
     }

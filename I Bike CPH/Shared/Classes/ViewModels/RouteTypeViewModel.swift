@@ -15,8 +15,8 @@ struct RouteTypeViewModel {
     var iconImage: UIImage? {
         let name: String = {
             switch self.type {
-            case .Regular: return "regularBike"
-            case .Cargo: return "cargoBike"
+            case .Regular: return "Bike selected"
+            case .Cargo: return "Cargobike selected"
             }
         }()
         return UIImage(named: name)

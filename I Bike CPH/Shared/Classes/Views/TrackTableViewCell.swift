@@ -11,13 +11,11 @@ import UIKit
 class TrackTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var fromAddressLabel: UILabel!
-    @IBOutlet weak var toAddressLabel: UILabel!
+    @IBOutlet weak var topAddressLabel: UILabel!
+    @IBOutlet weak var bottomAddressLabel: UILabel!
     
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var avgSpeedLabel: UILabel!
-    @IBOutlet weak var topSpeedLabel: UILabel!
     
     private let dateFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
@@ -54,8 +52,8 @@ class TrackTableViewCell: UITableViewCell {
             let distance = track.length
             distanceLabel.text = (numberFormatter.stringFromNumber(distance / 1000) ?? "") + " " + "unit_km".localized
             
-            fromAddressLabel.text = track.start
-            toAddressLabel.text = track.end
+            topAddressLabel.text = track.end
+            bottomAddressLabel.text = track.start
         }
         SMTranslation.translateView(contentView)
     }
