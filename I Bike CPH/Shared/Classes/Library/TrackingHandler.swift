@@ -35,8 +35,9 @@ let trackingHandler = TrackingHandler()
                 thread.enqueue() { [weak self] in
                     RLMRealm.defaultRealm().transactionWithBlock() {
                         if let track = self?.currentTrack where !track.invalidated {
+                            println("Tracking: Add new activity")
                             let newActivity = TrackActivity.build(activity)
-                            newActivity.addToRealm()
+                            track.activity.deleteFromRealm() // Delete current
                             track.activity = newActivity
                         }
                     }
@@ -86,12 +87,14 @@ let trackingHandler = TrackingHandler()
         motionDetector.start { [weak self] activity in
             self!.thread.enqueue() {
                 RLMRealm.defaultRealm().transactionWithBlock() {
-                    if let currentTrack = self?.currentTrack where !currentTrack.invalidated && currentTrack.activity.sameActivityTypeAs(cmMotionActivity: activity){
+                    if let currentTrack = self?.currentTrack where !currentTrack.invalidated && currentTrack.activity.sameActivityTypeAs(cmMotionActivity: activity) {
+                        println("Tracking: New confidence for activity")
                         // Activity just updated it's confidence
                         currentTrack.activity.confidence = activity.confidence.rawValue
                         return
                     }
                     Async.main {
+                        println("Tracking: Set new activity")
                         self?.currentActivity = activity
                     }
                 }
@@ -147,6 +150,7 @@ let trackingHandler = TrackingHandler()
         // Initialize track
         thread.enqueue() { [weak self] in
             RLMRealm.defaultRealm().transactionWithBlock() {
+                println("Tracking: New track")
                 self?.currentTrack = Track()
                 self?.currentTrack!.addToRealm()
             }
@@ -169,6 +173,7 @@ let trackingHandler = TrackingHandler()
                     currentTrack.recalculate()
                 }
             }
+            println("Tracking: End track")
             self?.currentTrack = nil
             
             TracksHandler.setNeedsProcessData()
@@ -179,6 +184,7 @@ let trackingHandler = TrackingHandler()
         thread.enqueue() { [weak self] in
             RLMRealm.defaultRealm().transactionWithBlock() {
                 if let currentTrack = self?.currentTrack where !currentTrack.invalidated {
+                    println("Tracking: Add location")
                     let location = TrackLocation.build(location)
                     currentTrack.locations.addObject(location)
                     currentTrack.recalculate()

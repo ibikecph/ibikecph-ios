@@ -47,8 +47,7 @@ extension Track {
         }
     }
     
-    func deleteFromRealmWithRelationships(keepLocations: Bool = false, keepActivity: Bool = false) {
-        let realm = RLMRealm.defaultRealm()
+    func deleteFromRealmWithRelationships(realm: RLMRealm = .defaultRealm(), keepLocations: Bool = false, keepActivity: Bool = false) {
         let transact = !realm.inWriteTransaction
         if transact {
             realm.beginWriteTransaction()
@@ -56,7 +55,8 @@ extension Track {
         if !keepLocations {
             realm.deleteObjects(locations)
         }
-        if !keepLocations {
+        if !keepActivity,
+            let activityRealm = activity.realm where activityRealm == realm {
             realm.deleteObject(activity)
         }
         deleteFromRealm()
@@ -66,12 +66,9 @@ extension Track {
     }
     
     private func recalculateTimestamps() {
-        if let location = locations.firstObject() as? TrackLocation {
-            startTimestamp = location.timestamp
-        }
-        if let location = locations.lastObject() as? TrackLocation {
-            endTimestamp = location.timestamp
-        }
+        // Use first TrackLocation timestamp. Fallback to activity
+        startTimestamp = (locations.firstObject() as? TrackLocation)?.timestamp ?? activity.startDate.timeIntervalSince1970 ?? 0
+        endTimestamp = (locations.lastObject() as? TrackLocation)?.timestamp ?? activity.startDate.timeIntervalSince1970 ?? 0
     }
     
     private func recalculateLength() {

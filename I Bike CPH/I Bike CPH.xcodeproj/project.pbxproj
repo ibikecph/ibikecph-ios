@@ -87,8 +87,8 @@
 		4E56745E1A92469000BF4A28 /* TrackingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745C1A92469000BF4A28 /* TrackingHandler.swift */; };
 		4E5674601A92521800BF4A28 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745F1A92521800BF4A28 /* MotionDetector.swift */; };
 		4E5674611A92521800BF4A28 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745F1A92521800BF4A28 /* MotionDetector.swift */; };
-		4E58C30A1B0E15DC0041255B /* MenuNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3091B0E15DC0041255B /* MenuNavigationViewController.swift */; };
-		4E58C30B1B0E15DC0041255B /* MenuNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3091B0E15DC0041255B /* MenuNavigationViewController.swift */; };
+		4E58C30A1B0E15DC0041255B /* MainWithSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3091B0E15DC0041255B /* MainWithSideMenuViewController.swift */; };
+		4E58C30B1B0E15DC0041255B /* MainWithSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3091B0E15DC0041255B /* MainWithSideMenuViewController.swift */; };
 		4E58C3191B0E35000041255B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3171B0E35000041255B /* ENSideMenu.swift */; };
 		4E58C31A1B0E35000041255B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3171B0E35000041255B /* ENSideMenu.swift */; };
 		4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
@@ -1540,7 +1540,7 @@
 		4E5674581A9238A600BF4A28 /* TrackLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackLocation.swift; sourceTree = "<group>"; };
 		4E56745C1A92469000BF4A28 /* TrackingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingHandler.swift; sourceTree = "<group>"; };
 		4E56745F1A92521800BF4A28 /* MotionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
-		4E58C3091B0E15DC0041255B /* MenuNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigationViewController.swift; sourceTree = "<group>"; };
+		4E58C3091B0E15DC0041255B /* MainWithSideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWithSideMenuViewController.swift; sourceTree = "<group>"; };
 		4E58C3171B0E35000041255B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenu.swift; path = ENSwiftSideMenu/ENSideMenu.swift; sourceTree = "<group>"; };
 		4E5982001A24AC1200A40484 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationItem.swift; sourceTree = "<group>"; };
@@ -3894,7 +3894,7 @@
 				4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */,
 				4EFA280B1A2B871D0050450C /* SMMainViewController.h */,
 				4EFA280C1A2B871D0050450C /* SMMainViewController.m */,
-				4E58C3091B0E15DC0041255B /* MenuNavigationViewController.swift */,
+				4E58C3091B0E15DC0041255B /* MainWithSideMenuViewController.swift */,
 				4EE671C81A2F3CCC0037865B /* SMMenuViewController.h */,
 				4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */,
 				4E55A0261A36068800386F85 /* MenuViewController.swift */,
@@ -6252,7 +6252,7 @@
 				4EE06CCB1A11134C00DE4226 /* SMTranslation.m in Sources */,
 				4EC56DD41A2A25E900B696B4 /* SMUtil.m in Sources */,
 				4E8E34381A272A84004D529B /* OiorestItem.swift in Sources */,
-				4E58C30A1B0E15DC0041255B /* MenuNavigationViewController.swift in Sources */,
+				4E58C30A1B0E15DC0041255B /* MainWithSideMenuViewController.swift in Sources */,
 				4E4AC45D1A85091C0037A65E /* Macro.swift in Sources */,
 				4EE06CBF1A11134C00DE4226 /* SMKMSAddressOperation.m in Sources */,
 				4E32B2A11AADCC8A00583811 /* BikeStatistics.swift in Sources */,
@@ -6450,7 +6450,7 @@
 				4EE06C4E1A10FC5600DE4226 /* SMTransportation.m in Sources */,
 				4EAB12481A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */,
 				4EE06CDC1A11134C00DE4226 /* SMRoute.m in Sources */,
-				4E58C30B1B0E15DC0041255B /* MenuNavigationViewController.swift in Sources */,
+				4E58C30B1B0E15DC0041255B /* MainWithSideMenuViewController.swift in Sources */,
 				4EAB12451A769BB90099AC54 /* VoicePreferencesViewController.swift in Sources */,
 				4EAB124B1A76AEF50099AC54 /* SettingsHandler.swift in Sources */,
 				4E4F5FDB1A2BAC4700233ACA /* Styling.swift in Sources */,

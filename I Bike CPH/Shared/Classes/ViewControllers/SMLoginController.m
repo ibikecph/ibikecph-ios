@@ -71,9 +71,10 @@
 
 
 - (IBAction)loginWithFacebook:(id)sender {
-    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     FacebookHandler *faceboookHandler = [FacebookHandler new];
     [faceboookHandler request:^(NSString *identifier, NSString *email, NSString *token, NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         if (error.code == faceboookHandler.errorAccessNotAllowed) {
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error_no_access".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];

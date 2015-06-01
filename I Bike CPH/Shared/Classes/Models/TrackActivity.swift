@@ -56,7 +56,7 @@ class TrackActivity: RLMObject {
     }
     
     func completelyUnknown() -> Bool {
-        let hasContent = unknown || stationary || walking || cycling || running || automotive
-        return !hasContent
+        let hasContent = stationary || walking || cycling || running || automotive
+        return !hasContent && !unknown
     }
 }
