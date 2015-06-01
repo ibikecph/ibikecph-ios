@@ -4005,7 +4005,6 @@ God tur og tak fordi du cykler!</string>
                                 </state>
                                 <connections>
                                     <action selector="deleteAccount:" destination="CaA-EE-oV6" eventType="touchUpInside" id="wf9-ZC-6Xw"/>
-                                    <action selector="doRegister:" destination="CaA-EE-oV6" eventType="touchUpInside" id="uSO-FN-dYA"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1VZ-Q4-I9e">
