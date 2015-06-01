@@ -121,7 +121,7 @@ class TracksHandler {
             PruneSlowEndsOperation(fromDate: fromDate),
             RecalculateTracksOperation(fromDate: fromDate),
             RemoveUnownedDataOperation(fromDate: fromDate),
-            RemoveEmptyTracksOperation(fromDate: fromDate)
+            RemoveEmptyTracksOperation()
         ]
         for operation in operations {
             operation.queuePriority = .Low
@@ -208,11 +208,19 @@ class RemoveEmptyTracksOperation: TracksOperation {
         let tracksResults = tracks()
         var count = UInt(0)
         while count < tracksResults.count {
-            if let track = tracksResults[count] as? Track where track.locations.count == 0 {
-                track.deleteFromRealmWithRelationships(realm: realm)
-            } else {
-                count++
+            if let track = tracksResults[count] as? Track {
+                if track.locations.count == 0 {
+                    track.deleteFromRealmWithRelationships(realm: realm)
+                    continue
+                }
+                if let act = track.activity as? TrackActivity {
+                } else {
+                    // Couldn't resolve activity
+                    track.deleteFromRealmWithRelationships(realm: realm)
+                    continue
+                }
             }
+            count++
         }
         println("Remove empty tracks DONE")
     }
@@ -354,7 +362,7 @@ class InferBikingFromSpeedOperation: TracksOperation {
                 track.activity.walking = false
                 track.activity.cycling = true
                 track.realm.commitWriteTransaction()
-                println("Infered biking \(track.startDate)")
+                println("Infered biking \(track.startDate())")
             }
         }
         println("Infer bike from speed from other activity DONE")
@@ -377,21 +385,21 @@ class ClearLeftOversOperation: TracksOperation {
                 
                 // Empty
                 if track.locations.count <= 1 {
-                    println("Deleted no (to 1) locations: \(track.startDate)")
+                    println("Deleted no (to 1) locations: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
                 // Not moving activity
                 let moving = track.activity.moving()
                 if !moving {
-                    println("Deleted not moving activity: \(track.startDate)")
+                    println("Deleted not moving activity: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
                 // Very slow
                 let verySlow = track.slow(speedLimit: 2, minLength: 0.020)
                 if verySlow {
-                    println("Deleted slow: \(track.startDate)")
+                    println("Deleted slow: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
@@ -399,7 +407,7 @@ class ClearLeftOversOperation: TracksOperation {
                 let someWhatSlow = track.slow(speedLimit: 5, minLength: 0.020)
                 let lowAccuracy = track.lowAccuracy(minAccuracy: 50)
                 if someWhatSlow && lowAccuracy {
-                    println("Deleted low accuracy: \(track.startDate)")
+                    println("Deleted low accuracy: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
@@ -407,21 +415,21 @@ class ClearLeftOversOperation: TracksOperation {
                 // Delete inacurate locations
                 let inaccurateLocations = track.locations.objectsWhere("horizontalAccuracy > 200 OR verticalAccuracy > 200")
                 for inaccurateLocation in inaccurateLocations {
-                    println("Deleted inacurate location in track: \(track.startDate)")
+                    println("Deleted inacurate location in track: \(track.startDate())")
                     inaccurateLocation.deleteFromRealm()
                 }
                 
                 // Somewhat slow + long distance
                 let someWhatSlowLongDistance = track.slow(speedLimit: 5, minLength: 0.200)
                 if someWhatSlowLongDistance {
-                    println("Deleted someWhatSlowLongDistance: \(track.startDate)")
+                    println("Deleted someWhatSlowLongDistance: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
                 // Very fast
                 let veryFast = track.speeding(speedLimit: 50, minLength: 0.200)
                 if veryFast {
-                    println("Deleted fast: \(track.startDate) - \(track.endDate)")
+                    println("Deleted fast: \(track.startDate) - \(track.endDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
@@ -432,7 +440,7 @@ class ClearLeftOversOperation: TracksOperation {
                     let flightSuspicious = 10 < flightLengthRatio
                     //                println("PP \(shortFlight) \(flightSuspicious) \(track.flightDistance()) \(flightLengthRatio) \(track.duration) \(track.locations.count) \(formatter.stringFromDate(track.startDate!))")
                     if flightSuspicious {
-                        println("Deleted short flight distance: \(track.startDate)")
+                        println("Deleted short flight distance: \(track.startDate())")
                         track.deleteFromRealmWithRelationships()
                         continue
                     }
@@ -440,14 +448,14 @@ class ClearLeftOversOperation: TracksOperation {
                 // No length
                 let noLength = track.length == 0
                 if noLength {
-                    println("Deleted no length: \(track.startDate)")
+                    println("Deleted no length: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
                 // No duration
                 let noDuration = track.duration == 0
                 if noDuration {
-                    println("Deleted no duration: \(track.startDate)")
+                    println("Deleted no duration: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
@@ -504,8 +512,13 @@ class PruneSlowEndsOperation: TracksOperation {
 class MergeTracksOperation: TracksOperation {
     
     private func mergeTrack(track1: Track, toTrack track2: Track, forceBike: Bool = false, useFirstTrackActivity: Bool = true) -> Track {
+        if track1.invalidated || track2.invalidated {
+            println("Couldn't merge tracks since one is invalid")
+            return track1
+        }
+        
         // Merge locations
-        track1.realm.beginWriteTransaction()
+        realm.beginWriteTransaction()
         for location in track2.locations {
             track1.locations.addObject(location)
         }
@@ -529,8 +542,8 @@ class MergeTracksOperation: TracksOperation {
         if useFirstTrackActivity {
             track2.activity.deleteFromRealm()
         }
-        track2.deleteFromRealm()
-        track1.realm.commitWriteTransaction()
+        track2.deleteFromRealmWithRelationships(realm: realm, keepLocations: true, keepActivity: true) // Keep relationships, since they have been transferred to another track or deleted manually
+        realm.commitWriteTransaction()
         
         return track1
     }
@@ -585,7 +598,7 @@ class MergeCloseSameActivityTracksOperation : MergeTimeTracksOperation {
                 let sameType = track.activity.sameActivityTypeAs(nextTrack.activity)
                 let merge = close && sameType
                 if merge {
-                    println("Close tracks: \(track.endDate) to \(nextTrack.startDate)")
+                    println("Close tracks: \(track.endDate()) to \(nextTrack.startDate())")
                     let mergedTrack = mergeTrack(track, toTrack: nextTrack)
                     tracks = tracksSorted()
                 } else {
@@ -608,16 +621,21 @@ class MergeCloseToUnknownActivityTracksOperation: MergeTimeTracksOperation {
             
         var count = UInt(0)
         while count + 1 < tracks.count {
-            if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
+            if let
+                track = tracks[count] as? Track,
+                nextTrack = tracks[count+1] as? Track,
+                trackActivity = track.activity as? TrackActivity,
+                nextTrackActivity = nextTrack.activity as? TrackActivity
+            {
                 let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
-                let unknown = track.activity.unknown || track.activity.completelyUnknown()
-                let unknownNext = nextTrack.activity.unknown || nextTrack.activity.completelyUnknown()
+                let unknown = trackActivity.unknown || trackActivity.completelyUnknown()
+                let unknownNext = nextTrackActivity.unknown || nextTrackActivity.completelyUnknown()
                 let eitherIsUnknown = unknown || unknownNext
                 let merge = close && eitherIsUnknown
                 if merge {
-                    let mergedTrack = mergeTrack(track, toTrack: nextTrack, useFirstTrackActivity: !unknownNext)
+                    let mergedTrack = mergeTrack(track, toTrack: nextTrack, useFirstTrackActivity: unknownNext)
                     tracks = tracksSorted()
-                    println("Close to empty activity: \(mergedTrack.startDate)")
+                    println("Close to empty activity: \(mergedTrack.startDate())")
                 } else {
                     count++
                 }

@@ -135,8 +135,8 @@ class DebugTrackTableViewCell: UITableViewCell {
             if track.activity.running { subtitle += ",rn" }
             if track.activity.automotive { subtitle += ",aut" }
             if track.activity.unknown { subtitle += ",un" }
-            let horizontal = track.locations.objectsWithPredicate(nil).maxOfProperty("horizontalAccuracy").intValue
-            let vertical = track.locations.objectsWithPredicate(nil).maxOfProperty("verticalAccuracy").intValue
+            let horizontal = track.locations.objectsWithPredicate(nil).maxOfProperty("horizontalAccuracy")?.intValue ?? -1
+            let vertical = track.locations.objectsWithPredicate(nil).maxOfProperty("verticalAccuracy")?.intValue ?? -1
             subtitle += "\(horizontal) \(vertical)"
             subtitle += ",\(Int(round(track.length)))m,\(Int(round(track.length)))s,\(round(track.length/1000/(track.duration/3600)))kmh"
             subtitle += ",fy:\(round(track.flightDistance() ?? 0))m"

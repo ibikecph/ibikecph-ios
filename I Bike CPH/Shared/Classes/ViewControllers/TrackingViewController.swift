@@ -123,31 +123,29 @@ class TrackingViewController: SMTranslatedViewController {
                                             track.realm.beginWriteTransaction()
                                         }
                                         track.start = item.street
-                                        track.hasBeenGeocoded = true
                                         if transact {
                                             track.realm.commitWriteTransaction()
                                         }
-                                        self.updateUI()
-                                    }
-                                }
-                            }
-                            if let endLocation = track.locations.lastObject() as? TrackLocation {
-                                let coordinate = endLocation.coordinate()
-                                SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
-                                    if track.invalidated {
-                                        return
-                                    }
-                                    if let item = item {
-                                        let transact = !track.realm.inWriteTransaction
-                                        if transact {
-                                            track.realm.beginWriteTransaction()
+                                        if let endLocation = track.locations.lastObject() as? TrackLocation {
+                                            let coordinate = endLocation.coordinate()
+                                            SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
+                                                if track.invalidated {
+                                                    return
+                                                }
+                                                if let item = item {
+                                                    let transact = !track.realm.inWriteTransaction
+                                                    if transact {
+                                                        track.realm.beginWriteTransaction()
+                                                    }
+                                                    track.end = item.street
+                                                    track.hasBeenGeocoded = true
+                                                    if transact {
+                                                        track.realm.commitWriteTransaction()
+                                                    }
+                                                    self.updateUI()
+                                                }
+                                            }
                                         }
-                                        track.end = item.street
-                                        track.hasBeenGeocoded = true
-                                        if transact {
-                                            track.realm.commitWriteTransaction()
-                                        }
-                                        self.updateUI()
                                     }
                                 }
                             }
@@ -185,12 +183,19 @@ private let cellID = "TrackCell"
 extension TrackingViewController: UITableViewDataSource {
     
     func tracks(inSection section: Int) -> RLMResults? {
-        return tracks?[section]
+        if let tracks = tracks where section < tracks.count {
+            return tracks[section]
+        }
+        return nil
     }
     
     func track(indexPath: NSIndexPath?) -> Track? {
-        if let indexPath = indexPath {
-            return tracks(inSection: indexPath.section)?[UInt(indexPath.row)] as? Track
+        if let
+            indexPath = indexPath,
+            tracks = tracks(inSection: indexPath.section)
+            where UInt(indexPath.row) < tracks.count
+        {
+            return tracks[UInt(indexPath.row)] as? Track
         }
         return nil
     }

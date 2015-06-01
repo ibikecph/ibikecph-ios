@@ -55,7 +55,7 @@ extension Track {
         if !keepLocations {
             realm.deleteObjects(locations)
         }
-        if !keepLocations,
+        if !keepActivity,
             let activityRealm = activity.realm where activityRealm == realm {
             realm.deleteObject(activity)
         }
