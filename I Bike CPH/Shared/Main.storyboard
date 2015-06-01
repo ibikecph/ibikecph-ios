@@ -43,7 +43,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9Pp-Y2-dkg" kind="presentation" identifier="splashToMain" id="rfX-a5-yqc"/>
+                                    <segue destination="epN-zP-gD4" kind="presentation" identifier="splashToMain" animates="NO" id="cuV-cD-1ff"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOL-k1-Vo7">
@@ -338,10 +338,29 @@
             </objects>
             <point key="canvasLocation" x="-909" y="418"/>
         </scene>
-        <!--Navigation With Side Menu View Controller-->
+        <!--Main With Side Menu View Controller-->
+        <scene sceneID="oz7-Nj-PYM">
+            <objects>
+                <viewController id="epN-zP-gD4" customClass="MainWithSideMenuViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q3m-A7-XAR"/>
+                        <viewControllerLayoutGuide type="bottom" id="qPX-jQ-gop"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6sP-aN-zRK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZlE-EY-q1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3021" y="1221"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="icz-p2-mgu">
             <objects>
-                <navigationController id="9Pp-Y2-dkg" customClass="NavigationWithSideMenuViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationViewController" id="9Pp-Y2-dkg" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Ji-Ml-p6R">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -497,6 +516,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="blockingView" destination="HBn-aK-DJZ" id="K7a-dz-K4H"/>
                         <outlet property="bottomDrawerView" destination="R1t-dt-yrc" id="DiN-LQ-KCf"/>
@@ -4425,9 +4445,9 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Vq-ft-HSw"/>
-        <segue reference="t11-Tv-7cG"/>
         <segue reference="YD8-cY-nJg"/>
+        <segue reference="yk2-zf-Q1g"/>
         <segue reference="cR0-BE-PFO"/>
+        <segue reference="t11-Tv-7cG"/>
     </inferredMetricsTieBreakers>
 </document>

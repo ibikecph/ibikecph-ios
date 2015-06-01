@@ -79,10 +79,10 @@ public extension UIViewController {
 
 public class ENSideMenu: NSObject {
     
-    private var menuPosition:ENSideMenuPosition = .Left
+    private var menuPosition: ENSideMenuPosition = .Left
     public var animationDuration = 0.2
     private let sideMenuContainerView =  UIView()
-    private var menuViewController : UIViewController!
+    private(set) var menuViewController : UIViewController!
     private var sourceViewController : UIViewController!
     private var sourceView : UIView!
     private var needUpdateApperance : Bool = false
@@ -116,18 +116,21 @@ public class ENSideMenu: NSObject {
         setMenu(isMenuOpen, animated: false)
     }
 
-    public convenience init(sourceViewController: UIViewController, menuViewController: UIViewController, menuPosition: ENSideMenuPosition) {
+    public convenience init(sourceViewController: UIViewController, menuViewController menu: UIViewController, menuPosition: ENSideMenuPosition) {
         self.init(sourceViewController: sourceViewController, menuPosition: menuPosition)
-        self.menuViewController = menuViewController
-        sideMenuContainerView.addSubview(self.menuViewController.view)
-        let menuView = self.menuViewController.view
+        menuViewController = menu
+        sourceViewController.addChildViewController(menuViewController)
+        let menuView = menuViewController.view
+        sideMenuContainerView.addSubview(menuView)
+        menuViewController.didMoveToParentViewController(sourceViewController)
+        
         menuView.setTranslatesAutoresizingMaskIntoConstraints(false)
         sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Left, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Left, multiplier: 1, constant: 0))
         sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Right, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Right, multiplier: 1, constant: 0))
         sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Bottom, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Bottom, multiplier: 1, constant: 0))
         sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Top, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Top, multiplier: 1, constant: 0))
     }
-    
+
     private func setupMenuView() {
         
         // Configure side menu container
