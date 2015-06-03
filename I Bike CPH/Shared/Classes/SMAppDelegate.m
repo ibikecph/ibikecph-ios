@@ -78,7 +78,7 @@
 //    [RLMRealm deleteDefaultRealmFile];
 
     // Auto migrate Realm
-    [RLMRealm setDefaultRealmSchemaVersion:REALM_SCHEMA_VERSION withMigrationBlock:^(RLMMigration *migration, NSUInteger oldSchemaVersion) {
+    [RLMRealm setDefaultRealmSchemaVersion:REALM_SCHEMA_VERSION withMigrationBlock:^(RLMMigration *migration, uint64_t oldSchemaVersion) {
     }];
     [RLMRealm migrateRealmAtPath:[RLMRealm defaultRealmPath]];
 //    [RLMRealm compressWithIfNecessary:true];

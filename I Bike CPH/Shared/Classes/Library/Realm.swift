@@ -108,7 +108,7 @@ extension RLMRealm {
         println(error)
         RLMRealm.deleteDefaultRealmFile()
         let version = UInt(REALM_SCHEMA_VERSION)
-        RLMRealm.setSchemaVersion(version, forRealmAtPath: tempPath) { migration, oldSchemaVersion in }
+        RLMRealm.setSchemaVersion(UInt64(version), forRealmAtPath: tempPath) { migration, oldSchemaVersion in }
         let tempRealm = RLMRealm(path: tempPath)
         tempRealm.writeCopyToPath(defaultPath, error: &error)
         println(error)
