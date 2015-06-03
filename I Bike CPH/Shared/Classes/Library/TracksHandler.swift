@@ -472,8 +472,12 @@ class PruneSlowEndsOperation: TracksOperation {
     override func main() {
         super.main()
         println("Prune slow ends")
+        let transact = !realm.inWriteTransaction
+        if transact {
+            realm.beginWriteTransaction()
+        }
         for track in tracks() {
-            if let track = track as? Track {
+            if let track = track as? Track where !track.invalidated {
                 let cycling = track.activity.cycling
                 if !cycling {
                     continue
@@ -487,6 +491,7 @@ class PruneSlowEndsOperation: TracksOperation {
                         break
                     }
                     if let firstLocation = track.locations.firstObject() as? TrackLocation {
+                        track.locations.removeObjectAtIndex(0)
                         firstLocation.deleteFromRealm()
                         changed = true
                     }
@@ -496,6 +501,7 @@ class PruneSlowEndsOperation: TracksOperation {
                         break
                     }
                     if let lastLocation = track.locations.lastObject() as? TrackLocation {
+                        track.locations.removeLastObject()
                         lastLocation.deleteFromRealm()
                         changed = true
                     }
@@ -505,6 +511,9 @@ class PruneSlowEndsOperation: TracksOperation {
                 }
             }
         }
+        if transact {
+            realm.commitWriteTransaction()
+        }
         println("Prune slow ends DONE")
     }
 }
@@ -512,13 +521,12 @@ class PruneSlowEndsOperation: TracksOperation {
 class MergeTracksOperation: TracksOperation {
     
     private func mergeTrack(track1: Track, toTrack track2: Track, forceBike: Bool = false, useFirstTrackActivity: Bool = true) -> Track {
+        realm.beginWriteTransaction()
         if track1.invalidated || track2.invalidated {
             println("Couldn't merge tracks since one is invalid")
             return track1
         }
-        
         // Merge locations
-        realm.beginWriteTransaction()
         for location in track2.locations {
             track1.locations.addObject(location)
         }

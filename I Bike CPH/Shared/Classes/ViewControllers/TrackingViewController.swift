@@ -240,6 +240,7 @@ extension TrackingViewController: UITableViewDataSource {
             tableView.beginUpdates()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
             track.deleteFromRealmWithRelationships()
+            updateTracks()
             tableView.endUpdates()
         } else {
             updateUI()

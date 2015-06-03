@@ -181,6 +181,9 @@ let trackingHandler = TrackingHandler()
     }
     
     func add(location: CLLocation) {
+        if currentTrack == nil {
+            return
+        }
         thread.enqueue() { [weak self] in
             RLMRealm.defaultRealm().transactionWithBlock() {
                 if let currentTrack = self?.currentTrack where !currentTrack.invalidated {
