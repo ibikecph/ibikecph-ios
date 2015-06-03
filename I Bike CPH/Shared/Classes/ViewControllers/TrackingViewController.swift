@@ -17,7 +17,7 @@ class TrackingViewController: SMTranslatedViewController {
     @IBOutlet weak var sinceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    private var tracks: [RLMResults]?
+    private var tracks: [[Track]]?
     private var selectedTrack: Track?
     private var swipeEditing: Bool = false
     
@@ -106,44 +106,67 @@ class TrackingViewController: SMTranslatedViewController {
         updateTracks()
         tableView.reloadData()
         
+        geocodeTracks()
+    }
+    
+    func updateTracks() {
+        var date = NSDate()
+        var updatedTracks: [[Track]]? = nil
+        if let oldestDate = BikeStatistics.firstTrackStartDate() {
+            while date.laterOrEqualDay(thanDate: oldestDate) {
+                if let tracksForDate = BikeStatistics.tracksForDayOfDate(date) {
+                    if let tracks = tracksForDate.sortedResultsUsingProperty("startTimestamp", ascending: false) {
+                        let tracksArray = tracks.toArray(Track.self)
+                        if updatedTracks == nil {
+                            updatedTracks = [tracksArray]
+                        } else {
+                            updatedTracks?.append(tracksArray)
+                        }
+                    }
+                }
+                date = date.dateByAddingTimeInterval(-60*60*24) // Go one day back
+            }
+        }
+        tracks = updatedTracks
+    }
+    
+    func geocodeTracks() {
         if let tracks = tracks {
             for tracksInSection in tracks {
                 for track in tracksInSection {
-                    if let track = track as? Track {
-                        if !track.hasBeenGeocoded {
-                            if let startLocation = track.locations.firstObject() as? TrackLocation {
-                                let coordinate = startLocation.coordinate()
-                                SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
-                                    if track.invalidated {
-                                        return
+                    if !track.hasBeenGeocoded {
+                        if let startLocation = track.locations.firstObject() as? TrackLocation {
+                            let coordinate = startLocation.coordinate()
+                            SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
+                                if track.invalidated {
+                                    return
+                                }
+                                if let item = item {
+                                    let transact = !track.realm.inWriteTransaction
+                                    if transact {
+                                        track.realm.beginWriteTransaction()
                                     }
-                                    if let item = item {
-                                        let transact = !track.realm.inWriteTransaction
-                                        if transact {
-                                            track.realm.beginWriteTransaction()
-                                        }
-                                        track.start = item.street
-                                        if transact {
-                                            track.realm.commitWriteTransaction()
-                                        }
-                                        if let endLocation = track.locations.lastObject() as? TrackLocation {
-                                            let coordinate = endLocation.coordinate()
-                                            SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
-                                                if track.invalidated {
-                                                    return
+                                    track.start = item.street
+                                    if transact {
+                                        track.realm.commitWriteTransaction()
+                                    }
+                                    if let endLocation = track.locations.lastObject() as? TrackLocation {
+                                        let coordinate = endLocation.coordinate()
+                                        SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
+                                            if track.invalidated {
+                                                return
+                                            }
+                                            if let item = item {
+                                                let transact = !track.realm.inWriteTransaction
+                                                if transact {
+                                                    track.realm.beginWriteTransaction()
                                                 }
-                                                if let item = item {
-                                                    let transact = !track.realm.inWriteTransaction
-                                                    if transact {
-                                                        track.realm.beginWriteTransaction()
-                                                    }
-                                                    track.end = item.street
-                                                    track.hasBeenGeocoded = true
-                                                    if transact {
-                                                        track.realm.commitWriteTransaction()
-                                                    }
-                                                    self.updateUI()
+                                                track.end = item.street
+                                                track.hasBeenGeocoded = true
+                                                if transact {
+                                                    track.realm.commitWriteTransaction()
                                                 }
+                                                self.updateUI()
                                             }
                                         }
                                     }
@@ -155,26 +178,6 @@ class TrackingViewController: SMTranslatedViewController {
             }
         }
     }
-    
-    func updateTracks() {
-        var date = NSDate()
-        var updatedTracks: [RLMResults]? = nil
-        if let oldestDate = BikeStatistics.firstTrackStartDate() {
-            while date.laterOrEqualDay(thanDate: oldestDate) {
-                if let tracksForDate = BikeStatistics.tracksForDayOfDate(date) {
-                    if let tracks = tracksForDate.sortedResultsUsingProperty("startTimestamp", ascending: false) {
-                        if updatedTracks == nil {
-                            updatedTracks = [tracks]
-                        } else {
-                            updatedTracks?.append(tracks)
-                        }
-                    }
-                }
-                date = date.dateByAddingTimeInterval(-60*60*24) // Go one day back
-            }
-        }
-        tracks = updatedTracks
-    }
 }
 
 
@@ -182,7 +185,7 @@ private let cellID = "TrackCell"
 
 extension TrackingViewController: UITableViewDataSource {
     
-    func tracks(inSection section: Int) -> RLMResults? {
+    func tracks(inSection section: Int) -> [Track]? {
         if let tracks = tracks where section < tracks.count {
             return tracks[section]
         }
@@ -193,9 +196,9 @@ extension TrackingViewController: UITableViewDataSource {
         if let
             indexPath = indexPath,
             tracks = tracks(inSection: indexPath.section)
-            where UInt(indexPath.row) < tracks.count
+            where indexPath.row < tracks.count
         {
-            return tracks[UInt(indexPath.row)] as? Track
+            return tracks[indexPath.row] as? Track
         }
         return nil
     }
@@ -213,7 +216,7 @@ extension TrackingViewController: UITableViewDataSource {
     
     // Section header title
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let aDateInSection = (tracks(inSection: section)?.firstObject() as? Track)?.startDate() {
+        if let aDateInSection = tracks(inSection: section)?.first?.startDate() {
             return headerDateFormatter.stringFromDate(aDateInSection)
         }
         return nil
@@ -231,11 +234,15 @@ extension TrackingViewController: UITableViewDataSource {
         return true
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+        if editingStyle == .Delete,
+            let track = track(indexPath) where !track.invalidated
+        {
             tableView.beginUpdates()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
-            track(indexPath)?.deleteFromRealmWithRelationships()
+            track.deleteFromRealmWithRelationships()
             tableView.endUpdates()
+        } else {
+            updateUI()
         }
     }
     func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
@@ -249,9 +256,11 @@ extension TrackingViewController: UITableViewDataSource {
 extension TrackingViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let track = track(indexPath) {
+        if let track = track(indexPath) where !track.invalidated {
             selectedTrack = track
             performSegueWithIdentifier("trackingToDetail", sender: self)
+        } else {
+            updateUI()
         }
     }
 }
