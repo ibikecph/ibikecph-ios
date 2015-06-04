@@ -135,42 +135,9 @@ class TrackingViewController: SMTranslatedViewController {
             for tracksInSection in tracks {
                 for track in tracksInSection {
                     if !track.hasBeenGeocoded {
-                        if let startLocation = track.locations.firstObject() as? TrackLocation {
-                            let coordinate = startLocation.coordinate()
-                            SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
-                                if track.invalidated {
-                                    return
-                                }
-                                if let item = item {
-                                    let transact = !track.realm.inWriteTransaction
-                                    if transact {
-                                        track.realm.beginWriteTransaction()
-                                    }
-                                    track.start = item.street
-                                    if transact {
-                                        track.realm.commitWriteTransaction()
-                                    }
-                                    if let endLocation = track.locations.lastObject() as? TrackLocation {
-                                        let coordinate = endLocation.coordinate()
-                                        SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
-                                            if track.invalidated {
-                                                return
-                                            }
-                                            if let item = item {
-                                                let transact = !track.realm.inWriteTransaction
-                                                if transact {
-                                                    track.realm.beginWriteTransaction()
-                                                }
-                                                track.end = item.street
-                                                track.hasBeenGeocoded = true
-                                                if transact {
-                                                    track.realm.commitWriteTransaction()
-                                                }
-                                                self.updateUI()
-                                            }
-                                        }
-                                    }
-                                }
+                        track.geocode() { [weak self] success in
+                            if success {
+                                self?.updateUI()
                             }
                         }
                     }

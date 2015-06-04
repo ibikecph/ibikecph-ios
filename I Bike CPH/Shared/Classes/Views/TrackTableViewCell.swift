@@ -35,7 +35,7 @@ class TrackTableViewCell: UITableViewCell {
     }()
     
     func updateToTrack(track: Track?) {
-        if let track = track {
+        if let track = track where !track.invalidated {
             var time = ""
             if let date = track.startDate() {
                 time += dateFormatter.stringFromDate(date)
@@ -52,8 +52,14 @@ class TrackTableViewCell: UITableViewCell {
             let distance = track.length
             distanceLabel.text = (numberFormatter.stringFromNumber(distance / 1000) ?? "") + " " + "unit_km".localized
             
-            topAddressLabel.text = track.end
-            bottomAddressLabel.text = track.start
+            topAddressLabel.text = track.end == "" ? "–" : track.end
+            bottomAddressLabel.text = track.start == "" ? "–" : track.start
+        } else {
+            timeLabel.text = "–"
+            durationLabel.text = hourMinutesFormatter.string(seconds: 0)
+            distanceLabel.text = "0 " + "unit_km".localized
+            topAddressLabel.text = "–"
+            bottomAddressLabel.text = "–"
         }
         SMTranslation.translateView(contentView)
     }

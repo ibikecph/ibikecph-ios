@@ -205,4 +205,55 @@ extension Track {
         let speeds = smoothSpeeds()
         return speeds.count > 0 ? maxElement(speeds) : 0
     }
+    
+    func geocode(completion:(Bool) -> ()) {
+        if let startLocation = locations.firstObject() as? TrackLocation {
+            let coordinate = startLocation.coordinate()
+            SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
+                let transact = !self.realm.inWriteTransaction
+                if transact {
+                    self.realm.beginWriteTransaction()
+                }
+                if self.invalidated {
+                    if transact {
+                        self.realm.cancelWriteTransaction()
+                    }
+                    completion(false)
+                    return
+                }
+                if let item = item {
+                    self.start = item.street
+                }
+                if transact {
+                    self.realm.commitWriteTransaction()
+                }
+                if let endLocation = self.locations.lastObject() as? TrackLocation {
+                    let coordinate = endLocation.coordinate()
+                    SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
+                        let transact = !self.realm.inWriteTransaction
+                        if transact {
+                            self.realm.beginWriteTransaction()
+                        }
+                        if self.invalidated {
+                            if transact {
+                                self.realm.cancelWriteTransaction()
+                            }
+                            completion(false)
+                            return
+                        }
+                        if let item = item {
+                            self.end = item.street
+                            self.hasBeenGeocoded = true
+                            completion(true)
+                        } else {
+                            completion(false)
+                        }
+                        if transact {
+                            self.realm.commitWriteTransaction()
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
