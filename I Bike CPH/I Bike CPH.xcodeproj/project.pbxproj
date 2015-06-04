@@ -278,6 +278,8 @@
 		4EDC4DD41A7A540A00FD37C2 /* nrbrogade-vestergade.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */; };
 		4EDC4DE81A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */; };
 		4EDC4DE91A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */; };
+		4EDC5E071B20EBD5009189EE /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC5E061B20EBD5009189EE /* ToolbarView.swift */; };
+		4EDC5E081B20EBD5009189EE /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC5E061B20EBD5009189EE /* ToolbarView.swift */; };
 		4EE05F501A10EBFA00DE4226 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F4F1A10EBFA00DE4226 /* main.m */; };
 		4EE05F6A1A10EBFA00DE4226 /* I_Bike_CPHTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F691A10EBFA00DE4226 /* I_Bike_CPHTests.m */; };
 		4EE05F7E1A10EDE700DE4226 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F7D1A10EDE700DE4226 /* main.m */; };
@@ -1377,6 +1379,12 @@
 		4EEC6D2F1B207B74003AE8DF /* ToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D2D1B207B74003AE8DF /* ToolbarViewController.swift */; };
 		4EEC6D311B208156003AE8DF /* CompassButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D301B208156003AE8DF /* CompassButton.swift */; };
 		4EEC6D321B208156003AE8DF /* CompassButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D301B208156003AE8DF /* CompassButton.swift */; };
+		4EEC6D341B20B139003AE8DF /* TrackingToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EEC6D331B20B139003AE8DF /* TrackingToolbarView.xib */; };
+		4EEC6D351B20B139003AE8DF /* TrackingToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EEC6D331B20B139003AE8DF /* TrackingToolbarView.xib */; };
+		4EEC6D371B20B14F003AE8DF /* TrackingToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D361B20B14F003AE8DF /* TrackingToolbarView.swift */; };
+		4EEC6D381B20B14F003AE8DF /* TrackingToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D361B20B14F003AE8DF /* TrackingToolbarView.swift */; };
+		4EEC6D3A1B20B7F8003AE8DF /* DistanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D391B20B7F8003AE8DF /* DistanceFormatter.swift */; };
+		4EEC6D3B1B20B7F8003AE8DF /* DistanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D391B20B7F8003AE8DF /* DistanceFormatter.swift */; };
 		4EED548F1AF2417E00A1DBB1 /* NSDate_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */; };
 		4EED54901AF2417E00A1DBB1 /* NSDate_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */; };
 		4EED54911AF249B000A1DBB1 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
@@ -1618,6 +1626,7 @@
 		4ED672561B0F74E00025DFDF /* MapToMapStoryboardSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapToMapStoryboardSegue.swift; sourceTree = "<group>"; };
 		4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "nrbrogade-vestergade.gpx"; sourceTree = "<group>"; };
 		4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMRoute_Tests.swift; sourceTree = "<group>"; };
+		4EDC5E061B20EBD5009189EE /* ToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		4EE05F4A1A10EBFA00DE4226 /* I Bike CPH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I Bike CPH.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EE05F4E1A10EBFA00DE4226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EE05F4F1A10EBFA00DE4226 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -2753,6 +2762,9 @@
 		4EEC6D2A1B207AA6003AE8DF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4EEC6D2D1B207B74003AE8DF /* ToolbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewController.swift; sourceTree = "<group>"; };
 		4EEC6D301B208156003AE8DF /* CompassButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassButton.swift; sourceTree = "<group>"; };
+		4EEC6D331B20B139003AE8DF /* TrackingToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingToolbarView.xib; sourceTree = "<group>"; };
+		4EEC6D361B20B14F003AE8DF /* TrackingToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingToolbarView.swift; sourceTree = "<group>"; };
+		4EEC6D391B20B7F8003AE8DF /* DistanceFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceFormatter.swift; sourceTree = "<group>"; };
 		4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate_Tests.swift; sourceTree = "<group>"; };
 		4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = copenhagen2_withtimestamps.gpx; sourceTree = "<group>"; };
 		4EEE91B21A1245610006BD95 /* copenhagen_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = copenhagen_withtimestamps.gpx; sourceTree = "<group>"; };
@@ -2946,6 +2958,7 @@
 				4EFDA4811AB87A6D00522A41 /* NSDate.swift */,
 				4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */,
 				4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */,
+				4EEC6D391B20B7F8003AE8DF /* DistanceFormatter.swift */,
 				4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */,
 				4EB610E41AD69D2500CEC994 /* UITableView.swift */,
 				4E20BA681ADC065A00738CA8 /* Notifications.swift */,
@@ -3886,6 +3899,9 @@
 				4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */,
 				4EEC6D2A1B207AA6003AE8DF /* MapView.swift */,
 				4EEC6D301B208156003AE8DF /* CompassButton.swift */,
+				4EDC5E061B20EBD5009189EE /* ToolbarView.swift */,
+				4EEC6D331B20B139003AE8DF /* TrackingToolbarView.xib */,
+				4EEC6D361B20B14F003AE8DF /* TrackingToolbarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -5106,6 +5122,7 @@
 				4E4566621A8A61FA006563D1 /* smroute_settings_app_private.plist in Resources */,
 				4EE065D31A10FAB400DE4226 /* leftArrow@2x.png in Resources */,
 				4EE065121A10FAB400DE4226 /* icon_locate_me@2x.png in Resources */,
+				4EEC6D341B20B139003AE8DF /* TrackingToolbarView.xib in Resources */,
 				4EE066381A10FAB400DE4226 /* routeStartButton.png in Resources */,
 				4EE066591A10FAB400DE4226 /* markerFinish@2x.png in Resources */,
 				4EE065C91A10FAB400DE4226 /* home_btn_inactive@2x.png in Resources */,
@@ -5776,6 +5793,7 @@
 				4EE072481A1178E200DE4226 /* favTypeSchoolButton.png in Resources */,
 				4EE05F891A10EDE700DE4226 /* Images.xcassets in Resources */,
 				4EE071D71A1178E200DE4226 /* right-ward@2x.png in Resources */,
+				4EEC6D351B20B139003AE8DF /* TrackingToolbarView.xib in Resources */,
 				4EE071831A1178E100DE4226 /* bike_route_white.png in Resources */,
 				4EE071F81A1178E200DE4226 /* drop_pin_add_fav_btn_active.png in Resources */,
 				4EE072ED1A1178E200DE4226 /* registerBG@2x.png in Resources */,
@@ -6056,6 +6074,7 @@
 				4EE06CD11A11134C00DE4226 /* SMGeocoder.m in Sources */,
 				4EE06CC11A11134C00DE4226 /* SMKMSPlacesOperation.m in Sources */,
 				4E5258A61A9B580000BE55C8 /* TrackingNotAvailableViewController.swift in Sources */,
+				4EEC6D371B20B14F003AE8DF /* TrackingToolbarView.swift in Sources */,
 				4EE06CC31A11134C00DE4226 /* SMKMSStreetOperation.m in Sources */,
 				4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */,
 				4E7BD07F1A92354E00BFDC7B /* Realm.swift in Sources */,
@@ -6075,6 +6094,7 @@
 				4EE06C7D1A1110ED00DE4226 /* SMAddressParser.m in Sources */,
 				4EC56DCC1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */,
 				4EC56E8D1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
+				4EEC6D3A1B20B7F8003AE8DF /* DistanceFormatter.swift in Sources */,
 				4E90B42E1A9739A900A5F4C5 /* TracksViewController.swift in Sources */,
 				4EC56E791A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
 				4EEC6D311B208156003AE8DF /* CompassButton.swift in Sources */,
@@ -6093,6 +6113,7 @@
 				4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */,
 				4E3C3A8D1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
 				4EC56E491A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
+				4EDC5E071B20EBD5009189EE /* ToolbarView.swift in Sources */,
 				4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
 				4E32B29E1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */,
 				4EEC6D251B207844003AE8DF /* MainMapViewController.swift in Sources */,
@@ -6235,6 +6256,7 @@
 				4E5674611A92521800BF4A28 /* MotionDetector.swift in Sources */,
 				4EE06F061A112F6D00DE4226 /* SMBreakRouteHeader.m in Sources */,
 				4EE06C3F1A10FC5600DE4226 /* SMMetroStationInfo.m in Sources */,
+				4EEC6D3B1B20B7F8003AE8DF /* DistanceFormatter.swift in Sources */,
 				4EE06CD61A11134C00DE4226 /* SMLocationManager.m in Sources */,
 				4ED672581B0F74E00025DFDF /* MapToMapStoryboardSegue.swift in Sources */,
 				4E32B29C1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */,
@@ -6329,6 +6351,7 @@
 				4EB610E61AD69D2500CEC994 /* UITableView.swift in Sources */,
 				4EE06F041A112F6D00DE4226 /* SMAddressPickerView.m in Sources */,
 				4EEC6D2F1B207B74003AE8DF /* ToolbarViewController.swift in Sources */,
+				4EEC6D381B20B14F003AE8DF /* TrackingToolbarView.swift in Sources */,
 				4EC56E771A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
 				4EC56DE01A2A262800B696B4 /* SMAppDelegate.m in Sources */,
 				4EE06C3E1A10FC5600DE4226 /* SMMapOverlays.m in Sources */,
@@ -6348,6 +6371,7 @@
 				4E2A92571A3B43130032ACD4 /* Async.swift in Sources */,
 				4E59820B1A24AC1200A40484 /* SwiftyJSON.swift in Sources */,
 				4EB610E31AD69B8800CEC994 /* SectionViewModel.swift in Sources */,
+				4EDC5E081B20EBD5009189EE /* ToolbarView.swift in Sources */,
 				4EE06CCA1A11134C00DE4226 /* Reachability.m in Sources */,
 				4EEE928C1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m in Sources */,
 				4E55A0281A36068800386F85 /* MenuViewController.swift in Sources */,

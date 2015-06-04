@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrackingToolbarView" customModule="CykelPlanen" customModuleProvider="target">
+            <connections>
+                <outlet property="distanceLabel" destination="Zs0-3n-NbW" id="oF7-JL-gNK"/>
+                <outlet property="durationLabel" destination="1NP-cE-Ckr" id="Go5-dR-R4Q"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="54"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMW-41-VA1">
+                    <rect key="frame" x="10" y="10" width="43.5" height="34"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
+                    </accessibility>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zs0-3n-NbW">
+                    <rect key="frame" x="147" y="10" width="36" height="34"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
+                    </accessibility>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0t 0m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1NP-cE-Ckr">
+                    <rect key="frame" x="275.5" y="10" width="41.5" height="34"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
+                    </accessibility>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-k1-rz1">
+                    <rect key="frame" x="53" y="0.0" width="61.5" height="54"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                    </accessibility>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHY-3r-taL">
+                    <rect key="frame" x="183" y="0.0" width="61" height="54"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                    </accessibility>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fast route selected" translatesAutoresizingMaskIntoConstraints="NO" id="CqV-jQ-39u">
+                    <rect key="frame" x="243.5" y="10" width="22" height="34"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                    </accessibility>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bike selected" translatesAutoresizingMaskIntoConstraints="NO" id="Oic-cC-O0r">
+                    <rect key="frame" x="115" y="10" width="22" height="34"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                    </accessibility>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1W0-dL-CjC">
+                    <rect key="frame" x="0.0" y="0.0" width="327" height="54"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapView:" destination="-1" eventType="touchUpInside" id="Iu4-72-fUp"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="1NP-cE-Ckr" secondAttribute="trailing" constant="10" id="0dh-lr-1Ck"/>
+                <constraint firstItem="oS1-k1-rz1" firstAttribute="leading" secondItem="yMW-41-VA1" secondAttribute="trailing" id="B0g-kT-GAa"/>
+                <constraint firstItem="Oic-cC-O0r" firstAttribute="leading" secondItem="oS1-k1-rz1" secondAttribute="trailing" id="Cy6-uj-HCC"/>
+                <constraint firstItem="rHY-3r-taL" firstAttribute="leading" secondItem="Zs0-3n-NbW" secondAttribute="trailing" id="Dqw-5M-pcc"/>
+                <constraint firstItem="oS1-k1-rz1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FsT-KX-dmV"/>
+                <constraint firstItem="1NP-cE-Ckr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Gku-Sd-YPm"/>
+                <constraint firstAttribute="bottom" secondItem="Zs0-3n-NbW" secondAttribute="bottom" constant="10" id="HKr-rR-05t"/>
+                <constraint firstAttribute="bottom" secondItem="1W0-dL-CjC" secondAttribute="bottom" id="Jrg-B2-gcD"/>
+                <constraint firstItem="1NP-cE-Ckr" firstAttribute="leading" secondItem="CqV-jQ-39u" secondAttribute="trailing" constant="10" id="K50-H2-Mqr"/>
+                <constraint firstItem="CqV-jQ-39u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Lzw-L7-cib"/>
+                <constraint firstAttribute="trailing" secondItem="1W0-dL-CjC" secondAttribute="trailing" id="Oci-JW-Ury"/>
+                <constraint firstItem="Zs0-3n-NbW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Pi6-nM-uNc"/>
+                <constraint firstItem="1W0-dL-CjC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RG2-oO-noj"/>
+                <constraint firstAttribute="bottom" secondItem="1NP-cE-Ckr" secondAttribute="bottom" constant="10" id="Rja-SL-dMy"/>
+                <constraint firstItem="yMW-41-VA1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Zm1-J2-0LV"/>
+                <constraint firstAttribute="bottom" secondItem="CqV-jQ-39u" secondAttribute="bottom" constant="10" id="b5y-MI-2sU"/>
+                <constraint firstItem="Zs0-3n-NbW" firstAttribute="leading" secondItem="Oic-cC-O0r" secondAttribute="trailing" constant="10" id="cqv-qd-pup"/>
+                <constraint firstItem="CqV-jQ-39u" firstAttribute="leading" secondItem="rHY-3r-taL" secondAttribute="trailing" id="fgT-y0-r6b"/>
+                <constraint firstAttribute="trailing" secondItem="yMW-41-VA1" secondAttribute="trailing" id="jel-bO-k0F"/>
+                <constraint firstItem="Oic-cC-O0r" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="kBY-Tk-eEc"/>
+                <constraint firstItem="1W0-dL-CjC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="l03-8D-RFC"/>
+                <constraint firstAttribute="bottom" secondItem="oS1-k1-rz1" secondAttribute="bottom" id="lPZ-vK-lFR"/>
+                <constraint firstAttribute="bottom" secondItem="rHY-3r-taL" secondAttribute="bottom" id="oSv-vT-poY"/>
+                <constraint firstItem="rHY-3r-taL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pg0-FN-6qj"/>
+                <constraint firstItem="rHY-3r-taL" firstAttribute="width" secondItem="oS1-k1-rz1" secondAttribute="width" id="prG-OH-Sq0"/>
+                <constraint firstAttribute="bottom" secondItem="yMW-41-VA1" secondAttribute="bottom" constant="10" id="rPK-Zm-Y0w"/>
+                <constraint firstItem="yMW-41-VA1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="t9b-zl-0mg"/>
+                <constraint firstAttribute="bottom" secondItem="Oic-cC-O0r" secondAttribute="bottom" constant="10" id="uyH-r1-F1t"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="jel-bO-k0F"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="101.5" y="182"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Bike selected" width="22" height="22"/>
+        <image name="Fast route selected" width="22" height="22"/>
+    </resources>
+</document>

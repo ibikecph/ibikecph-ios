@@ -137,8 +137,8 @@ public class ENSideMenu: NSObject {
         sideMenuContainerView.backgroundColor = .clearColor()
         sideMenuContainerView.clipsToBounds = false
         sideMenuContainerView.layer.masksToBounds = false
-        sideMenuContainerView.layer.shadowOffset = (menuPosition == .Left) ? CGSizeMake(1.0, 1.0) : CGSizeMake(-1.0, -1.0)
-        sideMenuContainerView.layer.shadowRadius = 0.5
+        sideMenuContainerView.layer.shadowOffset = (menuPosition == .Left) ? CGSizeMake(0.5, 0) : CGSizeMake(-0.5, 0)
+        sideMenuContainerView.layer.shadowRadius = 0
         sideMenuContainerView.layer.shadowOpacity = 0.125
         
         sourceView.addSubview(sideMenuContainerView)

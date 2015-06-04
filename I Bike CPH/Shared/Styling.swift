@@ -34,7 +34,7 @@ extension Styler {
     }
 }
 
-@IBDesignable class LogoImageView: UIImageView {
+class LogoImageView: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -9,7 +9,7 @@
 import UIKit
 import MapboxGL
 
-@IBDesignable
+
 class CompassButton: UIButton {
 
     var userTrackingMode: MGLUserTrackingMode = .None {
@@ -25,9 +25,42 @@ class CompassButton: UIButton {
         }
     }
     
-    override func prepareForInterfaceBuilder() {
-        setTitle("TEST", forState: .Normal)
-        
-//        setImage(UIImage(named: "Compass unselected"), forState: .Normal)
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    init() {
+        super.init(frame: CGRectZero)
+        setup()
+    }
+    
+    func setup() {
+        shadow(lifted: false)
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        shadow(lifted: true)
+    }
+    
+    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+        shadow(lifted: false)
+    }
+    
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        shadow(lifted: false)
+    }
+    
+    func shadow(lifted: Bool = false) {
+        layer.masksToBounds = false
+        let offset = lifted  ? 4 : 0.5
+        layer.shadowOffset = CGSize(width: 0, height: offset)
+        layer.shadowRadius = lifted ? 4.5 : 1.5
+        layer.shadowOpacity =  0.5
     }
 }

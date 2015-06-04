@@ -385,16 +385,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aB4-Ri-e7J" userLabel="ToolbarContainer">
-                                <rect key="frame" x="0.0" y="64" width="600" height="0.0"/>
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6B-ap-OTz" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="124" width="600" height="476"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aB4-Ri-e7J" userLabel="ToolbarContainer" customClass="ToolbarViewContainer" customModule="CykelPlanen" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="250" id="igT-lC-E98"/>
                                 </constraints>
-                            </view>
-                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="g6B-ap-OTz" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sB-FJ-axe" customClass="CompassButton" customModule="CykelPlanen" customModuleProvider="target">
                                 <rect key="frame" x="531" y="531" width="69" height="69"/>
@@ -435,8 +434,9 @@
                     <connections>
                         <outlet property="compassButton" destination="5sB-FJ-axe" id="a0D-hm-x0T"/>
                         <outlet property="mapView" destination="g6B-ap-OTz" id="ycV-pH-bgU"/>
-                        <outlet property="toolbarContainer" destination="aB4-Ri-e7J" id="wb3-5g-vej"/>
+                        <outlet property="toolbarContainer" destination="aB4-Ri-e7J" id="U4B-6T-Y0J"/>
                         <segue destination="0iY-Gd-Bo4" kind="show" identifier="mainToRoute" id="UFp-ED-3bC"/>
+                        <segue destination="wg4-md-R9W" kind="presentation" identifier="mainToTracking" id="yfF-jS-f4E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7p-R1-qaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2018,6 +2018,22 @@ God tur og tak fordi du cykler!</string>
             </objects>
             <point key="canvasLocation" x="-2313" y="2789"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eG8-X4-TgI">
+            <objects>
+                <navigationController id="wg4-md-R9W" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pmz-Qn-cF8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6SA-JC-lpZ" kind="relationship" relationship="rootViewController" id="X1l-ON-ahy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I1g-fG-8lD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2313" y="8836"/>
+        </scene>
         <!--Tracking View Controller-->
         <scene sceneID="xBF-30-4NL">
             <objects>
@@ -2509,7 +2525,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXG-dy-QeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="8855"/>
+            <point key="canvasLocation" x="-213" y="8836"/>
         </scene>
         <!--Track Detail View Controller-->
         <scene sceneID="Px9-Br-HLr">
@@ -2550,7 +2566,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRt-ZO-TZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-202" y="8837"/>
+            <point key="canvasLocation" x="-909" y="8836"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jsv-IT-wOl">
@@ -3369,12 +3385,12 @@ God tur og tak fordi du cykler!</string>
                                                         <constraint firstAttribute="width" constant="5" id="anb-5A-PW9"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Heldbjergvej" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhV-Kq-zHr" customClass="TTTAttributedLabel">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Heldbjergvej" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhV-Kq-zHr" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="46" y="5" width="531" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="6200 Aabenraa" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg2-fN-GIX" customClass="TTTAttributedLabel">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6200 Aabenraa" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg2-fN-GIX" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="46" y="25" width="539" height="13"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -4319,7 +4335,7 @@ God tur og tak fordi du cykler!</string>
     <resources>
         <image name="Compas unselected" width="44" height="44"/>
         <image name="From to" width="22" height="20"/>
-        <image name="Logo" width="11" height="11"/>
+        <image name="Logo" width="56" height="56"/>
         <image name="arrow_large.png" width="37" height="32"/>
         <image name="arrow_small.png" width="20" height="18"/>
         <image name="bike_route.png" width="30" height="39"/>
@@ -4354,9 +4370,10 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YD8-cY-nJg"/>
-        <segue reference="yk2-zf-Q1g"/>
-        <segue reference="cR0-BE-PFO"/>
+        <segue reference="dc7-Qo-Oev"/>
+        <segue reference="2Vq-ft-HSw"/>
         <segue reference="t11-Tv-7cG"/>
+        <segue reference="YD8-cY-nJg"/>
+        <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>
 </document>
