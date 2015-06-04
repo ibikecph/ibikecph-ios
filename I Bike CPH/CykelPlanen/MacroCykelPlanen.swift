@@ -10,10 +10,8 @@ import Foundation
 
 @objc class Macro: MacroProtocol {
     
-    class func isCykelPlanen() -> Bool {
-        return true
-    }
-    class func isIBikeCph() -> Bool {
-        return false
-    }
+    var isCykelPlanen = true
+    var isIBikeCph = false
+    var initialMapCoordinate = CLLocationCoordinate2DMake(55.678, 12.482)
+    var initialMapZoom: Double = 9
 }

@@ -7,15 +7,27 @@
 //
 
 import UIKit
+import MapboxGL
 
+@IBDesignable
 class CompassButton: UIButton {
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    var userTrackingMode: MGLUserTrackingMode = .None {
+        didSet {
+            let imageName: String = {
+                switch self.userTrackingMode {
+                    case .None: return "Compas unselected"
+                    case .Follow: return "Compas selected"
+                    case .FollowWithHeading: return "Compas active"
+                }
+            }()
+            setImage(UIImage(named: imageName), forState: .Normal)
+        }
     }
-    */
-
+    
+    override func prepareForInterfaceBuilder() {
+        setTitle("TEST", forState: .Normal)
+        
+//        setImage(UIImage(named: "Compass unselected"), forState: .Normal)
+    }
 }

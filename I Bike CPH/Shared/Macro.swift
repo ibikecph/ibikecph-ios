@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
 
+let macro = Macro()
 @objc protocol MacroProtocol {
-    
-    static func isCykelPlanen() -> Bool
-    static func isIBikeCph() -> Bool
+
+    var isCykelPlanen: Bool {get}
+    var isIBikeCph: Bool {get}
+    var initialMapCoordinate: CLLocationCoordinate2D {get}
+    var initialMapZoom: Double {get}
 }
 

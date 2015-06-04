@@ -7,29 +7,35 @@
 //
 
 import UIKit
+import MapboxGL
 
-class MapViewController: SMTranslatedViewController {
+class MapViewController: ToolbarViewController {
 
+    @IBOutlet weak var mapView: MapView!
+    @IBOutlet weak var compassButton: CompassButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // Default map
+        mapView.mapView.centerCoordinate = macro.initialMapCoordinate
+        mapView.mapView.zoomLevel = macro.initialMapZoom
+        // Delegate
+        mapView.mapView.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func compassButtonTapped(sender: AnyObject) {
+         switch mapView.mapView.userTrackingMode {
+            case .None: mapView.mapView.userTrackingMode = .Follow
+            case .Follow: mapView.mapView.userTrackingMode = .FollowWithHeading
+            case .FollowWithHeading: mapView.mapView.userTrackingMode = .Follow
+        }
     }
-    */
+}
 
+
+extension MapViewController: MGLMapViewDelegate {
+    func mapView(mapView: MGLMapView!, didChangeUserTrackingMode mode: MGLUserTrackingMode, animated: Bool) {
+        compassButton.userTrackingMode = mode
+    }
 }

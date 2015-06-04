@@ -27,12 +27,5 @@
 #import <OCMockito/OCMockito.h>
 
 #import "SMRoute.h"
-#import "PSTAlertController.h"
 
-#import "RouteMe.h"
-#import "RMMapView.h"
-#import "SMiBikeCPHMapTileSource.h"
-#import "RMAnnotation.h"
-#import "SMAnnotation.h"
-#import "RMShape.h"
 #import "SMGeocoder.h"

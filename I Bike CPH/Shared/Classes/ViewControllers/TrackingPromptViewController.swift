@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PSTAlertController
 
 class TrackingPromptViewController: SMTranslatedViewController {
     
