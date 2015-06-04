@@ -24,6 +24,18 @@
 #define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK_Core 12
 #define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK_Core 0
 
+// MapboxGL
+#define COCOAPODS_POD_AVAILABLE_MapboxGL
+#define COCOAPODS_VERSION_MAJOR_MapboxGL 0
+#define COCOAPODS_VERSION_MINOR_MapboxGL 3
+#define COCOAPODS_VERSION_PATCH_MapboxGL 1
+
+// NibDesignable
+#define COCOAPODS_POD_AVAILABLE_NibDesignable
+#define COCOAPODS_VERSION_MAJOR_NibDesignable 1
+#define COCOAPODS_VERSION_MINOR_NibDesignable 0
+#define COCOAPODS_VERSION_PATCH_NibDesignable 4
+
 // PSTAlertController
 #define COCOAPODS_POD_AVAILABLE_PSTAlertController
 #define COCOAPODS_VERSION_MAJOR_PSTAlertController 1

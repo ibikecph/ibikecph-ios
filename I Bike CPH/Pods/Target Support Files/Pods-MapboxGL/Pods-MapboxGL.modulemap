@@ -1,0 +1,6 @@
+framework module MapboxGL {
+  umbrella header "Pods-MapboxGL-umbrella.h"
+
+  export *
+  module * { export * }
+}

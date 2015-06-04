@@ -3,6 +3,8 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.12):
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
+  - MapboxGL (0.3.1)
+  - NibDesignable (1.0.4)
   - OCHamcrest (4.1.1)
   - OCMockito (1.4.0):
     - OCHamcrest (~> 4.0)
@@ -17,6 +19,8 @@ PODS:
 DEPENDENCIES:
   - DAKeyboardControl (~> 2.4)
   - GoogleAnalytics-iOS-SDK (~> 3.10)
+  - MapboxGL
+  - NibDesignable
   - OCMockito (~> 1.0)
   - PSTAlertController (~> 1.1)
   - Realm (~> 0.92)
@@ -27,6 +31,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
   GoogleAnalytics-iOS-SDK: 0a3327a993b8ed2b8fe1c6c4a8dcf5b76d2237a8
+  MapboxGL: c3de58589d99c678da9e2a8315c8b1e7054ddfa1
+  NibDesignable: 4f712f14acf1aa78e455aa93f79cee411d937a86
   OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   PSTAlertController: cb21afcfa76c3229feec7db044afd4f60dab5892

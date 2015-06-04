@@ -1,0 +1,6 @@
+framework module Pods_I_Bike_CPHTests {
+  umbrella header "Pods-I Bike CPHTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
