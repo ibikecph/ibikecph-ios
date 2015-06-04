@@ -14,7 +14,7 @@ class BikeStatistics {
     :returns: All bike tracks as an RLMResults
     */
     class func tracks() -> RLMResults {
-        return Track.objectsWhere("activity.cycling == TRUE")
+        return Track.objectsWhere("activity.cycling == TRUE AND startTimestamp != 0")
     }
     
     /**
