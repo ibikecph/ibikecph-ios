@@ -778,10 +778,8 @@
 		4EE06CE31A11134C00DE4226 /* SMTurnInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CB61A11134C00DE4226 /* SMTurnInstruction.m */; };
 		4EE06CE41A11134C00DE4226 /* SMTurnInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06CB61A11134C00DE4226 /* SMTurnInstruction.m */; };
 		4EE06CE51A11135000DE4226 /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06C731A1110ED00DE4226 /* SMAddressParser.m */; };
-		4EE06CE61A11137A00DE4226 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06C851A1112EB00DE4226 /* libMapView.a */; };
 		4EE06DF51A1116CF00DE4226 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06DF41A1116CF00DE4226 /* MapKit.framework */; };
 		4EE06DF61A1116DB00DE4226 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06DF41A1116CF00DE4226 /* MapKit.framework */; };
-		4EE06DF71A1116FC00DE4226 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06C851A1112EB00DE4226 /* libMapView.a */; };
 		4EE06E5F1A11298800DE4226 /* SMAddressPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE06E101A11298800DE4226 /* SMAddressPickerView.xib */; };
 		4EE06E8F1A11298800DE4226 /* SMLoadStationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE06E3D1A11298800DE4226 /* SMLoadStationsView.xib */; };
 		4EE06F041A112F6D00DE4226 /* SMAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E0F1A11298800DE4226 /* SMAddressPickerView.m */; };
@@ -1468,27 +1466,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4EE05F781A10EDE700DE4226;
 			remoteInfo = CykelPlanen;
-		};
-		4EE06C841A1112EB00DE4226 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4EE06C801A1112EB00DE4226 /* MapView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 17F31EFA1331050A00122B16;
-			remoteInfo = MapView;
-		};
-		4EEE91EC1A1258940006BD95 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4EE06C801A1112EB00DE4226 /* MapView.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B8C974130E8A19B2007D16AD;
-			remoteInfo = MapView;
-		};
-		4EEE91EE1A12589C0006BD95 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4EE06C801A1112EB00DE4226 /* MapView.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B8C974130E8A19B2007D16AD;
-			remoteInfo = MapView;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -2177,7 +2154,6 @@
 		4EE06C651A1102A600DE4226 /* I Bike CPH-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "I Bike CPH-Prefix.pch"; sourceTree = "<group>"; };
 		4EE06C721A1110ED00DE4226 /* SMAddressParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddressParser.h; sourceTree = "<group>"; };
 		4EE06C731A1110ED00DE4226 /* SMAddressParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddressParser.m; sourceTree = "<group>"; };
-		4EE06C801A1112EB00DE4226 /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = "../../route-me/MapView/MapView.xcodeproj"; sourceTree = "<group>"; };
 		4EE06C871A11134C00DE4226 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4EE06C891A11134C00DE4226 /* SMAPIOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAPIOperation.h; sourceTree = "<group>"; };
 		4EE06C8A1A11134C00DE4226 /* SMAPIOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAPIOperation.m; sourceTree = "<group>"; };
@@ -2877,7 +2853,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EE06CE61A11137A00DE4226 /* libMapView.a in Frameworks */,
 				4EE06DF51A1116CF00DE4226 /* MapKit.framework in Frameworks */,
 				152E43CAE4ADCC77288F6375 /* libPods.a in Frameworks */,
 			);
@@ -2895,7 +2870,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EE06DF71A1116FC00DE4226 /* libMapView.a in Frameworks */,
 				4EE06DF61A1116DB00DE4226 /* MapKit.framework in Frameworks */,
 				CBB78EC39B066CA0779C3D9D /* libPods.a in Frameworks */,
 			);
@@ -3740,7 +3714,6 @@
 		4EE06C661A1110DD00DE4226 /* Gitsubmodules */ = {
 			isa = PBXGroup;
 			children = (
-				4EE06C801A1112EB00DE4226 /* MapView.xcodeproj */,
 				4EE06C861A11134C00DE4226 /* routing-engine */,
 				4EE06C671A1110ED00DE4226 /* AddressParser */,
 			);
@@ -3755,14 +3728,6 @@
 			);
 			name = AddressParser;
 			path = ../../AddressParser/AddressParser;
-			sourceTree = "<group>";
-		};
-		4EE06C811A1112EB00DE4226 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4EE06C851A1112EB00DE4226 /* libMapView.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4EE06C861A11134C00DE4226 /* routing-engine */ = {
@@ -4731,7 +4696,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4EEE91ED1A1258940006BD95 /* PBXTargetDependency */,
 			);
 			name = "I Bike CPH";
 			productName = "I Bike CPH";
@@ -4772,7 +4736,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4EEE91EF1A12589C0006BD95 /* PBXTargetDependency */,
 			);
 			name = CykelPlanen;
 			productName = CykelPlanen;
@@ -4854,12 +4817,6 @@
 			mainGroup = 4EE05F411A10EBFA00DE4226;
 			productRefGroup = 4EE05F4B1A10EBFA00DE4226 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 4EE06C811A1112EB00DE4226 /* Products */;
-					ProjectRef = 4EE06C801A1112EB00DE4226 /* MapView.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				4EE05F491A10EBFA00DE4226 /* I Bike CPH */,
@@ -4869,16 +4826,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		4EE06C851A1112EB00DE4226 /* libMapView.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMapView.a;
-			remoteRef = 4EE06C841A1112EB00DE4226 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4EE05F481A10EBFA00DE4226 /* Resources */ = {
@@ -6538,16 +6485,6 @@
 			isa = PBXTargetDependency;
 			target = 4EE05F781A10EDE700DE4226 /* CykelPlanen */;
 			targetProxy = 4EE05F921A10EDE700DE4226 /* PBXContainerItemProxy */;
-		};
-		4EEE91ED1A1258940006BD95 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MapView;
-			targetProxy = 4EEE91EC1A1258940006BD95 /* PBXContainerItemProxy */;
-		};
-		4EEE91EF1A12589C0006BD95 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MapView;
-			targetProxy = 4EEE91EE1A12589C0006BD95 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
