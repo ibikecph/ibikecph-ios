@@ -102,16 +102,7 @@ extension FavoriteListViewController: UITableViewDataSource {
         
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
         let item = items[indexPath.row]
-        let imageName: String = {
-            switch item.origin {
-                case .Home: return "favoriteHome"
-                case .School: return "favoriteSchool"
-                case .Work: return "favoriteWork"
-                case .Unknown: return "Favorite"
-            }
-        }()
-        let icon = UIImage(named: imageName)
-        cell.configure(text: item.name, icon: icon)
+        cell.configure(item)
         return cell
     }
     

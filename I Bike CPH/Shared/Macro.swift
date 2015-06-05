@@ -18,3 +18,9 @@ let macro = Macro()
     var initialMapZoom: Double {get}
 }
 
+extension Macro {
+    class func instance() -> Macro {
+        return macro
+    }
+}
+

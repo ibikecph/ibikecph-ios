@@ -26,6 +26,23 @@ class TrackTableViewCell: UITableViewCell {
     let hourMinutesFormatter = HourMinuteFormatter()
     let distanceFormatter = DistanceFormatter()
     
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    func setup() {
+        // Full width cell separator
+        separatorInset = UIEdgeInsetsZero
+        layoutMargins = UIEdgeInsetsZero
+        preservesSuperviewLayoutMargins = false
+    }
+    
     func updateToTrack(track: Track?) {
         if let track = track where !track.invalidated {
             var time = ""

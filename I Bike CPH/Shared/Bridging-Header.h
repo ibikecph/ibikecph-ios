@@ -27,5 +27,7 @@
 #import <OCMockito/OCMockito.h>
 
 #import "SMRoute.h"
-
 #import "SMGeocoder.h"
+
+#import "SMSearchHistory.h"
+#import "SMEnterRouteCell.h"

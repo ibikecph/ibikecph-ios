@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IconLabelTableViewCell" customModule="CykelPlanen" customModuleProvider="target">
+            <connections>
+                <outlet property="iconImageView" destination="jfu-c2-YDb" id="zxI-9g-Zgt"/>
+                <outlet property="label" destination="MLU-mB-05b" id="hdZ-CJ-zBA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="585" height="78"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLU-mB-05b">
+                    <rect key="frame" x="42" y="5" width="528" height="68"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favStarGreySmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="jfu-c2-YDb">
+                    <rect key="frame" x="10" y="5" width="22" height="68"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="2Vv-01-3N9"/>
+                        <constraint firstAttribute="width" secondItem="jfu-c2-YDb" secondAttribute="height" id="BLR-H7-tmJ"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="BLR-H7-tmJ"/>
+                        </mask>
+                    </variation>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="jfu-c2-YDb" secondAttribute="bottom" constant="5" id="2Yt-Oc-cAf"/>
+                <constraint firstItem="MLU-mB-05b" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="FWv-pA-efP"/>
+                <constraint firstItem="jfu-c2-YDb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="LmF-wv-Uck"/>
+                <constraint firstItem="MLU-mB-05b" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Ohd-cB-SKc"/>
+                <constraint firstAttribute="bottom" secondItem="MLU-mB-05b" secondAttribute="bottom" constant="5" id="PkH-rJ-pio"/>
+                <constraint firstItem="MLU-mB-05b" firstAttribute="leading" secondItem="jfu-c2-YDb" secondAttribute="trailing" constant="10" id="TfJ-xb-opk"/>
+                <constraint firstAttribute="trailing" secondItem="MLU-mB-05b" secondAttribute="trailing" constant="15" id="bF3-kJ-Ghi"/>
+                <constraint firstItem="jfu-c2-YDb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="cbG-wD-idc"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="FWv-pA-efP"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="346.5" y="194"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="favStarGreySmall.png" width="22" height="22"/>
+    </resources>
+</document>

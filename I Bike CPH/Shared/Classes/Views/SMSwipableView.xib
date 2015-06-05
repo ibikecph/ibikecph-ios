@@ -19,10 +19,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47">
                     <rect key="frame" x="20" y="0.0" width="60" height="72"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="center" misplaced="YES" image="up-left.png" translatesAutoresizingMaskIntoConstraints="NO" id="49">
+                        <imageView userInteractionEnabled="NO" contentMode="center" image="up-left.png" translatesAutoresizingMaskIntoConstraints="NO" id="49">
                             <rect key="frame" x="0.0" y="0.0" width="60" height="52.5"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" misplaced="YES" text="100 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="100 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48">
                             <rect key="frame" x="0.0" y="52.5" width="60" height="19.5"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

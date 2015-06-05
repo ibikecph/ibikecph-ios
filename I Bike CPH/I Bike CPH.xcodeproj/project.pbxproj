@@ -280,6 +280,12 @@
 		4EDC4DE91A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */; };
 		4EDC5E071B20EBD5009189EE /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC5E061B20EBD5009189EE /* ToolbarView.swift */; };
 		4EDC5E081B20EBD5009189EE /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC5E061B20EBD5009189EE /* ToolbarView.swift */; };
+		4EDC5E0A1B21B0F0009189EE /* FindAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC5E091B21B0F0009189EE /* FindAddressViewController.swift */; };
+		4EDC5E0B1B21B0F0009189EE /* FindAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC5E091B21B0F0009189EE /* FindAddressViewController.swift */; };
+		4EDC5E0D1B21BDE1009189EE /* IconLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC5E0C1B21BDE1009189EE /* IconLabelTableViewCell.xib */; };
+		4EDC5E0E1B21BDE1009189EE /* IconLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC5E0C1B21BDE1009189EE /* IconLabelTableViewCell.xib */; };
+		4EDC5E101B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC5E0F1B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib */; };
+		4EDC5E111B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC5E0F1B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib */; };
 		4EE05F501A10EBFA00DE4226 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F4F1A10EBFA00DE4226 /* main.m */; };
 		4EE05F6A1A10EBFA00DE4226 /* I_Bike_CPHTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F691A10EBFA00DE4226 /* I_Bike_CPHTests.m */; };
 		4EE05F7E1A10EDE700DE4226 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F7D1A10EDE700DE4226 /* main.m */; };
@@ -1627,6 +1633,9 @@
 		4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "nrbrogade-vestergade.gpx"; sourceTree = "<group>"; };
 		4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMRoute_Tests.swift; sourceTree = "<group>"; };
 		4EDC5E061B20EBD5009189EE /* ToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
+		4EDC5E091B21B0F0009189EE /* FindAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindAddressViewController.swift; sourceTree = "<group>"; };
+		4EDC5E0C1B21BDE1009189EE /* IconLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconLabelTableViewCell.xib; sourceTree = "<group>"; };
+		4EDC5E0F1B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconLabelSwitchTableViewCell.xib; sourceTree = "<group>"; };
 		4EE05F4A1A10EBFA00DE4226 /* I Bike CPH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I Bike CPH.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EE05F4E1A10EBFA00DE4226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EE05F4F1A10EBFA00DE4226 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -3773,6 +3782,7 @@
 				4EC56EBA1A2A3AAD00B696B4 /* SMEnterEmailControllerViewController.m */,
 				4EC56EBB1A2A3AAD00B696B4 /* SMEnterRouteController.h */,
 				4EC56EBC1A2A3AAD00B696B4 /* SMEnterRouteController.m */,
+				4EDC5E091B21B0F0009189EE /* FindAddressViewController.swift */,
 				4EC56EBF1A2A3AAD00B696B4 /* SMLoginController.h */,
 				4EC56EC01A2A3AAD00B696B4 /* SMLoginController.m */,
 				4EC56EC11A2A3AAD00B696B4 /* SMRegisterController.h */,
@@ -3894,7 +3904,9 @@
 				4EC56E261A2A2C3D00B696B4 /* SMTokenizedTextField.m */,
 				4EC56E271A2A2C3D00B696B4 /* SMViewMoreCell.h */,
 				4EC56E281A2A2C3D00B696B4 /* SMViewMoreCell.m */,
+				4EDC5E0C1B21BDE1009189EE /* IconLabelTableViewCell.xib */,
 				4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */,
+				4EDC5E0F1B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib */,
 				4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */,
 				4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */,
 				4EEC6D2A1B207AA6003AE8DF /* MapView.swift */,
@@ -4863,6 +4875,7 @@
 				4EE065D01A10FAB400DE4226 /* input_field__scalable.png in Resources */,
 				4EE065861A10FAB400DE4226 /* favListRow.png in Resources */,
 				4EC56E451A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */,
+				4EDC5E101B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib in Resources */,
 				4EE065971A10FAB400DE4226 /* favStarWhiteLarge@2x.png in Resources */,
 				4EE065E41A10FAB400DE4226 /* pattern_btn.png in Resources */,
 				4EE0662C1A10FAB400DE4226 /* routeEnterStart_inactive.png in Resources */,
@@ -5101,6 +5114,7 @@
 				4EE065201A10FAB400DE4226 /* icon.png in Resources */,
 				4EE064DF1A10FAB400DE4226 /* up-left.png in Resources */,
 				4EE065A21A10FAB400DE4226 /* favTypeSchoolButton.png in Resources */,
+				4EDC5E0D1B21BDE1009189EE /* IconLabelTableViewCell.xib in Resources */,
 				4EE0662D1A10FAB400DE4226 /* routeEnterStart_inactive@2x.png in Resources */,
 				4EE0653A1A10FAB400DE4226 /* bottom_divider_vertical.png in Resources */,
 				4EE065091A10FAB400DE4226 /* findRouteBike.png in Resources */,
@@ -5522,6 +5536,7 @@
 				4EE072291A1178E200DE4226 /* favListRow@2x.png in Resources */,
 				4EE0727F1A1178E200DE4226 /* Default-568h@2x.png in Resources */,
 				4EE072141A1178E200DE4226 /* favEditBtn.png in Resources */,
+				4EDC5E111B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib in Resources */,
 				4EE0716B1A1178E100DE4226 /* arrow_position@2x.png in Resources */,
 				4EE071711A1178E100DE4226 /* b_pin@2x.png in Resources */,
 				4EE072CD1A1178E200DE4226 /* orange_btn_pressed.png in Resources */,
@@ -5816,6 +5831,7 @@
 				4EE072AB1A1178E200DE4226 /* loginFacebookPressed@2x.png in Resources */,
 				4EE072711A1178E200DE4226 /* home_btn_active.png in Resources */,
 				4EE071B21A1178E200DE4226 /* checkbox.png in Resources */,
+				4EDC5E0E1B21BDE1009189EE /* IconLabelTableViewCell.xib in Resources */,
 				4EE072491A1178E200DE4226 /* favTypeSchoolButton@2x.png in Resources */,
 				4EE072F01A1178E200DE4226 /* reminder_icon.png in Resources */,
 				4EE0719D1A1178E200DE4226 /* break_route_white_active@2x.png in Resources */,
@@ -6143,6 +6159,7 @@
 				4EE06CDF1A11134C00DE4226 /* SMRouteSettings.m in Sources */,
 				4EC56DD81A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
 				4EC56E4D1A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */,
+				4EDC5E0A1B21B0F0009189EE /* FindAddressViewController.swift in Sources */,
 				4EC56E2D1A2A2C3D00B696B4 /* FlickableView.m in Sources */,
 				4E3C3A871A39DEFC00C79E52 /* FavoriteListViewController.swift in Sources */,
 				4E5674561A92383500BF4A28 /* Track.swift in Sources */,
@@ -6308,6 +6325,7 @@
 				4EC56E5F1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */,
 				4EC56EF51A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
 				4EC56DC21A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
+				4EDC5E0B1B21B0F0009189EE /* FindAddressViewController.swift in Sources */,
 				4EE06CBE1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
 				4EE06F101A112F6D00DE4226 /* SMReminderTableViewCell.m in Sources */,
 				4EC56E9F1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */,
