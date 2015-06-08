@@ -4,7 +4,7 @@ PODS:
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
   - MapboxGL (0.3.1)
-  - NibDesignable (1.0.4)
+  - NibDesignable (1.1.0)
   - OCHamcrest (4.1.1)
   - OCMockito (1.4.0):
     - OCHamcrest (~> 4.0)
@@ -32,7 +32,7 @@ SPEC CHECKSUMS:
   DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
   GoogleAnalytics-iOS-SDK: 0a3327a993b8ed2b8fe1c6c4a8dcf5b76d2237a8
   MapboxGL: c3de58589d99c678da9e2a8315c8b1e7054ddfa1
-  NibDesignable: 4f712f14acf1aa78e455aa93f79cee411d937a86
+  NibDesignable: 68cf7679bbeb3c9cc4edfbe4848cdac4e101d9ea
   OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   PSTAlertController: cb21afcfa76c3229feec7db044afd4f60dab5892
@@ -41,4 +41,4 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
   UIImage-Categories: a0593f6a7991c99016b9ecadfbd38b3717ff1a73
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.37.2

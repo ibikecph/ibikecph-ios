@@ -24,9 +24,9 @@
 import UIKit
 
 extension UIView {
-    
+
     // MARK: - Nib loading
-    
+
     /**
     Called to load the nib in setupNib().
     
@@ -62,11 +62,11 @@ public class NibDesignable: UIView {
         super.init(coder: aDecoder)
         self.setupNib()
     }
-    
+
     // MARK: - Nib loading
-    
+
     /**
-    Called in init(frame:) and init(aDecoder:) to load the nib and add it as a subview.
+        Called in init(frame:) and init(aDecoder:) to load the nib and add it as a subview.
     */
     private func setupNib() {
         let view = self.loadNib()
@@ -96,11 +96,11 @@ public class NibDesignableTableViewCell: UITableViewCell {
     // MARK: - Nib loading
     
     /**
-    Called in init(frame:) and init(aDecoder:) to load the nib and add it as a subview.
+        Called in init(frame:) and init(aDecoder:) to load the nib and add it as a subview.
     */
     private func setupNib() {
         let view = self.loadNib()
-        contentView.addSubview(view)
+        self.contentView.addSubview(view)
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         let bindings = ["view": view]
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options:NSLayoutFormatOptions(0), metrics:nil, views: bindings))

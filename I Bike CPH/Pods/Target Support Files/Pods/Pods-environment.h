@@ -33,8 +33,8 @@
 // NibDesignable
 #define COCOAPODS_POD_AVAILABLE_NibDesignable
 #define COCOAPODS_VERSION_MAJOR_NibDesignable 1
-#define COCOAPODS_VERSION_MINOR_NibDesignable 0
-#define COCOAPODS_VERSION_PATCH_NibDesignable 4
+#define COCOAPODS_VERSION_MINOR_NibDesignable 1
+#define COCOAPODS_VERSION_PATCH_NibDesignable 0
 
 // PSTAlertController
 #define COCOAPODS_POD_AVAILABLE_PSTAlertController
