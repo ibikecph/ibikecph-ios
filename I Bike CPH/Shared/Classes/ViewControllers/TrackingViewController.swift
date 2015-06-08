@@ -105,8 +105,6 @@ class TrackingViewController: SMTranslatedViewController {
         
         updateTracks()
         tableView.reloadData()
-        
-        geocodeTracks()
     }
     
     func updateTracks() {
@@ -128,22 +126,6 @@ class TrackingViewController: SMTranslatedViewController {
             }
         }
         tracks = updatedTracks
-    }
-    
-    func geocodeTracks() {
-        if let tracks = tracks {
-            for tracksInSection in tracks {
-                for track in tracksInSection {
-                    if !track.hasBeenGeocoded {
-                        track.geocode() { [weak self] success in
-                            if success {
-                                self?.updateUI()
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }
 

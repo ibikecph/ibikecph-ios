@@ -121,7 +121,8 @@ class TracksHandler {
             PruneSlowEndsOperation(fromDate: fromDate),
             RecalculateTracksOperation(fromDate: fromDate),
             RemoveUnownedDataOperation(fromDate: fromDate),
-            RemoveEmptyTracksOperation()
+            RemoveEmptyTracksOperation(), // Rinse and repeat
+            GeocodeBikeTracksOperation() // Don't use from date since background operation might not have geocoded
         ]
         for operation in operations {
             operation.queuePriority = .Low
@@ -736,6 +737,34 @@ class MergeBikeCloseWithMoveTracksOperation: MergeTimeTracksOperation {
         println("Merge bike close with non-stationary tracks DONE")
     }
 }
+
+
+class GeocodeBikeTracksOperation: TracksOperation {
+    
+    override func main() {
+        super.main()
+        
+        // Only perform this if the app is in the foreground
+        if UIApplication.sharedApplication().applicationState != .Active {
+            return
+        }
+        
+        println("Geocode bike tracks")
+        
+        var bikeTracks = tracks().objectsWhere("activity.cycling == TRUE")
+        for track in bikeTracks {
+            if let track = track as? Track where !track.hasBeenGeocoded {
+                // Geocode synchronously to make sure writes are happening on same thread
+                track.geocode(synchronous: true)
+            }
+        }
+        println("Geocode bike tracks DONE")
+    }
+}
+
+
+
+
 
 
 
