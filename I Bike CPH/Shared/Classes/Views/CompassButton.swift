@@ -45,14 +45,17 @@ class CompassButton: UIButton {
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        super.touchesBegan(touches, withEvent: event)
         shadow(lifted: true)
     }
     
     override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+        super.touchesCancelled(touches, withEvent: event)
         shadow(lifted: false)
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        super.touchesEnded(touches, withEvent: event)
         shadow(lifted: false)
     }
     
