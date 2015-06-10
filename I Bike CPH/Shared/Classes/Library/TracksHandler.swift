@@ -217,6 +217,7 @@ class RemoveEmptyTracksOperation: TracksOperation {
                 if let act = track.activity as? TrackActivity {
                 } else {
                     // Couldn't resolve activity
+                    println("No activity? Deleting track")
                     track.deleteFromRealmWithRelationships(realm: realm)
                     continue
                 }
@@ -361,7 +362,8 @@ class InferBikingFromSpeedOperation: TracksOperation {
                 track.activity.automotive = false
                 track.activity.running = false
                 track.activity.walking = false
-                track.activity.cycling = true
+                track.activity.cycling = true // Force cycling
+                track.activity.stationary = false // Force non-stationary
                 track.realm.commitWriteTransaction()
                 println("Infered biking \(track.startDate())")
             }
@@ -525,13 +527,14 @@ class MergeTracksOperation: TracksOperation {
         realm.beginWriteTransaction()
         if track1.invalidated || track2.invalidated {
             println("Couldn't merge tracks since one is invalid")
+            realm.cancelWriteTransaction()
             return track1
         }
         // Merge locations
         for location in track2.locations {
             track1.locations.addObject(location)
         }
-        // Combine
+        // Combine activity
         track1.end = track2.end
         if !useFirstTrackActivity {
             let startDate = track1.activity.startDate // Take date from 1st activity
@@ -546,6 +549,9 @@ class MergeTracksOperation: TracksOperation {
             track1.activity.running = false
             track1.activity.confidence = 0
         }
+        // Use 2nd track end name
+        track1.end = track2.end
+        track1.hasBeenGeocoded = track2.hasBeenGeocoded // If 2nd hasn't been geocoded, reflect in 1st
         // Clean up
         track1.recalculate()
         if useFirstTrackActivity {

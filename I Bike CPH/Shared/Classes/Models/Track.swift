@@ -39,6 +39,12 @@ extension Track {
         if transact {
             realm.beginWriteTransaction()
         }
+        if invalidated {
+            if transact {
+                realm.cancelWriteTransaction()
+            }
+            return
+        }
         recalculateTimestamps()
         recalculateDuration()
         recalculateLength()
