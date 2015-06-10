@@ -146,7 +146,7 @@ extension FindAddressViewController: SMSearchDelegate {
             let date = NSDate()
             let historyItem = HistoryItem(other: item, startDate: date, endDate: date)
             SMSearchHistory.saveToSearchHistory(historyItem)
-            if appDelegate.appSettings["auth_token"] != nil {
+            if UserHelper.loggedIn() {
                 SMSearchHistory.instance().addSearchToServer(historyItem)
             }
         }

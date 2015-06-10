@@ -39,8 +39,7 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
         SectionViewModel(items:
             [
                 TrackingSwitchItem(title: "tracking_option".localized, iconImageName: "Bikedata", on: settings.tracking.on, switchAction: { viewController, switcher, on in
-                    let isLoggedIn = viewController.appDelegate.appSettings["auth_token"] != nil
-                    if !isLoggedIn && on {
+                    if !UserHelper.loggedIn() && on {
                         let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
                         alertController.addCancelActionWithHandler(nil)
                         let loginAction = PSTAlertAction(title: "log_in".localized) { action in
