@@ -10,16 +10,13 @@ import UIKit
 import MapboxGL
 
 
+protocol MapViewDelegate {
+    func didSelectCoordinate(coordinate: CLLocationCoordinate2D)
+}
+
+
 class MapView: UIView {
     
-//    var location: CLLocation? {
-//        didSet {
-//            if let location = location {
-//                mapView.setCenterCoordinate(location.coordinate, zoomLevel: zoomLevel, animated: true)
-//            }
-//            setAnnotation(location)
-//        }
-//    }
     let mapView: MGLMapView = {
         MGLAccountManager.setMapboxMetricsEnabledSettingShownInApp(true)
         let initRect = CGRect(x: 0, y: 0, width: 1, height: 1) // Has to has some height and width
@@ -27,6 +24,8 @@ class MapView: UIView {
         map.styleURL = NSURL(string: "asset://styles/mapbox-streets-v7.json")
         return map
     }()
+    
+    var delegate: MapViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,6 +44,10 @@ class MapView: UIView {
     
     func setup() {
         addSubview(mapView)
+        
+        // Add long-press to drop pin
+        let longPress = UILongPressGestureRecognizer(target: self, action: "didLongPress:")
+        mapView.addGestureRecognizer(longPress)
     }
     
     override func layoutSubviews() {
@@ -53,21 +56,11 @@ class MapView: UIView {
         mapView.frame = max(bounds.width, bounds.height) == 0 ? CGRect(x: 0, y: 0, width: 1, height: 1) : bounds
     }
     
-    private func setAnnotation(location: CLLocation?) {
-        // Remove all
-        mapView.removeAnnotations(mapView.annotations)
-        // Add new
-        if let location = location {
-            let annotation = Annotation(location: location)
-            mapView.addAnnotation(annotation)
+    func didLongPress(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .Began {
+            let point = gesture.locationInView(mapView)
+            let coordinate = mapView.convertPoint(point, toCoordinateFromView: mapView)
+            delegate?.didSelectCoordinate(coordinate)
         }
-    }
-}
-
-class Annotation: NSObject, MGLAnnotation {
-    
-    @objc var coordinate: CLLocationCoordinate2D
-    init(location: CLLocation) {
-        coordinate = location.coordinate
     }
 }

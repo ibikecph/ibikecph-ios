@@ -138,6 +138,8 @@
 		4EB610E31AD69B8800CEC994 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */; };
 		4EB610E51AD69D2500CEC994 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB610E41AD69D2500CEC994 /* UITableView.swift */; };
 		4EB610E61AD69D2500CEC994 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB610E41AD69D2500CEC994 /* UITableView.swift */; };
+		4EB8B1881B25D20F00A1C53E /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */; };
+		4EB8B1891B25D20F00A1C53E /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */; };
 		4EBB7B3A1A5EB4E70064B530 /* farum-route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* farum-route.json */; };
 		4EBB7B3B1A5EB4E70064B530 /* farum-route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* farum-route.json */; };
 		4EBB7B3C1A5EB4E70064B530 /* metro-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B361A5EB4E70064B530 /* metro-stations.json */; };
@@ -1414,6 +1416,10 @@
 		4EEE92891A1A4A340006BD95 /* SMTransportationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE92881A1A4A340006BD95 /* SMTransportationCell.m */; };
 		4EEE928C1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE928B1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m */; };
 		4EEE928F1A1A52620006BD95 /* SMCyLwReminderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE928E1A1A52620006BD95 /* SMCyLwReminderVC.m */; };
+		4EF4DF7C1B28461E00B64D3B /* AddressToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4DF7A1B28461E00B64D3B /* AddressToolbarView.swift */; };
+		4EF4DF7D1B28461E00B64D3B /* AddressToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4DF7A1B28461E00B64D3B /* AddressToolbarView.swift */; };
+		4EF4DF7E1B28461E00B64D3B /* AddressToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF4DF7B1B28461E00B64D3B /* AddressToolbarView.xib */; };
+		4EF4DF7F1B28461E00B64D3B /* AddressToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF4DF7B1B28461E00B64D3B /* AddressToolbarView.xib */; };
 		4EFA28091A2B7B120050450C /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982081A24AC1200A40484 /* SearchListItem.swift */; };
 		4EFA280A1A2B7B120050450C /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982041A24AC1200A40484 /* FoursquareItem.swift */; };
 		4EFA28101A2BA1330050450C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFA280F1A2BA1330050450C /* Main.storyboard */; };
@@ -1518,6 +1524,7 @@
 		4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandler.swift; sourceTree = "<group>"; };
 		4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionViewModel.swift; sourceTree = "<group>"; };
 		4EB610E41AD69D2500CEC994 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		4EBB7B351A5EB4E70064B530 /* farum-route.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "farum-route.json"; sourceTree = "<group>"; };
 		4EBB7B361A5EB4E70064B530 /* metro-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "metro-stations.json"; sourceTree = "<group>"; };
 		4EBB7B371A5EB4E70064B530 /* s-train-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-stations.json"; sourceTree = "<group>"; };
@@ -2792,6 +2799,8 @@
 		4EEE928B1A1A520C0006BD95 /* SMCyLwFirstTimeIntro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCyLwFirstTimeIntro.m; sourceTree = "<group>"; };
 		4EEE928D1A1A52620006BD95 /* SMCyLwReminderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCyLwReminderVC.h; sourceTree = "<group>"; };
 		4EEE928E1A1A52620006BD95 /* SMCyLwReminderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCyLwReminderVC.m; sourceTree = "<group>"; };
+		4EF4DF7A1B28461E00B64D3B /* AddressToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressToolbarView.swift; sourceTree = "<group>"; };
+		4EF4DF7B1B28461E00B64D3B /* AddressToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressToolbarView.xib; sourceTree = "<group>"; };
 		4EFA280F1A2BA1330050450C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4EFDA4811AB87A6D00522A41 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativeDateFormatter.swift; sourceTree = "<group>"; };
@@ -2919,6 +2928,16 @@
 				4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		4EB8B1861B25D1FE00A1C53E /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				4EEC6D2A1B207AA6003AE8DF /* MapView.swift */,
+				4EEC6D301B208156003AE8DF /* CompassButton.swift */,
+				4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		4EBB7B341A5EB4E70064B530 /* LocationData */ = {
@@ -3909,11 +3928,8 @@
 				4EDC5E0F1B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib */,
 				4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */,
 				4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */,
-				4EEC6D2A1B207AA6003AE8DF /* MapView.swift */,
-				4EEC6D301B208156003AE8DF /* CompassButton.swift */,
-				4EDC5E061B20EBD5009189EE /* ToolbarView.swift */,
-				4EEC6D331B20B139003AE8DF /* TrackingToolbarView.xib */,
-				4EEC6D361B20B14F003AE8DF /* TrackingToolbarView.swift */,
+				4EB8B1861B25D1FE00A1C53E /* Map */,
+				4EF4DF791B28457200B64D3B /* Toolbars */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4575,6 +4591,18 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		4EF4DF791B28457200B64D3B /* Toolbars */ = {
+			isa = PBXGroup;
+			children = (
+				4EDC5E061B20EBD5009189EE /* ToolbarView.swift */,
+				4EEC6D331B20B139003AE8DF /* TrackingToolbarView.xib */,
+				4EEC6D361B20B14F003AE8DF /* TrackingToolbarView.swift */,
+				4EF4DF7B1B28461E00B64D3B /* AddressToolbarView.xib */,
+				4EF4DF7A1B28461E00B64D3B /* AddressToolbarView.swift */,
+			);
+			name = Toolbars;
+			sourceTree = "<group>";
+		};
 		C83673E4C34341FF10FF5705 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -5071,6 +5099,7 @@
 				4EE064E41A10FAB400DE4226 /* up@2x.png in Resources */,
 				4EE065AE1A10FAB400DE4226 /* favWorkWhite.png in Resources */,
 				4EE065051A10FAB400DE4226 /* white-up.png in Resources */,
+				4EF4DF7E1B28461E00B64D3B /* AddressToolbarView.xib in Resources */,
 				4EE065871A10FAB400DE4226 /* favListRow@2x.png in Resources */,
 				4EE065DC1A10FAB400DE4226 /* mover.png in Resources */,
 				4EE065251A10FAB400DE4226 /* accountBG.png in Resources */,
@@ -5441,6 +5470,7 @@
 				4EE071E41A1178E200DE4226 /* walk.png in Resources */,
 				4EE073221A1178E300DE4226 /* routeEnterInputBG.png in Resources */,
 				4EE071D61A1178E200DE4226 /* right-ward.png in Resources */,
+				4EF4DF7F1B28461E00B64D3B /* AddressToolbarView.xib in Resources */,
 				4EE072971A1178E200DE4226 /* L@2x.png in Resources */,
 				4EC56E371A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */,
 				4EE072851A1178E200DE4226 /* Icon-Small-50@2x.png in Resources */,
@@ -6075,6 +6105,7 @@
 				4EC56E651A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */,
 				4EE06CD91A11134C00DE4226 /* SMRequestOSRM.m in Sources */,
 				4EC56E851A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
+				4EB8B1881B25D20F00A1C53E /* PinAnnotation.swift in Sources */,
 				4EC56DB81A2A25E900B696B4 /* SMAnalytics.m in Sources */,
 				4EC56E991A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4EC56E811A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
@@ -6211,6 +6242,7 @@
 				4E58C3191B0E35000041255B /* ENSideMenu.swift in Sources */,
 				4EC56E311A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
 				4E55A0271A36068800386F85 /* MenuViewController.swift in Sources */,
+				4EF4DF7C1B28461E00B64D3B /* AddressToolbarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6291,6 +6323,7 @@
 				4EC56E671A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */,
 				4EE06CD21A11134C00DE4226 /* SMGeocoder.m in Sources */,
 				4E65D2A31AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */,
+				4EF4DF7D1B28461E00B64D3B /* AddressToolbarView.swift in Sources */,
 				4EC56E871A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
 				4EE06C341A10FC5600DE4226 /* SMArrivalMapping.m in Sources */,
 				4EC56E831A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
@@ -6340,6 +6373,7 @@
 				4EE06C481A10FC5600DE4226 /* SMStationInfo.m in Sources */,
 				4EC56E431A2A2C3D00B696B4 /* SMCalloutView.m in Sources */,
 				4E4AC45F1A8509590037A65E /* MacroCykelPlanen.swift in Sources */,
+				4EB8B1891B25D20F00A1C53E /* PinAnnotation.swift in Sources */,
 				4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */,
 				4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
 				4E56745B1A9238A900BF4A28 /* Track.swift in Sources */,

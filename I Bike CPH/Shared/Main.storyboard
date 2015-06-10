@@ -435,8 +435,9 @@
                         <outlet property="compassButton" destination="5sB-FJ-axe" id="a0D-hm-x0T"/>
                         <outlet property="mapView" destination="g6B-ap-OTz" id="ycV-pH-bgU"/>
                         <outlet property="toolbarContainer" destination="aB4-Ri-e7J" id="U4B-6T-Y0J"/>
-                        <segue destination="0iY-Gd-Bo4" kind="show" identifier="mainToRoute" id="UFp-ED-3bC"/>
+                        <segue destination="0iY-Gd-Bo4" kind="show" identifier="" id="UFp-ED-3bC"/>
                         <segue destination="wg4-md-R9W" kind="presentation" identifier="mainToTracking" id="yfF-jS-f4E"/>
+                        <segue destination="h7b-VQ-XtA" kind="show" identifier="mainToLogin" id="8Kg-rW-C0r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7p-R1-qaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2903,7 +2904,7 @@ God tur og tak fordi du cykler!</string>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZdZ-FV-Ztv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="FavoriteCellID" id="3kk-ea-k7k" userLabel="FavoriteCellID" customClass="IconLabelTableViewCell" customModule="CykelPlanen" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -3010,7 +3011,7 @@ God tur og tak fordi du cykler!</string>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Acq-fX-hTs">
                                 <rect key="frame" x="0.0" y="138" width="600" height="462"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="iconLabelTableViewCell" rowHeight="44" id="cSX-sM-g6R" userLabel="IconLabelTableViewCell" customClass="IconLabelTableViewCell" customModule="CykelPlanen" customModuleProvider="target">
@@ -3171,12 +3172,12 @@ God tur og tak fordi du cykler!</string>
                                                         <constraint firstAttribute="width" constant="5" id="anb-5A-PW9"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Heldbjergvej" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhV-Kq-zHr" customClass="TTTAttributedLabel">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Heldbjergvej" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhV-Kq-zHr" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="46" y="5" width="531" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6200 Aabenraa" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg2-fN-GIX" customClass="TTTAttributedLabel">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="6200 Aabenraa" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg2-fN-GIX" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="46" y="25" width="539" height="13"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -3534,7 +3535,7 @@ God tur og tak fordi du cykler!</string>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q9g-F5-zBf">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="reminderCell" selectionStyle="blue" indentationWidth="10" reuseIdentifier="reminderTableCell" rowHeight="60" id="LSn-TI-Ddq" customClass="SMReminderTableViewCell">
                                         <rect key="frame" x="0.0" y="1" width="260" height="46"/>
@@ -3890,7 +3891,7 @@ God tur og tak fordi du cykler!</string>
     <resources>
         <image name="Compas unselected" width="44" height="44"/>
         <image name="From to" width="22" height="20"/>
-        <image name="Logo" width="56" height="56"/>
+        <image name="Logo" width="22" height="22"/>
         <image name="arrow_large.png" width="37" height="32"/>
         <image name="arrow_small.png" width="20" height="18"/>
         <image name="bike_route.png" width="30" height="39"/>
@@ -3925,7 +3926,7 @@ God tur og tak fordi du cykler!</string>
     <inferredMetricsTieBreakers>
         <segue reference="dc7-Qo-Oev"/>
         <segue reference="t11-Tv-7cG"/>
-        <segue reference="XyX-Jg-6Fy"/>
+        <segue reference="8Kg-rW-C0r"/>
         <segue reference="YD8-cY-nJg"/>
         <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>

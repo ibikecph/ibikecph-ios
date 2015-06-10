@@ -31,11 +31,22 @@ class MapViewController: ToolbarViewController {
             case .FollowWithHeading: mapView.mapView.userTrackingMode = .Follow
         }
     }
+    
+    func removePin(pin: PinAnnotation) {
+        mapView.mapView.removeAnnotation(pin)
+    }
+    
+    func addPin(coordinate: CLLocationCoordinate2D) -> PinAnnotation {
+        let pin = PinAnnotation(coordinate: coordinate)
+        mapView.mapView.addAnnotation(pin)
+        return pin
+    }
 }
 
 
 extension MapViewController: MGLMapViewDelegate {
-    func mapView(mapView: MGLMapView!, didChangeUserTrackingMode mode: MGLUserTrackingMode, animated: Bool) {
+    func mapView(mapView: MGLMapView, didChangeUserTrackingMode mode: MGLUserTrackingMode, animated: Bool) {
         compassButton.userTrackingMode = mode
     }
 }
+
