@@ -24,6 +24,12 @@ class CompassButton: UIButton {
             setImage(UIImage(named: imageName), forState: .Normal)
         }
     }
+    var circleColor: UIColor = Styler.tintColor()
+    override var highlighted: Bool {
+        didSet {
+            highlight(highlighted)
+        }
+    }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -41,22 +47,12 @@ class CompassButton: UIButton {
     }
     
     func setup() {
-        shadow(lifted: false)
+        adjustsImageWhenHighlighted = false
+        highlight(false)
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        super.touchesBegan(touches, withEvent: event)
-        shadow(lifted: true)
-    }
-    
-    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
-        super.touchesCancelled(touches, withEvent: event)
-        shadow(lifted: false)
-    }
-    
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        super.touchesEnded(touches, withEvent: event)
-        shadow(lifted: false)
+    func highlight(_ highlight: Bool = false) {
+        shadow(lifted: highlight)
     }
     
     func shadow(lifted: Bool = false) {
@@ -85,7 +81,7 @@ class CompassButton: UIButton {
         let circleRect = UIEdgeInsetsInsetRect(rect, inset)
         // Draw circle
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, tintColor?.CGColor)
+        CGContextSetFillColorWithColor(context, circleColor.CGColor)
         CGContextFillEllipseInRect (context, circleRect)
         CGContextFillPath(context)
     }
