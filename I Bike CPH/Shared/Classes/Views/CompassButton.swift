@@ -66,4 +66,27 @@ class CompassButton: UIButton {
         layer.shadowRadius = lifted ? 4.5 : 1.5
         layer.shadowOpacity =  0.5
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    override func drawRect(rect: CGRect) {
+        super.drawRect(rect)
+        
+        // Take account for off-center content 
+        let verticalOffset = contentEdgeInsets.top - contentEdgeInsets.bottom
+        let horizontalOffset = contentEdgeInsets.left - contentEdgeInsets.right
+        let topInset = max(verticalOffset, 0)
+        let leftInset = max(horizontalOffset, 0)
+        let bottomInset = max(-verticalOffset, 0)
+        let rightInset = max(-horizontalOffset, 0)
+        let inset = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
+        let circleRect = UIEdgeInsetsInsetRect(rect, inset)
+        // Draw circle
+        let context = UIGraphicsGetCurrentContext()
+        CGContextSetFillColorWithColor(context, tintColor?.CGColor)
+        CGContextFillEllipseInRect (context, circleRect)
+        CGContextFillPath(context)
+    }
 }

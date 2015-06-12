@@ -118,6 +118,8 @@
 		4E65D2A31AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */; };
 		4E6BD7C71A56FE320049F1DB /* AddressParser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */; };
 		4E6BD7C81A56FE320049F1DB /* AddressParser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */; };
+		4E7262D91B2AF450008561D0 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7262D81B2AF450008561D0 /* BorderedButton.swift */; };
+		4E7262DA1B2AF450008561D0 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7262D81B2AF450008561D0 /* BorderedButton.swift */; };
 		4E7BA9E51A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */; };
 		4E7BA9E61A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */; };
 		4E7BD07B1A9234EF00BFDC7B /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */; };
@@ -1513,6 +1515,7 @@
 		4E651D311A93EB9400497C70 /* TrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingViewController.swift; sourceTree = "<group>"; };
 		4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourMinuteFormatter.swift; sourceTree = "<group>"; };
 		4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParser_Tests.swift; sourceTree = "<group>"; };
+		4E7262D81B2AF450008561D0 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		4E7BA9D01A1E1AD100F9744A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareItem_Tests.swift; sourceTree = "<group>"; };
 		4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
@@ -3928,6 +3931,7 @@
 				4EDC5E0F1B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib */,
 				4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */,
 				4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */,
+				4E7262D81B2AF450008561D0 /* BorderedButton.swift */,
 				4EB8B1861B25D1FE00A1C53E /* Map */,
 				4EF4DF791B28457200B64D3B /* Toolbars */,
 			);
@@ -6239,6 +6243,7 @@
 				4EE06CE11A11134C00DE4226 /* SMRouteUtils.m in Sources */,
 				4E3867811A430A0E0018AC5B /* FacebookHandler.swift in Sources */,
 				4EB610E51AD69D2500CEC994 /* UITableView.swift in Sources */,
+				4E7262D91B2AF450008561D0 /* BorderedButton.swift in Sources */,
 				4E58C3191B0E35000041255B /* ENSideMenu.swift in Sources */,
 				4EC56E311A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
 				4E55A0271A36068800386F85 /* MenuViewController.swift in Sources */,
@@ -6376,6 +6381,7 @@
 				4EB8B1891B25D20F00A1C53E /* PinAnnotation.swift in Sources */,
 				4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */,
 				4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
+				4E7262DA1B2AF450008561D0 /* BorderedButton.swift in Sources */,
 				4E56745B1A9238A900BF4A28 /* Track.swift in Sources */,
 				4EC56E731A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
 				4EC56DCA1A2A25E900B696B4 /* SMEvents.m in Sources */,

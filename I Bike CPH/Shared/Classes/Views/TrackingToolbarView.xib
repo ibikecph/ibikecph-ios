@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMW-41-VA1">
-                    <rect key="frame" x="10" y="10" width="43.5" height="34"/>
+                    <rect key="frame" x="10" y="10" width="44" height="34"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
                     </accessibility>
@@ -34,7 +34,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0t 0m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1NP-cE-Ckr">
-                    <rect key="frame" x="275.5" y="10" width="41.5" height="34"/>
+                    <rect key="frame" x="276" y="10" width="42" height="34"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
                     </accessibility>
@@ -42,8 +42,8 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-k1-rz1">
-                    <rect key="frame" x="53" y="0.0" width="61.5" height="54"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-k1-rz1">
+                    <rect key="frame" x="53" y="0.0" width="62" height="54"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
@@ -56,8 +56,8 @@
                         <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                     </accessibility>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fast route selected" translatesAutoresizingMaskIntoConstraints="NO" id="CqV-jQ-39u">
-                    <rect key="frame" x="243.5" y="10" width="22" height="34"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="duration" translatesAutoresizingMaskIntoConstraints="NO" id="CqV-jQ-39u">
+                    <rect key="frame" x="244" y="10" width="22" height="34"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                     </accessibility>
@@ -121,6 +121,6 @@
     </objects>
     <resources>
         <image name="Bike selected" width="22" height="22"/>
-        <image name="Fast route selected" width="22" height="22"/>
+        <image name="duration" width="22" height="22"/>
     </resources>
 </document>
