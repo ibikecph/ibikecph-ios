@@ -26,9 +26,9 @@ class MapViewController: ToolbarViewController {
     
     @IBAction func compassButtonTapped(sender: AnyObject) {
         switch mapView.mapView.userTrackingMode {
-            case .None: mapView.mapView.userTrackingMode = .Follow
-            case .Follow: mapView.mapView.userTrackingMode = .FollowWithHeading
-            case .FollowWithHeading: mapView.mapView.userTrackingMode = .Follow
+            case .None: mapView.mapView.userTrackingMode = .Follow // None -> Follow
+            case .Follow: mapView.mapView.userTrackingMode = .FollowWithHeading // Follow -> Heading
+            case .FollowWithHeading: mapView.mapView.userTrackingMode = .Follow // Heading -> Follow
         }
     }
     

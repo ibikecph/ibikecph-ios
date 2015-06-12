@@ -37,9 +37,9 @@
 #define GOOGLE_ANALYTICS_ANONYMIZE @"YES"
 
 #define ZOOM_TO_TURN_DURATION 4 // in seconds
-#define DEFAULT_MAP_ZOOM 18.5
-#define DEFAULT_TURN_ZOOM 18.5
-#define MAX_MAP_ZOOM 20.0
+#define DEFAULT_MAP_ZOOM 15.0
+#define DEFAULT_TURN_ZOOM 15.0
+#define MAX_MAP_ZOOM 17.0
 #define PATH_OPACITY 0.8f
 
 #define BUILD_STRING [NSString stringWithFormat:@"%@: %@", translateString(@"Build"), BUILD_VERSION]

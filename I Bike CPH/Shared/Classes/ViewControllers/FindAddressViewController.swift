@@ -9,6 +9,11 @@
 import UIKit
 
 
+protocol FindAddressViewControllerProtocol {
+    
+    func foundAddress(item: SearchListItem)
+}
+
 
 class FindAddressViewController: SMTranslatedViewController {
 
@@ -33,10 +38,18 @@ class FindAddressViewController: SMTranslatedViewController {
                 title = self.textFromItem(item)
             }
             currentItemButton.setTitle(title, forState: .Normal)
+            
+            if let item = currentItem {
+                // Close view controller
+                dismiss()
+                // Notify delegate
+                delegate?.foundAddress(item)
+            }
         }
     }
     var history = [HistoryItem]()
     var favorites = [FavoriteItem]()
+    var delegate: FindAddressViewControllerProtocol?
     
     @IBAction func findAddressTapped(sender: AnyObject) {
         performSegueWithIdentifier("searchSegue", sender: self)

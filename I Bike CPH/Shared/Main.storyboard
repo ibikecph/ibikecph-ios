@@ -426,7 +426,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="Kvg-2m-COx">
                             <connections>
-                                <segue destination="qMR-FD-gOs" kind="show" identifier="enterRouteSegue" id="hGb-e2-eVV"/>
+                                <segue destination="qMR-FD-gOs" kind="show" identifier="mainToFindAddress" id="hGb-e2-eVV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -14,11 +14,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="92.5"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffl-Xg-jls">
-                    <rect key="frame" x="0.0" y="0.0" width="44" height="92.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="44" height="93"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="Yif-4Y-WCZ"/>
                     </constraints>
@@ -28,10 +28,10 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="From to" translatesAutoresizingMaskIntoConstraints="NO" id="sMk-JK-uKu">
-                    <rect key="frame" x="282" y="15" width="22" height="42.5"/>
+                    <rect key="frame" x="282" y="15" width="22" height="43"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tX-4U-l8Y">
-                    <rect key="frame" x="266" y="0.0" width="54" height="92.5"/>
+                    <rect key="frame" x="266" y="0.0" width="54" height="93"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="Qhz-uz-wpq"/>
                     </constraints>
@@ -45,7 +45,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP9-a3-2fr">
-                    <rect key="frame" x="44" y="34" width="217" height="30.5"/>
+                    <rect key="frame" x="44" y="34" width="217" height="31"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
                     </accessibility>
@@ -56,7 +56,7 @@ Line 2</string>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMW-41-VA1">
-                    <rect key="frame" x="44" y="10" width="217" height="19.5"/>
+                    <rect key="frame" x="44" y="10" width="217" height="20"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
                     </accessibility>
@@ -109,6 +109,6 @@ Line 2</string>
     </objects>
     <resources>
         <image name="Favorite" width="22" height="22"/>
-        <image name="From to" width="22" height="20"/>
+        <image name="From to" width="22" height="14"/>
     </resources>
 </document>

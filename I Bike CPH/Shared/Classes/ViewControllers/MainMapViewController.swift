@@ -17,6 +17,7 @@ class MainMapViewController: MapViewController {
     let mainToTrackingSegue = "mainToTracking"
     let mainToRouteSegue = "mainToRoute"
     let mainToLoginSegue = "mainToLogin"
+    let mainToFindAddressSegue = "mainToFindAddress"
     var pinAnnotation: PinAnnotation?
     var currentItem: SearchListItem?
     
@@ -62,6 +63,10 @@ class MainMapViewController: MapViewController {
         } else {
             removeToolbar()
         }
+        // Remove any pin
+        if let pin = pinAnnotation {
+            removePin(pin)
+        }
     }
     
     func closeAddressToolbarView() {
@@ -79,6 +84,12 @@ class MainMapViewController: MapViewController {
         {
             let backButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "dismissViewController")
             navigationController.viewControllers.first?.navigationItem.leftBarButtonItem = backButton
+        }
+        if
+            segue.identifier == mainToFindAddressSegue,
+            let destinationController = segue.destinationViewController as? FindAddressViewController
+        {
+            destinationController.delegate = self
         }
     }
     
@@ -199,14 +210,33 @@ extension MainMapViewController: MapViewDelegate {
                 self?.closeAddressToolbarView()
                 return
             }
-            // Check if favorite
-            if let favorite = self?.favoriteForItem(item) {
-                self?.currentItem = favorite
-                self?.addressToolbarView.updateToItem(favorite)
-                return
-            }
+            let item: SearchListItem = self?.favoriteForItem(item) ?? item // Attempt upgrade to Favorite
             self?.currentItem = item
             self?.addressToolbarView.updateToItem(item)
+        }
+    }
+}
+
+extension MainMapViewController: FindAddressViewControllerProtocol {
+    
+    func foundAddress(item: SearchListItem) {
+        // Update current item
+        let item: SearchListItem = favoriteForItem(item) ?? item // Attempt upgrade to Favorite
+        currentItem = item
+        // Show address in toolbar
+        addressToolbarView.updateToItem(item)
+        add(toolbarView: addressToolbarView)
+        // Remove any existing pin
+        if let pin = pinAnnotation {
+            removePin(pin)
+        }
+        // Add new pin if item has location
+        if
+            let coordinate = item.location?.coordinate
+            where coordinate.latitude != 0 && coordinate.longitude != 0
+        {
+            pinAnnotation = addPin(coordinate)
+            mapView.mapView.setCenterCoordinate(coordinate, zoomLevel: DEFAULT_MAP_ZOOM, animated: true)
         }
     }
 }

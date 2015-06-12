@@ -23,7 +23,7 @@ class AddressToolbarView: ToolbarView {
     
     var favoriteSelected: Bool = true {
         didSet {
-            favoriteButton.tintColor = favoriteSelected ? tintColor : Styler.foregroundColor()
+            favoriteButton.tintColor = favoriteSelected ? Styler.tintColor() : Styler.foregroundColor()
             if favoriteSelected != oldValue {
                 delegate?.didSelectFavorites(favoriteSelected)
             }
