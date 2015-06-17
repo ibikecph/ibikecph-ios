@@ -14,7 +14,7 @@ pod 'UIImage-Categories', '~>1.0'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'PSTAlertController', '~>1.1'
 pod 'Realm', '~>0.92'
-pod 'MapboxGL'
+pod 'Mapbox-iOS-SDK', '1.6.0'
 pod 'NibDesignable'
 
 target :CykelPlanenTests, :exclusive => true do

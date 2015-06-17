@@ -12,6 +12,6 @@ import Foundation
     
     var isCykelPlanen = true
     var isIBikeCph = false
-    var initialMapCoordinate = CLLocationCoordinate2DMake(55.678, 12.482)
-    var initialMapZoom: Double = 9
+    var initialMapCoordinate = CLLocationCoordinate2DMake(55.740, 12.424)
+    var initialMapZoom: Double = 9.8
 }

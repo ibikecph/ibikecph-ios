@@ -32,6 +32,8 @@
 		4E32B29F1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */; };
 		4E32B2A11AADCC8A00583811 /* BikeStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */; };
 		4E32B2A21AADCC8A00583811 /* BikeStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */; };
+		4E337B541B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E337B531B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m */; };
+		4E337B551B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E337B531B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m */; };
 		4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
 		4E33B91E1A640590007D4C82 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91D1A640590007D4C82 /* AppHelper.swift */; };
 		4E33B91F1A6406FD007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
@@ -1466,6 +1468,8 @@
 		4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingPreferencesViewController.swift; sourceTree = "<group>"; };
 		4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsNotificationHandler.swift; sourceTree = "<group>"; };
 		4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStatistics.swift; sourceTree = "<group>"; };
+		4E337B521B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMiBikeCPHMapTileSource.h; sourceTree = "<group>"; };
+		4E337B531B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMiBikeCPHMapTileSource.m; sourceTree = "<group>"; };
 		4E33B91B1A640579007D4C82 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		4E33B91D1A640590007D4C82 /* AppHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		4E3867801A430A0E0018AC5B /* FacebookHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHandler.swift; sourceTree = "<group>"; };
@@ -2872,6 +2876,15 @@
 			path = "3rd Party";
 			sourceTree = "<group>";
 		};
+		4E337B511B2F1DD400261D97 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				4E337B521B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.h */,
+				4E337B531B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		4E392AD51A308DBE0076BA86 /* Route Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -2958,6 +2971,7 @@
 		4EC56DA51A2A25E900B696B4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				4E337B511B2F1DD400261D97 /* Map */,
 				4EC56DA61A2A25E900B696B4 /* SMAnalytics.h */,
 				4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */,
 				4EC56DAA1A2A25E900B696B4 /* SMAPIRequest.h */,
@@ -6153,6 +6167,7 @@
 				4EC56E591A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
 				4EE05F501A10EBFA00DE4226 /* main.m in Sources */,
 				4E2A92561A3B43130032ACD4 /* Async.swift in Sources */,
+				4E337B541B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */,
 				4EC56DC01A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
 				4E5982141A24AC1200A40484 /* KortforItem.swift in Sources */,
 				4E3E38A71A979E0A00773285 /* TrackActivity.swift in Sources */,
@@ -6361,6 +6376,7 @@
 				4E5258C81A9B9C8400BE55C8 /* String.swift in Sources */,
 				4EE06CE51A11135000DE4226 /* SMAddressParser.m in Sources */,
 				4EC56E5F1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */,
+				4E337B551B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */,
 				4EC56EF51A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
 				4EC56DC21A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
 				4EDC5E0B1B21B0F0009189EE /* FindAddressViewController.swift in Sources */,
@@ -6781,6 +6797,7 @@
 					"$(PROJECT_DIR)/../route-me/MapView",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D CYKELPLANEN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -6820,6 +6837,7 @@
 					"$(PROJECT_DIR)/../route-me/MapView",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D CYKELPLANEN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

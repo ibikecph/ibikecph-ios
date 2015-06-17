@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import MapboxGL
 
 
 class CompassButton: UIButton {
 
-    var userTrackingMode: MGLUserTrackingMode = .None {
+    var userTrackingMode: MapView.UserTrackingMode = .None {
         didSet {
             let imageName: String = {
                 switch self.userTrackingMode {

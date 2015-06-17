@@ -7,21 +7,18 @@
 //
 
 import UIKit
-import MapboxGL
 
-class PinAnnotation: NSObject, MGLAnnotation {
-   
-    @objc var coordinate: CLLocationCoordinate2D
-    @objc var title: String = ""
-    @objc var subtitle: String = ""
+class Annotation: RMAnnotation {
     
-    init(coordinate: CLLocationCoordinate2D) {
-        self.coordinate = coordinate
-//        super.init(frame: CGRectMake(0, 0, 40, 40))
-//        backgroundColor = UIColor.blueColor()
-    }
+}
 
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+class PinAnnotation: Annotation {
+    
+    init(mapView: MapView, coordinate: CLLocationCoordinate2D, title: String? = nil) {
+        super.init(mapView: mapView.mapView, coordinate: coordinate, andTitle: title ?? "")
+        
+        self.annotationType = "marker"
+        self.annotationIcon = UIImage(named: "markerFinish")
     }
 }

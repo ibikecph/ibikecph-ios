@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MapboxGL
+
 
 class MapViewController: ToolbarViewController {
 
@@ -17,36 +17,41 @@ class MapViewController: ToolbarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Default map
-        mapView.mapView.centerCoordinate = macro.initialMapCoordinate
-        mapView.mapView.zoomLevel = macro.initialMapZoom
         // Delegate
-        mapView.mapView.delegate = self
+        mapView.trackingDelegate = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Default map
+        mapView.centerCoordinate = macro.initialMapCoordinate
+        mapView.zoomLevel = macro.initialMapZoom
     }
     
     @IBAction func compassButtonTapped(sender: AnyObject) {
-        switch mapView.mapView.userTrackingMode {
-            case .None: mapView.mapView.userTrackingMode = .Follow // None -> Follow
-            case .Follow: mapView.mapView.userTrackingMode = .FollowWithHeading // Follow -> Heading
-            case .FollowWithHeading: mapView.mapView.userTrackingMode = .Follow // Heading -> Follow
+        switch mapView.userTrackingMode {
+            case .None: mapView.userTrackingMode = .Follow // None -> Follow
+            case .Follow: mapView.userTrackingMode = .FollowWithHeading // Follow -> Heading
+            case .FollowWithHeading: mapView.userTrackingMode = .Follow // Heading -> Follow
         }
     }
     
     func removePin(pin: PinAnnotation) {
-        mapView.mapView.removeAnnotation(pin)
+        mapView.removeAnnotation(pin)
     }
-    
+
     func addPin(coordinate: CLLocationCoordinate2D) -> PinAnnotation {
-        let pin = PinAnnotation(coordinate: coordinate)
-        mapView.mapView.addAnnotation(pin)
+        let pin = PinAnnotation(mapView: mapView, coordinate: coordinate)
+        pin.anchorPoint = CGPoint(x: 0.5, y: 1) // Fix at bottom center
+        mapView.addAnnotation(pin)
         return pin
     }
 }
 
 
-extension MapViewController: MGLMapViewDelegate {
-    func mapView(mapView: MGLMapView, didChangeUserTrackingMode mode: MGLUserTrackingMode, animated: Bool) {
-        compassButton.userTrackingMode = mode
+extension MapViewController: MapViewTrackingDelegate {
+    func didChangeUserTrackingMode(mode: MapView.UserTrackingMode) {
+        compassButton?.userTrackingMode = mode
     }
 }
-

@@ -8,18 +8,14 @@
 
 #import "SMMapOverlays.h"
 
-#import "MapboxGL.h"
 #import "SMStationInfo.h"
-//#import "SMAnnotation.h"
-//#import "RMAnnotation.h"
 #import "SMTransportation.h"
 #import "SMTransportationLine.h"
-//#import "RMMarker.h"
 
 //#define GEN_STATION_INDICES
 
 @interface SMMapOverlays()
-@property (nonatomic, weak) MGLMapView* mpView;
+@property (nonatomic, weak) RMMapView* mpView;
 @property (nonatomic, strong) NSString* source;
 @property (nonatomic, strong) NSMutableArray* metroMarkers;
 @property (nonatomic, strong) NSMutableArray* serviceMarkers;
@@ -30,7 +26,7 @@
 @end
 
 @implementation SMMapOverlays
--(SMMapOverlays*)initWithMapView:(MGLMapView*)mapView {
+-(SMMapOverlays*)initWithMapView:(RMMapView*)mapView {
     self = [super init];
     if(self) {
         self.mpView = mapView;
@@ -52,7 +48,7 @@
     return self;
 }
 
-- (void)useMapView:(MGLMapView*)mapView {
+- (void)useMapView:(RMMapView*)mapView {
     self.mpView = mapView;
 
 #ifdef GEN_STATION_INDICES
@@ -122,21 +118,20 @@
         
         CLLocation* startLoc = [polyLine objectAtIndex:0];
         CLLocationCoordinate2D start = startLoc.coordinate;
-        // TODO: Re-implement
-//        RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:start andTitle:nil];
-//        calculatedPathAnnotation.annotationType = @"path";
-//        calculatedPathAnnotation.userInfo = @{
-//                                              @"linePoints" : [NSArray arrayWithArray:polyLine],
-//                                              @"lineColor" : [UIColor colorWithRed:245.0/255.0 green:130.0/255.0 blue:32.0/255.0 alpha:0.5],
-//                                              @"fillColor" : [UIColor clearColor],
-//                                              @"lineWidth" : [NSNumber numberWithFloat:4.0f],
-//                                              };
-//        
-//        [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:polyLine]];
-//        //[self.mpView addAnnotation:calculatedPathAnnotation];
-//        index++;
-//        
-//        [self.bikeRouteAnnotations addObject:calculatedPathAnnotation];
+        RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:start andTitle:nil];
+        calculatedPathAnnotation.annotationType = @"path";
+        calculatedPathAnnotation.userInfo = @{
+                                              @"linePoints" : [NSArray arrayWithArray:polyLine],
+                                              @"lineColor" : [UIColor colorWithRed:245.0/255.0 green:130.0/255.0 blue:32.0/255.0 alpha:0.5],
+                                              @"fillColor" : [UIColor clearColor],
+                                              @"lineWidth" : [NSNumber numberWithFloat:4.0f],
+                                              };
+        
+        [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:polyLine]];
+        //[self.mpView addAnnotation:calculatedPathAnnotation];
+        index++;
+        
+        [self.bikeRouteAnnotations addObject:calculatedPathAnnotation];
         
         }
 }
@@ -218,15 +213,13 @@
             NSString* title = @"metro";
             //NSString* annotationTitle = @"title";
             //NSString* alternateTitle = @"alternate title";
+            
+            RMAnnotation *annotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
         
-        // TODO: Re-implement
-//            SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
-//        
-//            annotation.annotationType = @"station";
-//            annotation.annotationIcon = [UIImage imageNamed:imageName];
-//            annotation.anchorPoint = CGPointMake(0.5, 1.0);
-        
-        
+            annotation.annotationType = @"station";
+            annotation.annotationIcon = [UIImage imageNamed:imageName];
+            annotation.anchorPoint = CGPointMake(0.5, 1.0);
+            
 //            NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
 //            annotation.title = annotationTitle;
 //            
@@ -236,9 +229,8 @@
 //            
 //            annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             //[self.mpView addAnnotation:annotation];
-        
-        // TODO: Re-implement
-//            [self.metroMarkers addObject:annotation];
+            
+            [self.metroMarkers addObject:annotation];
         }
     }
 
@@ -264,18 +256,17 @@
         
         CLLocation* startLoc = [points objectAtIndex:0];
         CLLocationCoordinate2D start = startLoc.coordinate;
-        // TODO: Re-implement
-//        RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:start andTitle:nil];
-//        calculatedPathAnnotation.annotationType = @"path";
-//        calculatedPathAnnotation.userInfo = @{
-//                                          @"linePoints" : [NSArray arrayWithArray:points],
-//                                          @"lineColor" : [lineColors objectAtIndex:lineIndex],
-//                                          @"fillColor" : [UIColor clearColor],
-//                                          @"lineWidth" : [NSNumber numberWithFloat:2.0f],
-//                                          };
-//    
-//        [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:points]];
-//        [self.bikeRouteAnnotations addObject:calculatedPathAnnotation];
+        RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:start andTitle:nil];
+        calculatedPathAnnotation.annotationType = @"path";
+        calculatedPathAnnotation.userInfo = @{
+                                          @"linePoints" : [NSArray arrayWithArray:points],
+                                          @"lineColor" : [lineColors objectAtIndex:lineIndex],
+                                          @"fillColor" : [UIColor clearColor],
+                                          @"lineWidth" : [NSNumber numberWithFloat:2.0f],
+                                          };
+    
+        [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:points]];
+        [self.bikeRouteAnnotations addObject:calculatedPathAnnotation];
         //[self.mpView addAnnotation:calculatedPathAnnotation];
         lineIndex++;
         lineIndex = lineIndex % 7;
@@ -335,45 +326,44 @@
         NSString* annotationTitle = [station objectForKey:@"name"]; //@"title";
         NSString* alternateTitle = @"alternate title";
         
-        // TODO: Re-implement
-//        SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
-//        
-//        annotation.annotationType = @"station";
-//        SMStationInfo* st= [[SMTransportation instance] stationWithName:[station objectForKey:@"name"]];
-//        if(st)
-//            annotation.userInfo= @{@"station" : st};
-//        annotation.annotationIcon = [UIImage imageNamed:imageName];
-//        annotation.anchorPoint = CGPointMake(0.5, 1.0);
-//        NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
-//        annotation.title = annotationTitle;
-//        annotation.subtitle = alternateTitle;
+        RMAnnotation *annotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
+        
+        annotation.annotationType = @"station";
+        SMStationInfo* st= [[SMTransportation instance] stationWithName:[station objectForKey:@"name"]];
+        if(st)
+            annotation.userInfo= @{@"station" : st};
+        annotation.annotationIcon = [UIImage imageNamed:imageName];
+        annotation.anchorPoint = CGPointMake(0.5, 1.0);
+        NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
+        annotation.title = annotationTitle;
+        annotation.subtitle = alternateTitle;
 //        annotation.calloutShown = NO;
 //        [annotation hideCallout];
-//        
-//        if ([annotation.title isEqualToString:@""] && alternateTitle) {
-//            annotation.title = alternateTitle;
-//        }
-//        annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-//        annotation.subtitle = alternateTitle;
+        
+        if ([annotation.title isEqualToString:@""] && alternateTitle) {
+            annotation.title = alternateTitle;
+        }
+        annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        annotation.subtitle = alternateTitle;
 //        [annotation.calloutView.markerIcon setImage:annotation.annotationIcon];
-//        //[self.mpView addAnnotation:annotation];
-//        
-//        [tempMarkers addObject:annotation];
-//        
-//        if ([type isEqualToString:@"metro"]) {
-//            [self.metroMarkers addObject:annotation];
-//        } else if ([type isEqualToString:@"service"]) {
-//            [self.serviceMarkers addObject:annotation];
-//        } else if ([type isEqualToString:@"s-train"]) {
-//            [self.stationMarkers addObject:annotation];
-//        } else if ([type isEqualToString:@"local-train"]) {
-//            [self.localTrainMarkers addObject:annotation];
-//        }
+        //[self.mpView addAnnotation:annotation];
+        
+        [tempMarkers addObject:annotation];
+        
+        if ([type isEqualToString:@"metro"]) {
+            [self.metroMarkers addObject:annotation];
+        } else if ([type isEqualToString:@"service"]) {
+            [self.serviceMarkers addObject:annotation];
+        } else if ([type isEqualToString:@"s-train"]) {
+            [self.stationMarkers addObject:annotation];
+        } else if ([type isEqualToString:@"local-train"]) {
+            [self.localTrainMarkers addObject:annotation];
+        }
+
     }
     
-    // TODO: Re-implement
-//    for (SMAnnotation* annotation in tempMarkers) {
-//        for (SMAnnotation* a in tempMarkers) {
+//    for (RMAnnotation* annotation in tempMarkers) {
+//        for (RMAnnotation* a in tempMarkers) {
 //            if ( a != annotation ) {
 //                if ( a.coordinate.latitude == annotation.coordinate.latitude && a.coordinate.longitude == annotation.coordinate.longitude ) {
 //                    NSLog(@"Annotation same coords!");
@@ -410,22 +400,21 @@
     
     NSInteger i = 0;
     for (i = 0; i<numStations; i++) {
-        // TODO: Re-implement
-//        SMAnnotation* station = [self.metroMarkers objectAtIndex:i];
-//        SMAnnotation* nextStation = [self.metroMarkers objectAtIndex:MIN(i+1, numStations-1)];
-//        
-//        // Get aprox. distance to next station
-//        float x0 = station.coordinate.longitude;
-//        float y0 = station.coordinate.latitude;
-//        
-//        float x1 = nextStation.coordinate.longitude;
-//        float y1 = nextStation.coordinate.latitude;
-//        
-//        float distance = sqrtf((x1 - x0)*(x1 - x0) + (y1 - y0)*(y1 - y0));
-////        NSLog(@"%@ -> %@ Distance: %4.4f", station.title, nextStation.title, distance*100);
-//        
-//        totalDistance += distance;
-//        times[i] = distance;
+        RMAnnotation* station = [self.metroMarkers objectAtIndex:i];
+        RMAnnotation* nextStation = [self.metroMarkers objectAtIndex:MIN(i+1, numStations-1)];
+        
+        // Get aprox. distance to next station
+        float x0 = station.coordinate.longitude;
+        float y0 = station.coordinate.latitude;
+        
+        float x1 = nextStation.coordinate.longitude;
+        float y1 = nextStation.coordinate.latitude;
+        
+        float distance = sqrtf((x1 - x0)*(x1 - x0) + (y1 - y0)*(y1 - y0));
+//        NSLog(@"%@ -> %@ Distance: %4.4f", station.title, nextStation.title, distance*100);
+        
+        totalDistance += distance;
+        times[i] = distance;
     }
     
 //    NSLog(@"Total distance: %4.4f", totalDistance*100);
@@ -476,15 +465,14 @@
 //    float zoom = lerp(0.35, 1.5, t);
 //    NSLog(@"Map ZOOM: %f", self.mpView.zoom);
 //    
-//    for (SMAnnotation* an in self.mpView.annotations) {
+//    for (RMAnnotation* an in self.mpView.annotations) {
 //        if ([an.annotationType isEqualToString:@"station"]) {
 //            RMMarker* marker = (RMMarker*)(an.layer);
 //            [marker updateBoundsWithZoom: zoom];
 //        }
 //    }
     
-    // TODO: Re-implement
-//    [self.mpView setZoom:self.mpView.zoom+0.0001];
+    [self.mpView setZoom:self.mpView.zoom+0.0001];
 
 //    [self.mpView setNeedsLayout];
 }

@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import MapboxGL
 import PSTAlertController
+
 
 class MainMapViewController: MapViewController {
 
@@ -29,7 +29,7 @@ class MainMapViewController: MapViewController {
         super.viewDidLoad()
 
         // Follow user if possible
-        mapView.mapView.userTrackingMode = .Follow
+        mapView.userTrackingMode = .Follow
         
         // Toolbar delegate
         trackingToolbarView.delegate = self
@@ -46,6 +46,14 @@ class MainMapViewController: MapViewController {
         NotificationCenter.observe(settingsUpdatedNotification) { notification in
             self.updateTrackingToolbarView()
         }
+        
+#if CYKELPLANEN
+        // Load overlays
+        if appDelegate.mapOverlays == nil {
+            appDelegate.mapOverlays = SMMapOverlays(mapView: mapView.mapView)
+        }
+        appDelegate.mapOverlays.loadMarkers()
+#endif
     }
 
     @IBAction func openMenu(sender: AnyObject) {
@@ -95,20 +103,6 @@ class MainMapViewController: MapViewController {
     
     func dismissViewController() {
          dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func selectedAnnotation(annotation: MGLAnnotation) {
-        // Remove annotation if the selected one is the pinAnnotation
-        if let
-            pin = pinAnnotation,
-            annotation = annotation as? PinAnnotation
-            where pin == annotation
-        {
-            // Remove pin
-            removePin(pin)
-            // Remove address toolbar
-            closeAddressToolbarView()
-        }
     }
     
     func favoriteForItem(item: SearchListItem) -> FavoriteItem? {
@@ -181,12 +175,6 @@ extension MainMapViewController: AddressToolbarDelegate {
     }
 }
 
-extension MainMapViewController: MGLMapViewDelegate {
-    func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
-        selectedAnnotation(annotation)
-        return false // Don't show call out view
-    }
-}
 
 extension MainMapViewController: MapViewDelegate {
     func didSelectCoordinate(coordinate: CLLocationCoordinate2D) {
@@ -215,7 +203,22 @@ extension MainMapViewController: MapViewDelegate {
             self?.addressToolbarView.updateToItem(item)
         }
     }
+    
+    func didSelectAnnotation(annotation: Annotation) {
+        // Remove annotation if the selected one is the pinAnnotation
+        if let
+            pin = pinAnnotation,
+            annotation = annotation as? PinAnnotation
+            where pin == annotation
+        {
+            // Remove pin
+            removePin(pin)
+            // Remove address toolbar
+            closeAddressToolbarView()
+        }
+    }
 }
+
 
 extension MainMapViewController: FindAddressViewControllerProtocol {
     
@@ -236,7 +239,7 @@ extension MainMapViewController: FindAddressViewControllerProtocol {
             where coordinate.latitude != 0 && coordinate.longitude != 0
         {
             pinAnnotation = addPin(coordinate)
-            mapView.mapView.setCenterCoordinate(coordinate, zoomLevel: DEFAULT_MAP_ZOOM, animated: true)
+            mapView.centerCoordinate(coordinate, zoomLevel: DEFAULT_MAP_ZOOM, animated: true)
         }
     }
 }

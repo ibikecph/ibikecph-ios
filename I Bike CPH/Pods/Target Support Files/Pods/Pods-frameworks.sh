@@ -49,19 +49,27 @@ code_sign() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'DAKeyboardControl.framework'
-  install_framework 'MapboxGL.framework'
+  install_framework 'FMDB.framework'
+  install_framework 'GRMustache.framework'
+  install_framework 'JRSwizzle.framework'
+  install_framework 'Mapbox_iOS_SDK.framework'
   install_framework 'NibDesignable.framework'
   install_framework 'PSTAlertController.framework'
   install_framework 'Realm.framework'
+  install_framework 'SMCalloutView.framework'
   install_framework 'TTTAttributedLabel.framework'
   install_framework 'UIImage_Categories.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'DAKeyboardControl.framework'
-  install_framework 'MapboxGL.framework'
+  install_framework 'FMDB.framework'
+  install_framework 'GRMustache.framework'
+  install_framework 'JRSwizzle.framework'
+  install_framework 'Mapbox_iOS_SDK.framework'
   install_framework 'NibDesignable.framework'
   install_framework 'PSTAlertController.framework'
   install_framework 'Realm.framework'
+  install_framework 'SMCalloutView.framework'
   install_framework 'TTTAttributedLabel.framework'
   install_framework 'UIImage_Categories.framework'
 fi
