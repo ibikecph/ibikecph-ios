@@ -8,6 +8,7 @@
 
 import UIKit
 import PSTAlertController
+import MapKit
 
 
 class MainMapViewController: MapViewController {
@@ -15,7 +16,7 @@ class MainMapViewController: MapViewController {
     var trackingToolbarView = TrackingToolbarView()
     var addressToolbarView = AddressToolbarView()
     let mainToTrackingSegue = "mainToTracking"
-    let mainToRouteSegue = "mainToRoute"
+    let mainToFindRouteSegue = "mainToFindRoute"
     let mainToLoginSegue = "mainToLogin"
     let mainToFindAddressSegue = "mainToFindAddress"
     var pinAnnotation: PinAnnotation?
@@ -46,15 +47,7 @@ class MainMapViewController: MapViewController {
         NotificationCenter.observe(settingsUpdatedNotification) { notification in
             self.updateTrackingToolbarView()
         }
-        
-#if CYKELPLANEN
-        // Load overlays
-        if appDelegate.mapOverlays == nil {
-            appDelegate.mapOverlays = SMMapOverlays(mapView: mapView.mapView)
-        }
-        appDelegate.mapOverlays.loadMarkers()
-#endif
-    }
+    }    
 
     @IBAction func openMenu(sender: AnyObject) {
         NotificationCenter.post("openMenu")
@@ -99,6 +92,12 @@ class MainMapViewController: MapViewController {
         {
             destinationController.delegate = self
         }
+        if
+            segue.identifier == mainToFindRouteSegue,
+            let destinationController = segue.destinationViewController as? FindRouteViewController
+        {
+            destinationController.toItem = currentItem
+        }
     }
     
     func dismissViewController() {
@@ -129,7 +128,7 @@ extension MainMapViewController: TrackingToolbarDelegate {
 extension MainMapViewController: AddressToolbarDelegate {
     
     func didSelectRoute() {
-        performSegueWithIdentifier(mainToRouteSegue, sender: self)
+        performSegueWithIdentifier(mainToFindRouteSegue, sender: self)
     }
     
     func didSelectFavorites(selected: Bool) {
@@ -191,17 +190,41 @@ extension MainMapViewController: MapViewDelegate {
         addressToolbarView.prepareForReuse()
         SMGeocoder.reverseGeocode(coordinate, synchronous: false) { [weak self] item, error in
             if let error = error {
-                if let pin = self?.pinAnnotation {
-                    self?.removePin(pin)
-                }
-                // Close address toolbar
-                self?.closeAddressToolbarView()
+                self?.failedFindSelectCoordinate()
                 return
             }
+            // Reverse geocode doesn't provide a location for the found item.
+            item.location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            
             let item: SearchListItem = self?.favoriteForItem(item) ?? item // Attempt upgrade to Favorite
             self?.currentItem = item
             self?.addressToolbarView.updateToItem(item)
+            
+            // Reverse geocode doesn't provide a location for the found item.
+            // TODO: Check if found address is "far" from pin
+//            SMGeocoder.geocode(item.address) { placemark, error in
+//                if let error = error {
+//                    self?.failedFindSelectCoordinate()
+//                    return
+//                }
+//                if let placemark = placemark.first as? MKPlacemark {
+//                    let location = placemark.location
+//                    self?.currentItem?.location = location
+//                    // Update pin location
+//                    self?.pinAnnotation?.coordinate = location.coordinate
+//                    return
+//                }
+//                self?.failedFindSelectCoordinate()
+//            }
         }
+    }
+    
+    func failedFindSelectCoordinate() {
+        if let pin = pinAnnotation {
+            removePin(pin)
+        }
+        // Close address toolbar
+        closeAddressToolbarView()
     }
     
     func didSelectAnnotation(annotation: Annotation) {

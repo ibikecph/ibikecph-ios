@@ -385,15 +385,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6B-ap-OTz" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="124" width="600" height="476"/>
-                            </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aB4-Ri-e7J" userLabel="ToolbarContainer">
-                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="250" id="igT-lC-E98"/>
-                                </constraints>
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6B-ap-OTz" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sB-FJ-axe" customClass="CompassButton" customModule="CykelPlanen" customModuleProvider="target">
                                 <rect key="frame" x="548" y="548" width="52" height="52"/>
@@ -405,17 +398,24 @@
                                     <action selector="compassButtonTapped:" destination="T3l-69-wdf" eventType="touchUpInside" id="b0n-BW-fhk"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aB4-Ri-e7J" userLabel="ToolbarContainer">
+                                <rect key="frame" x="0.0" y="64" width="600" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" id="igT-lC-E98"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="g6B-ap-OTz" firstAttribute="leading" secondItem="Dha-kl-JcM" secondAttribute="leading" id="8TS-9H-eEa"/>
                             <constraint firstItem="g6B-ap-OTz" firstAttribute="top" secondItem="aB4-Ri-e7J" secondAttribute="bottom" id="G9h-29-Mkp"/>
                             <constraint firstAttribute="bottom" secondItem="g6B-ap-OTz" secondAttribute="bottom" id="JUf-pd-5Mb"/>
+                            <constraint firstAttribute="trailing" secondItem="5sB-FJ-axe" secondAttribute="trailing" id="YcS-AQ-oKm"/>
                             <constraint firstAttribute="trailing" secondItem="aB4-Ri-e7J" secondAttribute="trailing" id="fOZ-7x-u6S"/>
                             <constraint firstItem="aB4-Ri-e7J" firstAttribute="top" secondItem="pq5-8Y-pYM" secondAttribute="bottom" id="l7B-J5-euq"/>
-                            <constraint firstAttribute="trailing" secondItem="5sB-FJ-axe" secondAttribute="trailing" id="lKH-Jn-jkL"/>
+                            <constraint firstItem="n5L-U0-x2m" firstAttribute="top" secondItem="5sB-FJ-axe" secondAttribute="bottom" id="n9V-w6-c5c"/>
                             <constraint firstAttribute="trailing" secondItem="g6B-ap-OTz" secondAttribute="trailing" id="nxv-3c-uIl"/>
                             <constraint firstItem="aB4-Ri-e7J" firstAttribute="leading" secondItem="Dha-kl-JcM" secondAttribute="leading" id="tcH-oe-sf7"/>
-                            <constraint firstItem="n5L-U0-x2m" firstAttribute="top" secondItem="5sB-FJ-axe" secondAttribute="bottom" id="yKm-gr-Iao"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bo8-oP-37X">
@@ -435,14 +435,58 @@
                         <outlet property="compassButton" destination="5sB-FJ-axe" id="a0D-hm-x0T"/>
                         <outlet property="mapView" destination="g6B-ap-OTz" id="ycV-pH-bgU"/>
                         <outlet property="toolbarContainer" destination="aB4-Ri-e7J" id="U4B-6T-Y0J"/>
-                        <segue destination="0iY-Gd-Bo4" kind="show" identifier="" id="UFp-ED-3bC"/>
                         <segue destination="wg4-md-R9W" kind="presentation" identifier="mainToTracking" id="yfF-jS-f4E"/>
                         <segue destination="h7b-VQ-XtA" kind="show" identifier="mainToLogin" id="8Kg-rW-C0r"/>
+                        <segue destination="RsW-qC-pTA" kind="show" identifier="mainToFindRoute" id="ybc-71-YrM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7p-R1-qaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1605" y="1221"/>
+        </scene>
+        <!--Find Route View Controller-->
+        <scene sceneID="4Bd-I9-try">
+            <objects>
+                <viewController id="RsW-qC-pTA" customClass="FindRouteViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LmY-YJ-zy1"/>
+                        <viewControllerLayoutGuide type="bottom" id="knZ-eD-sKd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oWC-I0-CWy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kxn-vO-NhH" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="124" width="600" height="476"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0EG-5v-Bef" userLabel="ToolbarContainer">
+                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" id="z30-6C-tdf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kxn-vO-NhH" firstAttribute="top" secondItem="0EG-5v-Bef" secondAttribute="bottom" id="28F-Kk-75Y"/>
+                            <constraint firstItem="0EG-5v-Bef" firstAttribute="leading" secondItem="oWC-I0-CWy" secondAttribute="leading" id="8DP-Xm-3HO"/>
+                            <constraint firstItem="knZ-eD-sKd" firstAttribute="top" secondItem="Kxn-vO-NhH" secondAttribute="bottom" id="ARS-OJ-5mq"/>
+                            <constraint firstItem="0EG-5v-Bef" firstAttribute="top" secondItem="LmY-YJ-zy1" secondAttribute="bottom" id="Ppf-mA-f57"/>
+                            <constraint firstAttribute="trailing" secondItem="0EG-5v-Bef" secondAttribute="trailing" id="e3s-Ny-Pma"/>
+                            <constraint firstItem="Kxn-vO-NhH" firstAttribute="leading" secondItem="oWC-I0-CWy" secondAttribute="leading" id="iN7-eR-BWP"/>
+                            <constraint firstAttribute="trailing" secondItem="Kxn-vO-NhH" secondAttribute="trailing" id="s2t-1M-VX5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Kxn-vO-NhH" id="VdQ-nr-8ij"/>
+                        <outlet property="toolbarContainer" destination="0EG-5v-Bef" id="WAW-FO-XMm"/>
+                        <segue destination="qMR-FD-gOs" kind="show" identifier="findRouteToFindAddress" id="WjL-tL-I1v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="esr-g6-f7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-909" y="1221"/>
         </scene>
         <!--About Controller-->
         <scene sceneID="Thj-33-Faw">
@@ -1018,7 +1062,7 @@ God tur og tak fordi du cykler!</string>
                 </panGestureRecognizer>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZQ-7j-uph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="1221"/>
+            <point key="canvasLocation" x="-213" y="1221"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="J2b-lx-ekh">
@@ -1706,7 +1750,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccX-ey-Yfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-213" y="1221"/>
+            <point key="canvasLocation" x="483" y="1221"/>
         </scene>
         <!--Route Info View Controller-->
         <scene sceneID="foI-zK-Hw1">
@@ -1898,7 +1942,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSF-6S-pt3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="503" y="1221"/>
+            <point key="canvasLocation" x="1199" y="1221"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TIH-g9-kG8">
@@ -3930,6 +3974,7 @@ God tur og tak fordi du cykler!</string>
     <inferredMetricsTieBreakers>
         <segue reference="dc7-Qo-Oev"/>
         <segue reference="t11-Tv-7cG"/>
+        <segue reference="WjL-tL-I1v"/>
         <segue reference="8Kg-rW-C0r"/>
         <segue reference="YD8-cY-nJg"/>
         <segue reference="cR0-BE-PFO"/>

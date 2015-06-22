@@ -80,47 +80,6 @@ class MapView: UIView {
     
     var delegate: MapViewDelegate?
     var trackingDelegate: MapViewTrackingDelegate?
-    var centerCoordinate: CLLocationCoordinate2D {
-        set {
-            mapView.centerCoordinate = newValue
-        }
-        get {
-            return mapView.centerCoordinate
-        }
-    }
-    var zoomLevel: Double {
-        set {
-            mapView.zoom = Float(newValue)
-        }
-        get {
-            return Double(mapView.zoom)
-        }
-    }
-    var showsUserLocation: Bool {
-        set {
-            mapView.showsUserLocation = newValue
-        }
-        get {
-            return mapView.showsUserLocation
-        }
-    }
-    var userTrackingMode: UserTrackingMode {
-        set {
-            mapView.userTrackingMode = newValue.rmUserTrackingMode()
-        }
-        get {
-            return UserTrackingMode.build(mapView.userTrackingMode)
-        }
-    }
-    func centerCoordinate(coordinate: CLLocationCoordinate2D, zoomLevel: Double, animated: Bool) {
-        mapView.setZoom(Float(zoomLevel), atCoordinate: coordinate, animated: animated)
-    }
-    func addAnnotation(annotation: Annotation) {
-        mapView.addAnnotation(annotation)
-    }
-    func removeAnnotation(annotation: Annotation) {
-        mapView.removeAnnotation(annotation)
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -153,7 +112,6 @@ class MapView: UIView {
         mapView.frame = max(bounds.width, bounds.height) == 0 ? CGRect(x: 0, y: 0, width: 1, height: 1) : bounds
     }
 
-    
     func addPath(coordinates: [CLLocationCoordinate2D], lineColor: UIColor = Styler.tintColor()) -> Annotation {
     
         // Annotation
@@ -168,6 +126,7 @@ class MapView: UIView {
         shape.lineColor = lineColor
         shape.lineWidth = 4.0
         shape.lineJoin = "round"
+        shape.lineCap = "round"
         pathAnnotation.layer = shape
         // Add coordinates
         var waypoints: [CLLocation] = [CLLocation]()
@@ -179,6 +138,8 @@ class MapView: UIView {
         // Bounding box
         pathAnnotation.setBoundingBoxFromLocations(waypoints)
         
+        mapView.setNeedsDisplay() // Bug in RMMapView. Workaround to make sure it renders added path
+        
         return pathAnnotation
     }
     
@@ -187,6 +148,61 @@ class MapView: UIView {
         let bounds = mapView.sphericalTrapezium(forProjectedRect: annotation.projectedBoundingBox).padded(padding: padding)
         // Zoom
         mapView.zoomWithLatitudeLongitudeBoundsSouthWest(bounds.southWest, northEast: bounds.northEast, animated: animated)
+    }
+}
+
+
+/// Proxy for RMMapView
+extension MapView {
+    var centerCoordinate: CLLocationCoordinate2D {
+        set {
+            mapView.centerCoordinate = newValue
+        }
+        get {
+            return mapView.centerCoordinate
+        }
+    }
+    var zoomLevel: Double {
+        set {
+            mapView.zoom = Float(newValue)
+        }
+        get {
+            return Double(mapView.zoom)
+        }
+    }
+    var showsUserLocation: Bool {
+        set {
+            mapView.showsUserLocation = newValue
+        }
+        get {
+            return mapView.showsUserLocation
+        }
+    }
+    var userTrackingMode: UserTrackingMode {
+        set {
+            mapView.userTrackingMode = newValue.rmUserTrackingMode()
+        }
+        get {
+            return UserTrackingMode.build(mapView.userTrackingMode)
+        }
+    }
+    func centerCoordinate(coordinate: CLLocationCoordinate2D, zoomLevel: Double, animated: Bool = true) {
+        mapView.setZoom(Float(zoomLevel), atCoordinate: coordinate, animated: animated)
+    }
+    func addAnnotation(annotation: Annotation) {
+        mapView.addAnnotation(annotation)
+    }
+    func addAnnotations(annotations: [Annotation]) {
+        mapView.addAnnotations(annotations)
+    }
+    func removeAnnotation(annotation: Annotation) {
+        mapView.removeAnnotation(annotation)
+    }
+    func removeAnnotations(annotations: [Annotation]) {
+        mapView.removeAnnotations(annotations)
+    }
+    func removeAllAnnotations() {
+        mapView.removeAllAnnotations()
     }
 }
 
@@ -210,6 +226,9 @@ extension MapView: RMMapViewDelegate {
     }
     
     func mapView(mapView: RMMapView!, layerForAnnotation annotation: RMAnnotation!) -> RMMapLayer! {
+        if annotation.annotationType == nil {
+            return nil
+        }
         switch annotation.annotationType {
             case "marker", "station":
                 let marker = RMMarker(UIImage: annotation.annotationIcon, anchorPoint: annotation.anchorPoint)

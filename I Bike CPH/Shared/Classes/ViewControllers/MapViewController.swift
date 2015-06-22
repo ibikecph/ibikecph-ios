@@ -19,14 +19,27 @@ class MapViewController: ToolbarViewController {
         
         // Delegate
         mapView.trackingDelegate = self
+        
+        
+#if CYKELPLANEN
+        // Load overlays
+        if appDelegate.mapOverlays == nil {
+            appDelegate.mapOverlays = SMMapOverlays(mapView: mapView.mapView)
+        }
+        appDelegate.mapOverlays.loadMarkers()
+#endif
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+#if CYKELPLANEN
+        appDelegate.mapOverlays.useMapView(mapView.mapView)
+        appDelegate.mapOverlays.loadMarkers()
+#endif
         // Default map
-        mapView.centerCoordinate = macro.initialMapCoordinate
-        mapView.zoomLevel = macro.initialMapZoom
+//        mapView.centerCoordinate = macro.initialMapCoordinate
+//        mapView.zoomLevel = macro.initialMapZoom
     }
     
     @IBAction func compassButtonTapped(sender: AnyObject) {
@@ -43,7 +56,6 @@ class MapViewController: ToolbarViewController {
 
     func addPin(coordinate: CLLocationCoordinate2D) -> PinAnnotation {
         let pin = PinAnnotation(mapView: mapView, coordinate: coordinate)
-        pin.anchorPoint = CGPoint(x: 0.5, y: 1) // Fix at bottom center
         mapView.addAnnotation(pin)
         return pin
     }

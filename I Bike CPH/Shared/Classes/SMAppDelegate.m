@@ -30,6 +30,10 @@
     
 //    [[Settings sharedInstance] clear];
     
+    
+    // Initialize location manager (not used for map, but for getting current location)
+    [SMLocationManager instance];
+    
     /**
      * initialize Google Analytics
      */

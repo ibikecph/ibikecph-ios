@@ -7,12 +7,12 @@
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Arrow@2x.png"
+      "filename" : "FlipUpDown@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "Arrow@3x.png"
+      "filename" : "FlipUpDown@3x.png"
     }
   ],
   "info" : {
