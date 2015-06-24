@@ -227,11 +227,16 @@ extension Track {
                     completion?(false)
                     return
                 }
+                var succeeded = false
                 if let item = item {
                     self.start = item.street
+                    succeeded = true
                 }
                 if transact {
                     self.realm.commitWriteTransaction()
+                }
+                if !succeeded {
+                    return // Only proceed if "start" was set
                 }
                 if let endLocation = self.locations.lastObject() as? TrackLocation {
                     let coordinate = endLocation.coordinate()
