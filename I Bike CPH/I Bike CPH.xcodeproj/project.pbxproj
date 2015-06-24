@@ -14,6 +14,20 @@
 		4E0176891AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */; };
 		4E1000E01B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1000DF1B00A6EC005C7FE7 /* RouteTypeViewModel.swift */; };
 		4E1000E11B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1000DF1B00A6EC005C7FE7 /* RouteTypeViewModel.swift */; };
+		4E10EBB41B3AE4B10012245E /* RouteNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E10EBB31B3AE4B10012245E /* RouteNavigationViewController.swift */; };
+		4E10EBB51B3AE4B10012245E /* RouteNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E10EBB31B3AE4B10012245E /* RouteNavigationViewController.swift */; };
+		4E10EBB81B3AE6480012245E /* RouteNavigationToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E10EBB61B3AE6480012245E /* RouteNavigationToolbarView.swift */; };
+		4E10EBB91B3AE6480012245E /* RouteNavigationToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E10EBB61B3AE6480012245E /* RouteNavigationToolbarView.swift */; };
+		4E10EBBA1B3AE6480012245E /* RouteNavigationToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E10EBB71B3AE6480012245E /* RouteNavigationToolbarView.xib */; };
+		4E10EBBB1B3AE6480012245E /* RouteNavigationToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E10EBB71B3AE6480012245E /* RouteNavigationToolbarView.xib */; };
+		4E10EBBE1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E10EBBC1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.swift */; };
+		4E10EBBF1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E10EBBC1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.swift */; };
+		4E10EBC01B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E10EBBD1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib */; };
+		4E10EBC11B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E10EBBD1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib */; };
+		4E10EBC61B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E10EBC41B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift */; };
+		4E10EBC71B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E10EBC41B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift */; };
+		4E10EBC81B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E10EBC51B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib */; };
+		4E10EBC91B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E10EBC51B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib */; };
 		4E1258D51A7BA63200A82434 /* routeTestStart.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E1258D41A7BA63200A82434 /* routeTestStart.gpx */; };
 		4E1258D61A7BA63200A82434 /* routeTestStart.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E1258D41A7BA63200A82434 /* routeTestStart.gpx */; };
 		4E1522C41A84FC0600E62BFA /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982041A24AC1200A40484 /* FoursquareItem.swift */; };
@@ -260,12 +274,6 @@
 		4EC56E9F1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E1F1A2A2C3D00B696B4 /* SMSearchCell.m */; };
 		4EC56EA11A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E211A2A2C3D00B696B4 /* SMSearchTwoRowCell.m */; };
 		4EC56EA31A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E211A2A2C3D00B696B4 /* SMSearchTwoRowCell.m */; };
-		4EC56EA51A2A2C3D00B696B4 /* SMSwipableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E231A2A2C3D00B696B4 /* SMSwipableView.m */; };
-		4EC56EA71A2A2C3D00B696B4 /* SMSwipableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E231A2A2C3D00B696B4 /* SMSwipableView.m */; };
-		4EC56EA91A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E241A2A2C3D00B696B4 /* SMSwipableView.xib */; };
-		4EC56EAA1A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E241A2A2C3D00B696B4 /* SMSwipableView.xib */; };
-		4EC56EAB1A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E241A2A2C3D00B696B4 /* SMSwipableView.xib */; };
-		4EC56EAC1A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E241A2A2C3D00B696B4 /* SMSwipableView.xib */; };
 		4EC56EAD1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E261A2A2C3D00B696B4 /* SMTokenizedTextField.m */; };
 		4EC56EAF1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E261A2A2C3D00B696B4 /* SMTokenizedTextField.m */; };
 		4EC56EB11A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E281A2A2C3D00B696B4 /* SMViewMoreCell.m */; };
@@ -1471,6 +1479,13 @@
 		4B96C2575165B7DAFDE3B797 /* Pods_CykelPlanenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CykelPlanenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		4E1000DF1B00A6EC005C7FE7 /* RouteTypeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTypeViewModel.swift; sourceTree = "<group>"; };
+		4E10EBB31B3AE4B10012245E /* RouteNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationViewController.swift; sourceTree = "<group>"; };
+		4E10EBB61B3AE6480012245E /* RouteNavigationToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationToolbarView.swift; sourceTree = "<group>"; };
+		4E10EBB71B3AE6480012245E /* RouteNavigationToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RouteNavigationToolbarView.xib; sourceTree = "<group>"; };
+		4E10EBBC1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationDirectionsToolbarView.swift; sourceTree = "<group>"; };
+		4E10EBBD1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RouteNavigationDirectionsToolbarView.xib; sourceTree = "<group>"; };
+		4E10EBC41B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnInstructionsCollectionViewCell.swift; sourceTree = "<group>"; };
+		4E10EBC51B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TurnInstructionsCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E1258D41A7BA63200A82434 /* routeTestStart.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = routeTestStart.gpx; sourceTree = "<group>"; };
 		4E20BA681ADC065A00738CA8 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		4E23D6DA1A648E56008998CB /* SMAccountFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountFacebookViewController.h; sourceTree = "<group>"; };
@@ -1634,9 +1649,6 @@
 		4EC56E1F1A2A2C3D00B696B4 /* SMSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSearchCell.m; sourceTree = "<group>"; };
 		4EC56E201A2A2C3D00B696B4 /* SMSearchTwoRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSearchTwoRowCell.h; sourceTree = "<group>"; };
 		4EC56E211A2A2C3D00B696B4 /* SMSearchTwoRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSearchTwoRowCell.m; sourceTree = "<group>"; };
-		4EC56E221A2A2C3D00B696B4 /* SMSwipableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSwipableView.h; sourceTree = "<group>"; };
-		4EC56E231A2A2C3D00B696B4 /* SMSwipableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSwipableView.m; sourceTree = "<group>"; };
-		4EC56E241A2A2C3D00B696B4 /* SMSwipableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMSwipableView.xib; sourceTree = "<group>"; };
 		4EC56E251A2A2C3D00B696B4 /* SMTokenizedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTokenizedTextField.h; sourceTree = "<group>"; };
 		4EC56E261A2A2C3D00B696B4 /* SMTokenizedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTokenizedTextField.m; sourceTree = "<group>"; };
 		4EC56E271A2A2C3D00B696B4 /* SMViewMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMViewMoreCell.h; sourceTree = "<group>"; };
@@ -2882,6 +2894,28 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		4E10EBC21B3AF8E90012245E /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				4E10EBB71B3AE6480012245E /* RouteNavigationToolbarView.xib */,
+				4E10EBB61B3AE6480012245E /* RouteNavigationToolbarView.swift */,
+				4E10EBBD1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib */,
+				4E10EBBC1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.swift */,
+			);
+			name = Navigation;
+			sourceTree = "<group>";
+		};
+		4E10EBC31B3AF8F50012245E /* FindRoute */ = {
+			isa = PBXGroup;
+			children = (
+				4E5E87951B31F7DC0021F5E9 /* RouteTypeToolbarView.xib */,
+				4E5E87941B31F7DC0021F5E9 /* RouteTypeToolbarView.swift */,
+				4E5E87891B31D6560021F5E9 /* FindRouteToolbarView.xib */,
+				4E5E87881B31D6560021F5E9 /* FindRouteToolbarView.swift */,
+			);
+			name = FindRoute;
+			sourceTree = "<group>";
+		};
 		4E2A92541A3B43050032ACD4 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
@@ -2966,6 +3000,7 @@
 				4EEC6D271B20788E003AE8DF /* MapViewController.swift */,
 				4EEC6D241B207844003AE8DF /* MainMapViewController.swift */,
 				4E5E87851B31D4760021F5E9 /* FindRouteViewController.swift */,
+				4E10EBB31B3AE4B10012245E /* RouteNavigationViewController.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -3973,9 +4008,6 @@
 				4EC56E1F1A2A2C3D00B696B4 /* SMSearchCell.m */,
 				4EC56E201A2A2C3D00B696B4 /* SMSearchTwoRowCell.h */,
 				4EC56E211A2A2C3D00B696B4 /* SMSearchTwoRowCell.m */,
-				4EC56E221A2A2C3D00B696B4 /* SMSwipableView.h */,
-				4EC56E231A2A2C3D00B696B4 /* SMSwipableView.m */,
-				4EC56E241A2A2C3D00B696B4 /* SMSwipableView.xib */,
 				4EC56E251A2A2C3D00B696B4 /* SMTokenizedTextField.h */,
 				4EC56E261A2A2C3D00B696B4 /* SMTokenizedTextField.m */,
 				4EC56E271A2A2C3D00B696B4 /* SMViewMoreCell.h */,
@@ -3986,6 +4018,8 @@
 				4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */,
 				4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */,
 				4E7262D81B2AF450008561D0 /* BorderedButton.swift */,
+				4E10EBC51B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib */,
+				4E10EBC41B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift */,
 				4EB8B1861B25D1FE00A1C53E /* Map */,
 				4EF4DF791B28457200B64D3B /* Toolbars */,
 			);
@@ -4655,12 +4689,10 @@
 				4EEC6D361B20B14F003AE8DF /* TrackingToolbarView.swift */,
 				4EF4DF7B1B28461E00B64D3B /* AddressToolbarView.xib */,
 				4EF4DF7A1B28461E00B64D3B /* AddressToolbarView.swift */,
-				4E5E87891B31D6560021F5E9 /* FindRouteToolbarView.xib */,
-				4E5E87881B31D6560021F5E9 /* FindRouteToolbarView.swift */,
+				4E10EBC31B3AF8F50012245E /* FindRoute */,
 				4E5E878F1B31DC520021F5E9 /* RouteStatsToolbarView.xib */,
 				4E5E878E1B31DC520021F5E9 /* RouteStatsToolbarView.swift */,
-				4E5E87951B31F7DC0021F5E9 /* RouteTypeToolbarView.xib */,
-				4E5E87941B31F7DC0021F5E9 /* RouteTypeToolbarView.swift */,
+				4E10EBC21B3AF8E90012245E /* Navigation */,
 			);
 			name = Toolbars;
 			sourceTree = "<group>";
@@ -4931,6 +4963,7 @@
 				4EE065141A10FAB400DE4226 /* icon_locate_no_tracking@2x.png in Resources */,
 				4EE0654A1A10FAB400DE4226 /* cargo_slider.png in Resources */,
 				4EE82FB51B0BCE300089147A /* LaunchScreen.xib in Resources */,
+				4E10EBC01B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib in Resources */,
 				4EE0664F1A10FAB400DE4226 /* splashDialog@2x.png in Resources */,
 				4EE065D11A10FAB400DE4226 /* input_field__scalable@2x.png in Resources */,
 				4EE065BA1A10FAB400DE4226 /* gray_btn.png in Resources */,
@@ -5010,6 +5043,7 @@
 				4EE065841A10FAB400DE4226 /* favHomeWhite.png in Resources */,
 				4EE065B11A10FAB400DE4226 /* field_email_icon.png in Resources */,
 				4EE065071A10FAB400DE4226 /* white-walk.png in Resources */,
+				4E10EBBA1B3AE6480012245E /* RouteNavigationToolbarView.xib in Resources */,
 				4EE065B31A10FAB400DE4226 /* field_user_icon.png in Resources */,
 				4EE066491A10FAB400DE4226 /* splash_cloud@2x.png in Resources */,
 				4EE064FF1A10FAB400DE4226 /* white-u-turn.png in Resources */,
@@ -5028,6 +5062,7 @@
 				4E4AC4541A8502E80037A65E /* Logo@2x.png in Resources */,
 				4EE065411A10FAB400DE4226 /* calloutBubbleLeft@2x.png in Resources */,
 				4EE0658D1A10FAB400DE4226 /* favSchoolGrey@2x.png in Resources */,
+				4E10EBC81B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */,
 				4EE065761A10FAB400DE4226 /* favEditBtn.png in Resources */,
 				4EE064D11A10FAB400DE4226 /* left.png in Resources */,
 				4EE065BE1A10FAB400DE4226 /* green_grey.png in Resources */,
@@ -5083,7 +5118,6 @@
 				4EE065E51A10FAB400DE4226 /* pattern_btn@2x.png in Resources */,
 				4EE066001A10FAB400DE4226 /* reportClose_pressed.png in Resources */,
 				4EE0654E1A10FAB400DE4226 /* checkboxChecked.png in Resources */,
-				4EC56EA91A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */,
 				4EE065DA1A10FAB400DE4226 /* mapDisclosure.png in Resources */,
 				4EE0650E1A10FAB400DE4226 /* findRouteContacts@2x.png in Resources */,
 				4EE0653B1A10FAB400DE4226 /* bottom_divider_vertical@2x.png in Resources */,
@@ -5305,7 +5339,6 @@
 				4EC56E361A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */,
 				4EC56E621A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */,
 				4EC56E8A1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
-				4EC56EAA1A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */,
 				4EC56E461A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5352,6 +5385,7 @@
 				4EE071921A1178E200DE4226 /* break_route@2x.png in Resources */,
 				4EE071DC1A1178E200DE4226 /* u-turn.png in Resources */,
 				4EE071BB1A1178E200DE4226 /* cloud_red_splash@2x.png in Resources */,
+				4E10EBBB1B3AE6480012245E /* RouteNavigationToolbarView.xib in Resources */,
 				4EE071B51A1178E200DE4226 /* checkbox_selected@2x.png in Resources */,
 				4EE071591A1178E100DE4226 /* a_pin@2x.png in Resources */,
 				4EC56E8B1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
@@ -5705,6 +5739,7 @@
 				4EE0736E1A1178E300DE4226 /* splash_bg_btn_blue_pressed.png in Resources */,
 				4EE072B81A1178E200DE4226 /* metro_station_white.png in Resources */,
 				4EE073331A1178E300DE4226 /* routeEnterStart_inactive@2x.png in Resources */,
+				4E10EBC11B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib in Resources */,
 				4EE072401A1178E200DE4226 /* favTypeFavoriteButton.png in Resources */,
 				4EE0716D1A1178E100DE4226 /* arrow_small@2x.png in Resources */,
 				4EE0727A1A1178E200DE4226 /* icon_locate_heading@2x.png in Resources */,
@@ -5756,6 +5791,7 @@
 				4EE0728B1A1178E200DE4226 /* iTunesArtwork@2x.png in Resources */,
 				4EE072FA1A1178E200DE4226 /* reportBulb.png in Resources */,
 				4EE071721A1178E100DE4226 /* back_arrow_btn.png in Resources */,
+				4E10EBC91B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */,
 				4EE072361A1178E200DE4226 /* favSearch_icon.png in Resources */,
 				4EE072331A1178E200DE4226 /* favSchoolGrey@2x.png in Resources */,
 				4EE072501A1178E200DE4226 /* favWorkBlack.png in Resources */,
@@ -5856,7 +5892,6 @@
 				4EE071B71A1178E200DE4226 /* checkboxChecked@2x.png in Resources */,
 				4EE073901A1178E300DE4226 /* tokenNormal@2x.png in Resources */,
 				4EE0726E1A1178E200DE4226 /* greenroute_grey@2x.png in Resources */,
-				4EC56EAB1A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */,
 				4EE072021A1178E200DE4226 /* enterRouteSearchBG.png in Resources */,
 				4EE071911A1178E200DE4226 /* break_route.png in Resources */,
 				4EE072241A1178E200DE4226 /* favHomeGrey.png in Resources */,
@@ -5944,7 +5979,6 @@
 				4EC56E381A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */,
 				4EC56E641A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */,
 				4EC56E8C1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
-				4EC56EAC1A2A2C3D00B696B4 /* SMSwipableView.xib in Resources */,
 				4EC56E481A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6171,6 +6205,7 @@
 				4E5E87861B31D4760021F5E9 /* FindRouteViewController.swift in Sources */,
 				4EC56E851A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
 				4EB8B1881B25D20F00A1C53E /* PinAnnotation.swift in Sources */,
+				4E10EBBE1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.swift in Sources */,
 				4EC56DB81A2A25E900B696B4 /* SMAnalytics.m in Sources */,
 				4EC56E991A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4E5E87961B31F7DC0021F5E9 /* RouteTypeToolbarView.swift in Sources */,
@@ -6205,12 +6240,14 @@
 				4EE06CB91A11134C00DE4226 /* SMAPIOperation.m in Sources */,
 				4EE06CBB1A11134C00DE4226 /* SMAPIQueue.m in Sources */,
 				4EE06C7D1A1110ED00DE4226 /* SMAddressParser.m in Sources */,
+				4E10EBB41B3AE4B10012245E /* RouteNavigationViewController.swift in Sources */,
 				4EC56DCC1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */,
 				4EC56E8D1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
 				4EEC6D3A1B20B7F8003AE8DF /* DistanceFormatter.swift in Sources */,
 				4E90B42E1A9739A900A5F4C5 /* TracksViewController.swift in Sources */,
 				4EC56E791A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
 				4EEC6D311B208156003AE8DF /* CompassButton.swift in Sources */,
+				4E10EBC61B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */,
 				4EE06CD51A11134C00DE4226 /* SMLocationManager.m in Sources */,
 				4EC56E591A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
 				4EE05F501A10EBFA00DE4226 /* main.m in Sources */,
@@ -6283,7 +6320,6 @@
 				4E32B29B1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */,
 				4EFDA4861AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */,
 				4EE06CBD1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
-				4EC56EA51A2A2C3D00B696B4 /* SMSwipableView.m in Sources */,
 				4E467D1A1B3416D4003770EE /* RouteManager.swift in Sources */,
 				4EC56E551A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
 				4EC56E391A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
@@ -6302,6 +6338,7 @@
 				4EC56EDB1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */,
 				4E651D2F1A93EA5B00497C70 /* TrackingPromptViewController.swift in Sources */,
 				4EBB7B4B1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */,
+				4E10EBB81B3AE6480012245E /* RouteNavigationToolbarView.swift in Sources */,
 				4EC56EB11A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */,
 				4E5982121A24AC1200A40484 /* HistoryItem.swift in Sources */,
 				4EC56ECF1A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
@@ -6341,6 +6378,7 @@
 				4EE06C381A10FC5600DE4226 /* SMDepartureInfo.m in Sources */,
 				4EC56E7B1A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
 				4E5982191A24AC1200A40484 /* User.swift in Sources */,
+				4E10EBB91B3AE6480012245E /* RouteNavigationToolbarView.swift in Sources */,
 				4EE06C4D1A10FC5600DE4226 /* SMTrain.m in Sources */,
 				4EE06F0D1A112F6D00DE4226 /* SMLoadStationsView.m in Sources */,
 				4EC56E3F1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */,
@@ -6361,7 +6399,6 @@
 				4EC56EDD1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */,
 				4E0176891AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */,
 				4EC56DC61A2A25E900B696B4 /* SMContacts.m in Sources */,
-				4EC56EA71A2A2C3D00B696B4 /* SMSwipableView.m in Sources */,
 				4EE59AF51A6485BA00B89D71 /* SMAccountNativeViewController.m in Sources */,
 				4E56745A1A9238A600BF4A28 /* TrackLocation.swift in Sources */,
 				4EE06C491A10FC5600DE4226 /* SMStationPickerView.m in Sources */,
@@ -6384,6 +6421,7 @@
 				4EC56DBA1A2A25E900B696B4 /* SMAnalytics.m in Sources */,
 				4E5E87971B31F7DC0021F5E9 /* RouteTypeToolbarView.swift in Sources */,
 				4EC56E331A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
+				4E10EBB51B3AE4B10012245E /* RouteNavigationViewController.swift in Sources */,
 				4EE06F051A112F6D00DE4226 /* SMBreakRouteButtonCell.m in Sources */,
 				4EEC6D291B20788E003AE8DF /* MapViewController.swift in Sources */,
 				4E59820F1A24AC1200A40484 /* FavoriteItem.swift in Sources */,
@@ -6429,6 +6467,7 @@
 				4E5258C81A9B9C8400BE55C8 /* String.swift in Sources */,
 				4EE06CE51A11135000DE4226 /* SMAddressParser.m in Sources */,
 				4EC56E5F1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */,
+				4E10EBC71B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */,
 				4E337B551B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */,
 				4EC56EF51A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
 				4EC56DC21A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
@@ -6509,6 +6548,7 @@
 				4EE06C431A10FC5600DE4226 /* SMRouteTimeInfo.m in Sources */,
 				4EE06C4B1A10FC5600DE4226 /* SMTime.m in Sources */,
 				4EE06C5F1A10FC5600DE4226 /* SMRouteInfoViewController.m in Sources */,
+				4E10EBBF1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.swift in Sources */,
 				4E5E87911B31DC520021F5E9 /* RouteStatsToolbarView.swift in Sources */,
 				4E33B91F1A6406FD007D4C82 /* UserHelper.swift in Sources */,
 				4EFDA4831AB87A6E00522A41 /* NSDate.swift in Sources */,

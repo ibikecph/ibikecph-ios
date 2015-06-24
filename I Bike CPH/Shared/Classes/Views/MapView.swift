@@ -149,6 +149,47 @@ class MapView: UIView {
         // Zoom
         mapView.zoomWithLatitudeLongitudeBoundsSouthWest(bounds.southWest, northEast: bounds.northEast, animated: animated)
     }
+    
+    func addAnnotationsForRoute(route: SMRoute, from: SearchListItem, to: SearchListItem, zoom: Bool = true) -> [Annotation] {
+        var annotations = [Annotation]()
+        if let locations = route.waypoints.copy() as? [CLLocation] { // Copy since it is NSMutableArray
+            let coordinates = locations.map { $0.coordinate } // Map to coordinates
+            let annotation = addPath(coordinates)
+            annotations.append(annotation)
+            if zoom {
+                // Zoom to entire path
+                zoomToAnnotation(annotation)
+            }
+            
+            if let
+                pinStart = from.location?.coordinate,
+                pathStart = coordinates.first
+            {
+                let annotation = addPath([pinStart, pathStart], lineColor: Styler.foregroundColor())
+                annotations.append(annotation)
+            }
+            if let
+                pinEnd = to.location?.coordinate,
+                pathEnd = coordinates.last
+            {
+                let annotation = addPath([pathEnd, pinEnd], lineColor: Styler.foregroundColor())
+                annotations.append(annotation)
+            }
+        }
+        // Pins
+        if let startCoordinate = from.location?.coordinate {
+            // Pin
+            let startPin = PinAnnotation(mapView: self, coordinate: startCoordinate, type: .Start)
+            addAnnotation(startPin)
+            annotations.append(startPin)
+        }
+        if let endCoordinate = to.location?.coordinate {
+            let endPin = PinAnnotation(mapView: self, coordinate: endCoordinate, type: .End)
+            mapView.addAnnotation(endPin)
+            annotations.append(endPin)
+        }
+        return annotations
+    }
 }
 
 

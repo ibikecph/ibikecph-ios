@@ -8,6 +8,12 @@
 
 import UIKit
 
+struct RouteComposit {
+    let route: SMRoute
+    let from: SearchListItem
+    let to: SearchListItem
+}
+
 class FindRouteViewController: MapViewController {
     
     private enum ItemOrigin {
@@ -15,7 +21,7 @@ class FindRouteViewController: MapViewController {
     }
     
     private var findRouteToolbarView = FindRouteToolbarView()
-    private let findRouteToNavigationSegue = "findRouteToNavigationSegue"
+    private let findRouteToRouteNavigationSegue = "findRouteToRouteNavigation"
     private let findRouteToFindAddressSegue = "findRouteToFindAddress"
     var fromItem: SearchListItem = CurrentLocationItem()
     var toItem: SearchListItem?
@@ -26,6 +32,7 @@ class FindRouteViewController: MapViewController {
             updateUI()
         }
     }
+    var routeAnnotations = [Annotation]()
     
     deinit {
         NotificationCenter.unobserve(self)
@@ -46,12 +53,6 @@ class FindRouteViewController: MapViewController {
         // Route delegate
         routeManager.delegate = self
         
-        // Load overlays
-        #if CYKELPLANEN
-            appDelegate.mapOverlays.useMapView(mapView.mapView)
-            appDelegate.mapOverlays.loadMarkers()
-        #endif
-        
         // Search for route
         searchForNewRoute()
     }
@@ -62,11 +63,12 @@ class FindRouteViewController: MapViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if
-            segue.identifier == findRouteToNavigationSegue,
-            let navigationController = segue.destinationViewController as? UINavigationController
+            segue.identifier == findRouteToRouteNavigationSegue,
+            let routeNavigationViewController = segue.destinationViewController as? RouteNavigationViewController,
+            route = route,
+            toItem = toItem
         {
-            let backButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "dismissViewController")
-            navigationController.viewControllers.first?.navigationItem.leftBarButtonItem = backButton
+            routeNavigationViewController.route = RouteComposit(route: route, from: fromItem, to: toItem)
         }
         if
             segue.identifier == findRouteToFindAddressSegue,
@@ -92,39 +94,15 @@ class FindRouteViewController: MapViewController {
     
     private func updateUI() {
         findRouteToolbarView.prepareForReuse()
-        mapView.removeAllAnnotations()
-        if let route = route {
+        mapView.removeAnnotations(routeAnnotations)
+        routeAnnotations = [Annotation]()
+        if let
+            route = route,
+            toItem = toItem
+        {
             // TODO: Move this to extension on MapView to make reusable. Return all annotations related to route as an array for reference.
             // Route path
-            if let locations = route.waypoints.copy() as? [CLLocation] { // Copy since it is NSMutableArray
-                let coordinates = locations.map { $0.coordinate } // Map to coordinates
-                let annotation = mapView.addPath(coordinates)
-                // Zoom to entire path
-                mapView.zoomToAnnotation(annotation)
-                
-                if let
-                    pinStart = fromItem.location?.coordinate,
-                    pathStart = coordinates.first
-                {
-                    mapView.addPath([pinStart, pathStart], lineColor: Styler.foregroundColor())
-                }
-                if let
-                    pinEnd = toItem?.location?.coordinate,
-                    pathEnd = coordinates.last
-                {
-                    mapView.addPath([pathEnd, pinEnd], lineColor: Styler.foregroundColor())
-                }
-            }
-            // Pins
-            if let startCoordinate = fromItem.location?.coordinate {
-                // Pin
-                let startPin = PinAnnotation(mapView: mapView, coordinate: startCoordinate, type: .Start)
-                mapView.addAnnotation(startPin)
-            }
-            if let endCoordinate = toItem?.location?.coordinate {
-                let endPin = PinAnnotation(mapView: mapView, coordinate: endCoordinate, type: .End)
-                mapView.addAnnotation(endPin)
-            }
+            routeAnnotations = mapView.addAnnotationsForRoute(route, from: fromItem, to: toItem, zoom: true)
             // Address
             findRouteToolbarView.updateWithFromItem(fromItem, toItem: toItem)
             // Stats
@@ -156,7 +134,7 @@ extension FindRouteViewController: FindRouteToolbarDelegate {
         }
     }
     func didSelectRoute() {
-        performSegueWithIdentifier(findRouteToNavigationSegue, sender: self)
+        performSegueWithIdentifier(findRouteToRouteNavigationSegue, sender: self)
     }
     func didSelectFrom() {
         itemOrigin = .From

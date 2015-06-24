@@ -35,8 +35,9 @@ extension RouteStatsToolbarView {
     }
     
     func updateToRoute(route: SMRoute) {
-        distanceLabel.text = distanceFormatter.string(meters: Double(route.estimatedRouteDistance))
-        let estimatedTimeForRoute = NSTimeInterval(route.estimatedTimeForRoute)
+        distanceLabel.text = distanceFormatter.string(meters: Double(route.distanceLeft))
+        let partLeft = route.distanceLeft / CGFloat(route.estimatedRouteDistance)
+        let estimatedTimeForRoute = NSTimeInterval(CGFloat(route.estimatedTimeForRoute) * partLeft)
         durationLabel.text = hourMinuteFormatter.string(seconds: estimatedTimeForRoute)
         arrivalTime.text = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: estimatedTimeForRoute))
     }

@@ -35,3 +35,5 @@
 #import <Mapbox-iOS-SDK/Mapbox.h>
 #import <Mapbox-iOS-SDK/RMAnnotation.h>
 #import "SMiBikeCPHMapTileSource.h"
+
+#import "SMReportErrorController.h"

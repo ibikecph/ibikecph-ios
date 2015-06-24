@@ -20,7 +20,6 @@ class MapViewController: ToolbarViewController {
         // Delegate
         mapView.trackingDelegate = self
         
-        
 #if CYKELPLANEN
         // Load overlays
         if appDelegate.mapOverlays == nil {
@@ -35,7 +34,7 @@ class MapViewController: ToolbarViewController {
         
 #if CYKELPLANEN
         appDelegate.mapOverlays.useMapView(mapView.mapView)
-        appDelegate.mapOverlays.loadMarkers()
+        appDelegate.mapOverlays.toggleMarkers() // Load annotations to view
 #endif
         // Default map
 //        mapView.centerCoordinate = macro.initialMapCoordinate
