@@ -164,12 +164,13 @@ extension FindRouteViewController: RouteManagerDelegate {
             case .ErrorOfType(_):
                 let alert = UIAlertView(title: nil, message: "error_route_not_found".localized, delegate: nil, cancelButtonTitle: "Ok".localized)
                 alert.show()
-            case .Success(let dictionary):
+            case .Success(let dictionary, let osrmServer):
                 if let
                     fromCoordinate = fromItem.location?.coordinate,
                     toCoordinate = toItem?.location?.coordinate
                 {
                     let route = SMRoute(routeStart: fromCoordinate, andEnd: toCoordinate, andDelegate: self, andJSON: dictionary)
+                    route.osrmServer = osrmServer
                     self.route = route
                 }
         }
