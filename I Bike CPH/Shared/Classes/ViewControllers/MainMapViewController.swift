@@ -47,7 +47,13 @@ class MainMapViewController: MapViewController {
         NotificationCenter.observe(settingsUpdatedNotification) { notification in
             self.updateTrackingToolbarView()
         }
-    }    
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // Geocode tracks
+        TracksHandler.instance.geocode()
+    }
 
     @IBAction func openMenu(sender: AnyObject) {
         NotificationCenter.post("openMenu")

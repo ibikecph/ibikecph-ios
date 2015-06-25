@@ -12,9 +12,10 @@ import CoreLocation
 
 let processedSmallNoticationKey = "processedSmallNoticationKey"
 let processedBigNoticationKey = "processedBigNoticationKey"
+let processedGeocodingNoticationKey = "processedGeocodingNoticationKey"
 
 class TracksHandler {
-    static let shared = TracksHandler()
+    static let instance = TracksHandler()
 
     private var processing: Bool = false {
         didSet {
@@ -48,18 +49,18 @@ class TracksHandler {
             return
         }
         if force {
-            shared.cleanUpBig(asap: true)
-            shared.lastProcessedBig = NSDate()
+            instance.cleanUpBig(asap: true)
+            instance.lastProcessedBig = NSDate()
             return
         }
-        if NSDate().timeIntervalSinceDate(shared.lastProcessedBig) > 60*60*1 { // Do big stuff every hour
-            shared.cleanUpBig(asap: false)
-            shared.lastProcessedBig = NSDate()
+        if NSDate().timeIntervalSinceDate(instance.lastProcessedBig) > 60*60*1 { // Do big stuff every hour
+            instance.cleanUpBig(asap: false)
+            instance.lastProcessedBig = NSDate()
             return
         }
-        if NSDate().timeIntervalSinceDate(shared.lastProcessedSmall) > 60*5 { // Do small stuff every 5 min
-            shared.cleanUpSmall()
-            shared.lastProcessedSmall = NSDate()
+        if NSDate().timeIntervalSinceDate(instance.lastProcessedSmall) > 60*5 { // Do small stuff every 5 min
+            instance.cleanUpSmall()
+            instance.lastProcessedSmall = NSDate()
             return
         }
         Async.main(after: 10) {
@@ -68,14 +69,14 @@ class TracksHandler {
     }
     
     private func cleanUpSmall() {
-        if TracksHandler.shared.processing {
+        if TracksHandler.instance.processing {
             println("Already processing")
             Async.main(after: 30) { // Check again after 30 seconds
                 self.cleanUpSmall()
             }
             return
         }
-        TracksHandler.shared.processing = true
+        TracksHandler.instance.processing = true
         
         println("Start processing small")
         let fromDate = lastProcessedSmall.dateByAddingTimeInterval(-60*15) // Go 15 minutes back
@@ -89,7 +90,7 @@ class TracksHandler {
         }
         operations.last?.completionBlock = {
             println("Done processing small")
-            TracksHandler.shared.processing = false
+            TracksHandler.instance.processing = false
             NotificationCenter.post(processedSmallNoticationKey, object: self)
         }
         TracksOperation.addDependencies(operations)
@@ -97,14 +98,14 @@ class TracksHandler {
     }
     
     private func cleanUpBig(#asap: Bool) {
-        if TracksHandler.shared.processing {
+        if TracksHandler.instance.processing {
             println("Already processing")
             Async.main(after: 60*1) { // Check again after 1 minute
                 self.cleanUpBig(asap: asap)
             }
             return
         }
-        TracksHandler.shared.processing = true
+        TracksHandler.instance.processing = true
         
         println("Start processing big")
         let fromDate = lastProcessedBig.dateByAddingTimeInterval(-60*60*24) // Go 24 hours back
@@ -122,7 +123,6 @@ class TracksHandler {
             RecalculateTracksOperation(fromDate: fromDate),
             RemoveUnownedDataOperation(fromDate: fromDate),
             RemoveEmptyTracksOperation(), // Rinse and repeat
-            GeocodeBikeTracksOperation() // Don't use from date since background operation might not have geocoded
         ]
         for operation in operations {
             operation.queuePriority = .Low
@@ -131,8 +131,37 @@ class TracksHandler {
         operations.last?.completionBlock = {
             println("Done processing big")
             Async.main {
-                TracksHandler.shared.processing = false
+                TracksHandler.instance.processing = false
                 NotificationCenter.post(processedBigNoticationKey, object: self)
+            }
+        }
+        TracksOperation.addDependencies(operations)
+        operationQueue.addOperations(operations, waitUntilFinished: false)
+    }
+    
+    func geocode() {
+        if TracksHandler.instance.processing {
+            println("Already processing")
+            Async.main(after: 10) { // Check again after 10 seconds
+                self.geocode()
+            }
+            return
+        }
+        TracksHandler.instance.processing = true
+        
+        println("Start geocoding big")
+        let operations = [
+            GeocodeBikeTracksOperation() // Don't use from date since background operation might not have geocoded)
+        ]
+        for operation in operations {
+            operation.queuePriority = .High
+            operation.qualityOfService = .UserInitiated
+        }
+        operations.last?.completionBlock = {
+            println("Done geociding")
+            Async.main {
+                TracksHandler.instance.processing = false
+                NotificationCenter.post(processedGeocodingNoticationKey, object: self)
             }
         }
         TracksOperation.addDependencies(operations)
