@@ -50,13 +50,24 @@ extension AddressToolbarView {
     func updateToItem(item: SearchListItem) {
         let addressLine1 = item.street + " " + item.number
         let addressLine2 = item.zip + " " + item.city
+        let doubleAddressLine = "\(addressLine1)\n\(addressLine2)"
         if let favorite = item as? FavoriteItem {
             favoriteSelected = true
             nameLabel.text = favorite.name
-            addresslabel.text = "\(addressLine1)\n\(addressLine2)"
+            addresslabel.text = doubleAddressLine
             return
         }
         favoriteSelected = false
+        if let foursquare = item as? FoursquareItem {
+            nameLabel.text = foursquare.name
+            addresslabel.text = doubleAddressLine
+            return
+        }
+        if item.name.rangeOfString(item.address) == nil {
+            nameLabel.text = item.name
+            addresslabel.text = doubleAddressLine
+            return
+        }
         nameLabel.text = addressLine1
         addresslabel.text = addressLine2 + "\n"
     }
