@@ -319,7 +319,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         }
     } else {
         if (self.delegate) {
-            [self.delegate locationFound:self.locationItem];
+            [self.delegate locationFound:currentItem];
         }
         [self dismiss];
     }
