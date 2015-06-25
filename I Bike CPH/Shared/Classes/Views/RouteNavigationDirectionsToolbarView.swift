@@ -24,6 +24,7 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
     private let cellID = "TurnInstructionCellID"
     var instructions = [SMTurnInstruction]() {
         didSet {
+            collectionView.contentOffset = CGPointZero // Reset scroll position
             collectionView.reloadData()
         }
     }

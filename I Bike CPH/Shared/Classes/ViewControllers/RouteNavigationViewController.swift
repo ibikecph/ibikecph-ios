@@ -32,6 +32,9 @@ class RouteNavigationViewController: MapViewController {
         // Route delegate
         route?.route.delegate = self
         
+        // Setup UI
+        updateUI(zoom: true)
+        
         // Location updates
         NSNotificationCenter.defaultCenter().addObserverForName("refreshPosition", object: nil, queue: nil) { notification in
             if let
@@ -39,20 +42,12 @@ class RouteNavigationViewController: MapViewController {
                 location = locations.first,
                 route = self.route
             {
+                // Tell route about new user location
                 route.route.visitLocation(location)
-            
-                
-//                [self reloadFirstSwipableView];
-                
-//                [labelDistanceLeft setText:formatDistance(self.route.distanceLeft)];
-                
-//                CGFloat time = self.route.distanceLeft * self.route.estimatedTimeForRoute / self.route.estimatedRouteDistance;
-//                [labelTimeLeft setText:expectedArrivalTime(time)];
+                // Update stats to reflect route progress
+                self.updateStats()
             }
         }
-        
-        // Update
-        updateUI(zoom: true)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -90,10 +85,17 @@ class RouteNavigationViewController: MapViewController {
             routeAnnotations = mapView.addAnnotationsForRoute(route.route, from: route.from, to: route.to, zoom: zoom)
             // Address
             routeNavigationToolbarView.updateWithItem(route.to)
+        }
+        // Directions
+        updateTurnInstructions()
+        // Stats
+        updateStats()
+    }
+    
+    private func updateStats() {
+        if let route = route {
             // Stats
             routeNavigationToolbarView.routeStatsToolbarView.updateToRoute(route.route)
-            // Directions
-            updateTurnInstructions()
         } else {
             routeNavigationToolbarView.routeStatsToolbarView.prepareForReuse()
         }
