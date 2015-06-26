@@ -54,21 +54,21 @@
 {
     // TODO
 //	return @"Open Street Map, the free wiki world map, provides freely usable map data for all parts of the world, under the Creative Commons Attribution-Share Alike 2.0 license.";
-	return @"I Bike CPH, TODO";
+	return @"I Bike CPH";
 }
 
 - (NSString *)shortAttribution
 {
     // TODO
 //	return @"© OpenStreetMap CC-BY-SA";
-    return @"TODO";
+    return @"I Bike CPH";
 }
 
 - (NSString *)longAttribution
 {
     // TODO
 //	return @"Map data © OpenStreetMap, licensed under Creative Commons Share Alike By Attribution.";
-    return @"TODO";
+    return @"I Bike CPH";
 }
 
 @end

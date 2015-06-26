@@ -17,29 +17,6 @@ protocol MapViewDelegate {
     func didSelectAnnotation(annotation: Annotation)
 }
 
-//private class TileSource: RMAbstractWebMapSource {
-//    
-//    override init() {
-//        super.init()
-//        minZoom = 4
-//        maxZoom = Float(MAX_MAP_ZOOM)
-//    }
-//    
-//    override func URLForTile(tile: RMTile) -> NSURL! {
-//        let urlString = "http://tiles.ibikecph.dk/tiles/\(tile.zoom)/\(tile.x)/\(tile.y).png"
-//        let url = NSURL(string: urlString)
-//        return url!
-//    }
-//    
-//    
-//    
-////    func shortName() -> String {
-////        return "I Bike CPH"
-////    }
-////    override let shortName = "I Bike CPH"
-//    private(set) override var shortName = "I Bike CPH"
-//}
-
 
 extension RMUserTrackingMode: Equatable {}
 public func ==(lhs: RMUserTrackingMode, rhs: RMUserTrackingMode) -> Bool {
@@ -111,6 +88,16 @@ class MapView: UIView {
     
         mapView.frame = max(bounds.width, bounds.height) == 0 ? CGRect(x: 0, y: 0, width: 1, height: 1) : bounds
     }
+    
+    var initialRegionLoadNecessary = true
+    func loadInitialRegionIfNecessary() {
+        if initialRegionLoadNecessary {
+            // Default map
+            centerCoordinate = macro.initialMapCoordinate
+            zoomLevel = macro.initialMapZoom
+            initialRegionLoadNecessary = false
+        }
+    }
 
     func addPath(coordinates: [CLLocationCoordinate2D], lineColor: UIColor = Styler.tintColor()) -> Annotation {
     
@@ -148,6 +135,8 @@ class MapView: UIView {
         let bounds = mapView.sphericalTrapezium(forProjectedRect: annotation.projectedBoundingBox).padded(padding: padding)
         // Zoom
         mapView.zoomWithLatitudeLongitudeBoundsSouthWest(bounds.southWest, northEast: bounds.northEast, animated: animated)
+
+        initialRegionLoadNecessary = false
     }
     
     func addAnnotationsForRoute(route: SMRoute, from: SearchListItem, to: SearchListItem, zoom: Bool = true) -> [Annotation] {
@@ -198,6 +187,7 @@ extension MapView {
     var centerCoordinate: CLLocationCoordinate2D {
         set {
             mapView.centerCoordinate = newValue
+            initialRegionLoadNecessary = false
         }
         get {
             return mapView.centerCoordinate
@@ -206,6 +196,7 @@ extension MapView {
     var zoomLevel: Double {
         set {
             mapView.zoom = Float(newValue)
+            initialRegionLoadNecessary = false
         }
         get {
             return Double(mapView.zoom)
@@ -229,6 +220,7 @@ extension MapView {
     }
     func centerCoordinate(coordinate: CLLocationCoordinate2D, zoomLevel: Double, animated: Bool = true) {
         mapView.setZoom(Float(zoomLevel), atCoordinate: coordinate, animated: animated)
+        initialRegionLoadNecessary = false
     }
     func addAnnotation(annotation: Annotation) {
         mapView.addAnnotation(annotation)
@@ -249,6 +241,10 @@ extension MapView {
 
 
 extension MapView: RMMapViewDelegate {
+    
+//    func mapViewRegionDidChange(mapView: RMMapView!) {
+//        initialRegionLoadNecessary = false
+//    }
     
     func mapView(mapView: RMMapView, didSelectAnnotation annotation: RMAnnotation) {
         if let annotation = annotation as? Annotation {

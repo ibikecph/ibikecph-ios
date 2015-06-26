@@ -36,9 +36,7 @@ class MapViewController: ToolbarViewController {
         appDelegate.mapOverlays.useMapView(mapView.mapView)
         appDelegate.mapOverlays.toggleMarkers() // Load annotations to view
 #endif
-        // Default map
-//        mapView.centerCoordinate = macro.initialMapCoordinate
-//        mapView.zoomLevel = macro.initialMapZoom
+        mapView.loadInitialRegionIfNecessary()
     }
     
     @IBAction func compassButtonTapped(sender: AnyObject) {
