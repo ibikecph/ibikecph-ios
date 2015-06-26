@@ -249,32 +249,17 @@ public class ENSideMenu: NSObject {
 extension ENSideMenu: UIGestureRecognizerDelegate {
     
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailByGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        // Screen edge pan should overrule all other gestures
+        
         if gestureRecognizer == screenEdgePan1GestureRecognizer {
+            // If other gesture is screen from same edge
+            if let other = otherGestureRecognizer as? UIScreenEdgePanGestureRecognizer {
+                let sameEdges = screenEdgePan1GestureRecognizer!.edges == other.edges
+                return !sameEdges
+            }
+            // Screen edge pan should overrule all other gestures
             let menuIsClosed = !isMenuOpen
             return menuIsClosed
         }
-//        if gestureRecognizer == panGestureRecognizer {
-//            return false
-//        }
         return false
     }
-    
-//    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if gestureRecognizer == panGestureRecognizer {
-//            if let pan = otherGestureRecognizer as? UIPanGestureRecognizer {
-//                return true
-//            }
-//        }
-//        return false
-//    }
-    
-//    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if gestureRecognizer == panGestureRecognizer {
-//            if let pan = otherGestureRecognizer as? UIPanGestureRecognizer {
-//                return true
-//            }
-//        }
-//        return false
-//    }
 }

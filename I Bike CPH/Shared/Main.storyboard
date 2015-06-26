@@ -366,10 +366,16 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
+                        <outlet property="delegate" destination="AQB-vu-cef" id="wSZ-uy-qCT"/>
                         <segue destination="T3l-69-wdf" kind="relationship" relationship="rootViewController" id="UMG-Gd-54R"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAo-8K-PXs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="AQB-vu-cef" customClass="MapToMapNavigationControllerDelegate" customModule="CykelPlanen" customModuleProvider="target">
+                    <connections>
+                        <outlet property="navigationController" destination="9Pp-Y2-dkg" id="L70-Wf-pWa"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-2313" y="1221"/>
         </scene>
@@ -575,7 +581,7 @@ God tur og tak fordi du cykler!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qwr-r2-t5R" userLabel="ToolbarContainer">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qwr-r2-t5R" userLabel="ToolbarContainer">
                                 <rect key="frame" x="0.0" y="64" width="600" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -588,7 +594,7 @@ God tur og tak fordi du cykler!</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-LC-UdU" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-LC-UdU" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="436"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDH-94-tHy" customClass="CompassButton" customModule="CykelPlanen" customModuleProvider="target">
@@ -3526,7 +3532,7 @@ God tur og tak fordi du cykler!</string>
     <resources>
         <image name="Compas unselected" width="27" height="27"/>
         <image name="From to" width="22" height="14"/>
-        <image name="Logo" width="7" height="12"/>
+        <image name="Logo" width="984" height="562"/>
         <image name="arrow_large.png" width="37" height="32"/>
         <image name="arrow_small.png" width="20" height="18"/>
         <image name="bike_route.png" width="30" height="39"/>
