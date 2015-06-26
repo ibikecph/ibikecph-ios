@@ -121,7 +121,17 @@ extension RouteNavigationViewController: RouteNavigationToolbarDelegate {
 extension RouteNavigationViewController: RouteNavigationDirectionsToolbarDelegate {
     
     func didSwipeToInstruction(instruction: SMTurnInstruction, userAction: Bool) {
-        if userAction {
+        if !userAction {
+            return
+        }
+        if let
+            firstInstruction = route?.route.turnInstructions.firstObject as? SMTurnInstruction
+            where firstInstruction == instruction
+        {
+            // If user swiped to the first instruction, enable .Follow
+            mapView.userTrackingMode = .Follow
+        } else {
+            // Disable tracking to allow user to swipe through turn instructions
             mapView.userTrackingMode = .None
             mapView.centerCoordinate(instruction.loc.coordinate, zoomLevel: mapView.zoomLevel)
         }
@@ -132,7 +142,9 @@ extension RouteNavigationViewController: RouteNavigationDirectionsToolbarDelegat
 extension RouteNavigationViewController: SMRouteDelegate {
     
     func updateTurn(firstElementRemoved: Bool) {
-        updateTurnInstructions()
+        if mapView.userTrackingMode != .None {
+            updateTurnInstructions()
+        }
     }
     func reachedDestination() {
         // TODO: Go to next route if brokenRoute
