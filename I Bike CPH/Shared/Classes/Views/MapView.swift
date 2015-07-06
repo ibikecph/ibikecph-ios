@@ -50,7 +50,7 @@ class MapView: UIView {
     private(set) lazy var mapView: RMMapView = {
         let tileSource = SMiBikeCPHMapTileSource()
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-        RMConfiguration.sharedInstance().accessToken = "pk.eyJ1IjoidG9iaWFzZG0iLCJhIjoiTDZabnJEVSJ9.vrLJuuThWDNBmf157JY2FQ"
+        RMConfiguration.sharedInstance().accessToken = "sk.eyJ1IjoiZW1pbHRpbiIsImEiOiJkM2M2ZjAwYzAzMmM1YTRmMzNlZDI1YzM3OTNiZjMxMCJ9.Oh1XyjGZjFB_RQBzfbC2bg"
         let map = RMMapView(frame: rect, andTilesource: tileSource)
         return map
     }()

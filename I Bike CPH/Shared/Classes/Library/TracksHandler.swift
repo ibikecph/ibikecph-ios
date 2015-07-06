@@ -139,7 +139,7 @@ class TracksHandler {
         operationQueue.addOperations(operations, waitUntilFinished: false)
     }
     
-    func geocode() {
+    class func geocode() {
         if TracksHandler.instance.processing {
             println("Already processing")
             Async.main(after: 10) { // Check again after 10 seconds
@@ -165,7 +165,7 @@ class TracksHandler {
             }
         }
         TracksOperation.addDependencies(operations)
-        operationQueue.addOperations(operations, waitUntilFinished: false)
+        TracksHandler.instance.operationQueue.addOperations(operations, waitUntilFinished: false)
     }
 }
 

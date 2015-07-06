@@ -51,8 +51,8 @@ class MainMapViewController: MapViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        // Geocode tracks
-        TracksHandler.instance.geocode()
+        // Update tracking information
+        TracksHandler.setNeedsProcessData(force: true)
     }
 
     @IBAction func openMenu(sender: AnyObject) {

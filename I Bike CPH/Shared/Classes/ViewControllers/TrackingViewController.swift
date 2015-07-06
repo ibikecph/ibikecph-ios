@@ -61,6 +61,11 @@ class TrackingViewController: SMTranslatedViewController {
         
         NotificationCenter.observe(processedBigNoticationKey) { notification in
             self.updateUI()
+            // Request update of tracks
+            TracksHandler.geocode()
+        }
+        NotificationCenter.observe(processedGeocodingNoticationKey) { notification in
+            self.updateUI()
         }
         self.updateUI()
     }
