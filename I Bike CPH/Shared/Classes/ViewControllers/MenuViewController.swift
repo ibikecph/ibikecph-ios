@@ -65,22 +65,22 @@ class MenuViewController: UIViewController {
             }
             menuViewController.performSegueWithIdentifier("menuToTracking", sender: menuViewController)
         })
-        let aboutItem = MenuItem(title: (Macro.isIBikeCph() ? "about_app_ibc" : "about_app_cp").localized, iconImageName: "information", action: { menuViewController in
+        let aboutItem = MenuItem(title: (macro.isIBikeCph ? "about_app_ibc" : "about_app_cp").localized, iconImageName: "information", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToAbout", sender: menuViewController)
         })
         
         //
         var menuItems = [favItem]
         
-        if Macro.isCykelPlanen() {
+        if macro.isCykelPlanen {
             menuItems.append(overlayItem)
         }
 //        menuItems.append(voiceItem)
-        if Macro.isIBikeCph() {
+        if macro.isIBikeCph {
         }
 //        menuItems.append(speedItem)
         menuItems.append(trackingItem)
-        if Macro.isCykelPlanen() {
+        if macro.isCykelPlanen {
             menuItems.append(reminderItem)
         }
         menuItems.append(profileItem)

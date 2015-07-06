@@ -13,7 +13,7 @@ class HourMinuteFormatter {
     private let calendar = NSCalendar.currentCalendar()
     private let unitFlags: NSCalendarUnit = .HourCalendarUnit | .MinuteCalendarUnit
     
-    func hoursAndMinutes(#seconds: NSTimeInterval) -> (hour: Int, minutes: Int) {
+    private func hoursAndMinutes(#seconds: NSTimeInterval) -> (hour: Int, minutes: Int) {
         let rounded = round(seconds/60)*60 // Round to minutes
         let components = calendar.components(unitFlags, fromDate: NSDate(), toDate: NSDate(timeIntervalSinceNow: rounded), options: nil)
         let hours = components.hour

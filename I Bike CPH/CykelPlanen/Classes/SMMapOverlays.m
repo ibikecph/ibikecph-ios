@@ -8,13 +8,9 @@
 
 #import "SMMapOverlays.h"
 
-#import "RMMapView.h"
 #import "SMStationInfo.h"
-#import "SMAnnotation.h"
-#import "RMAnnotation.h"
 #import "SMTransportation.h"
 #import "SMTransportationLine.h"
-#import "RMMarker.h"
 
 //#define GEN_STATION_INDICES
 
@@ -218,7 +214,7 @@
             //NSString* annotationTitle = @"title";
             //NSString* alternateTitle = @"alternate title";
             
-            SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
+            RMAnnotation *annotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
         
             annotation.annotationType = @"station";
             annotation.annotationIcon = [UIImage imageNamed:imageName];
@@ -330,7 +326,7 @@
         NSString* annotationTitle = [station objectForKey:@"name"]; //@"title";
         NSString* alternateTitle = @"alternate title";
         
-        SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
+        RMAnnotation *annotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
         
         annotation.annotationType = @"station";
         SMStationInfo* st= [[SMTransportation instance] stationWithName:[station objectForKey:@"name"]];
@@ -341,15 +337,15 @@
         NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
         annotation.title = annotationTitle;
         annotation.subtitle = alternateTitle;
-        annotation.calloutShown = NO;
-        [annotation hideCallout];
+//        annotation.calloutShown = NO;
+//        [annotation hideCallout];
         
         if ([annotation.title isEqualToString:@""] && alternateTitle) {
             annotation.title = alternateTitle;
         }
         annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         annotation.subtitle = alternateTitle;
-        [annotation.calloutView.markerIcon setImage:annotation.annotationIcon];
+//        [annotation.calloutView.markerIcon setImage:annotation.annotationIcon];
         //[self.mpView addAnnotation:annotation];
         
         [tempMarkers addObject:annotation];
@@ -366,30 +362,30 @@
 
     }
     
-    for (SMAnnotation* annotation in tempMarkers) {
-        for (SMAnnotation* a in tempMarkers) {
-            if ( a != annotation ) {
-                if ( a.coordinate.latitude == annotation.coordinate.latitude && a.coordinate.longitude == annotation.coordinate.longitude ) {
-                    NSLog(@"Annotation same coords!");
-                    //annotation.calloutShown = YES;
-                    CGRect frame = a.calloutView.calloutLabel.frame;
-                    frame.origin.x += 18;
-                    [a.calloutView.calloutLabel setFrame:frame];
-                    [annotation.calloutView.calloutLabel setFrame:frame];
-                    [annotation.calloutView.markerIcon setImage:annotation.annotationIcon];
-                    [a.calloutView.markerIcon setImage:annotation.annotationIcon];
-                    
-                    [annotation.calloutView.markerIcon2 setImage:a.annotationIcon];
-                    [a.calloutView.markerIcon2 setImage:a.annotationIcon];
-                    
-                    [annotation showCallout];
-                    [annotation hideCallout];
-                    [a showCallout];
-                    [a hideCallout];
-                }
-            }
-        }
-    }
+//    for (RMAnnotation* annotation in tempMarkers) {
+//        for (RMAnnotation* a in tempMarkers) {
+//            if ( a != annotation ) {
+//                if ( a.coordinate.latitude == annotation.coordinate.latitude && a.coordinate.longitude == annotation.coordinate.longitude ) {
+//                    NSLog(@"Annotation same coords!");
+//                    //annotation.calloutShown = YES;
+//                    CGRect frame = a.calloutView.calloutLabel.frame;
+//                    frame.origin.x += 18;
+//                    [a.calloutView.calloutLabel setFrame:frame];
+//                    [annotation.calloutView.calloutLabel setFrame:frame];
+//                    [annotation.calloutView.markerIcon setImage:annotation.annotationIcon];
+//                    [a.calloutView.markerIcon setImage:annotation.annotationIcon];
+//                    
+//                    [annotation.calloutView.markerIcon2 setImage:a.annotationIcon];
+//                    [a.calloutView.markerIcon2 setImage:a.annotationIcon];
+//                    
+//                    [annotation showCallout];
+//                    [annotation hideCallout];
+//                    [a showCallout];
+//                    [a hideCallout];
+//                }
+//            }
+//        }
+//    }
     
     [self calcMetroData];
     
@@ -404,8 +400,8 @@
     
     NSInteger i = 0;
     for (i = 0; i<numStations; i++) {
-        SMAnnotation* station = [self.metroMarkers objectAtIndex:i];
-        SMAnnotation* nextStation = [self.metroMarkers objectAtIndex:MIN(i+1, numStations-1)];
+        RMAnnotation* station = [self.metroMarkers objectAtIndex:i];
+        RMAnnotation* nextStation = [self.metroMarkers objectAtIndex:MIN(i+1, numStations-1)];
         
         // Get aprox. distance to next station
         float x0 = station.coordinate.longitude;
@@ -469,7 +465,7 @@
 //    float zoom = lerp(0.35, 1.5, t);
 //    NSLog(@"Map ZOOM: %f", self.mpView.zoom);
 //    
-//    for (SMAnnotation* an in self.mpView.annotations) {
+//    for (RMAnnotation* an in self.mpView.annotations) {
 //        if ([an.annotationType isEqualToString:@"station"]) {
 //            RMMarker* marker = (RMMarker*)(an.layer);
 //            [marker updateBoundsWithZoom: zoom];

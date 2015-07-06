@@ -120,6 +120,24 @@ class BikeStatistics {
     }
     
     /**
+    Duration of bike tracks this date
+    
+    :returns: Total duration in seconds [s]
+    */
+    class func durationThisDate(date: NSDate = NSDate()) -> Double {
+        return tracksForDayOfDate(date)?.sumOfProperty("duration")?.doubleValue ?? 0
+    }
+    
+    /**
+    Distance of bike tracks this date
+    
+    :returns: Total distance in meters [m]
+    */
+    class func distanceThisDate(date: NSDate = NSDate()) -> Double {
+        return tracksForDayOfDate(date)?.sumOfProperty("length")?.doubleValue ?? 0
+    }
+    
+    /**
     Duration of bike tracks this week
     
     :returns: Total duration in seconds [s]

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PSTAlertController
 
 class TrackingPromptViewController: SMTranslatedViewController {
     
@@ -24,8 +25,7 @@ class TrackingPromptViewController: SMTranslatedViewController {
         dismiss()
     }
     @IBAction func EnableTrackingButtonTapped(sender: UIButton) {
-        let isLoggedIn = self.appDelegate.appSettings["auth_token"] != nil
-        if !isLoggedIn {
+        if !UserHelper.loggedIn() {
             let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
             alertController.addCancelActionWithHandler(nil)
             let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in

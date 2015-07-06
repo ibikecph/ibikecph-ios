@@ -30,6 +30,10 @@
     
 //    [[Settings sharedInstance] clear];
     
+    
+    // Initialize location manager (not used for map, but for getting current location)
+    [SMLocationManager instance];
+    
     /**
      * initialize Google Analytics
      */
@@ -50,10 +54,6 @@
                              @"permanentTileCache" : @NO
                              };
         [d writeToFile:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"settings.plist"] atomically:NO];
-    }
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"routeme.plist"]] == NO) {
-        [[NSFileManager defaultManager] copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"routeme" ofType:@"plist"] toPath:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"routeme.plist"] error:nil];
     }
     
     [self loadSettings];

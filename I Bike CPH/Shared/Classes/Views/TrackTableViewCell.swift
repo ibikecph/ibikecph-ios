@@ -24,15 +24,24 @@ class TrackTableViewCell: UITableViewCell {
     }()
     
     let hourMinutesFormatter = HourMinuteFormatter()
+    let distanceFormatter = DistanceFormatter()
     
-    lazy var numberFormatter: NSNumberFormatter = {
-        let formatter = NSNumberFormatter()
-        formatter.maximumFractionDigits = 1
-        formatter.minimumFractionDigits = 1
-        formatter.alwaysShowsDecimalSeparator = true
-        formatter.minimumIntegerDigits = 1 // "0.0" instead of ".0"
-        return formatter
-    }()
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    func setup() {
+        // Full width cell separator
+        separatorInset = UIEdgeInsetsZero
+        layoutMargins = UIEdgeInsetsZero
+        preservesSuperviewLayoutMargins = false
+    }
     
     func updateToTrack(track: Track?) {
         if let track = track where !track.invalidated {
@@ -50,14 +59,14 @@ class TrackTableViewCell: UITableViewCell {
             durationLabel.text = hourMinutesFormatter.string(seconds: duration)
             // Distance in km
             let distance = track.length
-            distanceLabel.text = (numberFormatter.stringFromNumber(distance / 1000) ?? "") + " " + "unit_km".localized
+            distanceLabel.text = distanceFormatter.string(meters: distance)
             
             topAddressLabel.text = track.end == "" ? "–" : track.end
             bottomAddressLabel.text = track.start == "" ? "–" : track.start
         } else {
             timeLabel.text = "–"
             durationLabel.text = hourMinutesFormatter.string(seconds: 0)
-            distanceLabel.text = "0 " + "unit_km".localized
+            distanceLabel.text = distanceFormatter.string(meters: 0)
             topAddressLabel.text = "–"
             bottomAddressLabel.text = "–"
         }

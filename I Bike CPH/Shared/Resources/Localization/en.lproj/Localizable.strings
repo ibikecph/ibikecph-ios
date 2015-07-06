@@ -290,6 +290,8 @@
 "tracking_weekly_status_notifications" = "Weekly status";
 "log_in_to_track_prompt" = "To start collecting data, you must login.";
 
+"log_in_to_favorite_prompt" = "To add favorites, you must login.";
+
 "unit_km" = "km";
 "unit_km_pr_h" = "km/h";
 "unit_km_pr_trip" = "km/trip";

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TTTAttributedLabel.h"
+#import "AsyncImageView.h"
 
 /**
  * Table view cell for favorites and recent destinations. Has descriptive icon, name label, and background image

@@ -12,9 +12,10 @@ import CoreLocation
 
 let processedSmallNoticationKey = "processedSmallNoticationKey"
 let processedBigNoticationKey = "processedBigNoticationKey"
+let processedGeocodingNoticationKey = "processedGeocodingNoticationKey"
 
 class TracksHandler {
-    static let shared = TracksHandler()
+    static let instance = TracksHandler()
 
     private var processing: Bool = false {
         didSet {
@@ -48,18 +49,18 @@ class TracksHandler {
             return
         }
         if force {
-            shared.cleanUpBig(asap: true)
-            shared.lastProcessedBig = NSDate()
+            instance.cleanUpBig(asap: true)
+            instance.lastProcessedBig = NSDate()
             return
         }
-        if NSDate().timeIntervalSinceDate(shared.lastProcessedBig) > 60*60*1 { // Do big stuff every hour
-            shared.cleanUpBig(asap: false)
-            shared.lastProcessedBig = NSDate()
+        if NSDate().timeIntervalSinceDate(instance.lastProcessedBig) > 60*60*1 { // Do big stuff every hour
+            instance.cleanUpBig(asap: false)
+            instance.lastProcessedBig = NSDate()
             return
         }
-        if NSDate().timeIntervalSinceDate(shared.lastProcessedSmall) > 60*5 { // Do small stuff every 5 min
-            shared.cleanUpSmall()
-            shared.lastProcessedSmall = NSDate()
+        if NSDate().timeIntervalSinceDate(instance.lastProcessedSmall) > 60*5 { // Do small stuff every 5 min
+            instance.cleanUpSmall()
+            instance.lastProcessedSmall = NSDate()
             return
         }
         Async.main(after: 10) {
@@ -68,14 +69,14 @@ class TracksHandler {
     }
     
     private func cleanUpSmall() {
-        if TracksHandler.shared.processing {
+        if TracksHandler.instance.processing {
             println("Already processing")
             Async.main(after: 30) { // Check again after 30 seconds
                 self.cleanUpSmall()
             }
             return
         }
-        TracksHandler.shared.processing = true
+        TracksHandler.instance.processing = true
         
         println("Start processing small")
         let fromDate = lastProcessedSmall.dateByAddingTimeInterval(-60*15) // Go 15 minutes back
@@ -89,7 +90,7 @@ class TracksHandler {
         }
         operations.last?.completionBlock = {
             println("Done processing small")
-            TracksHandler.shared.processing = false
+            TracksHandler.instance.processing = false
             NotificationCenter.post(processedSmallNoticationKey, object: self)
         }
         TracksOperation.addDependencies(operations)
@@ -97,14 +98,14 @@ class TracksHandler {
     }
     
     private func cleanUpBig(#asap: Bool) {
-        if TracksHandler.shared.processing {
+        if TracksHandler.instance.processing {
             println("Already processing")
             Async.main(after: 60*1) { // Check again after 1 minute
                 self.cleanUpBig(asap: asap)
             }
             return
         }
-        TracksHandler.shared.processing = true
+        TracksHandler.instance.processing = true
         
         println("Start processing big")
         let fromDate = lastProcessedBig.dateByAddingTimeInterval(-60*60*24) // Go 24 hours back
@@ -121,7 +122,7 @@ class TracksHandler {
             PruneSlowEndsOperation(fromDate: fromDate),
             RecalculateTracksOperation(fromDate: fromDate),
             RemoveUnownedDataOperation(fromDate: fromDate),
-            RemoveEmptyTracksOperation()
+            RemoveEmptyTracksOperation(), // Rinse and repeat
         ]
         for operation in operations {
             operation.queuePriority = .Low
@@ -130,12 +131,41 @@ class TracksHandler {
         operations.last?.completionBlock = {
             println("Done processing big")
             Async.main {
-                TracksHandler.shared.processing = false
+                TracksHandler.instance.processing = false
                 NotificationCenter.post(processedBigNoticationKey, object: self)
             }
         }
         TracksOperation.addDependencies(operations)
         operationQueue.addOperations(operations, waitUntilFinished: false)
+    }
+    
+    class func geocode() {
+        if TracksHandler.instance.processing {
+            println("Already processing")
+            Async.main(after: 10) { // Check again after 10 seconds
+                self.geocode()
+            }
+            return
+        }
+        TracksHandler.instance.processing = true
+        
+        println("Start geocoding big")
+        let operations = [
+            GeocodeBikeTracksOperation() // Don't use from date since background operation might not have geocoded)
+        ]
+        for operation in operations {
+            operation.queuePriority = .High
+            operation.qualityOfService = .UserInitiated
+        }
+        operations.last?.completionBlock = {
+            println("Done geociding")
+            Async.main {
+                TracksHandler.instance.processing = false
+                NotificationCenter.post(processedGeocodingNoticationKey, object: self)
+            }
+        }
+        TracksOperation.addDependencies(operations)
+        TracksHandler.instance.operationQueue.addOperations(operations, waitUntilFinished: false)
     }
 }
 
@@ -216,6 +246,7 @@ class RemoveEmptyTracksOperation: TracksOperation {
                 if let act = track.activity as? TrackActivity {
                 } else {
                     // Couldn't resolve activity
+                    println("No activity? Deleting track")
                     track.deleteFromRealmWithRelationships(realm: realm)
                     continue
                 }
@@ -360,7 +391,8 @@ class InferBikingFromSpeedOperation: TracksOperation {
                 track.activity.automotive = false
                 track.activity.running = false
                 track.activity.walking = false
-                track.activity.cycling = true
+                track.activity.cycling = true // Force cycling
+                track.activity.stationary = false // Force non-stationary
                 track.realm.commitWriteTransaction()
                 println("Infered biking \(track.startDate())")
             }
@@ -524,13 +556,14 @@ class MergeTracksOperation: TracksOperation {
         realm.beginWriteTransaction()
         if track1.invalidated || track2.invalidated {
             println("Couldn't merge tracks since one is invalid")
+            realm.cancelWriteTransaction()
             return track1
         }
         // Merge locations
         for location in track2.locations {
             track1.locations.addObject(location)
         }
-        // Combine
+        // Combine activity
         track1.end = track2.end
         if !useFirstTrackActivity {
             let startDate = track1.activity.startDate // Take date from 1st activity
@@ -545,6 +578,9 @@ class MergeTracksOperation: TracksOperation {
             track1.activity.running = false
             track1.activity.confidence = 0
         }
+        // Use 2nd track end name
+        track1.end = track2.end
+        track1.hasBeenGeocoded = track2.hasBeenGeocoded // If 2nd hasn't been geocoded, reflect in 1st
         // Clean up
         track1.recalculate()
         if useFirstTrackActivity {
@@ -736,6 +772,34 @@ class MergeBikeCloseWithMoveTracksOperation: MergeTimeTracksOperation {
         println("Merge bike close with non-stationary tracks DONE")
     }
 }
+
+
+class GeocodeBikeTracksOperation: TracksOperation {
+    
+    override func main() {
+        super.main()
+        
+        // Only perform this if the app is in the foreground
+        if UIApplication.sharedApplication().applicationState != .Active {
+            return
+        }
+        
+        println("Geocode bike tracks")
+        
+        var bikeTracks = tracks().objectsWhere("activity.cycling == TRUE")
+        for track in bikeTracks {
+            if let track = track as? Track where !track.hasBeenGeocoded {
+                // Geocode synchronously to make sure writes are happening on same thread
+                track.geocode(synchronous: true)
+            }
+        }
+        println("Geocode bike tracks DONE")
+    }
+}
+
+
+
+
 
 
 

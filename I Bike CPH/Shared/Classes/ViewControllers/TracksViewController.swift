@@ -28,6 +28,9 @@ class TracksViewController: SMTranslatedViewController {
         NotificationCenter.observe(processedBigNoticationKey) { notification in
             self.updateUI()
         }
+        NotificationCenter.observe(processedGeocodingNoticationKey) { notification in
+            self.updateUI()
+        }
         updateUI()
     }
     

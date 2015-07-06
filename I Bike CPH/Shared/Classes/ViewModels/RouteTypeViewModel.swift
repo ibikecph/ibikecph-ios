@@ -15,8 +15,10 @@ struct RouteTypeViewModel {
     var iconImage: UIImage? {
         let name: String = {
             switch self.type {
-            case .Regular: return "Bike selected"
-            case .Cargo: return "Cargobike selected"
+                case .Regular: return "Fast route selected"
+                case .Cargo: return "Cargobike selected"
+                case .Green: return "Green route selected"
+                case .BrokenWithPublicTransport: return "Broken route"
             }
         }()
         return UIImage(named: name)
@@ -24,11 +26,11 @@ struct RouteTypeViewModel {
     let type: RouteType
     var selected: Bool {
         get {
-            return type == routeTypeHandler.type
+            return type == RouteTypeHandler.instance.type
         }
         set {
             if newValue {
-                routeTypeHandler.type = type
+                RouteTypeHandler.instance.type = type
             }
         }
     }

@@ -1,0 +1,6 @@
+framework module OCMockito {
+  umbrella header "Pods-CykelPlanenTests-OCMockito-umbrella.h"
+
+  export *
+  module * { export * }
+}

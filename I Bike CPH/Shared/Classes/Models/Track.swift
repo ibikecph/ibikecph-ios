@@ -39,6 +39,12 @@ extension Track {
         if transact {
             realm.beginWriteTransaction()
         }
+        if invalidated {
+            if transact {
+                realm.cancelWriteTransaction()
+            }
+            return
+        }
         recalculateTimestamps()
         recalculateDuration()
         recalculateLength()
@@ -206,10 +212,10 @@ extension Track {
         return speeds.count > 0 ? maxElement(speeds) : 0
     }
     
-    func geocode(completion:(Bool) -> ()) {
+    func geocode(synchronous: Bool = false, completion:((Bool) -> ())? = nil) {
         if let startLocation = locations.firstObject() as? TrackLocation {
             let coordinate = startLocation.coordinate()
-            SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
+            SMGeocoder.reverseGeocode(coordinate, synchronous: synchronous) { (item: KortforItem?, error: NSError?) in
                 let transact = !self.realm.inWriteTransaction
                 if transact {
                     self.realm.beginWriteTransaction()
@@ -218,18 +224,23 @@ extension Track {
                     if transact {
                         self.realm.cancelWriteTransaction()
                     }
-                    completion(false)
+                    completion?(false)
                     return
                 }
+                var succeeded = false
                 if let item = item {
                     self.start = item.street
+                    succeeded = true
                 }
                 if transact {
                     self.realm.commitWriteTransaction()
                 }
+                if !succeeded {
+                    return // Only proceed if "start" was set
+                }
                 if let endLocation = self.locations.lastObject() as? TrackLocation {
                     let coordinate = endLocation.coordinate()
-                    SMGeocoder.reverseGeocode(coordinate) { (item: KortforItem?, error: NSError?) in
+                    SMGeocoder.reverseGeocode(coordinate, synchronous: synchronous) { (item: KortforItem?, error: NSError?) in
                         let transact = !self.realm.inWriteTransaction
                         if transact {
                             self.realm.beginWriteTransaction()
@@ -238,15 +249,15 @@ extension Track {
                             if transact {
                                 self.realm.cancelWriteTransaction()
                             }
-                            completion(false)
+                            completion?(false)
                             return
                         }
                         if let item = item {
                             self.end = item.street
                             self.hasBeenGeocoded = true
-                            completion(true)
+                            completion?(true)
                         } else {
-                            completion(false)
+                            completion?(false)
                         }
                         if transact {
                             self.realm.commitWriteTransaction()
