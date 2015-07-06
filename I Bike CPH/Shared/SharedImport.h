@@ -12,8 +12,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import <Mapbox-iOS-SDK/Mapbox.h>
-
 #import "SMMapOverlays.h"
 
 #import "GAI.h"
