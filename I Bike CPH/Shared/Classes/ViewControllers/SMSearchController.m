@@ -319,7 +319,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         }
     } else {
         if (self.delegate) {
-            [self.delegate locationFound:self.locationItem];
+            [self.delegate locationFound:currentItem];
         }
         [self dismiss];
     }
@@ -446,7 +446,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 
 #pragma mark - smautocomplete delegate
 
-- (void)autocompleteEntriesFound:(NSArray *)foundEntires forString:(NSString*) str {
+- (void)autocompleteEntriesFound:(NSArray *)foundEntries forString:(NSString*) str {
     @synchronized(self.searchResults) {
         SMAppDelegate *appDelegate = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
         NSMutableArray *combinedResults = [NSMutableArray new];
@@ -491,7 +491,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         }
         
         // From external search
-        NSMutableArray *externalResults = foundEntires.mutableCopy;
+        NSMutableArray *externalResults = foundEntries.mutableCopy;
         [externalResults sortUsingComparator:^NSComparisonResult(NSObject<SearchListItem> *obj1, NSObject<SearchListItem> *obj2) {
             CLLocation *currentLocation = [SMLocationManager instance].lastValidLocation;
             

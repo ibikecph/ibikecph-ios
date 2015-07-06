@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "SMAPIRequest.h"
+#import "SMCustomCheckbox.h"
 
 /**
  * View controller to report error on route. Has select route segment button, choose error type, and send report button. FIXME: Merge.

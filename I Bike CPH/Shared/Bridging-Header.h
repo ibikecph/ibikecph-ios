@@ -2,7 +2,6 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
-
 #import "SMRouteConsts.h"
 #import "SharedConstants.h"
 #import "Realm/Realm.h"
@@ -27,12 +26,14 @@
 #import <OCMockito/OCMockito.h>
 
 #import "SMRoute.h"
-#import "PSTAlertController.h"
-
-#import "RouteMe.h"
-#import "RMMapView.h"
-#import "SMiBikeCPHMapTileSource.h"
-#import "RMAnnotation.h"
-#import "SMAnnotation.h"
-#import "RMShape.h"
 #import "SMGeocoder.h"
+
+#import "SMSearchHistory.h"
+#import "SMEnterRouteCell.h"
+#import "SMTransportation.h"
+
+#import <Mapbox-iOS-SDK/Mapbox.h>
+#import <Mapbox-iOS-SDK/RMAnnotation.h>
+#import "SMiBikeCPHMapTileSource.h"
+
+#import "SMReportErrorController.h"

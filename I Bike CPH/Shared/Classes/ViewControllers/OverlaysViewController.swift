@@ -15,7 +15,7 @@ private struct OverlayTypeViewModel {
     var iconImage: UIImage? {
         let name: String = {
             switch self.type {
-                case .CycleSuperHighways: return "bikeRoute"
+                case .CycleSuperHighways: return "SuperCycleHighway"
                 case .BikeServiceStations: return "serviceStation"
                 case .STrainStations: return "sStation"
                 case .MetroStations: return "metro"
@@ -63,7 +63,7 @@ class OverlaysViewController: UIViewController {
 
     private let cellID = "OverlayCellID"
     
-    private let items = [
+    private var items = [
         OverlayTypeViewModel(type: .CycleSuperHighways),
         OverlayTypeViewModel(type: .BikeServiceStations),
         OverlayTypeViewModel(type: .STrainStations),

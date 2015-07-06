@@ -206,7 +206,7 @@
             [tCell.buttonAddressInfo setTitle:@"route_plan_button".localized forState:UIControlStateNormal];
             
             CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.sourceStation.latitude, self.sourceStation.longitude); 
-            [SMGeocoder reverseGeocode:coord completionHandler:^(KortforItem *item, NSError *error) {
+            [SMGeocoder reverseGeocode:coord synchronous:NO completionHandler:^(KortforItem *item, NSError *error) {
                 NSString* streetName = item.street;
                 
                 //NSLog(@"Response: %@", response);
@@ -218,7 +218,7 @@
             }];
             
             coord = CLLocationCoordinate2DMake(self.destinationStation.latitude, self.destinationStation.longitude);
-            [SMGeocoder reverseGeocode:coord completionHandler:^(KortforItem *item, NSError *error) {
+            [SMGeocoder reverseGeocode:coord synchronous:NO completionHandler:^(KortforItem *item, NSError *error) {
                 NSString *streetName = item.street;
                 if ([streetName isEqualToString:@""]) {
                     streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];

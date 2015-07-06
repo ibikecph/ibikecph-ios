@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TurnInstructionsCollectionViewCell" customModule="CykelPlanen" customModuleProvider="target">
+            <connections>
+                <outlet property="directionImageView" destination="SrQ-gj-suu" id="a27-wb-EZQ"/>
+                <outlet property="distanceLabel" destination="6Rn-Jc-VNK" id="qa7-96-20b"/>
+                <outlet property="wayNameLabel" destination="Yfg-8x-Atn" id="Zrc-oW-1yh"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="585" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zlv-ec-hUf">
+                    <rect key="frame" x="221" y="10" width="143" height="52.5"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" image="up-left.png" translatesAutoresizingMaskIntoConstraints="NO" id="SrQ-gj-suu">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="52.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="SrQ-gj-suu" secondAttribute="height" multiplier="15:13" id="I1V-gt-Fdv"/>
+                                <constraint firstAttribute="width" constant="60" id="cd4-BZ-lom"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="100 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Rn-Jc-VNK">
+                            <rect key="frame" x="60" y="10" width="73" height="31.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="SrQ-gj-suu" secondAttribute="bottom" id="0td-1f-Wh7"/>
+                        <constraint firstAttribute="trailing" secondItem="6Rn-Jc-VNK" secondAttribute="trailing" constant="10" id="ArK-uW-MOB"/>
+                        <constraint firstItem="SrQ-gj-suu" firstAttribute="centerY" secondItem="6Rn-Jc-VNK" secondAttribute="centerY" id="IU4-6D-fI5"/>
+                        <constraint firstItem="SrQ-gj-suu" firstAttribute="top" secondItem="Zlv-ec-hUf" secondAttribute="top" id="LR7-Yh-1iI"/>
+                        <constraint firstItem="6Rn-Jc-VNK" firstAttribute="top" secondItem="SrQ-gj-suu" secondAttribute="bottom" id="TYY-Yz-JVb"/>
+                        <constraint firstAttribute="bottom" secondItem="6Rn-Jc-VNK" secondAttribute="bottom" id="dA1-PQ-nCG"/>
+                        <constraint firstItem="SrQ-gj-suu" firstAttribute="leading" secondItem="Zlv-ec-hUf" secondAttribute="leading" id="jEI-cX-nod"/>
+                        <constraint firstItem="6Rn-Jc-VNK" firstAttribute="leading" secondItem="Zlv-ec-hUf" secondAttribute="leading" id="jbJ-8N-vpW"/>
+                        <constraint firstItem="6Rn-Jc-VNK" firstAttribute="leading" secondItem="SrQ-gj-suu" secondAttribute="trailing" id="zWf-9J-E7U"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="TYY-Yz-JVb"/>
+                            <exclude reference="dA1-PQ-nCG"/>
+                            <exclude reference="jbJ-8N-vpW"/>
+                        </mask>
+                    </variation>
+                </view>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Gammeltorv" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="194" translatesAutoresizingMaskIntoConstraints="NO" id="Yfg-8x-Atn">
+                    <rect key="frame" x="10" y="62.5" width="565" height="27.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Yfg-8x-Atn" firstAttribute="leading" secondItem="Zlv-ec-hUf" secondAttribute="trailing" constant="-173" id="Asd-o0-phc"/>
+                <constraint firstAttribute="bottom" secondItem="Zlv-ec-hUf" secondAttribute="bottom" constant="10" id="BRK-0g-R7k"/>
+                <constraint firstAttribute="bottom" secondItem="Yfg-8x-Atn" secondAttribute="bottom" constant="10" id="ENY-AF-Jcu"/>
+                <constraint firstAttribute="trailing" secondItem="Yfg-8x-Atn" secondAttribute="trailing" constant="10" id="NbY-hZ-nft"/>
+                <constraint firstItem="Yfg-8x-Atn" firstAttribute="leading" secondItem="Zlv-ec-hUf" secondAttribute="trailing" constant="10" id="a1S-9E-rw2"/>
+                <constraint firstItem="Yfg-8x-Atn" firstAttribute="top" secondItem="Zlv-ec-hUf" secondAttribute="bottom" id="a4d-2p-dWs"/>
+                <constraint firstItem="Zlv-ec-hUf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="aHI-3v-Lrr"/>
+                <constraint firstItem="Yfg-8x-Atn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="sJR-Ve-fEK"/>
+                <constraint firstAttribute="centerX" secondItem="Zlv-ec-hUf" secondAttribute="centerX" id="y8M-m9-fbg"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Asd-o0-phc"/>
+                    <exclude reference="a1S-9E-rw2"/>
+                    <exclude reference="BRK-0g-R7k"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="346.5" y="229"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="up-left.png" width="56" height="56"/>
+    </resources>
+</document>

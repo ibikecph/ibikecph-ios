@@ -15,9 +15,6 @@
 
 #define OSRM_SERVERS @[@{@"name" : translateString(@"marker_type_1"), @"image" : @"bike_route_gray", @"imageHighlighted" : @"bike_route_white", @"server" : OSRM_SERVER}, @{@"name" : translateString(@"marker_type_2"), @"image" :  @"service_station_gray", @"imageHighlighted" : @"service_station_white", @"server" : OSRM_SERVER_CARGO}, @{@"name" : translateString(@"marker_type_3"), @"image" :  @"s_station_gray", @"imageHighlighted" : @"s_station_white", @"server" : OSRM_SERVER_CARGO}, @{@"name" : translateString(@"marker_type_4"), @"image" :  @"metro_station_gray", @"imageHighlighted" : @"metro_station_white", @"server" : OSRM_SERVER_CARGO}, @{@"name" : translateString(@"marker_type_5"), @"image" :  @"l-gray", @"imageHighlighted" : @"l-white", @"server" : OSRM_SERVER_CARGO}]
 
-#define INIT_COORDINATE CLLocationCoordinate2DMake(55.678, 12.482)
-#define INIT_ZOOM_LEVEL 9.98
-
 #define LOCATION_STATION_DISTANCE_ON_BIKE 20
 #define LOCATION_STATION_DISTANCE_ON_BUS 30.0
 #define LOCATION_END_DISTANCE LOCATION_STATION_DISTANCE_ON_BIKE

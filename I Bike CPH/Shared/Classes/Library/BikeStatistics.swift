@@ -14,7 +14,7 @@ class BikeStatistics {
     :returns: All bike tracks as an RLMResults
     */
     class func tracks() -> RLMResults {
-        return Track.objectsWhere("activity.cycling == TRUE")
+        return Track.objectsWhere("activity.cycling == TRUE AND startTimestamp != 0")
     }
     
     /**
@@ -117,6 +117,24 @@ class BikeStatistics {
             return tracks().objectsWhere("endTimestamp BETWEEN %@", [thisMonday.timeIntervalSince1970, nextSunday.timeIntervalSince1970])
         }
         return nil
+    }
+    
+    /**
+    Duration of bike tracks this date
+    
+    :returns: Total duration in seconds [s]
+    */
+    class func durationThisDate(date: NSDate = NSDate()) -> Double {
+        return tracksForDayOfDate(date)?.sumOfProperty("duration")?.doubleValue ?? 0
+    }
+    
+    /**
+    Distance of bike tracks this date
+    
+    :returns: Total distance in meters [m]
+    */
+    class func distanceThisDate(date: NSDate = NSDate()) -> Double {
+        return tracksForDayOfDate(date)?.sumOfProperty("length")?.doubleValue ?? 0
     }
     
     /**

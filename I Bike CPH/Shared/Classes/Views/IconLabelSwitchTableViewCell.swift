@@ -10,7 +10,6 @@ import UIKit
 
 class IconLabelSwitchTableViewCell: IconLabelTableViewCell {
 
-    
     @IBOutlet weak var switcher: UISwitch!
     
     var switchChanged: ((on: Bool) -> ())? {
