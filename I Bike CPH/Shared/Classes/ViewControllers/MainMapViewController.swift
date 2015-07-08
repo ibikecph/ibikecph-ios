@@ -52,7 +52,9 @@ class MainMapViewController: MapViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // Update tracking information
-        TracksHandler.setNeedsProcessData(userInitiated: true)
+        if Settings.instance.tracking.on {
+            TracksHandler.setNeedsProcessData(userInitiated: true)
+        }
     }
 
     @IBAction func openMenu(sender: AnyObject) {
