@@ -425,11 +425,13 @@ class ClearLeftOversOperation: TracksOperation {
                     continue
                 }
                 // Not moving activity
-                let moving = track.activity.moving()
-                if !moving {
-                    println("Deleted not moving activity: \(track.startDate())")
-                    track.deleteFromRealmWithRelationships()
-                    continue
+                if track.activity.realm != nil {
+                    let moving = track.activity.moving()
+                    if !moving {
+                        println("Deleted not moving activity: \(track.startDate())")
+                        track.deleteFromRealmWithRelationships()
+                        continue
+                    }
                 }
                 // Very slow
                 let verySlow = track.slow(speedLimit: 2, minLength: 0.020)
