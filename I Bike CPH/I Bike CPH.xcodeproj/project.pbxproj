@@ -213,22 +213,10 @@
 		4EC56E2B1A2A2C3D00B696B4 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DE91A2A2C3D00B696B4 /* AsyncImageView.m */; };
 		4EC56E2D1A2A2C3D00B696B4 /* FlickableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DEB1A2A2C3D00B696B4 /* FlickableView.m */; };
 		4EC56E2F1A2A2C3D00B696B4 /* FlickableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DEB1A2A2C3D00B696B4 /* FlickableView.m */; };
-		4EC56E311A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DED1A2A2C3D00B696B4 /* SMAddFavoriteCell.m */; };
-		4EC56E331A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DED1A2A2C3D00B696B4 /* SMAddFavoriteCell.m */; };
-		4EC56E351A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DEE1A2A2C3D00B696B4 /* SMAddFavoriteCell.xib */; };
-		4EC56E361A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DEE1A2A2C3D00B696B4 /* SMAddFavoriteCell.xib */; };
-		4EC56E371A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DEE1A2A2C3D00B696B4 /* SMAddFavoriteCell.xib */; };
-		4EC56E381A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DEE1A2A2C3D00B696B4 /* SMAddFavoriteCell.xib */; };
 		4EC56E391A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF01A2A2C3D00B696B4 /* SMAutocompleteCell.m */; };
 		4EC56E3B1A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF01A2A2C3D00B696B4 /* SMAutocompleteCell.m */; };
 		4EC56E3D1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF21A2A2C3D00B696B4 /* SMAutocompleteHeader.m */; };
 		4EC56E3F1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF21A2A2C3D00B696B4 /* SMAutocompleteHeader.m */; };
-		4EC56E411A2A2C3D00B696B4 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF41A2A2C3D00B696B4 /* SMCalloutView.m */; };
-		4EC56E431A2A2C3D00B696B4 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF41A2A2C3D00B696B4 /* SMCalloutView.m */; };
-		4EC56E451A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DF51A2A2C3D00B696B4 /* SMCalloutView.xib */; };
-		4EC56E461A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DF51A2A2C3D00B696B4 /* SMCalloutView.xib */; };
-		4EC56E471A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DF51A2A2C3D00B696B4 /* SMCalloutView.xib */; };
-		4EC56E481A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56DF51A2A2C3D00B696B4 /* SMCalloutView.xib */; };
 		4EC56E491A2A2C3D00B696B4 /* SMContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF71A2A2C3D00B696B4 /* SMContactsCell.m */; };
 		4EC56E4B1A2A2C3D00B696B4 /* SMContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF71A2A2C3D00B696B4 /* SMContactsCell.m */; };
 		4EC56E4D1A2A2C3D00B696B4 /* SMContactsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DF91A2A2C3D00B696B4 /* SMContactsHeader.m */; };
@@ -237,18 +225,6 @@
 		4EC56E531A2A2C3D00B696B4 /* SMCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFB1A2A2C3D00B696B4 /* SMCustomButton.m */; };
 		4EC56E551A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFD1A2A2C3D00B696B4 /* SMCustomCheckbox.m */; };
 		4EC56E571A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFD1A2A2C3D00B696B4 /* SMCustomCheckbox.m */; };
-		4EC56E591A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFF1A2A2C3D00B696B4 /* SMDirectionCell.m */; };
-		4EC56E5B1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFF1A2A2C3D00B696B4 /* SMDirectionCell.m */; };
-		4EC56E5D1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E011A2A2C3D00B696B4 /* SMDirectionsFooter.m */; };
-		4EC56E5F1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E011A2A2C3D00B696B4 /* SMDirectionsFooter.m */; };
-		4EC56E611A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E021A2A2C3D00B696B4 /* SMDirectionsFooter.xib */; };
-		4EC56E621A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E021A2A2C3D00B696B4 /* SMDirectionsFooter.xib */; };
-		4EC56E631A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E021A2A2C3D00B696B4 /* SMDirectionsFooter.xib */; };
-		4EC56E641A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC56E021A2A2C3D00B696B4 /* SMDirectionsFooter.xib */; };
-		4EC56E651A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E041A2A2C3D00B696B4 /* SMDirectionTopCell.m */; };
-		4EC56E671A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E041A2A2C3D00B696B4 /* SMDirectionTopCell.m */; };
-		4EC56E691A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E061A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m */; };
-		4EC56E6B1A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E061A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m */; };
 		4EC56E6D1A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */; };
 		4EC56E6F1A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */; };
 		4EC56E711A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0A1A2A2C3D00B696B4 /* SMEventsCalendarCell.m */; };
@@ -810,11 +786,9 @@
 		4EE06DF51A1116CF00DE4226 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06DF41A1116CF00DE4226 /* MapKit.framework */; };
 		4EE06DF61A1116DB00DE4226 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE06DF41A1116CF00DE4226 /* MapKit.framework */; };
 		4EE06E5F1A11298800DE4226 /* SMAddressPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE06E101A11298800DE4226 /* SMAddressPickerView.xib */; };
-		4EE06E8F1A11298800DE4226 /* SMLoadStationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE06E3D1A11298800DE4226 /* SMLoadStationsView.xib */; };
 		4EE06F041A112F6D00DE4226 /* SMAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E0F1A11298800DE4226 /* SMAddressPickerView.m */; };
 		4EE06F051A112F6D00DE4226 /* SMBreakRouteButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E161A11298800DE4226 /* SMBreakRouteButtonCell.m */; };
 		4EE06F061A112F6D00DE4226 /* SMBreakRouteHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E181A11298800DE4226 /* SMBreakRouteHeader.m */; };
-		4EE06F0D1A112F6D00DE4226 /* SMLoadStationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E3C1A11298800DE4226 /* SMLoadStationsView.m */; };
 		4EE071581A1178E100DE4226 /* a_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE06F151A1178DE00DE4226 /* a_pin.png */; };
 		4EE071591A1178E100DE4226 /* a_pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE06F161A1178DE00DE4226 /* a_pin@2x.png */; };
 		4EE0715A1A1178E100DE4226 /* about_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE06F171A1178DE00DE4226 /* about_back.png */; };
@@ -1589,16 +1563,10 @@
 		4EC56DE91A2A2C3D00B696B4 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		4EC56DEA1A2A2C3D00B696B4 /* FlickableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickableView.h; sourceTree = "<group>"; };
 		4EC56DEB1A2A2C3D00B696B4 /* FlickableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickableView.m; sourceTree = "<group>"; };
-		4EC56DEC1A2A2C3D00B696B4 /* SMAddFavoriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddFavoriteCell.h; sourceTree = "<group>"; };
-		4EC56DED1A2A2C3D00B696B4 /* SMAddFavoriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddFavoriteCell.m; sourceTree = "<group>"; };
-		4EC56DEE1A2A2C3D00B696B4 /* SMAddFavoriteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMAddFavoriteCell.xib; sourceTree = "<group>"; };
 		4EC56DEF1A2A2C3D00B696B4 /* SMAutocompleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAutocompleteCell.h; sourceTree = "<group>"; };
 		4EC56DF01A2A2C3D00B696B4 /* SMAutocompleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAutocompleteCell.m; sourceTree = "<group>"; };
 		4EC56DF11A2A2C3D00B696B4 /* SMAutocompleteHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAutocompleteHeader.h; sourceTree = "<group>"; };
 		4EC56DF21A2A2C3D00B696B4 /* SMAutocompleteHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAutocompleteHeader.m; sourceTree = "<group>"; };
-		4EC56DF31A2A2C3D00B696B4 /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
-		4EC56DF41A2A2C3D00B696B4 /* SMCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
-		4EC56DF51A2A2C3D00B696B4 /* SMCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMCalloutView.xib; sourceTree = "<group>"; };
 		4EC56DF61A2A2C3D00B696B4 /* SMContactsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMContactsCell.h; sourceTree = "<group>"; };
 		4EC56DF71A2A2C3D00B696B4 /* SMContactsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMContactsCell.m; sourceTree = "<group>"; };
 		4EC56DF81A2A2C3D00B696B4 /* SMContactsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMContactsHeader.h; sourceTree = "<group>"; };
@@ -1607,15 +1575,6 @@
 		4EC56DFB1A2A2C3D00B696B4 /* SMCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomButton.m; sourceTree = "<group>"; };
 		4EC56DFC1A2A2C3D00B696B4 /* SMCustomCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomCheckbox.h; sourceTree = "<group>"; };
 		4EC56DFD1A2A2C3D00B696B4 /* SMCustomCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomCheckbox.m; sourceTree = "<group>"; };
-		4EC56DFE1A2A2C3D00B696B4 /* SMDirectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDirectionCell.h; sourceTree = "<group>"; };
-		4EC56DFF1A2A2C3D00B696B4 /* SMDirectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDirectionCell.m; sourceTree = "<group>"; };
-		4EC56E001A2A2C3D00B696B4 /* SMDirectionsFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDirectionsFooter.h; sourceTree = "<group>"; };
-		4EC56E011A2A2C3D00B696B4 /* SMDirectionsFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDirectionsFooter.m; sourceTree = "<group>"; };
-		4EC56E021A2A2C3D00B696B4 /* SMDirectionsFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMDirectionsFooter.xib; sourceTree = "<group>"; };
-		4EC56E031A2A2C3D00B696B4 /* SMDirectionTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDirectionTopCell.h; sourceTree = "<group>"; };
-		4EC56E041A2A2C3D00B696B4 /* SMDirectionTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDirectionTopCell.m; sourceTree = "<group>"; };
-		4EC56E051A2A2C3D00B696B4 /* SMEmptyFavoritesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEmptyFavoritesCell.h; sourceTree = "<group>"; };
-		4EC56E061A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEmptyFavoritesCell.m; sourceTree = "<group>"; };
 		4EC56E071A2A2C3D00B696B4 /* SMEnterRouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEnterRouteCell.h; sourceTree = "<group>"; };
 		4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEnterRouteCell.m; sourceTree = "<group>"; };
 		4EC56E091A2A2C3D00B696B4 /* SMEventsCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEventsCalendarCell.h; sourceTree = "<group>"; };
@@ -2212,9 +2171,6 @@
 		4EE06E161A11298800DE4226 /* SMBreakRouteButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBreakRouteButtonCell.m; sourceTree = "<group>"; };
 		4EE06E171A11298800DE4226 /* SMBreakRouteHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBreakRouteHeader.h; sourceTree = "<group>"; };
 		4EE06E181A11298800DE4226 /* SMBreakRouteHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBreakRouteHeader.m; sourceTree = "<group>"; };
-		4EE06E3B1A11298800DE4226 /* SMLoadStationsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoadStationsView.h; sourceTree = "<group>"; };
-		4EE06E3C1A11298800DE4226 /* SMLoadStationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoadStationsView.m; sourceTree = "<group>"; };
-		4EE06E3D1A11298800DE4226 /* SMLoadStationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMLoadStationsView.xib; sourceTree = "<group>"; };
 		4EE06F151A1178DE00DE4226 /* a_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_pin.png; sourceTree = "<group>"; };
 		4EE06F161A1178DE00DE4226 /* a_pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a_pin@2x.png"; sourceTree = "<group>"; };
 		4EE06F171A1178DE00DE4226 /* about_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about_back.png; sourceTree = "<group>"; };
@@ -3913,9 +3869,6 @@
 				4EE06E161A11298800DE4226 /* SMBreakRouteButtonCell.m */,
 				4EE06E171A11298800DE4226 /* SMBreakRouteHeader.h */,
 				4EE06E181A11298800DE4226 /* SMBreakRouteHeader.m */,
-				4EE06E3B1A11298800DE4226 /* SMLoadStationsView.h */,
-				4EE06E3C1A11298800DE4226 /* SMLoadStationsView.m */,
-				4EE06E3D1A11298800DE4226 /* SMLoadStationsView.xib */,
 				4EEE92871A1A4A340006BD95 /* SMTransportationCell.h */,
 				4EEE92881A1A4A340006BD95 /* SMTransportationCell.m */,
 			);
@@ -3929,16 +3882,10 @@
 				4EC56DE91A2A2C3D00B696B4 /* AsyncImageView.m */,
 				4EC56DEA1A2A2C3D00B696B4 /* FlickableView.h */,
 				4EC56DEB1A2A2C3D00B696B4 /* FlickableView.m */,
-				4EC56DEC1A2A2C3D00B696B4 /* SMAddFavoriteCell.h */,
-				4EC56DED1A2A2C3D00B696B4 /* SMAddFavoriteCell.m */,
-				4EC56DEE1A2A2C3D00B696B4 /* SMAddFavoriteCell.xib */,
 				4EC56DEF1A2A2C3D00B696B4 /* SMAutocompleteCell.h */,
 				4EC56DF01A2A2C3D00B696B4 /* SMAutocompleteCell.m */,
 				4EC56DF11A2A2C3D00B696B4 /* SMAutocompleteHeader.h */,
 				4EC56DF21A2A2C3D00B696B4 /* SMAutocompleteHeader.m */,
-				4EC56DF31A2A2C3D00B696B4 /* SMCalloutView.h */,
-				4EC56DF41A2A2C3D00B696B4 /* SMCalloutView.m */,
-				4EC56DF51A2A2C3D00B696B4 /* SMCalloutView.xib */,
 				4EC56DF61A2A2C3D00B696B4 /* SMContactsCell.h */,
 				4EC56DF71A2A2C3D00B696B4 /* SMContactsCell.m */,
 				4EC56DF81A2A2C3D00B696B4 /* SMContactsHeader.h */,
@@ -3947,15 +3894,6 @@
 				4EC56DFB1A2A2C3D00B696B4 /* SMCustomButton.m */,
 				4EC56DFC1A2A2C3D00B696B4 /* SMCustomCheckbox.h */,
 				4EC56DFD1A2A2C3D00B696B4 /* SMCustomCheckbox.m */,
-				4EC56DFE1A2A2C3D00B696B4 /* SMDirectionCell.h */,
-				4EC56DFF1A2A2C3D00B696B4 /* SMDirectionCell.m */,
-				4EC56E001A2A2C3D00B696B4 /* SMDirectionsFooter.h */,
-				4EC56E011A2A2C3D00B696B4 /* SMDirectionsFooter.m */,
-				4EC56E021A2A2C3D00B696B4 /* SMDirectionsFooter.xib */,
-				4EC56E031A2A2C3D00B696B4 /* SMDirectionTopCell.h */,
-				4EC56E041A2A2C3D00B696B4 /* SMDirectionTopCell.m */,
-				4EC56E051A2A2C3D00B696B4 /* SMEmptyFavoritesCell.h */,
-				4EC56E061A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m */,
 				4EC56E071A2A2C3D00B696B4 /* SMEnterRouteCell.h */,
 				4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */,
 				4EC56E091A2A2C3D00B696B4 /* SMEventsCalendarCell.h */,
@@ -4963,7 +4901,6 @@
 				4EE066561A10FAB400DE4226 /* white_btn_pressed.png in Resources */,
 				4EE065D01A10FAB400DE4226 /* input_field__scalable.png in Resources */,
 				4EE065861A10FAB400DE4226 /* favListRow.png in Resources */,
-				4EC56E451A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */,
 				4EDC5E101B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib in Resources */,
 				4EE065971A10FAB400DE4226 /* favStarWhiteLarge@2x.png in Resources */,
 				4EE065E41A10FAB400DE4226 /* pattern_btn.png in Resources */,
@@ -4986,7 +4923,6 @@
 				4EE066221A10FAB400DE4226 /* routeEnterMiddleRow.png in Resources */,
 				4E392ADB1A308DBE0076BA86 /* smroute_settings.plist in Resources */,
 				4EE065D91A10FAB400DE4226 /* loginFacebookPressed@2x.png in Resources */,
-				4EC56E351A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */,
 				4EE065461A10FAB400DE4226 /* camera.png in Resources */,
 				4EE064DD1A10FAB400DE4226 /* u-turn.png in Resources */,
 				4EE065E61A10FAB400DE4226 /* profile.png in Resources */,
@@ -5135,7 +5071,6 @@
 				4EE066301A10FAB400DE4226 /* routeEnterTopRow.png in Resources */,
 				4EE0650A1A10FAB400DE4226 /* findRouteBike@2x.png in Resources */,
 				4EE064E21A10FAB400DE4226 /* up-right@2x.png in Resources */,
-				4EC56E611A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */,
 				4EE0661B1A10FAB400DE4226 /* routeEnterHeader@2x.png in Resources */,
 				4EE065D21A10FAB400DE4226 /* leftArrow.png in Resources */,
 				4EE0651A1A10FAB400DE4226 /* Icon-72@2x.png in Resources */,
@@ -5302,10 +5237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EC56E361A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */,
-				4EC56E621A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */,
 				4EC56E8A1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
-				4EC56E461A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5434,7 +5366,6 @@
 				4EE072AC1A1178E200DE4226 /* mapDisclosure.png in Resources */,
 				4EE0722B1A1178E200DE4226 /* favListRowLight@2x.png in Resources */,
 				4EE0726F1A1178E200DE4226 /* greenroute_white.png in Resources */,
-				4EE06E8F1A11298800DE4226 /* SMLoadStationsView.xib in Resources */,
 				4EE0727D1A1178E200DE4226 /* icon_locate_no_tracking.png in Resources */,
 				4EE0734F1A1178E300DE4226 /* select_station_bgr@2x.png in Resources */,
 				4EE071861A1178E100DE4226 /* black_btn_pressed.png in Resources */,
@@ -5532,7 +5463,6 @@
 				4EE071D61A1178E200DE4226 /* right-ward.png in Resources */,
 				4EF4DF7F1B28461E00B64D3B /* AddressToolbarView.xib in Resources */,
 				4EE072971A1178E200DE4226 /* L@2x.png in Resources */,
-				4EC56E371A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */,
 				4EE072851A1178E200DE4226 /* Icon-Small-50@2x.png in Resources */,
 				4EE071621A1178E100DE4226 /* accountInputBG.png in Resources */,
 				4EE071751A1178E100DE4226 /* back_arrow_btn_black@2x.png in Resources */,
@@ -5606,7 +5536,6 @@
 				4EE072E41A1178E200DE4226 /* red_btn.png in Resources */,
 				4EE072DB1A1178E200DE4226 /* pullHandle@2x.png in Resources */,
 				4EE82FB61B0BCE350089147A /* LaunchScreen.xib in Resources */,
-				4EC56E631A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */,
 				4EE071801A1178E100DE4226 /* bike_route@2x.png in Resources */,
 				4EE072211A1178E200DE4226 /* favHandle@2x.png in Resources */,
 				4EE072891A1178E200DE4226 /* icon@2x.png in Resources */,
@@ -5741,7 +5670,6 @@
 				4EE0736B1A1178E300DE4226 /* smallDirectionsBG@2x.png in Resources */,
 				4EE071F01A1178E200DE4226 /* divider_side_menu_btn.png in Resources */,
 				4EE072CF1A1178E200DE4226 /* overviewBG@2x.png in Resources */,
-				4EC56E471A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */,
 				4EE072FB1A1178E200DE4226 /* reportBulb@2x.png in Resources */,
 				4EE0719F1A1178E200DE4226 /* break_route_white_press@2x.png in Resources */,
 				4EE071691A1178E100DE4226 /* arrow_large@2x.png in Resources */,
@@ -5934,10 +5862,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EC56E381A2A2C3D00B696B4 /* SMAddFavoriteCell.xib in Resources */,
-				4EC56E641A2A2C3D00B696B4 /* SMDirectionsFooter.xib in Resources */,
 				4EC56E8C1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
-				4EC56E481A2A2C3D00B696B4 /* SMCalloutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6158,7 +6083,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EAB12471A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */,
-				4EC56E651A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */,
 				4EE06CD91A11134C00DE4226 /* SMRequestOSRM.m in Sources */,
 				4E5E87861B31D4760021F5E9 /* FindRouteViewController.swift in Sources */,
 				4EC56E851A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
@@ -6207,7 +6131,6 @@
 				4EEC6D311B208156003AE8DF /* CompassButton.swift in Sources */,
 				4E10EBC61B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */,
 				4EE06CD51A11134C00DE4226 /* SMLocationManager.m in Sources */,
-				4EC56E591A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
 				4EE05F501A10EBFA00DE4226 /* main.m in Sources */,
 				4E2A92561A3B43130032ACD4 /* Async.swift in Sources */,
 				4E337B541B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */,
@@ -6239,9 +6162,7 @@
 				4EC56E751A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
 				4E7BD07B1A9234EF00BFDC7B /* RLMSupport.swift in Sources */,
 				4EAB12441A769BB60099AC54 /* VoicePreferencesViewController.swift in Sources */,
-				4EC56E5D1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */,
 				4E59820C1A24AC1200A40484 /* CurrentLocationItem.swift in Sources */,
-				4EC56E411A2A2C3D00B696B4 /* SMCalloutView.m in Sources */,
 				4EE06CD71A11134C00DE4226 /* SMNearbyPlaces.m in Sources */,
 				4EE06CCB1A11134C00DE4226 /* SMTranslation.m in Sources */,
 				4EC56DD41A2A25E900B696B4 /* SMUtil.m in Sources */,
@@ -6285,7 +6206,6 @@
 				4EC56E391A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
 				4EC56DC81A2A25E900B696B4 /* SMEvents.m in Sources */,
 				4EE06CC91A11134C00DE4226 /* Reachability.m in Sources */,
-				4EC56E691A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */,
 				4E4F5FDA1A2BAC4700233ACA /* Styling.swift in Sources */,
 				4E5258C71A9B9C8400BE55C8 /* String.swift in Sources */,
 				4E2CE9EE1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
@@ -6307,7 +6227,6 @@
 				4E7262D91B2AF450008561D0 /* BorderedButton.swift in Sources */,
 				4E2B08F41B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift in Sources */,
 				4E58C3191B0E35000041255B /* ENSideMenu.swift in Sources */,
-				4EC56E311A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
 				4E55A0271A36068800386F85 /* MenuViewController.swift in Sources */,
 				4EF4DF7C1B28461E00B64D3B /* AddressToolbarView.swift in Sources */,
 			);
@@ -6339,7 +6258,6 @@
 				4E5982191A24AC1200A40484 /* User.swift in Sources */,
 				4E10EBB91B3AE6480012245E /* RouteNavigationToolbarView.swift in Sources */,
 				4EE06C4D1A10FC5600DE4226 /* SMTrain.m in Sources */,
-				4EE06F0D1A112F6D00DE4226 /* SMLoadStationsView.m in Sources */,
 				4EC56E3F1A2A2C3D00B696B4 /* SMAutocompleteHeader.m in Sources */,
 				4E3C3A881A39DEFC00C79E52 /* FavoriteListViewController.swift in Sources */,
 				4E59820D1A24AC1200A40484 /* CurrentLocationItem.swift in Sources */,
@@ -6378,7 +6296,6 @@
 				4E32B29C1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */,
 				4EC56DBA1A2A25E900B696B4 /* SMAnalytics.m in Sources */,
 				4E5E87971B31F7DC0021F5E9 /* RouteTypeToolbarView.swift in Sources */,
-				4EC56E331A2A2C3D00B696B4 /* SMAddFavoriteCell.m in Sources */,
 				4E10EBB51B3AE4B10012245E /* RouteNavigationViewController.swift in Sources */,
 				4EE06F051A112F6D00DE4226 /* SMBreakRouteButtonCell.m in Sources */,
 				4EEC6D291B20788E003AE8DF /* MapViewController.swift in Sources */,
@@ -6389,7 +6306,6 @@
 				4EE633771A5E8A94009DA49B /* OverlaysViewController.swift in Sources */,
 				4E8E343A1A272A84004D529B /* OiorestItem.swift in Sources */,
 				4EC56EE51A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
-				4EC56E671A2A2C3D00B696B4 /* SMDirectionTopCell.m in Sources */,
 				4EE06CD21A11134C00DE4226 /* SMGeocoder.m in Sources */,
 				4E65D2A31AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */,
 				4EF4DF7D1B28461E00B64D3B /* AddressToolbarView.swift in Sources */,
@@ -6400,7 +6316,6 @@
 				4EC56E531A2A2C3D00B696B4 /* SMCustomButton.m in Sources */,
 				4E33B9201A640700007D4C82 /* AppHelper.swift in Sources */,
 				4EC56E9B1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
-				4EC56E5B1A2A2C3D00B696B4 /* SMDirectionCell.m in Sources */,
 				4EC56DDA1A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
 				4E5258CB1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */,
 				4EC56EFD1A2A3AAE00B696B4 /* SMSplashController.m in Sources */,
@@ -6423,7 +6338,6 @@
 				4EC56E8F1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
 				4E5258C81A9B9C8400BE55C8 /* String.swift in Sources */,
 				4EE06CE51A11135000DE4226 /* SMAddressParser.m in Sources */,
-				4EC56E5F1A2A2C3D00B696B4 /* SMDirectionsFooter.m in Sources */,
 				4E10EBC71B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */,
 				4E337B551B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */,
 				4EC56EF51A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
@@ -6440,7 +6354,6 @@
 				4EC56EF91A2A3AAE00B696B4 /* SMSettingsController.m in Sources */,
 				4E4AC45A1A8505BE0037A65E /* Macro.swift in Sources */,
 				4EE06C481A10FC5600DE4226 /* SMStationInfo.m in Sources */,
-				4EC56E431A2A2C3D00B696B4 /* SMCalloutView.m in Sources */,
 				4E4AC45F1A8509590037A65E /* MacroCykelPlanen.swift in Sources */,
 				4EB8B1891B25D20F00A1C53E /* PinAnnotation.swift in Sources */,
 				4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */,
@@ -6450,7 +6363,6 @@
 				4E56745B1A9238A900BF4A28 /* Track.swift in Sources */,
 				4EC56E731A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
 				4EC56DCA1A2A25E900B696B4 /* SMEvents.m in Sources */,
-				4EC56E6B1A2A2C3D00B696B4 /* SMEmptyFavoritesCell.m in Sources */,
 				4EE06C4A1A10FC5600DE4226 /* SMStationsCache.m in Sources */,
 				4EE6337B1A5E8B6D009DA49B /* Overlays.swift in Sources */,
 				4E2B08F51B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift in Sources */,
