@@ -411,4 +411,4 @@
 "activate_gps" = "Aktiver GPS";
 "leave_no_gps" = "Deaktiver GPS";
 
-"play_services_version_error" = "Google Play Services skal opdateres";
+"play_services_version_error" = "For at opsamle data skal Play Services opdateres";
