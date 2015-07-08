@@ -380,12 +380,6 @@
 
 "route_info"= "Rejseforslag";
 
-// these are in the storyboard
-"reminder_title" = "Påmindelser";
-"reminder_text" = "Få hjælp til at komme op på cyklen. Vælg de dage du ønsker at cykle, så hjælper vi dig med at komme igang.";
-"reminder_save_btn" = "Gem påmindelser";
-"reminder_alert_text" = "Husk at tage cyklen i morgen";
-
 // Favorites
 "favorites_title" = "Tilføj favoritter";
 "favorites_text" = "Nu kan du nemt og hurtigt navigere til dine foretrukne pendlerruter. Start med at tilføje din hjemme- og arbejdsadresse.";

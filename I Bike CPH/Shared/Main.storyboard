@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qyQ-LZ-vdu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qyQ-LZ-vdu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcv-0L-DTY">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcv-0L-DTY">
                                 <rect key="frame" x="16" y="540" width="568" height="60"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
@@ -46,7 +46,7 @@
                                     <segue destination="epN-zP-gD4" kind="presentation" identifier="splashToMain" animates="NO" id="cuV-cD-1ff"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOL-k1-Vo7">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOL-k1-Vo7">
                                 <rect key="frame" x="258" y="460" width="85" height="60"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
@@ -57,7 +57,7 @@
                                     <segue destination="h7b-VQ-XtA" kind="show" id="yk2-zf-Q1g"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="i9b-t7-Stg" customClass="LogoImageView" customModule="CykelPlanen" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="249" verticalHuggingPriority="249" ambiguous="YES" misplaced="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="i9b-t7-Stg" customClass="LogoImageView" customModule="CykelPlanen" customModuleProvider="target">
                                 <rect key="frame" x="16" y="64" width="568" height="396"/>
                             </imageView>
                         </subviews>
@@ -567,7 +567,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pgh-UI-YSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1605" y="4287"/>
+            <point key="canvasLocation" x="-1605" y="3563"/>
         </scene>
         <!--Route Navigation View Controller-->
         <scene sceneID="amS-11-XJq">
@@ -581,7 +581,7 @@ God tur og tak fordi du cykler!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qwr-r2-t5R" userLabel="ToolbarContainer">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qwr-r2-t5R" userLabel="ToolbarContainer">
                                 <rect key="frame" x="0.0" y="64" width="600" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -594,7 +594,7 @@ God tur og tak fordi du cykler!</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-LC-UdU" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-LC-UdU" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="436"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDH-94-tHy" customClass="CompassButton" customModule="CykelPlanen" customModuleProvider="target">
@@ -1608,7 +1608,6 @@ God tur og tak fordi du cykler!</string>
                         <segue destination="xNM-kw-qFI" kind="show" identifier="menuToAbout" id="4Ul-HV-5CP"/>
                         <segue destination="h7b-VQ-XtA" kind="show" identifier="menuToLogin" id="2Vq-ft-HSw"/>
                         <segue destination="HgL-f2-3Al" kind="show" identifier="menuToAccountNative" id="UPU-A9-0r1"/>
-                        <segue destination="1AN-tD-MKu" kind="show" identifier="menuToReminders" id="eTH-4h-mt7"/>
                         <segue destination="hsI-UY-mY8" kind="show" identifier="menuToOverlays" id="meI-YB-opB"/>
                         <segue destination="CaA-EE-oV6" kind="show" identifier="menuToAccountFacebook" id="TIc-7B-BT4"/>
                         <segue destination="hv3-0N-UL0" kind="show" identifier="menuToVoice" id="4W3-LP-Kkg"/>
@@ -1635,7 +1634,7 @@ God tur og tak fordi du cykler!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1g-fG-8lD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2313" y="8836"/>
+            <point key="canvasLocation" x="-2313" y="8112"/>
         </scene>
         <!--Tracking View Controller-->
         <scene sceneID="xBF-30-4NL">
@@ -2039,7 +2038,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsf-pB-a0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1605" y="8836"/>
+            <point key="canvasLocation" x="-1605" y="8112"/>
         </scene>
         <!--Tracks View Controller-->
         <scene sceneID="QL3-aQ-Dhy">
@@ -2128,7 +2127,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXG-dy-QeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-213" y="8836"/>
+            <point key="canvasLocation" x="-213" y="8112"/>
         </scene>
         <!--Track Detail View Controller-->
         <scene sceneID="Px9-Br-HLr">
@@ -2169,7 +2168,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRt-ZO-TZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="8836"/>
+            <point key="canvasLocation" x="-909" y="8112"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jsv-IT-wOl">
@@ -2185,7 +2184,7 @@ God tur og tak fordi du cykler!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyM-je-rca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1605" y="7345"/>
+            <point key="canvasLocation" x="-1605" y="6621"/>
         </scene>
         <!--Tracking Prompt View Controller-->
         <scene sceneID="qbo-pC-zA1">
@@ -2454,7 +2453,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nej-le-cpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="7345"/>
+            <point key="canvasLocation" x="-909" y="6621"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="p9i-xj-h3t">
@@ -2470,7 +2469,7 @@ God tur og tak fordi du cykler!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ker-Mw-zOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1605" y="8075"/>
+            <point key="canvasLocation" x="-1605" y="7351"/>
         </scene>
         <!--Tracking Not Available View Controller-->
         <scene sceneID="kQN-iq-8Zn">
@@ -2526,7 +2525,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ya2-Xi-SzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="8075"/>
+            <point key="canvasLocation" x="-909" y="7351"/>
         </scene>
         <!--Favorite List View Controller-->
         <scene sceneID="vpY-3V-J8n">
@@ -3160,90 +3159,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9c-c5-LI0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1605" y="5064"/>
-        </scene>
-        <!--Reminder List View Controller-->
-        <scene sceneID="BGu-1q-gTy">
-            <objects>
-                <viewController id="1AN-tD-MKu" customClass="ReminderListViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="O6h-Hf-ZKU"/>
-                        <viewControllerLayoutGuide type="bottom" id="4H8-Xy-ClD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CpL-FP-b8U">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q9g-F5-zBf">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="reminderCell" selectionStyle="blue" indentationWidth="10" reuseIdentifier="reminderTableCell" rowHeight="60" id="LSn-TI-Ddq" customClass="SMReminderTableViewCell">
-                                        <rect key="frame" x="0.0" y="1" width="260" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LSn-TI-Ddq" id="q2Q-jM-ye4">
-                                            <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pps-GV-DyW">
-                                                    <rect key="frame" x="536" y="14" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="onSwitchSet:" destination="LSn-TI-Ddq" eventType="valueChanged" id="y6a-eJ-jO5"/>
-                                                    </connections>
-                                                </switch>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" misplaced="YES" text="Monday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sL7-65-4Dg">
-                                                    <rect key="frame" x="15" y="5" width="511" height="49"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="x27-Lb-r8W"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="pps-GV-DyW" secondAttribute="centerY" constant="0.5" id="6pi-02-ulZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="pps-GV-DyW" secondAttribute="trailing" constant="15" id="Gka-f1-FUe"/>
-                                                <constraint firstAttribute="bottom" secondItem="sL7-65-4Dg" secondAttribute="bottom" constant="5" id="MNe-hE-dRU"/>
-                                                <constraint firstItem="sL7-65-4Dg" firstAttribute="top" secondItem="q2Q-jM-ye4" secondAttribute="top" constant="5" id="MxQ-or-uYk"/>
-                                                <constraint firstItem="pps-GV-DyW" firstAttribute="leading" secondItem="sL7-65-4Dg" secondAttribute="trailing" constant="20" id="R6L-le-1Kk"/>
-                                                <constraint firstItem="sL7-65-4Dg" firstAttribute="leading" secondItem="q2Q-jM-ye4" secondAttribute="leading" constant="15" id="pFY-LR-bio"/>
-                                                <constraint firstItem="pps-GV-DyW" firstAttribute="leading" secondItem="sL7-65-4Dg" secondAttribute="trailing" constant="10" id="saR-M8-oid"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="R6L-le-1Kk"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="day" destination="sL7-65-4Dg" id="a5w-iQ-ipd"/>
-                                            <outlet property="reminderSwitch" destination="pps-GV-DyW" id="pOu-1L-ijb"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="1AN-tD-MKu" id="bur-9W-HZv"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Q9g-F5-zBf" firstAttribute="top" secondItem="O6h-Hf-ZKU" secondAttribute="bottom" id="5fO-6V-vKn"/>
-                            <constraint firstItem="Q9g-F5-zBf" firstAttribute="leading" secondItem="CpL-FP-b8U" secondAttribute="leading" id="Cub-lQ-Aon"/>
-                            <constraint firstItem="Q9g-F5-zBf" firstAttribute="top" secondItem="CpL-FP-b8U" secondAttribute="topMargin" id="M4U-8J-aH0"/>
-                            <constraint firstItem="4H8-Xy-ClD" firstAttribute="top" secondItem="Q9g-F5-zBf" secondAttribute="bottom" id="QvA-fu-Mr7"/>
-                            <constraint firstAttribute="trailing" secondItem="Q9g-F5-zBf" secondAttribute="trailing" id="l7I-eg-5cI"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="5fO-6V-vKn"/>
-                            </mask>
-                        </variation>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KyI-0c-D1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1605" y="3525"/>
+            <point key="canvasLocation" x="-1605" y="4340"/>
         </scene>
         <!--Overlays View Controller-->
         <scene sceneID="dMj-tA-Kbn">
@@ -3289,7 +3205,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnP-ln-KCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1605" y="5829"/>
+            <point key="canvasLocation" x="-1605" y="5105"/>
         </scene>
         <!--Account Facebook View Controller-->
         <scene sceneID="Bu9-CF-6Yc">
@@ -3393,7 +3309,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8r-Vk-82e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="5070.5"/>
+            <point key="canvasLocation" x="-909" y="4346"/>
         </scene>
         <!--Voice Preferences View Controller-->
         <scene sceneID="vaM-hN-ynh">
@@ -3458,7 +3374,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ba1-bS-fbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1605" y="6586"/>
+            <point key="canvasLocation" x="-1605" y="5862"/>
         </scene>
         <!--Tracking Preferences View Controller-->
         <scene sceneID="q6a-qV-KeS">
@@ -3527,7 +3443,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRP-lT-7He" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="9601"/>
+            <point key="canvasLocation" x="-909" y="8877"/>
         </scene>
     </scenes>
     <resources>
@@ -3558,10 +3474,10 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dc7-Qo-Oev"/>
-        <segue reference="mOB-IN-cna"/>
-        <segue reference="XyX-Jg-6Fy"/>
+        <segue reference="xbN-fl-Cnv"/>
         <segue reference="hGb-e2-eVV"/>
+        <segue reference="X1l-ON-ahy"/>
+        <segue reference="t11-Tv-7cG"/>
         <segue reference="cR0-BE-PFO"/>
         <segue reference="YD8-cY-nJg"/>
     </inferredMetricsTieBreakers>

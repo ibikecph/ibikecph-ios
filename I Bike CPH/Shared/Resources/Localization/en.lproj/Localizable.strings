@@ -370,11 +370,6 @@
 // these are in the storyboard
 "register_with_mail" = "Register with email";
 
-"reminder_title" = "Reminder";
-"reminder_text" = "Get help to start biking. Please select the day(s) you want to bike and we will help you get started.";
-"reminder_save_btn" = "Save reminder";
-"reminder_alert_text" = "Remember to cycle in the morning";
-
 // Break route
 "break_route_title" = "Less biking";
 "btn_break_route" = "Less biking";

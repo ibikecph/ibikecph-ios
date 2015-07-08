@@ -27,9 +27,6 @@ class MenuViewController: UIViewController {
         let favItem = MenuItem(title: "favorites".localized, iconImageName: "Favorite", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToFavorites", sender: menuViewController)
         })
-        let reminderItem = MenuItem(title: "reminder_title".localized, iconImageName: "notifications", action: { menuViewController in
-            menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
-        })
         let profileItem = MenuItem(title: (UserHelper.loggedIn() ? "account" : "profile").localized, iconImageName: "user", action: { menuViewController in
             if UserHelper.loggedIn() {
                 if UserHelper.isFacebook() {
@@ -79,9 +76,6 @@ class MenuViewController: UIViewController {
         }
 //        menuItems.append(speedItem)
         menuItems.append(trackingItem)
-        if macro.isCykelPlanen {
-            menuItems.append(reminderItem)
-        }
         menuItems.append(profileItem)
         menuItems.append(aboutItem)
         

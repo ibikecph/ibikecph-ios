@@ -9,6 +9,10 @@
 #import "SMAppDelegate.h"
 #import "SMUtil.h"
 #import "SMSearchHistory.h"
+#if defined(CYKEL_PLANEN)
+#import "SMReminder.h"
+#endif
+
 
 @interface SMAppDelegate () <SMSearchHistoryDelegate>
 @end
@@ -22,6 +26,11 @@
     } else {
         [Notifications scheduleLocalNotification:@"Didn't launch from significant location change" fireDate:[NSDate new]];
     }
+    
+#if defined(CYKEL_PLANEN)
+    // Reminders has been deprecated. Clear no make sure notifications doesn't fly around and spook the users.
+    [SMReminder clear];
+#endif
     
     self.pastRoutes = @[];
     self.currentContacts = @[];
