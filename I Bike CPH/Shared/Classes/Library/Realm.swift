@@ -64,6 +64,18 @@ extension RLMResults {
     }
 }
 
+extension RLMArray {
+    
+    func toArray<T>(ofType: T.Type) -> [T] {
+        var array = [T]()
+        for result in self {
+            if let result = result as? T {
+                array.append(result)
+            }
+        }
+        return array
+    }
+}
 
 var compressingRealm = false
 extension RLMRealm {

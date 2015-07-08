@@ -99,7 +99,7 @@ class MapView: UIView {
         }
     }
 
-    func addPath(coordinates: [CLLocationCoordinate2D], lineColor: UIColor = Styler.tintColor()) -> Annotation {
+    func addPath(coordinates: [CLLocationCoordinate2D], lineColor: UIColor = Styler.tintColor(), lineWidth: Float = 4.0) -> Annotation {
     
         // Annotation
         var pathAnnotation = Annotation()
@@ -111,7 +111,7 @@ class MapView: UIView {
             pathAnnotation.coordinate = firstCoordinate
         }
         shape.lineColor = lineColor
-        shape.lineWidth = 4.0
+        shape.lineWidth = lineWidth
         shape.lineJoin = "round"
         shape.lineCap = "round"
         pathAnnotation.layer = shape
