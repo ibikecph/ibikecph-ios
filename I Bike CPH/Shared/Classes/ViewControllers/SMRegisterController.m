@@ -177,7 +177,6 @@
 //            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"auth_token"] forKey:@"auth_token"];
 //            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"id"] forKey:@"id"];
 //            [self.appDelegate.appSettings setValue:self.emailField.text forKey:@"username"];
-//            [self.appDelegate.appSettings setValue:self.passwordField.text forKey:@"password"];
 //            [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
 //            [self.appDelegate saveSettings];
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"" message:@"register_successful".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
