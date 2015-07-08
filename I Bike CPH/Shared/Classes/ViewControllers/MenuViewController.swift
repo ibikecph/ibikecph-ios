@@ -57,8 +57,7 @@ class MenuViewController: UIViewController {
                 return
             }
             let trackingOn = Settings.instance.tracking.on
-            let hasBikeTracks = BikeStatistics.hasTrackedBikeData()
-            if !(trackingOn || hasBikeTracks) {
+            if !trackingOn {
                 menuViewController.performSegueWithIdentifier("menuToTrackingPrompt", sender: menuViewController)
                 menuViewController.pendingTracking = true
                 return
