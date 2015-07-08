@@ -67,7 +67,7 @@ class TrackingViewController: SMTranslatedViewController {
         
         // Leave view controller if user hasn't enabled tracking and has no tracking data.
         // This will happen when user disable tracking in tracking settings and returns to this view controller.
-        if !settings.tracking.on && !BikeStatistics.hasTrackedBikeData() {
+        if !Settings.instance.tracking.on && !BikeStatistics.hasTrackedBikeData() {
             dismiss()
         }
         

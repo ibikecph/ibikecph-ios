@@ -60,7 +60,7 @@ class MainMapViewController: MapViewController {
     }
     
     func updateTrackingToolbarView() {
-        let trackingOn = settings.tracking.on
+        let trackingOn = Settings.instance.tracking.on
         let hasBikeTracks = BikeStatistics.hasTrackedBikeData()
         let showTrackingView = trackingOn || hasBikeTracks
         if showTrackingView {

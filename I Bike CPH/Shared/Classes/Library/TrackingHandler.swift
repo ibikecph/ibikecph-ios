@@ -77,7 +77,7 @@ let trackingHandler = TrackingHandler()
     }
     
     func setupMotionTracking() {
-        if !settings.tracking.on {
+        if !Settings.instance.tracking.on {
             motionDetector.stop()
             return
         }
@@ -104,12 +104,12 @@ let trackingHandler = TrackingHandler()
     
     func setupBackgroundHandling() {
         NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationDidEnterBackgroundNotification, object: nil, queue: nil) { notification in
-            if settings.tracking.on {
+            if Settings.instance.tracking.on {
                 return
             }
             // TODO: Check if app is routing
             let currentlyRouting = false // WARNING: FIXME: get actual value
-            if settings.voice.on && currentlyRouting {
+            if Settings.instance.voice.on && currentlyRouting {
                 return
             }
             // Stop location manager
@@ -121,7 +121,7 @@ let trackingHandler = TrackingHandler()
     }
     
     func setupLocationObserver() {
-        if !settings.tracking.on {
+        if !Settings.instance.tracking.on {
             self.stopTracking()
         }
         
@@ -135,7 +135,7 @@ let trackingHandler = TrackingHandler()
     }
     
     func setupMilestoneNotification() {
-        if !settings.tracking.on {
+        if !Settings.instance.tracking.on {
             return
         }
         statsNotificationHandler.checkPresentNotificationToUser()
@@ -158,7 +158,7 @@ let trackingHandler = TrackingHandler()
     }
     
     func stopTracking() {
-        if settings.tracking.on {
+        if Settings.instance.tracking.on {
             // Idle location manager
             SMLocationManager.instance().idle()
         } else {

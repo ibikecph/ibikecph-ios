@@ -8,13 +8,12 @@
 
 import UIKit
 
-let settings = Settings()
-
 let settingsUpdatedNotification = "settingsUpdatedNotification"
 
-@objc class Settings: NSObject {
+class Settings: NSObject {
+    static let instance = Settings()
     
-    @objc class Voice {
+    class Voice {
         private let onKey = "voiceOn"
         var on: Bool {
             get { return Defaults[onKey].bool ?? true }
@@ -59,11 +58,6 @@ let settingsUpdatedNotification = "settingsUpdatedNotification"
         if let bundleID = NSBundle.mainBundle().bundleIdentifier {
             Defaults.removePersistentDomainForName(bundleID)
         }
-    }
-    
-    // MARK: - ObjC compatibility
-    class func sharedInstance() -> Settings {
-        return settings
     }
 }
 
