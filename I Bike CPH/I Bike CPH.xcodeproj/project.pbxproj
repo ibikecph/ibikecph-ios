@@ -1401,6 +1401,8 @@
 		4EE671C71A2F25F00037865B /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C51A2F25F00037865B /* UINavigationController.swift */; };
 		4EE671CA1A2F3CCC0037865B /* SMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */; };
 		4EE671CB1A2F3CCC0037865B /* SMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */; };
+		4EE683741B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */; };
+		4EE683751B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */; };
 		4EE82FB51B0BCE300089147A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */; };
 		4EE82FB61B0BCE350089147A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F8A1A10EDE700DE4226 /* LaunchScreen.xib */; };
 		4EEC6D251B207844003AE8DF /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D241B207844003AE8DF /* MainMapViewController.swift */; };
@@ -2811,6 +2813,7 @@
 		4EE671C51A2F25F00037865B /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		4EE671C81A2F3CCC0037865B /* SMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMenuViewController.h; sourceTree = "<group>"; };
 		4EE671C91A2F3CCC0037865B /* SMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMenuViewController.m; sourceTree = "<group>"; };
+		4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D.swift; sourceTree = "<group>"; };
 		4EEC6D241B207844003AE8DF /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		4EEC6D271B20788E003AE8DF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4EEC6D2A1B207AA6003AE8DF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -3068,6 +3071,7 @@
 				4E467D181B3416C3003770EE /* Route */,
 				4E337B511B2F1DD400261D97 /* Map */,
 				4EC56DA61A2A25E900B696B4 /* SMAnalytics.h */,
+				4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */,
 				4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */,
 				4EC56DAA1A2A25E900B696B4 /* SMAPIRequest.h */,
 				4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */,
@@ -4818,6 +4822,7 @@
 		4EE05F421A10EBFA00DE4226 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "I Bike CPH";
 				TargetAttributes = {
@@ -6272,6 +6277,7 @@
 				4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
 				4E32B29E1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */,
 				4E5E87901B31DC520021F5E9 /* RouteStatsToolbarView.swift in Sources */,
+				4EE683741B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */,
 				4EEC6D251B207844003AE8DF /* MainMapViewController.swift in Sources */,
 				4E5E878A1B31D6560021F5E9 /* FindRouteToolbarView.swift in Sources */,
 				4EE06CD31A11134C00DE4226 /* SMGPSUtil.m in Sources */,
@@ -6494,6 +6500,7 @@
 				4EB8B1891B25D20F00A1C53E /* PinAnnotation.swift in Sources */,
 				4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */,
 				4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
+				4EE683751B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */,
 				4E7262DA1B2AF450008561D0 /* BorderedButton.swift in Sources */,
 				4E56745B1A9238A900BF4A28 /* Track.swift in Sources */,
 				4EC56E731A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
