@@ -62,6 +62,11 @@ class MainMapViewController: MapViewController {
     }
     
     func updateTrackingToolbarView() {
+        if currentItem != nil {
+            // Do nothing af a location item is currently used
+            return
+        }
+        
         let trackingOn = Settings.instance.tracking.on
         let hasBikeTracks = BikeStatistics.hasTrackedBikeData()
         let showTrackingView = trackingOn || hasBikeTracks
