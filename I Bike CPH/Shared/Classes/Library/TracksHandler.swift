@@ -41,24 +41,29 @@ class TracksHandler {
         return queue
     }()
     
-    class func setNeedsProcessData(force: Bool = false) {
+    class func setNeedsProcessData(userInitiated: Bool = false) {
         if compressingRealm {
             Async.main(after: 10) {
                 self.setNeedsProcessData()
             }
             return
         }
-        if force {
+        let timeIntervalSinceBig = NSDate().timeIntervalSinceDate(instance.lastProcessedBig)
+        let timeIntervalSinceSmall = NSDate().timeIntervalSinceDate(instance.lastProcessedSmall)
+        if
+            userInitiated &&
+            timeIntervalSinceBig > 0 // 60*5 // Allow userInitiated every 5 min
+        {
             instance.cleanUpBig(asap: true)
             instance.lastProcessedBig = NSDate()
             return
         }
-        if NSDate().timeIntervalSinceDate(instance.lastProcessedBig) > 60*60*1 { // Do big stuff every hour
+        if timeIntervalSinceBig > 60*60*1 { // Do big stuff every hour
             instance.cleanUpBig(asap: false)
             instance.lastProcessedBig = NSDate()
             return
         }
-        if NSDate().timeIntervalSinceDate(instance.lastProcessedSmall) > 60*5 { // Do small stuff every 5 min
+        if timeIntervalSinceSmall > 60*5 { // Do small stuff every 5 min
             instance.cleanUpSmall()
             instance.lastProcessedSmall = NSDate()
             return
@@ -71,9 +76,6 @@ class TracksHandler {
     private func cleanUpSmall() {
         if TracksHandler.instance.processing {
             println("Already processing")
-            Async.main(after: 30) { // Check again after 30 seconds
-                self.cleanUpSmall()
-            }
             return
         }
         TracksHandler.instance.processing = true
@@ -150,7 +152,7 @@ class TracksHandler {
         }
         TracksHandler.instance.processing = true
         
-        println("Start geocoding big")
+        println("Start geocoding")
         let operations = [
             GeocodeBikeTracksOperation() // Don't use from date since background operation might not have geocoded)
         ]
@@ -159,7 +161,7 @@ class TracksHandler {
             operation.qualityOfService = .UserInitiated
         }
         operations.last?.completionBlock = {
-            println("Done geociding")
+            println("Done geocoding")
             Async.main {
                 TracksHandler.instance.processing = false
                 NotificationCenter.post(processedGeocodingNoticationKey, object: self)

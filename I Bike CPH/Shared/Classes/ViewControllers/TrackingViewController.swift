@@ -59,25 +59,32 @@ class TrackingViewController: SMTranslatedViewController {
         
         title = "tracking".localized
         
-        NotificationCenter.observe(processedBigNoticationKey) { notification in
-            self.updateUI()
-            // Request update of tracks
-            TracksHandler.geocode()
-        }
-        NotificationCenter.observe(processedGeocodingNoticationKey) { notification in
-            self.updateUI()
-        }
         self.updateUI()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Leave view controller if user hasn't enabled tracking and has no tracking data.
+        // This will happen when user disable tracking in tracking settings and returns to this view controller.
         if !settings.tracking.on && !BikeStatistics.hasTrackedBikeData() {
             dismiss()
         }
         
-        TracksHandler.setNeedsProcessData(force: true)
+        // Setup notifications
+        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+            self?.updateUI()
+            if self != nil {
+                // Request update of tracks
+                TracksHandler.geocode()
+            }
+        }
+        NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
+            self?.updateUI()
+        }
+        
+        // Request new data
+        TracksHandler.setNeedsProcessData(userInitiated: true)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

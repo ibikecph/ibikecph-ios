@@ -115,14 +115,14 @@ class StatsNotificationHandler {
     }
     
     private func setupTracksObserver() {
-        NotificationCenter.observe(processedBigNoticationKey) { notification in
-            self.updateToTrackData()
+        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+            self?.updateToTrackData()
         }
     }
     
     private func setupSettingsObserver() {
-        NotificationCenter.observe(settingsUpdatedNotification) { [unowned self] notification in
-            self.updateToTrackData()
+        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+            self?.updateToTrackData()
         }
     }
     

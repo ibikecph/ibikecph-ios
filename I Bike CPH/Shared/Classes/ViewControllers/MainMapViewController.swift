@@ -41,18 +41,18 @@ class MainMapViewController: MapViewController {
         
         // Tracking changes
         updateTrackingToolbarView()
-        NotificationCenter.observe(processedBigNoticationKey) { notification in
-            self.updateTrackingToolbarView()
+        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+            self?.updateTrackingToolbarView()
         }
-        NotificationCenter.observe(settingsUpdatedNotification) { notification in
-            self.updateTrackingToolbarView()
+        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+            self?.updateTrackingToolbarView()
         }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // Update tracking information
-        TracksHandler.setNeedsProcessData(force: true)
+        TracksHandler.setNeedsProcessData(userInitiated: true)
     }
 
     @IBAction func openMenu(sender: AnyObject) {

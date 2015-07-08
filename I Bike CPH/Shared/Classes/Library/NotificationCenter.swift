@@ -16,8 +16,8 @@ class NotificationCenter {
         }
     }
     
-    class func observe(name: String, object: AnyObject? = nil, queue: NSOperationQueue? = nil, usingBlock block: NSNotification! -> ()) {
-        NSNotificationCenter.defaultCenter().addObserverForName(name, object: object, queue: queue, usingBlock: block)
+    class func observe(name: String, object: AnyObject? = nil, queue: NSOperationQueue? = nil, usingBlock block: NSNotification! -> ()) -> NSObjectProtocol {
+        return NSNotificationCenter.defaultCenter().addObserverForName(name, object: object, queue: queue, usingBlock: block)
     }
     
     class func unobserve(observer: AnyObject, name: String? = nil, object: AnyObject? = nil) {

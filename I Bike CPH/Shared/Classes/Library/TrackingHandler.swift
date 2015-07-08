@@ -71,8 +71,8 @@ let trackingHandler = TrackingHandler()
     }
     
     func setupSettingsObserver() {
-        NotificationCenter.observe(settingsUpdatedNotification) { [unowned self] notification in
-            self.setup()
+        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+            self?.setup()
         }
     }
     
