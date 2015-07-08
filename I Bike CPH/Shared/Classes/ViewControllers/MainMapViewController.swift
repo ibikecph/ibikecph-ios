@@ -20,7 +20,7 @@ class MainMapViewController: MapViewController {
     let mainToLoginSegue = "mainToLogin"
     let mainToFindAddressSegue = "mainToFindAddress"
     var pinAnnotation: PinAnnotation?
-    var currentItem: SearchListItem?
+    var currentLocationItem: SearchListItem?
     
     deinit {
         NotificationCenter.unobserve(self)
@@ -62,7 +62,7 @@ class MainMapViewController: MapViewController {
     }
     
     func updateTrackingToolbarView() {
-        if currentItem != nil {
+        if currentLocationItem != nil {
             // Do nothing af a location item is currently used
             return
         }
@@ -109,7 +109,7 @@ class MainMapViewController: MapViewController {
             segue.identifier == mainToFindRouteSegue,
             let destinationController = segue.destinationViewController as? FindRouteViewController
         {
-            destinationController.toItem = currentItem
+            destinationController.toItem = currentLocationItem
         }
     }
     
@@ -164,24 +164,24 @@ extension MainMapViewController: AddressToolbarDelegate {
         
         // Add or remove from favorite accordingly
         if selected {
-            if let item = currentItem {
+            if let item = currentLocationItem {
                 // Check if current item is already favorite
                 if let favorite = item as? FavoriteItem {
                     addressToolbarView.updateToItem(favorite)
                     return
                 }
                 let favorite = FavoriteItem(other: item)
-                currentItem = favorite
+                currentLocationItem = favorite
                 addressToolbarView.updateToItem(favorite)
                 // Add to server
                 SMFavoritesUtil.instance().addFavoriteToServer(favorite)
             }
-        } else if let item = currentItem as? FavoriteItem {
+        } else if let item = currentLocationItem as? FavoriteItem {
             // Remove from server
             SMFavoritesUtil.instance().deleteFavoriteFromServer(item)
             // Downgrade to non-favorite item
             let nonFavorite = UnknownSearchListItem(other: item)
-            currentItem = nonFavorite
+            currentLocationItem = nonFavorite
             addressToolbarView.updateToItem(nonFavorite)
         }
     }
@@ -199,7 +199,7 @@ extension MainMapViewController: MapViewDelegate {
         // Show address in toolbar
         add(toolbarView: addressToolbarView)
         // Clear
-        currentItem = nil
+        currentLocationItem = nil
         addressToolbarView.prepareForReuse()
         SMGeocoder.reverseGeocode(coordinate, synchronous: false) { [weak self] item, error in
             if let error = error {
@@ -210,7 +210,7 @@ extension MainMapViewController: MapViewDelegate {
             item.location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
             
             let item: SearchListItem = self?.favoriteForItem(item) ?? item // Attempt upgrade to Favorite
-            self?.currentItem = item
+            self?.currentLocationItem = item
             self?.addressToolbarView.updateToItem(item)
             
             // Reverse geocode doesn't provide a location for the found item.
@@ -261,7 +261,7 @@ extension MainMapViewController: FindAddressViewControllerProtocol {
     func foundAddress(item: SearchListItem) {
         // Update current item
         let item: SearchListItem = favoriteForItem(item) ?? item // Attempt upgrade to Favorite
-        currentItem = item
+        currentLocationItem = item
         // Show address in toolbar
         addressToolbarView.updateToItem(item)
         add(toolbarView: addressToolbarView)

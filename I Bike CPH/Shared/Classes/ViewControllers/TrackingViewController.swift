@@ -159,7 +159,7 @@ extension TrackingViewController: UITableViewDataSource {
             tracks = tracks(inSection: indexPath.section)
             where indexPath.row < tracks.count
         {
-            return tracks[indexPath.row] as? Track
+            return tracks[indexPath.row]
         }
         return nil
     }
