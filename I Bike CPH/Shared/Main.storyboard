@@ -3521,6 +3521,7 @@ God tur og tak fordi du cykler!</string>
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="tableView" destination="8XO-hw-nmh" id="aZU-D2-aph"/>
                         <segue destination="h7b-VQ-XtA" kind="show" identifier="trackingPreferencesToLogin" id="XyX-Jg-6Fy"/>
                     </connections>
                 </viewController>
@@ -3557,11 +3558,11 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Vq-ft-HSw"/>
         <segue reference="dc7-Qo-Oev"/>
-        <segue reference="t11-Tv-7cG"/>
-        <segue reference="YD8-cY-nJg"/>
+        <segue reference="mOB-IN-cna"/>
+        <segue reference="XyX-Jg-6Fy"/>
         <segue reference="hGb-e2-eVV"/>
         <segue reference="cR0-BE-PFO"/>
+        <segue reference="YD8-cY-nJg"/>
     </inferredMetricsTieBreakers>
 </document>

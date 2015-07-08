@@ -13,6 +13,12 @@ class IconLabelTableViewCell: NibDesignableTableViewCell {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var label: UILabel!
+    var enabled: Bool = true {
+        didSet {
+            label.enabled = enabled
+            iconImageView.tintAdjustmentMode = enabled ? .Normal : .Dimmed
+        }
+    }
     
     func configure(#text: String, textColor: UIColor = Styler.foregroundColor(), icon: UIImage? = nil) {
         
