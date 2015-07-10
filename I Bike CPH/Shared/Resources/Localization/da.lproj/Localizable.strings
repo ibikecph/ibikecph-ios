@@ -292,6 +292,7 @@
 "tracking_milestone_notifications" = "Besked om milepæle";
 "tracking_weekly_status_notifications" = "Ugentlig status";
 "log_in_to_track_prompt" = "For at starte opsamling af data, skal du være logget ind.";
+"reenable_tracking" = "Genaktivér indsamling af cykeldata";
 
 "log_in_to_favorite_prompt" = "For at tilføje favoritter, skal du være logget ind.";
 

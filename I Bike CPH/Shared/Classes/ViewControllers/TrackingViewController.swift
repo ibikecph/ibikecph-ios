@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import PSTAlertController
 
-class TrackingViewController: SMTranslatedViewController {
+class TrackingViewController: ToolbarViewController {
 
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
@@ -17,6 +18,7 @@ class TrackingViewController: SMTranslatedViewController {
     @IBOutlet weak var sinceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    private let enableTrackingToolbarView = EnableTrackingToolbarView()
     private var tracks: [[Track]]?
     private var selectedTrack: Track?
     private var swipeEditing: Bool = false
@@ -57,19 +59,11 @@ class TrackingViewController: SMTranslatedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Title
         title = "tracking".localized
         
-        self.updateUI()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // Leave view controller if user hasn't enabled tracking and has no tracking data.
-        // This will happen when user disable tracking in tracking settings and returns to this view controller.
-        if !Settings.instance.tracking.on && !BikeStatistics.hasTrackedBikeData() {
-            dismiss()
-        }
+        // Delegates
+        enableTrackingToolbarView.delegate = self
         
         // Setup notifications
         NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
@@ -82,6 +76,22 @@ class TrackingViewController: SMTranslatedViewController {
         NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
             self?.updateUI()
         }
+        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+            self?.updateUI()
+        }
+        
+        // Initial load of UI
+        self.updateUI()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Leave view controller if user hasn't enabled tracking and has no tracking data.
+        // This will happen when user disable tracking in tracking settings and returns to this view controller.
+        if !Settings.instance.tracking.on && !BikeStatistics.hasTrackedBikeData() {
+            dismiss()
+        }
         
         // Request new data
         TracksHandler.setNeedsProcessData(userInitiated: true)
@@ -93,6 +103,14 @@ class TrackingViewController: SMTranslatedViewController {
     
     func updateUI() {
         
+        // Re-enable button
+        if Settings.instance.tracking.on {
+            removeToolbar()
+        } else {
+            add(toolbarView: enableTrackingToolbarView)
+        }
+        
+        // Stats
         let totalDistance = BikeStatistics.totalDistance() / 1000
         distanceLabel.text = numberFormatter.stringFromNumber(totalDistance)
         
@@ -115,6 +133,7 @@ class TrackingViewController: SMTranslatedViewController {
             return
         }
         
+        // Tracks
         updateTracks()
         tableView.reloadData()
     }
@@ -138,6 +157,16 @@ class TrackingViewController: SMTranslatedViewController {
             }
         }
         tracks = updatedTracks
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if
+            segue.identifier == "trackingToDetail",
+            let track = selectedTrack,
+            trackDetailViewController = segue.destinationViewController as? TrackDetailViewController
+        {
+            trackDetailViewController.track = track
+        }
     }
 }
 
@@ -215,6 +244,7 @@ extension TrackingViewController: UITableViewDataSource {
     }
 }
 
+
 extension TrackingViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -227,15 +257,20 @@ extension TrackingViewController: UITableViewDelegate {
     }
 }
 
-extension TrackingViewController {
+
+extension TrackingViewController: EnableTrackingToolbarDelegate {
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if
-            segue.identifier == "trackingToDetail",
-            let track = selectedTrack,
-            trackDetailViewController = segue.destinationViewController as? TrackDetailViewController
-        {
-            trackDetailViewController.track = track
+    func didSelectEnableTracking() {
+        if !UserHelper.loggedIn() {
+            let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
+            alertController.addCancelActionWithHandler(nil)
+            let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
+                self?.performSegueWithIdentifier("trackingPromptToLogin", sender: self)
+            }
+            alertController.addAction(loginAction)
+            alertController.showWithSender(self, controller: self, animated: true, completion: nil)
+            return
         }
+        Settings.instance.tracking.on = true
     }
 }

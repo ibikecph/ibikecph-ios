@@ -46,6 +46,9 @@
                                     <segue destination="epN-zP-gD4" kind="presentation" identifier="splashToMain" animates="NO" id="cuV-cD-1ff"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="249" verticalHuggingPriority="249" ambiguous="YES" misplaced="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="i9b-t7-Stg" customClass="LogoImageView" customModule="CykelPlanen" customModuleProvider="target">
+                                <rect key="frame" x="16" y="64" width="568" height="396"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOL-k1-Vo7">
                                 <rect key="frame" x="258" y="460" width="85" height="60"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -57,9 +60,6 @@
                                     <segue destination="h7b-VQ-XtA" kind="show" id="yk2-zf-Q1g"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="249" verticalHuggingPriority="249" ambiguous="YES" misplaced="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="i9b-t7-Stg" customClass="LogoImageView" customModule="CykelPlanen" customModuleProvider="target">
-                                <rect key="frame" x="16" y="64" width="568" height="396"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -469,7 +469,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="250" id="z30-6C-tdf"/>
+                                    <constraint firstAttribute="height" priority="250" id="z30-6C-SdS"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1648,6 +1648,13 @@ God tur og tak fordi du cykler!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0EG-5v-SaS" userLabel="ToolbarContainer">
+                                <rect key="frame" x="0.0" y="64" width="600" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" id="z30-6C-Sas"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heY-is-bSK">
                                 <rect key="frame" x="0.0" y="542" width="600" height="58"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
@@ -1665,11 +1672,11 @@ God tur og tak fordi du cykler!</string>
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EcP-VW-o8X" userLabel="StatsContainer">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcP-VW-o8X" userLabel="StatsContainer">
                                             <rect key="frame" x="0.0" y="27" width="600" height="246"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stats_description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxN-OC-5FU">
-                                                    <rect key="frame" x="20" y="0.0" width="560" height="14"/>
+                                                    <rect key="frame" x="20" y="0.0" width="560" height="13.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19.5" id="YBJ-MZ-dSd"/>
                                                     </constraints>
@@ -1682,7 +1689,7 @@ God tur og tak fordi du cykler!</string>
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Since February 18th 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uX1-zS-B4g">
-                                                    <rect key="frame" x="20" y="232" width="560" height="14"/>
+                                                    <rect key="frame" x="20" y="231" width="560" height="13.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13.5" id="j4e-ze-mXi"/>
                                                     </constraints>
@@ -1698,7 +1705,7 @@ God tur og tak fordi du cykler!</string>
                                                     <rect key="frame" x="167" y="34" width="266" height="178"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-5V-kbj" userLabel="TopLeft">
-                                                            <rect key="frame" x="0.0" y="0.0" width="133" height="88"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="132.5" height="88.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="55.3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nb6-0k-MoA">
                                                                     <rect key="frame" x="0.0" y="0.0" width="113" height="48"/>
@@ -1722,7 +1729,7 @@ God tur og tak fordi du cykler!</string>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHW-V6-3Ie" userLabel="BottomLeft">
-                                                            <rect key="frame" x="0.0" y="88" width="133" height="89"/>
+                                                            <rect key="frame" x="0.0" y="88" width="132.5" height="88.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="18.4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hK-V7-aa5">
                                                                     <rect key="frame" x="0.0" y="20" width="113" height="48"/>
@@ -1746,11 +1753,11 @@ God tur og tak fordi du cykler!</string>
                                                                 <constraint firstItem="7hK-V7-aa5" firstAttribute="leading" secondItem="yHW-V6-3Ie" secondAttribute="leading" id="tts-2j-Ukv"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-Bw-2Ta" userLabel="BottomRight">
-                                                            <rect key="frame" x="132" y="88" width="133" height="89"/>
+                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-Bw-2Ta" userLabel="BottomRight">
+                                                            <rect key="frame" x="131" y="88" width="132" height="89"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.4" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6I-wy-HE4">
-                                                                    <rect key="frame" x="20" y="20" width="113" height="49"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5.4" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6I-wy-HE4">
+                                                                    <rect key="frame" x="20" y="20" width="112.5" height="49"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -1770,8 +1777,8 @@ God tur og tak fordi du cykler!</string>
                                                                 <constraint firstAttribute="trailing" secondItem="b6I-wy-HE4" secondAttribute="trailing" id="s1R-0X-Ouh"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grm-Q4-pR7" userLabel="TopRight">
-                                                            <rect key="frame" x="132" y="0.0" width="133" height="89"/>
+                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grm-Q4-pR7" userLabel="TopRight">
+                                                            <rect key="frame" x="131" y="0.0" width="132" height="89"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" misplaced="YES" text="24.3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOV-HS-88T">
                                                                     <rect key="frame" x="20" y="0.0" width="113" height="48"/>
@@ -1795,15 +1802,15 @@ God tur og tak fordi du cykler!</string>
                                                                 <constraint firstItem="LNo-Ym-Rr0" firstAttribute="leading" secondItem="grm-Q4-pR7" secondAttribute="leading" constant="20" id="nC2-BQ-hyt"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dr8-0C-aIY" userLabel="HorizontalLine">
+                                                        <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="dr8-0C-aIY" userLabel="HorizontalLine">
                                                             <rect key="frame" x="0.0" y="88" width="266" height="1"/>
                                                             <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="eLD-wj-BUC"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ke4-kU-8v5" userLabel="VerticalLine">
-                                                            <rect key="frame" x="132" y="0.0" width="1" height="177"/>
+                                                        <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ke4-kU-8v5" userLabel="VerticalLine">
+                                                            <rect key="frame" x="131" y="0.0" width="1" height="177.5"/>
                                                             <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="Cup-Aa-9UC"/>
@@ -1899,22 +1906,22 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wiO-A9-08P" userLabel="LeftView">
-                                                    <rect key="frame" x="28" y="10" width="142" height="59"/>
+                                                    <rect key="frame" x="28" y="10" width="141.5" height="59"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalCompressionResistancePriority="749" text="Hegnsvejen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17O-ge-iwH" userLabel="BottomAddress">
-                                                            <rect key="frame" x="0.0" y="35" width="142" height="20"/>
+                                                            <rect key="frame" x="0.0" y="35" width="141.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalCompressionResistancePriority="749" text="15:30-16:05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggp-G3-fnX" userLabel="Time">
-                                                            <rect key="frame" x="0.0" y="0.0" width="142" height="14"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="141.5" height="13.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Havnegårdsvænget" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWG-Yv-i2r" userLabel="TopAddress">
-                                                            <rect key="frame" x="0.0" y="15" width="142" height="20"/>
+                                                            <rect key="frame" x="0.0" y="15" width="141.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2007,17 +2014,36 @@ God tur og tak fordi du cykler!</string>
                                     <outlet property="delegate" destination="6SA-JC-lpZ" id="aB6-re-0QG"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0eG-5v-saS" userLabel="ToolbarContainer">
+                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" id="z30-6C-tdf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0eG-5v-saS" firstAttribute="top" secondItem="mdK-ui-jun" secondAttribute="bottom" id="0RK-YI-I4k"/>
+                            <constraint firstAttribute="trailing" secondItem="0EG-5v-SaS" secondAttribute="trailing" id="4Rd-Jw-XJj"/>
                             <constraint firstItem="iF3-ur-Its" firstAttribute="top" secondItem="heY-is-bSK" secondAttribute="bottom" id="7X8-Ne-M7n"/>
                             <constraint firstItem="heY-is-bSK" firstAttribute="leading" secondItem="3MM-4z-J48" secondAttribute="leading" id="9a5-jc-fNY"/>
+                            <constraint firstItem="0EG-5v-SaS" firstAttribute="top" secondItem="mdK-ui-jun" secondAttribute="bottom" id="9y5-Rn-L7J"/>
+                            <constraint firstItem="0EG-5v-SaS" firstAttribute="leading" secondItem="3MM-4z-J48" secondAttribute="leading" id="Blg-wa-Xq2"/>
+                            <constraint firstItem="0eG-5v-saS" firstAttribute="leading" secondItem="3MM-4z-J48" secondAttribute="leading" id="EeK-5M-3uz"/>
                             <constraint firstItem="heY-is-bSK" firstAttribute="top" secondItem="FOn-aj-wdi" secondAttribute="bottom" id="KQx-1f-e4e"/>
+                            <constraint firstAttribute="trailing" secondItem="0eG-5v-saS" secondAttribute="trailing" id="P8l-bS-vtB"/>
                             <constraint firstAttribute="trailing" secondItem="heY-is-bSK" secondAttribute="trailing" id="Ruq-hX-ngl"/>
                             <constraint firstItem="FOn-aj-wdi" firstAttribute="top" secondItem="mdK-ui-jun" secondAttribute="bottom" id="kP2-EQ-wiE"/>
+                            <constraint firstItem="FOn-aj-wdi" firstAttribute="top" secondItem="0eG-5v-saS" secondAttribute="bottom" id="mCJ-dv-C8f"/>
                             <constraint firstItem="FOn-aj-wdi" firstAttribute="leading" secondItem="3MM-4z-J48" secondAttribute="leading" id="odW-vl-Caa"/>
                             <constraint firstAttribute="trailing" secondItem="FOn-aj-wdi" secondAttribute="trailing" id="vwj-vw-Krd"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="kP2-EQ-wiE"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="pbD-9V-WTN">
                         <barButtonItem key="rightBarButtonItem" image="settings" id="whU-gd-Bei">
@@ -2032,6 +2058,7 @@ God tur og tak fordi du cykler!</string>
                         <outlet property="speedLabel" destination="7hK-V7-aa5" id="033-hh-2oq"/>
                         <outlet property="tableView" destination="FOn-aj-wdi" id="zWr-ld-Geg"/>
                         <outlet property="timeLabel" destination="wOV-HS-88T" id="dEz-Lu-tUj"/>
+                        <outlet property="toolbarContainer" destination="0eG-5v-saS" id="gkf-WC-FFy"/>
                         <outlet property="tripLabel" destination="b6I-wy-HE4" id="QbX-HI-ie6"/>
                         <segue destination="DLt-LQ-2q9" kind="show" identifier="trackingToDetail" id="t11-Tv-7cG"/>
                     </connections>
@@ -3449,7 +3476,7 @@ God tur og tak fordi du cykler!</string>
     <resources>
         <image name="Compas unselected" width="27" height="27"/>
         <image name="From to" width="22" height="14"/>
-        <image name="Logo" width="984" height="562"/>
+        <image name="Logo" width="22" height="22"/>
         <image name="arrow_large.png" width="37" height="32"/>
         <image name="arrow_small.png" width="20" height="18"/>
         <image name="bike_route.png" width="30" height="39"/>
@@ -3474,11 +3501,11 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xbN-fl-Cnv"/>
-        <segue reference="hGb-e2-eVV"/>
+        <segue reference="yk2-zf-Q1g"/>
         <segue reference="X1l-ON-ahy"/>
         <segue reference="t11-Tv-7cG"/>
-        <segue reference="cR0-BE-PFO"/>
+        <segue reference="WjL-tL-I1v"/>
         <segue reference="YD8-cY-nJg"/>
+        <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>
 </document>

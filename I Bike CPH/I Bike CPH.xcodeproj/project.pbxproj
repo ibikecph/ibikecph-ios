@@ -171,6 +171,10 @@
 		4EAB12481A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */; };
 		4EAB124A1A76AEF50099AC54 /* SettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */; };
 		4EAB124B1A76AEF50099AC54 /* SettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */; };
+		4EADAE4C1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EADAE4A1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift */; };
+		4EADAE4D1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EADAE4A1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift */; };
+		4EADAE4E1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EADAE4B1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib */; };
+		4EADAE4F1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EADAE4B1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib */; };
 		4EB610E21AD69B8800CEC994 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */; };
 		4EB610E31AD69B8800CEC994 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */; };
 		4EB610E51AD69D2500CEC994 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB610E41AD69D2500CEC994 /* UITableView.swift */; };
@@ -1530,6 +1534,8 @@
 		4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoicePreferencesViewController.swift; sourceTree = "<group>"; };
 		4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabelSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandler.swift; sourceTree = "<group>"; };
+		4EADAE4A1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableTrackingToolbarView.swift; sourceTree = "<group>"; };
+		4EADAE4B1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnableTrackingToolbarView.xib; sourceTree = "<group>"; };
 		4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionViewModel.swift; sourceTree = "<group>"; };
 		4EB610E41AD69D2500CEC994 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
@@ -2968,6 +2974,26 @@
 				4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		4EADAE471B4FDFE600A2E43F /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				4EEC6D331B20B139003AE8DF /* TrackingToolbarView.xib */,
+				4EEC6D361B20B14F003AE8DF /* TrackingToolbarView.swift */,
+				4EADAE4A1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift */,
+				4EADAE4B1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib */,
+			);
+			name = Tracking;
+			sourceTree = "<group>";
+		};
+		4EADAE481B4FDFFC00A2E43F /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				4EF4DF7B1B28461E00B64D3B /* AddressToolbarView.xib */,
+				4EF4DF7A1B28461E00B64D3B /* AddressToolbarView.swift */,
+			);
+			name = Address;
 			sourceTree = "<group>";
 		};
 		4EB8B1861B25D1FE00A1C53E /* Map */ = {
@@ -4588,10 +4614,8 @@
 			isa = PBXGroup;
 			children = (
 				4EDC5E061B20EBD5009189EE /* ToolbarView.swift */,
-				4EEC6D331B20B139003AE8DF /* TrackingToolbarView.xib */,
-				4EEC6D361B20B14F003AE8DF /* TrackingToolbarView.swift */,
-				4EF4DF7B1B28461E00B64D3B /* AddressToolbarView.xib */,
-				4EF4DF7A1B28461E00B64D3B /* AddressToolbarView.swift */,
+				4EADAE481B4FDFFC00A2E43F /* Address */,
+				4EADAE471B4FDFE600A2E43F /* Tracking */,
 				4E10EBC31B3AF8F50012245E /* FindRoute */,
 				4E5E878F1B31DC520021F5E9 /* RouteStatsToolbarView.xib */,
 				4E5E878E1B31DC520021F5E9 /* RouteStatsToolbarView.swift */,
@@ -5050,6 +5074,7 @@
 				4EE0655F1A10FAB400DE4226 /* drop_pin_add_fav_btn_press@2x.png in Resources */,
 				4EE065311A10FAB400DE4226 /* back_arrow_btn_white.png in Resources */,
 				4E5E87921B31DC520021F5E9 /* RouteStatsToolbarView.xib in Resources */,
+				4EADAE4E1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */,
 				4EE065F21A10FAB400DE4226 /* red_btn.png in Resources */,
 				4EE064EC1A10FAB400DE4226 /* white-down-right@2x.png in Resources */,
 				4EE06CDD1A11134C00DE4226 /* smroute_settings_example.plist in Resources */,
@@ -5694,6 +5719,7 @@
 				4EE072681A1178E200DE4226 /* findRouteContacts@2x.png in Resources */,
 				4EE0728C1A1178E200DE4226 /* info.png in Resources */,
 				4EBB7B411A5EB4E70064B530 /* service_stations.json in Resources */,
+				4EADAE4F1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */,
 				4EE072C41A1178E200DE4226 /* normalDirectionsShadow.png in Resources */,
 				4EE0723B1A1178E200DE4226 /* favStarGreySmall@2x.png in Resources */,
 				4EE072EF1A1178E200DE4226 /* registerBlueButton@2x.png in Resources */,
@@ -6104,6 +6130,7 @@
 				4EE06CD11A11134C00DE4226 /* SMGeocoder.m in Sources */,
 				4EE06CC11A11134C00DE4226 /* SMKMSPlacesOperation.m in Sources */,
 				4E5258A61A9B580000BE55C8 /* TrackingNotAvailableViewController.swift in Sources */,
+				4EADAE4C1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift in Sources */,
 				4EEC6D371B20B14F003AE8DF /* TrackingToolbarView.swift in Sources */,
 				4EE06CC31A11134C00DE4226 /* SMKMSStreetOperation.m in Sources */,
 				4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */,
@@ -6301,6 +6328,7 @@
 				4EEC6D291B20788E003AE8DF /* MapViewController.swift in Sources */,
 				4E59820F1A24AC1200A40484 /* FavoriteItem.swift in Sources */,
 				4EE06CC01A11134C00DE4226 /* SMKMSAddressOperation.m in Sources */,
+				4EADAE4D1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift in Sources */,
 				4EC56EB31A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */,
 				4EE06C421A10FC5600DE4226 /* SMReminder.m in Sources */,
 				4EE633771A5E8A94009DA49B /* OverlaysViewController.swift in Sources */,
