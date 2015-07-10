@@ -17,9 +17,6 @@ private struct OverlayTypeViewModel {
             switch self.type {
                 case .CycleSuperHighways: return "SuperCycleHighway"
                 case .BikeServiceStations: return "serviceStation"
-                case .STrainStations: return "sStation"
-                case .MetroStations: return "metro"
-                case .LocalTrainStation: return "localTrain"
             }
         }()
         return UIImage(named: name)
@@ -29,18 +26,18 @@ private struct OverlayTypeViewModel {
         get {
             if let overlays = OverlayTypeViewModel.mapOverlays() {
                 switch type {
-                    case .CycleSuperHighways: return overlays.pathVisible
-                    case .BikeServiceStations: return overlays.serviceMarkersVisible
-                    case .STrainStations: return overlays.stationMarkersVisible
-                    case .MetroStations: return overlays.metroMarkersVisible
-                    case .LocalTrainStation: return overlays.localTrainMarkersVisible
+                    case .CycleSuperHighways: return Settings.instance.overlays.cycleSuperHighways
+                    case .BikeServiceStations: return Settings.instance.overlays.bikeServiceStations
                 }
             }
             return false
         }
         set {
             if let mapOverlays = OverlayTypeViewModel.mapOverlays() {
-                mapOverlays.toggleMarkers(type.key, state: newValue)
+                switch type {
+                    case .CycleSuperHighways: Settings.instance.overlays.cycleSuperHighways = newValue
+                    case .BikeServiceStations: Settings.instance.overlays.bikeServiceStations = newValue
+                }
             }
         }
     }
@@ -65,10 +62,7 @@ class OverlaysViewController: UIViewController {
     
     private var items = [
         OverlayTypeViewModel(type: .CycleSuperHighways),
-        OverlayTypeViewModel(type: .BikeServiceStations),
-        OverlayTypeViewModel(type: .STrainStations),
-        OverlayTypeViewModel(type: .MetroStations),
-        OverlayTypeViewModel(type: .LocalTrainStation),
+        OverlayTypeViewModel(type: .BikeServiceStations)
     ]
     
     override func viewDidLoad() {

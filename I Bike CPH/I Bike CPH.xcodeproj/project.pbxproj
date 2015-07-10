@@ -175,6 +175,8 @@
 		4EADAE4D1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EADAE4A1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift */; };
 		4EADAE4E1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EADAE4B1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib */; };
 		4EADAE4F1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EADAE4B1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib */; };
+		4EADAE511B5024CA00A2E43F /* ServiceStationsAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EADAE501B5024CA00A2E43F /* ServiceStationsAnnotation.swift */; };
+		4EADAE521B5024CA00A2E43F /* ServiceStationsAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EADAE501B5024CA00A2E43F /* ServiceStationsAnnotation.swift */; };
 		4EB610E21AD69B8800CEC994 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */; };
 		4EB610E31AD69B8800CEC994 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */; };
 		4EB610E51AD69D2500CEC994 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB610E41AD69D2500CEC994 /* UITableView.swift */; };
@@ -183,12 +185,6 @@
 		4EB8B1891B25D20F00A1C53E /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */; };
 		4EBB7B3A1A5EB4E70064B530 /* farum-route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* farum-route.json */; };
 		4EBB7B3B1A5EB4E70064B530 /* farum-route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* farum-route.json */; };
-		4EBB7B3C1A5EB4E70064B530 /* metro-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B361A5EB4E70064B530 /* metro-stations.json */; };
-		4EBB7B3D1A5EB4E70064B530 /* metro-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B361A5EB4E70064B530 /* metro-stations.json */; };
-		4EBB7B3E1A5EB4E70064B530 /* s-train-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B371A5EB4E70064B530 /* s-train-stations.json */; };
-		4EBB7B3F1A5EB4E70064B530 /* s-train-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B371A5EB4E70064B530 /* s-train-stations.json */; };
-		4EBB7B401A5EB4E70064B530 /* service_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B381A5EB4E70064B530 /* service_stations.json */; };
-		4EBB7B411A5EB4E70064B530 /* service_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B381A5EB4E70064B530 /* service_stations.json */; };
 		4EBB7B421A5EB4E70064B530 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B391A5EB4E70064B530 /* stations.json */; };
 		4EBB7B431A5EB4E70064B530 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B391A5EB4E70064B530 /* stations.json */; };
 		4EBB7B481A5EC2A00064B530 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B471A5EC2A00064B530 /* RouteType.swift */; };
@@ -1536,13 +1532,11 @@
 		4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandler.swift; sourceTree = "<group>"; };
 		4EADAE4A1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableTrackingToolbarView.swift; sourceTree = "<group>"; };
 		4EADAE4B1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnableTrackingToolbarView.xib; sourceTree = "<group>"; };
+		4EADAE501B5024CA00A2E43F /* ServiceStationsAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceStationsAnnotation.swift; sourceTree = "<group>"; };
 		4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionViewModel.swift; sourceTree = "<group>"; };
 		4EB610E41AD69D2500CEC994 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		4EBB7B351A5EB4E70064B530 /* farum-route.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "farum-route.json"; sourceTree = "<group>"; };
-		4EBB7B361A5EB4E70064B530 /* metro-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "metro-stations.json"; sourceTree = "<group>"; };
-		4EBB7B371A5EB4E70064B530 /* s-train-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-stations.json"; sourceTree = "<group>"; };
-		4EBB7B381A5EB4E70064B530 /* service_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service_stations.json; sourceTree = "<group>"; };
 		4EBB7B391A5EB4E70064B530 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		4EBB7B471A5EC2A00064B530 /* RouteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
 		4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTypeHandler.swift; sourceTree = "<group>"; };
@@ -3002,6 +2996,7 @@
 				4EEC6D2A1B207AA6003AE8DF /* MapView.swift */,
 				4EEC6D301B208156003AE8DF /* CompassButton.swift */,
 				4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */,
+				4EADAE501B5024CA00A2E43F /* ServiceStationsAnnotation.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -3010,9 +3005,6 @@
 			isa = PBXGroup;
 			children = (
 				4EBB7B351A5EB4E70064B530 /* farum-route.json */,
-				4EBB7B361A5EB4E70064B530 /* metro-stations.json */,
-				4EBB7B371A5EB4E70064B530 /* s-train-stations.json */,
-				4EBB7B381A5EB4E70064B530 /* service_stations.json */,
 				4EBB7B391A5EB4E70064B530 /* stations.json */,
 			);
 			path = LocationData;
@@ -4857,7 +4849,6 @@
 				4EE065BF1A10FAB400DE4226 /* green_grey@2x.png in Resources */,
 				4EE0654B1A10FAB400DE4226 /* cargo_slider@2x.png in Resources */,
 				4EE065F01A10FAB400DE4226 /* radioUnchecked.png in Resources */,
-				4EBB7B401A5EB4E70064B530 /* service_stations.json in Resources */,
 				4EE065791A10FAB400DE4226 /* favEditBtnPressed@2x.png in Resources */,
 				4EE065A41A10FAB400DE4226 /* favTypeSchoolButtonPressed.png in Resources */,
 				4EE065181A10FAB400DE4226 /* icon-120.png in Resources */,
@@ -5212,13 +5203,11 @@
 				4EE064D51A10FAB400DE4226 /* near-destination.png in Resources */,
 				4EE065C21A10FAB400DE4226 /* greenroute_grey.png in Resources */,
 				4EE066031A10FAB400DE4226 /* reportHeaderBG@2x.png in Resources */,
-				4EBB7B3E1A5EB4E70064B530 /* s-train-stations.json in Resources */,
 				4EE0657B1A10FAB400DE4226 /* favEditDeleteButton@2x.png in Resources */,
 				4EE0658B1A10FAB400DE4226 /* favReorder@2x.png in Resources */,
 				4EE066111A10FAB400DE4226 /* routeComplete_report_problem@2x.png in Resources */,
 				4EE0663A1A10FAB400DE4226 /* routeStopOverlay.png in Resources */,
 				4EE065FB1A10FAB400DE4226 /* reportBottom@2x.png in Resources */,
-				4EBB7B3C1A5EB4E70064B530 /* metro-stations.json in Resources */,
 				4EE065BC1A10FAB400DE4226 /* gray_btn_pressed.png in Resources */,
 				4EE065491A10FAB400DE4226 /* cargo_grey@2x.png in Resources */,
 				4EE065C11A10FAB400DE4226 /* green_white@2x.png in Resources */,
@@ -5536,7 +5525,6 @@
 				4EE072551A1178E200DE4226 /* favWorkWhite@2x.png in Resources */,
 				4EE0715E1A1178E100DE4226 /* about_header.png in Resources */,
 				4EE072EC1A1178E200DE4226 /* registerBG.png in Resources */,
-				4EBB7B3F1A5EB4E70064B530 /* s-train-stations.json in Resources */,
 				4EE073211A1178E300DE4226 /* routeEnterHeader@2x.png in Resources */,
 				4EE073941A1178E300DE4226 /* warningIcon@2x.png in Resources */,
 				4EE073311A1178E300DE4226 /* routeEnterStart_active@2x.png in Resources */,
@@ -5718,7 +5706,6 @@
 				4EE073151A1178E200DE4226 /* routeComplete_close_btn@2x.png in Resources */,
 				4EE072681A1178E200DE4226 /* findRouteContacts@2x.png in Resources */,
 				4EE0728C1A1178E200DE4226 /* info.png in Resources */,
-				4EBB7B411A5EB4E70064B530 /* service_stations.json in Resources */,
 				4EADAE4F1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */,
 				4EE072C41A1178E200DE4226 /* normalDirectionsShadow.png in Resources */,
 				4EE0723B1A1178E200DE4226 /* favStarGreySmall@2x.png in Resources */,
@@ -5726,7 +5713,6 @@
 				4EE072E11A1178E200DE4226 /* radioChecked@2x.png in Resources */,
 				4EE06CB81A11134C00DE4226 /* .gitignore in Resources */,
 				4EE0722C1A1178E200DE4226 /* favListRowSelected.png in Resources */,
-				4EBB7B3D1A5EB4E70064B530 /* metro-stations.json in Resources */,
 				4EE0725D1A1178E200DE4226 /* findAutocomplete.png in Resources */,
 				4EE072A21A1178E200DE4226 /* local_train_icon.png in Resources */,
 				4EE072FC1A1178E200DE4226 /* reportButton.png in Resources */,
@@ -6171,6 +6157,7 @@
 				4EC56DC41A2A25E900B696B4 /* SMContacts.m in Sources */,
 				4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */,
 				4E3C3A8D1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
+				4EADAE511B5024CA00A2E43F /* ServiceStationsAnnotation.swift in Sources */,
 				4EC56E491A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
 				4EDC5E071B20EBD5009189EE /* ToolbarView.swift in Sources */,
 				4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
@@ -6280,6 +6267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EC56ED91A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
+				4EADAE521B5024CA00A2E43F /* ServiceStationsAnnotation.swift in Sources */,
 				4EE06C381A10FC5600DE4226 /* SMDepartureInfo.m in Sources */,
 				4EC56E7B1A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
 				4E5982191A24AC1200A40484 /* User.swift in Sources */,

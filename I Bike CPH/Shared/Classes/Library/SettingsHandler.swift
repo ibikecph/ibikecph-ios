@@ -50,9 +50,29 @@ class Settings: NSObject {
             }
         }
     }
+    
+    @objc class Overlays {
+        private let bikeServiceStationsKey = "overlayBikeServiceStationsKey"
+        var bikeServiceStations: Bool {
+            get { return Defaults[bikeServiceStationsKey].bool ?? false }
+            set {
+                Defaults[bikeServiceStationsKey] = newValue
+                NotificationCenter.post(settingsUpdatedNotification, object: self)
+            }
+        }
+        private let cycleSuperHighwaysKey = "overlayCycleSuperHighways"
+        var cycleSuperHighways: Bool {
+            get { return Defaults[cycleSuperHighwaysKey].bool ?? false }
+            set {
+                Defaults[cycleSuperHighwaysKey] = newValue
+                NotificationCenter.post(settingsUpdatedNotification, object: self)
+            }
+        }
+    }
    
     let voice = Voice()
     let tracking = Tracking()
+    let overlays = Overlays()
     
     func clear() {
         if let bundleID = NSBundle.mainBundle().bundleIdentifier {
