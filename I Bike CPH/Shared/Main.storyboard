@@ -3005,17 +3005,10 @@ God tur og tak fordi du cykler!</string>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Egd-Ec-8Yi">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zVC-ok-AS4">
-                            <connections>
-                                <action selector="saveButtonTapped:" destination="SaP-gh-izC" id="hEd-6e-R1M"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Egd-Ec-8Yi"/>
                     <connections>
                         <outlet property="addressTextField" destination="Uth-cg-QZQ" id="PHS-Ne-EuW"/>
                         <outlet property="nameTextField" destination="Dwi-Fj-b3h" id="nMs-0x-6hA"/>
-                        <outlet property="saveButton" destination="zVC-ok-AS4" id="Tpp-wp-I6E"/>
                         <outlet property="tableView" destination="bh2-eb-otZ" id="DbX-S3-bGZ"/>
                         <segue destination="9Sk-0W-QC9" kind="show" identifier="favoriteToSearch" id="7W8-lE-WHM"/>
                     </connections>
@@ -3501,11 +3494,11 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="7W8-lE-WHM"/>
         <segue reference="hGb-e2-eVV"/>
         <segue reference="8Kg-rW-C0r"/>
+        <segue reference="cR0-BE-PFO"/>
         <segue reference="X1l-ON-ahy"/>
         <segue reference="t11-Tv-7cG"/>
-        <segue reference="YD8-cY-nJg"/>
-        <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>
 </document>
