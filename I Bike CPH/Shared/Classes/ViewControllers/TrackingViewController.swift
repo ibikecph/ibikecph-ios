@@ -140,20 +140,26 @@ class TrackingViewController: ToolbarViewController {
     
     func updateTracks() {
         var date = NSDate()
-        var updatedTracks: [[Track]]? = nil
+        var updatedTracks = [[Track]]()
         if let oldestDate = BikeStatistics.firstTrackStartDate() {
-            while date.laterOrEqualDay(thanDate: oldestDate) {
-                if let tracksForDate = BikeStatistics.tracksForDayOfDate(date) {
-                    if let tracks = tracksForDate.sortedResultsUsingProperty("startTimestamp", ascending: false) {
-                        let tracksArray = tracks.toArray(Track.self)
-                        if updatedTracks == nil {
-                            updatedTracks = [tracksArray]
-                        } else {
-                            updatedTracks?.append(tracksArray)
-                        }
+            let allTracks = BikeStatistics.tracks().sortedResultsUsingProperty("startTimestamp", ascending: false)
+            var currentDate: NSDate = BikeStatistics.lastTrackEndDate() ?? NSDate()
+            var section = 0
+            for track in allTracks {
+                if let
+                    track = track as? Track,
+                    date = track.startDate()
+                {
+                    let sameDay = date.relativeDay(fromDate: currentDate) == 0
+                    if !sameDay {
+                        currentDate = date
+                        section++
                     }
+                    while updatedTracks.count <= section {
+                        updatedTracks.append([Track]())
+                    }
+                    updatedTracks[section].append(track)
                 }
-                date = date.dateByAddingTimeInterval(-60*60*24) // Go one day back
             }
         }
         tracks = updatedTracks
