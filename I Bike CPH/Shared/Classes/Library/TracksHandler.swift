@@ -52,7 +52,7 @@ class TracksHandler {
         let timeIntervalSinceSmall = NSDate().timeIntervalSinceDate(instance.lastProcessedSmall)
         if
             userInitiated &&
-            timeIntervalSinceBig > 0 // 60*5 // Allow userInitiated every 5 min
+            timeIntervalSinceBig > 60*1 // Allow userInitiated every 1 min
         {
             instance.cleanUpBig(asap: true)
             instance.lastProcessedBig = NSDate()
@@ -122,6 +122,7 @@ class TracksHandler {
             MergeTracksBetweenBikeTracksOperation(fromDate: fromDate, seconds: 60*5), // again
             ClearLeftOversOperation(fromDate: fromDate),
             PruneSlowEndsOperation(fromDate: fromDate),
+            PruneSimilarLocationOperation(fromDate: fromDate),
             PruneCurlyEndsOperation(fromDate: fromDate),
             RecalculateTracksOperation(fromDate: fromDate),
             RemoveUnownedDataOperation(fromDate: fromDate),
@@ -503,11 +504,62 @@ class ClearLeftOversOperation: TracksOperation {
     }
 }
 
+class PruneSimilarLocationOperation: TracksOperation {
+    
+    private func pruneSimilarLocation(track: Track) -> Bool {
+        var changed = false
+        
+        // All 
+        var index: UInt = 0
+        while 3 <= track.locations.count && index <= track.locations.count - 3  {
+            let indexCenter = index + 1
+            let indexLast = index + 2
+            if let
+                first = track.locations[index] as? TrackLocation,
+                center = track.locations[indexCenter] as? TrackLocation,
+                last = track.locations[indexLast] as? TrackLocation
+            {
+                if
+                    first.coordinate().latitude == center.coordinate().latitude &&
+                    first.coordinate().longitude == center.coordinate().longitude &&
+                    first.coordinate().latitude == last.coordinate().latitude &&
+                    first.coordinate().longitude == last.coordinate().longitude
+                {
+                    track.locations.removeObjectAtIndex(indexCenter)
+                    center.deleteFromRealm()
+                    changed = true
+                } else {
+                    index++
+                }
+            }
+        }
+        
+        return changed
+    }
+    
+    override func main() {
+        super.main()
+        println("Prune similar locations ends")
+        let transact = !realm.inWriteTransaction
+        if transact {
+            realm.beginWriteTransaction()
+        }
+        for track in tracks().objectsWhere("activity.cycling == TRUE") {
+            if let track = track as? Track where !track.invalidated {
+                let t = pruneSimilarLocation(track)
+            }
+        }
+        if transact {
+            realm.commitWriteTransaction()
+        }
+        println("Prune similar locations DONE")
+    }
+}
+
 
 class PruneCurlyEndsOperation: TracksOperation {
     
-    
-    private func differenceToMedian(coordinates: [CLLocationCoordinate2D]) -> [Double] {
+    private func difference(coordinates: [CLLocationCoordinate2D]) -> [Double] {
         
         let rotations: [Double] = {
             var rotations = [Double]()
@@ -524,109 +576,90 @@ class PruneCurlyEndsOperation: TracksOperation {
         if rotations.count == 0 {
             return [Double]()
         }
-        let median = rotations.sorted { $0 < $1 } [rotations.count/2]
+        let firstToLast = coordinates.first!.degreesFromCoordinate(coordinates.last!)
         
-        let diffToMedianClosure: Double -> Double = { rotation in
-            var diff = rotation - median
+        let diffClosure: Double -> Double = { rotation in
+            var diff = rotation - firstToLast
             while diff > 180 { diff -= 360 }
             while diff < -180 { diff += 360 }
             return diff
         }
-        let diffToMedian = rotations.map(diffToMedianClosure)
-        return diffToMedian
+        let diff = rotations.map(diffClosure)
+        return diff
     }
     
-    private func pruneCurl(track: Track, extendCount: UInt = 10) -> Bool {
+    private func pruneCurl(track: Track, extendSeconds: NSTimeInterval = 30) -> Bool {
         var changed = false
         
-        var firstCoordinates = [CLLocationCoordinate2D]()
-        for i in 0..<min(extendCount, track.locations.count) {
-            if let location = track.locations[i] as? TrackLocation {
-                firstCoordinates.append(location.coordinate())
-            }
-        }
-        let diffToMedianFirst = differenceToMedian(firstCoordinates)
-        let removeToIndex: UInt? = {
-            // Find first coordinate with high deviation
-            for (index, diff) in enumerate(diffToMedianFirst) {
-                if abs(diff) > 90 {
-                    return UInt(index)
+        let varianceLimit: Double = 2000
+        
+        if let firstLocation = track.locations.firstObject() as? TrackLocation {
+            // Go 60 seconds from start
+            var firstLocations = track.locations.objectsWhere("timestamp <= %lf", firstLocation.timestamp + extendSeconds)
+            
+            let firstCoordinates = firstLocations.toArray(TrackLocation).map { $0.coordinate() }
+        
+            let degreeDifferencesStart = difference(firstCoordinates)
+            let variancesFromStart: [Double] = {
+                var vars = [Double]()
+                for i in 0..<degreeDifferencesStart.count {
+                    let part = Array(degreeDifferencesStart[0...i])
+                    vars.append(self.variance(part))
                 }
+                return vars
+            }()
+            let removeToIndex: UInt? = {
+                // Find first coordinate with high deviation
+                for (index, diff) in enumerate(variancesFromStart) {
+                    if diff > varianceLimit { return UInt(index) }
+                }
+                return nil
+            }()
+            if let removeToIndex = removeToIndex {
+                removeLocations(inRange: 0...removeToIndex, fromTrack: track)
+                changed = true
             }
-            return nil
-        }()
-        if let removeToIndex = removeToIndex {
-            removeLocations(inRange: 0...removeToIndex, fromTrack: track)
-            changed = true
         }
         
-        var lastCoordinates = [CLLocationCoordinate2D]()
-        for i in track.locations.count - min(track.locations.count, extendCount)..<track.locations.count {
-            if let location = track.locations[i] as? TrackLocation {
-                lastCoordinates.append(location.coordinate())
-            }
-        }
-        let diffToMedianLast = differenceToMedian(lastCoordinates)
-        let removeFromIndex: UInt? = {
-            // Find latest coordinate with high deviation
-            for (index, diff) in enumerate(diffToMedianLast.reverse()) {
-                if abs(diff) > 90 {
-                    return track.locations.count - UInt(index) - 1 // Subtract from count since enumerating over reverse
+        if let lastLocation = track.locations.lastObject() as? TrackLocation {
+            // Go back 60 seconds from end
+            var lastLocations = track.locations.objectsWhere("timestamp >= %lf", lastLocation.timestamp - extendSeconds)
+            let t = path(lastLocations.toArray(TrackLocation).map { $0.location() })
+            var lastCoordinates = lastLocations.toArray(TrackLocation).map { $0.coordinate() }
+            let degreeDifferencesLast = difference(lastCoordinates)
+            let variancesToEnd: [Double] = {
+                var vars = [Double]()
+                let count = degreeDifferencesLast.count
+                for i in 0..<count {
+                    let part = Array(degreeDifferencesLast[i..<count])
+                    vars.append(self.variance(part))
                 }
+                return vars
+            }()
+            let removeFromIndex: UInt? = {
+                for (index, diff) in enumerate(variancesToEnd.reverse()) {
+                    if diff > varianceLimit {
+                        return track.locations.count - UInt(index) - 1 // Subtract from count since enumerating over reverse
+                    }
+                }
+                return nil
+            }()
+            if let removeFromIndex = removeFromIndex where removeFromIndex > 0 {
+                removeLocations(inRange: removeFromIndex..<track.locations.count, fromTrack: track)
+                changed = true
             }
-            return nil
-        }()
-        if let removeFromIndex = removeFromIndex where removeFromIndex > 0 {
-            removeLocations(inRange: removeFromIndex..<track.locations.count, fromTrack: track)
-            changed = true
         }
         return changed
     }
     
-//    func pruneCurl(track: Track, speedLimit: Double =  7 * 1000 / 3600, extendCount: UInt = 5) -> Bool { // 7 km/h
-//        var changed = false
-//        
-//        let locations = track.locations
-//        // Start
-//        if let firstLocation = locations.firstObject() as? TrackLocation {
-//            var startIndexToRemove: UInt? = nil
-//            // Traverse from rear
-//            for var i = min(extendCount, locations.count)-1; i > 1; i-- {
-//                if let location = locations[i] as? TrackLocation {
-//                    // Get flight speed from first track location
-//                    let speed = firstLocation.speedToLocation(location)
-//                    if speed < speedLimit {
-//                        startIndexToRemove = i
-//                        break
-//                    }
-//                }
-//            }
-//            if let endIndexToRemove = startIndexToRemove {
-//                removeLocations(inRange: 0..<endIndexToRemove, fromTrack: track)
-//                changed = true
-//            }
-//        }
-//        // End
-//        if let lastLocation = locations.lastObject() as? TrackLocation where locations.count >= 2 {
-//            var endIndexToRemove: UInt? = nil
-//            for var i = locations.count - min(locations.count, extendCount); i < locations.count - 2; i++ {
-//                if let location = locations[i] as? TrackLocation {
-//                    // Get flight speed to last track location
-//                    let speed = location.speedToLocation(lastLocation)
-//                    if speed < speedLimit {
-//                        endIndexToRemove = i
-//                        break
-//                    }
-//                }
-//            }
-//            if let endIndexToRemove = endIndexToRemove {
-//                removeLocations(inRange: endIndexToRemove..<locations.count, fromTrack: track)
-//                changed = true
-//            }
-//        }
-//        
-//        return changed
-//    }
+    func variance(array: [Double]) -> Double {
+        let count = Double(array.count)
+        let sum = array.reduce(0, combine: +)
+        let mean = sum / count
+        let diffSqr =  array.map { pow($0 - mean, 2) }
+        let variance = diffSqr.reduce(0, combine: +) / count
+        return variance
+    }
     
     func removeLocations(inRange range: Range<UInt>, fromTrack track: Track) {
         // Delete from high index to low to not mess up order while deleting
@@ -646,7 +679,7 @@ class PruneCurlyEndsOperation: TracksOperation {
         if transact {
             realm.beginWriteTransaction()
         }
-        for track in tracks() {
+        for track in tracks().objectsWhere("activity.cycling == TRUE") {
             if let track = track as? Track where !track.invalidated {
                 while pruneCurl(track) {} // Keep pruning untill nothing changes
             }
@@ -668,7 +701,7 @@ class PruneSlowEndsOperation: TracksOperation {
         if transact {
             realm.beginWriteTransaction()
         }
-        for track in tracks() {
+        for track in tracks().objectsWhere("activity.cycling == TRUE") {
             if let track = track as? Track where !track.invalidated {
                 let cycling = track.activity.cycling
                 if !cycling {
