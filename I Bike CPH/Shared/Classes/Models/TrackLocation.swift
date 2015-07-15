@@ -21,7 +21,7 @@ class TrackLocation: RLMObject {
     dynamic var speed: Double = 0
 	
 	// TODO: Remove when data model doesn't get corrupted by Realm
-	dynamic var owned: Bool = true
+	dynamic var owned: String = ""
 }
 
 extension TrackLocation {

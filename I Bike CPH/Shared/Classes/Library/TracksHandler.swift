@@ -17,10 +17,16 @@ let processedGeocodingNoticationKey = "processedGeocodingNoticationKey"
 class TracksHandler {
     static let instance = TracksHandler()
 
+    private var processingStartDate: NSDate = NSDate()
     private var processing: Bool = false {
         didSet {
-            println("Processing \(processing)")
             UIApplication.sharedApplication().networkActivityIndicatorVisible = processing
+            if processing {
+                processingStartDate = NSDate()
+                println("Processing start \(processingStartDate)")
+            } else {
+                println("Processing ended \(-processingStartDate.timeIntervalSinceNow))s")
+            }
         }
     }
 
@@ -181,6 +187,8 @@ class TracksOperation: NSOperation {
     override var asynchronous: Bool {
         return true
     }
+    
+    private var startDate: NSDate = NSDate()
 
     init(fromDate: NSDate? = nil ) {
         self.fromDate = fromDate
@@ -188,6 +196,7 @@ class TracksOperation: NSOperation {
     }
     
     override func main() {
+        startDate = NSDate()
         realm = RLMRealm.defaultRealm()
     }
     
@@ -229,7 +238,7 @@ class RecalculateTracksOperation: TracksOperation {
             }
         }
 //        realm.commitWriteTransaction()
-        println("Recalculating tracks DONE")
+        println("Recalculating tracks DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -257,24 +266,24 @@ class RemoveEmptyTracksOperation: TracksOperation {
             }
             count++
         }
-        println("Remove empty tracks DONE")
+        println("Remove empty tracks DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
 
 class RemoveUnownedDataOperation: TracksOperation {
     
-    private func locations(useFromDate: Bool = true) -> RLMResults {
+    private func locations() -> RLMResults {
         let locations = TrackLocation.allObjectsInRealm(realm)
-        if useFromDate, let fromDate = fromDate {
+        if let fromDate = fromDate {
             let timestamp = fromDate.timeIntervalSince1970
             return locations.objectsWhere("timestamp >= %lf", timestamp)
         }
         return locations
     }
-    private func activities(useFromDate: Bool = true) -> RLMResults {
+    private func activities() -> RLMResults {
         let activities = TrackActivity.allObjectsInRealm(realm)
-        if useFromDate, let fromDate = fromDate {
+        if let fromDate = fromDate {
             return activities.objectsWhere("startDate >= %@", fromDate)
         }
         return activities
@@ -282,6 +291,12 @@ class RemoveUnownedDataOperation: TracksOperation {
     
     override func main() {
         super.main()
+        
+        // Only perform this if the app is in the foreground
+        if UIApplication.sharedApplication().applicationState != .Active {
+            return
+        }
+        
         println("Clear unowned data")
         realm.beginWriteTransaction()
         
@@ -289,41 +304,30 @@ class RemoveUnownedDataOperation: TracksOperation {
         let someLocations = locations()
         let someActivities = activities()
         
-        // Mark locations unowned
-        for location in someLocations {
-            if let location = location as? TrackLocation {
-                location.owned = false
-            }
-        }
-        // Mark activities unowned
-        for activity in someActivities {
-            if let activity = activity as? TrackActivity {
-                activity.owned = false
-            }
-        }
         // Mark locations and activities owned
+        let uuid = NSUUID().UUIDString
         for track in someTracks {
             if let track = track as? Track {
                 let locations = track.locations
                 for location in locations {
                     if let location = location as? TrackLocation {
-                        location.owned = true
+                        location.owned = uuid
                     }
                 }
-                track.activity.owned = true
+                track.activity.owned = uuid
             }
         }
         realm.commitWriteTransaction()
         
         // Delete unowned data
-        let unownedLocations = someLocations.objectsWhere("owned == FALSE")
+        let unownedLocations = someLocations.objectsWhere("owned != %@", uuid)
         println("Deleting \(unownedLocations.count) unowned locations")
         deleteObjectsInParts(unownedLocations)
-        let unownedActivities = someActivities.objectsWhere("owned == FALSE")
+        let unownedActivities = someActivities.objectsWhere("owned != %@", uuid)
         println("Deleting \(unownedActivities.count) unowned activities")
         deleteObjectsInParts(unownedActivities)
         
-        println("Clear unowned data DONE")
+        println("Clear unowned data DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -401,7 +405,7 @@ class InferBikingFromSpeedOperation: TracksOperation {
                 println("Infered biking \(track.startDate())")
             }
         }
-        println("Infer bike from speed from other activity DONE")
+        println("Infer bike from speed from other activity DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -500,7 +504,7 @@ class ClearLeftOversOperation: TracksOperation {
             }
         }
 //        realm.commitWriteTransaction()
-        println("Clear left overs DONE")
+        println("Clear left overs DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -552,7 +556,7 @@ class PruneSimilarLocationOperation: TracksOperation {
         if transact {
             realm.commitWriteTransaction()
         }
-        println("Prune similar locations DONE")
+        println("Prune similar locations DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -672,6 +676,37 @@ class PruneCurlyEndsOperation: TracksOperation {
         }
     }
     
+    private func path(locations: [CLLocation]) -> UIBezierPath {
+        let coordinates = locations.map { $0.coordinate }
+        let allPoints = coordinates.map { CGPoint(x: $0.latitude, y: $0.longitude) }
+        let points = allPoints //Array(allPoints[0..<20])
+        let count = CGFloat(points.count)
+        let meanPoint = points.reduce(CGPointZero) { mean, new in
+            return CGPoint(x: mean.x + new.x/count, y: mean.y + new.y/count)
+        }
+        let minPoint = points.reduce(CGPoint(x: 1000, y: 1000)) { value, new in
+            return CGPoint(x: min(value.x, new.x), y: min(value.y, new.y))
+        }
+        let maxPoint = points.reduce(CGPoint(x: -1000, y: -1000)) { value, new in
+            return CGPoint(x: max(value.x, new.x), y: max(value.y, new.y))
+        }
+        let diff: CGFloat = {
+            var p = max(maxPoint.x-minPoint.x, maxPoint.y-minPoint.y)
+            p = p == 0 ? 1 : p
+            return p
+        }()
+        let normalizedPoints = points.map { CGPoint(x: ($0.x - meanPoint.x) / diff * 700, y: ($0.y - meanPoint.y) / diff * 700) }
+        let path = UIBezierPath()
+        for point in normalizedPoints {
+            if point == normalizedPoints.first {
+                path.moveToPoint(point)
+            } else {
+                path.addLineToPoint(point)
+            }
+        }
+        return path
+    }
+    
     override func main() {
         super.main()
         println("Prune curly ends")
@@ -681,13 +716,16 @@ class PruneCurlyEndsOperation: TracksOperation {
         }
         for track in tracks().objectsWhere("activity.cycling == TRUE") {
             if let track = track as? Track where !track.invalidated {
-                while pruneCurl(track) {} // Keep pruning untill nothing changes
+//                let a1 = path(track.locations.toArray(TrackLocation).map { $0.location() })
+                while pruneCurl(track) { } // Keep pruning untill nothing changes
+//                let b1 = path(track.locations.toArray(TrackLocation).map { $0.location() })
+                let d = 0
             }
         }
         if transact {
             realm.commitWriteTransaction()
         }
-        println("Prune slow ends DONE")
+        println("Prune culry ends DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -733,7 +771,7 @@ class PruneSlowEndsOperation: TracksOperation {
         if transact {
             realm.commitWriteTransaction()
         }
-        println("Prune slow ends DONE")
+        println("Prune slow ends DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -838,7 +876,7 @@ class MergeCloseSameActivityTracksOperation : MergeTimeTracksOperation {
                 //                println(" \(count) / \(tracks.count)")
             }
         }
-        println("Merge close to same activity DONE")
+        println("Merge close to same activity DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -873,7 +911,7 @@ class MergeCloseToUnknownActivityTracksOperation: MergeTimeTracksOperation {
                 //                println(" \(count) / \(tracks.count)")
             }
         }
-        println("Merge close to unknown activity tracks DONE")
+        println("Merge close to unknown activity tracks DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -925,7 +963,7 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
                 count++
             }
         }
-        println("Merge track between bike tracks DONE")
+        println("Merge track between bike tracks DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -956,7 +994,7 @@ class MergeBikeCloseWithMoveTracksOperation: MergeTimeTracksOperation {
                 //                println(" \(count) / \(tracks.count)")
             }
         }
-        println("Merge bike close with non-stationary tracks DONE")
+        println("Merge bike close with non-stationary tracks DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -980,7 +1018,7 @@ class GeocodeBikeTracksOperation: TracksOperation {
                 track.geocode(synchronous: true)
             }
         }
-        println("Geocode bike tracks DONE")
+        println("Geocode bike tracks DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
