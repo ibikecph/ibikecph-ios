@@ -205,7 +205,9 @@
 "Favorite" = "Favorit";
 "back" = "Tilbage";
 "done" = "Færdig";
+"Name" = "Navn";
 "add_favorite_name_placeholder" = "Indtast navn ...";
+"Address" = "Adresse";
 "add_favorite_address_placeholder" = "Find adresse ...";
 "account" = "Min Profil";
 

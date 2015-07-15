@@ -41,7 +41,8 @@ class AddressToolbarView: ToolbarView {
 
 extension AddressToolbarView {
     
-    func prepareForReuse() {
+    override func prepareForReuse() {
+        super.prepareForReuse()
         nameLabel.text = "\0"
         addresslabel.text = "\0\n\0"
         favoriteSelected = false

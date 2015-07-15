@@ -2952,7 +2952,7 @@ God tur og tak fordi du cykler!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="bh2-eb-otZ">
-                                <rect key="frame" x="0.0" y="194" width="600" height="406"/>
+                                <rect key="frame" x="0.0" y="229.5" width="600" height="370.5"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="FavoriteTypeCellID" id="58C-ye-jvy" userLabel="FavoriteCellID" customClass="IconLabelTableViewCell" customModule="CykelPlanen" customModuleProvider="target">
@@ -2969,7 +2969,7 @@ God tur og tak fordi du cykler!</string>
                                 </connections>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add_favorite_address_placeholder" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uth-cg-QZQ">
-                                <rect key="frame" x="15" y="84" width="570" height="40"/>
+                                <rect key="frame" x="15" y="100.5" width="570" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="MSc-a8-e9i"/>
                                 </constraints>
@@ -2977,37 +2977,66 @@ God tur og tak fordi du cykler!</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add_favorite_name_placeholder" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Dwi-Fj-b3h">
-                                <rect key="frame" x="15" y="134" width="570" height="40"/>
+                                <rect key="frame" x="15" y="169.5" width="570" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="YEj-XU-iBf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69f-3R-rQj">
+                                <rect key="frame" x="16" y="79" width="43" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7B-81-Hd6">
+                                <rect key="frame" x="16" y="148" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Uth-cg-QZQ" firstAttribute="leading" secondItem="Htu-Vg-7qq" secondAttribute="leading" constant="15" id="01l-WD-DQh"/>
                             <constraint firstItem="JsC-BH-Cu7" firstAttribute="top" secondItem="bh2-eb-otZ" secondAttribute="bottom" id="0T2-U0-qs1"/>
                             <constraint firstAttribute="trailing" secondItem="Uth-cg-QZQ" secondAttribute="trailing" constant="15" id="1bo-ep-aei"/>
-                            <constraint firstItem="Uth-cg-QZQ" firstAttribute="top" secondItem="gGQ-pQ-62o" secondAttribute="bottom" constant="20" id="3zM-hN-ksv"/>
+                            <constraint firstItem="Uth-cg-QZQ" firstAttribute="top" secondItem="gGQ-pQ-62o" secondAttribute="bottom" constant="100" id="3zM-hN-ksv"/>
+                            <constraint firstItem="bh2-eb-otZ" firstAttribute="top" secondItem="f7B-81-Hd6" secondAttribute="bottom" constant="8" id="5iH-eL-vvb"/>
                             <constraint firstAttribute="trailing" secondItem="Dwi-Fj-b3h" secondAttribute="trailing" constant="15" id="8Lg-id-GSS"/>
+                            <constraint firstItem="f7B-81-Hd6" firstAttribute="top" secondItem="Uth-cg-QZQ" secondAttribute="bottom" constant="8" id="AG6-7o-AzS"/>
                             <constraint firstAttribute="trailing" secondItem="bh2-eb-otZ" secondAttribute="trailing" id="Bb3-9A-WdM"/>
                             <constraint firstItem="bh2-eb-otZ" firstAttribute="leading" secondItem="Htu-Vg-7qq" secondAttribute="leading" id="FO6-FI-Zqx"/>
-                            <constraint firstItem="Dwi-Fj-b3h" firstAttribute="top" secondItem="Uth-cg-QZQ" secondAttribute="bottom" constant="10" id="HUR-ui-7V6"/>
+                            <constraint firstItem="Dwi-Fj-b3h" firstAttribute="top" secondItem="f7B-81-Hd6" secondAttribute="bottom" constant="8" id="FrN-hj-M0J"/>
+                            <constraint firstItem="69f-3R-rQj" firstAttribute="top" secondItem="gGQ-pQ-62o" secondAttribute="bottom" constant="15" id="H9P-ll-bKr"/>
+                            <constraint firstItem="Dwi-Fj-b3h" firstAttribute="top" secondItem="Uth-cg-QZQ" secondAttribute="bottom" constant="100" id="HUR-ui-7V6"/>
                             <constraint firstItem="Dwi-Fj-b3h" firstAttribute="leading" secondItem="Htu-Vg-7qq" secondAttribute="leading" constant="15" id="NdI-65-yMv"/>
                             <constraint firstItem="bh2-eb-otZ" firstAttribute="top" secondItem="Dwi-Fj-b3h" secondAttribute="bottom" constant="20" id="NsK-e3-pZp"/>
+                            <constraint firstItem="Uth-cg-QZQ" firstAttribute="top" secondItem="69f-3R-rQj" secondAttribute="bottom" constant="8" id="bEa-Qq-r7F"/>
+                            <constraint firstItem="f7B-81-Hd6" firstAttribute="leading" secondItem="Htu-Vg-7qq" secondAttribute="leading" constant="15" id="h9z-6Y-gia"/>
                             <constraint firstItem="bh2-eb-otZ" firstAttribute="top" secondItem="Htu-Vg-7qq" secondAttribute="top" id="jGo-Gx-ZVj"/>
+                            <constraint firstItem="69f-3R-rQj" firstAttribute="leading" secondItem="Htu-Vg-7qq" secondAttribute="leading" constant="15" id="jer-C3-eNx"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="3zM-hN-ksv"/>
+                                <exclude reference="HUR-ui-7V6"/>
+                                <exclude reference="5iH-eL-vvb"/>
                                 <exclude reference="jGo-Gx-ZVj"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Egd-Ec-8Yi"/>
+                    <navigationItem key="navigationItem" id="Egd-Ec-8Yi">
+                        <barButtonItem key="rightBarButtonItem" title="new_route" id="FD4-gA-2gT">
+                            <connections>
+                                <action selector="newRouteButtonTapped:" destination="SaP-gh-izC" id="mdX-xz-LIW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addressTextField" destination="Uth-cg-QZQ" id="PHS-Ne-EuW"/>
+                        <outlet property="nameLabel" destination="f7B-81-Hd6" id="gl3-bS-pED"/>
                         <outlet property="nameTextField" destination="Dwi-Fj-b3h" id="nMs-0x-6hA"/>
                         <outlet property="tableView" destination="bh2-eb-otZ" id="DbX-S3-bGZ"/>
                         <segue destination="9Sk-0W-QC9" kind="show" identifier="favoriteToSearch" id="7W8-lE-WHM"/>

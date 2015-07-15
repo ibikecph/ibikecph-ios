@@ -10,17 +10,19 @@ import UIKit
 import PSTAlertController
 import MapKit
 
+let routeToItemNotificationKey = "routeToItemNotificationKey"
+let routeToItemNotificationItemKey = "routeToItemNotificationItemKey"
 
 class MainMapViewController: MapViewController {
 
-    var trackingToolbarView = TrackingToolbarView()
-    var addressToolbarView = AddressToolbarView()
-    let mainToTrackingSegue = "mainToTracking"
-    let mainToFindRouteSegue = "mainToFindRoute"
-    let mainToLoginSegue = "mainToLogin"
-    let mainToFindAddressSegue = "mainToFindAddress"
-    var pinAnnotation: PinAnnotation?
-    var currentLocationItem: SearchListItem?
+    private let trackingToolbarView = TrackingToolbarView()
+    private let addressToolbarView = AddressToolbarView()
+    private let mainToTrackingSegue = "mainToTracking"
+    private let mainToFindRouteSegue = "mainToFindRoute"
+    private let mainToLoginSegue = "mainToLogin"
+    private let mainToFindAddressSegue = "mainToFindAddress"
+    private var pinAnnotation: PinAnnotation?
+    private var currentLocationItem: SearchListItem?
     
     deinit {
         NotificationCenter.unobserve(self)
@@ -46,6 +48,17 @@ class MainMapViewController: MapViewController {
         }
         NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.updateTrackingToolbarView()
+        }
+        
+        // Observe
+        NotificationCenter.observe(routeToItemNotificationKey) { [weak self] notification in
+            if let
+                item = notification.userInfo?[routeToItemNotificationItemKey] as? FavoriteItem,
+                myself = self
+            {
+                myself.updateToCurrentItem(item)
+                myself.performSegueWithIdentifier(myself.mainToFindRouteSegue, sender: myself)
+            }
         }
     }
     
@@ -128,6 +141,25 @@ class MainMapViewController: MapViewController {
             return favorite
         }
         return nil
+    }
+    
+    func updateToCurrentItem(item: SearchListItem) {
+        currentLocationItem = item
+        // Show address in toolbar
+        addressToolbarView.updateToItem(item)
+        add(toolbarView: addressToolbarView)
+        // Remove any existing pin
+        if let pin = pinAnnotation {
+            removePin(pin)
+        }
+        // Add new pin if item has location
+        if
+            let coordinate = item.location?.coordinate
+            where coordinate.latitude != 0 && coordinate.longitude != 0
+        {
+            pinAnnotation = addPin(coordinate)
+            mapView.centerCoordinate(coordinate, zoomLevel: DEFAULT_MAP_ZOOM, animated: true)
+        }
     }
 }
 
@@ -261,22 +293,7 @@ extension MainMapViewController: FindAddressViewControllerProtocol {
     func foundAddress(item: SearchListItem) {
         // Update current item
         let item: SearchListItem = favoriteForItem(item) ?? item // Attempt upgrade to Favorite
-        currentLocationItem = item
-        // Show address in toolbar
-        addressToolbarView.updateToItem(item)
-        add(toolbarView: addressToolbarView)
-        // Remove any existing pin
-        if let pin = pinAnnotation {
-            removePin(pin)
-        }
-        // Add new pin if item has location
-        if
-            let coordinate = item.location?.coordinate
-            where coordinate.latitude != 0 && coordinate.longitude != 0
-        {
-            pinAnnotation = addPin(coordinate)
-            mapView.centerCoordinate(coordinate, zoomLevel: DEFAULT_MAP_ZOOM, animated: true)
-        }
+        updateToCurrentItem(item)
     }
 }
 

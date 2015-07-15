@@ -202,7 +202,9 @@
 "Favorite" = "Favorite";
 "back" = "Back";
 "done" = "Done";
+"Name" = "Name";
 "add_favorite_name_placeholder" = "Enter name ...";
+"Address" = "Address";
 "add_favorite_address_placeholder" = "Find address ...";
 "account" = "My profile";
 

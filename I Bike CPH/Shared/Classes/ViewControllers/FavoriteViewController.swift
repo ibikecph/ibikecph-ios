@@ -32,10 +32,11 @@ struct FavoriteTypeViewModel {
     }
 }
 
-class FavoriteViewController: UIViewController {
+class FavoriteViewController: SMTranslatedViewController {
 
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     private let cellID = "FavoriteTypeCellID"
@@ -57,18 +58,22 @@ class FavoriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        SMTranslation.translateView(view)
+        
+        // Delegates
         addressTextField.delegate = self
         nameTextField.delegate = self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didChangeNameTextField:", name: UITextFieldTextDidChangeNotification, object: nameTextField)
         
-        NotificationCenter.observe("favoritesChanged") { notification in
+        // Observers
+        NotificationCenter.observe(UITextFieldTextDidChangeNotification) { [weak self] notification in
+            if let name = self?.nameTextField.text {
+                self?.favoriteItem?.name = name
+            }
+        }
+        NotificationCenter.observe("favoritesChanged") { [weak self] notification in
             // Find favorite that matches current and update accordingly
             if let favorites = SMFavoritesUtil.favorites() as? [FavoriteItem] {
-                if let updatedFavorite = favorites.filter({ return $0.name == self.favoriteItem?.name }).first {
-                    self.favoriteItem = updatedFavorite
+                if let updatedFavorite = favorites.filter({ return $0.name == self?.favoriteItem?.name }).first {
+                    self?.favoriteItem = updatedFavorite
                 }
             }
         }
@@ -79,7 +84,7 @@ class FavoriteViewController: UIViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.unobserve(self)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -96,11 +101,13 @@ class FavoriteViewController: UIViewController {
             let add = item.address
             addressTextField.text = item.address
             nameTextField.text = item.name
+            nameLabel.hidden = false
             nameTextField.hidden = false
             tableView.hidden = false
         } else {
             addressTextField.text = nil
             nameTextField.text = nil
+            nameLabel.hidden = true
             nameTextField.hidden = true
             tableView.hidden = true
         }
@@ -148,6 +155,13 @@ class FavoriteViewController: UIViewController {
             }
         } else {
             SMFavoritesUtil.instance().editFavorite(favoriteItem)
+        }
+    }
+    
+    @IBAction func newRouteButtonTapped(sender: AnyObject) {
+        if let item = favoriteItem {
+            NotificationCenter.post("closeMenu")
+            NotificationCenter.post(routeToItemNotificationKey, userInfo: [routeToItemNotificationItemKey : item])
         }
     }
 }
@@ -204,12 +218,6 @@ extension FavoriteViewController: UITextFieldDelegate {
     }
 }
 
-extension FavoriteViewController {
-    
-    func didChangeNameTextField(notification: NSNotification) {
-        favoriteItem?.name = nameTextField.text
-    }
-}
 
 extension FavoriteViewController: SMSearchDelegate {
     

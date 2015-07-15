@@ -28,5 +28,10 @@ class ToolbarView: NibDesignable {
     
     func setup() {
         SMTranslation.translateView(self)
+        prepareForReuse()
+    }
+    
+    func prepareForReuse() {
+        // For subclassing
     }
 }

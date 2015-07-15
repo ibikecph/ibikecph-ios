@@ -47,7 +47,8 @@ class FindRouteToolbarView: ToolbarView {
 
 extension FindRouteToolbarView {
     
-    func prepareForReuse() {
+    override func prepareForReuse() {
+        super.prepareForReuse()
         fromButton.updateToItem(nil)
         toButton.updateToItem(nil)
         routeButton.enabled = false

@@ -10,9 +10,9 @@ import UIKit
 
 class NotificationCenter {
     
-    class func post(name: String, object: AnyObject? = nil) {
+    class func post(name: String, object: AnyObject? = nil, userInfo: [NSObject : AnyObject]? = nil) {
         Async.main {
-            NSNotificationCenter.defaultCenter().postNotificationName(name, object: object)
+            NSNotificationCenter.defaultCenter().postNotificationName(name, object: object, userInfo: userInfo)
         }
     }
     

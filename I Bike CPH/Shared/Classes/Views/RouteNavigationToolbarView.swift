@@ -27,7 +27,8 @@ class RouteNavigationToolbarView: ToolbarView {
 
 extension RouteNavigationToolbarView {
     
-    func prepareForReuse() {
+    override func prepareForReuse() {
+        super.prepareForReuse()
         destinationLabel.text = nil
     }
     
