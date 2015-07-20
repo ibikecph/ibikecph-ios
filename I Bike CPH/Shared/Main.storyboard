@@ -264,19 +264,6 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jk-pc-gMO">
-                                <rect key="frame" x="260" y="74" width="80" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="hek-WC-XeQ"/>
-                                    <constraint firstAttribute="width" secondItem="7jk-pc-gMO" secondAttribute="height" id="iah-Fu-9IP"/>
-                                </constraints>
-                                <state key="normal" image="camera.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectImageSource:" destination="cUi-19-l2D" eventType="touchUpInside" id="5zs-fP-lZx"/>
-                                </connections>
-                            </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dRJ-kH-quy">
                                 <rect key="frame" x="16" y="324" width="51" height="31"/>
                             </switch>
@@ -286,6 +273,19 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jk-pc-gMO">
+                                <rect key="frame" x="260" y="72" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="hek-WC-XeQ"/>
+                                    <constraint firstAttribute="width" secondItem="7jk-pc-gMO" secondAttribute="height" id="iah-Fu-9IP"/>
+                                </constraints>
+                                <state key="normal" image="camera">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectImageSource:" destination="cUi-19-l2D" eventType="touchUpInside" id="5zs-fP-lZx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -693,7 +693,7 @@ God tur og tak fordi du cykler!</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="48" maxY="0.0"/>
-                                <state key="normal" title="choose_a_route_step" backgroundImage="reportPulldown.png">
+                                <state key="normal" title="choose_a_route_step" backgroundImage="reportPulldown">
                                     <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -712,7 +712,7 @@ God tur og tak fordi du cykler!</string>
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="radioUnchecked.png" translatesAutoresizingMaskIntoConstraints="NO" id="LBQ-nc-eaV">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="radioUnchecked" translatesAutoresizingMaskIntoConstraints="NO" id="LBQ-nc-eaV">
                                                     <rect key="frame" x="17" y="9" width="25" height="25"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NT2-Vd-GSc">
@@ -733,7 +733,7 @@ God tur og tak fordi du cykler!</string>
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="radioChecked.png" translatesAutoresizingMaskIntoConstraints="NO" id="1H4-Lb-GJV">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="radioChecked" translatesAutoresizingMaskIntoConstraints="NO" id="1H4-Lb-GJV">
                                                     <rect key="frame" x="17" y="9" width="25" height="25"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9Y-ov-NiE">
@@ -741,7 +741,7 @@ God tur og tak fordi du cykler!</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="reportTextView.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZF9-Xr-D88">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="reportTextView" translatesAutoresizingMaskIntoConstraints="NO" id="ZF9-Xr-D88">
                                                     <rect key="frame" x="17" y="46" width="290" height="56"/>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DN1-IJ-gZ2">
@@ -818,7 +818,7 @@ God tur og tak fordi du cykler!</string>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLa-hQ-Ox9" userLabel="Report Sent">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="reportBulb.png" translatesAutoresizingMaskIntoConstraints="NO" id="eef-AT-RGx">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="reportBulb" translatesAutoresizingMaskIntoConstraints="NO" id="eef-AT-RGx">
                                         <rect key="frame" x="119" y="78" width="362" height="121"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="thank_you_for_feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ft0-ow-ucs">
@@ -3299,7 +3299,7 @@ God tur og tak fordi du cykler!</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fb_linked_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="9go-vf-wle">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fb_linked_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9go-vf-wle">
                                 <rect key="frame" x="286" y="283" width="27" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="27" id="RoP-bX-jIM"/>
@@ -3498,26 +3498,27 @@ God tur og tak fordi du cykler!</string>
     <resources>
         <image name="Compas unselected" width="27" height="27"/>
         <image name="From to" width="22" height="14"/>
-        <image name="Logo" width="22" height="22"/>
+        <image name="Logo" width="25" height="23"/>
         <image name="arrow_large.png" width="37" height="32"/>
         <image name="arrow_small.png" width="20" height="18"/>
         <image name="bike_route.png" width="30" height="39"/>
         <image name="blue_btn.png" width="11" height="11"/>
         <image name="blue_btn_pressed.png" width="11" height="11"/>
         <image name="break_route_info_btn.png" width="243" height="36"/>
+        <image name="camera" width="61" height="61"/>
         <image name="camera.png" width="61" height="61"/>
         <image name="dotted_line.png" width="16" height="58"/>
-        <image name="fb_linked_icon.png" width="54" height="54"/>
+        <image name="fb_linked_icon" width="54" height="54"/>
         <image name="findRouteCalendar.png" width="21" height="22"/>
         <image name="hamburger menu" width="22" height="22"/>
         <image name="list_find_icon.png" width="34" height="34"/>
         <image name="pin_a_orange.png" width="30" height="43"/>
         <image name="pin_b_orange.png" width="30" height="43"/>
-        <image name="radioChecked.png" width="22" height="22"/>
-        <image name="radioUnchecked.png" width="22" height="22"/>
-        <image name="reportBulb.png" width="82" height="121"/>
-        <image name="reportPulldown.png" width="286" height="44"/>
-        <image name="reportTextView.png" width="285" height="65"/>
+        <image name="radioChecked" width="22" height="22"/>
+        <image name="radioUnchecked" width="22" height="22"/>
+        <image name="reportBulb" width="82" height="121"/>
+        <image name="reportPulldown" width="286" height="44"/>
+        <image name="reportTextView" width="285" height="65"/>
         <image name="route_info_icon.png" width="40" height="33"/>
         <image name="select_station_bgr.png" width="243" height="37"/>
         <image name="settings" width="19" height="19"/>
