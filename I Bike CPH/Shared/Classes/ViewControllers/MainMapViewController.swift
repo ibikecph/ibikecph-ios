@@ -97,6 +97,8 @@ class MainMapViewController: MapViewController {
     }
     
     func closeAddressToolbarView() {
+        currentLocationItem = nil
+        removeToolbar()
         updateTrackingToolbarView()
     }
     
@@ -281,6 +283,7 @@ extension MainMapViewController: MapViewDelegate {
         {
             // Remove pin
             removePin(pin)
+            pinAnnotation = nil
             // Remove address toolbar
             closeAddressToolbarView()
         }
