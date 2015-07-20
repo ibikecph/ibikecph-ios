@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc class RouteTypeHandler: NSObject {
+class RouteTypeHandler: NSObject {
     static let instance = RouteTypeHandler()
     
     var type: RouteType = .Regular {
@@ -21,7 +21,6 @@ import UIKit
         get {
             let settings = SMRouteSettings.sharedInstance()
             switch type {
-                case .BrokenWithPublicTransport: fallthrough
                 case .Regular: return settings.osrm_server
                 case .Cargo: return settings.osrm_server_cargo
                 case .Green: return settings.osrm_server_green
@@ -31,17 +30,6 @@ import UIKit
 
     var delegate: RouteTypeHandlerDelegate?
     var delegateObjc: RouteTypeHandlerDelegateObjc?
-    
-    class func sharedInstance() -> RouteTypeHandler {
-        return instance
-    }
-    
-    @objc func setTypeRegular() {
-        type = .Regular
-    }
-    @objc func setTypeCargo() {
-        type = .Cargo
-    }
 }
 
 protocol RouteTypeHandlerDelegate {
