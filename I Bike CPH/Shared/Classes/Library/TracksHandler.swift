@@ -29,6 +29,8 @@ class TracksHandler {
             }
         }
     }
+    private var pendingUserInitiatedProcess = false
+    private var pendingGeocode = false
 
     private let lastProcessedSmallKey = "lastProcessedSmallKey"
     var lastProcessedSmall: NSDate {
@@ -47,10 +49,32 @@ class TracksHandler {
         return queue
     }()
     
+    init() {
+        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+            if self?.pendingGeocode ?? false {
+                TracksHandler.geocode()
+            }
+        }
+        NotificationCenter.observe(processedSmallNoticationKey) { [weak self] notification in
+            if self?.pendingUserInitiatedProcess ?? false {
+                TracksHandler.setNeedsProcessData(userInitiated: true)
+            }
+        }
+        NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
+            if self?.pendingUserInitiatedProcess ?? false {
+                TracksHandler.setNeedsProcessData(userInitiated: true)
+            }
+        }
+    }
+    
+    deinit {
+        NotificationCenter.unobserve(self)
+    }
+    
     class func setNeedsProcessData(userInitiated: Bool = false) {
         if compressingRealm {
-            Async.main(after: 10) {
-                self.setNeedsProcessData()
+            if userInitiated {
+                TracksHandler.instance.pendingUserInitiatedProcess = true
             }
             return
         }
@@ -64,18 +88,15 @@ class TracksHandler {
             instance.lastProcessedBig = NSDate()
             return
         }
-        if timeIntervalSinceBig > 60*60*1 { // Do big stuff every hour
+        if timeIntervalSinceBig > 60*60*2 { // Do big stuff every other hour
             instance.cleanUpBig(asap: false)
             instance.lastProcessedBig = NSDate()
             return
         }
-        if timeIntervalSinceSmall > 60*5 { // Do small stuff every 5 min
+        if timeIntervalSinceSmall > 60*30 { // Do small stuff every 30 min
             instance.cleanUpSmall()
             instance.lastProcessedSmall = NSDate()
             return
-        }
-        Async.main(after: 10) {
-            self.setNeedsProcessData()
         }
     }
     
@@ -108,9 +129,7 @@ class TracksHandler {
     private func cleanUpBig(#asap: Bool) {
         if TracksHandler.instance.processing {
             println("Already processing")
-            Async.main(after: 60*1) { // Check again after 1 minute
-                self.cleanUpBig(asap: asap)
-            }
+            pendingUserInitiatedProcess = true
             return
         }
         TracksHandler.instance.processing = true
@@ -141,6 +160,7 @@ class TracksHandler {
         operations.last?.completionBlock = {
             println("Done processing big")
             Async.main {
+                TracksHandler.instance.pendingUserInitiatedProcess = false
                 TracksHandler.instance.processing = false
                 NotificationCenter.post(processedBigNoticationKey, object: self)
             }
@@ -152,9 +172,7 @@ class TracksHandler {
     class func geocode() {
         if TracksHandler.instance.processing {
             println("Already processing")
-            Async.main(after: 10) { // Check again after 10 seconds
-                self.geocode()
-            }
+            TracksHandler.instance.pendingGeocode = true
             return
         }
         TracksHandler.instance.processing = true
@@ -170,6 +188,7 @@ class TracksHandler {
         operations.last?.completionBlock = {
             println("Done geocoding")
             Async.main {
+                TracksHandler.instance.pendingGeocode = false
                 TracksHandler.instance.processing = false
                 NotificationCenter.post(processedGeocodingNoticationKey, object: self)
             }
@@ -1021,10 +1040,3 @@ class GeocodeBikeTracksOperation: TracksOperation {
         println("Geocode bike tracks DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
-
-
-
-
-
-
-
