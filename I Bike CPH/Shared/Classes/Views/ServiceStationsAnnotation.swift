@@ -17,6 +17,8 @@ class ServiceStationsAnnotation: Annotation {
         // Super class properties
         annotationType = "marker"
         // Icon
-        annotationIcon = UIImage(named: "serviceStation")
+        annotationIcon = UIImage(named: "serviceStationAnnotation")
+        
+        anchorPoint = CGPoint(x: 0.5, y: 0.5)
     }
 }

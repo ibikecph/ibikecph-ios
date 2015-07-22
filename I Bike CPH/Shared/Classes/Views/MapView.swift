@@ -275,10 +275,6 @@ extension MapView: RMMapViewDelegate {
         switch annotation.annotationType {
             case "marker":
                 let marker = RMMarker(UIImage: annotation.annotationIcon, anchorPoint: annotation.anchorPoint)
-                if let annotaion = annotation as? ServiceStationsAnnotation {
-                    marker.backgroundColor = Styler.backgroundColor().CGColor
-                    marker.cornerRadius = 3.0;
-                }
                 return marker
             case "path":
                 let path = RMShape(view: mapView)
