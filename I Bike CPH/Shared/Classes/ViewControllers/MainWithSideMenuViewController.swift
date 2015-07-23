@@ -47,11 +47,11 @@ class MainWithSideMenuViewController: UIViewController {
             sideMenu?.delegate = self
             menuNavigationViewController.endAppearanceTransition()
             
-            NotificationCenter.observe("openMenu") { [unowned self] notification in
-                self.sideMenu?.showSideMenu()
+            NotificationCenter.observe("openMenu") { [weak self] notification in
+                self?.sideMenu?.showSideMenu()
             }
-            NotificationCenter.observe("closeMenu") { [unowned self] notification in
-                self.sideMenu?.hideSideMenu()
+            NotificationCenter.observe("closeMenu") { [weak self] notification in
+                self?.sideMenu?.hideSideMenu()
             }
         }
         

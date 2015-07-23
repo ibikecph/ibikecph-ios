@@ -23,9 +23,13 @@ class MapViewController: ToolbarViewController {
 #if CYKELPLANEN
         // Load overlays
         if appDelegate.mapOverlays == nil {
-            appDelegate.mapOverlays = SMMapOverlays(mapView: mapView.mapView)
+            appDelegate.mapOverlays = SMMapOverlays(mapView: mapView)
         }
-        appDelegate.mapOverlays.loadMarkers()
+        appDelegate.mapOverlays.updateOverlays()
+    
+        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+            self?.appDelegate.mapOverlays.updateOverlays()
+        }
 #endif
     }
     
@@ -33,8 +37,8 @@ class MapViewController: ToolbarViewController {
         super.viewDidAppear(animated)
         
 #if CYKELPLANEN
-        appDelegate.mapOverlays.useMapView(mapView.mapView)
-        appDelegate.mapOverlays.toggleMarkers() // Load annotations to view
+        appDelegate.mapOverlays.useMapView(mapView)
+        appDelegate.mapOverlays.updateOverlays() // Load annotations to view
 #endif
         mapView.loadInitialRegionIfNecessary()
     }

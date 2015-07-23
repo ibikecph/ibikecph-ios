@@ -205,7 +205,9 @@
 "Favorite" = "Favorit";
 "back" = "Tilbage";
 "done" = "Færdig";
+"Name" = "Navn";
 "add_favorite_name_placeholder" = "Indtast navn ...";
+"Address" = "Adresse";
 "add_favorite_address_placeholder" = "Find adresse ...";
 "account" = "Min Profil";
 
@@ -292,6 +294,7 @@
 "tracking_milestone_notifications" = "Besked om milepæle";
 "tracking_weekly_status_notifications" = "Ugentlig status";
 "log_in_to_track_prompt" = "For at starte opsamling af data, skal du være logget ind.";
+"reenable_tracking" = "Genaktivér indsamling af cykeldata";
 
 "log_in_to_favorite_prompt" = "For at tilføje favoritter, skal du være logget ind.";
 
@@ -342,6 +345,16 @@
 "bike_type_2"= "God til ladcykel";
 "bike_type_3"= "Nyd det grønne";
 
+/* User terms */
+"no_thanks" = "Nej tak";
+"accept" = "Godkend";
+"user_terms" = "Brugerbetingelser";
+"user_terms_title" = "Godkend brugerbetingelser";
+"user_terms_description" = "Du skal acceptere brugerbetingelserne for at være logget ind.";
+"accept_user_terms_or_log_out" = "Du skal acceptere brugerbetingelserne for at forblive logget ind.";
+"most_important_terms_are" = "De væsentligste betingelser er:";
+"read_terms" = "Læs alle brugerbetingelser";
+
 /* I Bike CPH */
 
 "about_app_ibc" = "Om I Bike CPH";
@@ -380,12 +393,6 @@
 
 "route_info"= "Rejseforslag";
 
-// these are in the storyboard
-"reminder_title" = "Påmindelser";
-"reminder_text" = "Få hjælp til at komme op på cyklen. Vælg de dage du ønsker at cykle, så hjælper vi dig med at komme igang.";
-"reminder_save_btn" = "Gem påmindelser";
-"reminder_alert_text" = "Husk at tage cyklen i morgen";
-
 // Favorites
 "favorites_title" = "Tilføj favoritter";
 "favorites_text" = "Nu kan du nemt og hurtigt navigere til dine foretrukne pendlerruter. Start med at tilføje din hjemme- og arbejdsadresse.";
@@ -417,4 +424,4 @@
 "activate_gps" = "Aktiver GPS";
 "leave_no_gps" = "Deaktiver GPS";
 
-"play_services_version_error" = "Google Play Services skal opdateres";
+"play_services_version_error" = "For at opsamle data skal Play Services opdateres";

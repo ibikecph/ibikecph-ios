@@ -22,14 +22,14 @@ class TracksViewController: SMTranslatedViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        NotificationCenter.observe(processedSmallNoticationKey) { notification in
-            self.updateUI()
+        NotificationCenter.observe(processedSmallNoticationKey) { [weak self] notification in
+            self?.updateUI()
         }
-        NotificationCenter.observe(processedBigNoticationKey) { notification in
-            self.updateUI()
+        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+            self?.updateUI()
         }
-        NotificationCenter.observe(processedGeocodingNoticationKey) { notification in
-            self.updateUI()
+        NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
+            self?.updateUI()
         }
         updateUI()
     }
@@ -54,7 +54,7 @@ class TracksViewController: SMTranslatedViewController {
     }
     
     @IBAction func didTapCleanUp(sender: AnyObject) {
-        TracksHandler.setNeedsProcessData(force: true)
+        TracksHandler.setNeedsProcessData(userInitiated: true)
     }
 }
 

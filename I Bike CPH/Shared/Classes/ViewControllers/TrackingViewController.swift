@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import PSTAlertController
 
-class TrackingViewController: SMTranslatedViewController {
+class TrackingViewController: ToolbarViewController {
 
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
@@ -17,6 +18,7 @@ class TrackingViewController: SMTranslatedViewController {
     @IBOutlet weak var sinceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    private let enableTrackingToolbarView = EnableTrackingToolbarView()
     private var tracks: [[Track]]?
     private var selectedTrack: Track?
     private var swipeEditing: Bool = false
@@ -57,27 +59,42 @@ class TrackingViewController: SMTranslatedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Title
         title = "tracking".localized
         
-        NotificationCenter.observe(processedBigNoticationKey) { notification in
-            self.updateUI()
-            // Request update of tracks
-            TracksHandler.geocode()
+        // Delegates
+        enableTrackingToolbarView.delegate = self
+        
+        // Setup notifications
+        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+            self?.updateUI()
+            if self != nil {
+                // Request update of tracks
+                TracksHandler.geocode()
+            }
         }
-        NotificationCenter.observe(processedGeocodingNoticationKey) { notification in
-            self.updateUI()
+        NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
+            self?.updateUI()
         }
+        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+            self?.updateUI()
+        }
+        
+        // Initial load of UI
         self.updateUI()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !settings.tracking.on && !BikeStatistics.hasTrackedBikeData() {
+        // Leave view controller if user hasn't enabled tracking and has no tracking data.
+        // This will happen when user disable tracking in tracking settings and returns to this view controller.
+        if !Settings.instance.tracking.on && !BikeStatistics.hasTrackedBikeData() {
             dismiss()
         }
         
-        TracksHandler.setNeedsProcessData(force: true)
+        // Request new data
+        TracksHandler.setNeedsProcessData(userInitiated: true)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -86,6 +103,14 @@ class TrackingViewController: SMTranslatedViewController {
     
     func updateUI() {
         
+        // Re-enable button
+        if Settings.instance.tracking.on {
+            removeToolbar()
+        } else {
+            add(toolbarView: enableTrackingToolbarView)
+        }
+        
+        // Stats
         let totalDistance = BikeStatistics.totalDistance() / 1000
         distanceLabel.text = numberFormatter.stringFromNumber(totalDistance)
         
@@ -108,29 +133,46 @@ class TrackingViewController: SMTranslatedViewController {
             return
         }
         
+        // Tracks
         updateTracks()
         tableView.reloadData()
     }
     
     func updateTracks() {
         var date = NSDate()
-        var updatedTracks: [[Track]]? = nil
+        var updatedTracks = [[Track]]()
         if let oldestDate = BikeStatistics.firstTrackStartDate() {
-            while date.laterOrEqualDay(thanDate: oldestDate) {
-                if let tracksForDate = BikeStatistics.tracksForDayOfDate(date) {
-                    if let tracks = tracksForDate.sortedResultsUsingProperty("startTimestamp", ascending: false) {
-                        let tracksArray = tracks.toArray(Track.self)
-                        if updatedTracks == nil {
-                            updatedTracks = [tracksArray]
-                        } else {
-                            updatedTracks?.append(tracksArray)
-                        }
+            let allTracks = BikeStatistics.tracks().sortedResultsUsingProperty("startTimestamp", ascending: false)
+            var currentDate: NSDate = BikeStatistics.lastTrackEndDate() ?? NSDate()
+            var section = 0
+            for track in allTracks {
+                if let
+                    track = track as? Track,
+                    date = track.startDate()
+                {
+                    let sameDay = date.relativeDay(fromDate: currentDate) == 0
+                    if !sameDay {
+                        currentDate = date
+                        section++
                     }
+                    while updatedTracks.count <= section {
+                        updatedTracks.append([Track]())
+                    }
+                    updatedTracks[section].append(track)
                 }
-                date = date.dateByAddingTimeInterval(-60*60*24) // Go one day back
             }
         }
         tracks = updatedTracks
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if
+            segue.identifier == "trackingToDetail",
+            let track = selectedTrack,
+            trackDetailViewController = segue.destinationViewController as? TrackDetailViewController
+        {
+            trackDetailViewController.track = track
+        }
     }
 }
 
@@ -152,7 +194,7 @@ extension TrackingViewController: UITableViewDataSource {
             tracks = tracks(inSection: indexPath.section)
             where indexPath.row < tracks.count
         {
-            return tracks[indexPath.row] as? Track
+            return tracks[indexPath.row]
         }
         return nil
     }
@@ -208,6 +250,7 @@ extension TrackingViewController: UITableViewDataSource {
     }
 }
 
+
 extension TrackingViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -220,15 +263,20 @@ extension TrackingViewController: UITableViewDelegate {
     }
 }
 
-extension TrackingViewController {
+
+extension TrackingViewController: EnableTrackingToolbarDelegate {
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if
-            segue.identifier == "trackingToDetail",
-            let track = selectedTrack,
-            trackDetailViewController = segue.destinationViewController as? TrackDetailViewController
-        {
-            trackDetailViewController.track = track
+    func didSelectEnableTracking() {
+        if !UserHelper.loggedIn() {
+            let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
+            alertController.addCancelActionWithHandler(nil)
+            let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
+                self?.performSegueWithIdentifier("trackingPromptToLogin", sender: self)
+            }
+            alertController.addAction(loginAction)
+            alertController.showWithSender(self, controller: self, animated: true, completion: nil)
+            return
         }
+        Settings.instance.tracking.on = true
     }
 }

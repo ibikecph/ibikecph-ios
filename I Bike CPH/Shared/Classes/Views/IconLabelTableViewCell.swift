@@ -13,6 +13,12 @@ class IconLabelTableViewCell: NibDesignableTableViewCell {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var label: UILabel!
+    var enabled: Bool = true {
+        didSet {
+            label.enabled = enabled
+            iconImageView.tintAdjustmentMode = enabled ? .Normal : .Dimmed
+        }
+    }
     
     func configure(#text: String, textColor: UIColor = Styler.foregroundColor(), icon: UIImage? = nil) {
         
@@ -23,20 +29,12 @@ class IconLabelTableViewCell: NibDesignableTableViewCell {
     }
     
     func configure(item: SearchListItem) {
-        var imageName = ""
+        var icon: UIImage?
         if let favorite = item as? FavoriteItem {
-            imageName = {
-                switch favorite.origin {
-                    case .Home: return "favoriteHome"
-                    case .School: return "favoriteSchool"
-                    case .Work: return "favoriteWork"
-                    case .Unknown: return "Favorite"
-                }
-            }()
+            icon = FavoriteTypeViewModel(type: favorite.origin).iconImage
         } else if let item = item as? HistoryItem {
-            imageName = "findHistory"
+            icon = UIImage(named: "findHistory")
         }
-        let icon = UIImage(named: imageName)
         configure(text: item.name, icon: icon)
     }
 }

@@ -99,7 +99,13 @@ class MapView: UIView {
         }
     }
 
-    func addPath(coordinates: [CLLocationCoordinate2D], lineColor: UIColor = Styler.tintColor()) -> Annotation {
+    /// Convenience for Objective-C compatibility
+    func addPathWithLocations(locations: [CLLocation], lineColor: UIColor = Styler.tintColor(), lineWidth: Float = 4.0) -> Annotation {
+        let coordinates = locations.map { $0.coordinate }
+        return addPath(coordinates, lineColor: lineColor, lineWidth: lineWidth)
+    }
+    
+    func addPath(coordinates: [CLLocationCoordinate2D], lineColor: UIColor = Styler.tintColor(), lineWidth: Float = 4.0) -> Annotation {
     
         // Annotation
         var pathAnnotation = Annotation()
@@ -111,7 +117,7 @@ class MapView: UIView {
             pathAnnotation.coordinate = firstCoordinate
         }
         shape.lineColor = lineColor
-        shape.lineWidth = 4.0
+        shape.lineWidth = lineWidth
         shape.lineJoin = "round"
         shape.lineCap = "round"
         pathAnnotation.layer = shape
@@ -267,7 +273,7 @@ extension MapView: RMMapViewDelegate {
             return nil
         }
         switch annotation.annotationType {
-            case "marker", "station":
+            case "marker":
                 let marker = RMMarker(UIImage: annotation.annotationIcon, anchorPoint: annotation.anchorPoint)
                 return marker
             case "path":

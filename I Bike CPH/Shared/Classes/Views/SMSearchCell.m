@@ -13,27 +13,21 @@
 - (void)setImageWithFavoriteType:(FavoriteItemType)type {
     
     NSString *imageName;
-    NSString *imageNameHighlight;
     switch (type) {
         case FavoriteItemTypeHome:
-            imageName = @"favHomeGrey";
-            imageNameHighlight = @"favHomeWhite";
+            imageName = @"favoriteHome";
         break;
         case FavoriteItemTypeWork:
-            imageName = @"favWorkGrey";
-            imageNameHighlight = @"favWorkWhite";
+            imageName = @"favoriteWork";
             break;
         case FavoriteItemTypeSchool:
-            imageName = @"favSchoolGrey";
-            imageNameHighlight = @"favSchoolWhite";
+            imageName = @"favoriteSchool";
             break;
         case FavoriteItemTypeUnknown:
-            imageName = @"favStarGreySmall";
-            imageNameHighlight = @"favStarWhiteSmall";
+            imageName = @"Favorite";
             break;
     }
-    self.iconImage.image = [UIImage imageNamed:imageName];
-    self.iconImage.highlightedImage = [UIImage imageNamed:imageNameHighlight];
+    self.iconImage.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
 - (void)setImageWithType:(SearchListItemType)type isFromStreetSearch:(BOOL)isFromStreetSearch {
@@ -52,18 +46,21 @@
         default:
             break;
     }
-    self.iconImage.image = [UIImage imageNamed:imageName];
-    self.iconImage.highlightedImage = nil;
+    self.iconImage.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
 -(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
     [super setHighlighted:highlighted animated:animated];
-    [self.iconImage setHighlighted:highlighted];
+    [self updateIconImageToHighlighted:highlighted];
 }
 
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    [self.iconImage setHighlighted:selected];
+    [self updateIconImageToHighlighted:selected];
+}
+
+- (void)updateIconImageToHighlighted:(BOOL)highlighted {
+    self.iconImage.tintColor = highlighted ? [Styler backgroundColor] : [Styler foregroundColor];
 }
 
 @end

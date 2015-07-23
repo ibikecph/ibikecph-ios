@@ -48,40 +48,68 @@ class TrackDetailViewController: SMTranslatedViewController {
             return
         }
 
-        var coordinates = [CLLocationCoordinate2D]()
-        for location in track.locations {
-            let location = location as! TrackLocation
-            coordinates.append(location.coordinate())
-        }
+        let trackLocations = track.locations.toArray(TrackLocation.self)
+        var coordinates = trackLocations.map { return $0.coordinate() }
+        // Draw route
         let pathAnnotation = mapView.addPath(coordinates)
         
-        //        let speedLimit: Double = 3
-        //        var slowStartIndex = 0
-        //        for speed in track.smoothSpeeds() {
-        //            if speed > speedLimit {
-        //                break
-        //            }
-        //            slowStartIndex++
-        //        }
-        //        let slowStartCoordinates = Array(coordinates[0...slowStartIndex])
-        //        mapView.addPath(slowStartCoordinates, lineColor: .redColor())
-        //
-        //        var slowEndIndex = coordinates.count - 1
-        //        for speed in track.smoothSpeeds().reverse() {
-        //            if speed > speedLimit {
-        //                break
-        //            }
-        //            slowEndIndex--
-        //        }
-        //        let slowEndCoordinates = Array(coordinates[slowEndIndex...(coordinates.count-1)])
-        //        mapView.addPath(slowEndCoordinates, lineColor: .greenColor())
+        
+//        let firstCoordinates = Array(coordinates[0..<min(10, coordinates.count)])
+//        let rotations: [Double] = {
+//            var rotations = [Double]()
+//            for (index, coordinate) in enumerate(firstCoordinates) {
+//                let nextIndex = index + 1
+//                if nextIndex < Int(firstCoordinates.count) {
+//                    let nextCoordinate = firstCoordinates[nextIndex]
+//                    let newRotation = coordinate.degreesFromCoordinate(nextCoordinate)
+//                    rotations.append(newRotation)
+//                }
+//            }
+//            return rotations
+//        }()
+//        let median = rotations.sorted { $0 < $1 } [rotations.count/2]
+//        
+//        let diffClosure: Double -> Double = { rotation in
+//            var diff = rotation - median
+//            while diff > 180 { diff -= 360 }
+//            while diff < -180 { diff += 360 }
+//            return diff
+//        }
+//        let diffToMedian = rotations.map(diffClosure)
+//        let removeToIndex: Int? = {
+//            for (index, diff) in enumerate(diffToMedian.reverse()) {
+//                if abs(diff) > 90 {
+//                    return rotations.count - index // Subtract from count since enumerating over reverse
+//                }
+//            }
+//            return nil
+//        }()
+//        
+//        if let removeToIndex = removeToIndex {
+//            let jumpyStartCoordinates = Array(coordinates[0..<removeToIndex])
+//            mapView.addPath(jumpyStartCoordinates, lineColor: .greenColor(), lineWidth: 8)
+//        }
 
+        
+        
+        // Pins
+        if let startCoordinate = coordinates.first {
+            let startPin = PinAnnotation(mapView: mapView, coordinate: startCoordinate, type: .Start)
+            mapView.addAnnotation(startPin)
+        }
+        if let endCoordinate = coordinates.last {
+            let endPin = PinAnnotation(mapView: mapView, coordinate: endCoordinate, type: .End)
+            mapView.addAnnotation(endPin)
+        }
+        
         // Set zoom asynchronous, else MapBox view doesn't render
         Async.main {
             self.mapView.zoomToAnnotation(pathAnnotation, animated: false)
         }
     }
 }
+
+
 
 
 

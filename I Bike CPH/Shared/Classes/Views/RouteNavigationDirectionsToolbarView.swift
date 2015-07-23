@@ -76,7 +76,8 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
 
 extension RouteNavigationDirectionsToolbarView {
     
-    func prepareForReuse() {
+    override func prepareForReuse() {
+        super.prepareForReuse()
         instructions = [SMTurnInstruction]()
         collectionView.reloadData()
     }

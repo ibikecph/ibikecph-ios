@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [SMTranslation translateView:self.view];
+    [SMTranslation translateView:self.navigationItem.rightBarButtonItem];
+    [SMTranslation translateView:self.navigationItem.leftBarButtonItem];
     self.appDelegate = (SMAppDelegate *)[UIApplication sharedApplication].delegate;
 //    self.screenName = NSStringFromClass([self class]);
 }

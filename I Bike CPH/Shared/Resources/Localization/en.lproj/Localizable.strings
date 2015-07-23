@@ -202,7 +202,9 @@
 "Favorite" = "Favorite";
 "back" = "Back";
 "done" = "Done";
+"Name" = "Name";
 "add_favorite_name_placeholder" = "Enter name ...";
+"Address" = "Address";
 "add_favorite_address_placeholder" = "Find address ...";
 "account" = "My profile";
 
@@ -289,6 +291,7 @@
 "tracking_milestone_notifications" = "Notification about milestones";
 "tracking_weekly_status_notifications" = "Weekly status";
 "log_in_to_track_prompt" = "To start collecting data, you must login.";
+"reenable_tracking" = "Re-enable tracking";
 
 "log_in_to_favorite_prompt" = "To add favorites, you must login.";
 
@@ -320,7 +323,7 @@
 "milestone_daystreak_6_description" = "You have cycled %d days in a row, that's impressive!";
 "milestone_daystreak_7_description" = "Wow, on you bike every day for a month, you are a star!";
 
-"weekly_status_description" = "This week you have cycled %.1f km in %dh %2m.";
+"weekly_status_description" = "This week you have cycled %.1f km in %dh %2dm.";
 
 "to" = "to";
 "Duration" = "Dur.";
@@ -338,6 +341,16 @@
 "bike_type_1"= "Get there fast";
 "bike_type_2"= "Fit for cargo bikes";
 "bike_type_3"= "Enjoy the greenery";
+
+/* User terms */
+"no_thanks" = "No thanks";
+"accept" = "Accept";
+"user_terms" = "Terms of Service";
+"user_terms_title" = "Accept Terms of Service";
+"user_terms_description" = "You have to accept the Terms of Service to be logged in.";
+"accept_user_terms_or_log_out" = "You have to accept the Terms of Service to remain logged in.";
+"most_important_terms_are" = "The most important terms are:";
+"read_terms" = "Read the entire Terms of Service";
 
 /* I Bike CPH */
 
@@ -370,11 +383,6 @@
 // these are in the storyboard
 "register_with_mail" = "Register with email";
 
-"reminder_title" = "Reminder";
-"reminder_text" = "Get help to start biking. Please select the day(s) you want to bike and we will help you get started.";
-"reminder_save_btn" = "Save reminder";
-"reminder_alert_text" = "Remember to cycle in the morning";
-
 // Break route
 "break_route_title" = "Less biking";
 "btn_break_route" = "Less biking";
@@ -401,4 +409,4 @@
 "activate_gps" = "Turn GPS On";
 "leave_no_gps" = "Leave GPS off";
 
-"play_services_version_error" = "Please update Google Play Services";
+"play_services_version_error" = "To track, please update Google Play Services";

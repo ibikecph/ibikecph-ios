@@ -12,6 +12,12 @@ class IconLabelSwitchTableViewCell: IconLabelTableViewCell {
 
     @IBOutlet weak var switcher: UISwitch!
     
+    override var enabled: Bool {
+        didSet {
+            switcher.enabled = enabled
+        }
+    }
+    
     var switchChanged: ((on: Bool) -> ())? {
         didSet {
             switcher.addTarget(self, action: "switched:", forControlEvents: .ValueChanged)

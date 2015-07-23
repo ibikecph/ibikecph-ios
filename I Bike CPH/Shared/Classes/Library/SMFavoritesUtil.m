@@ -117,7 +117,7 @@
     
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
     [self setApr:ap];
-    [self.apr setRequestIdentifier:@"addFavorite"];
+    [self.apr setRequestIdentifier:@"deleteFavorite"];
     NSMutableDictionary * params = [API_DELETE_FAVORITE mutableCopy];
     params[@"service"] = [NSString stringWithFormat:@"%@/%@", params[@"service"], favItem.identifier];
     [self.apr executeRequest:params withParams:@{
@@ -184,6 +184,18 @@
             if (self.delegate && [self.delegate respondsToSelector:@selector(favoritesOperationFinishedSuccessfully:withData:)]) {
                 [self.delegate favoritesOperationFinishedSuccessfully:req withData:result];
             }
+        } else if ([req.requestIdentifier isEqualToString:@"addFavorite"]) {
+            NSString *identifier = [result[@"data"][@"id"] stringValue];
+            // Add id to favorite item missing it
+            NSMutableArray *favorites = [SMFavoritesUtil favorites].mutableCopy;
+            for (FavoriteItem *favorite in favorites) {
+                if ([favorite.identifier isEqualToString:@""]) {
+                    favorite.identifier = identifier;
+                    break;
+                }
+            }
+            [SMFavoritesUtil saveFavorites:favorites];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kFAVORITES_CHANGED object:self];
         } else {
             [self fetchFavoritesFromServer];
         }

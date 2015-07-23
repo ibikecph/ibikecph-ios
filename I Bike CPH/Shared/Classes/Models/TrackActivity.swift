@@ -17,7 +17,7 @@ class TrackActivity: RLMObject {
     dynamic var cycling = false
     dynamic var startDate = NSDate()
     dynamic var confidence = 0
-    dynamic var owned: Bool = true
+    dynamic var owned: String = ""
     
     class func build(activity: CMMotionActivity) -> TrackActivity {
         var newActivity = TrackActivity()

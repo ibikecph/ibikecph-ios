@@ -10,17 +10,21 @@ import UIKit
 import PSTAlertController
 import MapKit
 
+let routeToItemNotificationKey = "routeToItemNotificationKey"
+let routeToItemNotificationItemKey = "routeToItemNotificationItemKey"
 
 class MainMapViewController: MapViewController {
 
-    var trackingToolbarView = TrackingToolbarView()
-    var addressToolbarView = AddressToolbarView()
-    let mainToTrackingSegue = "mainToTracking"
-    let mainToFindRouteSegue = "mainToFindRoute"
-    let mainToLoginSegue = "mainToLogin"
-    let mainToFindAddressSegue = "mainToFindAddress"
-    var pinAnnotation: PinAnnotation?
-    var currentItem: SearchListItem?
+    private let trackingToolbarView = TrackingToolbarView()
+    private let addressToolbarView = AddressToolbarView()
+    private let mainToTrackingSegue = "mainToTracking"
+    private let mainToFindRouteSegue = "mainToFindRoute"
+    private let mainToLoginSegue = "mainToLogin"
+    private let mainToFindAddressSegue = "mainToFindAddress"
+    private let mainToUserTermsSegue = "mainToUserTerms"
+    private var pinAnnotation: PinAnnotation?
+    private var currentLocationItem: SearchListItem?
+    private var pendingUserTerms: UserTerms?
     
     deinit {
         NotificationCenter.unobserve(self)
@@ -29,6 +33,14 @@ class MainMapViewController: MapViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        checkUserTerms()
+        NotificationCenter.observe("UserLoggedIn") { [weak self] notification in
+            self?.checkUserTerms()
+        }
+        NotificationCenter.observe("UserRegistered") { [weak self] notification in
+            self?.checkUserTerms(forceAccept: true)
+        }
+        
         // Follow user if possible
         mapView.userTrackingMode = .Follow
         
@@ -41,26 +53,79 @@ class MainMapViewController: MapViewController {
         
         // Tracking changes
         updateTrackingToolbarView()
-        NotificationCenter.observe(processedBigNoticationKey) { notification in
-            self.updateTrackingToolbarView()
+        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+            self?.updateTrackingToolbarView()
         }
-        NotificationCenter.observe(settingsUpdatedNotification) { notification in
-            self.updateTrackingToolbarView()
+        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+            self?.updateTrackingToolbarView()
         }
+        
+        // Observe
+        NotificationCenter.observe(routeToItemNotificationKey) { [weak self] notification in
+            if let
+                item = notification.userInfo?[routeToItemNotificationItemKey] as? FavoriteItem,
+                myself = self
+            {
+                myself.updateToCurrentItem(item)
+                myself.performSegueWithIdentifier(myself.mainToFindRouteSegue, sender: myself)
+            }
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // Update tracking information
-        TracksHandler.setNeedsProcessData(force: true)
+        if Settings.instance.tracking.on {
+            TracksHandler.setNeedsProcessData(userInitiated: true)
+        }
     }
 
     @IBAction func openMenu(sender: AnyObject) {
         NotificationCenter.post("openMenu")
     }
     
+    func showUserTerms() {
+        if pendingUserTerms != nil {
+            self.performSegueWithIdentifier(self.mainToUserTermsSegue, sender: self)
+        }
+    }
+    
+    func checkUserTerms(forceAccept: Bool = false) {
+        if !UserHelper.loggedIn() {
+            return // Only check when logged in
+        }
+        // Check if user has accepted user terms
+        UserTermsClient.instance.requestUserTerms() { result in
+            switch result {
+                case .SuccessUserTerms(let userTerms, let new) where new == true:
+                    if forceAccept {
+                        UserTermsClient.instance.latestVerifiedVersion = userTerms.version
+                        return
+                    }
+                    self.pendingUserTerms = userTerms
+                    if self.isViewLoaded() {
+                        self.showUserTerms()
+                    }
+                case .SuccessUserTerms(_, _):
+                    print("No new user terms")
+                default:
+                    print("Failed to get user terms: \(result)")
+            }
+        }
+    }
+    
     func updateTrackingToolbarView() {
-        let trackingOn = settings.tracking.on
+        if currentLocationItem != nil {
+            // Do nothing if a location item is currently used
+            return
+        }
+        
+        let trackingOn = Settings.instance.tracking.on
         let hasBikeTracks = BikeStatistics.hasTrackedBikeData()
         let showTrackingView = trackingOn || hasBikeTracks
         if showTrackingView {
@@ -77,6 +142,8 @@ class MainMapViewController: MapViewController {
     }
     
     func closeAddressToolbarView() {
+        currentLocationItem = nil
+        removeToolbar()
         updateTrackingToolbarView()
     }
     
@@ -102,7 +169,14 @@ class MainMapViewController: MapViewController {
             segue.identifier == mainToFindRouteSegue,
             let destinationController = segue.destinationViewController as? FindRouteViewController
         {
-            destinationController.toItem = currentItem
+            destinationController.toItem = currentLocationItem
+        }
+        if
+            segue.identifier == mainToUserTermsSegue,
+            let destinationController = segue.destinationViewController as? UserTermsViewController
+        {
+            destinationController.userTerms = pendingUserTerms
+            pendingUserTerms = nil
         }
     }
     
@@ -121,6 +195,25 @@ class MainMapViewController: MapViewController {
             return favorite
         }
         return nil
+    }
+    
+    func updateToCurrentItem(item: SearchListItem) {
+        currentLocationItem = item
+        // Show address in toolbar
+        addressToolbarView.updateToItem(item)
+        add(toolbarView: addressToolbarView)
+        // Remove any existing pin
+        if let pin = pinAnnotation {
+            removePin(pin)
+        }
+        // Add new pin if item has location
+        if
+            let coordinate = item.location?.coordinate
+            where coordinate.latitude != 0 && coordinate.longitude != 0
+        {
+            pinAnnotation = addPin(coordinate)
+            mapView.centerCoordinate(coordinate, zoomLevel: DEFAULT_MAP_ZOOM, animated: true)
+        }
     }
 }
 
@@ -157,24 +250,24 @@ extension MainMapViewController: AddressToolbarDelegate {
         
         // Add or remove from favorite accordingly
         if selected {
-            if let item = currentItem {
+            if let item = currentLocationItem {
                 // Check if current item is already favorite
                 if let favorite = item as? FavoriteItem {
                     addressToolbarView.updateToItem(favorite)
                     return
                 }
                 let favorite = FavoriteItem(other: item)
-                currentItem = favorite
+                currentLocationItem = favorite
                 addressToolbarView.updateToItem(favorite)
                 // Add to server
                 SMFavoritesUtil.instance().addFavoriteToServer(favorite)
             }
-        } else if let item = currentItem as? FavoriteItem {
+        } else if let item = currentLocationItem as? FavoriteItem {
             // Remove from server
             SMFavoritesUtil.instance().deleteFavoriteFromServer(item)
             // Downgrade to non-favorite item
             let nonFavorite = UnknownSearchListItem(other: item)
-            currentItem = nonFavorite
+            currentLocationItem = nonFavorite
             addressToolbarView.updateToItem(nonFavorite)
         }
     }
@@ -192,7 +285,7 @@ extension MainMapViewController: MapViewDelegate {
         // Show address in toolbar
         add(toolbarView: addressToolbarView)
         // Clear
-        currentItem = nil
+        currentLocationItem = nil
         addressToolbarView.prepareForReuse()
         SMGeocoder.reverseGeocode(coordinate, synchronous: false) { [weak self] item, error in
             if let error = error {
@@ -203,7 +296,7 @@ extension MainMapViewController: MapViewDelegate {
             item.location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
             
             let item: SearchListItem = self?.favoriteForItem(item) ?? item // Attempt upgrade to Favorite
-            self?.currentItem = item
+            self?.currentLocationItem = item
             self?.addressToolbarView.updateToItem(item)
             
             // Reverse geocode doesn't provide a location for the found item.
@@ -242,6 +335,7 @@ extension MainMapViewController: MapViewDelegate {
         {
             // Remove pin
             removePin(pin)
+            pinAnnotation = nil
             // Remove address toolbar
             closeAddressToolbarView()
         }
@@ -254,22 +348,7 @@ extension MainMapViewController: FindAddressViewControllerProtocol {
     func foundAddress(item: SearchListItem) {
         // Update current item
         let item: SearchListItem = favoriteForItem(item) ?? item // Attempt upgrade to Favorite
-        currentItem = item
-        // Show address in toolbar
-        addressToolbarView.updateToItem(item)
-        add(toolbarView: addressToolbarView)
-        // Remove any existing pin
-        if let pin = pinAnnotation {
-            removePin(pin)
-        }
-        // Add new pin if item has location
-        if
-            let coordinate = item.location?.coordinate
-            where coordinate.latitude != 0 && coordinate.longitude != 0
-        {
-            pinAnnotation = addPin(coordinate)
-            mapView.centerCoordinate(coordinate, zoomLevel: DEFAULT_MAP_ZOOM, animated: true)
-        }
+        updateToCurrentItem(item)
     }
 }
 

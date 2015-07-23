@@ -32,11 +32,11 @@ struct FavoriteTypeViewModel {
     }
 }
 
-class FavoriteViewController: UIViewController {
+class FavoriteViewController: SMTranslatedViewController {
 
-    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     private let cellID = "FavoriteTypeCellID"
@@ -58,12 +58,25 @@ class FavoriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        SMTranslation.translateView(view)
+        
+        // Delegates
         addressTextField.delegate = self
         nameTextField.delegate = self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didChangeNameTextField:", name: UITextFieldTextDidChangeNotification, object: nameTextField)
+        
+        // Observers
+        NotificationCenter.observe(UITextFieldTextDidChangeNotification) { [weak self] notification in
+            if let name = self?.nameTextField.text {
+                self?.favoriteItem?.name = name
+            }
+        }
+        NotificationCenter.observe("favoritesChanged") { [weak self] notification in
+            // Find favorite that matches current and update accordingly
+            if let favorites = SMFavoritesUtil.favorites() as? [FavoriteItem] {
+                if let updatedFavorite = favorites.filter({ return $0.name == self?.favoriteItem?.name }).first {
+                    self?.favoriteItem = updatedFavorite
+                }
+            }
+        }
         
         if favoriteItem == nil {
             creating = true
@@ -71,7 +84,7 @@ class FavoriteViewController: UIViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.unobserve(self)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -88,28 +101,31 @@ class FavoriteViewController: UIViewController {
             let add = item.address
             addressTextField.text = item.address
             nameTextField.text = item.name
+            nameLabel.hidden = false
+            nameTextField.hidden = false
             tableView.hidden = false
         } else {
             addressTextField.text = nil
             nameTextField.text = nil
+            nameLabel.hidden = true
+            nameTextField.hidden = true
             tableView.hidden = true
         }
         tableView.reloadData()
-        
-        let hasContent = addressTextField.text != nil && nameTextField.text != nil
-        saveButton.enabled = hasContent
     }
     
     func updateItemType(type: FavoriteItemType) {
         let nameMatchesCurrentType = nameTextField.text == FavoriteTypeViewModel(type: type).title
         let noName = nameTextField.text == "" || nameTextField.text == nil
-        let updateNameToNewType = nameMatchesCurrentType || noName
+        let addressName = nameTextField.text == addressTextField.text
+        let updateNameToNewType = nameMatchesCurrentType || noName || addressName
         if updateNameToNewType {
-            // Only update name if it currently matches it's type (or no current name)
+            // Only update name if it currently matches it's type, or no current name, or name is just the address
             favoriteItem?.name = FavoriteTypeViewModel(type: type).title
         }
         favoriteItem?.origin = type
         updateViews()
+        save()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -123,12 +139,16 @@ class FavoriteViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
-    
-    @IBAction func saveButtonTapped(sender: AnyObject) {
+    func save() {
+        let hasContent = addressTextField.text != nil && nameTextField.text != nil
+        if !hasContent {
+            println("No content to save")
+            return
+        }
         if creating {
             if let item = favoriteItem {
                 SMFavoritesUtil.instance().addFavoriteToServer(item)
+                creating = false
             } else {
                 println("No item to save")
                 return
@@ -136,7 +156,13 @@ class FavoriteViewController: UIViewController {
         } else {
             SMFavoritesUtil.instance().editFavorite(favoriteItem)
         }
-        dismiss()
+    }
+    
+    @IBAction func newRouteButtonTapped(sender: AnyObject) {
+        if let item = favoriteItem {
+            NotificationCenter.post("closeMenu")
+            NotificationCenter.post(routeToItemNotificationKey, userInfo: [routeToItemNotificationItemKey : item])
+        }
     }
 }
 
@@ -178,6 +204,7 @@ extension FavoriteViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         if textField == nameTextField {
             favoriteItem?.name = nameTextField.text
+            save()
         }
         updateViews()
     }
@@ -191,12 +218,6 @@ extension FavoriteViewController: UITextFieldDelegate {
     }
 }
 
-extension FavoriteViewController {
-    
-    func didChangeNameTextField(notification: NSNotification) {
-        favoriteItem?.name = nameTextField.text
-    }
-}
 
 extension FavoriteViewController: SMSearchDelegate {
     
@@ -204,18 +225,19 @@ extension FavoriteViewController: SMSearchDelegate {
         if let foundItem = locationItem as? SearchListItem {
             if let currentItem = favoriteItem {
                 // Update current item
-                let currentName = currentItem.name
-                let currentOrigin = currentItem.origin
                 let newItem = FavoriteItem(other: foundItem)
-                newItem.name = currentName
-                newItem.origin = currentOrigin
+                newItem.name = currentItem.name
+                newItem.origin = currentItem.origin
+                newItem.identifier = currentItem.identifier
                 favoriteItem = newItem
+                save()
             } else {
                 // Create new favorite item
                 favoriteItem = FavoriteItem(other: foundItem)
                 if let currentName = nameTextField.text {
                     favoriteItem?.name = currentName
                 }
+                save()
             }
         }
     }

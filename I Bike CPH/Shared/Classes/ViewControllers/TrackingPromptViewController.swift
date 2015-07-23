@@ -35,7 +35,7 @@ class TrackingPromptViewController: SMTranslatedViewController {
             alertController.showWithSender(self, controller: self, animated: true, completion: nil)
             return
         }
-        settings.tracking.on = true
+        Settings.instance.tracking.on = true
         dismiss()
     }
 }

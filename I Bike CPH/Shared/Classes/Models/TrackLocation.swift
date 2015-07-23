@@ -21,7 +21,7 @@ class TrackLocation: RLMObject {
     dynamic var speed: Double = 0
 	
 	// TODO: Remove when data model doesn't get corrupted by Realm
-	dynamic var owned: Bool = true
+	dynamic var owned: String = ""
 }
 
 extension TrackLocation {
@@ -48,6 +48,13 @@ extension TrackLocation {
     
     func location() -> CLLocation {
         return CLLocation(coordinate: coordinate(), altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy, course: course, speed: speed, timestamp: date())
+    }
+    
+    func speedToLocation(toLocation: TrackLocation) -> Double {
+        let length = location().distanceFromLocation(toLocation.location())
+        let duration = -date().timeIntervalSinceDate(toLocation.date())
+        let speed = length / duration
+        return speed
     }
 }
 

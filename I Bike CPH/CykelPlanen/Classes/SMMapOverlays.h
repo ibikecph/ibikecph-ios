@@ -7,24 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-@class RMMapView;
+@class MapView;
 
 /**
  * Map overlays. Handle markers/annotations for metro, service, station, and local train.
  */
 @interface SMMapOverlays : NSObject
 
--(SMMapOverlays*)initWithMapView:(RMMapView*)mapView;
-- (void)useMapView:(RMMapView*)mapView;
-- (void)loadMarkers;
-- (void)toggleMarkers:(NSString*)markerType state:(BOOL)state;
-- (void)toggleMarkers;
-
-@property BOOL metroMarkersVisible;
-@property BOOL serviceMarkersVisible;
-@property BOOL stationMarkersVisible;
-@property BOOL localTrainMarkersVisible;
-@property BOOL pathVisible;
-@property (nonatomic, strong) NSMutableArray* metroTimingConst;
+- (SMMapOverlays*)initWithMapView:(MapView*)mapView;
+- (void)useMapView:(MapView*)mapView;
+- (void)updateOverlays;
 
 @end

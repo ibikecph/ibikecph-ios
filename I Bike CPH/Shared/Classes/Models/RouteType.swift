@@ -12,21 +12,19 @@ enum RouteType {
     case Regular
     case Cargo
     case Green
-    case BrokenWithPublicTransport
     
     var localizedDescription: String {
         switch self {
             case .Regular: return "bike_type_1".localized
             case .Cargo: return "bike_type_2".localized
             case .Green: return "bike_type_3".localized
-            case .BrokenWithPublicTransport: return "bike_type_4".localized // TODO: Fix strings
         }
     }
     
     static func validTypes() -> [RouteType] {
         if Macro.instance().isCykelPlanen {
-            return [.Regular, .Green] // TODO: Add .BrokenWithPublicTransport]
+            return [.Regular, .Cargo, .Green]
         }
-        return [.Regular, .Green, .Cargo]
+        return [.Regular, .Cargo, .Green]
     }
 }

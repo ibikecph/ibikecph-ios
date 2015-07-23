@@ -27,9 +27,6 @@ class MenuViewController: UIViewController {
         let favItem = MenuItem(title: "favorites".localized, iconImageName: "Favorite", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToFavorites", sender: menuViewController)
         })
-        let reminderItem = MenuItem(title: "reminder_title".localized, iconImageName: "notifications", action: { menuViewController in
-            menuViewController.performSegueWithIdentifier("menuToReminders", sender: menuViewController)
-        })
         let profileItem = MenuItem(title: (UserHelper.loggedIn() ? "account" : "profile").localized, iconImageName: "user", action: { menuViewController in
             if UserHelper.loggedIn() {
                 if UserHelper.isFacebook() {
@@ -56,9 +53,8 @@ class MenuViewController: UIViewController {
                 menuViewController.performSegueWithIdentifier("menuToTrackingNotAvailable", sender: menuViewController)
                 return
             }
-            let trackingOn = settings.tracking.on
-            let hasBikeTracks = BikeStatistics.hasTrackedBikeData()
-            if !(trackingOn || hasBikeTracks) {
+            let trackingOn = Settings.instance.tracking.on
+            if !trackingOn {
                 menuViewController.performSegueWithIdentifier("menuToTrackingPrompt", sender: menuViewController)
                 menuViewController.pendingTracking = true
                 return
@@ -80,9 +76,6 @@ class MenuViewController: UIViewController {
         }
 //        menuItems.append(speedItem)
         menuItems.append(trackingItem)
-        if macro.isCykelPlanen {
-            menuItems.append(reminderItem)
-        }
         menuItems.append(profileItem)
         menuItems.append(aboutItem)
         
@@ -102,7 +95,7 @@ class MenuViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if pendingTracking && settings.tracking.on {
+        if pendingTracking && Settings.instance.tracking.on {
             performSegueWithIdentifier("menuToTracking", sender: self)
         }
         pendingTracking = false

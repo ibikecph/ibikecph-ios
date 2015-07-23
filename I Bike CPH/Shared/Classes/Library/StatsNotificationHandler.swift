@@ -115,14 +115,14 @@ class StatsNotificationHandler {
     }
     
     private func setupTracksObserver() {
-        NotificationCenter.observe(processedBigNoticationKey) { notification in
-            self.updateToTrackData()
+        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+            self?.updateToTrackData()
         }
     }
     
     private func setupSettingsObserver() {
-        NotificationCenter.observe(settingsUpdatedNotification) { [unowned self] notification in
-            self.updateToTrackData()
+        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+            self?.updateToTrackData()
         }
     }
     
@@ -138,7 +138,7 @@ class StatsNotificationHandler {
                 Notifications.cancelScheduledLocalNotification(existingNotification)
             }
             //  Schedule new notification, if setting is on
-            if settings.tracking.weeklyStatusNotifications {
+            if Settings.instance.tracking.weeklyStatusNotifications {
                 // Update notification with latest statistics
                 let durationThisWeek = round(BikeStatistics.durationThisWeek()/60)*60 // Round to minutes
                 let calendar = NSCalendar.currentCalendar()
@@ -179,7 +179,7 @@ class StatsNotificationHandler {
     
     func checkPresentNotificationToUser() {
         // Check if milestones is even on
-        if !settings.tracking.milestoneNotifications {
+        if !Settings.instance.tracking.milestoneNotifications {
             return
         }
         // Check that user didn't bike within last 5 min.

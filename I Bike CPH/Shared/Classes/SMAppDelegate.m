@@ -9,6 +9,10 @@
 #import "SMAppDelegate.h"
 #import "SMUtil.h"
 #import "SMSearchHistory.h"
+#if defined(CYKEL_PLANEN)
+#import "SMReminder.h"
+#endif
+
 
 @interface SMAppDelegate () <SMSearchHistoryDelegate>
 @end
@@ -22,6 +26,11 @@
     } else {
         [Notifications scheduleLocalNotification:@"Didn't launch from significant location change" fireDate:[NSDate new]];
     }
+    
+#if defined(CYKEL_PLANEN)
+    // Reminders has been deprecated. Clear no make sure notifications doesn't fly around and spook the users.
+    [SMReminder clear];
+#endif
     
     self.pastRoutes = @[];
     self.currentContacts = @[];
@@ -135,6 +144,11 @@
 - (void)loadSettings {
     NSMutableDictionary * d = [NSMutableDictionary dictionaryWithContentsOfFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"settings.plist"]];
     self.appSettings = d;
+}
+
+- (void)clearSettings {
+    self.appSettings = [NSMutableDictionary new];
+    [self saveSettings];
 }
 
 #pragma mark - search history delegate
