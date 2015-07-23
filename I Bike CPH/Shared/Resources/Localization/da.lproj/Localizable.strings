@@ -345,6 +345,16 @@
 "bike_type_2"= "God til ladcykel";
 "bike_type_3"= "Nyd det grønne";
 
+/* User terms */
+"no_thanks" = "Nej tak";
+"accept" = "Godkend";
+"user_terms" = "Brugerbetingelser";
+"user_terms_title" = "Godkend brugerbetingelser";
+"user_terms_description" = "Du skal acceptere brugerbetingelserne for at være logget ind.";
+"accept_user_terms_or_log_out" = "Du skal accepetere brugerbetingelserne for at forblive logget ind.";
+"most_important_terms_are" = "De væsentligste betingelser er:";
+"read_terms" = "Læs alle brugerbetingelser";
+
 /* I Bike CPH */
 
 "about_app_ibc" = "Om I Bike CPH";

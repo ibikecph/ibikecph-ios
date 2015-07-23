@@ -34,5 +34,6 @@
 @property (nonatomic, strong) NSMutableDictionary * appSettings;
 - (BOOL)saveSettings;
 - (void)loadSettings;
+- (void)clearSettings;
 
 @end

@@ -342,6 +342,16 @@
 "bike_type_2"= "Fit for cargo bikes";
 "bike_type_3"= "Enjoy the greenery";
 
+/* User terms */
+"no_thanks" = "No thanks";
+"accept" = "Accept";
+"user_terms" = "Terms of Service";
+"user_terms_title" = "Accept Terms of Service";
+"user_terms_description" = "You have to accept the Terms of Service to be logged in.";
+"accept_user_terms_or_log_out" = "You have to accept the Terms of Service to remain logged in.";
+"most_important_terms_are" = "The most important terms are:";
+"read_terms" = "Read the entire Terms of Service";
+
 /* I Bike CPH */
 
 "about_app_ibc" = "About I Bike CPH";

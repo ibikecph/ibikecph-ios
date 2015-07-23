@@ -170,12 +170,7 @@
 }
  
 - (IBAction)logout:(id)sender {
-    [Settings instance].tracking.on = false; // Turn off tracking when logging out
-    [self.appDelegate.appSettings removeObjectForKey:@"auth_token"];
-    [self.appDelegate.appSettings removeObjectForKey:@"id"];
-    [self.appDelegate.appSettings removeObjectForKey:@"username"];
-    [self.appDelegate.appSettings removeObjectForKey:@"password"];
-    [self.appDelegate saveSettings];
+    [UserHelper logout];
     [self dismiss];
 }
 

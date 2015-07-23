@@ -21,8 +21,10 @@ class MainMapViewController: MapViewController {
     private let mainToFindRouteSegue = "mainToFindRoute"
     private let mainToLoginSegue = "mainToLogin"
     private let mainToFindAddressSegue = "mainToFindAddress"
+    private let mainToUserTermsSegue = "mainToUserTerms"
     private var pinAnnotation: PinAnnotation?
     private var currentLocationItem: SearchListItem?
+    private var pendingUserTerms: UserTerms?
     
     deinit {
         NotificationCenter.unobserve(self)
@@ -31,6 +33,14 @@ class MainMapViewController: MapViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        checkUserTerms()
+        NotificationCenter.observe("UserLoggedIn") { [weak self] notification in
+            self?.checkUserTerms()
+        }
+        NotificationCenter.observe("UserRegistered") { [weak self] notification in
+            self?.checkUserTerms(forceAccept: true)
+        }
+        
         // Follow user if possible
         mapView.userTrackingMode = .Follow
         
@@ -62,6 +72,11 @@ class MainMapViewController: MapViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // Update tracking information
@@ -74,9 +89,39 @@ class MainMapViewController: MapViewController {
         NotificationCenter.post("openMenu")
     }
     
+    func showUserTerms() {
+        if pendingUserTerms != nil {
+            self.performSegueWithIdentifier(self.mainToUserTermsSegue, sender: self)
+        }
+    }
+    
+    func checkUserTerms(forceAccept: Bool = false) {
+        if !UserHelper.loggedIn() {
+            return // Only check when logged in
+        }
+        // Check if user has accepted user terms
+        UserTermsClient.instance.requestUserTerms() { result in
+            switch result {
+                case .SuccessUserTerms(let userTerms, let new) where new == true:
+                    if forceAccept {
+                        UserTermsClient.instance.latestVerifiedVersion = userTerms.version
+                        return
+                    }
+                    self.pendingUserTerms = userTerms
+                    if self.isViewLoaded() {
+                        self.showUserTerms()
+                    }
+                case .SuccessUserTerms(_, _):
+                    print("No new user terms")
+                default:
+                    print("Failed to get user terms: \(result)")
+            }
+        }
+    }
+    
     func updateTrackingToolbarView() {
         if currentLocationItem != nil {
-            // Do nothing af a location item is currently used
+            // Do nothing if a location item is currently used
             return
         }
         
@@ -125,6 +170,13 @@ class MainMapViewController: MapViewController {
             let destinationController = segue.destinationViewController as? FindRouteViewController
         {
             destinationController.toItem = currentLocationItem
+        }
+        if
+            segue.identifier == mainToUserTermsSegue,
+            let destinationController = segue.destinationViewController as? UserTermsViewController
+        {
+            destinationController.userTerms = pendingUserTerms
+            pendingUserTerms = nil
         }
     }
     

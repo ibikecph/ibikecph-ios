@@ -146,6 +146,11 @@
     self.appSettings = d;
 }
 
+- (void)clearSettings {
+    self.appSettings = [NSMutableDictionary new];
+    [self saveSettings];
+}
+
 #pragma mark - search history delegate
 
 - (void)searchHistoryOperationFinishedSuccessfully:(id)req withData:(id)data {

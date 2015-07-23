@@ -128,30 +128,28 @@
             [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:self.loginEmail.text forKey:@"username"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
-            [self.appDelegate saveSettings];
-            [self dismiss];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
         } else if ([req.requestIdentifier isEqualToString:@"autoLogin"]) {
             [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
             [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
-            [self.appDelegate saveSettings];
-            [self dismiss];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
         } else if ([req.requestIdentifier isEqualToString:@"loginFB"]) {
             [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
             [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"FB" forKey:@"loginType"];
-            [self.appDelegate saveSettings];
-            [self dismiss];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
         } else if ([req.requestIdentifier isEqualToString:@"register"]) {
             [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
             [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
-            [self.appDelegate saveSettings];
-            [self dismiss];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserRegistered" object:nil];
             if (![SMAnalytics trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:self.loginEmail.text withValue:0]) {
                 debugLog(@"error in trackEvent");
             }
         }
+        [self.appDelegate saveSettings];
+        [self dismiss];
     } else {
         if (result[@"info_title"]) {
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:result[@"info_title"] message:result[@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
