@@ -47,17 +47,17 @@ class MapToMapNavigationControllerDelegate: NSObject, UINavigationControllerDele
     }
     
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if let
-            fromVC = fromVC as? MapViewController,
-            toVC = toVC as? MapViewController
-        {
+        if fromVC is MapViewController && toVC is MapViewController {
             return MapToMapTransitionAnimator()
         }
         return nil
     }
     
     func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return self.interactionController
+        if animationController is MapToMapTransitionAnimator {
+            return self.interactionController
+        }
+        return nil
     }
 }
 
