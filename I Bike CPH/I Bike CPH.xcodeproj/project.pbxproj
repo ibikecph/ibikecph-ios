@@ -139,6 +139,18 @@
 		4E5B906C1B5F99AE008AC960 /* UserTermsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */; };
 		4E5B906E1B5FABC0008AC960 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B906D1B5FABC0008AC960 /* SplashViewController.swift */; };
 		4E5B906F1B5FABC0008AC960 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B906D1B5FABC0008AC960 /* SplashViewController.swift */; };
+		4E5B90761B60D408008AC960 /* marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B90701B60D408008AC960 /* marker@2x.png */; };
+		4E5B90771B60D408008AC960 /* marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B90711B60D408008AC960 /* marker@3x.png */; };
+		4E5B90781B60D408008AC960 /* markerFinish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B90721B60D408008AC960 /* markerFinish@2x.png */; };
+		4E5B90791B60D408008AC960 /* markerFinish@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B90731B60D408008AC960 /* markerFinish@3x.png */; };
+		4E5B907A1B60D408008AC960 /* markerStart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B90741B60D408008AC960 /* markerStart@2x.png */; };
+		4E5B907B1B60D408008AC960 /* markerStart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B90751B60D408008AC960 /* markerStart@3x.png */; };
+		4E5B90821B60D41A008AC960 /* marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B907C1B60D41A008AC960 /* marker@2x.png */; };
+		4E5B90831B60D41A008AC960 /* marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B907D1B60D41A008AC960 /* marker@3x.png */; };
+		4E5B90841B60D41A008AC960 /* markerFinish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B907E1B60D41A008AC960 /* markerFinish@2x.png */; };
+		4E5B90851B60D41A008AC960 /* markerFinish@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B907F1B60D41A008AC960 /* markerFinish@3x.png */; };
+		4E5B90861B60D41A008AC960 /* markerStart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B90801B60D41A008AC960 /* markerStart@2x.png */; };
+		4E5B90871B60D41A008AC960 /* markerStart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B90811B60D41A008AC960 /* markerStart@3x.png */; };
 		4E5E87861B31D4760021F5E9 /* FindRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5E87851B31D4760021F5E9 /* FindRouteViewController.swift */; };
 		4E5E87871B31D4760021F5E9 /* FindRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5E87851B31D4760021F5E9 /* FindRouteViewController.swift */; };
 		4E5E878A1B31D6560021F5E9 /* FindRouteToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5E87881B31D6560021F5E9 /* FindRouteToolbarView.swift */; };
@@ -305,10 +317,6 @@
 		4EE05F891A10EDE700DE4226 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F881A10EDE700DE4226 /* Images.xcassets */; };
 		4EE05F981A10EDE700DE4226 /* CykelPlanenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE05F971A10EDE700DE4226 /* CykelPlanenTests.m */; };
 		4EE0631C1A10FA4900DE4226 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EE0631B1A10FA4900DE4226 /* Images.xcassets */; };
-		4EE066581A10FAB400DE4226 /* markerFinish.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE064B91A10FAB400DE4226 /* markerFinish.png */; };
-		4EE066591A10FAB400DE4226 /* markerFinish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE064BA1A10FAB400DE4226 /* markerFinish@2x.png */; };
-		4EE0665A1A10FAB400DE4226 /* markerStart.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE064BB1A10FAB400DE4226 /* markerStart.png */; };
-		4EE0665B1A10FAB400DE4226 /* markerStart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE064BC1A10FAB400DE4226 /* markerStart@2x.png */; };
 		4EE06C321A10FC5600DE4226 /* SMArrivalInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06BCA1A10FC5600DE4226 /* SMArrivalInfo.m */; };
 		4EE06C331A10FC5600DE4226 /* SMArrivalInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06BCC1A10FC5600DE4226 /* SMArrivalInformation.m */; };
 		4EE06C341A10FC5600DE4226 /* SMArrivalMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06BCE1A10FC5600DE4226 /* SMArrivalMapping.m */; };
@@ -386,10 +394,6 @@
 		4EE06F041A112F6D00DE4226 /* SMAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E0F1A11298800DE4226 /* SMAddressPickerView.m */; };
 		4EE06F051A112F6D00DE4226 /* SMBreakRouteButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E161A11298800DE4226 /* SMBreakRouteButtonCell.m */; };
 		4EE06F061A112F6D00DE4226 /* SMBreakRouteHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06E181A11298800DE4226 /* SMBreakRouteHeader.m */; };
-		4EE072AE1A1178E200DE4226 /* markerFinish.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE0706D1A1178DF00DE4226 /* markerFinish.png */; };
-		4EE072AF1A1178E200DE4226 /* markerFinish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE0706E1A1178DF00DE4226 /* markerFinish@2x.png */; };
-		4EE072B01A1178E200DE4226 /* markerStart.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE0706F1A1178DF00DE4226 /* markerStart.png */; };
-		4EE072B11A1178E200DE4226 /* markerStart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE070701A1178DF00DE4226 /* markerStart@2x.png */; };
 		4EE59AF41A6485BA00B89D71 /* SMAccountNativeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE59AF31A6485BA00B89D71 /* SMAccountNativeViewController.m */; };
 		4EE59AF51A6485BA00B89D71 /* SMAccountNativeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE59AF31A6485BA00B89D71 /* SMAccountNativeViewController.m */; };
 		4EE633771A5E8A94009DA49B /* OverlaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */; };
@@ -547,6 +551,18 @@
 		4E5B90671B5F990E008AC960 /* UserTerms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTerms.swift; sourceTree = "<group>"; };
 		4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTermsClient.swift; sourceTree = "<group>"; };
 		4E5B906D1B5FABC0008AC960 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		4E5B90701B60D408008AC960 /* marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker@2x.png"; sourceTree = "<group>"; };
+		4E5B90711B60D408008AC960 /* marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker@3x.png"; sourceTree = "<group>"; };
+		4E5B90721B60D408008AC960 /* markerFinish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "markerFinish@2x.png"; sourceTree = "<group>"; };
+		4E5B90731B60D408008AC960 /* markerFinish@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "markerFinish@3x.png"; sourceTree = "<group>"; };
+		4E5B90741B60D408008AC960 /* markerStart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "markerStart@2x.png"; sourceTree = "<group>"; };
+		4E5B90751B60D408008AC960 /* markerStart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "markerStart@3x.png"; sourceTree = "<group>"; };
+		4E5B907C1B60D41A008AC960 /* marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker@2x.png"; path = "I Bike CPH/images/marker@2x.png"; sourceTree = SOURCE_ROOT; };
+		4E5B907D1B60D41A008AC960 /* marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker@3x.png"; path = "I Bike CPH/images/marker@3x.png"; sourceTree = SOURCE_ROOT; };
+		4E5B907E1B60D41A008AC960 /* markerFinish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "markerFinish@2x.png"; path = "I Bike CPH/images/markerFinish@2x.png"; sourceTree = SOURCE_ROOT; };
+		4E5B907F1B60D41A008AC960 /* markerFinish@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "markerFinish@3x.png"; path = "I Bike CPH/images/markerFinish@3x.png"; sourceTree = SOURCE_ROOT; };
+		4E5B90801B60D41A008AC960 /* markerStart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "markerStart@2x.png"; path = "I Bike CPH/images/markerStart@2x.png"; sourceTree = SOURCE_ROOT; };
+		4E5B90811B60D41A008AC960 /* markerStart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "markerStart@3x.png"; path = "I Bike CPH/images/markerStart@3x.png"; sourceTree = SOURCE_ROOT; };
 		4E5E87851B31D4760021F5E9 /* FindRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindRouteViewController.swift; sourceTree = "<group>"; };
 		4E5E87881B31D6560021F5E9 /* FindRouteToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindRouteToolbarView.swift; sourceTree = "<group>"; };
 		4E5E87891B31D6560021F5E9 /* FindRouteToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindRouteToolbarView.xib; sourceTree = "<group>"; };
@@ -684,10 +700,6 @@
 		4EE05F961A10EDE700DE4226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EE05F971A10EDE700DE4226 /* CykelPlanenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CykelPlanenTests.m; sourceTree = "<group>"; };
 		4EE0631B1A10FA4900DE4226 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4EE064B91A10FAB400DE4226 /* markerFinish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markerFinish.png; sourceTree = "<group>"; };
-		4EE064BA1A10FAB400DE4226 /* markerFinish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "markerFinish@2x.png"; sourceTree = "<group>"; };
-		4EE064BB1A10FAB400DE4226 /* markerStart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markerStart.png; sourceTree = "<group>"; };
-		4EE064BC1A10FAB400DE4226 /* markerStart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "markerStart@2x.png"; sourceTree = "<group>"; };
 		4EE06BC91A10FC5600DE4226 /* SMArrivalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMArrivalInfo.h; sourceTree = "<group>"; };
 		4EE06BCA1A10FC5600DE4226 /* SMArrivalInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMArrivalInfo.m; sourceTree = "<group>"; };
 		4EE06BCB1A10FC5600DE4226 /* SMArrivalInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMArrivalInformation.h; sourceTree = "<group>"; };
@@ -798,10 +810,6 @@
 		4EE06E161A11298800DE4226 /* SMBreakRouteButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBreakRouteButtonCell.m; sourceTree = "<group>"; };
 		4EE06E171A11298800DE4226 /* SMBreakRouteHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBreakRouteHeader.h; sourceTree = "<group>"; };
 		4EE06E181A11298800DE4226 /* SMBreakRouteHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBreakRouteHeader.m; sourceTree = "<group>"; };
-		4EE0706D1A1178DF00DE4226 /* markerFinish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markerFinish.png; sourceTree = "<group>"; };
-		4EE0706E1A1178DF00DE4226 /* markerFinish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "markerFinish@2x.png"; sourceTree = "<group>"; };
-		4EE0706F1A1178DF00DE4226 /* markerStart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markerStart.png; sourceTree = "<group>"; };
-		4EE070701A1178DF00DE4226 /* markerStart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "markerStart@2x.png"; sourceTree = "<group>"; };
 		4EE59AF21A6485BA00B89D71 /* SMAccountNativeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountNativeViewController.h; sourceTree = "<group>"; };
 		4EE59AF31A6485BA00B89D71 /* SMAccountNativeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountNativeViewController.m; sourceTree = "<group>"; };
 		4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaysViewController.swift; sourceTree = "<group>"; };
@@ -1337,10 +1345,12 @@
 			isa = PBXGroup;
 			children = (
 				4E4AC4531A8502E80037A65E /* Logo@2x.png */,
-				4EE064B91A10FAB400DE4226 /* markerFinish.png */,
-				4EE064BA1A10FAB400DE4226 /* markerFinish@2x.png */,
-				4EE064BB1A10FAB400DE4226 /* markerStart.png */,
-				4EE064BC1A10FAB400DE4226 /* markerStart@2x.png */,
+				4E5B907C1B60D41A008AC960 /* marker@2x.png */,
+				4E5B907D1B60D41A008AC960 /* marker@3x.png */,
+				4E5B907E1B60D41A008AC960 /* markerFinish@2x.png */,
+				4E5B907F1B60D41A008AC960 /* markerFinish@3x.png */,
+				4E5B90801B60D41A008AC960 /* markerStart@2x.png */,
+				4E5B90811B60D41A008AC960 /* markerStart@3x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1592,10 +1602,12 @@
 			children = (
 				4E4AC4551A8502FC0037A65E /* Logo@2x.png */,
 				4E4AC4561A8502FC0037A65E /* Logo@3x.png */,
-				4EE0706D1A1178DF00DE4226 /* markerFinish.png */,
-				4EE0706E1A1178DF00DE4226 /* markerFinish@2x.png */,
-				4EE0706F1A1178DF00DE4226 /* markerStart.png */,
-				4EE070701A1178DF00DE4226 /* markerStart@2x.png */,
+				4E5B90701B60D408008AC960 /* marker@2x.png */,
+				4E5B90711B60D408008AC960 /* marker@3x.png */,
+				4E5B90721B60D408008AC960 /* markerFinish@2x.png */,
+				4E5B90731B60D408008AC960 /* markerFinish@3x.png */,
+				4E5B90741B60D408008AC960 /* markerStart@2x.png */,
+				4E5B90751B60D408008AC960 /* markerStart@3x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1856,11 +1868,12 @@
 				4EE06CB71A11134C00DE4226 /* .gitignore in Resources */,
 				4EEE91BE1A1245910006BD95 /* Albertslundruten.line in Resources */,
 				4E392ADD1A308DBE0076BA86 /* smroute_settings_private.plist in Resources */,
+				4E5B90831B60D41A008AC960 /* marker@3x.png in Resources */,
 				4EE0631C1A10FA4900DE4226 /* Images.xcassets in Resources */,
 				4EE82FB51B0BCE300089147A /* LaunchScreen.xib in Resources */,
+				4E5B90821B60D41A008AC960 /* marker@2x.png in Resources */,
 				4E10EBC01B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib in Resources */,
 				4E5258AF1A9B616200BE55C8 /* Localizable.strings in Resources */,
-				4EE066581A10FAB400DE4226 /* markerFinish.png in Resources */,
 				4EDC5E101B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib in Resources */,
 				4E1258D51A7BA63200A82434 /* routeTestStart.gpx in Resources */,
 				4E392ADB1A308DBE0076BA86 /* smroute_settings.plist in Resources */,
@@ -1871,12 +1884,12 @@
 				4E5E878C1B31D6560021F5E9 /* FindRouteToolbarView.xib in Resources */,
 				4E59822B1A24C4DD00A40484 /* BitBlueprint.gpx in Resources */,
 				4EEE91B91A1245610006BD95 /* test2.gpx in Resources */,
-				4EE0665B1A10FAB400DE4226 /* markerStart@2x.png in Resources */,
+				4E5B90851B60D41A008AC960 /* markerFinish@3x.png in Resources */,
 				4E5E87921B31DC520021F5E9 /* RouteStatsToolbarView.xib in Resources */,
 				4EADAE4E1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */,
 				4EE06CDD1A11134C00DE4226 /* smroute_settings_example.plist in Resources */,
 				4EEE91B51A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */,
-				4EE0665A1A10FAB400DE4226 /* markerStart.png in Resources */,
+				4E5B90841B60D41A008AC960 /* markerFinish@2x.png in Resources */,
 				4EF4DF7E1B28461E00B64D3B /* AddressToolbarView.xib in Resources */,
 				4EC56E891A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
 				4E3C3A8A1A39E80300C79E52 /* SharedImages.xcassets in Resources */,
@@ -1885,10 +1898,11 @@
 				4EEE91B71A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */,
 				4E4566621A8A61FA006563D1 /* smroute_settings_app_private.plist in Resources */,
 				4EEC6D341B20B139003AE8DF /* TrackingToolbarView.xib in Resources */,
-				4EE066591A10FAB400DE4226 /* markerFinish@2x.png in Resources */,
 				4EEE91BB1A1245610006BD95 /* testing.gpx in Resources */,
+				4E5B90861B60D41A008AC960 /* markerStart@2x.png in Resources */,
 				4EFA28101A2BA1330050450C /* Main.storyboard in Resources */,
 				4E5E87981B31F7DC0021F5E9 /* RouteTypeToolbarView.xib in Resources */,
+				4E5B90871B60D41A008AC960 /* markerStart@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1904,18 +1918,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EE072AE1A1178E200DE4226 /* markerFinish.png in Resources */,
 				4E59822C1A24C4DD00A40484 /* BitBlueprint.gpx in Resources */,
 				4E4566641A8A620E006563D1 /* smroute_settings_app_private.plist in Resources */,
+				4E5B90781B60D408008AC960 /* markerFinish@2x.png in Resources */,
 				4E1258D61A7BA63200A82434 /* routeTestStart.gpx in Resources */,
 				4E10EBBB1B3AE6480012245E /* RouteNavigationToolbarView.xib in Resources */,
 				4EC56E8B1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
 				4EE06E5F1A11298800DE4226 /* SMAddressPickerView.xib in Resources */,
 				4E4AC4571A8502FC0037A65E /* Logo@2x.png in Resources */,
 				4EBB7B3B1A5EB4E70064B530 /* farum-route.json in Resources */,
-				4EE072AF1A1178E200DE4226 /* markerFinish@2x.png in Resources */,
 				4EEE91B61A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */,
 				4E3C3A8B1A39E80300C79E52 /* SharedImages.xcassets in Resources */,
+				4E5B907B1B60D408008AC960 /* markerStart@3x.png in Resources */,
 				4EEE91BA1A1245610006BD95 /* test2.gpx in Resources */,
 				4E392ADE1A308DBE0076BA86 /* smroute_settings_private.plist in Resources */,
 				4E4AC4581A8502FC0037A65E /* Logo@3x.png in Resources */,
@@ -1924,8 +1938,9 @@
 				4EEE91B81A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */,
 				4EEE91DC1A1246920006BD95 /* timetable-new.json in Resources */,
 				4EEE91BC1A1245610006BD95 /* testing.gpx in Resources */,
-				4EE072B01A1178E200DE4226 /* markerStart.png in Resources */,
+				4E5B90791B60D408008AC960 /* markerFinish@3x.png in Resources */,
 				4EF4DF7F1B28461E00B64D3B /* AddressToolbarView.xib in Resources */,
+				4E5B90761B60D408008AC960 /* marker@2x.png in Resources */,
 				4EFA28111A2BA1330050450C /* Main.storyboard in Resources */,
 				4E5E878D1B31D6560021F5E9 /* FindRouteToolbarView.xib in Resources */,
 				4EE82FB61B0BCE350089147A /* LaunchScreen.xib in Resources */,
@@ -1938,16 +1953,17 @@
 				4E10EBC11B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib in Resources */,
 				4EEE91D41A1246920006BD95 /* local-trains-timetable.json in Resources */,
 				4E10EBC91B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */,
+				4E5B907A1B60D408008AC960 /* markerStart@2x.png in Resources */,
 				4EEE91D61A1246920006BD95 /* metro.json in Resources */,
 				4EADAE4F1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */,
 				4EE06CB81A11134C00DE4226 /* .gitignore in Resources */,
 				4E5E87931B31DC520021F5E9 /* RouteStatsToolbarView.xib in Resources */,
 				4EBB7B431A5EB4E70064B530 /* stations.json in Resources */,
 				4EEE91DD1A1246920006BD95 /* timetable.json in Resources */,
-				4EE072B11A1178E200DE4226 /* markerStart@2x.png in Resources */,
 				4EE05F891A10EDE700DE4226 /* Images.xcassets in Resources */,
 				4EEC6D351B20B139003AE8DF /* TrackingToolbarView.xib in Resources */,
 				4EEE91DE1A1246920006BD95 /* transportation-lines.json in Resources */,
+				4E5B90771B60D408008AC960 /* marker@3x.png in Resources */,
 				4EDC5E0E1B21BDE1009189EE /* IconLabelTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
