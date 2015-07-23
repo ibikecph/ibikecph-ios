@@ -39,7 +39,7 @@ class PinAnnotation: Annotation {
     func updateIconToType() {
         let imageName: String = {
             switch self.type {
-                case .Regular: return "markerFinish"
+                case .Regular: return "marker"
                 case .Start: return "markerStart"
                 case .End: return "markerFinish"
             }

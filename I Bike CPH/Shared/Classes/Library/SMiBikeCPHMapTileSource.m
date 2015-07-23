@@ -33,7 +33,7 @@
 
 //    // debug
 //    NSLog(@"%@", [NSString stringWithFormat:@"http://tiles.ibikecph.dk/tiles/%d/%d/%d.png", tile.zoom, tile.x, tile.y]);
-	return [NSURL URLWithString:[NSString stringWithFormat:@"http://tiles.ibikecph.dk/tiles/%d/%d/%d.png", tile.zoom, tile.x, tile.y]];
+	return [NSURL URLWithString:[NSString stringWithFormat:@"https://tiles.ibikecph.dk/tiles/%d/%d/%d.png", tile.zoom, tile.x, tile.y]];
 }
 
 - (NSString *)uniqueTilecacheKey
