@@ -106,21 +106,12 @@ class MapView: UIView {
     }
     
     func addPath(coordinates: [CLLocationCoordinate2D], lineColor: UIColor = Styler.tintColor(), lineWidth: Float = 4.0) -> Annotation {
-    
-        // Annotation
-        var pathAnnotation = Annotation()
-        pathAnnotation.mapView = mapView
-        mapView.addAnnotation(pathAnnotation)
         // Shape
         var shape = RMShape(view: mapView)
-        if let firstCoordinate = coordinates.first {
-            pathAnnotation.coordinate = firstCoordinate
-        }
         shape.lineColor = lineColor
         shape.lineWidth = lineWidth
         shape.lineJoin = "round"
         shape.lineCap = "round"
-        pathAnnotation.layer = shape
         // Add coordinates
         var waypoints: [CLLocation] = [CLLocation]()
         for coordinate in coordinates {
@@ -128,11 +119,15 @@ class MapView: UIView {
             let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
             waypoints.append(location)
         }
+        // Annotation
+        var pathAnnotation = LayerAnnotation(layer: shape, mapView: self)
+        if let firstCoordinate = coordinates.first {
+            pathAnnotation.coordinate = firstCoordinate
+        }
         // Bounding box
         pathAnnotation.setBoundingBoxFromLocations(waypoints)
-        
-        mapView.setNeedsDisplay() // Bug in RMMapView. Workaround to make sure it renders added path
-        
+        // Add to map
+        addAnnotation(pathAnnotation)
         return pathAnnotation
     }
     
@@ -184,6 +179,17 @@ class MapView: UIView {
             annotations.append(endPin)
         }
         return annotations
+    }
+}
+
+
+class LayerAnnotation: Annotation {
+    
+    let layerStore: RMMapLayer
+    init(layer: RMMapLayer, mapView: MapView) {
+        layerStore = layer
+        super.init()
+        self.mapView = mapView.mapView
     }
 }
 
@@ -248,10 +254,6 @@ extension MapView {
 
 extension MapView: RMMapViewDelegate {
     
-//    func mapViewRegionDidChange(mapView: RMMapView!) {
-//        initialRegionLoadNecessary = false
-//    }
-    
     func mapView(mapView: RMMapView, didSelectAnnotation annotation: RMAnnotation) {
         if let annotation = annotation as? Annotation {
             delegate?.didSelectAnnotation(annotation)
@@ -269,51 +271,14 @@ extension MapView: RMMapViewDelegate {
     }
     
     func mapView(mapView: RMMapView!, layerForAnnotation annotation: RMAnnotation!) -> RMMapLayer! {
-        if annotation.annotationType == nil {
-            return nil
+        if let layerAnnotation = annotation as? LayerAnnotation {
+            // To fix bug when setting .layer directly on annotation (layer disappears when scrolling away and back), provide layer with a property on custom LayerAnnotation class here in the delegate callback
+            return layerAnnotation.layerStore
         }
-        switch annotation.annotationType {
-            case "marker":
-                let marker = RMMarker(UIImage: annotation.annotationIcon, anchorPoint: annotation.anchorPoint)
-                return marker
-            case "path":
-                let path = RMShape(view: mapView)
-                path.zPosition = CGFloat(-FLT_MAX)
-                let userInfo = annotation.userInfo as? [String : AnyObject]
-                path.lineColor = userInfo?["lineColor"] as? UIColor ?? Styler.tintColor()
-                path.lineWidth = userInfo?["lineWidth"] as? Float ?? 1
-                path.scaleLineWidth = false
-                path.opacity = PATH_OPACITY
-                path.fillColor = userInfo?["fillColor"] as? UIColor ?? Styler.backgroundColor()
-                if let closePath = userInfo?["closePath"] as? Bool where closePath {
-                    path.closePath()
-                }
-                if let locations = userInfo?["linePoints"] as? [CLLocation] {
-                    for location in locations {
-                        path.addLineToCoordinate(location.coordinate)
-                    }
-                }
-                return path
-            case "line":
-                let line = RMShape(view: mapView)
-                line.zPosition = CGFloat(-FLT_MAX)
-                let userInfo = annotation.userInfo as? [String : AnyObject]
-                line.lineColor = userInfo?["lineColor"] as? UIColor ?? Styler.tintColor()
-                line.lineWidth = userInfo?["lineWidth"] as? Float ?? 1
-                line.scaleLineWidth = true
-                line.opacity = PATH_OPACITY
-                line.fillColor = userInfo?["fillColor"] as? UIColor ?? Styler.backgroundColor()
-                if let
-                    start = userInfo?["lineStart"] as? CLLocation,
-                    end = userInfo?["lineStart"] as? CLLocation
-                {
-                    line.addLineToCoordinate(start.coordinate)
-                    line.addLineToCoordinate(end.coordinate)
-                }
-                return line
-            default:
-                return nil
+        if let pinAnnotation = annotation as? PinAnnotation {
+            return RMMarker(UIImage: annotation.annotationIcon, anchorPoint: annotation.anchorPoint)
         }
+        return nil
     }
 }
 

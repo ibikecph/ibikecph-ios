@@ -30,8 +30,6 @@ class PinAnnotation: Annotation {
         self.type = type
         // Init
         super.init(mapView: mapView.mapView, coordinate: coordinate, andTitle: title ?? "")
-        // Super class properties
-        annotationType = "marker"
         // Update icon, since didSet isn't called on property the `type`
         updateIconToType()
     }
