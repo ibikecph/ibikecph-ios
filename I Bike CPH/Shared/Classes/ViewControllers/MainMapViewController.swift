@@ -70,6 +70,14 @@ class MainMapViewController: MapViewController {
                 myself.performSegueWithIdentifier(myself.mainToFindRouteSegue, sender: myself)
             }
         }
+        NotificationCenter.observe(kFAVORITES_CHANGED){ [weak self] notification in
+            if let item = self?.currentLocationItem {
+                let oldFavorite = item
+                let newFavorite = self?.favoriteForItem(item) ?? item
+                self?.currentLocationItem = newFavorite
+                self?.addressToolbarView.updateToItem(item)
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -185,9 +193,6 @@ class MainMapViewController: MapViewController {
     }
     
     func favoriteForItem(item: SearchListItem) -> FavoriteItem? {
-        if let favorite = item as? FavoriteItem {
-            return favorite
-        }
         if let
             favorites = SMFavoritesUtil.favorites() as? [FavoriteItem],
             favorite = favorites.filter({ $0.address == item.address }).first
