@@ -137,8 +137,10 @@ class MainMapViewController: MapViewController {
         let hasBikeTracks = BikeStatistics.hasTrackedBikeData()
         let showTrackingView = trackingOn || hasBikeTracks
         if showTrackingView {
-            trackingToolbarView.distance = BikeStatistics.distanceThisDate()
+            let distance = BikeStatistics.distanceThisDate()
+            trackingToolbarView.distance = distance
             trackingToolbarView.duration = BikeStatistics.durationThisDate()
+            trackingToolbarView.kiloCalories = BikeStatistics.kiloCaloriesPerBikedDistance(distance)
             add(toolbarView: trackingToolbarView)
         } else {
             removeToolbar()
