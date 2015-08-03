@@ -120,8 +120,9 @@ class TrackingViewController: ToolbarViewController {
         let averageSpeed = BikeStatistics.averageSpeed() / 1000 * 3600
         speedLabel.text = decimalFormatter.stringFromNumber(averageSpeed)
         
-        let averageTripDistance = BikeStatistics.averageTrackDistance() / 1000
-        tripLabel.text = decimalFormatter.stringFromNumber(averageTripDistance)
+        let averageTripDistance = BikeStatistics.averageTrackDistance()
+        let averageTripCalories = BikeStatistics.kiloCaloriesPerBikedDistance(averageTripDistance)
+        tripLabel.text = decimalFormatter.stringFromNumber(averageTripCalories)
         
         if let startDate = BikeStatistics.firstTrackStartDate() {
             sinceLabel.text = "Since".localized + " " + sinceFormatter.stringFromDate(startDate)

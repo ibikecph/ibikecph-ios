@@ -298,13 +298,15 @@
 "unit_km" = "km";
 "unit_km_pr_h" = "km/h";
 "unit_km_pr_trip" = "km/trip";
+"unit_kcal" = "Cal";
+"unit_kcal_pr_trip" = "Cal/trip";
 "unit_h_long" = "hours";
 "unit_h_long_singular" = "hour";
 "unit_h_short" = "h";
 "unit_min" = "min";
 "dum_km" = "55.3";
 "dum_kmh" = "23.3";
-"dum_kmtrip" = "12.4";
+"dum_kcaltrip" = "38.1";
 "dum_h" = "14.3";
 
 "milestone_distance_1_description" = "Alright! You have cycled your first %d km.";

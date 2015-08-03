@@ -154,4 +154,16 @@ class BikeStatistics {
     class func distanceThisWeek() -> Double {
         return tracksThisWeek()?.sumOfProperty("length")?.doubleValue ?? 0
     }
+    
+    /**
+    Calories for distance biked
+    
+    :param: distance Distance in meters [m]
+    :returns: Calories [kcal]
+    */
+    class func kiloCaloriesPerBikedDistance(distance: Double) -> Double {
+        let km = distance / 1000
+        let calPerKm: Double = 11
+        return calPerKm * km
+    }
 }
