@@ -302,14 +302,14 @@
 "unit_km_pr_h" = "km/t";
 "unit_km_pr_trip" = "km/tur";
 "unit_kcal" = "kal";
-"unit_kcal_pr_trip" = "kal/tur";
+"unit_kcal_pr_day" = "kal/day";
 "unit_h_long" = "timer";
 "unit_h_long_singular" = "time";
 "unit_h_short" = "t";
 "unit_min" = "min";
 "dum_km" = "55,3";
 "dum_kmh" = "23,3";
-"dum_kcaltrip" = "38,1";
+"dum_kcalday" = "78,1";
 "dum_h" = "14,3";
 
 "milestone_distance_1_description" = "Sådan! Du har cyklet dine første %d km.";

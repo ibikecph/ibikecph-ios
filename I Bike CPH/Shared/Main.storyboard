@@ -1832,19 +1832,19 @@ God tur og tak fordi du cykler!</string>
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wwy-ct-0Fe" userLabel="Stats">
-                                                    <rect key="frame" x="160" y="34" width="280" height="166.5"/>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wwy-ct-0Fe" userLabel="Stats">
+                                                    <rect key="frame" x="157" y="34" width="286" height="166.5"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-5V-kbj" userLabel="TopLeft">
-                                                            <rect key="frame" x="0.0" y="0.0" width="140" height="88.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="143" height="88.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTd-rN-3Fr">
-                                                                    <rect key="frame" x="0.0" y="49" width="120" height="19.5"/>
+                                                                    <rect key="frame" x="0.0" y="49" width="123" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55.3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nb6-0k-MoA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="49"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="123" height="49"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -1860,15 +1860,15 @@ God tur og tak fordi du cykler!</string>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHW-V6-3Ie" userLabel="BottomLeft">
-                                                            <rect key="frame" x="0.0" y="88" width="140" height="78.5"/>
+                                                            <rect key="frame" x="0.0" y="88" width="143" height="78.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_km_pr_h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SK4-ag-aOR">
-                                                                    <rect key="frame" x="0.0" y="59" width="120" height="19.5"/>
+                                                                    <rect key="frame" x="0.0" y="59" width="123" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18.4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hK-V7-aa5">
-                                                                    <rect key="frame" x="0.0" y="20" width="120" height="38.5"/>
+                                                                    <rect key="frame" x="0.0" y="20" width="123" height="38.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -1885,15 +1885,15 @@ God tur og tak fordi du cykler!</string>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-Bw-2Ta" userLabel="BottomRight">
-                                                            <rect key="frame" x="140" y="89" width="140" height="77.5"/>
+                                                            <rect key="frame" x="143" y="89" width="143" height="77.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="38.1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6I-wy-HE4">
-                                                                    <rect key="frame" x="20" y="20" width="120" height="38.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="78.1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6I-wy-HE4">
+                                                                    <rect key="frame" x="20" y="20" width="123" height="38.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_kcal_pr_trip" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-j2-stB">
-                                                                    <rect key="frame" x="20" y="58" width="120" height="19.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_kcal_pr_day" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-j2-stB">
+                                                                    <rect key="frame" x="20" y="58" width="123" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -1909,15 +1909,15 @@ God tur og tak fordi du cykler!</string>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grm-Q4-pR7" userLabel="TopRight">
-                                                            <rect key="frame" x="140" y="0.0" width="140" height="89"/>
+                                                            <rect key="frame" x="143" y="0.0" width="143" height="89"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24.3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOV-HS-88T">
-                                                                    <rect key="frame" x="20" y="0.0" width="120" height="49"/>
+                                                                    <rect key="frame" x="20" y="0.0" width="123" height="49"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_h_long" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNo-Ym-Rr0">
-                                                                    <rect key="frame" x="20" y="49" width="119.5" height="19.5"/>
+                                                                    <rect key="frame" x="20" y="49" width="122.5" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -1933,15 +1933,15 @@ God tur og tak fordi du cykler!</string>
                                                                 <constraint firstItem="LNo-Ym-Rr0" firstAttribute="leading" secondItem="grm-Q4-pR7" secondAttribute="leading" constant="20" id="nC2-BQ-hyt"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="dr8-0C-aIY" userLabel="HorizontalLine">
-                                                            <rect key="frame" x="0.0" y="88" width="280" height="1"/>
+                                                        <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dr8-0C-aIY" userLabel="HorizontalLine">
+                                                            <rect key="frame" x="0.0" y="88" width="286" height="1"/>
                                                             <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="eLD-wj-BUC"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ke4-kU-8v5" userLabel="VerticalLine">
-                                                            <rect key="frame" x="140" y="0.0" width="1" height="166.5"/>
+                                                            <rect key="frame" x="143" y="0.0" width="1" height="166.5"/>
                                                             <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="Cup-Aa-9UC"/>
@@ -2189,13 +2189,13 @@ God tur og tak fordi du cykler!</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="calorieLabel" destination="b6I-wy-HE4" id="qmy-yE-QQ6"/>
                         <outlet property="distanceLabel" destination="nb6-0k-MoA" id="53E-01-6FI"/>
                         <outlet property="sinceLabel" destination="uX1-zS-B4g" id="mcP-eZ-4zi"/>
                         <outlet property="speedLabel" destination="7hK-V7-aa5" id="033-hh-2oq"/>
                         <outlet property="tableView" destination="FOn-aj-wdi" id="zWr-ld-Geg"/>
                         <outlet property="timeLabel" destination="wOV-HS-88T" id="dEz-Lu-tUj"/>
                         <outlet property="toolbarContainer" destination="0eG-5v-saS" id="gkf-WC-FFy"/>
-                        <outlet property="tripLabel" destination="b6I-wy-HE4" id="QbX-HI-ie6"/>
                         <segue destination="DLt-LQ-2q9" kind="show" identifier="trackingToDetail" id="t11-Tv-7cG"/>
                     </connections>
                 </viewController>
@@ -2384,19 +2384,19 @@ God tur og tak fordi du cykler!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mhj-7m-a87" userLabel="Stats">
-                                <rect key="frame" x="54" y="219" width="492" height="176"/>
+                                <rect key="frame" x="47" y="219" width="506" height="176"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cew-nt-1ET" userLabel="TopLeft">
-                                        <rect key="frame" x="0.0" y="0.0" width="246" height="87.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="253" height="87.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dum_km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmP-f4-nPo">
-                                                <rect key="frame" x="0.0" y="0.0" width="226" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="233" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qL2-Hd-szI">
-                                                <rect key="frame" x="0.0" y="48" width="226" height="19.5"/>
+                                                <rect key="frame" x="0.0" y="48" width="233" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2413,16 +2413,16 @@ God tur og tak fordi du cykler!</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TFI-dJ-wXB" userLabel="BottomLeft">
-                                        <rect key="frame" x="0.0" y="87" width="246" height="87.5"/>
+                                        <rect key="frame" x="0.0" y="87" width="253" height="87.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dum_kmh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cT3-pj-Zpa">
-                                                <rect key="frame" x="0.0" y="20" width="226" height="48"/>
+                                                <rect key="frame" x="0.0" y="20" width="233" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unit_km_pr_h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJo-oW-Vhk">
-                                                <rect key="frame" x="0.0" y="68" width="226" height="19.5"/>
+                                                <rect key="frame" x="0.0" y="68" width="233" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2440,16 +2440,16 @@ God tur og tak fordi du cykler!</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBc-xA-Gab" userLabel="BottomRight">
-                                        <rect key="frame" x="246" y="87" width="246" height="87.5"/>
+                                        <rect key="frame" x="253" y="87" width="253" height="87.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dum_kcaltrip" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qha-2Z-hNz">
-                                                <rect key="frame" x="20" y="20" width="226" height="48"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dum_kcalday" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qha-2Z-hNz">
+                                                <rect key="frame" x="20" y="20" width="233" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="unit_kcal_pr_trip" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adj-5p-I1c">
-                                                <rect key="frame" x="20" y="68" width="226" height="19.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="unit_kcal_pr_day" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adj-5p-I1c">
+                                                <rect key="frame" x="20" y="68" width="233" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2466,16 +2466,16 @@ God tur og tak fordi du cykler!</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vkK-y4-kVc" userLabel="TopRight">
-                                        <rect key="frame" x="246" y="0.0" width="246" height="88.5"/>
+                                        <rect key="frame" x="253" y="0.0" width="253" height="88.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="dum_h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWI-xh-CZY">
-                                                <rect key="frame" x="20" y="0.0" width="226" height="48"/>
+                                                <rect key="frame" x="20" y="0.0" width="233" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="unit_h_long" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvd-3P-soV">
-                                                <rect key="frame" x="20" y="48" width="226" height="21"/>
+                                                <rect key="frame" x="20" y="48" width="233" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2492,15 +2492,15 @@ God tur og tak fordi du cykler!</string>
                                             <constraint firstItem="cWI-xh-CZY" firstAttribute="top" secondItem="vkK-y4-kVc" secondAttribute="top" id="tH2-Lw-tFO"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GfX-bD-vTE" userLabel="HorizontalLine">
-                                        <rect key="frame" x="0.0" y="87" width="492" height="1"/>
+                                    <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="GfX-bD-vTE" userLabel="HorizontalLine">
+                                        <rect key="frame" x="0.0" y="87" width="506" height="1"/>
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="0XA-SU-31u"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DQm-1u-Dgc" userLabel="VerticalLine">
-                                        <rect key="frame" x="246" y="0.0" width="1" height="176.5"/>
+                                        <rect key="frame" x="253" y="0.0" width="1" height="176.5"/>
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="AGU-iW-QTf"/>

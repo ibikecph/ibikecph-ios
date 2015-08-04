@@ -13,7 +13,7 @@ class TrackingViewController: ToolbarViewController {
 
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
-    @IBOutlet weak var tripLabel: UILabel!
+    @IBOutlet weak var calorieLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var sinceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -120,14 +120,15 @@ class TrackingViewController: ToolbarViewController {
         let averageSpeed = BikeStatistics.averageSpeed() / 1000 * 3600
         speedLabel.text = decimalFormatter.stringFromNumber(averageSpeed)
         
-        let averageTripDistance = BikeStatistics.averageTrackDistance()
-        let averageTripCalories = BikeStatistics.kiloCaloriesPerBikedDistance(averageTripDistance)
-        tripLabel.text = numberFormatter.stringFromNumber(averageTripCalories)
-        
         if let startDate = BikeStatistics.firstTrackStartDate() {
             sinceLabel.text = "Since".localized + " " + sinceFormatter.stringFromDate(startDate)
+            let totalDays = NSDate().relativeDay(fromDate: startDate)
+            let averageDayDistance = BikeStatistics.totalDistance() / Double(totalDays)
+            let averageDayCalories = BikeStatistics.kiloCaloriesPerBikedDistance(averageDayDistance)
+            calorieLabel.text = numberFormatter.stringFromNumber(averageDayCalories)
         } else {
             sinceLabel.text = "–"
+            calorieLabel.text = "-"
         }
         
         if swipeEditing {
