@@ -99,6 +99,7 @@ class StatsNotificationHandler {
             "milestone_daystreak_7_description"],
         valueDividerForDescription: 1
     )
+    private var observerTokens = [AnyObject]()
 
     init() {
         setupLocalNotifications()
@@ -107,6 +108,13 @@ class StatsNotificationHandler {
     }
     
     deinit {
+        unobserve()
+    }
+    
+    private func unobserve() {
+        for observerToken in observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
         NotificationCenter.unobserve(self)
     }
     
@@ -115,15 +123,15 @@ class StatsNotificationHandler {
     }
     
     private func setupTracksObserver() {
-        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
             self?.updateToTrackData()
-        }
+        })
     }
     
     private func setupSettingsObserver() {
-        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.updateToTrackData()
-        }
+        })
     }
     
     private func updateToTrackData() {

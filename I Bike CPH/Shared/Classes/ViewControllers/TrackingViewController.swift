@@ -22,6 +22,7 @@ class TrackingViewController: ToolbarViewController {
     private var tracks: [[Track]]?
     private var selectedTrack: Track?
     private var swipeEditing: Bool = false
+    private var observerTokens = [AnyObject]()
     
     lazy var numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
@@ -53,7 +54,7 @@ class TrackingViewController: ToolbarViewController {
     }()
     
     deinit {
-        NotificationCenter.unobserve(self)
+        unobserve()
     }
     
     override func viewDidLoad() {
@@ -66,19 +67,19 @@ class TrackingViewController: ToolbarViewController {
         enableTrackingToolbarView.delegate = self
         
         // Setup notifications
-        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
             self?.updateUI()
             if self != nil {
                 // Request update of tracks
                 TracksHandler.geocode()
             }
-        }
-        NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
             self?.updateUI()
-        }
-        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.updateUI()
-        }
+        })
         
         // Initial load of UI
         self.updateUI()
@@ -99,6 +100,13 @@ class TrackingViewController: ToolbarViewController {
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
+    }
+    
+    private func unobserve() {
+        for observerToken in observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
+        NotificationCenter.unobserve(self)
     }
     
     func updateUI() {

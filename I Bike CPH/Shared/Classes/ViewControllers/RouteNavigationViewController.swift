@@ -15,6 +15,7 @@ class RouteNavigationViewController: MapViewController {
     let routeNavigationToReportErrorSegue = "routeNavigationToReportError"
     var route: RouteComposit?
     var routeAnnotations = [Annotation]()
+    var observerTokens = [AnyObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,20 +35,16 @@ class RouteNavigationViewController: MapViewController {
         
         // Setup UI
         updateUI(zoom: true)
-        
-        // Location updates
-        NSNotificationCenter.defaultCenter().addObserverForName("refreshPosition", object: nil, queue: nil) { notification in
-            if let
-                locations = notification.userInfo?["locations"] as? [CLLocation],
-                location = locations.first,
-                route = self.route
-            {
-                // Tell route about new user location
-                route.route.visitLocation(location)
-                // Update stats to reflect route progress
-                self.updateStats()
-            }
-        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        addObservers()
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        unobserve()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -74,6 +71,30 @@ class RouteNavigationViewController: MapViewController {
                 reportErrorController.sourceLoc = route.from.location
             }
         }
+    }
+    
+    private func addObservers() {
+        // Location updates
+        unobserve()
+        observerTokens.append(NotificationCenter.observe("refreshPosition") { [weak self] notification in
+            if let
+                locations = notification.userInfo?["locations"] as? [CLLocation],
+                location = locations.first,
+                route = self?.route
+            {
+                // Tell route about new user location
+                route.route.visitLocation(location)
+                // Update stats to reflect route progress
+                self?.updateStats()
+            }
+        })
+    }
+    
+    private func unobserve() {
+        for observerToken in observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
+        NotificationCenter.unobserve(self)
     }
     
     private func updateUI(#zoom: Bool) {

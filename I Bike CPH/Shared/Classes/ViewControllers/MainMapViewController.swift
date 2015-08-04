@@ -25,21 +25,22 @@ class MainMapViewController: MapViewController {
     private var pinAnnotation: PinAnnotation?
     private var currentLocationItem: SearchListItem?
     private var pendingUserTerms: UserTerms?
+    private var observerTokens = [AnyObject]()
     
     deinit {
-        NotificationCenter.unobserve(self)
+        unobserve()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         checkUserTerms()
-        NotificationCenter.observe("UserLoggedIn") { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe("UserLoggedIn") { [weak self] notification in
             self?.checkUserTerms()
-        }
-        NotificationCenter.observe("UserRegistered") { [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe("UserRegistered") { [weak self] notification in
             self?.checkUserTerms(forceAccept: true)
-        }
+        })
         
         // Follow user if possible
         mapView.userTrackingMode = .Follow
@@ -53,15 +54,15 @@ class MainMapViewController: MapViewController {
         
         // Tracking changes
         updateTrackingToolbarView()
-        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
             self?.updateTrackingToolbarView()
-        }
-        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.updateTrackingToolbarView()
-        }
+        })
         
         // Observe
-        NotificationCenter.observe(routeToItemNotificationKey) { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe(routeToItemNotificationKey) { [weak self] notification in
             if let
                 item = notification.userInfo?[routeToItemNotificationItemKey] as? FavoriteItem,
                 myself = self
@@ -69,15 +70,15 @@ class MainMapViewController: MapViewController {
                 myself.updateToCurrentItem(item)
                 myself.performSegueWithIdentifier(myself.mainToFindRouteSegue, sender: myself)
             }
-        }
-        NotificationCenter.observe(kFAVORITES_CHANGED){ [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe(kFAVORITES_CHANGED){ [weak self] notification in
             if let item = self?.currentLocationItem {
                 let oldFavorite = item
                 let newFavorite = self?.favoriteForItem(item) ?? item
                 self?.currentLocationItem = newFavorite
                 self?.addressToolbarView.updateToItem(item)
             }
-        }
+        })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -91,6 +92,13 @@ class MainMapViewController: MapViewController {
         if Settings.instance.tracking.on {
             TracksHandler.setNeedsProcessData(userInitiated: true)
         }
+    }
+    
+    private func unobserve() {
+        for observerToken in observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
+        NotificationCenter.unobserve(self)
     }
 
     @IBAction func openMenu(sender: AnyObject) {

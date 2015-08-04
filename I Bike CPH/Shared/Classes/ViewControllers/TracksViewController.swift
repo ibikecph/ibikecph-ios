@@ -13,24 +13,25 @@ class TracksViewController: SMTranslatedViewController {
     @IBOutlet weak var tableView: UITableView!
     private var tracks: RLMResults?
     private var selectedTrack: Track?
+    private var observerTokens = [AnyObject]()
     
     deinit {
-        NotificationCenter.unobserve(self)
+        unobserve()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        NotificationCenter.observe(processedSmallNoticationKey) { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe(processedSmallNoticationKey) { [weak self] notification in
             self?.updateUI()
-        }
-        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
             self?.updateUI()
-        }
-        NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
             self?.updateUI()
-        }
+        })
         updateUI()
     }
     
@@ -51,6 +52,13 @@ class TracksViewController: SMTranslatedViewController {
         {
             trackDetailViewController.track = track
         }
+    }
+    
+    private func unobserve() {
+        for observerToken in observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
+        NotificationCenter.unobserve(self)
     }
     
     @IBAction func didTapCleanUp(sender: AnyObject) {

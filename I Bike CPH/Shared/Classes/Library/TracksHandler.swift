@@ -49,25 +49,34 @@ class TracksHandler {
         return queue
     }()
     
+    private var observerTokens = [AnyObject]()
+    
     init() {
-        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
             if self?.pendingGeocode ?? false {
                 TracksHandler.geocode()
             }
-        }
-        NotificationCenter.observe(processedSmallNoticationKey) { [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe(processedSmallNoticationKey) { [weak self] notification in
             if self?.pendingUserInitiatedProcess ?? false {
                 TracksHandler.setNeedsProcessData(userInitiated: true)
             }
-        }
-        NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
             if self?.pendingUserInitiatedProcess ?? false {
                 TracksHandler.setNeedsProcessData(userInitiated: true)
             }
-        }
+        })
     }
     
     deinit {
+        unobserve()
+    }
+    
+    private func unobserve() {
+        for observerToken in observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
         NotificationCenter.unobserve(self)
     }
     
