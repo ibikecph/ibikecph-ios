@@ -8,21 +8,11 @@
 
 import UIKit
 
-protocol RouteNavigationToolbarDelegate {
-    func didSelectReportProblem()
-}
-
 class RouteNavigationToolbarView: ToolbarView {
-
-    var delegate: RouteNavigationToolbarDelegate?
     
     @IBOutlet weak var routeStatsToolbarView: RouteStatsToolbarView!
     
     @IBOutlet weak var destinationLabel: UILabel!
-    
-    @IBAction func didTapProblem(sender: AnyObject) {
-        delegate?.didSelectReportProblem()
-    }
 }
 
 extension RouteNavigationToolbarView {

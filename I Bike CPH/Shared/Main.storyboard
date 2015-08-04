@@ -646,7 +646,13 @@ God tur og tak fordi du cykler!</string>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="yTU-l4-nT2"/>
+                    <navigationItem key="navigationItem" id="yTU-l4-nT2">
+                        <barButtonItem key="rightBarButtonItem" title="Problem" id="BWY-Sz-zGo">
+                            <connections>
+                                <action selector="didTapProblem:" destination="0iY-Gd-Bo4" id="2EB-vj-H5X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="compassButton" destination="jDH-94-tHy" id="pkV-4g-9Dn"/>
                         <outlet property="mapView" destination="m8f-LC-UdU" id="pnO-PP-Tbj"/>
@@ -3665,6 +3671,6 @@ God tur og tak fordi du cykler!</string>
         <segue reference="hGb-e2-eVV"/>
         <segue reference="X1l-ON-ahy"/>
         <segue reference="t11-Tv-7cG"/>
-        <segue reference="1LD-Bm-Ud7"/>
+        <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>
 </document>

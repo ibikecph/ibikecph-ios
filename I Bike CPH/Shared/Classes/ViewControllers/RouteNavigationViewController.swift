@@ -17,6 +17,11 @@ class RouteNavigationViewController: MapViewController {
     var routeAnnotations = [Annotation]()
     var observerTokens = [AnyObject]()
     
+    
+    @IBAction func didTapProblem(sender: AnyObject) {
+        performSegueWithIdentifier(routeNavigationToReportErrorSegue, sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +30,6 @@ class RouteNavigationViewController: MapViewController {
         
         // Toolbar
         add(toolbarView: routeNavigationToolbarView)
-        routeNavigationToolbarView.delegate = self
         
         // Directions
         routeNavigationDirectionsToolbarView.delegate = self
@@ -128,13 +132,6 @@ class RouteNavigationViewController: MapViewController {
         } else {
             routeNavigationDirectionsToolbarView.prepareForReuse()
         }
-    }
-}
-
-extension RouteNavigationViewController: RouteNavigationToolbarDelegate {
-    
-    func didSelectReportProblem() {
-        performSegueWithIdentifier(routeNavigationToReportErrorSegue, sender: self)
     }
 }
 
