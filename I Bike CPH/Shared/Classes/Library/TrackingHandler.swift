@@ -53,6 +53,7 @@ let trackingHandler = TrackingHandler()
         #endif
         return motionDetector.isAvailable()
     }
+    private var observerTokens = [AnyObject]()
     
     init() {
         setup()
@@ -60,6 +61,13 @@ let trackingHandler = TrackingHandler()
     }
     
     deinit {
+        unobserve()
+    }
+    
+    private func unobserve() {
+        for observerToken in observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
         NotificationCenter.unobserve(self)
     }
     
@@ -75,9 +83,9 @@ let trackingHandler = TrackingHandler()
     }
     
     func setupSettingsObserver() {
-        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.check()
-        }
+        })
     }
     
     func checkMotionTracking() {
@@ -107,7 +115,7 @@ let trackingHandler = TrackingHandler()
     }
     
     func setupBackgroundHandling() {
-        NotificationCenter.observe(UIApplicationDidEnterBackgroundNotification) { notification in
+        observerTokens.append(NotificationCenter.observe(UIApplicationDidEnterBackgroundNotification) { notification in
             if Settings.instance.tracking.on {
                 return
             }
@@ -118,20 +126,20 @@ let trackingHandler = TrackingHandler()
             }
             // Stop location manager
             SMLocationManager.instance().stop()
-        }
-        NotificationCenter.observe(UIApplicationWillEnterForegroundNotification) { notification in
+        })
+        observerTokens.append(NotificationCenter.observe(UIApplicationWillEnterForegroundNotification) { notification in
             SMLocationManager.instance().start()
-        }
+        })
     }
     
     func setupLocationObserver() {
-        NotificationCenter.observe("refreshPosition") { notification in
+        observerTokens.append(NotificationCenter.observe("refreshPosition") { notification in
             if let locations = notification.userInfo?["locations"] as? [CLLocation] {
                 for location in locations {
                     self.add(location)
                 }
             }
-        }
+        })
     }
     
     func checkMilestoneNotification() {
