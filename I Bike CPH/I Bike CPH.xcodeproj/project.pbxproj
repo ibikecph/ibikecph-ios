@@ -453,6 +453,8 @@
 		4EFA280A1A2B7B120050450C /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982041A24AC1200A40484 /* FoursquareItem.swift */; };
 		4EFA28101A2BA1330050450C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFA280F1A2BA1330050450C /* Main.storyboard */; };
 		4EFA28111A2BA1330050450C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFA280F1A2BA1330050450C /* Main.storyboard */; };
+		4EFB7DB61B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB7DB51B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift */; };
+		4EFB7DB71B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB7DB51B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift */; };
 		4EFDA4821AB87A6D00522A41 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
 		4EFDA4831AB87A6E00522A41 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
 		4EFDA4861AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */; };
@@ -846,6 +848,7 @@
 		4EF4DF7A1B28461E00B64D3B /* AddressToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressToolbarView.swift; sourceTree = "<group>"; };
 		4EF4DF7B1B28461E00B64D3B /* AddressToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressToolbarView.xib; sourceTree = "<group>"; };
 		4EFA280F1A2BA1330050450C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4EFB7DB51B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchActivateTrackingViewController.swift; sourceTree = "<group>"; };
 		4EFDA4811AB87A6D00522A41 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativeDateFormatter.swift; sourceTree = "<group>"; };
 		A44BC1E9CE220BE043EB736A /* Pods-I Bike CPHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-I Bike CPHTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-I Bike CPHTests/Pods-I Bike CPHTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1518,6 +1521,7 @@
 				4EC56ECD1A2A3AAD00B696B4 /* SMTranslatedViewController.h */,
 				4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */,
 				4E5B90641B5F98BF008AC960 /* UserTermsViewController.swift */,
+				4EFB7DB51B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift */,
 				4E5E87841B31D3F00021F5E9 /* Menu */,
 			);
 			path = ViewControllers;
@@ -2325,6 +2329,7 @@
 				4EC56DC81A2A25E900B696B4 /* SMEvents.m in Sources */,
 				4EE06CC91A11134C00DE4226 /* Reachability.m in Sources */,
 				4E4F5FDA1A2BAC4700233ACA /* Styling.swift in Sources */,
+				4EFB7DB61B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift in Sources */,
 				4E5258C71A9B9C8400BE55C8 /* String.swift in Sources */,
 				4E2CE9EE1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
 				4EC56DD01A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
@@ -2435,6 +2440,7 @@
 				4E5B906C1B5F99AE008AC960 /* UserTermsClient.swift in Sources */,
 				4EF4DF7D1B28461E00B64D3B /* AddressToolbarView.swift in Sources */,
 				4EC56E871A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
+				4EFB7DB71B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift in Sources */,
 				4EE06C341A10FC5600DE4226 /* SMArrivalMapping.m in Sources */,
 				4EC56E831A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
 				4EE06CC81A11134C00DE4226 /* NSString+URLEncode.m in Sources */,

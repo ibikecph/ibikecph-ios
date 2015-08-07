@@ -22,6 +22,7 @@ class MainMapViewController: MapViewController {
     private let mainToLoginSegue = "mainToLogin"
     private let mainToFindAddressSegue = "mainToFindAddress"
     private let mainToUserTermsSegue = "mainToUserTerms"
+    private let mainToActivateTrackingSegue = "mainToActivateTracking"
     private var pinAnnotation: PinAnnotation?
     private var currentLocationItem: SearchListItem?
     private var pendingUserTerms: UserTerms?
@@ -34,7 +35,6 @@ class MainMapViewController: MapViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        checkUserTerms()
         observerTokens.append(NotificationCenter.observe("UserLoggedIn") { [weak self] notification in
             self?.checkUserTerms()
         })
@@ -92,6 +92,11 @@ class MainMapViewController: MapViewController {
         if Settings.instance.tracking.on {
             TracksHandler.setNeedsProcessData(userInitiated: true)
         }
+        
+        let showedActivateTracking = checkActivateTracking()
+        if !showedActivateTracking {
+            checkUserTerms()
+        }
     }
     
     private func unobserve() {
@@ -109,6 +114,14 @@ class MainMapViewController: MapViewController {
         if pendingUserTerms != nil {
             self.performSegueWithIdentifier(self.mainToUserTermsSegue, sender: self)
         }
+    }
+    
+    func checkActivateTracking() -> Bool {
+        if Settings.instance.onboarding.didSeeActivateTracking {
+            return false
+        }
+        performSegueWithIdentifier(mainToActivateTrackingSegue, sender: self)
+        return true
     }
     
     func checkUserTerms(forceAccept: Bool = false) {

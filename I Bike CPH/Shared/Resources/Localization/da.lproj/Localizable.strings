@@ -296,6 +296,11 @@
 "log_in_to_track_prompt" = "For at starte opsamling af data, skal du være logget ind.";
 "reenable_tracking" = "Genaktivér indsamling af cykeldata";
 
+"enable" = "Aktivér";
+"launch_activate_tracking_title" = "Aktiver indsamling og deling af data";
+"launch_activate_tracking_description" = "Indsaml dine cykeldata og se hvor og hvor meget du cykler til dagligt. Få ugentlige beskeder og opnå milepæle når du cykler.\n\nDine cykeldata blever delt anonymt med Københavns Kommune og Regions Hovedstaden og er med til skabe ny viden om cykeladfærd. Viden som gør at vi kan skabe bedre cykelforhold i og omkring København.";
+"launch_activate_tracking_read_more" = "Læs mere";
+
 "log_in_to_favorite_prompt" = "For at tilføje favoritter, skal du være logget ind.";
 
 "unit_km" = "km";
