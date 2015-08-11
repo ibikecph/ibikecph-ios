@@ -294,8 +294,8 @@
 "reenable_tracking" = "Re-enable tracking";
 
 "enable" = "Enable";
-"launch_activate_tracking_title" = "Enable data collection and sharing of data";
-"launch_activate_tracking_description" = "Collect your bike data and see where and how much you bike daily. Get weekly notifications and achieve milestones when cycling.\n\nYour bike data will be shared anonymously with the City of Copenhagen and the Capital Region of Denmark and help create new knowledge about bike behaviour. This knowledge will enable us to create better cycling conditions in and around Copenhagen.";
+"launch_activate_tracking_title" = "Welcome.\nStart collecting and share your bicycle data";
+"launch_activate_tracking_description" = "See where and how much you are biking on a daily basis. Get weekly notifications and achieve milestones when cycling.\n\nShare your data anonymously with the City of Copenhagen and the Capital Region of Denmark and help create new and important knowledge about biking in and around Copenhagen.";
 "launch_activate_tracking_read_more" = "Read more";
 
 "log_in_to_favorite_prompt" = "To add favorites, you must login.";
