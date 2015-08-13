@@ -85,6 +85,12 @@ class FavoriteViewController: SMTranslatedViewController {
         }
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        save()
+    }
+    
     deinit {
         unobserve()
     }
