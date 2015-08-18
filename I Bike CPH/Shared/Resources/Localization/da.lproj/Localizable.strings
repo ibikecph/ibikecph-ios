@@ -172,6 +172,7 @@
 "ride_report_a_problem" = "Rapporter et problem";
 
 "login_with_fb" = "Log ind med Facebook";
+"create_with_fb" = "Opret med Facebook";
 "register_with_mail" = "Opret med email";
 "skip" = "Spring over";
 "create_account" = "Opret kontp";

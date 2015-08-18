@@ -169,6 +169,7 @@
 "ride_report_a_problem" = "Report a problem";
 
 "login_with_fb" = "Log in with Facebook";
+"create_with_fb" = "Create with Facebook";
 "register_with_mail" = "Register";
 "skip" = "Skip";
 "create_account" = "Create an account";

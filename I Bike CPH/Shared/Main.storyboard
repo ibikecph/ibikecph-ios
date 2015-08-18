@@ -234,7 +234,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                                        <state key="normal" title="login_with_fb" backgroundImage="FacebookButtonBackground">
+                                                        <state key="normal" title="create_with_fb" backgroundImage="FacebookButtonBackground">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
@@ -3886,7 +3886,7 @@ God tur og tak fordi du cykler!</string>
         <image name="ButtonTintBackground" width="14" height="14"/>
         <image name="CameraProfile" width="86" height="86"/>
         <image name="Compas unselected" width="27" height="27"/>
-        <image name="FacebookButtonBackground" width="8" height="12"/>
+        <image name="FacebookButtonBackground" width="14" height="14"/>
         <image name="From to" width="22" height="14"/>
         <image name="WhiteButton" width="14" height="14"/>
         <image name="arrow_large.png" width="37" height="32"/>
