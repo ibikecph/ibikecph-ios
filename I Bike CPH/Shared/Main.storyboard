@@ -81,7 +81,7 @@
                                                         <rect key="frame" x="0.0" y="199" width="560" height="40"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                                        <state key="normal" title="log_in" backgroundImage="ButtonGreyBackground">
+                                                        <state key="normal" title="log_in" backgroundImage="ButtonTintBackground">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -93,7 +93,7 @@
                                                         <rect key="frame" x="0.0" y="456" width="560" height="40"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                                        <state key="normal" title="register_with_mail" backgroundImage="ButtonGreyBackground">
+                                                        <state key="normal" title="register_with_mail" backgroundImage="ButtonTintBackground">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -325,7 +325,7 @@
                                                         <rect key="frame" x="0.0" y="456" width="560" height="40"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                                        <state key="normal" title="register_save" backgroundImage="ButtonGreyBackground">
+                                                        <state key="normal" title="register_save" backgroundImage="ButtonTintBackground">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -2482,7 +2482,8 @@ God tur og tak fordi du cykler!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dg-yO-IWL">
-                                <rect key="frame" x="20" y="542" width="560" height="38"/>
+                                <rect key="frame" x="20" y="540" width="560" height="40"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="enable_tracking" backgroundImage="ButtonTintBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3337,9 +3338,9 @@ God tur og tak fordi du cykler!</string>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNJ-hd-w4u">
                                 <rect key="frame" x="16" y="330" width="568" height="40"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="save_changes" backgroundImage="ButtonGreyBackground">
+                                <state key="normal" title="save_changes" backgroundImage="ButtonTintBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -3394,7 +3395,7 @@ God tur og tak fordi du cykler!</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="PtI-tS-sxa"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="delete_my_account" backgroundImage="ButtonTintBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3560,7 +3561,7 @@ God tur og tak fordi du cykler!</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="E0Z-dE-yKg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="delete_my_account" backgroundImage="ButtonTintBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3917,8 +3918,8 @@ God tur og tak fordi du cykler!</string>
                             <mask key="constraints">
                                 <exclude reference="64o-Sa-pv1"/>
                                 <exclude reference="7r3-72-ijc"/>
-                                <exclude reference="YHu-LD-CrH"/>
                                 <exclude reference="7uy-Gj-d25"/>
+                                <exclude reference="YHu-LD-CrH"/>
                                 <exclude reference="zgz-kp-yeJ"/>
                             </mask>
                         </variation>
@@ -3935,7 +3936,6 @@ God tur og tak fordi du cykler!</string>
     </scenes>
     <resources>
         <image name="BikeSplash" width="300" height="43"/>
-        <image name="ButtonGreyBackground" width="14" height="14"/>
         <image name="ButtonTintBackground" width="14" height="14"/>
         <image name="CameraProfile" width="86" height="86"/>
         <image name="Compas unselected" width="27" height="27"/>
@@ -3965,11 +3965,11 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7W8-lE-WHM"/>
-        <segue reference="t11-Tv-7cG"/>
-        <segue reference="X1l-ON-ahy"/>
         <segue reference="hGb-e2-eVV"/>
-        <segue reference="Bhh-sN-b8d"/>
         <segue reference="cR0-BE-PFO"/>
+        <segue reference="X1l-ON-ahy"/>
+        <segue reference="t11-Tv-7cG"/>
+        <segue reference="xbN-fl-Cnv"/>
+        <segue reference="7W8-lE-WHM"/>
     </inferredMetricsTieBreakers>
 </document>
