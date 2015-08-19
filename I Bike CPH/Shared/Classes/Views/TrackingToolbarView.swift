@@ -16,11 +16,13 @@ class TrackingToolbarView: ToolbarView {
 
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var caloriesLabel: UILabel!
     
     var delegate: TrackingToolbarDelegate?
     
     private let hourMinutesFormatter = HourMinuteFormatter()
     private let distanceFormatter = DistanceFormatter()
+    private let caloriesFormatter = CaloriesFormatter()
     
     var distance: Double = 0 {
         didSet {
@@ -30,6 +32,11 @@ class TrackingToolbarView: ToolbarView {
     var duration: Double = 0 {
         didSet {
             durationLabel?.text = hourMinutesFormatter.string(seconds: duration)
+        }
+    }
+    var kiloCalories: Double = 0 {
+        didSet {
+            caloriesLabel?.text = caloriesFormatter.string(kiloCalories: kiloCalories)
         }
     }
     @IBAction func didTapView(sender: AnyObject) {

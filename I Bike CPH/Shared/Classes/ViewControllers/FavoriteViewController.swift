@@ -43,6 +43,8 @@ class FavoriteViewController: SMTranslatedViewController {
     
     private let searchAddressSegue = "favoriteToSearch"
     
+    private var observerTokens = [AnyObject]()
+    
     var favoriteItem: FavoriteItem? {
         didSet {
             updateViews()
@@ -64,27 +66,33 @@ class FavoriteViewController: SMTranslatedViewController {
         nameTextField.delegate = self
         
         // Observers
-        NotificationCenter.observe(UITextFieldTextDidChangeNotification) { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe(UITextFieldTextDidChangeNotification) { [weak self] notification in
             if let name = self?.nameTextField.text {
                 self?.favoriteItem?.name = name
             }
-        }
-        NotificationCenter.observe("favoritesChanged") { [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe("favoritesChanged") { [weak self] notification in
             // Find favorite that matches current and update accordingly
             if let favorites = SMFavoritesUtil.favorites() as? [FavoriteItem] {
                 if let updatedFavorite = favorites.filter({ return $0.name == self?.favoriteItem?.name }).first {
                     self?.favoriteItem = updatedFavorite
                 }
             }
-        }
+        })
         
         if favoriteItem == nil {
             creating = true
         }
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        save()
+    }
+    
     deinit {
-        NotificationCenter.unobserve(self)
+        unobserve()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -92,6 +100,13 @@ class FavoriteViewController: SMTranslatedViewController {
     }
 
     // MARK: -
+    
+    private func unobserve() {
+        for observerToken in observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
+        NotificationCenter.unobserve(self)
+    }
     
     func updateViews() {
         if view == nil {

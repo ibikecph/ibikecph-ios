@@ -34,10 +34,6 @@ class FindRouteViewController: MapViewController {
     }
     var routeAnnotations = [Annotation]()
     
-    deinit {
-        NotificationCenter.unobserve(self)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

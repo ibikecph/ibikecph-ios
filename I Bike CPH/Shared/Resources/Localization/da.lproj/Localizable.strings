@@ -172,6 +172,7 @@
 "ride_report_a_problem" = "Rapporter et problem";
 
 "login_with_fb" = "Log ind med Facebook";
+"create_with_fb" = "Opret med Facebook";
 "register_with_mail" = "Opret med email";
 "skip" = "Spring over";
 "create_account" = "Opret kontp";
@@ -232,7 +233,7 @@
 "account_repeat_placeholder" = "Gentag ny adgangskode";
 "accept_user_terms" = "Jeg accepterer brugerbetingelser";
 "accept_user_terms_link_highlight" = "brugerbetingelser";
-"accept_user_terms_link" = "http://www.ibikecph.dk/terms";
+"accept_user_terms_link" = "https://www.ibikecph.dk/terms";
 
 "login_error_fields" = "Både din email og din adgangskode skal være indtastet!";
 "register_error_fields" = "Alle felter skal være udfyldt!";
@@ -296,18 +297,25 @@
 "log_in_to_track_prompt" = "For at starte opsamling af data, skal du være logget ind.";
 "reenable_tracking" = "Genaktivér indsamling af cykeldata";
 
+"enable" = "Aktivér";
+"launch_activate_tracking_title" = "Velkommen.\nAktiver indsamling og deling af dine cykeldata";
+"launch_activate_tracking_description" = "Se hvor og hvor meget du cykler til dagligt. Få ugentlige beskeder og opnå milepæle.\n\nDel samtidig dine cykeldata anonymt med Københavns Kommune og Region Hovedstaden - og vær med til skabe mere viden om cykling i og omkring København.";
+"launch_activate_tracking_read_more" = "Læs mere";
+
 "log_in_to_favorite_prompt" = "For at tilføje favoritter, skal du være logget ind.";
 
 "unit_km" = "km";
 "unit_km_pr_h" = "km/t";
 "unit_km_pr_trip" = "km/tur";
+"unit_kcal" = "kal";
+"unit_kcal_pr_day" = "kal/day";
 "unit_h_long" = "timer";
 "unit_h_long_singular" = "time";
 "unit_h_short" = "t";
 "unit_min" = "min";
 "dum_km" = "55,3";
 "dum_kmh" = "23,3";
-"dum_kmtrip" = "12,4";
+"dum_kcalday" = "78,1";
 "dum_h" = "14,3";
 
 "milestone_distance_1_description" = "Sådan! Du har cyklet dine første %d km.";

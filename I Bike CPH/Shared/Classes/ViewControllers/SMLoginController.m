@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *loginEmail;
 @property (weak, nonatomic) IBOutlet UITextField *loginPassword;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic, strong) SMAPIRequest * apr;
 
@@ -28,13 +29,23 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    __weak typeof(self) weakSelf = self;
     [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
+        CGFloat keyboardIsVisibleWithHeight = CGRectGetHeight(weakSelf.view.frame) - CGRectGetMinY(keyboardFrameInView);
+        UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, keyboardIsVisibleWithHeight, 0);
+        weakSelf.scrollView.contentInset = insets;
+        weakSelf.scrollView.scrollIndicatorInsets = insets;
     }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.view removeKeyboardControl];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

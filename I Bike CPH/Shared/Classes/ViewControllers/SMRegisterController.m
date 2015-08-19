@@ -29,6 +29,7 @@
 
 @property (nonatomic, strong) SMAPIRequest * apr;
 @property (nonatomic, strong) UIImage * profileImage;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 
 @end
@@ -56,7 +57,13 @@
     self.imageButton.layer.cornerRadius = 5;
     self.imageButton.layer.masksToBounds = YES;
     
-    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {}];
+    __weak typeof(self) weakSelf = self;
+    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
+        CGFloat keyboardIsVisibleWithHeight = CGRectGetHeight(weakSelf.view.frame) - CGRectGetMinY(keyboardFrameInView);
+        UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, keyboardIsVisibleWithHeight, 0);
+        weakSelf.scrollView.contentInset = insets;
+        weakSelf.scrollView.scrollIndicatorInsets = insets;
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -143,6 +150,36 @@
 }
 
 
+- (void)doFBLogin:(NSString*)fbToken {
+    SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
+    [self setApr:ap];
+    [self.apr setRequestIdentifier:@"loginFB"];
+    [self.apr showTransparentWaitingIndicatorInView:self.view];
+    [self.apr executeRequest:API_LOGIN withParams:@{@"user": @{ @"fb_token": fbToken, @"account_source" : ORG_NAME}}];
+}
+
+- (IBAction)loginWithFacebook:(id)sender {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    FacebookHandler *faceboookHandler = [FacebookHandler new];
+    [faceboookHandler request:^(NSString *identifier, NSString *email, NSString *token, NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        if (error.code == faceboookHandler.errorAccessNotAllowed) {
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error_no_access".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
+            [av show];
+            NSLog(@"Couldn't sign in to Facebook %@", error.localizedDescription);
+            return;
+        }
+        if (error) {
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
+            [av show];
+            NSLog(@"Couldn't sign in to Facebook %@", error.localizedDescription);
+            return;
+        }
+        [self doFBLogin:token];
+    }];
+}
+
+
 #pragma mark - api delegate
 
 - (void)serverNotReachable {
@@ -186,9 +223,21 @@
                 debugLog(@"error in trackEvent");
             }
         }
+    } else if ([req.requestIdentifier isEqualToString:@"loginFB"]) {
+        [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
+        [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
+        [self.appDelegate.appSettings setValue:@"FB" forKey:@"loginType"];
+        [self.appDelegate saveSettings];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
     } else {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
-        [av show];
+        if (result[@"info_title"]) {
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:result[@"info_title"] message:result[@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
+            [av show];
+        } else {
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:result[@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
+            [av show];
+        }
     }
 }
 

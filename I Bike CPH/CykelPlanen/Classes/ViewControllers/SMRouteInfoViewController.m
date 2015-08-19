@@ -106,7 +106,7 @@
         times = [NSArray arrayWithArray:timesArray];
 
     }else{
-        NSString* urlString= [NSString stringWithFormat:@"http://xmlopen.rejseplanen.dk/bin/rest.exe/location?input=%@",[self.singleRouteInfo.sourceStation.name urlEncode]];
+        NSString* urlString= [NSString stringWithFormat:@"https://xmlopen.rejseplanen.dk/bin/rest.exe/location?input=%@",[self.singleRouteInfo.sourceStation.name urlEncode]];
         idParser= [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:urlString]];
         idParser.delegate= self;
         [idParser parse];
@@ -412,7 +412,7 @@
 
         NSString* dateString= [NSString stringWithFormat:@"%02d.%02d",[components day], [components month]];
         NSString* timeString= [NSString stringWithFormat:@"%d:%d",hour, mins];
-        NSString* URLString= [NSString stringWithFormat:@"http://xmlopen.rejseplanen.dk/bin/rest.exe/trip?originId=%@&destCoordX=%@&destCoordY=%@&destCoordName=%@&date=%@&time=%@&useBus=0",
+        NSString* URLString= [NSString stringWithFormat:@"https://xmlopen.rejseplanen.dk/bin/rest.exe/trip?originId=%@&destCoordX=%@&destCoordY=%@&destCoordName=%@&date=%@&time=%@&useBus=0",
                               stationID, destX, destY, destCoordName, dateString, timeString];
         [self performSelectorOnMainThread:@selector(parseTripsWithURLString:) withObject:URLString waitUntilDone:NO];
 //        NSLog(@"Parsed %@",(parsed)?@"YES":@"NO");

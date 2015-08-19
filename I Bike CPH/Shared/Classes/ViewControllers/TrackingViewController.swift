@@ -13,7 +13,7 @@ class TrackingViewController: ToolbarViewController {
 
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
-    @IBOutlet weak var tripLabel: UILabel!
+    @IBOutlet weak var calorieLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var sinceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -22,6 +22,7 @@ class TrackingViewController: ToolbarViewController {
     private var tracks: [[Track]]?
     private var selectedTrack: Track?
     private var swipeEditing: Bool = false
+    private var observerTokens = [AnyObject]()
     
     lazy var numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
@@ -53,7 +54,7 @@ class TrackingViewController: ToolbarViewController {
     }()
     
     deinit {
-        NotificationCenter.unobserve(self)
+        unobserve()
     }
     
     override func viewDidLoad() {
@@ -66,19 +67,19 @@ class TrackingViewController: ToolbarViewController {
         enableTrackingToolbarView.delegate = self
         
         // Setup notifications
-        NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
             self?.updateUI()
             if self != nil {
                 // Request update of tracks
                 TracksHandler.geocode()
             }
-        }
-        NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
             self?.updateUI()
-        }
-        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+        })
+        observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.updateUI()
-        }
+        })
         
         // Initial load of UI
         self.updateUI()
@@ -101,6 +102,13 @@ class TrackingViewController: ToolbarViewController {
         return .LightContent
     }
     
+    private func unobserve() {
+        for observerToken in observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
+        NotificationCenter.unobserve(self)
+    }
+    
     func updateUI() {
         
         // Re-enable button
@@ -120,13 +128,15 @@ class TrackingViewController: ToolbarViewController {
         let averageSpeed = BikeStatistics.averageSpeed() / 1000 * 3600
         speedLabel.text = decimalFormatter.stringFromNumber(averageSpeed)
         
-        let averageTripDistance = BikeStatistics.averageTrackDistance() / 1000
-        tripLabel.text = decimalFormatter.stringFromNumber(averageTripDistance)
-        
         if let startDate = BikeStatistics.firstTrackStartDate() {
             sinceLabel.text = "Since".localized + " " + sinceFormatter.stringFromDate(startDate)
+            let totalDays = NSDate().relativeDay(fromDate: startDate)
+            let averageDayDistance = BikeStatistics.totalDistance() / Double(totalDays)
+            let averageDayCalories = BikeStatistics.kiloCaloriesPerBikedDistance(averageDayDistance)
+            calorieLabel.text = numberFormatter.stringFromNumber(averageDayCalories)
         } else {
             sinceLabel.text = "–"
+            calorieLabel.text = "-"
         }
         
         if swipeEditing {

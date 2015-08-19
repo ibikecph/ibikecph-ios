@@ -69,10 +69,22 @@ class Settings: NSObject {
             }
         }
     }
+    
+    class Onboarding {
+        private let onboardingDidSeeActivateTrackingKey = "onboardingDidSeeActivateTrackingKey"
+        var didSeeActivateTracking: Bool {
+            get { return Defaults[onboardingDidSeeActivateTrackingKey].bool ?? false }
+            set {
+                Defaults[onboardingDidSeeActivateTrackingKey] = newValue
+                NotificationCenter.post(settingsUpdatedNotification, object: self)
+            }
+        }
+    }
    
     let voice = Voice()
     let tracking = Tracking()
     let overlays = Overlays()
+    let onboarding = Onboarding()
     
     func clear() {
         if let bundleID = NSBundle.mainBundle().bundleIdentifier {

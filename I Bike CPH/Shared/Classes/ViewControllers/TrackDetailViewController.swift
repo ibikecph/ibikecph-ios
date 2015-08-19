@@ -93,14 +93,14 @@ class TrackDetailViewController: SMTranslatedViewController {
         
         
         // Pins
-        if let startCoordinate = coordinates.first {
-            let startPin = PinAnnotation(mapView: mapView, coordinate: startCoordinate, type: .Start)
-            mapView.addAnnotation(startPin)
-        }
-        if let endCoordinate = coordinates.last {
-            let endPin = PinAnnotation(mapView: mapView, coordinate: endCoordinate, type: .End)
-            mapView.addAnnotation(endPin)
-        }
+//        if let startCoordinate = coordinates.first {
+//            let startPin = PinAnnotation(mapView: mapView, coordinate: startCoordinate, type: .Start)
+//            mapView.addAnnotation(startPin)
+//        }
+//        if let endCoordinate = coordinates.last {
+//            let endPin = PinAnnotation(mapView: mapView, coordinate: endCoordinate, type: .End)
+//            mapView.addAnnotation(endPin)
+//        }
         
         // Set zoom asynchronous, else MapBox view doesn't render
         Async.main {

@@ -67,7 +67,7 @@ class SMRoute_Tests: XCTestCase {
     }
     func hintData() -> [String : AnyObject] {
         return [
-            "checksum": 2784924261,
+            "checksum": 27849242,
             "locations": [
                 "uTkAAMM5AABDAAAARgAAAJUAAAAAAAAAAAAAAP____84yFEDc4y_AAAAEbU",
                 "gwwAABoyAABkAAAAZAAAADcAAADJAAAAAAAAAGBVAgCZk1EDOdC_AAEAEgA"
