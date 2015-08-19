@@ -26,12 +26,6 @@ class LaunchActivateTrackingViewController: SMTranslatedViewController {
         dismiss()
     }
     
-    @IBAction func didTapReadMore(sender: AnyObject) {
-        if let url = NSURL(string: "") {
-            UIApplication.sharedApplication().openURL(url)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateActivateButton()
