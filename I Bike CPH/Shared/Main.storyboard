@@ -598,7 +598,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc5-hv-9ng">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc5-hv-9ng">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">CykelPlanen app’en er Region Hovedstadens mobile rutevejleder for dig, der cykler i regionen. App’en kender de gode smutveje i regionen, hvor du må cykle og finder den hurtigste rute for dig. CykelPlanen skal bidrage til at få flere pendlere i regionen til at vælge cyklen frem for bilen.
@@ -625,7 +625,7 @@ App’en kan bl.a. også gemme favorit-steder, hvis du opretter en profil. Læs 
   
 God tur og tak fordi du cykler!</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </textView>
                         </subviews>
@@ -3880,7 +3880,7 @@ God tur og tak fordi du cykler!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RdM-6C-Dit" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2351" y="418"/>
+            <point key="canvasLocation" x="-2313" y="418"/>
         </scene>
         <!--Launch Read More View Controller-->
         <scene sceneID="44N-pv-zr7">
@@ -3969,7 +3969,7 @@ God tur og tak fordi du cykler!</string>
         <segue reference="cR0-BE-PFO"/>
         <segue reference="X1l-ON-ahy"/>
         <segue reference="t11-Tv-7cG"/>
-        <segue reference="xbN-fl-Cnv"/>
+        <segue reference="Bhh-sN-b8d"/>
         <segue reference="7W8-lE-WHM"/>
     </inferredMetricsTieBreakers>
 </document>
