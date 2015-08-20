@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserTermsClient {
+class UserTermsClient: ServerClient {
     static let instance = UserTermsClient()
     
     private let baseUrl = "http://kodekode.dk/ibikecph-terms.json"
@@ -20,12 +20,8 @@ class UserTermsClient {
     }
     
     enum Result {
-        case SuccessUserTerms(UserTerms, new: Bool)
-        case SuccessJSON(JSON)
-        case Failed(error: NSError)
-        case FailedNoData
-        case FailedNoPath
-        case FailedParsingError
+        case Success(UserTerms, new: Bool)
+        case Other(ServerResult)
     }
     
     func requestUserTerms(completion: (Result) -> ()) {
@@ -37,37 +33,13 @@ class UserTermsClient {
                         let newVersion = userTerms.version
                         let currentVersion = UserTermsClient.instance.latestVerifiedVersion
                         let new = newVersion > currentVersion
-                        completion(.SuccessUserTerms(userTerms, new: new))
+                        completion(.Success(userTerms, new: new))
                     } else {
-                        completion(.FailedParsingError)
+                        completion(.Other(ServerResult.FailedParsingError))
                     }
-                default: completion(result)
+                default: completion(.Other(result))
             }
         }
     }
     
-    private func request(path: String, completion: (Result) -> ()) {
-        if let url = NSURL(string: path){
-            let task = NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
-                if let error = error {
-                    completion(.Failed(error: error))
-                    return
-                }
-                if let data = data {
-                    var parsingError: NSError? = nil
-                    let json = JSON(data: data, error: &parsingError)
-                    if let error = parsingError {
-                        completion(.Failed(error: error))
-                        return
-                    }
-                    completion(.SuccessJSON(json))
-                } else {
-                    completion(.FailedNoData)
-                }
-            }
-            task.resume()
-        } else {
-            completion(.FailedNoPath)
-        }
-    }
 }

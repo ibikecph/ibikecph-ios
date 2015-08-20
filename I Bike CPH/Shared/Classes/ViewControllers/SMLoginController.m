@@ -134,25 +134,37 @@
 
 - (void)request:(SMAPIRequest *)req completedWithResult:(NSDictionary *)result {
     if ([result[@"success"] boolValue]) {
+        NSString *authToken = result[@"data"][@"auth_token"];
+        NSString *authTokenKey = @"auth_token";
+        NSString *privacyToken = result[@"data"][@"signature"];
+        NSString *privacyTokenKey = @"signature";
+        NSString *idString = result[@"data"][@"id"];
+        NSString *idKey = @"id";
+        
+        
         if ([req.requestIdentifier isEqualToString:@"login"]) {
-            [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
-            [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
+            self.appDelegate.appSettings[authTokenKey] = authToken;
+            self.appDelegate.appSettings[privacyTokenKey] = privacyToken;
+            self.appDelegate.appSettings[idKey] = idString;
             [self.appDelegate.appSettings setValue:self.loginEmail.text forKey:@"username"];
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
         } else if ([req.requestIdentifier isEqualToString:@"autoLogin"]) {
-            [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
-            [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
+            self.appDelegate.appSettings[authTokenKey] = authToken;
+            self.appDelegate.appSettings[privacyTokenKey] = privacyToken;
+            self.appDelegate.appSettings[idKey] = idString;
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
         } else if ([req.requestIdentifier isEqualToString:@"loginFB"]) {
-            [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
-            [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
+            self.appDelegate.appSettings[authTokenKey] = authToken;
+            self.appDelegate.appSettings[privacyTokenKey] = privacyToken;
+            self.appDelegate.appSettings[idKey] = idString;
             [self.appDelegate.appSettings setValue:@"FB" forKey:@"loginType"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
         } else if ([req.requestIdentifier isEqualToString:@"register"]) {
-            [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
-            [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
+            self.appDelegate.appSettings[authTokenKey] = authToken;
+            self.appDelegate.appSettings[privacyTokenKey] = privacyToken;
+            self.appDelegate.appSettings[idKey] = idString;
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserRegistered" object:nil];
             if (![SMAnalytics trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:self.loginEmail.text withValue:0]) {

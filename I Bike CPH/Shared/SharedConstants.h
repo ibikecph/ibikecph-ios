@@ -48,6 +48,13 @@
 
 #define MIN_DISTANCE_FOR_RECALCULATION 20.0
 
+#define API_DEFAULT_ACCEPT @{@"key": @"Accept", @"value" : @"application/vnd.ibikecph.v1"}
+#define API_DEFAULT_ACCEPT2 @{@"key": @"value"}
+#define API_USER_AGENT @{@"key": @"User-Agent", @"value" : USER_AGENT}
+#define API_DEFAULT_HEADERS @[API_DEFAULT_ACCEPT, API_USER_AGENT, @{@"key": @"Content-Type", @"value" : @"application/json"}]
+
+#define API_LOCALE @{@"service" : @"settings", @"transferMethod" : @"GET", @"headers" : API_DEFAULT_HEADERS}
+
 #define API_LOGIN @{@"service" : @"login", @"transferMethod" : @"POST", @"headers" : API_DEFAULT_HEADERS}
 #define API_REGISTER @{@"service" : @"users", @"transferMethod" : @"POST",  @"headers" : API_DEFAULT_HEADERS}
 #define API_GET_USER_DATA @{@"service" : @"users", @"transferMethod" : @"GET",  @"headers" : API_DEFAULT_HEADERS}
@@ -69,6 +76,6 @@
 
 #define kFAVORITES_CHANGED @"favoritesChanged"
 
-#define REALM_SCHEMA_VERSION 11
+#define REALM_SCHEMA_VERSION 12
 
 #endif

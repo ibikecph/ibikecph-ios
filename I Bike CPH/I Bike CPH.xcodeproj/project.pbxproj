@@ -46,6 +46,10 @@
 		4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */; };
 		4E2CF4FD1B84B964004BDCAB /* LaunchReadMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF4FC1B84B964004BDCAB /* LaunchReadMoreViewController.swift */; };
 		4E2CF4FE1B84B964004BDCAB /* LaunchReadMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF4FC1B84B964004BDCAB /* LaunchReadMoreViewController.swift */; };
+		4E2CF5051B85C17A004BDCAB /* ServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5041B85C17A004BDCAB /* ServerClient.swift */; };
+		4E2CF5061B85C17A004BDCAB /* ServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5041B85C17A004BDCAB /* ServerClient.swift */; };
+		4E2CF5081B85C30E004BDCAB /* TracksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5071B85C30E004BDCAB /* TracksClient.swift */; };
+		4E2CF5091B85C30E004BDCAB /* TracksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5071B85C30E004BDCAB /* TracksClient.swift */; };
 		4E32B29B1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */; };
 		4E32B29C1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */; };
 		4E32B29E1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */; };
@@ -504,6 +508,8 @@
 		4E2B08F11B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapToMapNavigationControllerDelegate.swift; sourceTree = "<group>"; };
 		4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksHandler.swift; sourceTree = "<group>"; };
 		4E2CF4FC1B84B964004BDCAB /* LaunchReadMoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchReadMoreViewController.swift; sourceTree = "<group>"; };
+		4E2CF5041B85C17A004BDCAB /* ServerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerClient.swift; sourceTree = "<group>"; };
+		4E2CF5071B85C30E004BDCAB /* TracksClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksClient.swift; sourceTree = "<group>"; };
 		4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingPreferencesViewController.swift; sourceTree = "<group>"; };
 		4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsNotificationHandler.swift; sourceTree = "<group>"; };
 		4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStatistics.swift; sourceTree = "<group>"; };
@@ -941,6 +947,27 @@
 			path = "3rd Party";
 			sourceTree = "<group>";
 		};
+		4E2CF4FF1B85C0F7004BDCAB /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */,
+				4E2CF5071B85C30E004BDCAB /* TracksClient.swift */,
+				4E2CF5041B85C17A004BDCAB /* ServerClient.swift */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
+		4E2CF5001B85C148004BDCAB /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */,
+				4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */,
+				4EEC6D391B20B7F8003AE8DF /* DistanceFormatter.swift */,
+				4EB70F4B1B6B62A900AB48CB /* CaloriesFormatter.swift */,
+			);
+			name = Formatters;
+			sourceTree = "<group>";
+		};
 		4E337B511B2F1DD400261D97 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -1094,6 +1121,7 @@
 		4EC56DA51A2A25E900B696B4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				4E2CF4FF1B85C0F7004BDCAB /* Server */,
 				4E467D181B3416C3003770EE /* Route */,
 				4E337B511B2F1DD400261D97 /* Map */,
 				4EC56DA61A2A25E900B696B4 /* SMAnalytics.h */,
@@ -1126,17 +1154,13 @@
 				4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */,
 				4ECA91A01AB2EED800F4BB4F /* NotificationCenter.swift */,
 				4EFDA4811AB87A6D00522A41 /* NSDate.swift */,
-				4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */,
-				4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */,
-				4EEC6D391B20B7F8003AE8DF /* DistanceFormatter.swift */,
-				4EB70F4B1B6B62A900AB48CB /* CaloriesFormatter.swift */,
+				4E2CF5001B85C148004BDCAB /* Formatters */,
 				4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */,
 				4EB610E41AD69D2500CEC994 /* UITableView.swift */,
 				4E20BA681ADC065A00738CA8 /* Notifications.swift */,
 				4E2B08F01B3D5C6900580C27 /* MapToMapTransitionAnimator.swift */,
 				4E2B08F11B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift */,
 				4ED6724F1B0F61A00025DFDF /* Thread.swift */,
-				4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -2204,6 +2228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E2CF5051B85C17A004BDCAB /* ServerClient.swift in Sources */,
 				4EAB12471A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */,
 				4EE06CD91A11134C00DE4226 /* SMRequestOSRM.m in Sources */,
 				4E5E87861B31D4760021F5E9 /* FindRouteViewController.swift in Sources */,
@@ -2328,6 +2353,7 @@
 				4EE06CBD1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
 				4E5B90651B5F98BF008AC960 /* UserTermsViewController.swift in Sources */,
 				4E467D1A1B3416D4003770EE /* RouteManager.swift in Sources */,
+				4E2CF5081B85C30E004BDCAB /* TracksClient.swift in Sources */,
 				4EC56E551A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
 				4EC56E391A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
 				4EC56DC81A2A25E900B696B4 /* SMEvents.m in Sources */,
@@ -2397,6 +2423,7 @@
 				4EC56EAF1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */,
 				4E55A0251A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */,
 				4EE06CE41A11134C00DE4226 /* SMTurnInstruction.m in Sources */,
+				4E2CF5061B85C17A004BDCAB /* ServerClient.swift in Sources */,
 				4EE06C361A10FC5600DE4226 /* SMBrokenRouteInfo.m in Sources */,
 				4EE06C411A10FC5600DE4226 /* SMRelation.m in Sources */,
 				4EC56E4B1A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
@@ -2525,6 +2552,7 @@
 				4EB610E61AD69D2500CEC994 /* UITableView.swift in Sources */,
 				4EE06F041A112F6D00DE4226 /* SMAddressPickerView.m in Sources */,
 				4EEC6D2F1B207B74003AE8DF /* ToolbarViewController.swift in Sources */,
+				4E2CF5091B85C30E004BDCAB /* TracksClient.swift in Sources */,
 				4E467D1B1B3416D4003770EE /* RouteManager.swift in Sources */,
 				4EEC6D381B20B14F003AE8DF /* TrackingToolbarView.swift in Sources */,
 				4EC56E771A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,

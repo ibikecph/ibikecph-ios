@@ -161,6 +161,7 @@ class TracksHandler {
             RecalculateTracksOperation(fromDate: fromDate),
             RemoveUnownedDataOperation(fromDate: fromDate),
             RemoveEmptyTracksOperation(), // Rinse and repeat
+            UploadBikeTracksOperation()
         ]
         for operation in operations {
             operation.queuePriority = .Low
@@ -200,6 +201,27 @@ class TracksHandler {
                 TracksHandler.instance.pendingGeocode = false
                 TracksHandler.instance.processing = false
                 NotificationCenter.post(processedGeocodingNoticationKey, object: self)
+            }
+        }
+        TracksOperation.addDependencies(operations)
+        TracksHandler.instance.operationQueue.addOperations(operations, waitUntilFinished: false)
+    }
+    
+    class func upload() {
+        if TracksHandler.instance.processing {
+            println("Already processing")
+            return
+        }
+        TracksHandler.instance.processing = true
+        
+        println("Start uploading")
+        let operations = [
+            UploadBikeTracksOperation()
+        ]
+        operations.last?.completionBlock = {
+            println("Done uploading")
+            Async.main {
+                TracksHandler.instance.processing = false
             }
         }
         TracksOperation.addDependencies(operations)
@@ -1047,5 +1069,78 @@ class GeocodeBikeTracksOperation: TracksOperation {
             }
         }
         println("Geocode bike tracks DONE \(-startDate.timeIntervalSinceNow)")
+    }
+}
+
+
+class UploadBikeTracksOperation: TracksOperation {
+    
+    override func main() {
+        super.main()
+        
+        // Only perform this if the app is in the foreground
+        if UIApplication.sharedApplication().applicationState != .Active {
+            return
+        }
+        // Logged in user with valid track token
+        if !UserHelper.loggedIn() || UserHelper.trackToken() == nil {
+            return
+        }
+        // Tracking currently enabled
+        if !Settings.instance.tracking.on {
+            return
+        }
+        
+        println("Upload bike tracks")
+        
+        // Reset server ids 
+        let dummyTrackId = NSUUID().UUIDString
+        for track in Track.allObjects() {
+            if let track = track as? Track {
+                if track.serverId.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == dummyTrackId.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) {
+                    track.realm.transactionWithBlock {
+                        track.serverId = ""
+                    }
+                }
+            }
+        }
+        
+        let timestamp = NSDate(timeIntervalSinceNow: -60*60*1).timeIntervalSince1970 // Only upload tracks older than an hour
+        var bikeTracks = tracks().objectsWhere("endTimestamp <= %lf AND serverId == '' AND activity.cycling == TRUE", timestamp)
+        for track in bikeTracks {
+            if let track = track as? Track {
+                let temporaryTrackId = NSUUID().UUIDString
+                track.realm.transactionWithBlock {
+                    track.serverId = temporaryTrackId
+                }
+                TracksClient.instance.upload(track) { result in
+                    if let track = Track.allObjects().objectsWhere("serverId == %@", temporaryTrackId).firstObject() as? Track {
+                        switch result {
+                            case .Success(let trackServerId):
+                                track.realm.transactionWithBlock {
+                                    track.serverId = trackServerId
+                                    println("Track stored on server: " + trackServerId)
+                                }
+                            case .Other(let result):
+                                switch result {
+                                    case .Failed(let error):
+                                        println(error.localizedDescription)
+                                        track.realm.transactionWithBlock {
+                                            track.serverId = ""
+                                        }
+                                    default:
+                                        println("Other upload error \(result)")
+                                        track.realm.transactionWithBlock {
+                                            track.serverId = ""
+                                        }
+                                }
+                        }
+                    } else {
+                        println("Upload error: Couldn't find track with temporary server id \(temporaryTrackId)")
+                    }
+                }
+            }
+        }
+        println("Upload bike tracks DONE \(-startDate.timeIntervalSinceNow)")
     }
 }

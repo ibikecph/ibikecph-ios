@@ -243,11 +243,36 @@ extension TrackingViewController: UITableViewDataSource {
         if editingStyle == .Delete,
             let track = track(indexPath) where !track.invalidated
         {
-            tableView.beginUpdates()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
-            track.deleteFromRealmWithRelationships()
-            updateTracks()
-            tableView.endUpdates()
+            let deleteLocalClosure: () -> () = {
+                Async.main {
+                    tableView.beginUpdates()
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+                    track.deleteFromRealmWithRelationships()
+                    self.updateTracks()
+                    tableView.endUpdates()
+                }
+            }
+            if track.serverId == "" {
+                deleteLocalClosure()
+            } else {
+                // Delete from server
+                TracksClient.instance.delete(track) { result in
+                    switch result {
+                        case .Success(let trackServerId):
+                            deleteLocalClosure()
+                        case .Other(let result):
+                            Async.main {
+                                tableView.setEditing(false, animated: true)
+                            }
+                            switch result {
+                                case .Failed(let error):
+                                    println(error.localizedDescription)
+                                default:
+                                    println("Other upload error \(result)")
+                            }
+                    }
+                }
+            }
         } else {
             updateUI()
         }

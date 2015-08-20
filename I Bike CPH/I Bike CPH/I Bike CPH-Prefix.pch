@@ -14,12 +14,6 @@
 
 #define BUILD_VERSION [NSString stringWithUTF8String:__DATE__" "__TIME__"\x0"]
 
-#define API_DEFAULT_ACCEPT @{@"key": @"Accept", @"value" : @"application/vnd.ibikecph.v1"}
-#define API_USER_AGENT @{@"key": @"User-Agent", @"value" : USER_AGENT}
-#define API_DEFAULT_HEADERS @[API_DEFAULT_ACCEPT, API_USER_AGENT, @{@"key": @"Content-Type", @"value" : @"application/json"}]
-
-#define API_LOCALE @{@"service" : @"settings", @"transferMethod" : @"GET", @"headers" : API_DEFAULT_HEADERS}
-
 /*
  * System Versioning Preprocessor Macros
  */

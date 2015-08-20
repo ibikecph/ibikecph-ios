@@ -224,8 +224,16 @@
             }
         }
     } else if ([req.requestIdentifier isEqualToString:@"loginFB"]) {
-        [self.appDelegate.appSettings setValue:result[@"data"][@"auth_token"] forKey:@"auth_token"];
-        [self.appDelegate.appSettings setValue:result[@"data"][@"id"] forKey:@"id"];
+        NSString *authToken = result[@"data"][@"auth_token"];
+        NSString *authTokenKey = @"auth_token";
+        NSString *privacyToken = result[@"data"][@"signature"];
+        NSString *privacyTokenKey = @"signature";
+        NSString *idString = result[@"data"][@"id"];
+        NSString *idKey = @"id";
+        
+        self.appDelegate.appSettings[authTokenKey] = authToken;
+        self.appDelegate.appSettings[privacyTokenKey] = privacyToken;
+        self.appDelegate.appSettings[idKey] = idString;
         [self.appDelegate.appSettings setValue:@"FB" forKey:@"loginType"];
         [self.appDelegate saveSettings];
         [self.navigationController popToRootViewControllerAnimated:YES];

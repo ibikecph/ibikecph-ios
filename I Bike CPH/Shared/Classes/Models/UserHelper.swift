@@ -25,4 +25,8 @@ import Foundation
         Settings.instance.tracking.on = false // Turn off tracking when logging out
         AppHelper.delegate()?.clearSettings()
     }
+    
+    class func trackToken() -> String? {
+        return AppHelper.delegate()?.appSettings["signature"] as? String
+    }
 }

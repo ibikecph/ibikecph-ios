@@ -20,6 +20,7 @@ class Track: RLMObject {
     // Calculated from first and last location object
     dynamic var startTimestamp: Double = 0
     dynamic var endTimestamp: Double = 0
+    dynamic var serverId: String = ""
 }
 
 
@@ -266,5 +267,48 @@ extension Track {
                 }
             }
         }
+    }
+    
+    func jsonForServerUpload() -> JSON? {
+        
+        if let firstLocation = locations.firstObject() as? TrackLocation {
+            if let trackToken = UserHelper.trackToken() {
+                let startTimestamp = firstLocation.timestamp.roundTo(1)
+                var serializedLocations = [AnyObject]()
+        
+                for location in locations {
+                    if let location = location as? TrackLocation {
+                        let serializedLocation = [
+                            "seconds_passed": Int((location.timestamp - startTimestamp).roundTo(1)),
+                            "latitude": location.latitude.roundTo(1000000),
+                            "longitude": location.longitude.roundTo(1000000)
+                        ]
+                        serializedLocations.append(serializedLocation)
+                    }
+                }
+                
+                let json: JSON = [
+                    "signature": trackToken,
+                    "track": [
+                        "timestamp": startTimestamp,
+                        "from_name": start,
+                        "to_name": end,
+                        "count": serializedLocations.count,
+                        "coordinates": serializedLocations,
+                        ]
+                ]
+                return json
+            }
+        }
+        return nil
+    }
+}
+
+
+extension Double {
+    
+    func roundTo(to: Int) -> Double {
+        let to = Double(to)
+        return round(self * to) / to
     }
 }
