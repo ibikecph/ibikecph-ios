@@ -11,7 +11,7 @@ import Foundation
 class UserTermsClient: ServerClient {
     static let instance = UserTermsClient()
     
-    private let baseUrl = "http://kodekode.dk/ibikecph-terms.json"
+    private let baseUrl = API_SERVER + "/terms"
     
     private let latestVerifiedVersionKey = "UserTermsLatestVerifiedVersionKey"
     var latestVerifiedVersion: Int? {
