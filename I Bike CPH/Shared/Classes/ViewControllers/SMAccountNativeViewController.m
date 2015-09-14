@@ -224,10 +224,7 @@
             debugLog(@"Account deleted!!!");
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"account_deleted".localized message:@"" delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
-            [self.appDelegate.appSettings removeObjectForKey:@"auth_token"];
-            [self.appDelegate.appSettings removeObjectForKey:@"id"];
-            [self.appDelegate.appSettings removeObjectForKey:@"username"];
-            [self.appDelegate.appSettings removeObjectForKey:@"password"];
+            [UserHelper logout];
             [self.appDelegate saveSettings];
             
             [self dismiss];

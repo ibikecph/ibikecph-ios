@@ -20,21 +20,22 @@ class AddTrackTokenViewController: SMTranslatedViewController {
     @IBOutlet weak var passwordLabel: UITextField!
     @IBOutlet weak var passwordRepeatLabel: UITextField!
     private let signInHelper = SignInHelper()
-    
+    private var hasPreExistingTrackToken: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "track_token_title".localized
         
-        updateUI(false)
+        updateUI()
         if UserHelper.isFacebook() {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             UserClient.instance.hasTrackToken { result in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 switch result {
                 case .Success(let hasToken):
-                    self.updateUI(hasToken)
+                    self.hasPreExistingTrackToken = hasToken
+                    self.updateUI()
                 default: break
                 }
             }
@@ -79,14 +80,14 @@ class AddTrackTokenViewController: SMTranslatedViewController {
         send()
     }
     
-    func updateUI(hasPreexistingTrackToken: Bool) {
+    func updateUI() {
         let isLoggedIn = UserHelper.loggedIn()
         let isFacebook = UserHelper.isFacebook()
         
         passwordRepeatLabel.hidden = true
         if isFacebook {
             subtitleLabel.text = "track_token_subtitle_facebook".localized
-            if !hasPreexistingTrackToken {
+            if !hasPreExistingTrackToken {
                 passwordRepeatLabel.hidden = false
                 descriptionLabel.text = "track_token_description_facebook_new".localized
             } else {
@@ -117,7 +118,7 @@ class AddTrackTokenViewController: SMTranslatedViewController {
             return
         }
         
-        if UserHelper.isFacebook() && UserHelper.trackToken() == nil {
+        if UserHelper.isFacebook() && !hasPreExistingTrackToken {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             UserClient.instance.addTrackToken(password) { result in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false

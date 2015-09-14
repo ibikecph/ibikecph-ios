@@ -47,6 +47,7 @@ class UserClient: ServerClient {
                 default: completion(.Other(result))
                 }
             }
+            return
         }
     }
     
@@ -74,6 +75,7 @@ class UserClient: ServerClient {
                     default: completion(.Other(result))
                     }
                 }
+                return
             }
             return
         }

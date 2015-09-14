@@ -141,6 +141,7 @@
         NSString *idString = result[@"data"][@"id"];
         NSString *idKey = @"id";
         NSString *loginTypeKey = @"loginType";
+        NSString *loginTypeFacebook = @"facebook";
         NSString *emailKey = @"email";
         
         if (privacyToken) {
@@ -151,19 +152,17 @@
         }
         self.appDelegate.appSettings[authTokenKey] = authToken;
         self.appDelegate.appSettings[idKey] = idString;
-        if ([req.requestIdentifier isEqualToString:@"login"]) {
-            self.appDelegate.appSettings[loginTypeKey] = @"regular";
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
-        } else if ([req.requestIdentifier isEqualToString:@"autoLogin"]) {
-            self.appDelegate.appSettings[loginTypeKey] = @"regular";
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
-        } else if ([req.requestIdentifier isEqualToString:@"loginFB"]) {
-            self.appDelegate.appSettings[loginTypeKey] = @"FB";
+        if ([req.requestIdentifier isEqualToString:@"login"] ||
+            [req.requestIdentifier isEqualToString:@"autoLogin"] ||
+            [req.requestIdentifier isEqualToString:@"loginFB"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
         } else if ([req.requestIdentifier isEqualToString:@"register"]) {
-            self.appDelegate.appSettings[loginTypeKey] = @"regular";
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserRegistered" object:nil];
         }
+        
+        BOOL isFacebookUser = [result[@"data"][@"provider"] isEqualToString:loginTypeFacebook];
+        self.appDelegate.appSettings[loginTypeKey] = isFacebookUser ? @"FB" : @"regular";
+        
         [self.appDelegate saveSettings];
         self.callback(true, nil, nil);
         return;
