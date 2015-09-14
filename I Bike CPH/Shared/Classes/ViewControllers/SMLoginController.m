@@ -8,14 +8,16 @@
 
 #import "SMLoginController.h"
 #import "DAKeyboardControl.h"
+#import "SignInHelper.h"
 
-@interface SMLoginController()<SMAPIRequestDelegate, UITextFieldDelegate>
+@interface SMLoginController()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *loginEmail;
 @property (weak, nonatomic) IBOutlet UITextField *loginPassword;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (nonatomic, strong) SMAPIRequest * apr;
+@property (nonatomic, strong) SMAPIRequest *apr;
+@property (nonatomic, strong) SignInHelper *signInHelper;
 
 @end
 
@@ -25,6 +27,7 @@
     [super viewDidLoad];
     
     self.title = @"log_in".localized;
+    self.signInHelper = [SignInHelper new];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -48,11 +51,6 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - button actions
 
@@ -64,124 +62,32 @@
         [av show];
         return;
     }
-    
-    SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
-    [self setApr:ap];
-    [self.apr setRequestIdentifier:@"login"];
-    [self.apr showTransparentWaitingIndicatorInView:self.view];
-    [self.apr executeRequest:API_LOGIN withParams:@{@"user": @{ @"email": self.loginEmail.text, @"password": self.loginPassword.text}}];
+    [self.signInHelper loginWithEmail:self.loginEmail.text password:self.loginPassword.text view:self.view callback:^(BOOL success, NSString *errorTitle, NSString *errorDescription) {
+        if (success) {
+            [self loginSucceeded];
+            return;
+        }
+        [self loginFailedWithErrorTitle:errorTitle description:errorDescription];
+    }];
 }
-
-- (void)doFBLogin:(NSString*)fbToken {
-    SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
-    [self setApr:ap];
-    [self.apr setRequestIdentifier:@"loginFB"];
-    [self.apr showTransparentWaitingIndicatorInView:self.view];
-    [self.apr executeRequest:API_LOGIN withParams:@{@"user": @{ @"fb_token": fbToken, @"account_source" : ORG_NAME}}];
-}
-
 
 - (IBAction)loginWithFacebook:(id)sender {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    FacebookHandler *faceboookHandler = [FacebookHandler new];
-    [faceboookHandler request:^(NSString *identifier, NSString *email, NSString *token, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        if (error.code == faceboookHandler.errorAccessNotAllowed) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error_no_access".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
-            [av show];
-            NSLog(@"Couldn't sign in to Facebook %@", error.localizedDescription);
+    [self.signInHelper loginWithFacebookForView:self.view callback:^(BOOL success, NSString *errorTitle, NSString *errorDescription) {
+        if (success) {
+            [self loginSucceeded];
             return;
         }
-        if (error) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
-            [av show];
-            NSLog(@"Couldn't sign in to Facebook %@", error.localizedDescription);
-            return;
-        }
-        [self doFBLogin:token];
+        [self loginFailedWithErrorTitle:errorTitle description:errorDescription];
     }];
 }
 
-
-
-#pragma mark - api delegate
-
-- (void)serverNotReachable {
-    SMNetworkErrorView * v = [SMNetworkErrorView getFromNib];
-    CGRect frame = v.frame;
-    frame.origin.x = roundf((self.view.frame.size.width - v.frame.size.width) / 2.0f);
-    frame.origin.y = roundf((self.view.frame.size.height - v.frame.size.height) / 2.0f);
-    [v setFrame: frame];
-    [v setAlpha:0.0f];
-    [self.view addSubview:v];
-    [UIView animateWithDuration:ERROR_FADE animations:^{
-        v.alpha = 1.0f;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:ERROR_FADE delay:ERROR_WAIT options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            v.alpha = 0.0f;
-        } completion:^(BOOL finished) {
-            [v removeFromSuperview];
-        }];
-    }];
+- (void)loginSucceeded {
+    [self dismiss];
 }
 
--(void)request:(SMAPIRequest *)req failedWithError:(NSError *)error {
-    if (error.code > 0) {
-        UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:[error description] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
-        [av show];
-    }
-}
-
-- (void)request:(SMAPIRequest *)req completedWithResult:(NSDictionary *)result {
-    if ([result[@"success"] boolValue]) {
-        NSString *authToken = result[@"data"][@"auth_token"];
-        NSString *authTokenKey = @"auth_token";
-        NSString *privacyToken = result[@"data"][@"signature"];
-        NSString *privacyTokenKey = @"signature";
-        NSString *idString = result[@"data"][@"id"];
-        NSString *idKey = @"id";
-        
-        
-        if ([req.requestIdentifier isEqualToString:@"login"]) {
-            self.appDelegate.appSettings[authTokenKey] = authToken;
-            self.appDelegate.appSettings[privacyTokenKey] = privacyToken;
-            self.appDelegate.appSettings[idKey] = idString;
-            [self.appDelegate.appSettings setValue:self.loginEmail.text forKey:@"username"];
-            [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
-        } else if ([req.requestIdentifier isEqualToString:@"autoLogin"]) {
-            self.appDelegate.appSettings[authTokenKey] = authToken;
-            self.appDelegate.appSettings[privacyTokenKey] = privacyToken;
-            self.appDelegate.appSettings[idKey] = idString;
-            [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
-        } else if ([req.requestIdentifier isEqualToString:@"loginFB"]) {
-            self.appDelegate.appSettings[authTokenKey] = authToken;
-            self.appDelegate.appSettings[privacyTokenKey] = privacyToken;
-            self.appDelegate.appSettings[idKey] = idString;
-            [self.appDelegate.appSettings setValue:@"FB" forKey:@"loginType"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
-        } else if ([req.requestIdentifier isEqualToString:@"register"]) {
-            self.appDelegate.appSettings[authTokenKey] = authToken;
-            self.appDelegate.appSettings[privacyTokenKey] = privacyToken;
-            self.appDelegate.appSettings[idKey] = idString;
-            [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserRegistered" object:nil];
-            if (![SMAnalytics trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:self.loginEmail.text withValue:0]) {
-                debugLog(@"error in trackEvent");
-            }
-        }
-        [self.appDelegate saveSettings];
-        [self dismiss];
-    } else {
-        if (result[@"info_title"]) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:result[@"info_title"] message:result[@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
-            [av show];
-        } else {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:result[@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
-            [av show];
-        }
-    }
+- (void)loginFailedWithErrorTitle:(NSString *)title description:(NSString *)description {
+    UIAlertView * av = [[UIAlertView alloc] initWithTitle:title message:description delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
+    [av show];
 }
 
 

@@ -191,6 +191,16 @@
 "favorites_work_placeholder" = "Work address ...";
 "log_in" = "Log In";
 
+"save_password" = "Save password";
+"use_password" = "Use password";
+"track_token_title" = "Password";
+"track_token_headline" = "We care about that your data is anonymous!";
+"track_token_subtitle_native" = "You are logged in as";
+"track_token_description_native" = "To ensure that your data can be shared anonymously with The City of Copenhagen and the Capital Region of Denmark we need you to submit your password again.";
+"track_token_subtitle_facebook" = "You are logged in with Facebook as";
+"track_token_description_facebook_new" = "To ensure that your data can be shared anonymously with The City of Copenhagen and The Capital Region of Denmark you need to submit a password.";
+"track_token_description_facebook_has_token" = "To be able to access your data, you need to provide the password you have stated previously when activating tracking.";
+
 "add_favorite" = "Add a favorite";
 "cell_add_favorite" = "Add new favorite";
 "edit_favorite" = "Edit";

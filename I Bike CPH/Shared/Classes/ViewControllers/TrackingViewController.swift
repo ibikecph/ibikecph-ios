@@ -23,6 +23,7 @@ class TrackingViewController: ToolbarViewController {
     private var selectedTrack: Track?
     private var swipeEditing: Bool = false
     private var observerTokens = [AnyObject]()
+    private let toAddTrackTokenControllerSegue = "trackingToAddTrackToken"
     
     lazy var numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
@@ -302,7 +303,8 @@ extension TrackingViewController: UITableViewDelegate {
 extension TrackingViewController: EnableTrackingToolbarDelegate {
     
     func didSelectEnableTracking() {
-        if !UserHelper.loggedIn() {
+        switch UserHelper.checkEnableTracking() {
+        case .NotLoggedIn:
             let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
             alertController.addCancelActionWithHandler(nil)
             let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
@@ -310,8 +312,13 @@ extension TrackingViewController: EnableTrackingToolbarDelegate {
             }
             alertController.addAction(loginAction)
             alertController.showWithSender(self, controller: self, animated: true, completion: nil)
+        case .Allowed:
+            Settings.instance.tracking.on = true
+            dismiss()
+        case .LacksTrackToken:
+            // User is logged in but doesn't have a trackToken
+            performSegueWithIdentifier(toAddTrackTokenControllerSegue, sender: self)
             return
         }
-        Settings.instance.tracking.on = true
     }
 }

@@ -7,7 +7,6 @@
 //
 
 #import "SMTranslatedViewController.h"
-#import "SMAPIRequest.h"
 
 /**
  * View controller when logging in from menu. Has email and password textfield. FIXME: Merge.

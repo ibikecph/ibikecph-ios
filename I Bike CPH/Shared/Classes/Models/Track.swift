@@ -288,14 +288,14 @@ extension Track {
                 }
                 
                 let json: JSON = [
-                    "signature": trackToken,
                     "track": [
+                        "signature": trackToken,
                         "timestamp": startTimestamp,
                         "from_name": start,
                         "to_name": end,
-                        "count": serializedLocations.count,
+                        "coord_count": serializedLocations.count,
                         "coordinates": serializedLocations,
-                        ]
+                    ]
                 ]
                 return json
             }

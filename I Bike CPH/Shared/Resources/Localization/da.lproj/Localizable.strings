@@ -194,6 +194,16 @@
 "favorites_work_placeholder" = "Arbejdsadresse ...";
 "log_in" = "Log ind";
 
+"save_password" = "Gem kodeord";
+"use_password" = "Brug kodeord";
+"track_token_title" = "Sikkerhedskode";
+"track_token_headline" = "Vi går op i at dine data er anonyme!";
+"track_token_subtitle_native" = "Du er logget ind som";
+"track_token_description_native" = "For at sikre, at dine data kan deles anonymt med Københavns Kommune og Region Hovedstaden, har vi brug for at du skriver din adgangskode igen.";
+"track_token_subtitle_facebook" = "Du er logget ind via Facebook som";
+"track_token_description_facebook_new" = "For at sikre at dine data kan deles anonymt med Københavns Kommune og Region Hovedstaden, har vi brug for at du opretter et kodeord, kun du kender.";
+"track_token_description_facebook_has_token" = "For at kunne hente dine data skal du skrive det kodeord du har opgivet da du aktiverede indsamling af cykeldata.";
+
 "add_favorite" = "Tilføj favorit";
 "cell_add_favorite" = "Tilføj ny favorit";
 "edit_favorite" = "Rediger";
@@ -264,7 +274,7 @@
 "current_position_cant_be_destination" = "Det er ikke muligt at anvende nuværende position som destination!";
 
 "register_error_passwords_short" = "Din adgangskode er for kort";
-"register_error_invalid_email" = "Din email adresse er ikke gyldig";
+"register_error_invalid_email" = "Din email-adresse er ikke gyldig";
 
 "register_successful" = "Konto oprettet. En bekræftelse er blevet sendt til din email-adresse, følg venligst linket i emailen for at aktivere din konto.";
 
@@ -274,7 +284,7 @@
 
 "you_have_reached_your_destination" = "Du har nået din destination";
 
-"network_error_text" = "Netværks fejl opstod";
+"network_error_text" = "Netværks-fejl opstod";
 
 "vehicle_2" = "Gå";
 "vehicle_3" = "Færge";

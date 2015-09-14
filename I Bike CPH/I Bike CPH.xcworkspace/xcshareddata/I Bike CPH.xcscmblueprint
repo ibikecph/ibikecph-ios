@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "502F51DDF5EA5C8798DC85CB5D8E073C497985B0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4388308918DBDE53D1388EAE32C476E97A276398" : 0,
+    "502F51DDF5EA5C8798DC85CB5D8E073C497985B0" : 0,
+    "9196E87915FA8D89686486B5F5C7D939792C157C" : 0,
+    "0CB27FB27B75DD5179C510DD826518B1FD1BF181" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8760B2D3-FC66-4C32-9D75-F2A6949F5AEE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4388308918DBDE53D1388EAE32C476E97A276398" : "ibikecph-iosAddressParser",
+    "502F51DDF5EA5C8798DC85CB5D8E073C497985B0" : "ibikecph-ios",
+    "9196E87915FA8D89686486B5F5C7D939792C157C" : "ibikecph-ios-legacy",
+    "0CB27FB27B75DD5179C510DD826518B1FD1BF181" : "ibikecph-iosrouting-engine"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "I Bike CPH",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "I Bike CPH\/I Bike CPH.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ibikecph\/routing-engine.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0CB27FB27B75DD5179C510DD826518B1FD1BF181"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ibikecph\/AddressParser",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4388308918DBDE53D1388EAE32C476E97A276398"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ibikecph\/ibikecph-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "502F51DDF5EA5C8798DC85CB5D8E073C497985B0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ibikecph\/ibikecph-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9196E87915FA8D89686486B5F5C7D939792C157C"
+    }
+  ]
+}

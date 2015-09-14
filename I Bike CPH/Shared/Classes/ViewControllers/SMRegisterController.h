@@ -7,7 +7,6 @@
 //
 
 #import "SMTranslatedViewController.h"
-#import "SMAPIRequest.h"
 
 /**
  * View controller for sign up with name, email, password, repeat password, and image.

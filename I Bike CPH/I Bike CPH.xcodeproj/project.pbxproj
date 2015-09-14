@@ -413,6 +413,12 @@
 		4EE683751B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */; };
 		4EE82FB51B0BCE300089147A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */; };
 		4EE82FB61B0BCE350089147A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F8A1A10EDE700DE4226 /* LaunchScreen.xib */; };
+		4EEA6A8E1BA033AB009E9020 /* SignInHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A8D1BA033AB009E9020 /* SignInHelper.m */; };
+		4EEA6A8F1BA033B2009E9020 /* SignInHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A8D1BA033AB009E9020 /* SignInHelper.m */; };
+		4EEA6A911BA0633F009E9020 /* AddTrackTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A901BA0633E009E9020 /* AddTrackTokenViewController.swift */; };
+		4EEA6A921BA0633F009E9020 /* AddTrackTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A901BA0633E009E9020 /* AddTrackTokenViewController.swift */; };
+		4EEA6A941BA06E99009E9020 /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A931BA06E99009E9020 /* UserClient.swift */; };
+		4EEA6A951BA06E99009E9020 /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A931BA06E99009E9020 /* UserClient.swift */; };
 		4EEC6D251B207844003AE8DF /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D241B207844003AE8DF /* MainMapViewController.swift */; };
 		4EEC6D261B207844003AE8DF /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D241B207844003AE8DF /* MainMapViewController.swift */; };
 		4EEC6D281B20788E003AE8DF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D271B20788E003AE8DF /* MapViewController.swift */; };
@@ -830,6 +836,10 @@
 		4EE633791A5E8B6D009DA49B /* Overlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
 		4EE671C51A2F25F00037865B /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D.swift; sourceTree = "<group>"; };
+		4EEA6A8C1BA033AB009E9020 /* SignInHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInHelper.h; sourceTree = "<group>"; };
+		4EEA6A8D1BA033AB009E9020 /* SignInHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInHelper.m; sourceTree = "<group>"; };
+		4EEA6A901BA0633E009E9020 /* AddTrackTokenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTrackTokenViewController.swift; sourceTree = "<group>"; };
+		4EEA6A931BA06E99009E9020 /* UserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
 		4EEC6D241B207844003AE8DF /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		4EEC6D271B20788E003AE8DF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4EEC6D2A1B207AA6003AE8DF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -952,7 +962,10 @@
 			children = (
 				4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */,
 				4E2CF5071B85C30E004BDCAB /* TracksClient.swift */,
+				4EEA6A931BA06E99009E9020 /* UserClient.swift */,
 				4E2CF5041B85C17A004BDCAB /* ServerClient.swift */,
+				4EEA6A8C1BA033AB009E9020 /* SignInHelper.h */,
+				4EEA6A8D1BA033AB009E9020 /* SignInHelper.m */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -1550,6 +1563,7 @@
 				4E5B90641B5F98BF008AC960 /* UserTermsViewController.swift */,
 				4EFB7DB51B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift */,
 				4E2CF4FC1B84B964004BDCAB /* LaunchReadMoreViewController.swift */,
+				4EEA6A901BA0633E009E9020 /* AddTrackTokenViewController.swift */,
 				4E5E87841B31D3F00021F5E9 /* Menu */,
 			);
 			path = ViewControllers;
@@ -2245,6 +2259,7 @@
 				4E20BA691ADC065A00738CA8 /* Notifications.swift in Sources */,
 				4EC56E911A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */,
 				4EC56ED71A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
+				4EEA6A911BA0633F009E9020 /* AddTrackTokenViewController.swift in Sources */,
 				4E3A7EF61A7793980020A8B4 /* Speak.swift in Sources */,
 				4E55A0241A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */,
 				4E59820E1A24AC1200A40484 /* FavoriteItem.swift in Sources */,
@@ -2271,6 +2286,7 @@
 				4EE06CB91A11134C00DE4226 /* SMAPIOperation.m in Sources */,
 				4EE06CBB1A11134C00DE4226 /* SMAPIQueue.m in Sources */,
 				4EE06C7D1A1110ED00DE4226 /* SMAddressParser.m in Sources */,
+				4EEA6A8E1BA033AB009E9020 /* SignInHelper.m in Sources */,
 				4E10EBB41B3AE4B10012245E /* RouteNavigationViewController.swift in Sources */,
 				4EC56DCC1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */,
 				4EC56E8D1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
@@ -2299,6 +2315,7 @@
 				4EDC5E071B20EBD5009189EE /* ToolbarView.swift in Sources */,
 				4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
 				4E32B29E1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */,
+				4EEA6A941BA06E99009E9020 /* UserClient.swift in Sources */,
 				4E5E87901B31DC520021F5E9 /* RouteStatsToolbarView.swift in Sources */,
 				4EE683741B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */,
 				4EEC6D251B207844003AE8DF /* MainMapViewController.swift in Sources */,
@@ -2447,6 +2464,7 @@
 				4EEC6D261B207844003AE8DF /* MainMapViewController.swift in Sources */,
 				4E5674611A92521800BF4A28 /* MotionDetector.swift in Sources */,
 				4E5E878B1B31D6560021F5E9 /* FindRouteToolbarView.swift in Sources */,
+				4EEA6A951BA06E99009E9020 /* UserClient.swift in Sources */,
 				4E2B08F31B3D5C6900580C27 /* MapToMapTransitionAnimator.swift in Sources */,
 				4EE06F061A112F6D00DE4226 /* SMBreakRouteHeader.m in Sources */,
 				4EE06C3F1A10FC5600DE4226 /* SMMetroStationInfo.m in Sources */,
@@ -2518,6 +2536,7 @@
 				4E4AC45A1A8505BE0037A65E /* Macro.swift in Sources */,
 				4EE06C481A10FC5600DE4226 /* SMStationInfo.m in Sources */,
 				4E4AC45F1A8509590037A65E /* MacroCykelPlanen.swift in Sources */,
+				4EEA6A921BA0633F009E9020 /* AddTrackTokenViewController.swift in Sources */,
 				4EB8B1891B25D20F00A1C53E /* PinAnnotation.swift in Sources */,
 				4E5B90661B5F98BF008AC960 /* UserTermsViewController.swift in Sources */,
 				4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */,
@@ -2562,6 +2581,7 @@
 				4E1000E11B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */,
 				4E7BD07C1A9234EF00BFDC7B /* RLMSupport.swift in Sources */,
 				4E5982151A24AC1200A40484 /* KortforItem.swift in Sources */,
+				4EEA6A8F1BA033B2009E9020 /* SignInHelper.m in Sources */,
 				4EC56F011A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
 				4EE06C471A10FC5600DE4226 /* SMSingleRouteInfo.m in Sources */,
 				4EC56E2F1A2A2C3D00B696B4 /* FlickableView.m in Sources */,

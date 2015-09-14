@@ -62,7 +62,7 @@ class TracksClient: ServerClient {
         
         if let
             trackToken = UserHelper.trackToken(),
-            data = JSON(["signature" : trackToken, "auth_token": AppHelper.delegate()?.appSettings["auth_token"] ?? ""]).rawData(error: &error)
+            data = JSON(["signature" : trackToken]).rawData(error: &error)
         {
             request(path, configureRequest: { theRequest in
                 theRequest.HTTPMethod = "DELETE"

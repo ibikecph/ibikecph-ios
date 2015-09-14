@@ -11,6 +11,8 @@ import PSTAlertController
 
 class TrackingPromptViewController: SMTranslatedViewController {
     
+    private let toAddTrackTokenControllerSegue = "trackingPromptToAddTrackToken"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,8 +26,10 @@ class TrackingPromptViewController: SMTranslatedViewController {
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
         dismiss()
     }
+    
     @IBAction func EnableTrackingButtonTapped(sender: UIButton) {
-        if !UserHelper.loggedIn() {
+        switch UserHelper.checkEnableTracking() {
+        case .NotLoggedIn:
             let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
             alertController.addCancelActionWithHandler(nil)
             let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
@@ -33,9 +37,13 @@ class TrackingPromptViewController: SMTranslatedViewController {
             }
             alertController.addAction(loginAction)
             alertController.showWithSender(self, controller: self, animated: true, completion: nil)
+        case .Allowed:
+            Settings.instance.tracking.on = true
+            dismiss()
+        case .LacksTrackToken:
+            // User is logged in but doesn't have a trackToken
+            performSegueWithIdentifier(toAddTrackTokenControllerSegue, sender: self)
             return
         }
-        Settings.instance.tracking.on = true
-        dismiss()
     }
 }

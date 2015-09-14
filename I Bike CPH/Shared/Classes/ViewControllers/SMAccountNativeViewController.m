@@ -105,7 +105,7 @@
     
     if (self.profileImage) {
         [[params objectForKey:@"user"] setValue:@{
-                                                  @"file" : [UIImageJPEGRepresentation(self.profileImage, 1.0f) base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0],
+                                                  @"file" : [UIImageJPEGRepresentation(self.profileImage, 0.7f) base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0],
                                                   @"original_filename" : @"image.jpg",
                                                   @"filename" : @"image.jpg"
                                                   } forKey:@"image_path"];

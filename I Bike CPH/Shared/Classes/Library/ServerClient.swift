@@ -113,7 +113,7 @@ extension NSMutableURLRequest {
 extension String {
     
     internal func stringByAddingUrlAuthToken() -> String {
-        if let authToken = AppHelper.delegate()?.appSettings["auth_token"] as? String {
+        if let authToken = UserHelper.authToken() {
             return stringByAddingUrlParameters(["auth_token": authToken ])
         }
         return self
