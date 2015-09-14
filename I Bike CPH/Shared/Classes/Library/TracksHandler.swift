@@ -537,17 +537,18 @@ class ClearLeftOversOperation: TracksOperation {
                         continue
                     }
                 }
-                // No length
-                let noLength = track.length == 0
+                
+                // Very short distance, 50m
+                let noLength = track.length < 50
                 if noLength {
-                    println("Deleted no length: \(track.startDate())")
+                    println("Deleted short length: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
-                // No duration
-                let noDuration = track.duration == 0
+                // Very low duration, 30 seconds
+                let noDuration = track.duration < 30
                 if noDuration {
-                    println("Deleted no duration: \(track.startDate())")
+                    println("Deleted short duration: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
