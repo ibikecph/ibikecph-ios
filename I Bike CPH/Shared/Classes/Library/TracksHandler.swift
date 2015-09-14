@@ -240,7 +240,7 @@ class TracksOperation: NSOperation {
     
     private var startDate: NSDate = NSDate()
 
-    init(fromDate: NSDate? = nil ) {
+    init(fromDate: NSDate? = nil) {
         self.fromDate = fromDate
         super.init()
     }
