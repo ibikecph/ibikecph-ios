@@ -2312,6 +2312,7 @@ God tur og tak fordi du cykler!</string>
                         <outlet property="toolbarContainer" destination="0eG-5v-saS" id="gkf-WC-FFy"/>
                         <segue destination="DLt-LQ-2q9" kind="show" identifier="trackingToDetail" id="t11-Tv-7cG"/>
                         <segue destination="ozM-Cf-oJF" kind="show" identifier="trackingToAddTrackToken" id="DaQ-Is-1Ww"/>
+                        <segue destination="h7b-VQ-XtA" kind="show" identifier="trackingToLogin" id="OY0-0t-p3A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsf-pB-a0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3755,6 +3756,7 @@ God tur og tak fordi du cykler!</string>
                     <connections>
                         <outlet property="tableView" destination="8XO-hw-nmh" id="aZU-D2-aph"/>
                         <segue destination="h7b-VQ-XtA" kind="show" identifier="trackingPreferencesToLogin" id="XyX-Jg-6Fy"/>
+                        <segue destination="ozM-Cf-oJF" kind="show" identifier="trackingPreferencesToAddTrackToken" id="QBz-Bv-Gz7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRP-lT-7He" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3970,13 +3972,13 @@ God tur og tak fordi du cykler!</string>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="track_token_headline" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Duv-kV-lIw">
-                                                        <rect key="frame" x="0.0" y="42" width="560" height="32"/>
+                                                        <rect key="frame" x="0.0" y="64" width="560" height="32"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HangLock" translatesAutoresizingMaskIntoConstraints="NO" id="dPF-Fl-DiZ">
-                                                        <rect key="frame" x="269" y="0.0" width="22" height="22"/>
+                                                        <rect key="frame" x="258" y="0.0" width="44" height="44"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="track_token_description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogU-Ir-QaN">
                                                         <rect key="frame" x="0.0" y="225" width="560" height="18"/>
@@ -3985,7 +3987,7 @@ God tur og tak fordi du cykler!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="track_token_subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFb-bU-ewV">
-                                                        <rect key="frame" x="0.0" y="84" width="560" height="18"/>
+                                                        <rect key="frame" x="0.0" y="106" width="560" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -4166,7 +4168,7 @@ God tur og tak fordi du cykler!</string>
         <image name="Compas unselected" width="27" height="27"/>
         <image name="FacebookButtonBackground" width="14" height="14"/>
         <image name="From to" width="22" height="14"/>
-        <image name="HangLock" width="22" height="22"/>
+        <image name="HangLock" width="44" height="44"/>
         <image name="WhiteButton" width="14" height="14"/>
         <image name="arrow_large.png" width="37" height="32"/>
         <image name="arrow_small.png" width="20" height="18"/>
@@ -4194,9 +4196,9 @@ God tur og tak fordi du cykler!</string>
         <segue reference="hGb-e2-eVV"/>
         <segue reference="X1l-ON-ahy"/>
         <segue reference="DaQ-Is-1Ww"/>
+        <segue reference="OY0-0t-p3A"/>
         <segue reference="t11-Tv-7cG"/>
         <segue reference="cR0-BE-PFO"/>
-        <segue reference="xbN-fl-Cnv"/>
         <segue reference="7W8-lE-WHM"/>
     </inferredMetricsTieBreakers>
 </document>

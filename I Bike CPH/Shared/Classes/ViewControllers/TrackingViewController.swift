@@ -23,7 +23,9 @@ class TrackingViewController: ToolbarViewController {
     private var selectedTrack: Track?
     private var swipeEditing: Bool = false
     private var observerTokens = [AnyObject]()
-    private let toAddTrackTokenControllerSegue = "trackingToAddTrackToken"
+    private var pendingEnableTracking = false
+    private static let toAddTrackTokenSegue = "trackingToAddTrackToken"
+    private static let toLoginSegue = "trackingToLogin"
     
     lazy var numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
@@ -97,6 +99,19 @@ class TrackingViewController: ToolbarViewController {
         
         // Request new data
         TracksHandler.setNeedsProcessData(userInitiated: true)
+        
+        // Check if tracking should be enabled
+        if pendingEnableTracking && UserHelper.checkEnableTracking() == .Allowed {
+            Settings.instance.tracking.on = true
+            tableView.beginUpdates()
+            let indexPaths = tableView.indexPathsForVisibleRows()!
+            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+            tableView.endUpdates()
+        } else if pendingEnableTracking && UserHelper.checkEnableTracking() == .LacksTrackToken {
+            performSegueWithIdentifier(TrackingViewController.toAddTrackTokenSegue, sender: self)
+        } else {
+            pendingEnableTracking = false
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -308,7 +323,8 @@ extension TrackingViewController: EnableTrackingToolbarDelegate {
             let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
             alertController.addCancelActionWithHandler(nil)
             let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
-                self?.performSegueWithIdentifier("trackingPromptToLogin", sender: self)
+                self?.pendingEnableTracking = true
+                self?.performSegueWithIdentifier(TrackingViewController.toLoginSegue, sender: self)
             }
             alertController.addAction(loginAction)
             alertController.showWithSender(self, controller: self, animated: true, completion: nil)
@@ -317,7 +333,8 @@ extension TrackingViewController: EnableTrackingToolbarDelegate {
             dismiss()
         case .LacksTrackToken:
             // User is logged in but doesn't have a trackToken
-            performSegueWithIdentifier(toAddTrackTokenControllerSegue, sender: self)
+            pendingEnableTracking = true
+            performSegueWithIdentifier(TrackingViewController.toAddTrackTokenSegue, sender: self)
             return
         }
     }
