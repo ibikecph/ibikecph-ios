@@ -130,7 +130,8 @@ class FavoriteViewController: SMTranslatedViewController {
     }
     
     func updateItemType(type: FavoriteItemType) {
-        let nameMatchesCurrentType = nameTextField.text == FavoriteTypeViewModel(type: type).title
+        let currentType = favoriteItem?.origin
+        let nameMatchesCurrentType = currentType == nil ? false : nameTextField.text == FavoriteTypeViewModel(type: currentType!).title
         let noName = nameTextField.text == "" || nameTextField.text == nil
         let addressName = nameTextField.text == addressTextField.text
         let updateNameToNewType = nameMatchesCurrentType || noName || addressName
