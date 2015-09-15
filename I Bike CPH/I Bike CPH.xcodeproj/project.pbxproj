@@ -44,6 +44,12 @@
 		4E2B08F51B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2B08F11B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift */; };
 		4E2CE9EE1A974BA600F4BC4F /* TracksHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */; };
 		4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */; };
+		4E2CF4FD1B84B964004BDCAB /* LaunchReadMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF4FC1B84B964004BDCAB /* LaunchReadMoreViewController.swift */; };
+		4E2CF4FE1B84B964004BDCAB /* LaunchReadMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF4FC1B84B964004BDCAB /* LaunchReadMoreViewController.swift */; };
+		4E2CF5051B85C17A004BDCAB /* ServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5041B85C17A004BDCAB /* ServerClient.swift */; };
+		4E2CF5061B85C17A004BDCAB /* ServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5041B85C17A004BDCAB /* ServerClient.swift */; };
+		4E2CF5081B85C30E004BDCAB /* TracksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5071B85C30E004BDCAB /* TracksClient.swift */; };
+		4E2CF5091B85C30E004BDCAB /* TracksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5071B85C30E004BDCAB /* TracksClient.swift */; };
 		4E32B29B1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */; };
 		4E32B29C1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */; };
 		4E32B29E1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */; };
@@ -407,6 +413,12 @@
 		4EE683751B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */; };
 		4EE82FB51B0BCE300089147A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */; };
 		4EE82FB61B0BCE350089147A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F8A1A10EDE700DE4226 /* LaunchScreen.xib */; };
+		4EEA6A8E1BA033AB009E9020 /* SignInHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A8D1BA033AB009E9020 /* SignInHelper.m */; };
+		4EEA6A8F1BA033B2009E9020 /* SignInHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A8D1BA033AB009E9020 /* SignInHelper.m */; };
+		4EEA6A911BA0633F009E9020 /* AddTrackTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A901BA0633E009E9020 /* AddTrackTokenViewController.swift */; };
+		4EEA6A921BA0633F009E9020 /* AddTrackTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A901BA0633E009E9020 /* AddTrackTokenViewController.swift */; };
+		4EEA6A941BA06E99009E9020 /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A931BA06E99009E9020 /* UserClient.swift */; };
+		4EEA6A951BA06E99009E9020 /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A931BA06E99009E9020 /* UserClient.swift */; };
 		4EEC6D251B207844003AE8DF /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D241B207844003AE8DF /* MainMapViewController.swift */; };
 		4EEC6D261B207844003AE8DF /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D241B207844003AE8DF /* MainMapViewController.swift */; };
 		4EEC6D281B20788E003AE8DF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC6D271B20788E003AE8DF /* MapViewController.swift */; };
@@ -501,6 +513,9 @@
 		4E2B08F01B3D5C6900580C27 /* MapToMapTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapToMapTransitionAnimator.swift; sourceTree = "<group>"; };
 		4E2B08F11B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapToMapNavigationControllerDelegate.swift; sourceTree = "<group>"; };
 		4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksHandler.swift; sourceTree = "<group>"; };
+		4E2CF4FC1B84B964004BDCAB /* LaunchReadMoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchReadMoreViewController.swift; sourceTree = "<group>"; };
+		4E2CF5041B85C17A004BDCAB /* ServerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerClient.swift; sourceTree = "<group>"; };
+		4E2CF5071B85C30E004BDCAB /* TracksClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksClient.swift; sourceTree = "<group>"; };
 		4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingPreferencesViewController.swift; sourceTree = "<group>"; };
 		4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsNotificationHandler.swift; sourceTree = "<group>"; };
 		4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStatistics.swift; sourceTree = "<group>"; };
@@ -821,6 +836,10 @@
 		4EE633791A5E8B6D009DA49B /* Overlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
 		4EE671C51A2F25F00037865B /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D.swift; sourceTree = "<group>"; };
+		4EEA6A8C1BA033AB009E9020 /* SignInHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInHelper.h; sourceTree = "<group>"; };
+		4EEA6A8D1BA033AB009E9020 /* SignInHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInHelper.m; sourceTree = "<group>"; };
+		4EEA6A901BA0633E009E9020 /* AddTrackTokenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTrackTokenViewController.swift; sourceTree = "<group>"; };
+		4EEA6A931BA06E99009E9020 /* UserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
 		4EEC6D241B207844003AE8DF /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		4EEC6D271B20788E003AE8DF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4EEC6D2A1B207AA6003AE8DF /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -936,6 +955,30 @@
 				4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */,
 			);
 			path = "3rd Party";
+			sourceTree = "<group>";
+		};
+		4E2CF4FF1B85C0F7004BDCAB /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */,
+				4E2CF5071B85C30E004BDCAB /* TracksClient.swift */,
+				4EEA6A931BA06E99009E9020 /* UserClient.swift */,
+				4E2CF5041B85C17A004BDCAB /* ServerClient.swift */,
+				4EEA6A8C1BA033AB009E9020 /* SignInHelper.h */,
+				4EEA6A8D1BA033AB009E9020 /* SignInHelper.m */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
+		4E2CF5001B85C148004BDCAB /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */,
+				4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */,
+				4EEC6D391B20B7F8003AE8DF /* DistanceFormatter.swift */,
+				4EB70F4B1B6B62A900AB48CB /* CaloriesFormatter.swift */,
+			);
+			name = Formatters;
 			sourceTree = "<group>";
 		};
 		4E337B511B2F1DD400261D97 /* Map */ = {
@@ -1091,6 +1134,7 @@
 		4EC56DA51A2A25E900B696B4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				4E2CF4FF1B85C0F7004BDCAB /* Server */,
 				4E467D181B3416C3003770EE /* Route */,
 				4E337B511B2F1DD400261D97 /* Map */,
 				4EC56DA61A2A25E900B696B4 /* SMAnalytics.h */,
@@ -1123,17 +1167,13 @@
 				4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */,
 				4ECA91A01AB2EED800F4BB4F /* NotificationCenter.swift */,
 				4EFDA4811AB87A6D00522A41 /* NSDate.swift */,
-				4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */,
-				4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */,
-				4EEC6D391B20B7F8003AE8DF /* DistanceFormatter.swift */,
-				4EB70F4B1B6B62A900AB48CB /* CaloriesFormatter.swift */,
+				4E2CF5001B85C148004BDCAB /* Formatters */,
 				4EB610E11AD69B8800CEC994 /* SectionViewModel.swift */,
 				4EB610E41AD69D2500CEC994 /* UITableView.swift */,
 				4E20BA681ADC065A00738CA8 /* Notifications.swift */,
 				4E2B08F01B3D5C6900580C27 /* MapToMapTransitionAnimator.swift */,
 				4E2B08F11B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift */,
 				4ED6724F1B0F61A00025DFDF /* Thread.swift */,
-				4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1522,6 +1562,8 @@
 				4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */,
 				4E5B90641B5F98BF008AC960 /* UserTermsViewController.swift */,
 				4EFB7DB51B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift */,
+				4E2CF4FC1B84B964004BDCAB /* LaunchReadMoreViewController.swift */,
+				4EEA6A901BA0633E009E9020 /* AddTrackTokenViewController.swift */,
 				4E5E87841B31D3F00021F5E9 /* Menu */,
 			);
 			path = ViewControllers;
@@ -2200,6 +2242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E2CF5051B85C17A004BDCAB /* ServerClient.swift in Sources */,
 				4EAB12471A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */,
 				4EE06CD91A11134C00DE4226 /* SMRequestOSRM.m in Sources */,
 				4E5E87861B31D4760021F5E9 /* FindRouteViewController.swift in Sources */,
@@ -2216,6 +2259,7 @@
 				4E20BA691ADC065A00738CA8 /* Notifications.swift in Sources */,
 				4EC56E911A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */,
 				4EC56ED71A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
+				4EEA6A911BA0633F009E9020 /* AddTrackTokenViewController.swift in Sources */,
 				4E3A7EF61A7793980020A8B4 /* Speak.swift in Sources */,
 				4E55A0241A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */,
 				4E59820E1A24AC1200A40484 /* FavoriteItem.swift in Sources */,
@@ -2242,6 +2286,7 @@
 				4EE06CB91A11134C00DE4226 /* SMAPIOperation.m in Sources */,
 				4EE06CBB1A11134C00DE4226 /* SMAPIQueue.m in Sources */,
 				4EE06C7D1A1110ED00DE4226 /* SMAddressParser.m in Sources */,
+				4EEA6A8E1BA033AB009E9020 /* SignInHelper.m in Sources */,
 				4E10EBB41B3AE4B10012245E /* RouteNavigationViewController.swift in Sources */,
 				4EC56DCC1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */,
 				4EC56E8D1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
@@ -2270,6 +2315,7 @@
 				4EDC5E071B20EBD5009189EE /* ToolbarView.swift in Sources */,
 				4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
 				4E32B29E1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */,
+				4EEA6A941BA06E99009E9020 /* UserClient.swift in Sources */,
 				4E5E87901B31DC520021F5E9 /* RouteStatsToolbarView.swift in Sources */,
 				4EE683741B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */,
 				4EEC6D251B207844003AE8DF /* MainMapViewController.swift in Sources */,
@@ -2324,6 +2370,7 @@
 				4EE06CBD1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
 				4E5B90651B5F98BF008AC960 /* UserTermsViewController.swift in Sources */,
 				4E467D1A1B3416D4003770EE /* RouteManager.swift in Sources */,
+				4E2CF5081B85C30E004BDCAB /* TracksClient.swift in Sources */,
 				4EC56E551A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
 				4EC56E391A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
 				4EC56DC81A2A25E900B696B4 /* SMEvents.m in Sources */,
@@ -2340,6 +2387,7 @@
 				4E651D2F1A93EA5B00497C70 /* TrackingPromptViewController.swift in Sources */,
 				4E5B906B1B5F99AE008AC960 /* UserTermsClient.swift in Sources */,
 				4EBB7B4B1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */,
+				4E2CF4FD1B84B964004BDCAB /* LaunchReadMoreViewController.swift in Sources */,
 				4E10EBB81B3AE6480012245E /* RouteNavigationToolbarView.swift in Sources */,
 				4EC56EB11A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */,
 				4E5982121A24AC1200A40484 /* HistoryItem.swift in Sources */,
@@ -2392,6 +2440,7 @@
 				4EC56EAF1A2A2C3D00B696B4 /* SMTokenizedTextField.m in Sources */,
 				4E55A0251A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */,
 				4EE06CE41A11134C00DE4226 /* SMTurnInstruction.m in Sources */,
+				4E2CF5061B85C17A004BDCAB /* ServerClient.swift in Sources */,
 				4EE06C361A10FC5600DE4226 /* SMBrokenRouteInfo.m in Sources */,
 				4EE06C411A10FC5600DE4226 /* SMRelation.m in Sources */,
 				4EC56E4B1A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
@@ -2415,6 +2464,7 @@
 				4EEC6D261B207844003AE8DF /* MainMapViewController.swift in Sources */,
 				4E5674611A92521800BF4A28 /* MotionDetector.swift in Sources */,
 				4E5E878B1B31D6560021F5E9 /* FindRouteToolbarView.swift in Sources */,
+				4EEA6A951BA06E99009E9020 /* UserClient.swift in Sources */,
 				4E2B08F31B3D5C6900580C27 /* MapToMapTransitionAnimator.swift in Sources */,
 				4EE06F061A112F6D00DE4226 /* SMBreakRouteHeader.m in Sources */,
 				4EE06C3F1A10FC5600DE4226 /* SMMetroStationInfo.m in Sources */,
@@ -2486,11 +2536,13 @@
 				4E4AC45A1A8505BE0037A65E /* Macro.swift in Sources */,
 				4EE06C481A10FC5600DE4226 /* SMStationInfo.m in Sources */,
 				4E4AC45F1A8509590037A65E /* MacroCykelPlanen.swift in Sources */,
+				4EEA6A921BA0633F009E9020 /* AddTrackTokenViewController.swift in Sources */,
 				4EB8B1891B25D20F00A1C53E /* PinAnnotation.swift in Sources */,
 				4E5B90661B5F98BF008AC960 /* UserTermsViewController.swift in Sources */,
 				4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */,
 				4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
 				4EE683751B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */,
+				4E2CF4FE1B84B964004BDCAB /* LaunchReadMoreViewController.swift in Sources */,
 				4E7262DA1B2AF450008561D0 /* BorderedButton.swift in Sources */,
 				4E56745B1A9238A900BF4A28 /* Track.swift in Sources */,
 				4EC56E731A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
@@ -2519,6 +2571,7 @@
 				4EB610E61AD69D2500CEC994 /* UITableView.swift in Sources */,
 				4EE06F041A112F6D00DE4226 /* SMAddressPickerView.m in Sources */,
 				4EEC6D2F1B207B74003AE8DF /* ToolbarViewController.swift in Sources */,
+				4E2CF5091B85C30E004BDCAB /* TracksClient.swift in Sources */,
 				4E467D1B1B3416D4003770EE /* RouteManager.swift in Sources */,
 				4EEC6D381B20B14F003AE8DF /* TrackingToolbarView.swift in Sources */,
 				4EC56E771A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
@@ -2528,6 +2581,7 @@
 				4E1000E11B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */,
 				4E7BD07C1A9234EF00BFDC7B /* RLMSupport.swift in Sources */,
 				4E5982151A24AC1200A40484 /* KortforItem.swift in Sources */,
+				4EEA6A8F1BA033B2009E9020 /* SignInHelper.m in Sources */,
 				4EC56F011A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
 				4EE06C471A10FC5600DE4226 /* SMSingleRouteInfo.m in Sources */,
 				4EC56E2F1A2A2C3D00B696B4 /* FlickableView.m in Sources */,

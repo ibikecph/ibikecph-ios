@@ -159,13 +159,13 @@
         str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", s]];
     }
     
-    
-    NSDictionary * d = @{@"issue" : @{
-                         @"auth_token" : ([self.appDelegate.appSettings objectForKey:@"auth_token"] == nil)?@"":[self.appDelegate.appSettings objectForKey:@"auth_token"],
-                         @"route_segment" : self.reportedSegment,
-                         @"error_type": [self.possibleErrors objectAtIndex:currentSelection],
-                         @"comment": str,
-                         @"notify_user": @0
+    NSString *authToken = ([UserHelper authToken] == nil) ? @"" : [UserHelper authToken];
+    NSDictionary * d = @{@"auth_token" : authToken,
+                         @"issue" : @{
+                             @"route_segment" : self.reportedSegment,
+                             @"error_type": [self.possibleErrors objectAtIndex:currentSelection],
+                             @"comment": str,
+                             @"notify_user": @0
                          }};
     
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];

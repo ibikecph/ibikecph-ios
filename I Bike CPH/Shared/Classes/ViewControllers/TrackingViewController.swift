@@ -23,6 +23,9 @@ class TrackingViewController: ToolbarViewController {
     private var selectedTrack: Track?
     private var swipeEditing: Bool = false
     private var observerTokens = [AnyObject]()
+    private var pendingEnableTracking = false
+    private static let toAddTrackTokenSegue = "trackingToAddTrackToken"
+    private static let toLoginSegue = "trackingToLogin"
     
     lazy var numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
@@ -96,6 +99,19 @@ class TrackingViewController: ToolbarViewController {
         
         // Request new data
         TracksHandler.setNeedsProcessData(userInitiated: true)
+        
+        // Check if tracking should be enabled
+        if pendingEnableTracking && UserHelper.checkEnableTracking() == .Allowed {
+            Settings.instance.tracking.on = true
+            tableView.beginUpdates()
+            let indexPaths = tableView.indexPathsForVisibleRows()!
+            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+            tableView.endUpdates()
+        } else if pendingEnableTracking && UserHelper.checkEnableTracking() == .LacksTrackToken {
+            performSegueWithIdentifier(TrackingViewController.toAddTrackTokenSegue, sender: self)
+        } else {
+            pendingEnableTracking = false
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -243,11 +259,36 @@ extension TrackingViewController: UITableViewDataSource {
         if editingStyle == .Delete,
             let track = track(indexPath) where !track.invalidated
         {
-            tableView.beginUpdates()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
-            track.deleteFromRealmWithRelationships()
-            updateTracks()
-            tableView.endUpdates()
+            let deleteLocalClosure: () -> () = {
+                Async.main {
+                    tableView.beginUpdates()
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+                    track.deleteFromRealmWithRelationships()
+                    self.updateTracks()
+                    tableView.endUpdates()
+                }
+            }
+            if track.serverId == "" {
+                deleteLocalClosure()
+            } else {
+                // Delete from server
+                TracksClient.instance.delete(track) { result in
+                    switch result {
+                        case .Success(let trackServerId):
+                            deleteLocalClosure()
+                        case .Other(let result):
+                            Async.main {
+                                tableView.setEditing(false, animated: true)
+                            }
+                            switch result {
+                                case .Failed(let error):
+                                    println(error.localizedDescription)
+                                default:
+                                    println("Other upload error \(result)")
+                            }
+                    }
+                }
+            }
         } else {
             updateUI()
         }
@@ -277,16 +318,24 @@ extension TrackingViewController: UITableViewDelegate {
 extension TrackingViewController: EnableTrackingToolbarDelegate {
     
     func didSelectEnableTracking() {
-        if !UserHelper.loggedIn() {
+        switch UserHelper.checkEnableTracking() {
+        case .NotLoggedIn:
             let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
             alertController.addCancelActionWithHandler(nil)
             let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
-                self?.performSegueWithIdentifier("trackingPromptToLogin", sender: self)
+                self?.pendingEnableTracking = true
+                self?.performSegueWithIdentifier(TrackingViewController.toLoginSegue, sender: self)
             }
             alertController.addAction(loginAction)
             alertController.showWithSender(self, controller: self, animated: true, completion: nil)
+        case .Allowed:
+            Settings.instance.tracking.on = true
+            dismiss()
+        case .LacksTrackToken:
+            // User is logged in but doesn't have a trackToken
+            pendingEnableTracking = true
+            performSegueWithIdentifier(TrackingViewController.toAddTrackTokenSegue, sender: self)
             return
         }
-        Settings.instance.tracking.on = true
     }
 }

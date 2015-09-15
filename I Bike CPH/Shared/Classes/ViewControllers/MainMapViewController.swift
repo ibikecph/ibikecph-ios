@@ -131,7 +131,7 @@ class MainMapViewController: MapViewController {
         // Check if user has accepted user terms
         UserTermsClient.instance.requestUserTerms() { result in
             switch result {
-                case .SuccessUserTerms(let userTerms, let new) where new == true:
+                case .Success(let userTerms, let new) where new == true:
                     if forceAccept {
                         UserTermsClient.instance.latestVerifiedVersion = userTerms.version
                         return
@@ -140,7 +140,7 @@ class MainMapViewController: MapViewController {
                     if self.isViewLoaded() {
                         self.showUserTerms()
                     }
-                case .SuccessUserTerms(_, _):
+                case .Success(_, _):
                     print("No new user terms")
                 default:
                     print("Failed to get user terms: \(result)")

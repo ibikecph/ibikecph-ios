@@ -105,7 +105,7 @@
     
     if (self.profileImage) {
         [[params objectForKey:@"user"] setValue:@{
-                                                  @"file" : [UIImageJPEGRepresentation(self.profileImage, 1.0f) base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0],
+                                                  @"file" : [UIImageJPEGRepresentation(self.profileImage, 0.7f) base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0],
                                                   @"original_filename" : @"image.jpg",
                                                   @"filename" : @"image.jpg"
                                                   } forKey:@"image_path"];
@@ -224,10 +224,7 @@
             debugLog(@"Account deleted!!!");
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"account_deleted".localized message:@"" delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
-            [self.appDelegate.appSettings removeObjectForKey:@"auth_token"];
-            [self.appDelegate.appSettings removeObjectForKey:@"id"];
-            [self.appDelegate.appSettings removeObjectForKey:@"username"];
-            [self.appDelegate.appSettings removeObjectForKey:@"password"];
+            [UserHelper logout];
             [self.appDelegate saveSettings];
             
             [self dismiss];

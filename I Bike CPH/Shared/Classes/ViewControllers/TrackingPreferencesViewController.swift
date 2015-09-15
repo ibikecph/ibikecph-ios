@@ -37,7 +37,9 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
     
     private let cellID = "TrackingCellID"
     private let cellSwitchID = "TrackingSwitchCellID"
-    
+    private let toLoginSegue = "trackingPreferencesToLogin"
+    private let toAddTrackTokenSegue = "trackingPreferencesToAddTrackToken"
+    private var pendingEnableTracking = false
     
     private let sections: [SectionViewModel<TrackingItemProtocol>] = [
         SectionViewModel(items:
@@ -47,23 +49,35 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
                     iconImageName: "Bikedata",
                     on: { Settings.instance.tracking.on },
                     switchAction: { viewController, switcher, on in
-                        if !UserHelper.loggedIn() && on {
-                            let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
-                            alertController.addCancelActionWithHandler(nil)
-                            let loginAction = PSTAlertAction(title: "log_in".localized) { action in
-                                viewController.performSegueWithIdentifier("trackingPreferencesToLogin", sender: viewController)
+                        
+                        if on {
+                            switch UserHelper.checkEnableTracking() {
+                            case .NotLoggedIn:
+                                let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
+                                alertController.addCancelActionWithHandler(nil)
+                                let loginAction = PSTAlertAction(title: "log_in".localized) { action in
+                                    viewController.pendingEnableTracking = true
+                                    viewController.performSegueWithIdentifier(viewController.toLoginSegue, sender: viewController)
+                                }
+                                alertController.addAction(loginAction)
+                                alertController.showWithSender(viewController, controller: viewController, animated: true, completion: nil)
+                                switcher.setOn(false, animated: true)
+                            case .Allowed:
+                                Settings.instance.tracking.on = true
+                            case .LacksTrackToken:
+                                // User is logged in but doesn't have a trackToken
+                                switcher.setOn(false, animated: true)
+                                viewController.pendingEnableTracking = true
+                                viewController.performSegueWithIdentifier(viewController.toAddTrackTokenSegue, sender: viewController)
+                                return
                             }
-                            alertController.addAction(loginAction)
-                            alertController.showWithSender(viewController, controller: viewController, animated: true, completion: nil)
-                            switcher.setOn(false, animated: true)
-                            return
+                        } else {
+                            Settings.instance.tracking.on = false
                         }
-                        Settings.instance.tracking.on = on
                         viewController.tableView.beginUpdates()
                         let indexPaths = viewController.tableView.indexPathsForVisibleRows()!
                         viewController.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
                         viewController.tableView.endUpdates()
-//                        viewController.tableView.reloadData() // Reload tableview to let rest of cell adapt to change
                 }, enabled: nil
                 ),
                 TrackingSwitchItem(
@@ -87,6 +101,28 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
             ]
         ),
     ]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "settings".localized
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+     
+        if pendingEnableTracking && UserHelper.checkEnableTracking() == .Allowed {
+            Settings.instance.tracking.on = true
+            tableView.beginUpdates()
+            let indexPaths = tableView.indexPathsForVisibleRows()!
+            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+            tableView.endUpdates()
+        } else if pendingEnableTracking && UserHelper.checkEnableTracking() == .LacksTrackToken {
+            performSegueWithIdentifier(toAddTrackTokenSegue, sender: self)
+        } else {
+            pendingEnableTracking = false
+        }
+    }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent

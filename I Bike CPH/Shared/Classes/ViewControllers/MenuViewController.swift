@@ -54,12 +54,15 @@ class MenuViewController: UIViewController {
                 return
             }
             let trackingOn = Settings.instance.tracking.on
-            if !trackingOn {
-                menuViewController.performSegueWithIdentifier("menuToTrackingPrompt", sender: menuViewController)
-                menuViewController.pendingTracking = true
+            let hasBikeTracks = BikeStatistics.hasTrackedBikeData()
+            let showTrackingView = trackingOn || hasBikeTracks
+            if showTrackingView {
+                menuViewController.performSegueWithIdentifier("menuToTracking", sender: menuViewController)
                 return
             }
-            menuViewController.performSegueWithIdentifier("menuToTracking", sender: menuViewController)
+            menuViewController.performSegueWithIdentifier("menuToTrackingPrompt", sender: menuViewController)
+            menuViewController.pendingTracking = true
+            
         })
         let aboutItem = MenuItem(title: (macro.isIBikeCph ? "about_app_ibc" : "about_app_cp").localized, iconImageName: "information", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToAbout", sender: menuViewController)

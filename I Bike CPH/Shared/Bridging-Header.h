@@ -34,3 +34,5 @@
 #import "SMiBikeCPHMapTileSource.h"
 
 #import "SMReportErrorController.h"
+
+#import "SignInHelper.h"

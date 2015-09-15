@@ -11,25 +11,25 @@ import UIKit
 class LaunchActivateTrackingViewController: SMTranslatedViewController {
     
     private let toLoginNavigationControllerSegue = "activateTrackingToLogin"
+    private let toAddTrackTokenControllerSegue = "activateTrackingToAddTrackToken"
     @IBOutlet weak var activateButton: UIButton!
 
     @IBAction func didTapActivateButton(sender: AnyObject) {
-        if UserHelper.loggedIn() {
+        switch UserHelper.checkEnableTracking() {
+        case .NotLoggedIn:
+            performSegueWithIdentifier(toLoginNavigationControllerSegue, sender: self)
+        case .Allowed:
             Settings.instance.tracking.on = true
             dismiss()
-        } else {
-            performSegueWithIdentifier(toLoginNavigationControllerSegue, sender: self)
+        case .LacksTrackToken:
+            // User is logged in but doesn't have a trackToken
+            performSegueWithIdentifier(toAddTrackTokenControllerSegue, sender: self)
+            return
         }
     }
     
     @IBAction func didTapCancelButton(sender: AnyObject) {
         dismiss()
-    }
-    
-    @IBAction func didTapReadMore(sender: AnyObject) {
-        if let url = NSURL(string: "") {
-            UIApplication.sharedApplication().openURL(url)
-        }
     }
     
     override func viewDidLoad() {
