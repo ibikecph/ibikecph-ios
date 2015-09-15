@@ -133,7 +133,6 @@
             self.callback(true, nil, nil);
             return;
         }
-        
         NSString *authToken = result[@"data"][@"auth_token"];
         NSString *authTokenKey = @"auth_token";
         NSString *privacyToken = result[@"data"][@"signature"];
@@ -159,9 +158,13 @@
         } else if ([req.requestIdentifier isEqualToString:@"register"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserRegistered" object:nil];
         }
-        
-        BOOL isFacebookUser = [result[@"data"][@"provider"] isEqualToString:loginTypeFacebook];
-        self.appDelegate.appSettings[loginTypeKey] = isFacebookUser ? @"FB" : @"regular";
+        NSObject *provider = result[@"data"][@"provider"];
+        if (provider != [NSNull null] && [provider isKindOfClass:[NSString class]]) {
+            BOOL isFacebookUser = [((NSString *)provider) isEqualToString:loginTypeFacebook];
+            self.appDelegate.appSettings[loginTypeKey] = isFacebookUser ? @"FB" : @"regular";
+        } else {
+            self.appDelegate.appSettings[loginTypeKey] = @"regular";
+        }
         
         [self.appDelegate saveSettings];
         self.callback(true, nil, nil);
