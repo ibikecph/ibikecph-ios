@@ -102,6 +102,12 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
         ),
     ]
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "settings".localized
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
      
