@@ -335,7 +335,6 @@ extension TrackingViewController: EnableTrackingToolbarDelegate {
             alertController.showWithSender(self, controller: self, animated: true, completion: nil)
         case .Allowed:
             Settings.instance.tracking.on = true
-            dismiss()
         case .LacksTrackToken:
             // User is logged in but doesn't have a trackToken
             pendingEnableTracking = true
