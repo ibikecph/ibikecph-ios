@@ -38,7 +38,7 @@ class UserClient: ServerClient {
         }) { result in
             Async.main {
                 switch result {
-                case .SuccessJSON(let json):
+                case .SuccessJSON(let json, _):
                     if let hasToken = json["has_password"].bool {
                         completion(.Success(hasToken: hasToken))
                     } else {
@@ -65,7 +65,7 @@ class UserClient: ServerClient {
             }) { result in
                 Async.main {
                     switch result {
-                    case .SuccessJSON(let json):
+                    case .SuccessJSON(let json, _):
                         if let trackToken = json["data"]["signature"].string {
                             AppHelper.delegate()?.appSettings["signature"] = trackToken
                             completion(.Success())
@@ -91,7 +91,7 @@ class UserClient: ServerClient {
             let path = baseUrl + "/users/" + id
             request(path) { result in
                 switch result {
-                case .SuccessJSON(let json):
+                case .SuccessJSON(let json, _):
                     if let name = json["data"]["name"].string {
                         let image: UIImage? = {
                             if let string = json["data"]["image_url"].string,

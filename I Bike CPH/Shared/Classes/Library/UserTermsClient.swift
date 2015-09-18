@@ -28,7 +28,7 @@ class UserTermsClient: ServerClient {
         let path = baseUrl
         request(path) { result in
             switch result {
-                case .SuccessJSON(let json):
+                case .SuccessJSON(let json, _):
                     if let userTerms = UserTerms(json: json) {
                         let newVersion = userTerms.version
                         let currentVersion = UserTermsClient.instance.latestVerifiedVersion

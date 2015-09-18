@@ -274,8 +274,13 @@ extension TrackingViewController: UITableViewDataSource {
                 // Delete from server
                 TracksClient.instance.delete(track) { result in
                     switch result {
-                        case .Success(let trackServerId):
-                            deleteLocalClosure()
+                        case .Success(_): fallthrough
+                        case .NotFound:
+                            deleteLocalClosure() // Delete if deleted on server or not found
+                        case .NotAuthorized:
+                            Async.main {
+                                tableView.setEditing(false, animated: true)
+                            }
                         case .Other(let result):
                             Async.main {
                                 tableView.setEditing(false, animated: true)
