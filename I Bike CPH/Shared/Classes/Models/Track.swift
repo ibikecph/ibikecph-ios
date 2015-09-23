@@ -134,8 +134,9 @@ extension Track {
     }
     
     func lowAccuracy(#minAccuracy: Double = 100) -> Bool {
-        let horizontal = self.locations.objectsWithPredicate(nil).averageOfProperty("horizontalAccuracy").doubleValue
-        let vertical = self.locations.objectsWithPredicate(nil).averageOfProperty("verticalAccuracy").doubleValue
+        let locations = self.locations.objectsWithPredicate(NSPredicate(value: true))
+        let horizontal = locations.averageOfProperty("horizontalAccuracy")?.doubleValue ?? 0
+        let vertical = locations.averageOfProperty("verticalAccuracy")?.doubleValue ?? 0
         return min(horizontal, vertical) > minAccuracy
     }
     
@@ -217,51 +218,53 @@ extension Track {
         if let startLocation = locations.firstObject() as? TrackLocation {
             let coordinate = startLocation.coordinate()
             SMGeocoder.reverseGeocode(coordinate, synchronous: synchronous) { (item: KortforItem?, error: NSError?) in
-                let transact = !self.realm.inWriteTransaction
-                if transact {
-                    self.realm.beginWriteTransaction()
-                }
-                if self.invalidated {
+                if let realm = self.realm {
+                    let transact = !realm.inWriteTransaction
                     if transact {
-                        self.realm.cancelWriteTransaction()
+                        realm.beginWriteTransaction()
                     }
-                    completion?(false)
-                    return
-                }
-                var succeeded = false
-                if let item = item {
-                    self.start = item.street
-                    succeeded = true
-                }
-                if transact {
-                    self.realm.commitWriteTransaction()
-                }
-                if !succeeded {
-                    return // Only proceed if "start" was set
-                }
-                if let endLocation = self.locations.lastObject() as? TrackLocation {
-                    let coordinate = endLocation.coordinate()
-                    SMGeocoder.reverseGeocode(coordinate, synchronous: synchronous) { (item: KortforItem?, error: NSError?) in
-                        let transact = !self.realm.inWriteTransaction
+                    if self.invalidated {
                         if transact {
-                            self.realm.beginWriteTransaction()
+                            realm.cancelWriteTransaction()
                         }
-                        if self.invalidated {
+                        completion?(false)
+                        return
+                    }
+                    var succeeded = false
+                    if let item = item {
+                        self.start = item.street
+                        succeeded = true
+                    }
+                    if transact {
+                        realm.commitWriteTransaction()
+                    }
+                    if !succeeded {
+                        return // Only proceed if "start" was set
+                    }
+                    if let endLocation = self.locations.lastObject() as? TrackLocation {
+                        let coordinate = endLocation.coordinate()
+                        SMGeocoder.reverseGeocode(coordinate, synchronous: synchronous) { (item: KortforItem?, error: NSError?) in
+                            let transact = !realm.inWriteTransaction
                             if transact {
-                                self.realm.cancelWriteTransaction()
+                                realm.beginWriteTransaction()
                             }
-                            completion?(false)
-                            return
-                        }
-                        if let item = item {
-                            self.end = item.street
-                            self.hasBeenGeocoded = true
-                            completion?(true)
-                        } else {
-                            completion?(false)
-                        }
-                        if transact {
-                            self.realm.commitWriteTransaction()
+                            if self.invalidated {
+                                if transact {
+                                    realm.cancelWriteTransaction()
+                                }
+                                completion?(false)
+                                return
+                            }
+                            if let item = item {
+                                self.end = item.street
+                                self.hasBeenGeocoded = true
+                                completion?(true)
+                            } else {
+                                completion?(false)
+                            }
+                            if transact {
+                                realm.commitWriteTransaction()
+                            }
                         }
                     }
                 }

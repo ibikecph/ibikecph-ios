@@ -80,10 +80,12 @@
 //    [RLMRealm deleteDefaultRealmFile];
 
     // Auto migrate Realm
-    [RLMRealm setDefaultRealmSchemaVersion:REALM_SCHEMA_VERSION withMigrationBlock:^(RLMMigration *migration, uint64_t oldSchemaVersion) {
-    }];
-    [RLMRealm migrateRealmAtPath:[RLMRealm defaultRealmPath]];
-//    [RLMRealm compressWithIfNecessary:true];
+    RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
+    config.schemaVersion = REALM_SCHEMA_VERSION;
+    config.migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {};
+    [RLMRealmConfiguration setDefaultConfiguration:config];
+    [RLMRealm defaultRealm];
+    [RLMRealm compressWithIfNecessary:true];
     
     [TrackingHandler sharedInstance];
     

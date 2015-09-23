@@ -15,7 +15,7 @@ pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'PSTAlertController', '~>1.1'
 pod 'Realm', '~>0.93'
 pod 'Mapbox-iOS-SDK', '1.6.0'
-pod 'NibDesignable'
+pod 'NibDesignable', '~>1.1.0'
 
 target :CykelPlanenTests, :exclusive => true do
     pod 'OCMockito', '~> 1.0'
