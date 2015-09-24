@@ -8,7 +8,7 @@
 
 #import "SMAccountFacebookViewController.h"
 
-@interface SMAccountFacebookViewController() <SMAPIRequestDelegate>
+@interface SMAccountFacebookViewController() <SMAPIRequestDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UIImage *profileImage;
 @property (nonatomic, strong) NSDictionary *userData;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
+@property (strong, nonatomic) NSString *password;
 
 @end
 
@@ -59,20 +60,55 @@
 #pragma mark - IBAction
 
 - (IBAction)deleteAccount:(id)sender {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"delete_account_title".localized message:@"delete_account_text".localized delegate:self cancelButtonTitle:@"Cancel".localized otherButtonTitles:@"Delete".localized, nil];
-    av.tag = 101;
-    [av show];
     
+    // Check if user needs to type in password
+    [[UserClient sharedInstance] hasTrackTokenObjc:^(BOOL success, NSError * __nullable error) {
+        if (error) {
+            NSString *errorString = error.localizedDescription;
+            if (!errorString) {
+                errorString = @"network_error_text".localized;
+            }
+            UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Error".localized message: errorString preferredStyle:UIAlertControllerStyleAlert];
+            // Cancel
+            [controller addAction:[UIAlertAction actionWithTitle:@"Ok".localized style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:controller animated:YES completion:nil];
+            return;
+        }
+     
+        BOOL needsPassword = success;
+        NSString *alertBody = (needsPassword ? @"delete_account_text_facebook_tracking" : @"delete_account_text").localized;
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"delete_account_title".localized message:alertBody preferredStyle:UIAlertControllerStyleAlert];
+        
+        if (needsPassword) {
+            // Password field
+            [controller addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                textField.delegate = self;
+                textField.secureTextEntry = true;
+            }];
+        }
+        
+        // Cancel
+        [controller addAction:[UIAlertAction actionWithTitle:@"Cancel".localized style:UIAlertActionStyleCancel handler:nil]];
+        // Delete
+        [controller addAction:[UIAlertAction actionWithTitle:@"Delete".localized style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            [self deleteAccountConfirmedWithPassword:self.password];
+        }]];
+        [self presentViewController:controller animated:YES completion:nil];
+    }];
 }
 
-- (void)deleteAccountConfirmed {
+- (void)deleteAccountConfirmedWithPassword:(NSString *)password {
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
     [self setApr:ap];
     [self.apr setRequestIdentifier:@"deleteUser"];
     [self.apr showTransparentWaitingIndicatorInView:self.view];
-    NSMutableDictionary * params = [API_DELETE_USER_DATA mutableCopy];
-    [params setValue:[NSString stringWithFormat:@"%@/%@", [params objectForKey:@"service"], [self.appDelegate.appSettings objectForKey:@"id"]] forKey:@"service"];
-    [self.apr executeRequest:params withParams:@{@"auth_token": [self.appDelegate.appSettings objectForKey:@"auth_token"]}];
+    NSMutableDictionary *request = [API_DELETE_USER_DATA mutableCopy];
+    request[@"service"] = [NSString stringWithFormat:@"%@/%@", request[@"service"], self.appDelegate.appSettings[@"id"]];
+    NSMutableDictionary *params = @{ @"auth_token": self.appDelegate.appSettings[@"auth_token"]}.mutableCopy;
+    if (password) {
+        params[@"user"] = @{ @"password" : password };
+    }
+    [self.apr executeRequest:request withParams:params];
 }
 
 - (IBAction)logout:(id)sender {
@@ -138,19 +174,11 @@
 }
 
 
-#pragma mark - alert view delegate
+#pragma mark - UITextFieldDelegate
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (alertView.tag == 101) {
-        switch (buttonIndex) {
-            case 1:
-                [self deleteAccountConfirmed];
-                break;
-                
-            default:
-                break;
-        }
-    }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    self.password = textField.text;
+    return YES;
 }
 
 

@@ -190,6 +190,7 @@
 "favorites_home_placeholder" = "Home address ...";
 "favorites_work_placeholder" = "Work address ...";
 "log_in" = "Log In";
+"edit_account" = "Edit account";
 
 "save_password" = "Save password";
 "use_password" = "Use password";
@@ -255,8 +256,9 @@
 "error_duplicate_favorite_name" = "You already have a favorite with this name. Please rename your favorite and save again.";
 "start_route" = "Start";
 
-"delete_account_title" = "Delete account?";
-"delete_account_text" = "All your favorites and history will be deleted as well";
+"delete_account_title" = "Delete your account?";
+"delete_account_text" = "Your favourites and your tracked bicycle data will be deleted completely.";
+"delete_account_text_facebook_tracking" = "Your favourites and your tracked bicycle data will be deleted completely.\nYou need to provide the password you have stated previously when activating tracking.";
 "Delete" = "Delete";
 "account_deleted" = "Your account has been deleted";
 "close" = "Close";
@@ -306,6 +308,7 @@
 
 "enable" = "Enable";
 "launch_activate_tracking_title" = "Welcome.\nStart collecting and share your bicycle data";
+"launch_activate_tracking_title_no_welcome" = "Start collecting and share your bicycle data";
 "launch_activate_tracking_description" = "See where and how much you are biking on a daily basis. Get weekly notifications and achieve milestones when cycling.\n\nShare your data anonymously with the City of Copenhagen and the Capital Region of Denmark and help create new and important knowledge about biking in and around Copenhagen.";
 "launch_activate_tracking_read_more" = "Read more";
 "launch_activate_tracking_read_more_description" = "What data do we store, how and why:\n\nOnce you have enabled the collection of cycling data, information about your bike rides will be stored locally on your phone and synchronised with the Copenhagen municipality and the Capital Region of Denmark’s servers. The data will only be used for internal studies and before this happens, your data is anonymisiert so it can’t be traced back to you.\n\nWith cycling data from this app, we will be able to see where and when people crowded around red lights. The data will enable us to plan signals and routes better, and make the traffic flow smoother. At the same time we can more easily measure the effect of changes and adjustments. By sharing your data you can help better the conditions for everyone biking in Copenhagen and the Capital Region of Denmark.";

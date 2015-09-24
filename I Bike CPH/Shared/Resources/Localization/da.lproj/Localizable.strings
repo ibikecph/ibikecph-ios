@@ -193,6 +193,7 @@
 "favorites_home_placeholder" = "Hjemmeadresse ...";
 "favorites_work_placeholder" = "Arbejdsadresse ...";
 "log_in" = "Log ind";
+"edit_account" = "Redigér profil";
 
 "save_password" = "Gem kodeord";
 "use_password" = "Brug kodeord";
@@ -258,8 +259,9 @@
 
 "error_duplicate_favorite_name" = "Du har allerede en favorit med dette navn. Omdøb din favorit og gem igen.";
 
-"delete_account_title" = "Slet konto?";
-"delete_account_text" = "Alle dine favoritter samt din historik vil blive slettet";
+"delete_account_title" = "Slet din konto?";
+"delete_account_text" = "Dine favoritter samt dine indsamlede cykeldata vil blive slettet helt.";
+"delete_account_text_facebook_tracking" = "Dine favoritter samt dine indsamlede cykeldata vil blive slettet helt. \nDu skrive det kodeord du har opgivet da du aktiverede indsamling af cykeldata.";
 "Delete" = "Slet";
 "account_deleted" = "Din konto er blevet slettet";
 "close" = "LUK";
@@ -309,6 +311,7 @@
 
 "enable" = "Aktivér";
 "launch_activate_tracking_title" = "Velkommen.\nAktiver indsamling og deling af dine cykeldata";
+"launch_activate_tracking_title_no_welcome" = "Aktiver indsamling og deling af dine cykeldata";
 "launch_activate_tracking_description" = "Se hvor og hvor meget du cykler til dagligt. Få ugentlige beskeder og opnå milepæle.\n\nDel samtidig dine cykeldata anonymt med Københavns Kommune og Region Hovedstaden - og vær med til skabe mere viden om cykling i og omkring København.";
 "launch_activate_tracking_read_more" = "Læs mere";
 "launch_activate_tracking_read_more_description" = "Hvilke af dine data gemmer vi, hvordan og hvorfor:\n\nNår du har slået indsamling af cykeldata til, lagres der data om dine cykelture lokalt på din telefon. Dataen synkroniseres med Københavns Kommunes og Region Hovedstadens server og bruges udelukkende til interne studier. Inden dette sker, bliver dine data anonymiseret så de ikke kan tilbageføres til dig.\n\nMed cykeldata fra denne app vil vi blandt andet kunne se hvor og hvornår mange holder for rødt. Vi vil dermed bedre kunne indstille lyssignaler, planlægge ruter og få trafikken til at glide nemmere. Samtidig vil vi bedre kunne måle effekten af ændringer og justeringer. Ved at dele data vil du dermed være med til at skabe stor fordel for alle, der cykler i København og Region Hovedstaden.";
