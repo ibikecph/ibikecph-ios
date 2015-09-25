@@ -107,7 +107,7 @@
 "error_invalid_to_address" = "The destination address is invalid!";
 
 "route_stop_title" = "Want to stop the routing?";
-"route_stop_text" = "Stop the routing by tapping the 'Stop'. You can report a problem with the route to us by tapping on 'Report'.";
+"route_stop_text" = "Stop the routing by tapping 'Stop'. You can report a problem with the route to us by tapping on 'Report'.";
 "report_error" = "Report";
 "report_wrong_address" = "Address is wrong";
 "report_road_closed" = "Road closed";
@@ -195,12 +195,12 @@
 "save_password" = "Save password";
 "use_password" = "Use password";
 "track_token_title" = "Password";
-"track_token_headline" = "We care about that your data is anonymous!";
+"track_token_headline" = "We care about keeping your data anonymous!";
 "track_token_subtitle_native" = "You are logged in as";
 "track_token_description_native" = "To ensure that your data can be shared anonymously with The City of Copenhagen and the Capital Region of Denmark we need you to submit your password again.";
 "track_token_subtitle_facebook" = "You are logged in with Facebook as";
-"track_token_description_facebook_new" = "To ensure that your data can be shared anonymously with The City of Copenhagen and The Capital Region of Denmark you need to submit a password.";
-"track_token_description_facebook_has_token" = "To be able to access your data, you need to provide the password you have stated previously when activating tracking.";
+"track_token_description_facebook_new" = "To ensure that your data is shared anonymously with the Copenhagen Municipality an the Capital Region of Denmark, you need to submit a password with minimum 6 digits. For security reasons your password can not be recovered.";
+"track_token_description_facebook_has_token" = "To be able to access your data, you need to provide the password you stated when activating tracking.";
 
 "add_favorite" = "Add a favorite";
 "cell_add_favorite" = "Add new favorite";
@@ -224,8 +224,8 @@
 "describe_problem" = "Describe a problem";
 "logout" = "Log out";
 
-"thank_you_for_feedback" = "Thank you for your feedback";
-"feedback_text" = "Your feedback has been sent. Thanks for your help!\n\nYou can participate in follow-up and discussion of new features on www.ibikecph.dk/feedback.";
+"thank_you_for_feedback" = "Your feedback has been sent.";
+"feedback_text" = "Thanks for your help!\n\nYou can follow det development and participate in discussions of new features on www.ibikecph.dk/feedback.";
 "report_sent" = "Feedback sent";
 "report_enter_email_address_placeholder" = "Enter you email address";
 "home_find_route" = "Find route";
