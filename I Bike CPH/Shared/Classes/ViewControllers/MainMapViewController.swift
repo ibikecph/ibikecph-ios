@@ -141,9 +141,9 @@ class MainMapViewController: MapViewController {
                         self.showUserTerms()
                     }
                 case .Success(_, _):
-                    print("No new user terms")
+                    println("No new user terms")
                 default:
-                    print("Failed to get user terms: \(result)")
+                    println("Failed to get user terms: \(result)")
             }
         }
     }
