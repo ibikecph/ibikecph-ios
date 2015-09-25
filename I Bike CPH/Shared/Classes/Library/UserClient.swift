@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserClient: ServerClient {
+@objc class UserClient: ServerClient {
     static let instance = UserClient()
     
     private let baseUrl = API_SERVER
@@ -38,7 +38,7 @@ class UserClient: ServerClient {
         }) { result in
             Async.main {
                 switch result {
-                case .SuccessJSON(let json):
+                case .SuccessJSON(let json, _):
                     if let hasToken = json["has_password"].bool {
                         completion(.Success(hasToken: hasToken))
                     } else {
@@ -65,7 +65,7 @@ class UserClient: ServerClient {
             }) { result in
                 Async.main {
                     switch result {
-                    case .SuccessJSON(let json):
+                    case .SuccessJSON(let json, _):
                         if let trackToken = json["data"]["signature"].string {
                             AppHelper.delegate()?.appSettings["signature"] = trackToken
                             completion(.Success())
@@ -91,7 +91,7 @@ class UserClient: ServerClient {
             let path = baseUrl + "/users/" + id
             request(path) { result in
                 switch result {
-                case .SuccessJSON(let json):
+                case .SuccessJSON(let json, _):
                     if let name = json["data"]["name"].string {
                         let image: UIImage? = {
                             if let string = json["data"]["image_url"].string,
@@ -113,5 +113,30 @@ class UserClient: ServerClient {
             return
         }
         completion(.Other(ServerResult.FailedEncodingError))
+    }
+}
+
+
+extension UserClient {
+    @objc func hasTrackTokenObjc(completion: (success: Bool, error: NSError?) -> ()) {
+        hasTrackToken { result in
+            switch result {
+            case .Success(let hasToken): completion(success: hasToken, error: nil)
+            case .Other(let otherResult):
+                switch otherResult {
+                case .SuccessJSON(let json, let statusCode):
+                    let message = json["info"].stringValue
+                    completion(success: false, error: NSError(domain: "UserClient", code: 0, userInfo: [NSLocalizedDescriptionKey : message]))
+                case .Failed(let error):
+                    completion(success: false, error: error)
+                default:
+                    completion(success: false, error: NSError(domain: "UserClient", code: 0, userInfo: nil))
+                }
+            }
+        }
+    }
+    
+    @objc class func sharedInstance() -> UserClient {
+        return instance
     }
 }

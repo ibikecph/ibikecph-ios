@@ -141,7 +141,6 @@ class FavoriteViewController: SMTranslatedViewController {
         }
         favoriteItem?.origin = type
         updateViews()
-        save()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

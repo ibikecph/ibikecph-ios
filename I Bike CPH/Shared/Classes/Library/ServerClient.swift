@@ -22,7 +22,7 @@ class ServerClient {
     }
     
     enum ServerResult {
-        case SuccessJSON(JSON)
+        case SuccessJSON(JSON, statusCode: Int)
         case Failed(error: NSError)
         case FailedNoData
         case FailedNoPath
@@ -50,7 +50,8 @@ class ServerClient {
                         completion(.Failed(error: error))
                         return
                     }
-                    completion(.SuccessJSON(json))
+                    let statusCode = (response as? NSHTTPURLResponse)?.statusCode ?? 200
+                    completion(.SuccessJSON(json, statusCode: statusCode))
                 } else {
                     completion(.FailedNoData)
                 }
@@ -81,7 +82,8 @@ class ServerClient {
                         completion(.Failed(error: error))
                         return
                     }
-                    completion(.SuccessJSON(json))
+                    let statusCode = (response as? NSHTTPURLResponse)?.statusCode ?? 200
+                    completion(.SuccessJSON(json, statusCode: statusCode))
                 } else {
                     completion(.FailedNoData)
                 }

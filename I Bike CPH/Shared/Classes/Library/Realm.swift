@@ -81,15 +81,16 @@ var compressingRealm = false
 extension RLMRealm {
     
     class func deleteDefaultRealmFile() {
-        var path = defaultRealmPath()
-        NSFileManager.defaultManager().removeItemAtPath(path, error: nil)
+        if let path = RLMRealmConfiguration.defaultConfiguration().path {
+            NSFileManager.defaultManager().removeItemAtPath(path, error: nil)
+        }
     }
     
     class func addNotificationBlock(block: RLMNotificationBlock) -> RLMNotificationToken {
         return RLMRealm.defaultRealm().addNotificationBlock(block)
     }
     
-    class func removeNotification(token: RLMNotificationToken?) {
+    class func removeNotification(token: RLMNotificationToken) {
         return RLMRealm.defaultRealm().removeNotification(token)
     }
     
@@ -101,32 +102,26 @@ extension RLMRealm {
     }
     
     class func compress(ifNecessary: Bool = true) {
-        compressingRealm = true
-        
-        let defaultPath = defaultRealmPath()
-        var sizeError: NSError? = nil
-        if let
-            attributes = NSFileManager.defaultManager().attributesOfItemAtPath(defaultPath, error: &sizeError),
-            size = attributes[NSFileSize] as? Int
-            where size < 100*1024*1024 // 100 mb
-        {
-            return
+        if let defaultPath = RLMRealmConfiguration.defaultConfiguration().path {
+            var sizeError: NSError? = nil
+            if let
+                attributes = NSFileManager.defaultManager().attributesOfItemAtPath(defaultPath, error: &sizeError),
+                size = attributes[NSFileSize] as? Int
+                where size < 100*1024*1024 // 100 mb
+            {
+                return
+            }
+            compressingRealm = true
+            
+            var error: NSError? = nil
+            let tempPath = defaultPath + "_copy"
+            NSFileManager.defaultManager().removeItemAtPath(tempPath, error: nil)
+            RLMRealm.defaultRealm().writeCopyToPath(tempPath, error: &error)
+            NSFileManager.defaultManager().removeItemAtPath(defaultPath, error: nil)
+            NSFileManager.defaultManager().moveItemAtPath(tempPath, toPath: defaultPath, error: nil)
+            RLMRealm.defaultRealm()
+            
+            compressingRealm = false
         }
-        
-        var error: NSError? = nil
-        let tempPath = defaultPath + "_copy"
-        NSFileManager.defaultManager().removeItemAtPath(tempPath, error: nil)
-        RLMRealm.defaultRealm().writeCopyToPath(tempPath, error: &error)
-        println(error)
-        RLMRealm.deleteDefaultRealmFile()
-        let version = UInt(REALM_SCHEMA_VERSION)
-        RLMRealm.setSchemaVersion(UInt64(version), forRealmAtPath: tempPath) { migration, oldSchemaVersion in }
-        let tempRealm = RLMRealm(path: tempPath)
-        tempRealm.writeCopyToPath(defaultPath, error: &error)
-        println(error)
-        NSFileManager.defaultManager().removeItemAtPath(tempPath, error: &error)
-        println(error)
-        
-        compressingRealm = false
     }
 }

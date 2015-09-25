@@ -11,8 +11,10 @@ import PSTAlertController
 
 class TrackingPromptViewController: SMTranslatedViewController {
     
-    private var pendingEnableTracking = false
+    private var pendingEnableTrackingFromTrackToken = false
+    private var pendingEnableTrackingFromLogin = false
     private let toAddTrackTokenControllerSegue = "trackingPromptToAddTrackToken"
+    private static let toLoginSegue = "trackingPromptToLogin"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,18 +22,29 @@ class TrackingPromptViewController: SMTranslatedViewController {
         title = "tracking".localized
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+       
+        // Hide navigationbar when appeared
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         // Check if tracking should be enabled
-        if pendingEnableTracking && UserHelper.checkEnableTracking() == .Allowed {
+        if (pendingEnableTrackingFromTrackToken || pendingEnableTrackingFromLogin) && UserHelper.checkEnableTracking() == .Allowed {
             Settings.instance.tracking.on = true
-            pendingEnableTracking = false
+            pendingEnableTrackingFromLogin = false
+            pendingEnableTrackingFromTrackToken = false
             dismiss()
-        } else if pendingEnableTracking && UserHelper.checkEnableTracking() == .LacksTrackToken {
+        } else if pendingEnableTrackingFromLogin && UserHelper.checkEnableTracking() == .LacksTrackToken {
+            pendingEnableTrackingFromLogin = false
+            pendingEnableTrackingFromTrackToken = true
             performSegueWithIdentifier(toAddTrackTokenControllerSegue, sender: self)
         } else {
-            pendingEnableTracking = false
+            pendingEnableTrackingFromLogin = false
+            pendingEnableTrackingFromTrackToken = false
         }
     }
     
@@ -39,7 +52,7 @@ class TrackingPromptViewController: SMTranslatedViewController {
         return .LightContent
     }
     
-    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func cancelButtonTapped(sender: UIButton) {
         dismiss()
     }
     
@@ -49,8 +62,8 @@ class TrackingPromptViewController: SMTranslatedViewController {
             let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
             alertController.addCancelActionWithHandler(nil)
             let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
-                self?.pendingEnableTracking = true
-                self?.performSegueWithIdentifier("trackingPromptToLogin", sender: self)
+                self?.pendingEnableTrackingFromLogin = true
+                self?.performSegueWithIdentifier(TrackingPromptViewController.toLoginSegue, sender: self)
             }
             alertController.addAction(loginAction)
             alertController.showWithSender(self, controller: self, animated: true, completion: nil)
@@ -59,7 +72,7 @@ class TrackingPromptViewController: SMTranslatedViewController {
             dismiss()
         case .LacksTrackToken:
             // User is logged in but doesn't have a trackToken
-            pendingEnableTracking = true
+            pendingEnableTrackingFromTrackToken = true
             performSegueWithIdentifier(toAddTrackTokenControllerSegue, sender: self)
             return
         }

@@ -91,7 +91,7 @@ class TracksHandler {
         let timeIntervalSinceSmall = NSDate().timeIntervalSinceDate(instance.lastProcessedSmall)
         if
             userInitiated &&
-            timeIntervalSinceBig > 60*1 // Allow userInitiated every 1 min
+            timeIntervalSinceBig > 0 //60*1 // Allow userInitiated every 1 min
         {
             instance.cleanUpBig(asap: true)
             instance.lastProcessedBig = NSDate()
@@ -394,21 +394,15 @@ func deleteObjectsInParts(results: RLMResults) {
             let slicedArray = Array(array[i*max..<((i+1)*max)])
             realm.deleteObjects(slicedArray)
             realm.commitWriteTransaction()
-            println("\(results.count) \(NSDate().timeIntervalSinceDate(date))")
+            println("\(results.count) \(NSDate().timeIntervalSinceDate(date)) .a")
         }
     }
-    while results.count > 0 {
+    if results.count > 0 {
         let date = NSDate()
         realm.beginWriteTransaction()
-        if Int(results.count) > max {
-            let array = results.toArray(RLMObject.self)
-            let slicedArray = Array(array[0..<max])
-            realm.deleteObjects(slicedArray)
-        } else {
-            (results.firstObject() as? RLMObject)?.deleteFromRealm()
-        }
+        realm.deleteObjects(results.toArray(RLMObject.self))
         realm.commitWriteTransaction()
-        println("\(results.count) \(NSDate().timeIntervalSinceDate(date))")
+        println("\(results.count) \(NSDate().timeIntervalSinceDate(date)) .b")
     }
 }
 
@@ -445,14 +439,16 @@ class InferBikingFromSpeedOperation: TracksOperation {
                         continue
                     }
                 }
-                track.realm.beginWriteTransaction()
-                track.activity.automotive = false
-                track.activity.running = false
-                track.activity.walking = false
-                track.activity.cycling = true // Force cycling
-                track.activity.stationary = false // Force non-stationary
-                track.realm.commitWriteTransaction()
-                println("Infered biking \(track.startDate())")
+                if let realm = track.realm {
+                    realm.beginWriteTransaction()
+                    track.activity.automotive = false
+                    track.activity.running = false
+                    track.activity.walking = false
+                    track.activity.cycling = true // Force cycling
+                    track.activity.stationary = false // Force non-stationary
+                    realm.commitWriteTransaction()
+                    println("Infered biking \(track.startDate())")
+                }
             }
         }
         println("Infer bike from speed from other activity DONE \(-startDate.timeIntervalSinceNow)")
@@ -1099,7 +1095,7 @@ class UploadBikeTracksOperation: TracksOperation {
         for track in Track.allObjects() {
             if let track = track as? Track {
                 if track.serverId.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == dummyTrackId.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) {
-                    track.realm.transactionWithBlock {
+                    track.realm?.transactionWithBlock {
                         track.serverId = ""
                     }
                 }
@@ -1111,14 +1107,14 @@ class UploadBikeTracksOperation: TracksOperation {
         for track in bikeTracks {
             if let track = track as? Track {
                 let temporaryTrackId = NSUUID().UUIDString
-                track.realm.transactionWithBlock {
+                track.realm?.transactionWithBlock {
                     track.serverId = temporaryTrackId
                 }
                 TracksClient.instance.upload(track) { result in
                     if let track = Track.allObjects().objectsWhere("serverId == %@", temporaryTrackId).firstObject() as? Track {
                         switch result {
                             case .Success(let trackServerId):
-                                track.realm.transactionWithBlock {
+                                track.realm?.transactionWithBlock {
                                     track.serverId = trackServerId
                                     println("Track stored on server: " + trackServerId)
                                 }
@@ -1126,12 +1122,12 @@ class UploadBikeTracksOperation: TracksOperation {
                                 switch result {
                                     case .Failed(let error):
                                         println(error.localizedDescription)
-                                        track.realm.transactionWithBlock {
+                                        track.realm?.transactionWithBlock {
                                             track.serverId = ""
                                         }
                                     default:
                                         println("Other upload error \(result)")
-                                        track.realm.transactionWithBlock {
+                                        track.realm?.transactionWithBlock {
                                             track.serverId = ""
                                         }
                                 }

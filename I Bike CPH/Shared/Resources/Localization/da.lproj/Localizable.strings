@@ -175,7 +175,7 @@
 "create_with_fb" = "Opret med Facebook";
 "register_with_mail" = "Opret med email";
 "skip" = "Spring over";
-"create_account" = "Opret kontp";
+"create_account" = "Opret konto";
 "create_account_text" = "Ved at oprette en konto, har du muligheden for at gemme favoritter og søgninger på tværs af mobilen og ibikecph.dk ";
 "register_save" = "Opret mig";
 "create_account" = "Opret din konto";
@@ -193,15 +193,16 @@
 "favorites_home_placeholder" = "Hjemmeadresse ...";
 "favorites_work_placeholder" = "Arbejdsadresse ...";
 "log_in" = "Log ind";
+"edit_account" = "Redigér profil";
 
 "save_password" = "Gem kodeord";
 "use_password" = "Brug kodeord";
 "track_token_title" = "Sikkerhedskode";
-"track_token_headline" = "Vi går op i at dine data er anonyme!";
+"track_token_headline" = "Vi sikrer at dine data holdes anonyme!";
 "track_token_subtitle_native" = "Du er logget ind som";
 "track_token_description_native" = "For at sikre, at dine data kan deles anonymt med Københavns Kommune og Region Hovedstaden, har vi brug for at du skriver din adgangskode igen.";
 "track_token_subtitle_facebook" = "Du er logget ind via Facebook som";
-"track_token_description_facebook_new" = "For at sikre at dine data kan deles anonymt med Københavns Kommune og Region Hovedstaden, har vi brug for at du opretter et kodeord, kun du kender.";
+"track_token_description_facebook_new" = "For at sikre, at dine data er anonymiserede inden de deles med Københavns Kommune og kommunerne i Region Hovedstaden, skal du vælge et password på minimum 6 cifre. Af sikkerhedsmæssige årsager kan den valgte adgangskode ikke gendannes.";
 "track_token_description_facebook_has_token" = "For at kunne hente dine data skal du skrive det kodeord du har opgivet da du aktiverede indsamling af cykeldata.";
 
 "add_favorite" = "Tilføj favorit";
@@ -229,7 +230,7 @@
 "thank_you_for_feedback" = "Tak for din feedback";
 "feedback_text" = "Din feedback er blevet afsendt.\n\nDu kan deltage i opfølgning og diskussion af nye funktioner på www.ibikecph.dk/feedback.";
 "report_sent" = "Feedbacken er afsendt";
-"report_enter_email_address_placeholder" = "Enter you email address";
+"report_enter_email_address_placeholder" = "Indtast din email adresse";
 "home_find_route" = "Søg rute";
 
 "delete_my_account" = "Slet min konto";
@@ -241,25 +242,26 @@
 "old_password" = "Gammel adgangskode";
 "account_password_placeholder" = "Skriv ny adgangskode";
 "account_repeat_placeholder" = "Gentag ny adgangskode";
-"accept_user_terms" = "Jeg accepterer brugerbetingelser";
+"accept_user_terms" = "Jeg accepterer brugerbetingelserne";
 "accept_user_terms_link_highlight" = "brugerbetingelser";
 "accept_user_terms_link" = "https://www.ibikecph.dk/terms";
 
 "login_error_fields" = "Både din email og din adgangskode skal være indtastet!";
 "register_error_fields" = "Alle felter skal være udfyldt!";
 "register_error_passwords" = "Din adgangskode er forkert!";
-"register_error_user_terms" = "Du skal acceptere brugerbetingelser!";
+"register_error_user_terms" = "Du skal acceptere brugerbetingelserne!";
 
 "error_not_logged_in" = "Du skal være logget ind";
 "report_error_problem_not_selected" = "Vælg venligst et problem";
-"report_error_step_not_selected" = "Vælg venligst et trin i ruten";
+"report_error_step_not_selected" = "Vælg venligst et trin på ruten";
 
 "start_route" = "Start";
 
 "error_duplicate_favorite_name" = "Du har allerede en favorit med dette navn. Omdøb din favorit og gem igen.";
 
-"delete_account_title" = "Slet konto?";
-"delete_account_text" = "Alle dine favoritter samt din historik vil blive slettet";
+"delete_account_title" = "Slet din konto?";
+"delete_account_text" = "Dine favoritter samt dine indsamlede cykeldata vil blive slettet helt.";
+"delete_account_text_facebook_tracking" = "Dine favoritter samt dine indsamlede cykeldata vil blive slettet helt. \nFor at slette skal du opgive det kodeord du definerede da du aktiverede indsamling af cykeldata.";
 "Delete" = "Slet";
 "account_deleted" = "Din konto er blevet slettet";
 "close" = "LUK";
@@ -309,7 +311,8 @@
 
 "enable" = "Aktivér";
 "launch_activate_tracking_title" = "Velkommen.\nAktiver indsamling og deling af dine cykeldata";
-"launch_activate_tracking_description" = "Se hvor og hvor meget du cykler til dagligt. Få ugentlige beskeder og opnå milepæle.\n\nDel samtidig dine cykeldata anonymt med Københavns Kommune og Region Hovedstaden - og vær med til skabe mere viden om cykling i og omkring København.";
+"launch_activate_tracking_title_no_welcome" = "Aktiver indsamling og deling af dine cykeldata";
+"launch_activate_tracking_description" = "Se hvor og hvor meget du cykler til dagligt. Få ugentlige beskeder og opnå milepæle.\n\nDel samtidig dine cykeldata anonymt med Københavns Kommune og kommunerne i Region Hovedstaden - og vær med til skabe mere viden om cykling i og omkring København.";
 "launch_activate_tracking_read_more" = "Læs mere";
 "launch_activate_tracking_read_more_description" = "Hvilke af dine data gemmer vi, hvordan og hvorfor:\n\nNår du har slået indsamling af cykeldata til, lagres der data om dine cykelture lokalt på din telefon. Dataen synkroniseres med Københavns Kommunes og Region Hovedstadens server og bruges udelukkende til interne studier. Inden dette sker, bliver dine data anonymiseret så de ikke kan tilbageføres til dig.\n\nMed cykeldata fra denne app vil vi blandt andet kunne se hvor og hvornår mange holder for rødt. Vi vil dermed bedre kunne indstille lyssignaler, planlægge ruter og få trafikken til at glide nemmere. Samtidig vil vi bedre kunne måle effekten af ændringer og justeringer. Ved at dele data vil du dermed være med til at skabe stor fordel for alle, der cykler i København og Region Hovedstaden.";
 

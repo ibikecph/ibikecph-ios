@@ -141,9 +141,9 @@ class MainMapViewController: MapViewController {
                         self.showUserTerms()
                     }
                 case .Success(_, _):
-                    print("No new user terms")
+                    println("No new user terms")
                 default:
-                    print("Failed to get user terms: \(result)")
+                    println("Failed to get user terms: \(result)")
             }
         }
     }
@@ -154,9 +154,7 @@ class MainMapViewController: MapViewController {
             return
         }
         
-        let trackingOn = Settings.instance.tracking.on
-        let hasBikeTracks = BikeStatistics.hasTrackedBikeData()
-        let showTrackingView = trackingOn || hasBikeTracks
+        let showTrackingView = Settings.instance.tracking.on
         if showTrackingView {
             let distance = BikeStatistics.distanceThisDate()
             trackingToolbarView.distance = distance

@@ -16,13 +16,13 @@ PODS:
     - GRMustache (= 7.3.0)
     - SMCalloutView (= 2.0)
   - NibDesignable (1.1.1)
-  - OCHamcrest (4.1.1)
+  - OCHamcrest (4.2.0)
   - OCMockito (1.4.0):
     - OCHamcrest (~> 4.0)
   - PSTAlertController (1.1.0)
-  - Realm (0.93.2):
-    - Realm/Headers (= 0.93.2)
-  - Realm/Headers (0.93.2)
+  - Realm (0.95.0):
+    - Realm/Headers (= 0.95.0)
+  - Realm/Headers (0.95.0)
   - Reveal-iOS-SDK (1.5.1)
   - SMCalloutView (2.0)
   - TTTAttributedLabel (1.13.4)
@@ -32,7 +32,7 @@ DEPENDENCIES:
   - DAKeyboardControl (~> 2.4)
   - GoogleAnalytics-iOS-SDK (~> 3.10)
   - Mapbox-iOS-SDK (= 1.6.0)
-  - NibDesignable
+  - NibDesignable (~> 1.1.0)
   - OCMockito (~> 1.0)
   - PSTAlertController (~> 1.1)
   - Realm (~> 0.93)
@@ -48,10 +48,10 @@ SPEC CHECKSUMS:
   JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
   Mapbox-iOS-SDK: ee136ca5b7f853456b50dfd7a7f0e243288cf86f
   NibDesignable: 95579fc418e1922f341f51fc1243a1a21af04ccf
-  OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
+  OCHamcrest: c14c0b3f4c4e99363e5b87d97bae38c4438b6d5d
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   PSTAlertController: cb21afcfa76c3229feec7db044afd4f60dab5892
-  Realm: 2fdd0ae74f730e190384e0338d8a0d3654df8220
+  Realm: bbb171b96728ea136ed5cd354dca2a3d6529923c
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
   SMCalloutView: f758edd824b18bf4f42de00df1e299861a2d1950
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f

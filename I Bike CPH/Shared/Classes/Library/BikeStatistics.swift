@@ -30,7 +30,7 @@ class BikeStatistics {
     :returns: Total distance in meters [m]
     */
     class func totalDistance() -> Double {
-        return (tracks().sumOfProperty("length")?.doubleValue ?? 0)
+        return tracks().sumOfProperty("length").doubleValue ?? 0
     }
     
     /**
@@ -39,7 +39,7 @@ class BikeStatistics {
     :returns: Total duration in seconds [s]
     */
     class func totalDuration() -> Double {
-        return (tracks().sumOfProperty("duration")?.doubleValue ?? 0)
+        return tracks().sumOfProperty("duration").doubleValue ?? 0
     }
     
     /**
@@ -125,7 +125,7 @@ class BikeStatistics {
     :returns: Total duration in seconds [s]
     */
     class func durationThisDate(date: NSDate = NSDate()) -> Double {
-        return tracksForDayOfDate(date)?.sumOfProperty("duration")?.doubleValue ?? 0
+        return tracksForDayOfDate(date)?.sumOfProperty("duration").doubleValue ?? 0
     }
     
     /**
@@ -134,7 +134,7 @@ class BikeStatistics {
     :returns: Total distance in meters [m]
     */
     class func distanceThisDate(date: NSDate = NSDate()) -> Double {
-        return tracksForDayOfDate(date)?.sumOfProperty("length")?.doubleValue ?? 0
+        return tracksForDayOfDate(date)?.sumOfProperty("length").doubleValue ?? 0
     }
     
     /**
@@ -143,7 +143,7 @@ class BikeStatistics {
     :returns: Total duration in seconds [s]
     */
     class func durationThisWeek() -> Double {
-        return tracksThisWeek()?.sumOfProperty("duration")?.doubleValue ?? 0
+        return tracksThisWeek()?.sumOfProperty("duration").doubleValue ?? 0
     }
     
     /**
@@ -152,7 +152,7 @@ class BikeStatistics {
     :returns: Total distance in meters [m]
     */
     class func distanceThisWeek() -> Double {
-        return tracksThisWeek()?.sumOfProperty("length")?.doubleValue ?? 0
+        return tracksThisWeek()?.sumOfProperty("length").doubleValue ?? 0
     }
     
     /**

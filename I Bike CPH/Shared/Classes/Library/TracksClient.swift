@@ -19,7 +19,14 @@ class TracksClient: ServerClient {
     }
     
     enum Result {
-        case Success()
+        case Success
+        case Other(ServerResult)
+    }
+    
+    enum DeleteResult {
+        case Success
+        case NotAuthorized
+        case NotFound
         case Other(ServerResult)
     }
     
@@ -32,7 +39,7 @@ class TracksClient: ServerClient {
                 return theRequest
             }) { result in
                 switch result {
-                    case .SuccessJSON(let json):
+                    case .SuccessJSON(let json, _):
                         if let serverId = json["data"]["id"].int {
                             completion(.Success(trackServerId: String(serverId)))
                         } else {
@@ -51,7 +58,7 @@ class TracksClient: ServerClient {
     }
     
     
-    func delete(track: Track, completion: (Result) -> ()) {
+    func delete(track: Track, completion: (DeleteResult) -> ()) {
         let serverId = track.serverId
         if serverId == "" {
             completion(.Other(ServerResult.FailedEncodingError))
@@ -70,9 +77,17 @@ class TracksClient: ServerClient {
                 return theRequest
             }) { result in
                 switch result {
-                    case .SuccessJSON(let json):
-                        if json["success"].boolValue {
-                            completion(.Success())
+                    case .SuccessJSON(let json, let statusCode):
+                        if let success = json["success"].bool {
+                            if success {
+                                completion(.Success)
+                            } else if statusCode == 404 {
+                                completion(.NotFound)
+                            } else if statusCode == 401 {
+                                completion(.NotAuthorized)
+                            } else {
+                                completion(.Other(ServerResult.FailedNoSuccess))
+                            }
                         } else {
                             completion(.Other(ServerResult.FailedNoSuccess))
                         }

@@ -58,7 +58,7 @@
     }
     
 
-    if ([request[@"transferMethod"] isEqualToString:@"GET"] || [request[@"transferMethod"] isEqualToString:@"DELETE"]) {
+    if ([request[@"transferMethod"] isEqualToString:@"GET"]) {
         [self executeGetRequestWithParams:params andURL:request];
     } else {
         [self executePostRequestWithParams:params andURL:request];
@@ -66,7 +66,7 @@
 }
 
 /**
- * Executes GET type request (GET/DELETE) with givern parameters and service URL
+ * Executes GET type request (GET) with givern parameters and service URL
  */
 - (void) executeGetRequestWithParams:(NSDictionary*) params andURL:(NSDictionary*) service {
     if (service) {
@@ -134,7 +134,7 @@
 }
 
 /**
- * Executes POST type request (POST/PUT) with given parameters and service URL
+ * Executes POST type request (POST/PUT/DELETE) with given parameters and service URL
  */
 - (void) executePostRequestWithParams:(NSDictionary*) params andURL:(NSDictionary*) service {
     if (service) {
