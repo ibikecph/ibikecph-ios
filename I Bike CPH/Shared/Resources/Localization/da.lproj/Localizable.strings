@@ -19,7 +19,7 @@
 "direction_8" = "Drej lidt til venstre ad";
 "direction_9" = "Via-punkt";
 "direction_10" = "Fortsæt ad";
-"direction_11" = "Kør in i rundkørslen ad";
+"direction_11" = "Kør ind i rundkørslen ad";
 "direction_12" = "Kør fra rundkørslen ad";
 "direction_13" = "Bliv i rundkørslen";
 "direction_14" = "Bliv på";
@@ -45,7 +45,7 @@
 "first_direction_14" = "Kør mod %@ og bliv på";
 "first_direction_15" = "Ankomst til destinationen";
 "first_direction_16" = "Kør mod %@ og træk cyklen";
-"first_direction_17" = "Gå mod %@ og fortsæt på cykele";
+"first_direction_17" = "Gå mod %@ og fortsæt på cykel";
 "first_direction_100" = "Du nærmer dig destinationen";
 
 "direction_N" = "nord";
@@ -99,19 +99,19 @@
 
 "Error" = "Fejl";
 "OK" = "OK";
-"error_no_gps_location" = "Ingen GPS lokation!";
-"error_address_not_found" = "Adressens lokation kan ikke findes!";
-"error_from_address_not_found" = "START adressens lokation kan ikke findes!";
-"error_to_address_not_found" = "SLUT adressens lokation kan ikke findes!";
+"error_no_gps_location" = "Ingen GPS position!";
+"error_address_not_found" = "Adressens position kan ikke findes!";
+"error_from_address_not_found" = "Startadressens position kan ikke findes!";
+"error_to_address_not_found" = "Destinationsadressens position kan ikke findes!";
 "error_invalid_email" = "Ugyldig email!";
 "error_invalid_to_address" = "Destinationsadressen er ugyldig!";
 "error_favorites_name_exists" = "Navn er allerede brugt";
 
-"route_info"= "Rejseforslag";
+"route_info"= "Rutevejledning";
 
 "route_stop_title" = "Vil du afslutte ruten?";
 "route_stop_text" = "Afbryd ruten ved at trykke på ‘Stop’. Du kan rapportere problemer med ruten ved at trykke på ‘Rapporter et problem’.";
-"report_error" = "Rapporter";
+"report_error" = "Rapportér";
 "report_wrong_address" = "Forkert vejnavn";
 "report_road_closed" = "Vejen er lukket";
 "report_one_way" = "Vejen er ensrettet";
@@ -119,7 +119,7 @@
 "report_wrong_instruction" = "Forkert instruktion";
 "report_other" = "Andet";
 
-"report_subject" = "Rapporter";
+"report_subject" = "Rapportér";
 "report_from" = "Start:";
 "report_to" = "Slut:";
 "report_tbt_instructions" = "Rutevejledning:";
@@ -169,7 +169,7 @@
 "good_ride" = "Godt kørt!";
 "hope_you_had_a_good_trip" = "Vi håber du havde en god tur.";
 "stop_ride" = "Afslut ruten";
-"ride_report_a_problem" = "Rapporter et problem";
+"ride_report_a_problem" = "Rapportér et problem";
 
 "login_with_fb" = "Log ind med Facebook";
 "create_with_fb" = "Opret med Facebook";
@@ -189,7 +189,7 @@
 "login_new_account" = "Opret en konto";
 "save_favorites" = "Gem favoritter";
 "favorites_title" = "Tilføj favoritter";
-"favorites_text" = "Gem dine favorit destinationer i app’en så er det altid hurtigt og nemt at finde vej hjem, til arbejde eller skole.";
+"favorites_text" = "Gem dine favorit-destinationer i appen så er det altid hurtigt og nemt at finde vej hjem, til arbejde eller skole.";
 "favorites_home_placeholder" = "Hjemmeadresse ...";
 "favorites_work_placeholder" = "Arbejdsadresse ...";
 "log_in" = "Log ind";
@@ -202,7 +202,7 @@
 "track_token_subtitle_native" = "Du er logget ind som";
 "track_token_description_native" = "For at sikre, at dine data kan deles anonymt med Københavns Kommune og Region Hovedstaden, har vi brug for at du skriver din adgangskode igen.";
 "track_token_subtitle_facebook" = "Du er logget ind via Facebook som";
-"track_token_description_facebook_new" = "For at sikre, at dine data er anonymiserede inden de deles med Københavns Kommune og kommunerne i Region Hovedstaden, skal du vælge et password på minimum 6 cifre. Af sikkerhedsmæssige årsager kan den valgte adgangskode ikke gendannes.";
+"track_token_description_facebook_new" = "For at sikre, at dine data er anonymiserede inden de deles med Københavns Kommune og Region Hovedstaden, skal du vælge et password på mindst 6 cifre. Af sikkerhedsmæssige årsager kan den valgte adgangskode ikke gendannes.";
 "track_token_description_facebook_has_token" = "For at kunne hente dine data skal du skrive det kodeord du har opgivet da du aktiverede indsamling af cykeldata.";
 
 "add_favorite" = "Tilføj favorit";
@@ -218,9 +218,9 @@
 "back" = "Tilbage";
 "done" = "Færdig";
 "Name" = "Navn";
-"add_favorite_name_placeholder" = "Indtast navn ...";
+"add_favorite_name_placeholder" = "Indtast navn...";
 "Address" = "Adresse";
-"add_favorite_address_placeholder" = "Find adresse ...";
+"add_favorite_address_placeholder" = "Find adresse...";
 "account" = "Min Profil";
 
 "report_send" = "Send besked";
@@ -229,7 +229,7 @@
 
 "thank_you_for_feedback" = "Tak for din feedback";
 "feedback_text" = "Din feedback er blevet afsendt.\n\nDu kan deltage i opfølgning og diskussion af nye funktioner på www.ibikecph.dk/feedback.";
-"report_sent" = "Feedbacken er afsendt";
+"report_sent" = "Feedback er afsendt";
 "report_enter_email_address_placeholder" = "Indtast din email adresse";
 "home_find_route" = "Søg rute";
 
@@ -260,47 +260,47 @@
 "error_duplicate_favorite_name" = "Du har allerede en favorit med dette navn. Omdøb din favorit og gem igen.";
 
 "delete_account_title" = "Slet din konto?";
-"delete_account_text" = "Dine favoritter samt dine indsamlede cykeldata vil blive slettet helt.";
-"delete_account_text_facebook_tracking" = "Dine favoritter samt dine indsamlede cykeldata vil blive slettet helt. \nFor at slette skal du opgive det kodeord du definerede da du aktiverede indsamling af cykeldata.";
+"delete_account_text" = "Alle dine favoritter og indsamlede cykeldata vil blive slettet.";
+"delete_account_text_facebook_tracking" = "Alle dine favoritter og indsamlede cykeldata vil blive slettet.\nIndtaste det kodeord du valgte da du aktiverede indsamling af cykeldata.";
 "Delete" = "Slet";
 "account_deleted" = "Din konto er blevet slettet";
-"close" = "LUK";
+"close" = "Luk";
 
 "favorites_login" = "Du har ingen favoritter, men du kan hurtigt tilføje en, hvis du logger ind.";
-"fb_login_error" = "Facebook login-fejl!";
+"fb_login_error" = "Fejl ved Facebook-login!";
 "fb_login_error_no_access" = "Appen kunne ikke få adgang til din Facebook-konto. Slå adgang til i systemindstillinger.";
-"please_login" = "Du skal logge ind";
+"please_login" = "Log venligst ind";
 "account_is_linked_to_facebook" = "Din konto er linket til Facebook";
 "or" = "eller";
 
 "current_position_cant_be_destination" = "Det er ikke muligt at anvende nuværende position som destination!";
 
 "register_error_passwords_short" = "Din adgangskode er for kort";
-"register_error_invalid_email" = "Din email-adresse er ikke gyldig";
+"register_error_invalid_email" = "Din emailadresse er ikke gyldig";
 
-"register_successful" = "Konto oprettet. En bekræftelse er blevet sendt til din email-adresse, følg venligst linket i emailen for at aktivere din konto.";
+"register_successful" = "Konto oprettet. En bekræftelse er sendt til din emailadresse. Følg venligst linket i emailen for at aktivere din konto.";
 
 "account_not_saved" = "Dine ændringer blev ikke gemt.";
-"account_cancel" = "Annuller";
+"account_cancel" = "Annullér";
 "account_dont_save" = "Gem ikke";
 
 "you_have_reached_your_destination" = "Du har nået din destination";
 
-"network_error_text" = "Netværks-fejl opstod";
+"network_error_text" = "Netværksfejl opstod";
 
 "vehicle_2" = "Gå";
 "vehicle_3" = "Færge";
 "vehicle_4" = "Tog";
 
 "voice_option" = "Oplæs rute";
-"voice_option_detail" = "Oplæsning af rute giver dig mulighed for at få oplæst instruktioner op så du kan finde vej. Bruger du hovedtelefoner? Husk at være opmærksom på trafikken og overhold færdselsreglerne. ";
+"voice_option_detail" = "Oplæsning af rute giver dig mulighed for at få oplæst ruteinstruktionerne. Bruger du hovedtelefoner? Husk at være opmærksom på trafikken og overhold færdselsreglerne. ";
 
-"tracking" = "Opsamling af cykeldata";
+"tracking" = "Indsamling af cykeldata";
 "enable_tracking" = "Slå opsamling af cykeldata til";
 "enable_tracking_description" = "Start indsamling af cykeldata";
-"enable_tracking_explanation" = "Når du har slået indsamling af cykeldata til, lagres der data om din cykeladfærd lokalt på din telefon og på en server. Det er kun dig der har adgang til din data, og alt data slettes hvis du sletter din profil.";
+"enable_tracking_explanation" = "Når slår indsamling af cykeldata til, gemmes data om din cykeladfærd i appen. Data gemmes også anonymt på vores serveree, så de kan bruges til fx at forbedre grønne bølger for cyklister. Du kan slette dine data igen hvornår du vil.";
 "no_tracking_description" = "Din telefon understøtter desværre ikke indsamling af cykeldata.";
-"no_tracking_explanation" = "Opsamling af cykeldata understøttes pånuværende tidspunkt kun på Apple's iPhone 5s og opefter og på Andriod telefoner.";
+"no_tracking_explanation" = "Opsamling af cykeldata understøttes kun på iPhone 5s eller nyere, samt på Andriod telefoner.";
 "stats_description" = "Din cykelaktivitet";
 "Since" = "Siden";
 "tracking_option" = "Indsamling af cykeldata";
@@ -310,19 +310,19 @@
 "reenable_tracking" = "Genaktivér indsamling af cykeldata";
 
 "enable" = "Aktivér";
-"launch_activate_tracking_title" = "Velkommen.\nAktiver indsamling og deling af dine cykeldata";
-"launch_activate_tracking_title_no_welcome" = "Aktiver indsamling og deling af dine cykeldata";
-"launch_activate_tracking_description" = "Se hvor og hvor meget du cykler til dagligt. Få ugentlige beskeder og opnå milepæle.\n\nDel samtidig dine cykeldata anonymt med Københavns Kommune og kommunerne i Region Hovedstaden - og vær med til skabe mere viden om cykling i og omkring København.";
+"launch_activate_tracking_title" = "Hej cyklist!\nAktivér indsamling af cykeldata";
+"launch_activate_tracking_title_no_welcome" = "Aktivér indsamling og deling af cykeldata";
+"launch_activate_tracking_description" = "Se hvor og hvor meget du cykler. Få ugentlige status og besked når nu når milepæle.\n\nDel samtidig dine cykeldata anonymt med Københavns Kommune og Region Hovedstaden, så data kan bruges til fx at forbedre grønne bølger for cyklister.";
 "launch_activate_tracking_read_more" = "Læs mere";
-"launch_activate_tracking_read_more_description" = "Hvilke af dine data gemmer vi, hvordan og hvorfor:\n\nNår du har slået indsamling af cykeldata til, lagres der data om dine cykelture lokalt på din telefon. Dataen synkroniseres med Københavns Kommunes og Region Hovedstadens server og bruges udelukkende til interne studier. Inden dette sker, bliver dine data anonymiseret så de ikke kan tilbageføres til dig.\n\nMed cykeldata fra denne app vil vi blandt andet kunne se hvor og hvornår mange holder for rødt. Vi vil dermed bedre kunne indstille lyssignaler, planlægge ruter og få trafikken til at glide nemmere. Samtidig vil vi bedre kunne måle effekten af ændringer og justeringer. Ved at dele data vil du dermed være med til at skabe stor fordel for alle, der cykler i København og Region Hovedstaden.";
+"launch_activate_tracking_read_more_description" = "Når du slår indsamling af cykeldata til, mærker appen automatisk når du cykler og gemmer GPS-spor for dine cykelture på din telefon. Data uploades desuden anonymt til ibikecph.dk så de kan bruges af Københavns Kommune og Region Hovedstaden til at forbedre cykelforholdene.\n\nFx kan data om rejsehastigheder og ventetid for cyklister bruges til at indstille grønne bølger for cyklister så færre cyklister behøver at stoppe for rødt. Data kan også bruges til at måle effekten af cykelprojekter.\n\nVi gør meget ud af at beskytte dine data. Data bliver gemt anonymt på vores servere og kan ikke tilbageføres til dig, uden at du indtaster dit kodeord. Det sikrer at ingen kan se hvor du har cyklet, og giver samtidig dig mulighed for at slette dine data fra vores server hvis du senere ønsker det. Vi sælger aldrig dine data og offentliggør aldrig data om de enkelte cykelture.\n\nVed at indsamle cykeldata kan du være med til at forbedre forholdene for alle der cykler i København og Region Hovedstaden.";
 
 "log_in_to_favorite_prompt" = "For at tilføje favoritter, skal du være logget ind.";
 
 "unit_km" = "km";
 "unit_km_pr_h" = "km/t";
 "unit_km_pr_trip" = "km/tur";
-"unit_kcal" = "kal";
-"unit_kcal_pr_day" = "kal/day";
+"unit_kcal" = "kcal";
+"unit_kcal_pr_day" = "kcal/day";
 "unit_h_long" = "timer";
 "unit_h_long_singular" = "time";
 "unit_h_short" = "t";
@@ -442,7 +442,7 @@
 
 "intro_subtitle" = "Hurtigt fra A til B";
 
-"gps_off" = "GPS'en er deaktiveret. For at kunne lokalisere din position skal GPS'en være aktiveret.";
+"gps_off" = "GPS'en er deaktiveret. For at kunne finde din position skal GPS'en være aktiveret.";
 "activate_gps" = "Aktiver GPS";
 "leave_no_gps" = "Deaktiver GPS";
 
