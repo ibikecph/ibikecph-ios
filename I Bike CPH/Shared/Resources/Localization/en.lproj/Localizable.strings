@@ -257,7 +257,7 @@
 "start_route" = "Start";
 
 "delete_account_title" = "Delete your account?";
-"delete_account_text" = "All your favourites and collected bicycle data will be deleted.";
+"delete_account_text" = "All your favourites and collected bicycle data will be deleted. Please enter your password.";
 "delete_account_text_facebook_tracking" = "All your favourites and collected bicycle data will be deleted.\nPlease enter the password you chose when activating collection og bike data.";
 "Delete" = "Delete";
 "account_deleted" = "Your account has been deleted";

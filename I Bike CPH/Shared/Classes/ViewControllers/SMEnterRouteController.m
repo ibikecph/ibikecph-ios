@@ -55,21 +55,12 @@ typedef enum {
     self.fromItem = [CurrentLocationItem new];
 
     self.toItem = nil;
-
-    
-    // TODO: Verify that this can be deleted
-//    for (id v in self.tableView.subviews) {
-//        if ([v isKindOfClass:[UIScrollView class]]) {
-//            [v setDelegate:self];
-//        }
-//    }
-    
     
     SMAppDelegate * appd = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
-    NSMutableArray * saved = [SMFavoritesUtil getFavorites];
     /**
      * add saved routes here
      */
+    NSMutableArray * saved = [SMFavoritesUtil getFavorites];
     
     
     /**
@@ -402,52 +393,6 @@ typedef enum {
         NSObject<SearchListItem> *currentRow = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         SMEnterRouteCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         cell.nameLabel.text = currentRow.name;
-        
-        // TODO: Use logic from SMSearchCell
-//        if ([[currentRow objectForKey:@"source"] isEqualToString:@"fb"]) {
-//            [cell.iconImage setImage:[UIImage imageNamed:@"findRouteCalendar"]];
-//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findRouteCalendar"]];
-//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"ios"]) {
-//            [cell.iconImage setImage:[UIImage imageNamed:@"findRouteCalendar"]];
-//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findRouteCalendar"]];
-//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"contacts"]) {
-//            [cell.iconImage setImage:[UIImage imageNamed:@"findRouteContacts"]];
-//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findRouteContacts"]];
-//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"autocomplete"]) {
-//            if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"foursquare"]) {
-//                [cell.iconImage setImage:[UIImage imageNamed:@"findLocation"]];
-//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findLocation"]];
-//            } else {
-//                [cell.iconImage setImage:[UIImage imageNamed:@"findAutocomplete"]];
-//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findAutocomplete"]];
-//            }
-//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"searchHistory"]) {
-//            [cell.iconImage setImage:[UIImage imageNamed:@"findHistory"]];
-//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findHistory"]];
-//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"favorites"]) {
-//            if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"home"]) {
-//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favHomeWhite"]];
-//                [cell.iconImage setImage:[UIImage imageNamed:@"favHomeGrey"]];
-//            } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"work"]) {
-//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favWorkWhite"]];
-//                [cell.iconImage setImage:[UIImage imageNamed:@"favWorkGrey"]];
-//            } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"school"]) {
-//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favSchoolWhite"]];
-//                [cell.iconImage setImage:[UIImage imageNamed:@"favSchoolGrey"]];
-//            } else if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"favorite"]) {
-//                [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"favStarWhiteSmall"]];
-//                [cell.iconImage setImage:[UIImage imageNamed:@"favStarGreySmall"]];
-//            } else {
-//                [cell.iconImage setImage:nil];
-//                [cell.iconImage setHighlightedImage:nil];
-//            }
-//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"favoriteRoutes"]) {
-//            [cell.iconImage setImage:[UIImage imageNamed:@"findHistory"]];
-//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findHistory"]];
-//        } else if ([[currentRow objectForKey:@"source"] isEqualToString:@"pastRoutes"]) {
-//            [cell.iconImage setImage:[UIImage imageNamed:@"findHistory"]];
-//            [cell.iconImage setHighlightedImage:[UIImage imageNamed:@"findHistory"]];
-//        }
         return cell;
     }
 }

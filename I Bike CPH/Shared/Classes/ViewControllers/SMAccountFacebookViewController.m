@@ -84,6 +84,7 @@
             [controller addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                 textField.delegate = self;
                 textField.secureTextEntry = true;
+                textField.placeholder = @"register_password_placeholder".localized;
             }];
         }
         
