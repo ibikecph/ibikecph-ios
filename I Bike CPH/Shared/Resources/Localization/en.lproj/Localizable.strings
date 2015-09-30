@@ -293,18 +293,18 @@
 "voice_option_detail" = "Voice guide gives you the possibility of having route instructions read out loud. Are you using headphones? Please be aware of the traffic around you and obey the traffic rules.";
 
 "tracking" = "Collection of bike data";
-"enable_tracking" = "Enable collection of bike data";
+"enable_tracking" = "Enable";
 "enable_tracking_description" = "Start collecting bike data";
 "enable_tracking_explanation" = "When you enable collection of bike data, data about your bike behavior are stored locally on your phone. Data is also stored anonymously on our servers, so they can be used to e.g. improve green waves for cyclists. You can delete your data again at any time.";
 "no_tracking_description" = "Unfortunately your phone doesn't support the collection of bike data.";
-"no_tracking_explanation" = "Currently collecting of bike data is only supported on iPhone 5s or newer, and Android phones.";
+"no_tracking_explanation" = "Currently collection of bike data is only supported on iPhone 5s or newer, and Android phones.";
 "stats_description" = "Your bike activity";
 "Since" = "Since";
 "tracking_option" = "Collect bike data";
 "tracking_milestone_notifications" = "Notification about milestones";
 "tracking_weekly_status_notifications" = "Weekly status";
 "log_in_to_track_prompt" = "To start collecting bike data, you must login.";
-"reenable_tracking" = "Re-enable collecting of bike data";
+"reenable_tracking" = "Re-enable collection of bike data";
 
 "enable" = "Enable";
 "launch_activate_tracking_title" = "Hi cyclist!.\nActivate collection of bike data";

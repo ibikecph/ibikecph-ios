@@ -296,11 +296,11 @@
 "voice_option_detail" = "Oplæsning af rute giver dig mulighed for at få oplæst ruteinstruktionerne. Bruger du hovedtelefoner? Husk at være opmærksom på trafikken og overhold færdselsreglerne. ";
 
 "tracking" = "Indsamling af cykeldata";
-"enable_tracking" = "Slå opsamling af cykeldata til";
+"enable_tracking" = "Slå til";
 "enable_tracking_description" = "Start indsamling af cykeldata";
 "enable_tracking_explanation" = "Når slår indsamling af cykeldata til, gemmes data om din cykeladfærd i appen. Data gemmes også anonymt på vores serveree, så de kan bruges til fx at forbedre grønne bølger for cyklister. Du kan slette dine data igen hvornår du vil.";
 "no_tracking_description" = "Din telefon understøtter desværre ikke indsamling af cykeldata.";
-"no_tracking_explanation" = "Opsamling af cykeldata understøttes kun på iPhone 5s eller nyere, samt på Andriod telefoner.";
+"no_tracking_explanation" = "Opsamling af cykeldata understøttes kun på iPhone 5s eller nyere, samt på Android telefoner.";
 "stats_description" = "Din cykelaktivitet";
 "Since" = "Siden";
 "tracking_option" = "Indsamling af cykeldata";
