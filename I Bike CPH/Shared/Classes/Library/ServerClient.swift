@@ -52,6 +52,7 @@ class ServerClient {
                     }
                     let statusCode = (response as? NSHTTPURLResponse)?.statusCode ?? 200
                     completion(.SuccessJSON(json, statusCode: statusCode))
+                    self.checkForInvalidToken(json)
                 } else {
                     completion(.FailedNoData)
                 }
@@ -84,13 +85,21 @@ class ServerClient {
                     }
                     let statusCode = (response as? NSHTTPURLResponse)?.statusCode ?? 200
                     completion(.SuccessJSON(json, statusCode: statusCode))
+                    self.checkForInvalidToken(json)
                 } else {
                     completion(.FailedNoData)
                 }
             }
             task.resume()
         } else {
-            completion(.FailedNoPath)
+            completion(.FailedNoPath) 
+        }
+    }
+
+    private func checkForInvalidToken(json: JSON) {
+        if let invalidToken = json["invalid_token"].bool where invalidToken == true {
+            UserHelper.logout()
+            NotificationCenter.post("invalidToken")
         }
     }
 }

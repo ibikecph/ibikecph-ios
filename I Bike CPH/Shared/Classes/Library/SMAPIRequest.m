@@ -240,10 +240,7 @@
         return;
     }
     if (d[@"invalid_token"]) {
-        SMAppDelegate * appd = (SMAppDelegate*)[UIApplication sharedApplication].delegate;
-        [appd.appSettings removeObjectForKey:@"auth_token"];
-        [appd.appSettings removeObjectForKey:@"id"];
-        [appd saveSettings];
+        [UserHelper logout];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"invalidToken" object:nil];
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(request:completedWithResult:)]) {
