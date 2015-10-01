@@ -34,6 +34,8 @@
 		4E1522C51A84FC1900E62BFA /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982081A24AC1200A40484 /* SearchListItem.swift */; };
 		4E20BA691ADC065A00738CA8 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20BA681ADC065A00738CA8 /* Notifications.swift */; };
 		4E20BA6A1ADC065A00738CA8 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20BA681ADC065A00738CA8 /* Notifications.swift */; };
+		4E21F2E61BBD63FE003D097F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E21F2E91BBD63FE003D097F /* InfoPlist.strings */; };
+		4E21F2E71BBD63FE003D097F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E21F2E91BBD63FE003D097F /* InfoPlist.strings */; };
 		4E23D6DC1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */; };
 		4E23D6DD1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */; };
 		4E2A92561A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
@@ -507,6 +509,8 @@
 		4E10EBC51B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TurnInstructionsCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E1258D41A7BA63200A82434 /* routeTestStart.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = routeTestStart.gpx; sourceTree = "<group>"; };
 		4E20BA681ADC065A00738CA8 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		4E21F2E81BBD63FE003D097F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E21F2EA1BBD6401003D097F /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E23D6DA1A648E56008998CB /* SMAccountFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountFacebookViewController.h; sourceTree = "<group>"; };
 		4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountFacebookViewController.m; sourceTree = "<group>"; };
 		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
@@ -1012,6 +1016,7 @@
 			isa = PBXGroup;
 			children = (
 				4E5258B21A9B616200BE55C8 /* Localizable.strings */,
+				4E21F2E91BBD63FE003D097F /* InfoPlist.strings */,
 			);
 			name = Localization;
 			sourceTree = "<group>";
@@ -1923,6 +1928,7 @@
 				4EE82FB51B0BCE300089147A /* LaunchScreen.xib in Resources */,
 				4E5B90821B60D41A008AC960 /* marker@2x.png in Resources */,
 				4E10EBC01B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib in Resources */,
+				4E21F2E61BBD63FE003D097F /* InfoPlist.strings in Resources */,
 				4E5258AF1A9B616200BE55C8 /* Localizable.strings in Resources */,
 				4EDC5E101B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib in Resources */,
 				4E1258D51A7BA63200A82434 /* routeTestStart.gpx in Resources */,
@@ -1969,6 +1975,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E59822C1A24C4DD00A40484 /* BitBlueprint.gpx in Resources */,
+				4E21F2E71BBD63FE003D097F /* InfoPlist.strings in Resources */,
 				4E4566641A8A620E006563D1 /* smroute_settings_app_private.plist in Resources */,
 				4E5B90781B60D408008AC960 /* markerFinish@2x.png in Resources */,
 				4E1258D61A7BA63200A82434 /* routeTestStart.gpx in Resources */,
@@ -2653,6 +2660,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4E21F2E91BBD63FE003D097F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E21F2E81BBD63FE003D097F /* en */,
+				4E21F2EA1BBD6401003D097F /* da */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		4E5258B21A9B616200BE55C8 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
