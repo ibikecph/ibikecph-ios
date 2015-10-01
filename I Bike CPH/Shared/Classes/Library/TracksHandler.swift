@@ -535,12 +535,12 @@ class ClearLeftOversOperation: TracksOperation {
                 }
                 
                 // Very short distance, 50m
-                let noLength = track.length < 50
-                if noLength {
-                    println("Deleted short length: \(track.startDate())")
-                    track.deleteFromRealmWithRelationships()
-                    continue
-                }
+//                let noLength = track.length < 50
+//                if noLength {
+//                    println("Deleted short length: \(track.startDate())")
+//                    track.deleteFromRealmWithRelationships()
+//                    continue
+//                }
                 // Very low duration, 30 seconds
                 let noDuration = track.duration < 30
                 if noDuration {

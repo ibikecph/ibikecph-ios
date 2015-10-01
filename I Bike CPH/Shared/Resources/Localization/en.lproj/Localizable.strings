@@ -5,7 +5,7 @@
 "favorites" = "Favorites";
 "map_overlays" = "Map Overlays";
 "voice" = "Voice";
-"route_type" = "Route type";
+"route_type" = "Route Type";
 "profile" = "My Profile";
 
 "direction_0" = "";
@@ -95,15 +95,16 @@
 "direction_number_11" = "11th";
 
 "new_route" = "Route";
+"Start" = "Start";
 "Stop" = "Stop";
 
 "Error" = "Error";
 "OK" = "OK";
 "error_no_gps_location" = "No GPS location!";
 "error_address_not_found" = "Location of address not found!";
-"error_from_address_not_found" = "Location of START address not found!";
-"error_to_address_not_found" = "Location of END address not found!";
-"error_invalid_email" = "Invalid e-mail!";
+"error_from_address_not_found" = "Location of departure address not found!";
+"error_to_address_not_found" = "Location of destination address not found!";
+"error_invalid_email" = "Invalid email!";
 "error_invalid_to_address" = "The destination address is invalid!";
 
 "route_stop_title" = "Want to stop the routing?";
@@ -142,19 +143,19 @@
 "calculating_new_route" = "Calculating new route...";
 "Distance" = "Distance";
 "Time" = "Time";
-"you_have_arrived_to" = "You have arrived to";
+"you_have_arrived_to" = "You have arrived at";
 "to_homepage" = "To homepage";
 "report_a_problem" = "Report a problem";
 "From" = "From";
 "To" = "To";
-"hello_cyclist" = "Hello cyclist";
+"hello_cyclist" = "Hi cyclist";
 "thanks_for_testing_text" = "Thank you for helping us test.";
 "start_text" = "Cykelruteplanlæggeren.\nWe are glad you are helping us test the app, and in order to get in touch with you, we would like to ask for your email address:";
 "e_mail_address" = "E-mail address";
 "start_app" = "Start";
 "notify_me_when_fixed" = "Notify me when fixed";
 "report" = "Report";
-"report_text" = "By pressing the \"Report\" you will send route information to us. When the fault has been corrected you will be notified by e-mail.";
+"report_text" = "By pressing the \"Report\" you will send route information to us. When the fault has been corrected you will be notified by email.";
 "choose_a_route_step" = "Choose a route step";
 "cancel_picker" = "Cancel";
 "done_picker" = "Done";
@@ -172,12 +173,12 @@
 "create_with_fb" = "Create with Facebook";
 "register_with_mail" = "Register";
 "skip" = "Skip";
-"create_account" = "Create an account";
+"create_account" = "Create an Account";
 "create_account_text" = "Save favorites and searches across mobile and ibikecph.dk";
 "register_save" = "Register";
 "create_account" = "Create account";
 "register_name_placeholder" = "Name";
-"register_email_placeholder" = "E-mail";
+"register_email_placeholder" = "Email";
 "register_password_placeholder" = "Password";
 "register_password_repeat_placeholder" = "Repeat password";
 "choose_image_source" = "Select image source";
@@ -187,10 +188,11 @@
 "save_favorites" = "Save favorites";
 "favorites_title" = "Add favorites";
 "favorites_text" = "You can save your favorite destinations in the app so it's easy to find your way home, to work or school.";
-"favorites_home_placeholder" = "Home address ...";
-"favorites_work_placeholder" = "Work address ...";
+"favorites_home_placeholder" = "Home address...";
+"favorites_work_placeholder" = "Work address...";
 "log_in" = "Log In";
 "edit_account" = "Edit account";
+"invalid_token_user_logged_out" = "You've been logged out. Please log in.";
 
 "save_password" = "Save password";
 "use_password" = "Use password";
@@ -199,10 +201,11 @@
 "track_token_subtitle_native" = "You are logged in as";
 "track_token_description_native" = "To ensure that your data can be shared anonymously with The City of Copenhagen and the Capital Region of Denmark we need you to submit your password again.";
 "track_token_subtitle_facebook" = "You are logged in with Facebook as";
-"track_token_description_facebook_new" = "To ensure that your data is shared anonymously with the Copenhagen Municipality an the Capital Region of Denmark, you need to submit a password with minimum 6 digits. For security reasons your password can not be recovered.";
-"track_token_description_facebook_has_token" = "To be able to access your data, you need to provide the password you stated when activating tracking.";
+"track_token_description_facebook_new" = "To ensure that your data is shared anonymously with the Copenhagen Municipality an the Capital Region of Denmark, you need to submit a password with at least 6 digits. For security reasons your password can not be recovered.";
+"track_token_description_facebook_has_token" = "To be able to access your data, you need to provide the password you choose when activating tracking of bicycle data.";
 
 "add_favorite" = "Add a favorite";
+"new_favorite" = "Add";
 "cell_add_favorite" = "Add new favorite";
 "edit_favorite" = "Edit";
 "cell_empty_favorite_text" = "You have no favorites, but you can easily add one now.";
@@ -215,17 +218,17 @@
 "back" = "Back";
 "done" = "Done";
 "Name" = "Name";
-"add_favorite_name_placeholder" = "Enter name ...";
+"add_favorite_name_placeholder" = "Enter name...";
 "Address" = "Address";
-"add_favorite_address_placeholder" = "Find address ...";
-"account" = "My profile";
+"add_favorite_address_placeholder" = "Find address...";
+"account" = "My Profile";
 
 "report_send" = "Send report";
 "describe_problem" = "Describe a problem";
 "logout" = "Log out";
 
 "thank_you_for_feedback" = "Your feedback has been sent.";
-"feedback_text" = "Thanks for your help!\n\nYou can follow det development and participate in discussions of new features on www.ibikecph.dk/feedback.";
+"feedback_text" = "Thank you for your help!\n\nYou can follow the development and participate in discussions of new features on www.ibikecph.dk/feedback.";
 "report_sent" = "Feedback sent";
 "report_enter_email_address_placeholder" = "Enter you email address";
 "home_find_route" = "Find route";
@@ -244,7 +247,7 @@
 "accept_user_terms_link_highlight" = "Terms of Service";
 "accept_user_terms_link" = "https://www.ibikecph.dk/en/terms";
 
-"login_error_fields" = "You must enter both your e-mail and your password!";
+"login_error_fields" = "You must enter both your email and your password!";
 "register_error_fields" = "You must fill out all the fields!";
 "register_error_passwords" = "Your passwords don't match!";
 "register_error_user_terms" = "You must accept Terms of Service!";
@@ -254,18 +257,17 @@
 "report_error_step_not_selected" = "You have to select a step where the problem occured";
 
 "error_duplicate_favorite_name" = "You already have a favorite with this name. Please rename your favorite and save again.";
-"start_route" = "Start";
 
 "delete_account_title" = "Delete your account?";
-"delete_account_text" = "Your favourites and your tracked bicycle data will be deleted completely.";
-"delete_account_text_facebook_tracking" = "Your favourites and your tracked bicycle data will be deleted completely.\nYou need to provide the password you have stated previously when activating tracking.";
+"delete_account_text" = "All your favourites and tracked bicycle data will be deleted. Please enter your password.";
+"delete_account_text_facebook_tracking" = "All your favourites and tracked bicycle data will be deleted.\nPlease enter the password you chose when activating tracking of bicycle data.";
 "Delete" = "Delete";
 "account_deleted" = "Your account has been deleted";
 "close" = "Close";
 
 "favorites_login" = "You have no favorites, but you can easily add one if you login.";
-"fb_login_error" = "Error while using FB to log in.";
-"fb_login_error_no_access" = "The app couldn't get access to your Facebook Account. Please enable access in System Settings.";
+"fb_login_error" = "Error while using Facebook to log in.";
+"fb_login_error_no_access" = "The app could not access your Facebook account. Please enable access in System Settings.";
 "please_login" = "Please log in";
 "account_is_linked_to_facebook" = "Your account is linked to Facebook";
 "or" = "or";
@@ -290,36 +292,36 @@
 "vehicle_4" = "Train";
 
 "voice_option" = "Voice guide";
-"voice_option_detail" = "Voice guide gives you the possibility to get your route read out loud in order for you to find the way. Are you using headphones? Please be aware of the traffic around you and obey the traffic rules.";
+"voice_option_detail" = "Voice guide gives you the possibility of having route instructions read out loud. Are you using headphones? Please be aware of the traffic around you and obey the traffic rules.";
 
-"tracking" = "Tracking";
-"enable_tracking" = "Enable tracking";
-"enable_tracking_description" = "Start collecting cycling data";
-"enable_tracking_explanation" = "Once you have enabled the collection of cycle data, data about your cycling behavior are stored locally on your phone and on a server. Only you will have access to your data, and all data will be deleted if you delete your profile.";
-"no_tracking_description" = "Your phone unfortunately doesn't support the collection of cycling data.";
-"no_tracking_explanation" = "Currently tracking is only supported by Apple's iPhone 5s and newer, as well as all Android phones.";
-"stats_description" = "Your cycle activity";
+"tracking" = "Tracking of bicycle data";
+"enable_tracking" = "Enable";
+"enable_tracking_description" = "Start tracking bicycle data";
+"enable_tracking_explanation" = "When you enable tracking of bicycle data, data about your bike behavior are stored locally on your phone. Data is also stored anonymously on our servers, so they can be used to e.g. improve green waves for cyclists. You can delete your data again at any time.";
+"no_tracking_description" = "Unfortunately your phone doesn't support the tracking of bicycle data.";
+"no_tracking_explanation" = "Currently tracking of bicycle data is only supported on iPhone 5s or newer, and Android phones.";
+"stats_description" = "Your bike activity";
 "Since" = "Since";
-"tracking_option" = "Collect cycling data";
+"tracking_option" = "Track bicycle data";
 "tracking_milestone_notifications" = "Notification about milestones";
 "tracking_weekly_status_notifications" = "Weekly status";
-"log_in_to_track_prompt" = "To start collecting data, you must login.";
-"reenable_tracking" = "Re-enable tracking";
+"log_in_to_track_prompt" = "To start tracking bicycle data, you must login.";
+"reenable_tracking" = "Re-enable tracking of bicycle data";
 
 "enable" = "Enable";
-"launch_activate_tracking_title" = "Welcome.\nStart collecting and share your bicycle data";
-"launch_activate_tracking_title_no_welcome" = "Start collecting and share your bicycle data";
-"launch_activate_tracking_description" = "See where and how much you are biking on a daily basis. Get weekly notifications and achieve milestones when cycling.\n\nShare your data anonymously with the City of Copenhagen and the Capital Region of Denmark and help create new and important knowledge about biking in and around Copenhagen.";
+"launch_activate_tracking_title" = "Hi cyclist!.\nActivate tracking of bicycle data";
+"launch_activate_tracking_title_no_welcome" = "Activate tracking and sharing of bicycle data";
+"launch_activate_tracking_description" = "See where and how much you bike. Get weekly notifications and notifications when you reach milestones.\n\nAt the same time, share your data anonymously with the City of Copenhagen and the Capital Region of Denmark so data can be used to e.g. improve green waves for cyclists.";
 "launch_activate_tracking_read_more" = "Read more";
-"launch_activate_tracking_read_more_description" = "What data do we store, how and why:\n\nOnce you have enabled the collection of cycling data, information about your bike rides will be stored locally on your phone and synchronised with the Copenhagen municipality and the Capital Region of Denmark’s servers. The data will only be used for internal studies and before this happens, your data is anonymisiert so it can’t be traced back to you.\n\nWith cycling data from this app, we will be able to see where and when people crowded around red lights. The data will enable us to plan signals and routes better, and make the traffic flow smoother. At the same time we can more easily measure the effect of changes and adjustments. By sharing your data you can help better the conditions for everyone biking in Copenhagen and the Capital Region of Denmark.";
+"launch_activate_tracking_read_more_description" = "When you enable tracking of bicycle data, the app will automatically detect when you bike and store GPS tracks about your bike rides on your phone.\n\nData will also be uploaded anonymously to ibikecph.dk so they can be used by City of Copenhagen and the Capital Region of Denmark for improving bike facilities.\n\nFor example, data about travel speeds and waiting times can be used to adjust green waves for cyclists, so fewer cyclist have to stop at red lights. Data can also be used to measure the effect of bicycle projects.\n\nWe do a lot to protect your data. Data is stored anonymously on our servers and cannot be linked to you you without your password. This ensures that nobody can see where you have cycled, while also allowing you to delete your data from our servers if you wish to at some point. Vi never sell your data and don't publish data about individual bike rides.\n\nBy Tracking bicycle data you can help improve the conditions for everyone biking in Copenhagen and the Capital Region of Denmark.";
 
 "log_in_to_favorite_prompt" = "To add favorites, you must login.";
 
 "unit_km" = "km";
 "unit_km_pr_h" = "km/h";
 "unit_km_pr_trip" = "km/trip";
-"unit_kcal" = "Cal";
-"unit_kcal_pr_day" = "Cal/day";
+"unit_kcal" = "kcal";
+"unit_kcal_pr_day" = "kcal/day";
 "unit_h_long" = "hours";
 "unit_h_long_singular" = "hour";
 "unit_h_short" = "h";
@@ -362,7 +364,7 @@
 
 "bike_type_1"= "Get there fast";
 "bike_type_2"= "Fit for cargo bikes";
-"bike_type_3"= "Enjoy the greenery";
+"bike_type_3"= "Enjoy the green";
 
 /* User terms */
 "no_thanks" = "No thanks";
@@ -422,8 +424,8 @@
 "arrival" = "Arr.";
 
 "thanks_for_testing_text" = "Thank you for helping testing.";
-"start_text" = "Cykelruteplanlæggeren.\nWe are happy that you will help us test the app. To get in contact with you, we will need your e-mail please:";
-"report_text" = "By tapping \"Report\" the information of the route will be sent to us. \n\nIf you choose to get notified once the error is correct, your e-mail will be included.";
+"start_text" = "Cykelruteplanlæggeren.\nWe are happy that you will help us test the app. To get in contact with you, we will need your email please:";
+"report_text" = "By tapping \"Report\" the information of the route will be sent to us. \n\nIf you choose to get notified once the error is correct, your email will be included.";
 
 "intro_subtitle" = "Quickly from A to B";
 
@@ -431,4 +433,4 @@
 "activate_gps" = "Turn GPS On";
 "leave_no_gps" = "Leave GPS off";
 
-"play_services_version_error" = "To track, please update Google Play Services";
+"play_services_version_error" = "To track bicycle data, please update Google Play Services";

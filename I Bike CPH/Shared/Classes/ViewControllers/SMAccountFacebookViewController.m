@@ -84,6 +84,7 @@
             [controller addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                 textField.delegate = self;
                 textField.secureTextEntry = true;
+                textField.placeholder = @"register_password_placeholder".localized;
             }];
         }
         
@@ -149,6 +150,9 @@
             return;
         }
     } else {
+        if (result[@"invalid_token"]) {
+            return;
+        }
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
     }
@@ -176,9 +180,8 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+- (void)textFieldDidEndEditing:(UITextField *)textField {
     self.password = textField.text;
-    return YES;
 }
 
 

@@ -275,7 +275,7 @@ extension MapView: RMMapViewDelegate {
             // To fix bug when setting .layer directly on annotation (layer disappears when scrolling away and back), provide layer with a property on custom LayerAnnotation class here in the delegate callback
             return layerAnnotation.layerStore
         }
-        if let pinAnnotation = annotation as? PinAnnotation {
+        if let annotation = annotation as? Annotation {
             return RMMarker(UIImage: annotation.annotationIcon, anchorPoint: annotation.anchorPoint)
         }
         return nil

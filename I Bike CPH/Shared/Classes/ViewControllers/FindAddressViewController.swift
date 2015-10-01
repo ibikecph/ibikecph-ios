@@ -41,7 +41,7 @@ class FindAddressViewController: SMTranslatedViewController {
             
             if let item = currentItem {
                 // Close view controller
-                dismiss()
+                Async.main { self.dismiss() }
                 // Notify delegate
                 delegate?.foundAddress(item)
             }

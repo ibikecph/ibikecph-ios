@@ -79,8 +79,18 @@ class MainMapViewController: MapViewController {
                 self?.addressToolbarView.updateToItem(item)
             }
         })
+        observerTokens.append(NotificationCenter.observe("invalidToken") { [weak self] notification in
+            let alertController = PSTAlertController(title: "", message: "invalid_token_user_logged_out".localized, preferredStyle: .Alert)
+            alertController.addCancelActionWithHandler(nil)
+            let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
+                self?.performSegueWithIdentifier(self?.mainToLoginSegue, sender: self)
+            }
+            alertController.addAction(loginAction)
+            alertController.showWithSender(self, controller: self, animated: true, completion: nil)
+            NotificationCenter.post("closeMenu")
+        })
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -260,7 +270,6 @@ extension MainMapViewController: AddressToolbarDelegate {
         // Check if logged in 
         if !UserHelper.loggedIn() {
             if selected {
-                // TODO: Change strings
                 let alertController = PSTAlertController(title: "", message: "log_in_to_favorite_prompt".localized, preferredStyle: .Alert)
                 alertController.addCancelActionWithHandler(nil)
                 let loginAction = PSTAlertAction(title: "log_in".localized) { action in
@@ -324,23 +333,6 @@ extension MainMapViewController: MapViewDelegate {
             let item: SearchListItem = self?.favoriteForItem(item) ?? item // Attempt upgrade to Favorite
             self?.currentLocationItem = item
             self?.addressToolbarView.updateToItem(item)
-            
-            // Reverse geocode doesn't provide a location for the found item.
-            // TODO: Check if found address is "far" from pin
-//            SMGeocoder.geocode(item.address) { placemark, error in
-//                if let error = error {
-//                    self?.failedFindSelectCoordinate()
-//                    return
-//                }
-//                if let placemark = placemark.first as? MKPlacemark {
-//                    let location = placemark.location
-//                    self?.currentItem?.location = location
-//                    // Update pin location
-//                    self?.pinAnnotation?.coordinate = location.coordinate
-//                    return
-//                }
-//                self?.failedFindSelectCoordinate()
-//            }
         }
     }
     

@@ -44,9 +44,9 @@ class FavoriteListViewController: SMTranslatedViewController {
         editBarButtonItem.enabled = userIsLoggedIn
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     @IBOutlet weak var toolbar: UIToolbar!
@@ -83,11 +83,9 @@ class FavoriteListViewController: SMTranslatedViewController {
 extension FavoriteListViewController: SMFavoritesDelegate {
     
     func favoritesOperation(req: AnyObject!, failedWithError error: NSError!) {
-        // TODO:
     }
     
     func favoritesOperationFinishedSuccessfully(req: AnyObject!, withData data: AnyObject!) {
-        // TODO: Update favorites
         items = SMFavoritesUtil.favorites() as! [FavoriteItem] // Update favorites
     }
 }

@@ -2452,7 +2452,6 @@ God tur og tak fordi du cykler!</string>
         <!--Navigation Controller-->
         <scene sceneID="jsv-IT-wOl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oyM-je-rca" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="LFA-zU-Kks" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wLD-PD-Vcb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2462,6 +2461,7 @@ God tur og tak fordi du cykler!</string>
                         <segue destination="P2M-ZB-ktc" kind="relationship" relationship="rootViewController" id="Ob2-Ux-64g"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oyM-je-rca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1605" y="6621"/>
         </scene>
@@ -3021,6 +3021,7 @@ God tur og tak fordi du cykler!</string>
                         <outlet property="addressTextField" destination="Uth-cg-QZQ" id="PHS-Ne-EuW"/>
                         <outlet property="nameLabel" destination="f7B-81-Hd6" id="gl3-bS-pED"/>
                         <outlet property="nameTextField" destination="Dwi-Fj-b3h" id="nMs-0x-6hA"/>
+                        <outlet property="routeBarButton" destination="FD4-gA-2gT" id="C1U-td-LPs"/>
                         <outlet property="tableView" destination="bh2-eb-otZ" id="DbX-S3-bGZ"/>
                         <segue destination="9Sk-0W-QC9" kind="show" identifier="favoriteToSearch" id="7W8-lE-WHM"/>
                     </connections>
@@ -4010,13 +4011,13 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wx5-QB-Al0"/>
         <segue reference="dc7-Qo-Oev"/>
-        <segue reference="t11-Tv-7cG"/>
         <segue reference="7W8-lE-WHM"/>
+        <segue reference="t11-Tv-7cG"/>
         <segue reference="7cy-gM-V9q"/>
         <segue reference="RdX-SF-NXa"/>
-        <segue reference="WjL-tL-I1v"/>
+        <segue reference="hGb-e2-eVV"/>
+        <segue reference="8Kg-rW-C0r"/>
         <segue reference="cR0-BE-PFO"/>
     </inferredMetricsTieBreakers>
 </document>

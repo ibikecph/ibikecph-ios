@@ -12,6 +12,7 @@ class LaunchActivateTrackingViewController: SMTranslatedViewController {
     
     private let toLoginNavigationControllerSegue = "activateTrackingToLogin"
     private let toAddTrackTokenControllerSegue = "activateTrackingToAddTrackToken"
+    private var pendingEnableTrackingFromTrackToken = false
     @IBOutlet weak var activateButton: UIButton!
 
     @IBAction func didTapActivateButton(sender: AnyObject) {
@@ -23,6 +24,7 @@ class LaunchActivateTrackingViewController: SMTranslatedViewController {
             dismiss()
         case .LacksTrackToken:
             // User is logged in but doesn't have a trackToken
+            pendingEnableTrackingFromTrackToken = true
             performSegueWithIdentifier(toAddTrackTokenControllerSegue, sender: self)
             return
         }
@@ -46,6 +48,15 @@ class LaunchActivateTrackingViewController: SMTranslatedViewController {
         updateActivateButton()
         // Hide navigationbar when appeared
         navigationController?.setNavigationBarHidden(true, animated: true)
+
+        // Check if tracking should be enabled
+        if pendingEnableTrackingFromTrackToken && UserHelper.checkEnableTracking() == .Allowed {
+            Settings.instance.tracking.on = true
+            pendingEnableTrackingFromTrackToken = false
+            dismiss()
+        } else {
+            pendingEnableTrackingFromTrackToken = false
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

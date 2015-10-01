@@ -44,6 +44,7 @@ import Foundation
     class func logout() {
         Settings.instance.tracking.on = false // Turn off tracking when logging out
         AppHelper.delegate()?.clearSettings()
+        SMFavoritesUtil.saveFavorites(nil)
     }
     
     class func trackToken() -> String? {

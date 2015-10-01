@@ -60,7 +60,7 @@
     [self setApr:ap];
     [self.apr setRequestIdentifier:@"login"];
     [self.apr showTransparentWaitingIndicatorInView:self.view];
-    [self.apr executeRequest:API_LOGIN withParams:@{@"user": @{ @"email": email, @"password": password}}];
+    [self.apr executeRequest:API_LOGIN withParams:@{@"user": @{ @"email": email, @"password": password, @"facebook" : [UserHelper isFacebook] ? @"true" : @"false" }}];
 }
 
 - (void)loginWithFacebookToken:(NSString*)fbToken view:(UIView *)view callback:(SignInHelperCallback)callback {
@@ -89,6 +89,12 @@
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
             NSLog(@"Couldn't sign in to Facebook %@", error.localizedDescription);
+            return;
+        }
+        if (!token) {
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
+            [av show];
+            NSLog(@"Couldn't sign in to Facebook. No token.");
             return;
         }
         self.email = email;
