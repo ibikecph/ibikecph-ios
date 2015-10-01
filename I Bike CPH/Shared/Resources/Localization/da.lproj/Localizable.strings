@@ -208,6 +208,7 @@
 "track_token_description_facebook_has_token" = "For at kunne hente dine data skal du skrive det kodeord du har opgivet da du aktiverede indsamling af cykeldata.";
 
 "add_favorite" = "Tilføj favorit";
+"new_favorite" = "Tilføj";
 "cell_add_favorite" = "Tilføj ny favorit";
 "edit_favorite" = "Rediger";
 "cell_empty_favorite_text" = "Du har ingen favoritter, men du kan hurtigt tilføje en nu.";

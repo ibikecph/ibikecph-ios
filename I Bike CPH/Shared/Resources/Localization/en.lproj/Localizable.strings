@@ -205,6 +205,7 @@
 "track_token_description_facebook_has_token" = "To be able to access your data, you need to provide the password you choose when activating collection of bike data.";
 
 "add_favorite" = "Add a favorite";
+"new_favorite" = "Add";
 "cell_add_favorite" = "Add new favorite";
 "edit_favorite" = "Edit";
 "cell_empty_favorite_text" = "You have no favorites, but you can easily add one now.";
@@ -312,8 +313,7 @@
 "launch_activate_tracking_title_no_welcome" = "Activate collection and sharing of bike data";
 "launch_activate_tracking_description" = "See where and how much you bike. Get weekly notifications and notifications when you reach milestones.\n\nAt the same time, share your data anonymously with the City of Copenhagen and the Capital Region of Denmark so data can be used to e.g. improve green waves for cyclists.";
 "launch_activate_tracking_read_more" = "Read more";
-"launch_activate_tracking_read_more_description" = "When you enable collection of biycle data, the app will automatically detect when you bike and store GPS tracks about your bike rides on your phone.
-Data will also be uploaded anonymously to ibikecph.dk so they can be used by City of Copenhagen and the Capital Region of Denmark for improving bike facilities.\n\nFor example, data about travel speeds and waiting times can be used to adjust green waves for cyclists, so fewer cyclist have to stop at red lights. Data can also be used to measure the effect of bicycle projects.\n\nWe do a lot to protect your data. Data is stored anonymously on our servers and cannot be linked to you you without your password. This ensures that nobody can see where you have cycled, while also allowing you to delete your data from our servers if you wish to at some point. Vi never sell your data and don't publish data about individual bike rides.\n\nBy collecting bike data data you can help improve the conditions for everyone biking in Copenhagen and the Capital Region of Denmark.";
+"launch_activate_tracking_read_more_description" = "When you enable collection of bicycle data, the app will automatically detect when you bike and store GPS tracks about your bike rides on your phone.\n\nData will also be uploaded anonymously to ibikecph.dk so they can be used by City of Copenhagen and the Capital Region of Denmark for improving bike facilities.\n\nFor example, data about travel speeds and waiting times can be used to adjust green waves for cyclists, so fewer cyclist have to stop at red lights. Data can also be used to measure the effect of bicycle projects.\n\nWe do a lot to protect your data. Data is stored anonymously on our servers and cannot be linked to you you without your password. This ensures that nobody can see where you have cycled, while also allowing you to delete your data from our servers if you wish to at some point. Vi never sell your data and don't publish data about individual bike rides.\n\nBy collecting bike data data you can help improve the conditions for everyone biking in Copenhagen and the Capital Region of Denmark.";
 
 "log_in_to_favorite_prompt" = "To add favorites, you must login.";
 
