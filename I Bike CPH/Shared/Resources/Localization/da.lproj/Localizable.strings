@@ -405,7 +405,6 @@
 "metro_stations" = "Metro stationer";
 "local_trains_stations" = "Lokale stationer";
 
-"Error" = "Error";
 "OK" = "OK";
 "error_no_gps_location" = "Ingen GPS lokation!";
 "error_address_not_found" = "Adressens lokation kan ikke findes!";
