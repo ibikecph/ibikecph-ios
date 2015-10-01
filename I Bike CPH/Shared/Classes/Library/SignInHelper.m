@@ -91,6 +91,12 @@
             NSLog(@"Couldn't sign in to Facebook %@", error.localizedDescription);
             return;
         }
+        if (!token) {
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
+            [av show];
+            NSLog(@"Couldn't sign in to Facebook. No token.");
+            return;
+        }
         self.email = email;
         [self loginWithFacebookToken:token view:view callback:callback];
     }];
