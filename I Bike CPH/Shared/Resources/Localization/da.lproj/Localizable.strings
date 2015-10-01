@@ -94,7 +94,8 @@
 "direction_number_10" = "10.";
 "direction_number_11" = "11.";
 
-"new_route" = "Ny rute";
+"new_route" = "Rute";
+"Start" = "Start";
 "Stop" = "Stop";
 
 "Error" = "Fejl";

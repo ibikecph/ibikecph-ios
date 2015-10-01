@@ -3021,6 +3021,7 @@ God tur og tak fordi du cykler!</string>
                         <outlet property="addressTextField" destination="Uth-cg-QZQ" id="PHS-Ne-EuW"/>
                         <outlet property="nameLabel" destination="f7B-81-Hd6" id="gl3-bS-pED"/>
                         <outlet property="nameTextField" destination="Dwi-Fj-b3h" id="nMs-0x-6hA"/>
+                        <outlet property="routeBarButton" destination="FD4-gA-2gT" id="C1U-td-LPs"/>
                         <outlet property="tableView" destination="bh2-eb-otZ" id="DbX-S3-bGZ"/>
                         <segue destination="9Sk-0W-QC9" kind="show" identifier="favoriteToSearch" id="7W8-lE-WHM"/>
                     </connections>

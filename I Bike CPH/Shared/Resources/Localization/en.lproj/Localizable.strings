@@ -95,6 +95,7 @@
 "direction_number_11" = "11th";
 
 "new_route" = "Route";
+"Start" = "Start";
 "Stop" = "Stop";
 
 "Error" = "Error";
