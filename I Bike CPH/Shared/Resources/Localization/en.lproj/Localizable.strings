@@ -202,7 +202,7 @@
 "track_token_description_native" = "To ensure that your data can be shared anonymously with The City of Copenhagen and the Capital Region of Denmark we need you to submit your password again.";
 "track_token_subtitle_facebook" = "You are logged in with Facebook as";
 "track_token_description_facebook_new" = "To ensure that your data is shared anonymously with the Copenhagen Municipality an the Capital Region of Denmark, you need to submit a password with at least 6 digits. For security reasons your password can not be recovered.";
-"track_token_description_facebook_has_token" = "To be able to access your data, you need to provide the password you choose when activating collection of bike data.";
+"track_token_description_facebook_has_token" = "To be able to access your data, you need to provide the password you choose when activating tracking of bicycle data.";
 
 "add_favorite" = "Add a favorite";
 "new_favorite" = "Add";
@@ -259,8 +259,8 @@
 "error_duplicate_favorite_name" = "You already have a favorite with this name. Please rename your favorite and save again.";
 
 "delete_account_title" = "Delete your account?";
-"delete_account_text" = "All your favourites and collected bicycle data will be deleted. Please enter your password.";
-"delete_account_text_facebook_tracking" = "All your favourites and collected bicycle data will be deleted.\nPlease enter the password you chose when activating collection og bike data.";
+"delete_account_text" = "All your favourites and tracked bicycle data will be deleted. Please enter your password.";
+"delete_account_text_facebook_tracking" = "All your favourites and tracked bicycle data will be deleted.\nPlease enter the password you chose when activating tracking of bicycle data.";
 "Delete" = "Delete";
 "account_deleted" = "Your account has been deleted";
 "close" = "Close";
@@ -294,26 +294,26 @@
 "voice_option" = "Voice guide";
 "voice_option_detail" = "Voice guide gives you the possibility of having route instructions read out loud. Are you using headphones? Please be aware of the traffic around you and obey the traffic rules.";
 
-"tracking" = "Collection of bike data";
+"tracking" = "Tracking of bicycle data";
 "enable_tracking" = "Enable";
-"enable_tracking_description" = "Start collecting bike data";
-"enable_tracking_explanation" = "When you enable collection of bike data, data about your bike behavior are stored locally on your phone. Data is also stored anonymously on our servers, so they can be used to e.g. improve green waves for cyclists. You can delete your data again at any time.";
-"no_tracking_description" = "Unfortunately your phone doesn't support the collection of bike data.";
-"no_tracking_explanation" = "Currently collection of bike data is only supported on iPhone 5s or newer, and Android phones.";
+"enable_tracking_description" = "Start tracking bicycle data";
+"enable_tracking_explanation" = "When you enable tracking of bicycle data, data about your bike behavior are stored locally on your phone. Data is also stored anonymously on our servers, so they can be used to e.g. improve green waves for cyclists. You can delete your data again at any time.";
+"no_tracking_description" = "Unfortunately your phone doesn't support the tracking of bicycle data.";
+"no_tracking_explanation" = "Currently tracking of bicycle data is only supported on iPhone 5s or newer, and Android phones.";
 "stats_description" = "Your bike activity";
 "Since" = "Since";
-"tracking_option" = "Collect bike data";
+"tracking_option" = "Track bicycle data";
 "tracking_milestone_notifications" = "Notification about milestones";
 "tracking_weekly_status_notifications" = "Weekly status";
-"log_in_to_track_prompt" = "To start collecting bike data, you must login.";
-"reenable_tracking" = "Re-enable collection of bike data";
+"log_in_to_track_prompt" = "To start tracking bicycle data, you must login.";
+"reenable_tracking" = "Re-enable tracking of bicycle data";
 
 "enable" = "Enable";
-"launch_activate_tracking_title" = "Hi cyclist!.\nActivate collection of bike data";
-"launch_activate_tracking_title_no_welcome" = "Activate collection and sharing of bike data";
+"launch_activate_tracking_title" = "Hi cyclist!.\nActivate tracking of bicycle data";
+"launch_activate_tracking_title_no_welcome" = "Activate tracking and sharing of bicycle data";
 "launch_activate_tracking_description" = "See where and how much you bike. Get weekly notifications and notifications when you reach milestones.\n\nAt the same time, share your data anonymously with the City of Copenhagen and the Capital Region of Denmark so data can be used to e.g. improve green waves for cyclists.";
 "launch_activate_tracking_read_more" = "Read more";
-"launch_activate_tracking_read_more_description" = "When you enable collection of bicycle data, the app will automatically detect when you bike and store GPS tracks about your bike rides on your phone.\n\nData will also be uploaded anonymously to ibikecph.dk so they can be used by City of Copenhagen and the Capital Region of Denmark for improving bike facilities.\n\nFor example, data about travel speeds and waiting times can be used to adjust green waves for cyclists, so fewer cyclist have to stop at red lights. Data can also be used to measure the effect of bicycle projects.\n\nWe do a lot to protect your data. Data is stored anonymously on our servers and cannot be linked to you you without your password. This ensures that nobody can see where you have cycled, while also allowing you to delete your data from our servers if you wish to at some point. Vi never sell your data and don't publish data about individual bike rides.\n\nBy collecting bike data data you can help improve the conditions for everyone biking in Copenhagen and the Capital Region of Denmark.";
+"launch_activate_tracking_read_more_description" = "When you enable tracking of bicycle data, the app will automatically detect when you bike and store GPS tracks about your bike rides on your phone.\n\nData will also be uploaded anonymously to ibikecph.dk so they can be used by City of Copenhagen and the Capital Region of Denmark for improving bike facilities.\n\nFor example, data about travel speeds and waiting times can be used to adjust green waves for cyclists, so fewer cyclist have to stop at red lights. Data can also be used to measure the effect of bicycle projects.\n\nWe do a lot to protect your data. Data is stored anonymously on our servers and cannot be linked to you you without your password. This ensures that nobody can see where you have cycled, while also allowing you to delete your data from our servers if you wish to at some point. Vi never sell your data and don't publish data about individual bike rides.\n\nBy Tracking bicycle data you can help improve the conditions for everyone biking in Copenhagen and the Capital Region of Denmark.";
 
 "log_in_to_favorite_prompt" = "To add favorites, you must login.";
 
@@ -433,4 +433,4 @@
 "activate_gps" = "Turn GPS On";
 "leave_no_gps" = "Leave GPS off";
 
-"play_services_version_error" = "To collect bike data, please update Google Play Services";
+"play_services_version_error" = "To track bicycle data, please update Google Play Services";
