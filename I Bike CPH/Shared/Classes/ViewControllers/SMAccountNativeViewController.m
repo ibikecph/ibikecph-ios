@@ -170,9 +170,8 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+- (void)textFieldDidEndEditing:(UITextField *)textField {
     self.password = textField.text;
-    return YES;
 }
 
 
