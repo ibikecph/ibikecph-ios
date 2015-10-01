@@ -257,8 +257,6 @@
 "report_error_problem_not_selected" = "Vælg venligst et problem";
 "report_error_step_not_selected" = "Vælg venligst et trin på ruten";
 
-"start_route" = "Start";
-
 "error_duplicate_favorite_name" = "Du har allerede en favorit med dette navn. Omdøb din favorit og gem igen.";
 
 "delete_account_title" = "Slet din konto?";
