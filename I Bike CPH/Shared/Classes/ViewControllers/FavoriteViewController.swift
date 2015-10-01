@@ -37,10 +37,11 @@ class FavoriteViewController: SMTranslatedViewController {
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nameLabel: UILabel!
-    
+    @IBOutlet weak var routeBarButton: UIBarButtonItem!
+
     @IBOutlet weak var tableView: UITableView!
     private let cellID = "FavoriteTypeCellID"
-    
+
     private let searchAddressSegue = "favoriteToSearch"
     
     private var observerTokens = [AnyObject]()
@@ -119,12 +120,14 @@ class FavoriteViewController: SMTranslatedViewController {
             nameLabel.hidden = false
             nameTextField.hidden = false
             tableView.hidden = false
+            routeBarButton.enabled = true
         } else {
             addressTextField.text = nil
             nameTextField.text = nil
             nameLabel.hidden = true
             nameTextField.hidden = true
             tableView.hidden = true
+            routeBarButton.enabled = false
         }
         tableView.reloadData()
     }
