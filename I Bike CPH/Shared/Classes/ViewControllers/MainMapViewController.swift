@@ -79,8 +79,18 @@ class MainMapViewController: MapViewController {
                 self?.addressToolbarView.updateToItem(item)
             }
         })
+        observerTokens.append(NotificationCenter.observe("invalidToken") { [weak self] notification in
+            let alertController = PSTAlertController(title: "", message: "invalid_token_user_logged_out".localized, preferredStyle: .Alert)
+            alertController.addCancelActionWithHandler(nil)
+            let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
+                self?.performSegueWithIdentifier(self?.mainToLoginSegue, sender: self)
+            }
+            alertController.addAction(loginAction)
+            alertController.showWithSender(self, controller: self, animated: true, completion: nil)
+            NotificationCenter.post("closeMenu")
+        })
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

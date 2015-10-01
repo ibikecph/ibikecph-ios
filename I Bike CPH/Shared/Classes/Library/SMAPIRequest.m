@@ -247,7 +247,6 @@
         debugLog(@"%@", d);
         [self.delegate request:self completedWithResult:d];
     }
-    
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {

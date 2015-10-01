@@ -191,6 +191,7 @@
 "favorites_work_placeholder" = "Work address...";
 "log_in" = "Log In";
 "edit_account" = "Edit account";
+"invalid_token_user_logged_out" = "You've been logged out. Please log in.";
 
 "save_password" = "Save password";
 "use_password" = "Use password";

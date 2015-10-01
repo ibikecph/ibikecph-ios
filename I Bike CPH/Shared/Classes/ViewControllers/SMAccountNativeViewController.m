@@ -143,6 +143,9 @@
             return;
         }
     } else {
+        if (result[@"invalid_token"]) {
+            return;
+        }
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
         [av show];
     }

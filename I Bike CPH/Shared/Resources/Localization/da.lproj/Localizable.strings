@@ -194,6 +194,7 @@
 "favorites_work_placeholder" = "Arbejdsadresse ...";
 "log_in" = "Log ind";
 "edit_account" = "Redigér profil";
+"invalid_token_user_logged_out" = "Du er blevet logget ud. Log venligst ind igen.";
 
 "save_password" = "Gem kodeord";
 "use_password" = "Brug kodeord";
