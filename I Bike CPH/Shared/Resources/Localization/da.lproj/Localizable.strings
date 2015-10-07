@@ -323,7 +323,7 @@
 "unit_km_pr_h" = "km/t";
 "unit_km_pr_trip" = "km/tur";
 "unit_kcal" = "kcal";
-"unit_kcal_pr_day" = "kcal/day";
+"unit_kcal_pr_day" = "kcal/dag";
 "unit_h_long" = "timer";
 "unit_h_long_singular" = "time";
 "unit_h_short" = "t";
