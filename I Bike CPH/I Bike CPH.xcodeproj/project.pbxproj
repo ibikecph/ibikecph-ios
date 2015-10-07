@@ -1876,7 +1876,7 @@
 					};
 					4EE05F781A10EDE700DE4226 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = SP46WFGATT;
+						DevelopmentTeam = 2S6P2V9TSL;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
