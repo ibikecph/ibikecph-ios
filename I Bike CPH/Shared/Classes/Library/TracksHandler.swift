@@ -91,7 +91,7 @@ class TracksHandler {
         let timeIntervalSinceSmall = NSDate().timeIntervalSinceDate(instance.lastProcessedSmall)
         if
             userInitiated &&
-            timeIntervalSinceBig > 0 //60*1 // Allow userInitiated every 1 min
+            timeIntervalSinceBig > 60*1 // Allow userInitiated every 1 min
         {
             instance.cleanUpBig(asap: true)
             instance.lastProcessedBig = NSDate()
@@ -155,8 +155,8 @@ class TracksHandler {
             MergeBikeCloseWithMoveTracksOperation(fromDate: fromDate, seconds: 60),
             MergeTracksBetweenBikeTracksOperation(fromDate: fromDate, seconds: 60*5), // again
             ClearLeftOversOperation(fromDate: fromDate),
-            PruneSlowEndsOperation(fromDate: fromDate),
             PruneSimilarLocationOperation(fromDate: fromDate),
+            PruneSlowEndsOperation(fromDate: fromDate),
             PruneCurlyEndsOperation(fromDate: fromDate),
             RecalculateTracksOperation(fromDate: fromDate),
             RemoveUnownedDataOperation(fromDate: fromDate),
@@ -542,9 +542,9 @@ class ClearLeftOversOperation: TracksOperation {
 //                    continue
 //                }
                 // Very low duration, 30 seconds
-                let noDuration = track.duration < 30
+                let noDuration = track.duration == 0
                 if noDuration {
-                    println("Deleted short duration: \(track.startDate())")
+                    println("Deleted no duration: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
@@ -562,21 +562,31 @@ class PruneSimilarLocationOperation: TracksOperation {
         
         // All 
         var index: UInt = 0
-        while 3 <= track.locations.count && index <= track.locations.count - 3  {
+        let locations = track.locationsSorted()
+        while 3 <= locations.count && index <= locations.count - 3  {
             let indexCenter = index + 1
             let indexLast = index + 2
             if let
-                first = track.locations[index] as? TrackLocation,
-                center = track.locations[indexCenter] as? TrackLocation,
-                last = track.locations[indexLast] as? TrackLocation
+                first = locations[index] as? TrackLocation,
+                center = locations[indexCenter] as? TrackLocation,
+                last = locations[indexLast] as? TrackLocation
             {
-                if
-                    first.coordinate().latitude == center.coordinate().latitude &&
+                let squeezedBetweenSimilar = first.coordinate().latitude == center.coordinate().latitude &&
                     first.coordinate().longitude == center.coordinate().longitude &&
                     first.coordinate().latitude == last.coordinate().latitude &&
                     first.coordinate().longitude == last.coordinate().longitude
-                {
-                    track.locations.removeObjectAtIndex(indexCenter)
+
+                var deleteCenter = squeezedBetweenSimilar &&
+                    first.coordinate().latitude == center.coordinate().latitude &&
+                    first.coordinate().longitude == center.coordinate().longitude &&
+                    abs(first.timestamp - center.timestamp) < 2 // Less than two seconds between
+
+                if deleteCenter {
+                    // Find locations of object in unsorted array
+                    let i = track.locations.indexOfObject(center)
+                    // Delete from locations array on track
+                    track.locations.removeObjectAtIndex(i)
+                    // Delete from realm
                     center.deleteFromRealm()
                     changed = true
                 } else {
@@ -643,10 +653,11 @@ class PruneCurlyEndsOperation: TracksOperation {
         var changed = false
         
         let varianceLimit: Double = 2000
-        
-        if let firstLocation = track.locations.firstObject() as? TrackLocation {
+
+        let locations = track.locationsSorted()
+        if let firstLocation = locations.firstObject() as? TrackLocation {
             // Go 60 seconds from start
-            var firstLocations = track.locations.objectsWhere("timestamp <= %lf", firstLocation.timestamp + extendSeconds)
+            var firstLocations = locations.objectsWhere("timestamp <= %lf", firstLocation.timestamp + extendSeconds)
             
             let firstCoordinates = firstLocations.toArray(TrackLocation).map { $0.coordinate() }
         
@@ -672,9 +683,9 @@ class PruneCurlyEndsOperation: TracksOperation {
             }
         }
         
-        if let lastLocation = track.locations.lastObject() as? TrackLocation {
+        if let lastLocation = locations.lastObject() as? TrackLocation {
             // Go back 60 seconds from end
-            var lastLocations = track.locations.objectsWhere("timestamp >= %lf", lastLocation.timestamp - extendSeconds)
+            var lastLocations = locations.objectsWhere("timestamp >= %lf", lastLocation.timestamp - extendSeconds)
             let t = path(lastLocations.toArray(TrackLocation).map { $0.location() })
             var lastCoordinates = lastLocations.toArray(TrackLocation).map { $0.coordinate() }
             let degreeDifferencesLast = difference(lastCoordinates)
@@ -690,13 +701,13 @@ class PruneCurlyEndsOperation: TracksOperation {
             let removeFromIndex: UInt? = {
                 for (index, diff) in enumerate(variancesToEnd.reverse()) {
                     if diff > varianceLimit {
-                        return track.locations.count - UInt(index) - 1 // Subtract from count since enumerating over reverse
+                        return locations.count - UInt(index) - 1 // Subtract from count since enumerating over reverse
                     }
                 }
                 return nil
             }()
             if let removeFromIndex = removeFromIndex where removeFromIndex > 0 {
-                removeLocations(inRange: removeFromIndex..<track.locations.count, fromTrack: track)
+                removeLocations(inRange: removeFromIndex..<locations.count, fromTrack: track)
                 changed = true
             }
         }
@@ -716,8 +727,10 @@ class PruneCurlyEndsOperation: TracksOperation {
         // Delete from high index to low to not mess up order while deleting
         let indeces = range.startIndex < range.endIndex ? reverse(range) : [UInt](range)
         for i in indeces {
-            if let location = track.locations[i] as? TrackLocation {
-                track.locations.removeObjectAtIndex(i)
+            let locations = track.locationsSorted()
+            if let location = locations[i] as? TrackLocation {
+                let _i = track.locations.indexOfObject(location)
+                track.locations.removeObjectAtIndex(_i)
                 location.deleteFromRealm()
             }
         }
@@ -763,9 +776,7 @@ class PruneCurlyEndsOperation: TracksOperation {
         }
         for track in tracks().objectsWhere("activity.cycling == TRUE") {
             if let track = track as? Track where !track.invalidated {
-//                let a1 = path(track.locations.toArray(TrackLocation).map { $0.location() })
                 while pruneCurl(track) { } // Keep pruning untill nothing changes
-//                let b1 = path(track.locations.toArray(TrackLocation).map { $0.location() })
                 let d = 0
             }
         }
@@ -799,8 +810,9 @@ class PruneSlowEndsOperation: TracksOperation {
                     if speed > speedLimit {
                         break
                     }
-                    if let firstLocation = track.locations.firstObject() as? TrackLocation {
-                        track.locations.removeObjectAtIndex(0)
+                    if let firstLocation = track.locationsSorted().firstObject() as? TrackLocation {
+                        let _i = track.locations.indexOfObject(firstLocation)
+                        track.locations.removeObjectAtIndex(_i)
                         firstLocation.deleteFromRealm()
                     }
                 }
@@ -808,8 +820,9 @@ class PruneSlowEndsOperation: TracksOperation {
                     if speed > speedLimit {
                         break
                     }
-                    if let lastLocation = track.locations.lastObject() as? TrackLocation {
-                        track.locations.removeLastObject()
+                    if let lastLocation = track.locationsSorted().lastObject() as? TrackLocation {
+                        let _i = track.locations.indexOfObject(lastLocation)
+                        track.locations.removeObjectAtIndex(_i)
                         lastLocation.deleteFromRealm()
                     }
                 }
@@ -836,7 +849,6 @@ class MergeTracksOperation: TracksOperation {
             track1.locations.addObject(location)
         }
         // Combine activity
-        track1.end = track2.end
         if !useFirstTrackActivity {
             let startDate = track1.activity.startDate // Take date from 1st activity
             track1.activity.deleteFromRealm() // Delete 1st activity
@@ -981,20 +993,22 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
                 count++
                 continue
             }
-            // Find next bike track within time interval
+            // Find latest bike track within time interval
             var nextCount = count
             var nextTrack: Track?
             while nextCount < tracks.count - 3 {
                 let _nextTrack = tracks[nextCount+1]
                 if !_nextTrack.activity.cycling {
-                    break
+                    nextCount++ // Skip and keep searching
+                    continue
                 }
                 if !closeTracks(track: track, toTrack: _nextTrack, closerThanSeconds: seconds) {
-                    break
+                    break // Outside limit, stop search
                 }
+                // Found a bike track
                 println("\(formatter.stringFromDate(track.endDate()!)) | \(formatter.stringFromDate(_nextTrack.startDate()!))")
                 nextTrack = _nextTrack
-                nextCount++
+                nextCount++ // Keep searching
             }
             if let nextTrack = nextTrack where nextCount > count {
                 // Merge tracks between bike tracks

@@ -52,7 +52,7 @@ class TrackDetailViewController: SMTranslatedViewController {
             return
         }
 
-        let trackLocations = track.locations.toArray(TrackLocation.self)
+        let trackLocations = track.locationsSorted().toArray(TrackLocation.self)
         var coordinates = trackLocations.map { return $0.coordinate() }
         // Draw route
         let pathAnnotation = mapView.addPath(coordinates)
