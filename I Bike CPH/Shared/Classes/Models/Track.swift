@@ -27,11 +27,11 @@ class Track: RLMObject {
 extension Track {
 	
     func startDate() -> NSDate? {
-        return (locations.firstObject() as? TrackLocation)?.date()
+        return (locationsSorted().firstObject() as? TrackLocation)?.date()
     }
 	
     func endDate() -> NSDate? {
-        return (locations.lastObject() as? TrackLocation)?.date()
+        return (locationsSorted().lastObject() as? TrackLocation)?.date()
     }
 	
     func recalculate() {
@@ -74,12 +74,13 @@ extension Track {
     
     private func recalculateTimestamps() {
         // Use first TrackLocation timestamp. Fallback to activity
-        startTimestamp = (locations.firstObject() as? TrackLocation)?.timestamp ?? activity.startDate.timeIntervalSince1970 ?? 0
-        endTimestamp = (locations.lastObject() as? TrackLocation)?.timestamp ?? activity.startDate.timeIntervalSince1970 ?? 0
+        startTimestamp = (locationsSorted().firstObject() as? TrackLocation)?.timestamp ?? activity.startDate.timeIntervalSince1970 ?? 0
+        endTimestamp = (locationsSorted().lastObject() as? TrackLocation)?.timestamp ?? activity.startDate.timeIntervalSince1970 ?? 0
     }
     
     private func recalculateLength() {
         var newLength: Double = 0
+        let locations = locationsSorted()
         for (index, location) in enumerate(locations) {
             if index + 1 >= Int(locations.count) {
                 continue
@@ -94,6 +95,9 @@ extension Track {
     }
     
     private func recalculateDuration() {
+        let start = startDate() ?? endDate()
+        let end = endDate()
+        let locs = locations
         if let newDuration = endDate()?.timeIntervalSinceDate(startDate() ?? endDate()!) {
             duration = newDuration
         } else {
@@ -134,16 +138,17 @@ extension Track {
     }
     
     func lowAccuracy(#minAccuracy: Double = 100) -> Bool {
-        let locations = self.locations.objectsWithPredicate(NSPredicate(value: true))
+        let locations = locationsSorted().objectsWithPredicate(NSPredicate(value: true))
         let horizontal = locations.averageOfProperty("horizontalAccuracy")?.doubleValue ?? 0
         let vertical = locations.averageOfProperty("verticalAccuracy")?.doubleValue ?? 0
         return min(horizontal, vertical) > minAccuracy
     }
     
     func flightDistance() -> Double? {
-        if locations.count <= 1 {
+        if self.locations.count <= 1 {
             return nil
         }
+        let locations = locationsSorted()
         if let
             firstLocation = locations.firstObject() as? TrackLocation,
             lastLocation = locations.lastObject() as? TrackLocation
@@ -154,9 +159,10 @@ extension Track {
     }
     
     func flightWithOneMedianStopDistance() -> Double? {
-        if locations.count <= 2 {
+        if self.locations.count <= 2 {
             return nil
         }
+        let locations = locationsSorted()
         if let firstLocation = locations.firstObject() as? TrackLocation {
             let centerIndex = UInt(floor(Double(locations.count)/2))
             if let centerLocation = locations[centerIndex] as? TrackLocation {
@@ -172,6 +178,7 @@ extension Track {
     
     func speeds() -> [Double] {
         var speeds = [Double]()
+        let locations = locationsSorted()
         for (index, location) in enumerate(locations) {
             if index + 1 >= Int(locations.count) {
                 continue
@@ -273,7 +280,7 @@ extension Track {
     }
     
     func jsonForServerUpload() -> JSON? {
-        
+        let locations = locationsSorted()
         if let firstLocation = locations.firstObject() as? TrackLocation {
             if let trackToken = UserHelper.trackToken() {
                 let startTimestamp = firstLocation.timestamp.roundTo(1)
@@ -304,6 +311,10 @@ extension Track {
             }
         }
         return nil
+    }
+
+    func locationsSorted() -> RLMResults {
+        return locations.sortedResultsUsingProperty("timestamp", ascending: true)
     }
 }
 

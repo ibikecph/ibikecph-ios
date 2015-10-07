@@ -193,13 +193,11 @@ let trackingHandler = TrackingHandler()
         thread.enqueue() { [weak self] in
             RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
                 if let currentTrack = self?.currentTrack where !currentTrack.invalidated {
-//                    println("Tracking: Add locations")
                     for location in locations {
                         let location = TrackLocation.build(location)
                         currentTrack.locations.addObject(location)
                     }
                 }
-                //            println("Tracked location: \(location.location())")
             }
         }
     }

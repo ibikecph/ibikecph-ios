@@ -251,7 +251,7 @@
 
 "login_error_fields" = "Både din email og din adgangskode skal være indtastet!";
 "register_error_fields" = "Alle felter skal være udfyldt!";
-"register_error_passwords" = "Din adgangskode er forkert!";
+"register_error_passwords" = "Dine adgangskoder er ikke ens!";
 "register_error_user_terms" = "Du skal acceptere brugerbetingelserne!";
 
 "error_not_logged_in" = "Du skal være logget ind";
@@ -323,7 +323,7 @@
 "unit_km_pr_h" = "km/t";
 "unit_km_pr_trip" = "km/tur";
 "unit_kcal" = "kcal";
-"unit_kcal_pr_day" = "kcal/day";
+"unit_kcal_pr_day" = "kcal/dag";
 "unit_h_long" = "timer";
 "unit_h_long_singular" = "time";
 "unit_h_short" = "t";
