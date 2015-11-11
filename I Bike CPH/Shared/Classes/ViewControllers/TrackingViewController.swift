@@ -146,7 +146,7 @@ class TrackingViewController: ToolbarViewController {
         
         if let startDate = BikeStatistics.firstTrackStartDate() {
             sinceLabel.text = "Since".localized + " " + sinceFormatter.stringFromDate(startDate)
-            let totalDays = NSDate().relativeDay(fromDate: startDate)
+            let totalDays = NSDate().relativeDay(fromDate: startDate) + 1
             let averageDayDistance = BikeStatistics.totalDistance() / Double(totalDays)
             let averageDayCalories = BikeStatistics.kiloCaloriesPerBikedDistance(averageDayDistance)
             calorieLabel.text = numberFormatter.stringFromNumber(averageDayCalories)
