@@ -18,6 +18,7 @@ struct RouteTypeViewModel {
                 case .Regular: return "Fast"
                 case .Cargo: return "Cargo"
                 case .Green: return "Green"
+                case .Broken: return "BrokenRoute"
             }
         }()
         return UIImage(named: name)

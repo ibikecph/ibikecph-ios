@@ -1,9 +1,0 @@
-#include "Pods-SMCalloutView.xcconfig"
-CONFIGURATION_BUILD_DIR = $PODS_FRAMEWORK_BUILD_PATH
-FRAMEWORK_SEARCH_PATHS = "$PODS_FRAMEWORK_BUILD_PATH"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/SMCalloutView" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/DAKeyboardControl" "${PODS_ROOT}/Headers/Public/FMDB" "${PODS_ROOT}/Headers/Public/GRMustache" "${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK" "${PODS_ROOT}/Headers/Public/JRSwizzle" "${PODS_ROOT}/Headers/Public/Mapbox-iOS-SDK" "${PODS_ROOT}/Headers/Public/NibDesignable" "${PODS_ROOT}/Headers/Public/OCHamcrest" "${PODS_ROOT}/Headers/Public/OCMockito" "${PODS_ROOT}/Headers/Public/PSTAlertController" "${PODS_ROOT}/Headers/Public/Realm" "${PODS_ROOT}/Headers/Public/Realm/realm" "${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK" "${PODS_ROOT}/Headers/Public/SMCalloutView" "${PODS_ROOT}/Headers/Public/TTTAttributedLabel" "${PODS_ROOT}/Headers/Public/UIImage-Categories"
-OTHER_LDFLAGS = -ObjC
-PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods
-PODS_ROOT = ${SRCROOT}
-SKIP_INSTALL = YES

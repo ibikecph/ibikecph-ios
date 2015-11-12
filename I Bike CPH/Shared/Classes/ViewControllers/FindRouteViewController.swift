@@ -9,6 +9,7 @@
 import UIKit
 
 struct RouteComposit {
+    // TODO: Support multiple route parts
     let route: SMRoute
     let from: SearchListItem
     let to: SearchListItem
@@ -50,7 +51,7 @@ class FindRouteViewController: MapViewController {
         routeManager.delegate = self
         
         // Search for route
-        searchForNewRoute()
+        searchForNewRoute(server: RouteTypeHandler.instance.type.server)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -108,9 +109,9 @@ class FindRouteViewController: MapViewController {
         }
     }
     
-    private func searchForNewRoute() {
+    private func searchForNewRoute(#server: String) {
         if let toItem = toItem {
-            routeManager.findRoute(self.fromItem, to: toItem)
+            routeManager.findRoute(self.fromItem, to: toItem, server: server)
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         }
     }
@@ -126,7 +127,7 @@ extension FindRouteViewController: FindRouteToolbarDelegate {
             self.fromItem = toItem
             self.toItem = fromItem
             // Update route
-            searchForNewRoute()
+            searchForNewRoute(server: RouteTypeHandler.instance.type.server)
         }
     }
     func didSelectRoute() {
@@ -145,7 +146,8 @@ extension FindRouteViewController: FindRouteToolbarDelegate {
 
 extension FindRouteViewController: RouteTypeToolbarDelegate {
     func didChangeType(type: RouteType) {
-        searchForNewRoute()
+        findRouteToolbarView.showBrokenRoute = RouteType.Broken == type
+        searchForNewRoute(server: type.server)
     }
 }
 
@@ -206,6 +208,6 @@ extension FindRouteViewController: FindAddressViewControllerProtocol {
         }
         itemOrigin = .None
         // Update route
-        searchForNewRoute()
+        searchForNewRoute(server: RouteTypeHandler.instance.type.server)
     }
 }

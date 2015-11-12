@@ -22,12 +22,27 @@ class FindRouteToolbarView: ToolbarView {
             routeTypeToolbarView.delegate = delegate
         }
     }
+
+    var showBrokenRoute: Bool = false {
+        didSet {
+            if showBrokenRoute {
+                extraToolbarViewContainer.add(toolbarView: brokenRouteToolbarView)
+                setNeedsLayout()
+                setNeedsUpdateConstraints()
+                return
+            }
+            extraToolbarViewContainer.removeToolbar()
+        }
+    }
+
+    let brokenRouteToolbarView: RouteBrokenToolbarView = RouteBrokenToolbarView()
     
     @IBOutlet weak var fromButton: UIButton!
     @IBOutlet weak var toButton: UIButton!
     @IBOutlet weak var routeButton: UIButton!
     @IBOutlet weak var routeTypeToolbarView: RouteTypeToolbarView!
     @IBOutlet weak var routeStatsToolbarView: RouteStatsToolbarView!
+    @IBOutlet weak var extraToolbarViewContainer: ToolbarViewContainer!
     
     @IBOutlet weak var reverseRouteButton: UIButton!
     
@@ -52,6 +67,7 @@ extension FindRouteToolbarView {
         fromButton.updateToItem(nil)
         toButton.updateToItem(nil)
         routeButton.enabled = false
+        showBrokenRoute = false
     }
     
     func updateWithFromItem(fromItem: SearchListItem?, toItem: SearchListItem?) {

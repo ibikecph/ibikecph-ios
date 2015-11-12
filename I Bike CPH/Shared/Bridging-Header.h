@@ -29,8 +29,7 @@
 #import "SMEnterRouteCell.h"
 #import "SMTransportation.h"
 
-#import <Mapbox-iOS-SDK/Mapbox.h>
-#import <Mapbox-iOS-SDK/RMAnnotation.h>
+#import "Mapbox.h"
 #import "SMiBikeCPHMapTileSource.h"
 
 #import "SMReportErrorController.h"

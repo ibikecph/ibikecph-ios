@@ -361,10 +361,6 @@
 
 "hour_minute_format" = "%dh %2dm";
 
-"bike_type_1"= "Get there fast";
-"bike_type_2"= "Fit for cargo bikes";
-"bike_type_3"= "Enjoy the green";
-
 /* User terms */
 "no_thanks" = "No thanks";
 "accept" = "Accept";

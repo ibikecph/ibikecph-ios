@@ -364,10 +364,6 @@
 
 "hour_minute_format" = "%dt %2dm";
 
-"bike_type_1"= "Kom hurtigt frem";
-"bike_type_2"= "God til ladcykel";
-"bike_type_3"= "Nyd det grønne";
-
 /* User terms */
 "no_thanks" = "Nej tak";
 "accept" = "Godkend";

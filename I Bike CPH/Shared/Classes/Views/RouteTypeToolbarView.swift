@@ -47,7 +47,6 @@ class RouteTypeToolbarView: ToolbarView {
     
     @IBAction func didTapLeftButton(sender: AnyObject) {
         type = validType(0) ?? .Regular
-        
     }
     @IBAction func didTapCenterButton(sender: AnyObject) {
         type = validType(1) ?? .Regular
