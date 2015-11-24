@@ -16,9 +16,10 @@ import UIKit
     static func backgroundColor() -> UIColor
     static func tintColor() -> UIColor
     static func foregroundColor() -> UIColor
+    static func foregroundSecondaryColor() -> UIColor
     static func navigationBarTintColor() -> UIColor
     static func navigationBarContentTintColor() -> UIColor
-    
+
     static func logo() -> UIImage?
 }
 

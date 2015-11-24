@@ -28,6 +28,10 @@ extension UIColor {
     class func foregroundColor() -> UIColor {
         return .darkGrayColor()
     }
+
+    class func foregroundSecondaryColor() -> UIColor {
+        return .lightGrayColor()
+    }
     
     class func navigationBarTintColor() -> UIColor {
         return .orange()

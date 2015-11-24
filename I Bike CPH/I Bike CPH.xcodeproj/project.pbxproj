@@ -121,6 +121,10 @@
 		4E58C30B1B0E15DC0041255B /* MainWithSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3091B0E15DC0041255B /* MainWithSideMenuViewController.swift */; };
 		4E58C3191B0E35000041255B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3171B0E35000041255B /* ENSideMenu.swift */; };
 		4E58C31A1B0E35000041255B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3171B0E35000041255B /* ENSideMenu.swift */; };
+		4E5959181BFC824500271376 /* RouteBrokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5959171BFC824500271376 /* RouteBrokenView.swift */; };
+		4E5959191BFC824500271376 /* RouteBrokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5959171BFC824500271376 /* RouteBrokenView.swift */; };
+		4E59591B1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59591A1BFC8C5C00271376 /* RouteBrokenPartView.swift */; };
+		4E59591C1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59591A1BFC8C5C00271376 /* RouteBrokenPartView.swift */; };
 		4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820B1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820C1A24AC1200A40484 /* CurrentLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */; };
@@ -568,6 +572,8 @@
 		4E56745F1A92521800BF4A28 /* MotionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		4E58C3091B0E15DC0041255B /* MainWithSideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWithSideMenuViewController.swift; sourceTree = "<group>"; };
 		4E58C3171B0E35000041255B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenu.swift; path = ENSwiftSideMenu/ENSideMenu.swift; sourceTree = "<group>"; };
+		4E5959171BFC824500271376 /* RouteBrokenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteBrokenView.swift; sourceTree = "<group>"; };
+		4E59591A1BFC8C5C00271376 /* RouteBrokenPartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteBrokenPartView.swift; sourceTree = "<group>"; };
 		4E5982001A24AC1200A40484 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationItem.swift; sourceTree = "<group>"; };
 		4E5982031A24AC1200A40484 /* FavoriteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
@@ -611,6 +617,7 @@
 		4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		4E7BD07E1A92354E00BFDC7B /* Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		4E818EB51BF3872C0058C090 /* RouteBrokenToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteBrokenToolbarView.swift; sourceTree = "<group>"; };
+		4E8C1E4B1BFF63DF00D757AA /* keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = keys.h; path = Shared/Resources/keys.h; sourceTree = "<group>"; };
 		4E8E34371A272A84004D529B /* OiorestItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OiorestItem.swift; sourceTree = "<group>"; };
 		4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
 		4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoicePreferencesViewController.swift; sourceTree = "<group>"; };
@@ -832,7 +839,6 @@
 		4EE06CB41A11134C00DE4226 /* SMRouteUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteUtils.m; sourceTree = "<group>"; };
 		4EE06CB51A11134C00DE4226 /* SMTurnInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTurnInstruction.h; sourceTree = "<group>"; };
 		4EE06CB61A11134C00DE4226 /* SMTurnInstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTurnInstruction.m; sourceTree = "<group>"; };
-		4EE06D431A1115EF00DE4226 /* keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = keys.h; path = "../../../ibikecph-ios-legacy/ibikecph/keys.h"; sourceTree = "<group>"; };
 		4EE06DF41A1116CF00DE4226 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4EE06DFF1A11238C00DE4226 /* CykelPlanen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CykelPlanen-Prefix.pch"; sourceTree = "<group>"; };
 		4EE06E091A11267D00DE4226 /* SharedImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedImport.h; sourceTree = "<group>"; };
@@ -959,6 +965,8 @@
 				4E5E87881B31D6560021F5E9 /* FindRouteToolbarView.swift */,
 				4E54C3461BF3887E00E935B0 /* RouteBrokenToolbarView.xib */,
 				4E818EB51BF3872C0058C090 /* RouteBrokenToolbarView.swift */,
+				4E5959171BFC824500271376 /* RouteBrokenView.swift */,
+				4E59591A1BFC8C5C00271376 /* RouteBrokenPartView.swift */,
 			);
 			name = FindRoute;
 			sourceTree = "<group>";
@@ -1198,6 +1206,7 @@
 		4EE05F411A10EBFA00DE4226 = {
 			isa = PBXGroup;
 			children = (
+				4E8C1E4B1BFF63DF00D757AA /* keys.h */,
 				4E1CD6401BF4C30F005FCEAA /* Mapbox.h */,
 				4EE05F9F1A10EE7600DE4226 /* Shared */,
 				4EE05F4C1A10EBFA00DE4226 /* I Bike CPH */,
@@ -1240,7 +1249,6 @@
 			isa = PBXGroup;
 			children = (
 				4EE06C651A1102A600DE4226 /* I Bike CPH-Prefix.pch */,
-				4EE06D431A1115EF00DE4226 /* keys.h */,
 				4EE05F4E1A10EBFA00DE4226 /* Info.plist */,
 				4EE05F4F1A10EBFA00DE4226 /* main.m */,
 			);
@@ -1890,7 +1898,7 @@
 					};
 					4EE05F781A10EDE700DE4226 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 2S6P2V9TSL;
+						DevelopmentTeam = SP46WFGATT;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2299,6 +2307,7 @@
 				4E4F5FE01A2BB3A000233ACA /* StyleIBikeCph.swift in Sources */,
 				4EC56E9D1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */,
 				4EC56EE71A2A3AAE00B696B4 /* SMRegisterController.m in Sources */,
+				4E59591B1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */,
 				4ECA91A11AB2EED800F4BB4F /* NotificationCenter.swift in Sources */,
 				4EE06CC71A11134C00DE4226 /* NSString+URLEncode.m in Sources */,
 				4EB610E21AD69B8800CEC994 /* SectionViewModel.swift in Sources */,
@@ -2340,6 +2349,7 @@
 				4EDC5E071B20EBD5009189EE /* ToolbarView.swift in Sources */,
 				4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
 				4E32B29E1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */,
+				4E5959181BFC824500271376 /* RouteBrokenView.swift in Sources */,
 				4EEA6A941BA06E99009E9020 /* UserClient.swift in Sources */,
 				4E5E87901B31DC520021F5E9 /* RouteStatsToolbarView.swift in Sources */,
 				4EE683741B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */,
@@ -2547,6 +2557,7 @@
 				4E10EBC71B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */,
 				4E337B551B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */,
 				4EC56EF51A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
+				4E59591C1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */,
 				4EC56DC21A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
 				4EDC5E0B1B21B0F0009189EE /* FindAddressViewController.swift in Sources */,
 				4EE06CBE1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
@@ -2581,6 +2592,7 @@
 				4EEC6D321B208156003AE8DF /* CompassButton.swift in Sources */,
 				4E58C30B1B0E15DC0041255B /* MainWithSideMenuViewController.swift in Sources */,
 				4EAB12451A769BB90099AC54 /* VoicePreferencesViewController.swift in Sources */,
+				4E5959191BFC824500271376 /* RouteBrokenView.swift in Sources */,
 				4EAB124B1A76AEF50099AC54 /* SettingsHandler.swift in Sources */,
 				4E4F5FDB1A2BAC4700233ACA /* Styling.swift in Sources */,
 				4EE06CBA1A11134C00DE4226 /* SMAPIOperation.m in Sources */,

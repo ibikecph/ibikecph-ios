@@ -21,7 +21,7 @@ class RouteManager: NSObject {
     var delegate: RouteManagerDelegate?
     
     enum Result {
-        case Success(json: [String : AnyObject], osrmServer: String)
+        case Success(json: JSON, osrmServer: String)
         case ErrorOfType(Type)
         case Error(NSError)
         
@@ -65,14 +65,7 @@ extension RouteManager: SMRequestOSRMDelegate {
             return
         }
         
-        if
-            json.type == .Dictionary,
-            let jsonDictionary = json.object as? [String : AnyObject]
-        {
-            delegate?.didGetResultForRoute(.Success(json: jsonDictionary, osrmServer: req.osrmServer))
-            return
-        }
-        delegate?.didGetResultForRoute(.ErrorOfType(.WrongJsonFormat))
+        delegate?.didGetResultForRoute(.Success(json: json, osrmServer: req.osrmServer))
     }
     
     func serverNotReachable() {
