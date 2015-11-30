@@ -29,12 +29,34 @@ class RouteStatsToolbarView: ToolbarView {
         updateTo(distance: 0, duration: 0, eta: NSDate())
     }
     
-    func updateToRoute(route: SMRoute) {
-        let distance = Double(route.distanceLeft)
-        let partLeft = route.distanceLeft / CGFloat(route.estimatedRouteDistance)
-        let duration = NSTimeInterval(CGFloat(route.estimatedTimeForRoute) * partLeft)
-        let eta = NSDate(timeIntervalSinceNow: duration)
-        updateTo(distance: distance, duration: duration, eta: eta)
+    func updateToRoute(routeComposite: RouteComposite) {
+        let distanceLeft = routeComposite.bikeDistanceLeft
+        let durationLeft: NSTimeInterval = {
+            switch routeComposite.composite {
+            case .Single(_):
+                return routeComposite.estimatedTime * routeComposite.distanceLeft / routeComposite.estimatedDistance
+            case .Multiple(let routes):
+                let current = routeComposite.currentRouteIndex
+                let currentRoute = routes[current]
+                var duration: NSTimeInterval = 0
+                // Current route
+                let bikeOrWalk = SMRouteTypeBike.value == currentRoute.routeType.value || SMRouteTypeWalk.value == currentRoute.routeType.value
+                if bikeOrWalk,
+                    let endDate = currentRoute.endDate {
+                    duration += max(endDate.timeIntervalSinceNow, 0)
+                } else {
+                    return Double(currentRoute.distanceLeft) / Double(currentRoute.estimatedRouteDistance) * NSTimeInterval(currentRoute.estimatedTimeForRoute)
+                }
+                // Routes after current
+                let afterCurrentRoutes = current+1 < routes.count ? routes[current+1..<routes.count] : []
+                for route in afterCurrentRoutes {
+                    duration += NSTimeInterval(route.estimatedTimeForRoute)
+                }
+                return duration
+            }
+        }()
+        let eta = NSDate(timeIntervalSinceNow: durationLeft)
+        updateTo(distance: distanceLeft, duration: durationLeft, eta: eta)
     }
     
     func updateTo(#distance: Double, duration: Double, eta: NSDate?) {

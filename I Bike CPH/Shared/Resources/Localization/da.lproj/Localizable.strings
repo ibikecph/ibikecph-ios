@@ -26,6 +26,8 @@
 "direction_15" = "Ankomst til destinationen";
 "direction_16" = "Træk cyklen";
 "direction_17" = "Fortsæt på cyklen";
+"direction_18" = "%@: Tag %@ til %@";
+"direction_19" = "Stå af på %@";
 "direction_100" = "Du nærmer dig destinationen";
 
 "first_direction_0" = "";
@@ -363,10 +365,6 @@
 "Tomorrow" = "I morgen";
 
 "hour_minute_format" = "%dt %2dm";
-
-"bike_type_1"= "Kom hurtigt frem";
-"bike_type_2"= "God til ladcykel";
-"bike_type_3"= "Nyd det grønne";
 
 /* User terms */
 "no_thanks" = "Nej tak";

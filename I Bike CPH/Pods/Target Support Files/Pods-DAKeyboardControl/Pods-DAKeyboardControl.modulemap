@@ -1,6 +1,0 @@
-framework module DAKeyboardControl {
-  umbrella header "Pods-DAKeyboardControl-umbrella.h"
-
-  export *
-  module * { export * }
-}

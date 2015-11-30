@@ -75,18 +75,19 @@ class MapView: UIView {
     
     func setup() {
         addSubview(mapView)
+        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.addConstraints([
+            NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: mapView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: mapView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
+            ])
         
         mapView.delegate = self
         
         // Add long-press to drop pin
         let longPress = UILongPressGestureRecognizer(target: self, action: "didLongPress:")
         mapView.addGestureRecognizer(longPress)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    
-        mapView.frame = max(bounds.width, bounds.height) == 0 ? CGRect(x: 0, y: 0, width: 1, height: 1) : bounds
     }
     
     var initialRegionLoadNecessary = true
@@ -104,7 +105,8 @@ class MapView: UIView {
         let coordinates = locations.map { $0.coordinate }
         return addPath(coordinates, lineColor: lineColor, lineWidth: lineWidth)
     }
-    
+
+    let lineDashLengths = [1, 0.1, 1, 10, 100]
     func addPath(coordinates: [CLLocationCoordinate2D], lineColor: UIColor = Styler.tintColor(), lineWidth: Float = 4.0) -> Annotation {
         // Shape
         var shape = RMShape(view: mapView)
@@ -112,6 +114,9 @@ class MapView: UIView {
         shape.lineWidth = lineWidth
         shape.lineJoin = "round"
         shape.lineCap = "round"
+//        shape.lineDashLengths = lineDashLengths
+//        shape.lineDashPhase = 2
+//        shape.scaleLineDash = true
         // Add coordinates
         var waypoints: [CLLocation] = [CLLocation]()
         for coordinate in coordinates {
@@ -131,7 +136,7 @@ class MapView: UIView {
         return pathAnnotation
     }
     
-    func zoomToAnnotation(annotation: Annotation, animated: Bool = true, padding: Double = 0.2) {
+    func zoomToAnnotation(annotation: Annotation, animated: Bool = true, padding: Double = 0.25) {
         // Padding
         let bounds = mapView.sphericalTrapezium(forProjectedRect: annotation.projectedBoundingBox).padded(padding: padding)
         // Zoom
@@ -139,12 +144,45 @@ class MapView: UIView {
 
         initialRegionLoadNecessary = false
     }
-    
-    func addAnnotationsForRoute(route: SMRoute, from: SearchListItem, to: SearchListItem, zoom: Bool = true) -> [Annotation] {
+
+    func zoomToAnnotations(annotations: [Annotation], animated: Bool = true, padding: Double = 0.25) {
+        // Padding
+        var totalBounds: RMSphericalTrapezium? = nil
+        for annotation in annotations {
+            let bounds = mapView.sphericalTrapezium(forProjectedRect: annotation.projectedBoundingBox)
+            if var tempTotalBounds = totalBounds {
+                let newSW = bounds.southWest
+                if newSW.latitude < tempTotalBounds.southWest.latitude {
+                    totalBounds?.southWest.latitude = newSW.latitude
+                }
+                if newSW.longitude < tempTotalBounds.southWest.longitude {
+                    totalBounds?.southWest.longitude = newSW.longitude
+                }
+                let newNE = bounds.northEast
+                if newNE.latitude > tempTotalBounds.northEast.latitude {
+                    totalBounds?.northEast.latitude = newNE.latitude
+                }
+                if newNE.longitude > tempTotalBounds.northEast.longitude {
+                    totalBounds?.northEast.longitude = newNE.longitude
+                }
+            } else {
+                totalBounds = bounds
+            }
+        }
+        if let bounds = totalBounds?.padded(padding: padding) {
+            // Zoom
+            mapView.zoomWithLatitudeLongitudeBoundsSouthWest(bounds.southWest, northEast: bounds.northEast, animated: animated)
+
+            initialRegionLoadNecessary = false
+        }
+    }
+
+    func addAnnotationsForRoute(route: SMRoute, from: SearchListItem?, to: SearchListItem?, zoom: Bool = true) -> [Annotation] {
         var annotations = [Annotation]()
-        if let locations = route.waypoints.copy() as? [CLLocation] { // Copy since it is NSMutableArray
+        if let locations = route.waypoints?.copy() as? [CLLocation] { // Copy since it is NSMutableArray
             let coordinates = locations.map { $0.coordinate } // Map to coordinates
-            let annotation = addPath(coordinates)
+            let lineColor = SMRouteTypeBike.value == route.routeType.value ? Styler.tintColor() : Styler.foregroundColor()
+            let annotation = addPath(coordinates, lineColor: lineColor, lineWidth: 5)
             annotations.append(annotation)
             if zoom {
                 // Zoom to entire path
@@ -152,33 +190,65 @@ class MapView: UIView {
             }
             
             if let
-                pinStart = from.location?.coordinate,
+                pinStart = from?.location?.coordinate,
                 pathStart = coordinates.first
             {
-                let annotation = addPath([pinStart, pathStart], lineColor: Styler.foregroundColor())
+                let annotation = addPath([pinStart, pathStart], lineColor: Styler.foregroundSecondaryColor())
                 annotations.append(annotation)
             }
             if let
-                pinEnd = to.location?.coordinate,
+                pinEnd = to?.location?.coordinate,
                 pathEnd = coordinates.last
             {
-                let annotation = addPath([pathEnd, pinEnd], lineColor: Styler.foregroundColor())
+                let annotation = addPath([pathEnd, pinEnd], lineColor: Styler.foregroundSecondaryColor())
                 annotations.append(annotation)
             }
         }
         // Pins
-        if let startCoordinate = from.location?.coordinate {
+        if let startCoordinate = from?.location?.coordinate {
             // Pin
             let startPin = PinAnnotation(mapView: self, coordinate: startCoordinate, type: .Start)
             addAnnotation(startPin)
             annotations.append(startPin)
+        } else if SMRouteTypeBike.value != route.routeType.value,
+            let pinType = PinAnnotation.typeForRouteType(route.routeType),
+            coordinate = (route.waypoints?.copy() as? [CLLocation])?.first?.coordinate
+        {
+            let startPin = PinAnnotation(mapView: self, coordinate: coordinate, type: pinType)
+            addAnnotation(startPin)
+            annotations.append(startPin)
         }
-        if let endCoordinate = to.location?.coordinate {
+        if let endCoordinate = to?.location?.coordinate {
             let endPin = PinAnnotation(mapView: self, coordinate: endCoordinate, type: .End)
             mapView.addAnnotation(endPin)
             annotations.append(endPin)
         }
         return annotations
+    }
+
+    func addAnnotationsForRouteComposite(routeComposite: RouteComposite, from: SearchListItem, to: SearchListItem, zoom: Bool = true) -> [Annotation] {
+        switch routeComposite.composite {
+        case .Single(let route):
+            return addAnnotationsForRoute(route, from: from, to: to, zoom: zoom)
+        case .Multiple(let routes):
+            var annotations: [Annotation] = []
+            for route in routes {
+                let routeAnnotations: [Annotation] = {
+                    if route == routes.first && route == routeComposite.currentRoute {
+                        return self.addAnnotationsForRoute(route, from: from, to: nil, zoom: false)
+                    } else if  route == routes.last {
+                        return self.addAnnotationsForRoute(route, from: nil, to: to, zoom: false)
+                    } else {
+                        return self.addAnnotationsForRoute(route, from: nil, to: nil, zoom: false)
+                    }
+                }()
+                annotations.extend(routeAnnotations)
+            }
+            if zoom {
+                zoomToAnnotations(annotations)
+            }
+            return annotations
+        }
     }
 }
 
@@ -284,7 +354,7 @@ extension MapView: RMMapViewDelegate {
 
 
 extension RMSphericalTrapezium {
-    func padded(padding: Double = 0.2) -> RMSphericalTrapezium {
+    func padded(padding: Double = 0.25) -> RMSphericalTrapezium {
         var northEast = self.northEast
         var southWest = self.southWest
         

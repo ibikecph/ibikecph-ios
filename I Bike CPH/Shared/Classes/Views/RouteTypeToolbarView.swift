@@ -23,9 +23,11 @@ class RouteTypeToolbarView: ToolbarView {
             return RouteTypeHandler.instance.type
         }
         set {
-            RouteTypeHandler.instance.type = newValue
-            updateUI()
-            delegate?.didChangeType(RouteTypeHandler.instance.type)
+            if newValue != type {
+                RouteTypeHandler.instance.type = newValue
+                updateUI()
+                delegate?.didChangeType(RouteTypeHandler.instance.type)
+            }
         }
     }
     private let validTypes = RouteType.validTypes()
@@ -47,7 +49,6 @@ class RouteTypeToolbarView: ToolbarView {
     
     @IBAction func didTapLeftButton(sender: AnyObject) {
         type = validType(0) ?? .Regular
-        
     }
     @IBAction func didTapCenterButton(sender: AnyObject) {
         type = validType(1) ?? .Regular

@@ -26,6 +26,8 @@
 "direction_15" = "You have reached your destination";
 "direction_16" = "Start pushing your bike on";
 "direction_17" = "Stop pushing your bike";
+"direction_18" = "%@: Take %@ to %@";
+"direction_19" = "Get off on %@";
 "direction_100" = "Reaching destination";
 
 "first_direction_0" = "";
@@ -360,10 +362,6 @@
 "Tomorrow" = "Tomorrow";
 
 "hour_minute_format" = "%dh %2dm";
-
-"bike_type_1"= "Get there fast";
-"bike_type_2"= "Fit for cargo bikes";
-"bike_type_3"= "Enjoy the green";
 
 /* User terms */
 "no_thanks" = "No thanks";

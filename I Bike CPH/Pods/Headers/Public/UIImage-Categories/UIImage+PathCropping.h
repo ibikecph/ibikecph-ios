@@ -1,1 +1,0 @@
-../../../UIImage-Categories/Classes/UIImage+PathCropping.h

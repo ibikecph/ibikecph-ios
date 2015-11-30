@@ -21,7 +21,7 @@ class RouteManager: NSObject {
     var delegate: RouteManagerDelegate?
     
     enum Result {
-        case Success(json: [String : AnyObject], osrmServer: String)
+        case Success(json: JSON, osrmServer: String)
         case ErrorOfType(Type)
         case Error(NSError)
         
@@ -34,7 +34,7 @@ class RouteManager: NSObject {
     }
     
     
-    func findRoute(from: SearchListItem, to: SearchListItem) {
+    func findRoute(from: SearchListItem, to: SearchListItem, server osrmServer: String) {
         
         if let
             fromCoordinate = from.location?.coordinate,
@@ -42,7 +42,7 @@ class RouteManager: NSObject {
         {
             let requestOSRM = SMRequestOSRM(delegate: self)
             requestOSRM.auxParam = "startRoute"
-            requestOSRM.osrmServer = RouteTypeHandler.instance.server
+            requestOSRM.osrmServer = osrmServer
             requestOSRM.getRouteFrom(fromCoordinate, to: toCoordinate, via: nil)
             return
         }
@@ -64,15 +64,12 @@ extension RouteManager: SMRequestOSRMDelegate {
             delegate?.didGetResultForRoute(.ErrorOfType(.RouteNotFound))
             return
         }
-        
-        if
-            json.type == .Dictionary,
-            let jsonDictionary = json.object as? [String : AnyObject]
-        {
-            delegate?.didGetResultForRoute(.Success(json: jsonDictionary, osrmServer: req.osrmServer))
+        if let errorString = json["error"].string {
+            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: errorString])
+            delegate?.didGetResultForRoute(.Error(error))
             return
         }
-        delegate?.didGetResultForRoute(.ErrorOfType(.WrongJsonFormat))
+        delegate?.didGetResultForRoute(.Success(json: json, osrmServer: req.osrmServer))
     }
     
     func serverNotReachable() {

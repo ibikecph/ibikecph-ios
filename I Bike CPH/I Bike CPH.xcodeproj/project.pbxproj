@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1539C9A1A5C4A50E09826157 /* Pods_I_Bike_CPHTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 489F1201F655BED5B68DD674 /* Pods_I_Bike_CPHTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		1C7DF513F980936BCF59D9F3 /* Pods_CykelPlanenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B96C2575165B7DAFDE3B797 /* Pods_CykelPlanenTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		31AC8359E3FD8A9010C03D8E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335D1E0C4C3B6EA9C90D1EE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1539C9A1A5C4A50E09826157 /* Pods_I_Bike_CPHTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 489F1201F655BED5B68DD674 /* Pods_I_Bike_CPHTests.framework */; };
+		1C7DF513F980936BCF59D9F3 /* Pods_CykelPlanenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B96C2575165B7DAFDE3B797 /* Pods_CykelPlanenTests.framework */; };
+		31AC8359E3FD8A9010C03D8E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335D1E0C4C3B6EA9C90D1EE /* Pods.framework */; };
 		4E0176881AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */; };
 		4E0176891AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */; };
 		4E1000E01B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1000DF1B00A6EC005C7FE7 /* RouteTypeViewModel.swift */; };
@@ -103,6 +103,8 @@
 		4E5258C81A9B9C8400BE55C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C61A9B9C8300BE55C8 /* String.swift */; };
 		4E5258CA1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */; };
 		4E5258CB1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */; };
+		4E54C3471BF3887E00E935B0 /* RouteBrokenToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C3461BF3887E00E935B0 /* RouteBrokenToolbarView.xib */; };
+		4E54C3481BF3887E00E935B0 /* RouteBrokenToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C3461BF3887E00E935B0 /* RouteBrokenToolbarView.xib */; };
 		4E55A0241A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */; };
 		4E55A0251A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */; };
 		4E55A0271A36068800386F85 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0261A36068800386F85 /* MenuViewController.swift */; };
@@ -119,6 +121,10 @@
 		4E58C30B1B0E15DC0041255B /* MainWithSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3091B0E15DC0041255B /* MainWithSideMenuViewController.swift */; };
 		4E58C3191B0E35000041255B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3171B0E35000041255B /* ENSideMenu.swift */; };
 		4E58C31A1B0E35000041255B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3171B0E35000041255B /* ENSideMenu.swift */; };
+		4E5959181BFC824500271376 /* RouteBrokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5959171BFC824500271376 /* RouteBrokenView.swift */; };
+		4E5959191BFC824500271376 /* RouteBrokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5959171BFC824500271376 /* RouteBrokenView.swift */; };
+		4E59591B1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59591A1BFC8C5C00271376 /* RouteBrokenPartView.swift */; };
+		4E59591C1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59591A1BFC8C5C00271376 /* RouteBrokenPartView.swift */; };
 		4E59820A1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820B1A24AC1200A40484 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982001A24AC1200A40484 /* SwiftyJSON.swift */; };
 		4E59820C1A24AC1200A40484 /* CurrentLocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */; };
@@ -189,6 +195,8 @@
 		4E7BD07C1A9234EF00BFDC7B /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */; };
 		4E7BD07F1A92354E00BFDC7B /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07E1A92354E00BFDC7B /* Realm.swift */; };
 		4E7BD0801A92354E00BFDC7B /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07E1A92354E00BFDC7B /* Realm.swift */; };
+		4E818EB71BF3872C0058C090 /* RouteBrokenToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818EB51BF3872C0058C090 /* RouteBrokenToolbarView.swift */; };
+		4E818EB81BF3872C0058C090 /* RouteBrokenToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818EB51BF3872C0058C090 /* RouteBrokenToolbarView.swift */; };
 		4E8E34381A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
 		4E8E343A1A272A84004D529B /* OiorestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E34371A272A84004D529B /* OiorestItem.swift */; };
 		4E90B42E1A9739A900A5F4C5 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */; };
@@ -415,6 +423,8 @@
 		4EE683751B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */; };
 		4EE82FB51B0BCE300089147A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F5C1A10EBFA00DE4226 /* LaunchScreen.xib */; };
 		4EE82FB61B0BCE350089147A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE05F8A1A10EDE700DE4226 /* LaunchScreen.xib */; };
+		4EE8A83B1BF487FA00369B27 /* ToolbarViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8A83A1BF487FA00369B27 /* ToolbarViewContainer.swift */; };
+		4EE8A83C1BF487FA00369B27 /* ToolbarViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8A83A1BF487FA00369B27 /* ToolbarViewContainer.swift */; };
 		4EEA6A8E1BA033AB009E9020 /* SignInHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A8D1BA033AB009E9020 /* SignInHelper.m */; };
 		4EEA6A8F1BA033B2009E9020 /* SignInHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A8D1BA033AB009E9020 /* SignInHelper.m */; };
 		4EEA6A911BA0633F009E9020 /* AddTrackTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA6A901BA0633E009E9020 /* AddTrackTokenViewController.swift */; };
@@ -474,7 +484,7 @@
 		4EFDA4861AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */; };
 		4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */; };
 		CBB78EC39B066CA0779C3D9D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		CC8334260326B19073009BF6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335D1E0C4C3B6EA9C90D1EE /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		CC8334260326B19073009BF6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335D1E0C4C3B6EA9C90D1EE /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -508,6 +518,7 @@
 		4E10EBC41B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnInstructionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E10EBC51B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TurnInstructionsCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E1258D41A7BA63200A82434 /* routeTestStart.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = routeTestStart.gpx; sourceTree = "<group>"; };
+		4E1CD6401BF4C30F005FCEAA /* Mapbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mapbox.h; path = "Pods/Mapbox-iOS-SDK/MapView/Map/Mapbox.h"; sourceTree = "<group>"; };
 		4E20BA681ADC065A00738CA8 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		4E21F2E81BBD63FE003D097F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E21F2EA1BBD6401003D097F /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -552,6 +563,7 @@
 		4E5258B41A9B61E400BE55C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E5258C61A9B9C8300BE55C8 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackDetailViewController.swift; sourceTree = "<group>"; };
+		4E54C3461BF3887E00E935B0 /* RouteBrokenToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RouteBrokenToolbarView.xib; sourceTree = "<group>"; };
 		4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabelTableViewCell.swift; sourceTree = "<group>"; };
 		4E55A0261A36068800386F85 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		4E5674551A92383500BF4A28 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -560,6 +572,8 @@
 		4E56745F1A92521800BF4A28 /* MotionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		4E58C3091B0E15DC0041255B /* MainWithSideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWithSideMenuViewController.swift; sourceTree = "<group>"; };
 		4E58C3171B0E35000041255B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenu.swift; path = ENSwiftSideMenu/ENSideMenu.swift; sourceTree = "<group>"; };
+		4E5959171BFC824500271376 /* RouteBrokenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteBrokenView.swift; sourceTree = "<group>"; };
+		4E59591A1BFC8C5C00271376 /* RouteBrokenPartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteBrokenPartView.swift; sourceTree = "<group>"; };
 		4E5982001A24AC1200A40484 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4E5982021A24AC1200A40484 /* CurrentLocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationItem.swift; sourceTree = "<group>"; };
 		4E5982031A24AC1200A40484 /* FavoriteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
@@ -602,6 +616,8 @@
 		4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareItem_Tests.swift; sourceTree = "<group>"; };
 		4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		4E7BD07E1A92354E00BFDC7B /* Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
+		4E818EB51BF3872C0058C090 /* RouteBrokenToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteBrokenToolbarView.swift; sourceTree = "<group>"; };
+		4E8C1E4B1BFF63DF00D757AA /* keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = keys.h; path = Shared/Resources/keys.h; sourceTree = "<group>"; };
 		4E8E34371A272A84004D529B /* OiorestItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OiorestItem.swift; sourceTree = "<group>"; };
 		4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
 		4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoicePreferencesViewController.swift; sourceTree = "<group>"; };
@@ -823,7 +839,6 @@
 		4EE06CB41A11134C00DE4226 /* SMRouteUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteUtils.m; sourceTree = "<group>"; };
 		4EE06CB51A11134C00DE4226 /* SMTurnInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTurnInstruction.h; sourceTree = "<group>"; };
 		4EE06CB61A11134C00DE4226 /* SMTurnInstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTurnInstruction.m; sourceTree = "<group>"; };
-		4EE06D431A1115EF00DE4226 /* keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = keys.h; path = "../../../ibikecph-ios-legacy/ibikecph/keys.h"; sourceTree = "<group>"; };
 		4EE06DF41A1116CF00DE4226 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4EE06DFF1A11238C00DE4226 /* CykelPlanen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CykelPlanen-Prefix.pch"; sourceTree = "<group>"; };
 		4EE06E091A11267D00DE4226 /* SharedImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedImport.h; sourceTree = "<group>"; };
@@ -840,6 +855,7 @@
 		4EE633791A5E8B6D009DA49B /* Overlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
 		4EE671C51A2F25F00037865B /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D.swift; sourceTree = "<group>"; };
+		4EE8A83A1BF487FA00369B27 /* ToolbarViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewContainer.swift; sourceTree = "<group>"; };
 		4EEA6A8C1BA033AB009E9020 /* SignInHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInHelper.h; sourceTree = "<group>"; };
 		4EEA6A8D1BA033AB009E9020 /* SignInHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInHelper.m; sourceTree = "<group>"; };
 		4EEA6A901BA0633E009E9020 /* AddTrackTokenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTrackTokenViewController.swift; sourceTree = "<group>"; };
@@ -947,6 +963,10 @@
 				4E5E87941B31F7DC0021F5E9 /* RouteTypeToolbarView.swift */,
 				4E5E87891B31D6560021F5E9 /* FindRouteToolbarView.xib */,
 				4E5E87881B31D6560021F5E9 /* FindRouteToolbarView.swift */,
+				4E54C3461BF3887E00E935B0 /* RouteBrokenToolbarView.xib */,
+				4E818EB51BF3872C0058C090 /* RouteBrokenToolbarView.swift */,
+				4E5959171BFC824500271376 /* RouteBrokenView.swift */,
+				4E59591A1BFC8C5C00271376 /* RouteBrokenPartView.swift */,
 			);
 			name = FindRoute;
 			sourceTree = "<group>";
@@ -1186,6 +1206,8 @@
 		4EE05F411A10EBFA00DE4226 = {
 			isa = PBXGroup;
 			children = (
+				4E8C1E4B1BFF63DF00D757AA /* keys.h */,
+				4E1CD6401BF4C30F005FCEAA /* Mapbox.h */,
 				4EE05F9F1A10EE7600DE4226 /* Shared */,
 				4EE05F4C1A10EBFA00DE4226 /* I Bike CPH */,
 				4EE05F661A10EBFA00DE4226 /* I Bike CPHTests */,
@@ -1227,7 +1249,6 @@
 			isa = PBXGroup;
 			children = (
 				4EE06C651A1102A600DE4226 /* I Bike CPH-Prefix.pch */,
-				4EE06D431A1115EF00DE4226 /* keys.h */,
 				4EE05F4E1A10EBFA00DE4226 /* Info.plist */,
 				4EE05F4F1A10EBFA00DE4226 /* main.m */,
 			);
@@ -1727,6 +1748,7 @@
 			isa = PBXGroup;
 			children = (
 				4EDC5E061B20EBD5009189EE /* ToolbarView.swift */,
+				4EE8A83A1BF487FA00369B27 /* ToolbarViewContainer.swift */,
 				4EADAE481B4FDFFC00A2E43F /* Address */,
 				4EADAE471B4FDFE600A2E43F /* Tracking */,
 				4E10EBC31B3AF8F50012245E /* FindRoute */,
@@ -1876,7 +1898,7 @@
 					};
 					4EE05F781A10EDE700DE4226 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 2S6P2V9TSL;
+						DevelopmentTeam = SP46WFGATT;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1945,6 +1967,7 @@
 				4EADAE4E1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */,
 				4EE06CDD1A11134C00DE4226 /* smroute_settings_example.plist in Resources */,
 				4EEE91B51A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */,
+				4E54C3471BF3887E00E935B0 /* RouteBrokenToolbarView.xib in Resources */,
 				4E5B90841B60D41A008AC960 /* markerFinish@2x.png in Resources */,
 				4EF4DF7E1B28461E00B64D3B /* AddressToolbarView.xib in Resources */,
 				4EC56E891A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
@@ -2006,6 +2029,7 @@
 				4EE06CDE1A11134C00DE4226 /* smroute_settings_example.plist in Resources */,
 				4EEE91D71A1246920006BD95 /* s-train-lines.json in Resources */,
 				4E392ADC1A308DBE0076BA86 /* smroute_settings.plist in Resources */,
+				4E54C3481BF3887E00E935B0 /* RouteBrokenToolbarView.xib in Resources */,
 				4EEE91BF1A1245910006BD95 /* Albertslundruten.line in Resources */,
 				4E10EBC11B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib in Resources */,
 				4EEE91D41A1246920006BD95 /* local-trains-timetable.json in Resources */,
@@ -2269,6 +2293,7 @@
 				4EEA6A911BA0633F009E9020 /* AddTrackTokenViewController.swift in Sources */,
 				4E3A7EF61A7793980020A8B4 /* Speak.swift in Sources */,
 				4E55A0241A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */,
+				4EE8A83B1BF487FA00369B27 /* ToolbarViewContainer.swift in Sources */,
 				4E59820E1A24AC1200A40484 /* FavoriteItem.swift in Sources */,
 				4E0176881AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */,
 				4EE06CD11A11134C00DE4226 /* SMGeocoder.m in Sources */,
@@ -2282,6 +2307,7 @@
 				4E4F5FE01A2BB3A000233ACA /* StyleIBikeCph.swift in Sources */,
 				4EC56E9D1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */,
 				4EC56EE71A2A3AAE00B696B4 /* SMRegisterController.m in Sources */,
+				4E59591B1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */,
 				4ECA91A11AB2EED800F4BB4F /* NotificationCenter.swift in Sources */,
 				4EE06CC71A11134C00DE4226 /* NSString+URLEncode.m in Sources */,
 				4EB610E21AD69B8800CEC994 /* SectionViewModel.swift in Sources */,
@@ -2316,12 +2342,14 @@
 				4EE06CDB1A11134C00DE4226 /* SMRoute.m in Sources */,
 				4EC56DC41A2A25E900B696B4 /* SMContacts.m in Sources */,
 				4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */,
+				4E818EB71BF3872C0058C090 /* RouteBrokenToolbarView.swift in Sources */,
 				4E3C3A8D1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
 				4EADAE511B5024CA00A2E43F /* ServiceStationsAnnotation.swift in Sources */,
 				4EC56E491A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
 				4EDC5E071B20EBD5009189EE /* ToolbarView.swift in Sources */,
 				4EC56EEB1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
 				4E32B29E1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */,
+				4E5959181BFC824500271376 /* RouteBrokenView.swift in Sources */,
 				4EEA6A941BA06E99009E9020 /* UserClient.swift in Sources */,
 				4E5E87901B31DC520021F5E9 /* RouteStatsToolbarView.swift in Sources */,
 				4EE683741B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */,
@@ -2529,6 +2557,7 @@
 				4E10EBC71B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */,
 				4E337B551B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */,
 				4EC56EF51A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
+				4E59591C1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */,
 				4EC56DC21A2A25E900B696B4 /* SMAPIRequest.m in Sources */,
 				4EDC5E0B1B21B0F0009189EE /* FindAddressViewController.swift in Sources */,
 				4EE06CBE1A11134C00DE4226 /* SMFoursquareOperation.m in Sources */,
@@ -2563,6 +2592,7 @@
 				4EEC6D321B208156003AE8DF /* CompassButton.swift in Sources */,
 				4E58C30B1B0E15DC0041255B /* MainWithSideMenuViewController.swift in Sources */,
 				4EAB12451A769BB90099AC54 /* VoicePreferencesViewController.swift in Sources */,
+				4E5959191BFC824500271376 /* RouteBrokenView.swift in Sources */,
 				4EAB124B1A76AEF50099AC54 /* SettingsHandler.swift in Sources */,
 				4E4F5FDB1A2BAC4700233ACA /* Styling.swift in Sources */,
 				4EE06CBA1A11134C00DE4226 /* SMAPIOperation.m in Sources */,
@@ -2590,11 +2620,13 @@
 				4E5982151A24AC1200A40484 /* KortforItem.swift in Sources */,
 				4EEA6A8F1BA033B2009E9020 /* SignInHelper.m in Sources */,
 				4EC56F011A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
+				4EE8A83C1BF487FA00369B27 /* ToolbarViewContainer.swift in Sources */,
 				4EE06C471A10FC5600DE4226 /* SMSingleRouteInfo.m in Sources */,
 				4EC56E2F1A2A2C3D00B696B4 /* FlickableView.m in Sources */,
 				4E7BD0801A92354E00BFDC7B /* Realm.swift in Sources */,
 				4E32B2A21AADCC8A00583811 /* BikeStatistics.swift in Sources */,
 				4EC56E571A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
+				4E818EB81BF3872C0058C090 /* RouteBrokenToolbarView.swift in Sources */,
 				4ECA91A21AB2EED800F4BB4F /* NotificationCenter.swift in Sources */,
 				4E5982111A24AC1200A40484 /* FoursquareItem.swift in Sources */,
 				4EE06C321A10FC5600DE4226 /* SMArrivalInfo.m in Sources */,

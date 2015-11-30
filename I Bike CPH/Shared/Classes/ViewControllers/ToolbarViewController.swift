@@ -38,7 +38,6 @@ class ToolbarViewController: SMTranslatedViewController {
             NSLayoutConstraint(item: new, attribute: .Right, relatedBy: .Equal, toItem: toolbarContainer, attribute: .Right, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: new, attribute: .Bottom, relatedBy: .Equal, toItem: toolbarContainer, attribute: .Bottom, multiplier: 1, constant: 0)
         ])
-        view.setNeedsLayout()
     }
     
     func removeToolbar() {

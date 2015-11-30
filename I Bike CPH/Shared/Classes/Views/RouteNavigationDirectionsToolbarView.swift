@@ -17,6 +17,8 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
 
     var delegate: RouteNavigationDirectionsToolbarDelegate?
     
+    @IBOutlet weak var topContainer: UIView!
+    @IBOutlet weak var topContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var leftArrow: UIImageView!
     @IBOutlet weak var rightArrow: UIImageView!
@@ -26,6 +28,31 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
         didSet {
             collectionView.contentOffset = CGPointZero // Reset scroll position
             collectionView.reloadData()
+        }
+    }
+    var extraInstruction: SMTurnInstruction? = nil {
+        didSet {
+            if extraInstruction == oldValue {
+                return
+            }
+            for subview in topContainer.subviews {
+                subview.removeFromSuperview()
+            }
+            if let extra = extraInstruction {
+                let view = TurnInstructionsCollectionViewCell()
+                view.configure(extra)
+                topContainer.addSubview(view)
+                view.setTranslatesAutoresizingMaskIntoConstraints(false)
+                self.addConstraints([
+                    NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: topContainer, attribute: .Top, multiplier: 1, constant: 0),
+                    NSLayoutConstraint(item: view, attribute: .Left, relatedBy: .Equal, toItem: topContainer, attribute: .Left, multiplier: 1, constant: 0),
+                    NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: topContainer, attribute: .Right, multiplier: 1, constant: 0),
+                    NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: topContainer, attribute: .Bottom, multiplier: 1, constant: 0)
+                    ])
+                topContainerHeight.constant = 100
+            } else {
+                topContainerHeight.constant = 0
+            }
         }
     }
     private(set) var index: Int = 0 {
@@ -54,7 +81,7 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
     
     override func layoutSubviews() {
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.itemSize = frame.size // Update itemSize to fill entire view
+            flowLayout.itemSize = CGSize(width: frame.width, height: collectionView.frame.height) // Update itemSize to fill entire view width
         }
         super.layoutSubviews()
     }

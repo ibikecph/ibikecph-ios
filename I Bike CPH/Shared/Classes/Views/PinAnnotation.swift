@@ -16,9 +16,20 @@ class Annotation: RMAnnotation {
 class PinAnnotation: Annotation {
     
     enum Type {
-        case Regular, Start, End
+        case Regular, Start, End, Metro, STrain, Bus, Ferry, Train, Walk
     }
-    
+    static func typeForRouteType(routeType: SMRouteType) -> Type? {
+        switch routeType.value {
+        case SMRouteTypeWalk.value: return .Walk
+        case SMRouteTypeSTrain.value: return .STrain
+        case SMRouteTypeMetro.value: return .Metro
+        case SMRouteTypeFerry.value: return .Ferry
+        case SMRouteTypeBus.value: return .Bus
+        case SMRouteTypeTrain.value: return .Train
+        default: return nil
+        }
+    }
+
     var type: Type {
         didSet {
             updateIconToType()
@@ -40,6 +51,12 @@ class PinAnnotation: Annotation {
                 case .Regular: return "marker"
                 case .Start: return "markerStart"
                 case .End: return "markerFinish"
+                case .Metro: return "pin_metro"
+                case .STrain: return "pin_strain"
+                case .Bus: return "pin_bus"
+                case .Ferry: return "pin_ferry"
+                case .Train: return "pin_train"
+                case .Walk: return "pin_walk"
             }
         }()
         annotationIcon = UIImage(named: imageName)

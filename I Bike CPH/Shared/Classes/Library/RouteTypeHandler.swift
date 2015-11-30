@@ -14,17 +14,7 @@ class RouteTypeHandler: NSObject {
     var type: RouteType = .Regular {
         didSet {
             delegate?.routeTypeHandlerChanged(type)
-            delegateObjc?.routeTypeHandlerChanged(server)
-        }
-    }
-    @objc var server: String {
-        get {
-            let settings = SMRouteSettings.sharedInstance()
-            switch type {
-                case .Regular: return settings.osrm_server
-                case .Cargo: return settings.osrm_server_cargo
-                case .Green: return settings.osrm_server_green
-            }
+            delegateObjc?.routeTypeHandlerChanged(type.server)
         }
     }
 
