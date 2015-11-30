@@ -721,11 +721,11 @@ God tur og tak fordi du cykler!</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-LC-UdU" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-LC-UdU" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="436"/>
                                 <animations/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDH-94-tHy" customClass="CompassButton" customModule="CykelPlanen" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDH-94-tHy" customClass="CompassButton" customModule="CykelPlanen" customModuleProvider="target">
                                 <rect key="frame" x="548" y="448" width="52" height="52"/>
                                 <animations/>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="20" maxY="20"/>
@@ -737,7 +737,7 @@ God tur og tak fordi du cykler!</string>
                                     <action selector="compassButtonTapped:" destination="0iY-Gd-Bo4" eventType="touchUpInside" id="nwD-XD-aHH"/>
                                 </connections>
                             </button>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIQ-mB-Wlj" userLabel="Instructions" customClass="RouteNavigationDirectionsToolbarView" customModule="CykelPlanen" customModuleProvider="target">
+                            <view opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIQ-mB-Wlj" userLabel="Instructions" customClass="RouteNavigationDirectionsToolbarView" customModule="CykelPlanen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="500" width="600" height="100"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -748,6 +748,7 @@ God tur og tak fordi du cykler!</string>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="RWr-kb-68U"/>
                                         <exclude reference="oKV-Ic-ZiP"/>
                                     </mask>
                                 </variation>

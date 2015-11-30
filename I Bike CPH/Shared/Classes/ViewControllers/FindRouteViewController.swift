@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 struct RouteComposite {
     enum Composite {
         case Single(SMRoute)
@@ -36,7 +37,17 @@ struct RouteComposite {
             return bikeRoutes.map { Double($0.distanceLeft) }.reduce(0) { $0 + $1 }
         }
     }
-    var currentRoute: Int = 0
+    var currentRouteIndex: Int = 0
+    var currentRoute: SMRoute? {
+        switch composite {
+        case .Single(let route): return route
+        case .Multiple(let routes):
+            if currentRouteIndex < routes.count {
+                return routes[currentRouteIndex]
+            }
+            return nil
+        }
+    }
     private init(composite: Composite, from: SearchListItem, to: SearchListItem, estimatedDistance: Double, estimatedBikeDistance: Double? = nil, estimatedTime: NSTimeInterval) {
         self.composite = composite
         self.from = from
@@ -44,6 +55,26 @@ struct RouteComposite {
         self.estimatedDistance = estimatedDistance
         self.estimatedBikeDistance = estimatedBikeDistance ?? estimatedDistance
         self.estimatedTime = estimatedTime
+        switch composite {
+        case .Multiple(let routes):
+
+            for (index, route) in enumerate(routes) {
+                // If route is public, finish route earlier
+                if route.routeType.value != SMRouteTypeBike.value &&
+                    route.routeType.value != SMRouteTypeWalk.value {
+                        route.distanceToFinishRange = 100
+                }
+                // If next route is public, finish current route earlier
+                if index+1 < routes.count {
+                    let nextRoute = routes[index+1]
+                    if nextRoute.routeType.value != SMRouteTypeBike.value &&
+                        nextRoute.routeType.value != SMRouteTypeWalk.value {
+                        route.distanceToFinishRange = 100
+                    }
+                }
+            }
+        default: break
+        }
     }
     init(route: SMRoute, from: SearchListItem, to: SearchListItem) {
         self.init(composite: .Single(route), from: from, to: to, estimatedDistance: Double(route.estimatedRouteDistance), estimatedTime: Double(route.estimatedTimeForRoute))
@@ -129,7 +160,14 @@ class FindRouteViewController: MapViewController {
         }
         return nil
     }
-    
+
+    private func clearUI() {
+        routeComposite = nil
+        routeCompositeSuggestions.removeAll(keepCapacity: true)
+        updateUI()
+        updateRouteSuggestionsUI()
+    }
+
     private func updateUI() {
         findRouteToolbarView.prepareForReuse()
         let isBroken = RouteType.Broken == RouteTypeHandler.instance.type
@@ -179,6 +217,8 @@ extension FindRouteViewController: FindRouteToolbarDelegate {
             self.toItem = fromItem
             // Update route
             searchForNewRoute(server: RouteTypeHandler.instance.type.server)
+
+            clearUI()
         }
     }
     func didSelectRoute() {
@@ -197,10 +237,7 @@ extension FindRouteViewController: FindRouteToolbarDelegate {
 
 extension FindRouteViewController: RouteTypeToolbarDelegate {
     func didChangeType(type: RouteType) {
-        routeComposite = nil
-        routeCompositeSuggestions.removeAll(keepCapacity: true)
-        updateRouteSuggestionsUI()
-        updateUI()
+        clearUI()
         searchForNewRoute(server: type.server)
     }
 }
@@ -312,5 +349,7 @@ extension FindRouteViewController: FindAddressViewControllerProtocol {
         itemOrigin = .None
         // Update route
         searchForNewRoute(server: RouteTypeHandler.instance.type.server)
+
+        clearUI()
     }
 }

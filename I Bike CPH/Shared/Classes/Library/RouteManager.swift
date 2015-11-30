@@ -64,7 +64,11 @@ extension RouteManager: SMRequestOSRMDelegate {
             delegate?.didGetResultForRoute(.ErrorOfType(.RouteNotFound))
             return
         }
-        
+        if let errorString = json["error"].string {
+            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: errorString])
+            delegate?.didGetResultForRoute(.Error(error))
+            return
+        }
         delegate?.didGetResultForRoute(.Success(json: json, osrmServer: req.osrmServer))
     }
     

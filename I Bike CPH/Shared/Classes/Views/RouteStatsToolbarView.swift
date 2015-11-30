@@ -36,7 +36,7 @@ class RouteStatsToolbarView: ToolbarView {
             case .Single(_):
                 return routeComposite.estimatedTime * routeComposite.distanceLeft / routeComposite.estimatedDistance
             case .Multiple(let routes):
-                let current = routeComposite.currentRoute
+                let current = routeComposite.currentRouteIndex
                 let currentRoute = routes[current]
                 var duration: NSTimeInterval = 0
                 // Current route

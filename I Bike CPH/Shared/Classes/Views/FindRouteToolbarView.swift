@@ -67,7 +67,6 @@ extension FindRouteToolbarView {
         fromButton.updateToItem(nil)
         toButton.updateToItem(nil)
         routeButton.enabled = false
-        showBrokenRoute = false
     }
     
     func updateWithFromItem(fromItem: SearchListItem?, toItem: SearchListItem?) {

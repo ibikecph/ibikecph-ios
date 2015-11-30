@@ -35,12 +35,7 @@ class RouteNavigationViewController: MapViewController {
         routeNavigationDirectionsToolbarView.delegate = self
         
         // Route delegate
-        if let routeComposite = routeComposite {
-            switch routeComposite.composite {
-            case .Single(let route): route.delegate = self
-            case .Multiple(let routes): routes.first!.delegate = self
-            }
-        }
+        routeComposite?.currentRoute?.delegate = self
         
         // Setup UI
         updateUI(zoom: true)
@@ -66,18 +61,19 @@ class RouteNavigationViewController: MapViewController {
             let reportErrorController = segue.destinationViewController as? SMReportErrorController
         {
             var instructionDescriptions = [String]()
-            if let routeComposite = routeComposite {
-//                if let pastInstructions = route.route.pastTurnInstructions.copy() as? [SMTurnInstruction] {
-//                    instructionDescriptions += (pastInstructions.map { $0.fullDescriptionString } )
-//                }
-//                if let instructions = route.route.turnInstructions.copy() as? [SMTurnInstruction] {
-//                    instructionDescriptions += (instructions.map { $0.fullDescriptionString } )
-//                }
-//                reportErrorController.routeDirections = instructionDescriptions
-//                reportErrorController.destination = route.to.name
-//                reportErrorController.source = "\(route.from.type)"
-//                reportErrorController.destinationLoc = route.to.location
-//                reportErrorController.sourceLoc = route.from.location
+            if let routeComposite = routeComposite,
+                route = routeComposite.currentRoute {
+                if let pastInstructions = route.pastTurnInstructions.copy() as? [SMTurnInstruction] {
+                    instructionDescriptions += (pastInstructions.map { $0.fullDescriptionString } )
+                }
+                if let instructions = route.turnInstructions.copy() as? [SMTurnInstruction] {
+                    instructionDescriptions += (instructions.map { $0.fullDescriptionString } )
+                }
+                reportErrorController.routeDirections = instructionDescriptions
+                reportErrorController.destination = routeComposite.to.name
+                reportErrorController.source = "\(routeComposite.from.type)"
+                reportErrorController.destinationLoc = routeComposite.to.location
+                reportErrorController.sourceLoc = routeComposite.from.location
             }
         }
     }
@@ -89,10 +85,10 @@ class RouteNavigationViewController: MapViewController {
             if let
                 locations = notification.userInfo?["locations"] as? [CLLocation],
                 location = locations.first,
-                route = self?.routeComposite
+                routeComposite = self?.routeComposite
             {
                 // Tell route about new user location
-//                route.route.visitLocation(location)
+                routeComposite.currentRoute?.visitLocation(location)
                 // Update stats to reflect route progress
                 self?.updateStats()
             }
@@ -107,6 +103,14 @@ class RouteNavigationViewController: MapViewController {
     }
     
     private func updateUI(#zoom: Bool) {
+        updateRouteUI(zoom: zoom)
+        // Directions
+        updateTurnInstructions()
+        // Stats
+        updateStats()
+    }
+
+    private func updateRouteUI(#zoom: Bool) {
         mapView.removeAnnotations(routeAnnotations)
         routeAnnotations = [Annotation]()
         if let routeComposite = routeComposite
@@ -116,10 +120,6 @@ class RouteNavigationViewController: MapViewController {
             // Address
             routeNavigationToolbarView.updateWithItem(routeComposite.to)
         }
-        // Directions
-        updateTurnInstructions()
-        // Stats
-        updateStats()
     }
     
     private func updateStats() {
@@ -132,11 +132,42 @@ class RouteNavigationViewController: MapViewController {
     }
     
     private func updateTurnInstructions() {
-//        if let instructions = route?.route.turnInstructions.copy() as? [SMTurnInstruction] {
-//            routeNavigationDirectionsToolbarView.instructions = instructions
-//        } else {
-//            routeNavigationDirectionsToolbarView.prepareForReuse()
-//        }
+        if let instructions = routeComposite?.currentRoute?.turnInstructions.copy() as? [SMTurnInstruction] {
+            // Default
+            routeNavigationDirectionsToolbarView.instructions = instructions
+
+            if let routeComposite = routeComposite {
+                switch routeComposite.composite {
+                case .Multiple(let routes):
+                    if let currentRoute = routeComposite.currentRoute {
+                        let previousIndex = routeComposite.currentRouteIndex - 1
+                        if previousIndex < 0 {
+                            break
+                        } // Has previous route
+                        let previousRoute = routes[previousIndex]
+                        if previousRoute.routeType.value == SMRouteTypeBike.value ||
+                            previousRoute.routeType.value == SMRouteTypeWalk.value {
+                            break
+                        } // Previous route was public
+                        let distanceFromPreviousRouteEndLocation = previousRoute.getEndLocation().distanceFromLocation(currentRoute.lastCorrectedLocation)
+                        if distanceFromPreviousRouteEndLocation > 100 {
+                            break
+                        } // Still closer than 100m
+                        // Keep showing last instruction of previous route
+                        if let lastInstruction = (previousRoute.turnInstructions.copy() as? [SMTurnInstruction])?.first {
+                            routeNavigationDirectionsToolbarView.extraInstruction = lastInstruction
+                            println("\(lastInstruction)")
+                        }
+                        return
+                    }
+                default: break
+                }
+                routeNavigationDirectionsToolbarView.extraInstruction = nil
+            }
+
+        } else {
+            routeNavigationDirectionsToolbarView.prepareForReuse()
+        }
     }
 }
 
@@ -147,17 +178,17 @@ extension RouteNavigationViewController: RouteNavigationDirectionsToolbarDelegat
         if !userAction {
             return
         }
-//        if let
-//            firstInstruction = route?.route.turnInstructions.firstObject as? SMTurnInstruction
-//            where firstInstruction == instruction
-//        {
-//            // If user swiped to the first instruction, enable .Follow
-//            mapView.userTrackingMode = .Follow
-//        } else {
-//            // Disable tracking to allow user to swipe through turn instructions
-//            mapView.userTrackingMode = .None
-//            mapView.centerCoordinate(instruction.loc.coordinate, zoomLevel: mapView.zoomLevel)
-//        }
+        if let
+            firstInstruction = routeComposite?.currentRoute?.turnInstructions.firstObject as? SMTurnInstruction
+            where firstInstruction == instruction
+        {
+            // If user swiped to the first instruction, enable .Follow
+            mapView.userTrackingMode = .Follow
+        } else {
+            // Disable tracking to allow user to swipe through turn instructions
+            mapView.userTrackingMode = .None
+            mapView.centerCoordinate(instruction.loc.coordinate, zoomLevel: mapView.zoomLevel)
+        }
     }
 }
 
@@ -170,7 +201,20 @@ extension RouteNavigationViewController: SMRouteDelegate {
         }
     }
     func reachedDestination() {
-        // TODO: Go to next route if brokenRoute
+        if let routeComposite = routeComposite {
+            switch routeComposite.composite {
+            case .Single(_): return
+            case .Multiple(let routes): //  Go to next route if route contains more subroutes
+                if routeComposite.currentRouteIndex < routes.count {
+                    println("Going to next route segment")
+                    self.routeComposite?.currentRoute?.delegate = nil
+                    self.routeComposite?.currentRouteIndex++
+                    self.routeComposite?.currentRoute?.delegate = self
+                    updateTurnInstructions()
+                    updateStats()
+                }
+            }
+        }
     }
     func updateRoute() {
         println("Found new route")

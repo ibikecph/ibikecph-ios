@@ -72,7 +72,8 @@ class RouteBrokenToolbarView: ToolbarView {
                 NSLayoutConstraint(item: pageControl, attribute: .Top, relatedBy: .Equal, toItem: stackScrollView, attribute: .Bottom, multiplier: 1, constant: 0),
                 NSLayoutConstraint(item: pageControl, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1, constant: 0),
                 NSLayoutConstraint(item: pageControl, attribute: .Right, relatedBy: .GreaterThanOrEqual, toItem: contentView, attribute: .Right, multiplier: 1, constant: 0),
-                NSLayoutConstraint(item: pageControl, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1, constant: 0)
+                NSLayoutConstraint(item: pageControl, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1, constant: 0),
+                NSLayoutConstraint(item: pageControl, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 28)
                 ])
         }
 
