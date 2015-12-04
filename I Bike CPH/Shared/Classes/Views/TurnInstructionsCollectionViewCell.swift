@@ -13,6 +13,13 @@ class TurnInstructionsCollectionViewCell: NibDesignableCollectionViewCell {
     @IBOutlet weak var directionImageView: UIImageView!
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet weak var wayNameLabel: UILabel!
+
+    lazy var timeFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        formatter.dateStyle = .NoStyle // No date
+        return formatter
+    }()
     
     override var selected: Bool {
         set {
@@ -28,7 +35,13 @@ extension TurnInstructionsCollectionViewCell {
     
     func configure(instruction: SMTurnInstruction) {
         directionImageView.image = instruction.directionIcon()
-        wayNameLabel.text = instruction.wayName.localized
-        distanceLabel.text = formatDistance(Float(instruction.lengthInMeters))
+        let isPublic = instruction.routeType.value != SMRouteTypeBike.value && instruction.routeType.value != SMRouteTypeWalk.value
+        if isPublic {
+            wayNameLabel.text = instruction.descriptionString
+            distanceLabel.text = timeFormatter.stringFromDate(instruction.routeLineTime)
+        } else {
+            wayNameLabel.text = instruction.wayName.localized
+            distanceLabel.text = formatDistance(Float(instruction.lengthInMeters))
+        }
     }
 }

@@ -13,7 +13,7 @@ class RouteNavigationViewController: MapViewController {
     @IBOutlet var routeNavigationDirectionsToolbarView: RouteNavigationDirectionsToolbarView!
     let routeNavigationToolbarView = RouteNavigationToolbarView()
     let routeNavigationToReportErrorSegue = "routeNavigationToReportError"
-    var route: RouteComposit?
+    var routeComposite: RouteComposite?
     var routeAnnotations = [Annotation]()
     var observerTokens = [AnyObject]()
     
@@ -35,7 +35,7 @@ class RouteNavigationViewController: MapViewController {
         routeNavigationDirectionsToolbarView.delegate = self
         
         // Route delegate
-        route?.route.delegate = self
+        routeComposite?.currentRoute?.delegate = self
         
         // Setup UI
         updateUI(zoom: true)
@@ -61,18 +61,19 @@ class RouteNavigationViewController: MapViewController {
             let reportErrorController = segue.destinationViewController as? SMReportErrorController
         {
             var instructionDescriptions = [String]()
-            if let route = route {
-                if let pastInstructions = route.route.pastTurnInstructions.copy() as? [SMTurnInstruction] {
+            if let routeComposite = routeComposite,
+                route = routeComposite.currentRoute {
+                if let pastInstructions = route.pastTurnInstructions.copy() as? [SMTurnInstruction] {
                     instructionDescriptions += (pastInstructions.map { $0.fullDescriptionString } )
                 }
-                if let instructions = route.route.turnInstructions.copy() as? [SMTurnInstruction] {
+                if let instructions = route.turnInstructions.copy() as? [SMTurnInstruction] {
                     instructionDescriptions += (instructions.map { $0.fullDescriptionString } )
                 }
                 reportErrorController.routeDirections = instructionDescriptions
-                reportErrorController.destination = route.to.name
-                reportErrorController.source = "\(route.from.type)"
-                reportErrorController.destinationLoc = route.to.location
-                reportErrorController.sourceLoc = route.from.location
+                reportErrorController.destination = routeComposite.to.name
+                reportErrorController.source = "\(routeComposite.from.type)"
+                reportErrorController.destinationLoc = routeComposite.to.location
+                reportErrorController.sourceLoc = routeComposite.from.location
             }
         }
     }
@@ -84,10 +85,10 @@ class RouteNavigationViewController: MapViewController {
             if let
                 locations = notification.userInfo?["locations"] as? [CLLocation],
                 location = locations.first,
-                route = self?.route
+                routeComposite = self?.routeComposite
             {
                 // Tell route about new user location
-                route.route.visitLocation(location)
+                routeComposite.currentRoute?.visitLocation(location)
                 // Update stats to reflect route progress
                 self?.updateStats()
             }
@@ -102,33 +103,68 @@ class RouteNavigationViewController: MapViewController {
     }
     
     private func updateUI(#zoom: Bool) {
-        mapView.removeAnnotations(routeAnnotations)
-        routeAnnotations = [Annotation]()
-        if let route = route
-        {
-            // Route path
-            routeAnnotations = mapView.addAnnotationsForRoute(route.route, from: route.from, to: route.to, zoom: zoom)
-            // Address
-            routeNavigationToolbarView.updateWithItem(route.to)
-        }
+        updateRouteUI(zoom: zoom)
         // Directions
         updateTurnInstructions()
         // Stats
         updateStats()
     }
+
+    private func updateRouteUI(#zoom: Bool) {
+        mapView.removeAnnotations(routeAnnotations)
+        routeAnnotations = [Annotation]()
+        if let routeComposite = routeComposite
+        {
+            // Route path
+            routeAnnotations = mapView.addAnnotationsForRouteComposite(routeComposite, from: routeComposite.from, to: routeComposite.to, zoom: zoom)
+            // Address
+            routeNavigationToolbarView.updateWithItem(routeComposite.to)
+        }
+    }
     
     private func updateStats() {
-        if let route = route {
+        if let routeComposite = routeComposite {
             // Stats
-            routeNavigationToolbarView.routeStatsToolbarView.updateToRoute(route.route)
+            routeNavigationToolbarView.routeStatsToolbarView.updateToRoute(routeComposite)
         } else {
             routeNavigationToolbarView.routeStatsToolbarView.prepareForReuse()
         }
     }
     
     private func updateTurnInstructions() {
-        if let instructions = route?.route.turnInstructions.copy() as? [SMTurnInstruction] {
+        if let instructions = routeComposite?.currentRoute?.turnInstructions.copy() as? [SMTurnInstruction] {
+            // Default
             routeNavigationDirectionsToolbarView.instructions = instructions
+
+            if let routeComposite = routeComposite {
+                switch routeComposite.composite {
+                case .Multiple(let routes):
+                    if let currentRoute = routeComposite.currentRoute {
+                        let previousIndex = routeComposite.currentRouteIndex - 1
+                        if previousIndex < 0 {
+                            break
+                        } // Has previous route
+                        let previousRoute = routes[previousIndex]
+                        if previousRoute.routeType.value == SMRouteTypeBike.value ||
+                            previousRoute.routeType.value == SMRouteTypeWalk.value {
+                            break
+                        } // Previous route was public
+                        let distanceFromPreviousRouteEndLocation = previousRoute.getEndLocation().distanceFromLocation(currentRoute.lastCorrectedLocation)
+                        if distanceFromPreviousRouteEndLocation > 100 {
+                            break
+                        } // Still closer than 100m
+                        // Keep showing last instruction of previous route
+                        if let lastInstruction = (previousRoute.turnInstructions.copy() as? [SMTurnInstruction])?.first {
+                            routeNavigationDirectionsToolbarView.extraInstruction = lastInstruction
+                            println("\(lastInstruction)")
+                        }
+                        return
+                    }
+                default: break
+                }
+                routeNavigationDirectionsToolbarView.extraInstruction = nil
+            }
+
         } else {
             routeNavigationDirectionsToolbarView.prepareForReuse()
         }
@@ -143,7 +179,7 @@ extension RouteNavigationViewController: RouteNavigationDirectionsToolbarDelegat
             return
         }
         if let
-            firstInstruction = route?.route.turnInstructions.firstObject as? SMTurnInstruction
+            firstInstruction = routeComposite?.currentRoute?.turnInstructions.firstObject as? SMTurnInstruction
             where firstInstruction == instruction
         {
             // If user swiped to the first instruction, enable .Follow
@@ -165,7 +201,20 @@ extension RouteNavigationViewController: SMRouteDelegate {
         }
     }
     func reachedDestination() {
-        // TODO: Go to next route if brokenRoute
+        if let routeComposite = routeComposite {
+            switch routeComposite.composite {
+            case .Single(_): return
+            case .Multiple(let routes): //  Go to next route if route contains more subroutes
+                if routeComposite.currentRouteIndex < routes.count {
+                    println("Going to next route segment")
+                    self.routeComposite?.currentRoute?.delegate = nil
+                    self.routeComposite?.currentRouteIndex++
+                    self.routeComposite?.currentRoute?.delegate = self
+                    updateTurnInstructions()
+                    updateStats()
+                }
+            }
+        }
     }
     func updateRoute() {
         println("Found new route")

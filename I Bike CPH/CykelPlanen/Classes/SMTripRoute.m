@@ -187,8 +187,8 @@
     SMRoute *transportRoute = [[SMRoute alloc] init];
     transportRoute.turnInstructions = instructions;
     transportRoute.waypoints = waypoints;
-    transportRoute.routeType = SMRouteTypeTransport;
-    
+//    transportRoute.routeType = SMRouteTypeTransport;
+
     return transportRoute;
 }
 
