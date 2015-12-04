@@ -22,7 +22,9 @@ class MainMapViewController: MapViewController {
     private let mainToLoginSegue = "mainToLogin"
     private let mainToFindAddressSegue = "mainToFindAddress"
     private let mainToUserTermsSegue = "mainToUserTerms"
+    #if TRACKING_ENABLED
     private let mainToActivateTrackingSegue = "mainToActivateTracking"
+    #endif
     private var pinAnnotation: PinAnnotation?
     private var currentLocationItem: SearchListItem?
     private var pendingUserTerms: UserTerms?
@@ -51,7 +53,8 @@ class MainMapViewController: MapViewController {
         
         // MapView delegate 
         mapView.delegate = self
-        
+
+        #if TRACKING_ENABLED
         // Tracking changes
         updateTrackingToolbarView()
         observerTokens.append(NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
@@ -60,6 +63,7 @@ class MainMapViewController: MapViewController {
         observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.updateTrackingToolbarView()
         })
+        #endif
         
         // Observe
         observerTokens.append(NotificationCenter.observe(routeToItemNotificationKey) { [weak self] notification in
@@ -102,11 +106,15 @@ class MainMapViewController: MapViewController {
         if Settings.instance.tracking.on {
             TracksHandler.setNeedsProcessData(userInitiated: true)
         }
-        
-        let showedActivateTracking = checkActivateTracking()
-        if !showedActivateTracking {
+
+        #if TRACKING_ENABLED
+            let showedActivateTracking = checkActivateTracking()
+            if !showedActivateTracking {
+                checkUserTerms()
+            }
+        #else
             checkUserTerms()
-        }
+        #endif
     }
     
     private func unobserve() {
@@ -125,7 +133,8 @@ class MainMapViewController: MapViewController {
             self.performSegueWithIdentifier(self.mainToUserTermsSegue, sender: self)
         }
     }
-    
+
+    #if TRACKING_ENABLED
     func checkActivateTracking() -> Bool {
         if Settings.instance.onboarding.didSeeActivateTracking {
             return false
@@ -133,6 +142,7 @@ class MainMapViewController: MapViewController {
         performSegueWithIdentifier(mainToActivateTrackingSegue, sender: self)
         return true
     }
+    #endif
     
     func checkUserTerms(forceAccept: Bool = false) {
         if !UserHelper.loggedIn() {
@@ -157,13 +167,14 @@ class MainMapViewController: MapViewController {
             }
         }
     }
-    
+
+    #if TRACKING_ENABLED
     func updateTrackingToolbarView() {
         if currentLocationItem != nil {
             // Do nothing if a location item is currently used
             return
         }
-        
+
         let showTrackingView = Settings.instance.tracking.on
         if showTrackingView {
             let distance = BikeStatistics.distanceThisDate()
@@ -179,11 +190,14 @@ class MainMapViewController: MapViewController {
             removePin(pin)
         }
     }
+    #endif
     
     func closeAddressToolbarView() {
         currentLocationItem = nil
         removeToolbar()
+        #if TRACKING_ENABLED
         updateTrackingToolbarView()
+        #endif
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
