@@ -6,4 +6,4 @@
   Copyright (c) 2015 I Bike CPH. All rights reserved.
 */
 
-NSLocationAlwaysUsageDescription = "For at kunne finde ruter, give rutevejledning og indsamle cykeldata.";
+NSLocationAlwaysUsageDescription = "For at kunne finde ruter og give rutevejledning.";

@@ -16,12 +16,6 @@
 #import "SMMapOverlays.h"
 #import "SMAppDelegate.h"
 
-#define HC_SHORTHAND
-#import <OCHamcrest/OCHamcrest.h>
-
-#define MOCKITO_SHORTHAND
-#import <OCMockito/OCMockito.h>
-
 #import "SMRoute.h"
 #import "SMGeocoder.h"
 

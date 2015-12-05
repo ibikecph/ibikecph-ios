@@ -6,4 +6,4 @@
   Copyright (c) 2015 I Bike CPH. All rights reserved.
 */
 
-NSLocationAlwaysUsageDescription = "To be able to find routes, give directions and track bicycle routes.";
+NSLocationAlwaysUsageDescription = "To be able to find routes and give directions.";

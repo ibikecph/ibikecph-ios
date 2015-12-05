@@ -47,23 +47,24 @@ class MenuViewController: UIViewController {
         let speedItem = MenuItem(title: "speedguide".localized, iconImageName: "Fartguide", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToSpeedGuide", sender: menuViewController)
         })
-        let trackingItem = MenuItem(title: "tracking".localized, iconImageName: "Bikedata", action: { menuViewController in
-            let trackingAvailable = trackingHandler.trackingAvailable
-            if !trackingAvailable {
-                menuViewController.performSegueWithIdentifier("menuToTrackingNotAvailable", sender: menuViewController)
-                return
-            }
-            let trackingOn = Settings.instance.tracking.on
-            let hasBikeTracks = BikeStatistics.hasTrackedBikeData()
-            let showTrackingView = trackingOn || hasBikeTracks
-            if showTrackingView {
-                menuViewController.performSegueWithIdentifier("menuToTracking", sender: menuViewController)
-                return
-            }
-            menuViewController.performSegueWithIdentifier("menuToTrackingPrompt", sender: menuViewController)
-            menuViewController.pendingTracking = true
-            
-        })
+        #if TRACKING_ENABLED
+            let trackingItem = MenuItem(title: "tracking".localized, iconImageName: "Bikedata", action: { menuViewController in
+                let trackingAvailable = trackingHandler.trackingAvailable
+                if !trackingAvailable {
+                    menuViewController.performSegueWithIdentifier("menuToTrackingNotAvailable", sender: menuViewController)
+                    return
+                }
+                let trackingOn = Settings.instance.tracking.on
+                let hasBikeTracks = BikeStatistics.hasTrackedBikeData()
+                let showTrackingView = trackingOn || hasBikeTracks
+                if showTrackingView {
+                    menuViewController.performSegueWithIdentifier("menuToTracking", sender: menuViewController)
+                    return
+                }
+                menuViewController.performSegueWithIdentifier("menuToTrackingPrompt", sender: menuViewController)
+                menuViewController.pendingTracking = true
+            })
+        #endif
         let aboutItem = MenuItem(title: (macro.isIBikeCph ? "about_app_ibc" : "about_app_cp").localized, iconImageName: "information", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToAbout", sender: menuViewController)
         })
@@ -78,7 +79,9 @@ class MenuViewController: UIViewController {
         if macro.isIBikeCph {
         }
 //        menuItems.append(speedItem)
-        menuItems.append(trackingItem)
+        #if TRACKING_ENABLED
+            menuItems.append(trackingItem)
+        #endif
         menuItems.append(profileItem)
         menuItems.append(aboutItem)
         
