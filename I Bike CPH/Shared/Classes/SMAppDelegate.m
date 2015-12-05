@@ -86,8 +86,10 @@
     [RLMRealmConfiguration setDefaultConfiguration:config];
     [RLMRealm defaultRealm];
     [RLMRealm compressWithIfNecessary:true];
-    
+
+#if TRACKING_ENABLED
     [TrackingHandler sharedInstance];
+#endif
     
     // DEBUG ONLY
 //    dispatch_async(dispatch_get_main_queue(), ^{

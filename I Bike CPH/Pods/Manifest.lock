@@ -12,7 +12,7 @@ PODS:
   - GRMustache (7.3.0):
     - JRSwizzle (~> 1.0)
   - JRSwizzle (1.0)
-  - Mapbox-iOS-SDK (1.6.1):
+  - Mapbox-iOS-SDK (1.6.0):
     - FMDB (= 2.3)
     - GRMustache (= 7.3.0)
     - SMCalloutView (= 2.0)
@@ -34,7 +34,7 @@ PODS:
 DEPENDENCIES:
   - DAKeyboardControl (~> 2.4)
   - GoogleAnalytics-iOS-SDK (~> 3.10)
-  - Mapbox-iOS-SDK (= 1.6.1)
+  - Mapbox-iOS-SDK (= 1.6.0)
   - NibDesignable (~> 1.1.0)
   - OCMockito (~> 1.0)
   - ORStackView (~> 3.0)
@@ -51,7 +51,7 @@ SPEC CHECKSUMS:
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
   GRMustache: 6baee020c5644416c034f5afb1607f6219e7f753
   JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
-  Mapbox-iOS-SDK: e05afd622a08015736b007f8adb7a1d8dc1a83da
+  Mapbox-iOS-SDK: ee136ca5b7f853456b50dfd7a7f0e243288cf86f
   NibDesignable: 95579fc418e1922f341f51fc1243a1a21af04ccf
   OCHamcrest: cd63d27f48a266d4412c0b295b01b8f0940efa81
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2

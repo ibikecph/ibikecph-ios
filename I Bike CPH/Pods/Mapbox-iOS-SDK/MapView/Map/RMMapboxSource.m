@@ -70,8 +70,6 @@
 {
     if (self = [super init])
     {
-        NSAssert([[[RMConfiguration sharedInstance] accessToken] length], @"an access token is required to use Mapbox map tiles");
-
         _dataQueue = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL);
 
         _infoDictionary = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:[tileJSON dataUsingEncoding:NSUTF8StringEncoding]
@@ -164,18 +162,9 @@
                                                                                                         options:NSAnchoredSearch & NSBackwardsSearch
                                                                                                           range:NSMakeRange(0, [[referenceURL absoluteString] length])]];
     }
-
-    NSError *error = nil;
-
-    if ([[referenceURL pathExtension] isEqualToString:@"json"] && (dataObject = [NSString brandedStringWithContentsOfURL:referenceURL encoding:NSUTF8StringEncoding error:&error]) && dataObject)
+    
+    if ([[referenceURL pathExtension] isEqualToString:@"json"] && (dataObject = [NSString brandedStringWithContentsOfURL:referenceURL encoding:NSUTF8StringEncoding error:nil]) && dataObject)
     {
-        if (error && [error.domain isEqual:NSURLErrorDomain] && error.code == -1012)
-        {
-#ifdef DEBUG
-            NSAssert(![[dataObject lowercaseString] hasSuffix:@"invalid token\"}"], @"invalid token in use");
-#endif
-        }
-
         return [self initWithTileJSON:dataObject enablingDataOnMapView:mapView];
     }
 
@@ -371,7 +360,7 @@
 
 + (BOOL)isUsingLargeTiles
 {
-    return ([[UIScreen mainScreen] scale] > 1.0);
+    return ([[RMConfiguration sharedInstance] accessToken] && [[UIScreen mainScreen] scale] > 1.0);
 }
 
 - (NSString *)uniqueTilecacheKey
