@@ -205,7 +205,7 @@ extension RouteNavigationViewController: SMRouteDelegate {
             switch routeComposite.composite {
             case .Single(_): return
             case .Multiple(let routes): //  Go to next route if route contains more subroutes
-                if routeComposite.currentRouteIndex < routes.count {
+                if routeComposite.currentRouteIndex + 1 < routes.count {
                     println("Going to next route segment")
                     self.routeComposite?.currentRoute?.delegate = nil
                     self.routeComposite?.currentRouteIndex++
