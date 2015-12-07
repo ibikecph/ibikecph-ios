@@ -62,14 +62,14 @@ struct RouteComposite {
                 // If route is public, finish route earlier
                 if route.routeType.value != SMRouteTypeBike.value &&
                     route.routeType.value != SMRouteTypeWalk.value {
-                        route.distanceToFinishRange = 100
+                        route.maxMarginRadius = CGFloat(MAX_DISTANCE_FOR_PUBLIC_TRANSPORT)
                 }
                 // If next route is public, finish current route earlier
                 if index+1 < routes.count {
                     let nextRoute = routes[index+1]
                     if nextRoute.routeType.value != SMRouteTypeBike.value &&
                         nextRoute.routeType.value != SMRouteTypeWalk.value {
-                        route.distanceToFinishRange = 100
+                        route.maxMarginRadius = CGFloat(MAX_DISTANCE_FOR_PUBLIC_TRANSPORT)
                     }
                 }
             }

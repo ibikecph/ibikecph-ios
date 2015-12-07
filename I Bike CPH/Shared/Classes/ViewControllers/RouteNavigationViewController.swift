@@ -150,9 +150,9 @@ class RouteNavigationViewController: MapViewController {
                             break
                         } // Previous route was public
                         let distanceFromPreviousRouteEndLocation = previousRoute.getEndLocation().distanceFromLocation(currentRoute.lastCorrectedLocation)
-                        if distanceFromPreviousRouteEndLocation > 100 {
+                        if distanceFromPreviousRouteEndLocation > MAX_DISTANCE_FOR_PUBLIC_TRANSPORT {
                             break
-                        } // Still closer than 100m
+                        } // Still closer than X meters
                         // Keep showing last instruction of previous route
                         if let lastInstruction = (previousRoute.turnInstructions.copy() as? [SMTurnInstruction])?.first {
                             routeNavigationDirectionsToolbarView.extraInstruction = lastInstruction
