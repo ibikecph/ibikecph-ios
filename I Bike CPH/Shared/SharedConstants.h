@@ -47,6 +47,7 @@
 #define MAX_TURNS 4
 
 #define MIN_DISTANCE_FOR_RECALCULATION 20.0
+#define MAX_DISTANCE_FOR_PUBLIC_TRANSPORT 300.0
 
 #define API_DEFAULT_ACCEPT @{@"key": @"Accept", @"value" : @"application/vnd.ibikecph.v1"}
 #define API_DEFAULT_ACCEPT2 @{@"key": @"value"}

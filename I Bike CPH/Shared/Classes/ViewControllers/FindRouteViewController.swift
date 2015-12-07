@@ -62,14 +62,14 @@ struct RouteComposite {
                 // If route is public, finish route earlier
                 if route.routeType.value != SMRouteTypeBike.value &&
                     route.routeType.value != SMRouteTypeWalk.value {
-                        route.distanceToFinishRange = 100
+                        route.maxMarginRadius = CGFloat(MAX_DISTANCE_FOR_PUBLIC_TRANSPORT)
                 }
                 // If next route is public, finish current route earlier
                 if index+1 < routes.count {
                     let nextRoute = routes[index+1]
                     if nextRoute.routeType.value != SMRouteTypeBike.value &&
                         nextRoute.routeType.value != SMRouteTypeWalk.value {
-                        route.distanceToFinishRange = 100
+                        route.maxMarginRadius = CGFloat(MAX_DISTANCE_FOR_PUBLIC_TRANSPORT)
                     }
                 }
             }
@@ -251,8 +251,16 @@ extension FindRouteViewController: RouteManagerDelegate {
                 println(error)
                 fallthrough
             case .ErrorOfType(_):
-                let alert = UIAlertView(title: nil, message: "error_route_not_found".localized, delegate: nil, cancelButtonTitle: "Ok".localized)
-                alert.show()
+                let alert = UIAlertController(title: nil, message: "error_route_not_found".localized, preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Cancel".localized, style: .Cancel) { action in
+                    self.clearUI()
+                    self.findRouteToolbarView.showBrokenRoute = false
+                    })
+                alert.addAction(UIAlertAction(title: "Try_again".localized, style: .Default) { action in
+                    self.clearUI()
+                    self.searchForNewRoute(server: RouteTypeHandler.instance.type.server)
+                    })
+                presentViewController(alert, animated: true, completion: nil)
             case .Success(let json, let osrmServer):
                 if let routesJson = json.array {
                     routeCompositeSuggestions.removeAll(keepCapacity: true)

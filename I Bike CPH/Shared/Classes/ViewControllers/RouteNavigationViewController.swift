@@ -150,9 +150,9 @@ class RouteNavigationViewController: MapViewController {
                             break
                         } // Previous route was public
                         let distanceFromPreviousRouteEndLocation = previousRoute.getEndLocation().distanceFromLocation(currentRoute.lastCorrectedLocation)
-                        if distanceFromPreviousRouteEndLocation > 100 {
+                        if distanceFromPreviousRouteEndLocation > MAX_DISTANCE_FOR_PUBLIC_TRANSPORT {
                             break
-                        } // Still closer than 100m
+                        } // Still closer than X meters
                         // Keep showing last instruction of previous route
                         if let lastInstruction = (previousRoute.turnInstructions.copy() as? [SMTurnInstruction])?.first {
                             routeNavigationDirectionsToolbarView.extraInstruction = lastInstruction
@@ -205,7 +205,7 @@ extension RouteNavigationViewController: SMRouteDelegate {
             switch routeComposite.composite {
             case .Single(_): return
             case .Multiple(let routes): //  Go to next route if route contains more subroutes
-                if routeComposite.currentRouteIndex < routes.count {
+                if routeComposite.currentRouteIndex + 1 < routes.count {
                     println("Going to next route segment")
                     self.routeComposite?.currentRoute?.delegate = nil
                     self.routeComposite?.currentRouteIndex++
