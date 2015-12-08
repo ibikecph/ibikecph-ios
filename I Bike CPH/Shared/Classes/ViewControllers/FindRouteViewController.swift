@@ -197,7 +197,7 @@ class FindRouteViewController: MapViewController {
             findRouteToolbarView.brokenRouteToolbarView.updateToRoutes(routeCompositeSuggestions)
         }
     }
-    
+     
     private func searchForNewRoute(#server: String) {
         if let toItem = toItem {
             routeManager.findRoute(self.fromItem, to: toItem, server: server)
