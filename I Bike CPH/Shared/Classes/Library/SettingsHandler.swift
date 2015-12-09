@@ -62,7 +62,10 @@ class Settings: NSObject {
         }
         private let cycleSuperHighwaysKey = "overlayCycleSuperHighways"
         var cycleSuperHighways: Bool {
-            get { return Defaults[cycleSuperHighwaysKey].bool ?? false }
+            get {
+                return false // Disable until routes are update
+//                return Defaults[cycleSuperHighwaysKey].bool ?? false
+            }
             set {
                 Defaults[cycleSuperHighwaysKey] = newValue
                 NotificationCenter.post(settingsUpdatedNotification, object: self)

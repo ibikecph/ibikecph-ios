@@ -61,7 +61,7 @@ class OverlaysViewController: UIViewController {
     private let cellID = "OverlayCellID"
     
     private var items = [
-        OverlayTypeViewModel(type: .CycleSuperHighways),
+//        OverlayTypeViewModel(type: .CycleSuperHighways),
         OverlayTypeViewModel(type: .BikeServiceStations)
     ]
     
