@@ -27,7 +27,7 @@ class MenuViewController: UIViewController {
         let favItem = MenuItem(title: "favorites".localized, iconImageName: "Favorite", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToFavorites", sender: menuViewController)
         })
-        let profileItem = MenuItem(title: (UserHelper.loggedIn() ? "account" : "profile").localized, iconImageName: "user", action: { menuViewController in
+        let profileItem = MenuItem(title: (UserHelper.loggedIn() ? "account" : "profile").localized, iconImageName: "User", action: { menuViewController in
             if UserHelper.loggedIn() {
                 if UserHelper.isFacebook() {
                     menuViewController.performSegueWithIdentifier("menuToAccountFacebook", sender: menuViewController)
