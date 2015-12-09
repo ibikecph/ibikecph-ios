@@ -30,7 +30,7 @@ enum RouteType {
             case .Regular: return settings.osrm_server
             case .Cargo: return settings.osrm_server_cargo
             case .Green: return settings.osrm_server_green
-            case .Broken: return "https://ibikecph-staging.herokuapp.com/api/journey"
+            case .Broken: return "https://www.ibikecph.dk/api/journey"
             }
         }
     }
