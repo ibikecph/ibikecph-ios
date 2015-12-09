@@ -135,11 +135,11 @@ class RouteBrokenPartView: UIView {
         switch route.routeType.value {
         case SMRouteTypeBike.value:
             imageName = "Bike"
-            topLabelString = "Bike".localized + " " + distance +  ", " + duration
+            topLabelString = "vehicle_1".localized + " " + distance +  ", " + duration
             bottomLabelString = "from".localized + " " + startPlace + " " + "to".localized + "\n" + endPlace
         case SMRouteTypeWalk.value:
             imageName = "Walk"
-            topLabelString = "Walk".localized + " " + distance +  ", " + duration
+            topLabelString = "vehicle_2".localized + " " + distance +  ", " + duration
             bottomLabelString = "from".localized + " " + startPlace + " " + "to".localized + "\n" + endPlace
         case SMRouteTypeSTrain.value:
             imageName = "STrain"

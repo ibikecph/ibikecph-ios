@@ -292,6 +292,7 @@
 
 "network_error_text" = "Netværksfejl opstod";
 
+"vehicle_1" = "Cykel";
 "vehicle_2" = "Gå";
 "vehicle_3" = "Færge";
 "vehicle_4" = "Tog";
