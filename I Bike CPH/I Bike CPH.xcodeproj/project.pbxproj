@@ -1873,7 +1873,7 @@
 				TargetAttributes = {
 					4EE05F491A10EBFA00DE4226 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = SP46WFGATT;
+						DevelopmentTeam = 2FB83229Z8;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1889,7 +1889,7 @@
 					};
 					4EE05F781A10EDE700DE4226 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = SP46WFGATT;
+						DevelopmentTeam = 2FB83229Z8;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2846,7 +2846,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEFINES_MODULE = YES;
 				GCC_PREFIX_HEADER = "I Bike CPH/I Bike CPH-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
