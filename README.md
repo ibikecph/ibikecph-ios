@@ -10,11 +10,11 @@ These are [strings](https://github.com/ibikecph/strings) and [routing-engine](ht
 
 ### Enable/disable tracking features
 To enabled tracking features you must do two things:
-1. Set the following Objective-C preprocessor directive in `ibikecph-ios/I Bike CPH/Shared/SharedConstants.h`: `#define TRACKING_ENABLED 1`
-2. Set the following custom Swift compiler flag in the build settings for each app target: `-D TRACKING_ENABLED`
+1. Define the following Objective-C preprocessor macro in `ibikecph-ios/I Bike CPH/Shared/SharedConstants.h`: `#define TRACKING_ENABLED 1`
+2. Make sure the following custom Swift compiler flag is present in the build settings for each app target: `-D TRACKING_ENABLED`
 
 To disable tracking features you must do two things:
-1. Set the following Objective-C preprocessor directive in `ibikecph-ios/I Bike CPH/Shared/SharedConstants.h`: `#define TRACKING_ENABLED 0`
+1. Define the following Objective-C preprocessor macro in `ibikecph-ios/I Bike CPH/Shared/SharedConstants.h`: `#define TRACKING_ENABLED 0`
 2. Make sure the following custom Swift compiler flag is **NOT** present in the build settings for any app target: `-D TRACKING_ENABLED`
 
 
