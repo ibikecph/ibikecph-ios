@@ -79,6 +79,6 @@
 
 #define REALM_SCHEMA_VERSION 12
 
-#define TRACKING_ENABLED false
+#define TRACKING_ENABLED 0
 
 #endif

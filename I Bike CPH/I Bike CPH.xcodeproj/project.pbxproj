@@ -2832,6 +2832,7 @@
 					"$(PROJECT_DIR)/../route-me/MapView",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../route-me/MapView/Map";
@@ -2872,6 +2873,7 @@
 					"$(PROJECT_DIR)/../route-me/MapView",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../route-me/MapView/Map";

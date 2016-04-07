@@ -106,7 +106,7 @@ class MainMapViewController: MapViewController {
         if Settings.instance.tracking.on {
             TracksHandler.setNeedsProcessData(userInitiated: true)
         }
-
+        
         #if TRACKING_ENABLED
             let showedActivateTracking = checkActivateTracking()
             if !showedActivateTracking {
