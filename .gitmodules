@@ -1,6 +1,0 @@
-[submodule "routing-engine"]
-	path = routing-engine
-	url = https://github.com/ibikecph/routing-engine.git
-[submodule "strings"]
-	path = strings
-	url = https://github.com/ibikecph/strings.git
