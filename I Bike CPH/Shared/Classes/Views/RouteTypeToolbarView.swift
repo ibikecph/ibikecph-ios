@@ -16,7 +16,6 @@ class RouteTypeToolbarView: ToolbarView {
 
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var centerButton: UIButton!
-    @IBOutlet weak var rightButton: UIButton!
     
     private var type: RouteType {
         get {
@@ -32,7 +31,7 @@ class RouteTypeToolbarView: ToolbarView {
     }
     private let validTypes = RouteType.validTypes()
     private var buttons: [UIButton] {
-        return [leftButton, centerButton, rightButton]
+        return [leftButton, centerButton]
     }
     
     var delegate: RouteTypeToolbarDelegate?
