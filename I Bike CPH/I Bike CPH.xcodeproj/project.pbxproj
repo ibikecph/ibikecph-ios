@@ -480,6 +480,8 @@
 		4EFDA4831AB87A6E00522A41 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
 		4EFDA4861AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */; };
 		4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */; };
+		7D1D9C3F1CB7B961007F1D30 /* SMAddressParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A21CB3EB4D0079801B /* SMAddressParser.h */; };
+		7D1D9C401CB7C008007F1D30 /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		7D7F99A11CB3C5F30079801B /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */; };
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		7D7F99A51CB3EB600079801B /* SMAddressParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A21CB3EB4D0079801B /* SMAddressParser.h */; };
@@ -2452,6 +2454,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D1D9C401CB7C008007F1D30 /* SMAddressParser.m in Sources */,
+				7D1D9C3F1CB7B961007F1D30 /* SMAddressParser.h in Sources */,
 				4EC56ED91A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
 				4EADAE521B5024CA00A2E43F /* ServiceStationsAnnotation.swift in Sources */,
 				4EE06C381A10FC5600DE4226 /* SMDepartureInfo.m in Sources */,
