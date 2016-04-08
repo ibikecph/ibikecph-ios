@@ -10,9 +10,6 @@ build/*
 !default.mode2v3
 !default.perspectivev3
 
-# old skool
-.svn
-
 # OS X noise
 .DS_Store
 profile
