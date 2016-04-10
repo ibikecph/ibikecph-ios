@@ -2,7 +2,14 @@
 
 ## Dependencies
 ### CocoaPods
-[CocoaPods](http://cocoapods.org) is used for most 3rd party dependencies. The pods are commited to the repository, so there is no need to install Cocoapods to build and run the project. To update the pods see [here](http://guides.cocoapods.org/using/getting-started.html) for instructions. 
+[CocoaPods](http://cocoapods.org) is used for most 3rd party dependencies. The pods are commited to the repository, so there is no need to install Cocoapods to build and run the project. To update the pods see [here](http://guides.cocoapods.org/using/getting-started.html) for instructions.
+
+## Submodules
+The repository has a single git submodule containing the localization files used between all I Bike CPH apps. To initialize/add git submodules:
+
+`$ git submodule init`
+
+`$ git submodule update`
 
 ### Enable/disable tracking features
 To enabled tracking features you must do two things:
