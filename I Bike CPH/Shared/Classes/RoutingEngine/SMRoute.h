@@ -82,7 +82,7 @@ typedef enum SMRouteType : NSUInteger {
 @property NSInteger longestDistance;
 
 
-@property NSInteger lastVisitedWaypointIndex;
+@property (nonatomic) NSInteger lastVisitedWaypointIndex;
 
 @property BOOL snapArrow;
 

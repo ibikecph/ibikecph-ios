@@ -480,7 +480,6 @@
 		7D1D9CBC1CB7F1E3007F1D30 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C451CB7E92C007F1D30 /* SwiftyJSON.swift */; };
 		7D7F99A11CB3C5F30079801B /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */; };
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
-		7D7F99A51CB3EB600079801B /* SMAddressParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A21CB3EB4D0079801B /* SMAddressParser.h */; };
 		CBB78EC39B066CA0779C3D9D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		CC8334260326B19073009BF6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335D1E0C4C3B6EA9C90D1EE /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -2211,7 +2210,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D7F99A51CB3EB600079801B /* SMAddressParser.h in Sources */,
 				4E2CF5051B85C17A004BDCAB /* ServerClient.swift in Sources */,
 				4EAB12471A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */,
 				7D1D9CB41CB7ED5E007F1D30 /* SwiftyJSON.swift in Sources */,
@@ -2763,7 +2761,6 @@
 					"I_BIKE_CPH=1",
 				);
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
@@ -2777,14 +2774,11 @@
 				INFOPLIST_FILE = "I Bike CPH/Info.plist";
 				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView",
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../route-me/MapView/Map";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -2804,7 +2798,6 @@
 					"I_BIKE_CPH=1",
 				);
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
@@ -2818,14 +2811,11 @@
 				INFOPLIST_FILE = "I Bike CPH/Info.plist";
 				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView",
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../route-me/MapView/Map";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
@@ -2845,7 +2835,6 @@
 					"I_BIKE_CPH=1",
 				);
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",
@@ -2865,7 +2854,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I Bike CPH.app/I Bike CPH";
-				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../route-me/MapView/Map";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -2882,7 +2871,6 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "I_BIKE_CPH=1";
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",
@@ -2901,7 +2889,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I Bike CPH.app/I Bike CPH";
-				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../route-me/MapView/Map";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
@@ -2921,7 +2909,6 @@
 					"CYKEL_PLANEN=1",
 				);
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
@@ -2934,10 +2921,7 @@
 				);
 				INFOPLIST_FILE = CykelPlanen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView",
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D CYKELPLANEN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2960,7 +2944,6 @@
 					"CYKEL_PLANEN=1",
 				);
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
@@ -2973,10 +2956,7 @@
 				);
 				INFOPLIST_FILE = CykelPlanen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView",
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D CYKELPLANEN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2999,7 +2979,6 @@
 					"CYKEL_PLANEN=1",
 				);
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",
@@ -3034,7 +3013,6 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "CYKEL_PLANEN=1";
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../route-me/MapView/Map/**",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/DAKeyboardControl\"",

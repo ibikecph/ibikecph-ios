@@ -821,7 +821,7 @@ NSMutableArray* decodePolyline (NSString *encodedString) {
         
         if ([a distanceFromLocation:b] > 0.0f) {
             locLog(@"=========");
-            locLog(@"Last visited waypoint index: %d", self.lastVisitedWaypointIndex);
+            locLog(@"Last visited waypoint index: %li", self.lastVisitedWaypointIndex);
             locLog(@"Loc A: (%f, %f)", a.coordinate.latitude, a.coordinate.longitude);
             locLog(@"Loc B: (%f, %f)", b.coordinate.latitude, b.coordinate.longitude);
             self.lastCorrectedHeading = [SMGPSUtil bearingBetweenStartLocation:a andEndLocation:b];

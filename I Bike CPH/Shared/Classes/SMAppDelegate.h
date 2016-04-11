@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 City of Copenhagen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+#import "SMSearchHistory.h"
 
 @protocol GAITracker;
 #if defined(CYKEL_PLANEN)
@@ -16,7 +17,7 @@
 /**
  * App delegate. Handles facebook session, contacts, events, routes history, search history, Google Analytics trakcing, and app settings.
  */
-@interface SMAppDelegate : UIResponder <UIApplicationDelegate>
+@interface SMAppDelegate : UIResponder <UIApplicationDelegate, SMSearchHistoryDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
