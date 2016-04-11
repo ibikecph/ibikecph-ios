@@ -41,7 +41,7 @@ class NSDate_Tests: XCTestCase {
             noon = NSDate().withComponents(year: 2015, month: 4, day: 6, hour: 12, minute: 0, second: 0),
             postNoon = noon.withComponents(hour: 13),
             nextWeekday = postNoon.nextWeekday(weekday, fromDate: noon),
-            noonInAWeek = NSCalendar.currentCalendar().dateByAddingUnit(.WeekOfYearCalendarUnit, value: 1, toDate: noon, options: nil)
+            noonInAWeek = NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitWeekOfYear, value: 1, toDate: noon, options: nil)
         {
             XCTAssertEqual(nextWeekday, noonInAWeek, "Next weekday should be noon in a week.")
             return
@@ -70,7 +70,7 @@ class NSDate_Tests: XCTestCase {
             noon = NSDate().withComponents(year: 2015, month: 4, day: 6, hour: 12, minute: 0, second: 0),
             noonDayAfter = noon.withComponents(day: 7),
             nextWeekday = noonDayAfter.nextWeekday(weekday, fromDate: noon),
-            noonInAWeek = NSCalendar.currentCalendar().dateByAddingUnit(.WeekOfYearCalendarUnit, value: 1, toDate: noon, options: nil)
+            noonInAWeek = NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitWeekOfYear, value: 1, toDate: noon, options: nil)
         {
             XCTAssertEqual(nextWeekday, noonInAWeek, "Next weekday should be noon in a week.")
             return

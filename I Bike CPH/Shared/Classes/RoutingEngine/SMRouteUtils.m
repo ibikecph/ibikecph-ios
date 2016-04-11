@@ -39,7 +39,7 @@ NSString *formatTime(float seconds) {
 // Format time passed between two dates
 NSString *formatTimePassed(NSDate *startDate, NSDate *endDate) {
     NSCalendar * cal = [NSCalendar currentCalendar];
-    NSDateComponents * comp = [cal components:(NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit) fromDate:startDate toDate:endDate options:0];
+    NSDateComponents * comp = [cal components:(NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond) fromDate:startDate toDate:endDate options:0];
     
     NSString * timestr = @"";
     if (comp.day > 0) {
