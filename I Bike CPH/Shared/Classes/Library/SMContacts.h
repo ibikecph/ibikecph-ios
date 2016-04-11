@@ -14,11 +14,11 @@
 
 @class SMContacts;
 
-@protocol SMContactsDelegate <NSObject>
+@protocol SMContactsDelegate<NSObject>
 
-- (void)addressBookHelperError:(SMContacts*) obj;
-- (void)addressBookHelperDeniedAcess:(SMContacts*) obj;
-- (void)addressBookHelper:(SMContacts*)helper finishedLoading:(NSArray*)contacts;
+- (void)addressBookHelperError:(SMContacts *)obj;
+- (void)addressBookHelperDeniedAcess:(SMContacts *)obj;
+- (void)addressBookHelper:(SMContacts *)helper finishedLoading:(NSArray *)contacts;
 @end
 
 /**
@@ -28,10 +28,10 @@
 
 @interface SMContacts : NSObject
 
-@property (nonatomic, weak) id<SMContactsDelegate> delegate;
+@property(nonatomic, weak) id<SMContactsDelegate> delegate;
 
 - (void)loadContacts;
 
-- (id)initWithDelegate:(id<SMContactsDelegate>) dlg;
+- (id)initWithDelegate:(id<SMContactsDelegate>)delegate;
 
 @end

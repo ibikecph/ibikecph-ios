@@ -306,13 +306,14 @@ class RemoveEmptyTracksOperation: TracksOperation {
                     track.deleteFromRealmWithRelationships(realm: realm)
                     continue
                 }
-                if let act = track.activity as? TrackActivity {
-                } else {
-                    // Couldn't resolve activity
-                    println("No activity? Deleting track")
-                    track.deleteFromRealmWithRelationships(realm: realm)
-                    continue
-                }
+// TODO: Remove the uncommented?
+//                if let act = track.activity as? TrackActivity {
+//                } else {
+//                    // Couldn't resolve activity
+//                    println("No activity? Deleting track")
+//                    track.deleteFromRealmWithRelationships(realm: realm)
+//                    continue
+//                }
             }
             count++
         }
@@ -949,15 +950,12 @@ class MergeCloseToUnknownActivityTracksOperation: MergeTimeTracksOperation {
             
         var count = UInt(0)
         while count + 1 < tracks.count {
-            if let
-                track = tracks[count] as? Track,
-                nextTrack = tracks[count+1] as? Track,
-                trackActivity = track.activity as? TrackActivity,
-                nextTrackActivity = nextTrack.activity as? TrackActivity
+            if let track = tracks[count] as? Track,
+                   nextTrack = tracks[count+1] as? Track
             {
                 let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
-                let unknown = trackActivity.unknown || trackActivity.completelyUnknown()
-                let unknownNext = nextTrackActivity.unknown || nextTrackActivity.completelyUnknown()
+                let unknown = track.activity.unknown || track.activity.completelyUnknown()
+                let unknownNext = nextTrack.activity.unknown || nextTrack.activity.completelyUnknown()
                 let eitherIsUnknown = unknown || unknownNext
                 let merge = close && eitherIsUnknown
                 if merge {

@@ -12,45 +12,48 @@
 
 @implementation SMContacts
 
-@synthesize delegate;
-
-- (id)initWithDelegate:(id<SMContactsDelegate>) dlg {
+- (id)initWithDelegate:(id<SMContactsDelegate>)delegate
+{
     self = [super init];
     if (self) {
-        self.delegate = dlg;
+        self.delegate = delegate;
     }
     return self;
 }
 
-
--(BOOL)isABAddressBookCreateWithOptionsAvailable {
+- (BOOL)isABAddressBookCreateWithOptionsAvailable
+{
     return &ABAddressBookCreateWithOptions != NULL;
 }
 
--(void)loadContacts {
+- (void)loadContacts
+{
     ABAddressBookRef addressBook;
     if ([self isABAddressBookCreateWithOptionsAvailable]) {
         CFErrorRef error = nil;
-        addressBook = ABAddressBookCreateWithOptions(NULL,&error);
+        addressBook = ABAddressBookCreateWithOptions(NULL, &error);
         ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
-            // callback can occur in background, address book must be accessed on thread it was created on
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (error) {
-                    if (self.delegate) {
-                        [self.delegate addressBookHelperError:self];
-                    }
-                } else if (!granted) {
-                    if (self.delegate) {
-                        [self.delegate addressBookHelperDeniedAcess:self];
-                    }
-                } else {
-                    // access granted
-                    AddressBookUpdated(addressBook, nil, self);
-                    CFRelease(addressBook);
+          // callback can occur in background, address book must be accessed on thread it was created on
+          dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                if (self.delegate) {
+                    [self.delegate addressBookHelperError:self];
                 }
-            });
+            }
+            else if (!granted) {
+                if (self.delegate) {
+                    [self.delegate addressBookHelperDeniedAcess:self];
+                }
+            }
+            else {
+                // access granted
+                AddressBookUpdated(addressBook, nil, self);
+                CFRelease(addressBook);
+            }
+          });
         });
-    } else {
+    }
+    else {
         // iOS 4/5
         addressBook = ABAddressBookCreate();
         AddressBookUpdated(addressBook, NULL, self);
@@ -58,45 +61,47 @@
     }
 }
 
-void AddressBookUpdated(ABAddressBookRef addressBook, CFDictionaryRef info, SMContacts* helper) {
-    
-    CFArrayRef allPeopleRef = ABAddressBookCopyArrayOfAllPeople( addressBook );
-    CFIndex nPeople = ABAddressBookGetPersonCount( addressBook );
-    
-    NSMutableArray * people = [NSMutableArray array];
-    
-    for ( int i = 0; i < nPeople; i++ ) {
-        ABRecordRef thisPerson = CFArrayGetValueAtIndex(allPeopleRef,i);
-        
-        NSString * contactFirstLast = nil;
-        
+void AddressBookUpdated(ABAddressBookRef addressBook, CFDictionaryRef info, SMContacts *helper)
+{
+    CFArrayRef allPeopleRef = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
+
+    NSMutableArray *people = [NSMutableArray array];
+
+    for (int i = 0; i < nPeople; i++) {
+        ABRecordRef thisPerson = CFArrayGetValueAtIndex(allPeopleRef, i);
+
+        NSString *contactFirstLast = nil;
+
         if (ABRecordCopyValue(thisPerson, kABPersonFirstNameProperty)) {
             contactFirstLast = [NSString stringWithFormat:@"%@", ABRecordCopyValue(thisPerson, kABPersonFirstNameProperty)];
         }
-        
-        if (ABRecordCopyValue(thisPerson,kABPersonLastNameProperty)) {
+
+        if (ABRecordCopyValue(thisPerson, kABPersonLastNameProperty)) {
             if (contactFirstLast) {
                 contactFirstLast = [NSString stringWithFormat:@"%@ %@", contactFirstLast, ABRecordCopyValue(thisPerson, kABPersonLastNameProperty)];
-            } else {
+            }
+            else {
                 contactFirstLast = [NSString stringWithFormat:@"%@", ABRecordCopyValue(thisPerson, kABPersonLastNameProperty)];
             }
         }
-        
-        if (ABRecordCopyValue(thisPerson,kABPersonOrganizationProperty)) {
+
+        if (ABRecordCopyValue(thisPerson, kABPersonOrganizationProperty)) {
             if (contactFirstLast) {
-                contactFirstLast = [NSString stringWithFormat:@"%@ %@", contactFirstLast, ABRecordCopyValue(thisPerson, kABPersonOrganizationProperty)];
-            } else {
+                contactFirstLast =
+                    [NSString stringWithFormat:@"%@ %@", contactFirstLast, ABRecordCopyValue(thisPerson, kABPersonOrganizationProperty)];
+            }
+            else {
                 contactFirstLast = [NSString stringWithFormat:@"%@", ABRecordCopyValue(thisPerson, kABPersonOrganizationProperty)];
             }
         }
-        
+
         if (contactFirstLast == nil) {
             contactFirstLast = @"";
         }
-        
-        
+
         NSString *address = nil;
-        
+
         ABMultiValueRef st = ABRecordCopyValue(thisPerson, kABPersonAddressProperty);
         NSInteger n = ABMultiValueGetCount(st);
         if (n > 0) {
@@ -109,36 +114,32 @@ void AddressBookUpdated(ABAddressBookRef addressBook, CFDictionaryRef info, SMCo
                 address = [NSString stringWithFormat:@"%@, %@", address, CFDictionaryGetValue(dict, kABPersonAddressCountryKey)];
             }
         }
-        
+
         CFRelease(st);
-        
-        
+
         if (contactFirstLast && address) {
-            NSMutableDictionary * cnt = [@{
-                                         @"name" : contactFirstLast,
-                                         @"source" : @"contacts",
-                                         @"address" : [address stringByReplacingOccurrencesOfString:@"\n" withString:@", "]
-                                         } mutableCopy];
+            NSMutableDictionary *cnt = [@{
+                @"name" : contactFirstLast,
+                @"source" : @"contacts",
+                @"address" : [address stringByReplacingOccurrencesOfString:@"\n" withString:@", "]
+            } mutableCopy];
 
             CFDataRef imageData = ABPersonCopyImageData(thisPerson);
             UIImage *image = [UIImage imageWithData:(__bridge NSData *)imageData];
-//            CFRelease(imageData);
-            
+            //            CFRelease(imageData);
+
             if (image) {
                 [cnt setValue:image forKey:@"image"];
             }
-            
+
             [people addObject:cnt];
         }
-        
-        
-        
     }
 
     CFRelease(allPeopleRef);
-    
+
     if (helper.delegate) {
-        [[helper delegate] addressBookHelper:helper finishedLoading:people];        
+        [[helper delegate] addressBookHelper:helper finishedLoading:people];
     }
 };
 
