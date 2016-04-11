@@ -11,7 +11,7 @@ import UIKit
 class HourMinuteFormatter {
    
     private let calendar = NSCalendar.currentCalendar()
-    private let unitFlags: NSCalendarUnit = .HourCalendarUnit | .MinuteCalendarUnit
+    private let unitFlags: NSCalendarUnit = .CalendarUnitHour | .CalendarUnitMinute
     
     private func hoursAndMinutes(#seconds: NSTimeInterval) -> (hour: Int, minutes: Int) {
         let rounded = round(seconds/60)*60 // Round to minutes

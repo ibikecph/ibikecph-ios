@@ -150,7 +150,7 @@ class StatsNotificationHandler {
                 // Update notification with latest statistics
                 let durationThisWeek = round(BikeStatistics.durationThisWeek()/60)*60 // Round to minutes
                 let calendar = NSCalendar.currentCalendar()
-                let unitFlags: NSCalendarUnit = .HourCalendarUnit | .MinuteCalendarUnit
+                let unitFlags: NSCalendarUnit = .CalendarUnitHour | .CalendarUnitMinute
                 let components = calendar.components(unitFlags, fromDate: NSDate(), toDate: NSDate(timeIntervalSinceNow: durationThisWeek), options: nil)
                 let description = String(format: "weekly_status_description".localized, BikeStatistics.distanceThisWeek()/1000, components.hour, components.minute)
                 Notifications.scheduleLocalNotification(description, fireDate: nextSundayAt18)

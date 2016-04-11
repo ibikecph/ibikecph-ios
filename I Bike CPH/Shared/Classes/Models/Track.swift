@@ -137,7 +137,7 @@ extension Track {
         return true
     }
     
-    func lowAccuracy(#minAccuracy: Double = 100) -> Bool {
+    func lowAccuracy(minAccuracy: Double = 100) -> Bool {
         let locations = locationsSorted().objectsWithPredicate(NSPredicate(value: true))
         let horizontal = locations.averageOfProperty("horizontalAccuracy")?.doubleValue ?? 0
         let vertical = locations.averageOfProperty("verticalAccuracy")?.doubleValue ?? 0

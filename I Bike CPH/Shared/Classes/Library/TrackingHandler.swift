@@ -50,8 +50,9 @@ let trackingHandler = TrackingHandler()
     var trackingAvailable: Bool {
         #if (arch(i386) || arch(x86_64)) && os(iOS)
             return true
+        #else
+            return motionDetector.isAvailable()
         #endif
-        return motionDetector.isAvailable()
     }
     private var observerTokens = [AnyObject]()
     
