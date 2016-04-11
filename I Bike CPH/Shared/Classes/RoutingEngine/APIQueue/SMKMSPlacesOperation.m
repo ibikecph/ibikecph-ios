@@ -34,8 +34,8 @@
 }
 
 - (void)processResult:(id)result {
-    NSString* nameKey= @"navn";
-    NSString* municipalityKey= @"kommune_navn";
+//    NSString* nameKey= @"navn";
+//    NSString* municipalityKey= @"kommune_navn";
     
     NSDictionary* json= (NSDictionary*)result;
     NSMutableCharacterSet * set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];

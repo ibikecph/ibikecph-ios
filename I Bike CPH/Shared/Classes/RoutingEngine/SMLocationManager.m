@@ -13,15 +13,20 @@
 #import "SMLocationManager.h"
 #import <CoreLocation/CoreLocation.h>
 
-@implementation SMLocationManager
+@interface SMLocationManager ()
+@property (nonatomic) CLLocationManager *locationManager;
+@property (nonatomic) CLLocation *lastValidLocation;
+@property (nonatomic) BOOL hasValidLocation;
+@property (nonatomic) BOOL locationServicesEnabled;
+@end
 
-@synthesize hasValidLocation, lastValidLocation, locationServicesEnabled;
+@implementation SMLocationManager
 
 + (SMLocationManager *)instance {
 	static SMLocationManager *instance;
 	
 	if (instance == nil) {
-		instance = [[SMLocationManager alloc] init];
+		instance = [SMLocationManager new];
 	}
 	
 	return instance;
@@ -32,14 +37,14 @@
 	
 	if (self != nil)
 	{
-		hasValidLocation = NO;
-		locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        locationManager.distanceFilter = kCLDistanceFilterNone;
+		self.hasValidLocation = NO;
+		self.locationManager = [CLLocationManager new];
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.distanceFilter = kCLDistanceFilterNone;
 		
-        locationServicesEnabled = NO;
-        [locationManager requestAlwaysAuthorization];
+        self.locationServicesEnabled = NO;
+        [self.locationManager requestAlwaysAuthorization];
 	}
 	return self;
 }
@@ -47,10 +52,10 @@
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedAlways) {
         
-        [locationManager startUpdatingLocation];
-        [locationManager startMonitoringSignificantLocationChanges];
+        [self.locationManager startUpdatingLocation];
+        [self.locationManager startMonitoringSignificantLocationChanges];
         
-        locationServicesEnabled = YES;
+        self.locationServicesEnabled = YES;
     }
 }
 
@@ -58,11 +63,11 @@
    
     CLLocation *lastLocation = locations.lastObject;
     
-	hasValidLocation = NO;
+	self.hasValidLocation = NO;
 	
 	if (!signbit(lastLocation.horizontalAccuracy)) {
-		hasValidLocation = YES;
-		lastValidLocation = lastLocation;
+		self.hasValidLocation = YES;
+		self.lastValidLocation = lastLocation;
 	}
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshPosition" object:self userInfo:@{@"locations" : locations}];
 }
@@ -75,8 +80,8 @@
 		switch ([error code])
 		{
 			case kCLErrorDenied:
-				[locationManager stopUpdatingLocation];
-                locationServicesEnabled = NO;
+				[self.locationManager stopUpdatingLocation];
+                self.locationServicesEnabled = NO;
                 NSLog(@"Location services denied!");
 				break;
 			case kCLErrorLocationUnknown:
@@ -88,35 +93,29 @@
 	}
 }
 
-#pragma mark  - location service
-
+#pragma mark - Location services
 
 - (void)start {
-    if (locationManager != nil) {
-        [locationManager requestAlwaysAuthorization];
-        [locationManager startUpdatingLocation];
-        [locationManager startMonitoringSignificantLocationChanges];
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    if (self.locationManager != nil) {
+        [self.locationManager startUpdatingLocation];
+        [self.locationManager startMonitoringSignificantLocationChanges];
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     }
 }
 
 - (void)idle {
-    if (locationManager != nil) {
-        [locationManager requestAlwaysAuthorization];
-        [locationManager startUpdatingLocation];
-        [locationManager startMonitoringSignificantLocationChanges];
-        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+    if (self.locationManager != nil) {
+        [self.locationManager startUpdatingLocation];
+        [self.locationManager startMonitoringSignificantLocationChanges];
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
     }
 }
 
 - (void)stop {
-    if (locationManager != nil) {
-        [locationManager stopUpdatingLocation];
-        [locationManager stopMonitoringSignificantLocationChanges];
+    if (self.locationManager != nil) {
+        [self.locationManager stopUpdatingLocation];
+        [self.locationManager stopMonitoringSignificantLocationChanges];
     }
 }
-
-
-
 
 @end

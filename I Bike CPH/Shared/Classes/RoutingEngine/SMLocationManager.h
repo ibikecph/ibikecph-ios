@@ -13,21 +13,11 @@
 #import <Foundation/Foundation.h> 
 #import <CoreLocation/CoreLocation.h>
 
-/**
- * \ingroup libs
- * Background location manager
- */
 @interface SMLocationManager : NSObject<CLLocationManagerDelegate>
-{
-	CLLocationManager *locationManager;
-	CLLocation *lastValidLocation;
-	BOOL hasValidLocation;
-    BOOL locationServicesEnabled;
-}
 
-@property (readonly, nonatomic) BOOL hasValidLocation;
-@property (readonly, nonatomic) CLLocation *lastValidLocation;
-@property BOOL locationServicesEnabled;
+@property (nonatomic, readonly) BOOL hasValidLocation;
+@property (nonatomic, readonly) CLLocation *lastValidLocation;
+@property (nonatomic, readonly) BOOL locationServicesEnabled;
 
 + (SMLocationManager *)instance;
 - (void)start;
