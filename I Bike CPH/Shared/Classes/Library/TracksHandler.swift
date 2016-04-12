@@ -15,7 +15,7 @@ let processedBigNoticationKey = "processedBigNoticationKey"
 let processedGeocodingNoticationKey = "processedGeocodingNoticationKey"
 
 class TracksHandler {
-    static let instance = TracksHandler()
+    static let sharedInstance = TracksHandler()
 
     private var processingStartDate: NSDate = NSDate()
     private var processing: Bool = false {
@@ -83,38 +83,38 @@ class TracksHandler {
     class func setNeedsProcessData(userInitiated: Bool = false) {
         if compressingRealm {
             if userInitiated {
-                TracksHandler.instance.pendingUserInitiatedProcess = true
+                TracksHandler.sharedInstance.pendingUserInitiatedProcess = true
             }
             return
         }
-        let timeIntervalSinceBig = NSDate().timeIntervalSinceDate(instance.lastProcessedBig)
-        let timeIntervalSinceSmall = NSDate().timeIntervalSinceDate(instance.lastProcessedSmall)
+        let timeIntervalSinceBig = NSDate().timeIntervalSinceDate(sharedInstance.lastProcessedBig)
+        let timeIntervalSinceSmall = NSDate().timeIntervalSinceDate(sharedInstance.lastProcessedSmall)
         if
             userInitiated &&
             timeIntervalSinceBig > 60*1 // Allow userInitiated every 1 min
         {
-            instance.cleanUpBig(asap: true)
-            instance.lastProcessedBig = NSDate()
+            sharedInstance.cleanUpBig(asap: true)
+            sharedInstance.lastProcessedBig = NSDate()
             return
         }
         if timeIntervalSinceBig > 60*60*2 { // Do big stuff every other hour
-            instance.cleanUpBig(asap: false)
-            instance.lastProcessedBig = NSDate()
+            sharedInstance.cleanUpBig(asap: false)
+            sharedInstance.lastProcessedBig = NSDate()
             return
         }
         if timeIntervalSinceSmall > 60*30 { // Do small stuff every 30 min
-            instance.cleanUpSmall()
-            instance.lastProcessedSmall = NSDate()
+            sharedInstance.cleanUpSmall()
+            sharedInstance.lastProcessedSmall = NSDate()
             return
         }
     }
     
     private func cleanUpSmall() {
-        if TracksHandler.instance.processing {
+        if TracksHandler.sharedInstance.processing {
             println("Already processing")
             return
         }
-        TracksHandler.instance.processing = true
+        TracksHandler.sharedInstance.processing = true
         
         println("Start processing small")
         let fromDate = lastProcessedSmall.dateByAddingTimeInterval(-60*15) // Go 15 minutes back
@@ -128,7 +128,7 @@ class TracksHandler {
         }
         operations.last?.completionBlock = {
             println("Done processing small")
-            TracksHandler.instance.processing = false
+            TracksHandler.sharedInstance.processing = false
             NotificationCenter.post(processedSmallNoticationKey, object: self)
         }
         TracksOperation.addDependencies(operations)
@@ -136,12 +136,12 @@ class TracksHandler {
     }
     
     private func cleanUpBig(#asap: Bool) {
-        if TracksHandler.instance.processing {
+        if TracksHandler.sharedInstance.processing {
             println("Already processing")
             pendingUserInitiatedProcess = true
             return
         }
-        TracksHandler.instance.processing = true
+        TracksHandler.sharedInstance.processing = true
         
         println("Start processing big")
         let fromDate = lastProcessedBig.dateByAddingTimeInterval(-60*60*24) // Go 24 hours back
@@ -170,8 +170,8 @@ class TracksHandler {
         operations.last?.completionBlock = {
             println("Done processing big")
             Async.main {
-                TracksHandler.instance.pendingUserInitiatedProcess = false
-                TracksHandler.instance.processing = false
+                TracksHandler.sharedInstance.pendingUserInitiatedProcess = false
+                TracksHandler.sharedInstance.processing = false
                 NotificationCenter.post(processedBigNoticationKey, object: self)
             }
         }
@@ -180,12 +180,12 @@ class TracksHandler {
     }
     
     class func geocode() {
-        if TracksHandler.instance.processing {
+        if TracksHandler.sharedInstance.processing {
             println("Already processing")
-            TracksHandler.instance.pendingGeocode = true
+            TracksHandler.sharedInstance.pendingGeocode = true
             return
         }
-        TracksHandler.instance.processing = true
+        TracksHandler.sharedInstance.processing = true
         
         println("Start geocoding")
         let operations = [
@@ -198,21 +198,21 @@ class TracksHandler {
         operations.last?.completionBlock = {
             println("Done geocoding")
             Async.main {
-                TracksHandler.instance.pendingGeocode = false
-                TracksHandler.instance.processing = false
+                TracksHandler.sharedInstance.pendingGeocode = false
+                TracksHandler.sharedInstance.processing = false
                 NotificationCenter.post(processedGeocodingNoticationKey, object: self)
             }
         }
         TracksOperation.addDependencies(operations)
-        TracksHandler.instance.operationQueue.addOperations(operations, waitUntilFinished: false)
+        TracksHandler.sharedInstance.operationQueue.addOperations(operations, waitUntilFinished: false)
     }
     
     class func upload() {
-        if TracksHandler.instance.processing {
+        if TracksHandler.sharedInstance.processing {
             println("Already processing")
             return
         }
-        TracksHandler.instance.processing = true
+        TracksHandler.sharedInstance.processing = true
         
         println("Start uploading")
         let operations = [
@@ -221,11 +221,11 @@ class TracksHandler {
         operations.last?.completionBlock = {
             println("Done uploading")
             Async.main {
-                TracksHandler.instance.processing = false
+                TracksHandler.sharedInstance.processing = false
             }
         }
         TracksOperation.addDependencies(operations)
-        TracksHandler.instance.operationQueue.addOperations(operations, waitUntilFinished: false)
+        TracksHandler.sharedInstance.operationQueue.addOperations(operations, waitUntilFinished: false)
     }
 }
 
@@ -1096,7 +1096,7 @@ class UploadBikeTracksOperation: TracksOperation {
             return
         }
         // Tracking currently enabled
-        if !Settings.instance.tracking.on {
+        if !Settings.sharedInstance.tracking.on {
             return
         }
         
@@ -1122,7 +1122,7 @@ class UploadBikeTracksOperation: TracksOperation {
                 track.realm?.transactionWithBlock {
                     track.serverId = temporaryTrackId
                 }
-                TracksClient.instance.upload(track) { result in
+                TracksClient.sharedInstance.upload(track) { result in
                     if let track = Track.allObjects().objectsWhere("serverId == %@", temporaryTrackId).firstObject() as? Track {
                         switch result {
                             case .Success(let trackServerId):

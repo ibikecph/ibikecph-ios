@@ -54,7 +54,7 @@ class MenuViewController: UIViewController {
                     menuViewController.performSegueWithIdentifier("menuToTrackingNotAvailable", sender: menuViewController)
                     return
                 }
-                let trackingOn = Settings.instance.tracking.on
+                let trackingOn = Settings.sharedInstance.tracking.on
                 let hasBikeTracks = BikeStatistics.hasTrackedBikeData()
                 let showTrackingView = trackingOn || hasBikeTracks
                 if showTrackingView {
@@ -101,7 +101,7 @@ class MenuViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if pendingTracking && Settings.instance.tracking.on {
+        if pendingTracking && Settings.sharedInstance.tracking.on {
             performSegueWithIdentifier("menuToTracking", sender: self)
         }
         pendingTracking = false

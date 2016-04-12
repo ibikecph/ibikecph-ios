@@ -36,8 +36,8 @@ class VoicePreferencesViewController: UIViewController {
     private let sections: [SectionViewModel<VoiceItemProtocol>] = [
         SectionViewModel(title: nil, footer: "voice_option_detail".localized, items:
             [
-                VoiceSwitchItem(title: "voice_option".localized, iconImageName: "Speaker", on: Settings.instance.voice.on, switchAction: { voiceViewController, on in
-                        Settings.instance.voice.on = on
+                VoiceSwitchItem(title: "voice_option".localized, iconImageName: "Speaker", on: Settings.sharedInstance.voice.on, switchAction: { voiceViewController, on in
+                        Settings.sharedInstance.voice.on = on
                 }),
             ]
         ),

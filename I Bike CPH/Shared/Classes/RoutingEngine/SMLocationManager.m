@@ -22,14 +22,14 @@
 
 @implementation SMLocationManager
 
-+ (SMLocationManager *)instance {
-	static SMLocationManager *instance;
++ (SMLocationManager *)sharedInstance {
+	static SMLocationManager *sharedInstance;
 	
-	if (instance == nil) {
-		instance = [SMLocationManager new];
+	if (sharedInstance == nil) {
+		sharedInstance = [SMLocationManager new];
 	}
 	
-	return instance;
+	return sharedInstance;
 }
 
 - (id)init {
@@ -95,7 +95,7 @@
 
 #pragma mark - Location services
 
-- (void)start {
+- (void)startUpdating {
     if (self.locationManager != nil) {
         [self.locationManager startUpdatingLocation];
         [self.locationManager startMonitoringSignificantLocationChanges];
@@ -103,7 +103,7 @@
     }
 }
 
-- (void)idle {
+- (void)idleUpdating {
     if (self.locationManager != nil) {
         [self.locationManager startUpdatingLocation];
         [self.locationManager startMonitoringSignificantLocationChanges];
@@ -111,7 +111,7 @@
     }
 }
 
-- (void)stop {
+- (void)stopUpdating {
     if (self.locationManager != nil) {
         [self.locationManager stopUpdatingLocation];
         [self.locationManager stopMonitoringSignificantLocationChanges];

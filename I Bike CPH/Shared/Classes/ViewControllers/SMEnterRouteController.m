@@ -182,7 +182,7 @@ typedef enum { fieldTo, fieldFrom } CurrentField;
     }
 
     if (self.fromItem == nil) {
-        if ([SMLocationManager instance].hasValidLocation == NO) {
+        if ([SMLocationManager sharedInstance].hasValidLocation == NO) {
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil
                                                          message:@"error_no_gps_location".localized
                                                         delegate:nil

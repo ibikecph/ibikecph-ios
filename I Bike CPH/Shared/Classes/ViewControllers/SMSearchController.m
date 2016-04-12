@@ -338,8 +338,8 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         }
     }
     else if (currentItem.type == SearchListItemTypeCurrentLocation) {
-        if ([SMLocationManager instance].hasValidLocation) {
-            CLLocation *loc = [SMLocationManager instance].lastValidLocation;
+        if ([SMLocationManager sharedInstance].hasValidLocation) {
+            CLLocation *loc = [SMLocationManager sharedInstance].lastValidLocation;
             if (loc) {
                 [self dismiss];
             }
@@ -536,7 +536,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         // From external search
         NSMutableArray *externalResults = foundEntries.mutableCopy;
         [externalResults sortUsingComparator:^NSComparisonResult(NSObject<SearchListItem> *obj1, NSObject<SearchListItem> *obj2) {
-          CLLocation *currentLocation = [SMLocationManager instance].lastValidLocation;
+          CLLocation *currentLocation = [SMLocationManager sharedInstance].lastValidLocation;
 
           SEL distanceSelector = @selector(distance);
           NSString *distanceSelectorString = NSStringFromSelector(distanceSelector);

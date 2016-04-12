@@ -35,7 +35,7 @@
     if (near) {
         URLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?intent=browse&near=%@&client_id=%@&client_secret=%@&query=%@&v=%@&radius=%@&limit=%@&categoryId=%@", [[near removeAccents] urlEncode], FOURSQUARE_ID, FOURSQUARE_SECRET, [[self.searchString removeAccents] urlEncode], @"20130301", FOURSQUARE_SEARCH_RADIUS, [SMRouteSettings sharedInstance].foursquare_limit, [SMRouteSettings sharedInstance].foursquare_categories];
     } else {
-        URLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?intent=browse&ll=%f,%f&client_id=%@&client_secret=%@&query=%@&v=%@&radius=%@&limit=%@&categoryId=%@", [SMLocationManager instance].lastValidLocation.coordinate.latitude, [SMLocationManager instance].lastValidLocation.coordinate.longitude, FOURSQUARE_ID, FOURSQUARE_SECRET, [[self.searchString removeAccents] urlEncode], @"20130301", FOURSQUARE_SEARCH_RADIUS, [SMRouteSettings sharedInstance].foursquare_limit, [SMRouteSettings sharedInstance].foursquare_categories];
+        URLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?intent=browse&ll=%f,%f&client_id=%@&client_secret=%@&query=%@&v=%@&radius=%@&limit=%@&categoryId=%@", [SMLocationManager sharedInstance].lastValidLocation.coordinate.latitude, [SMLocationManager sharedInstance].lastValidLocation.coordinate.longitude, FOURSQUARE_ID, FOURSQUARE_SECRET, [[self.searchString removeAccents] urlEncode], @"20130301", FOURSQUARE_SEARCH_RADIUS, [SMRouteSettings sharedInstance].foursquare_limit, [SMRouteSettings sharedInstance].foursquare_categories];
     }
 
     
@@ -59,7 +59,7 @@
         item.relevance = [SMRouteUtils pointsForName:item.name andAddress:item.address andTerms:self.searchString];
         if (item.location.coordinate.latitude != 0 &&
             item.location.coordinate.longitude != 0) {
-            item.distance = [[SMLocationManager instance].lastValidLocation distanceFromLocation:item.location];
+            item.distance = [[SMLocationManager sharedInstance].lastValidLocation distanceFromLocation:item.location];
             [arr addObject:item];
         }
         

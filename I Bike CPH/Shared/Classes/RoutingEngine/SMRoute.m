@@ -576,8 +576,8 @@ NSMutableArray* decodePolyline (NSString *encodedString) {
             self.pastTurnInstructions = [NSMutableArray array];
         }
         
-        if ([SMLocationManager instance].hasValidLocation) {
-            [self updateDistances:[SMLocationManager instance].lastValidLocation];
+        if ([SMLocationManager sharedInstance].hasValidLocation) {
+            [self updateDistances:[SMLocationManager sharedInstance].lastValidLocation];
         }
     }
 }
@@ -637,8 +637,8 @@ NSMutableArray* decodePolyline (NSString *encodedString) {
                 BOOL done = [self parseFromJson:jsonRoot delegate:nil];
                 if (done) {
 //                    approachingTurn = NO;
-                    if ([SMLocationManager instance].hasValidLocation) {
-                        [self updateDistances:[SMLocationManager instance].lastValidLocation];
+                    if ([SMLocationManager sharedInstance].hasValidLocation) {
+                        [self updateDistances:[SMLocationManager sharedInstance].lastValidLocation];
                     }
                     dispatch_async(dispatch_get_main_queue(), ^{
                         if (self.delegate && [self.delegate respondsToSelector:@selector(routeRecalculationDone)]) {

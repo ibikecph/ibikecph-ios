@@ -34,7 +34,7 @@
     
     
     // Initialize location manager (not used for map, but for getting current location)
-    [SMLocationManager instance];
+    [SMLocationManager sharedInstance];
     
     /**
      * initialize Google Analytics

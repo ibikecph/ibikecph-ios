@@ -146,7 +146,7 @@ class StatsNotificationHandler {
                 Notifications.cancelScheduledLocalNotification(existingNotification)
             }
             //  Schedule new notification, if setting is on
-            if Settings.instance.tracking.weeklyStatusNotifications {
+            if Settings.sharedInstance.tracking.weeklyStatusNotifications {
                 // Update notification with latest statistics
                 let durationThisWeek = round(BikeStatistics.durationThisWeek()/60)*60 // Round to minutes
                 let calendar = NSCalendar.currentCalendar()
@@ -187,7 +187,7 @@ class StatsNotificationHandler {
     
     func checkPresentNotificationToUser() {
         // Check if milestones is even on
-        if !Settings.instance.tracking.milestoneNotifications {
+        if !Settings.sharedInstance.tracking.milestoneNotifications {
             return
         }
         // Check that user didn't bike within last 5 min.

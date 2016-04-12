@@ -19,9 +19,9 @@
 @property (nonatomic, readonly) CLLocation *lastValidLocation;
 @property (nonatomic, readonly) BOOL locationServicesEnabled;
 
-+ (SMLocationManager *)instance;
-- (void)start;
-- (void)idle;
-- (void)stop;
++ (SMLocationManager *)sharedInstance;
+- (void)startUpdating;
+- (void)idleUpdating;
+- (void)stopUpdating;
 
 @end

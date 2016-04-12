@@ -34,7 +34,7 @@ class TrackingPromptViewController: SMTranslatedViewController {
         
         // Check if tracking should be enabled
         if (pendingEnableTrackingFromTrackToken || pendingEnableTrackingFromLogin) && UserHelper.checkEnableTracking() == .Allowed {
-            Settings.instance.tracking.on = true
+            Settings.sharedInstance.tracking.on = true
             pendingEnableTrackingFromLogin = false
             pendingEnableTrackingFromTrackToken = false
             dismiss()
@@ -68,7 +68,7 @@ class TrackingPromptViewController: SMTranslatedViewController {
             alertController.addAction(loginAction)
             alertController.showWithSender(self, controller: self, animated: true, completion: nil)
         case .Allowed:
-            Settings.instance.tracking.on = true
+            Settings.sharedInstance.tracking.on = true
             dismiss()
         case .LacksTrackToken:
             // User is logged in but doesn't have a trackToken

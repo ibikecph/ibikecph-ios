@@ -47,7 +47,7 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
                 TrackingSwitchItem(
                     title: "tracking_option".localized,
                     iconImageName: "Bikedata",
-                    on: { Settings.instance.tracking.on },
+                    on: { Settings.sharedInstance.tracking.on },
                     switchAction: { viewController, switcher, on in
                         
                         if on {
@@ -63,7 +63,7 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
                                 alertController.showWithSender(viewController, controller: viewController, animated: true, completion: nil)
                                 switcher.setOn(false, animated: true)
                             case .Allowed:
-                                Settings.instance.tracking.on = true
+                                Settings.sharedInstance.tracking.on = true
                             case .LacksTrackToken:
                                 // User is logged in but doesn't have a trackToken
                                 switcher.setOn(false, animated: true)
@@ -72,7 +72,7 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
                                 return
                             }
                         } else {
-                            Settings.instance.tracking.on = false
+                            Settings.sharedInstance.tracking.on = false
                         }
                         viewController.tableView.beginUpdates()
                         let indexPaths = viewController.tableView.indexPathsForVisibleRows()!
@@ -83,20 +83,20 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
                 TrackingSwitchItem(
                     title: "tracking_milestone_notifications".localized,
                     iconImageName: "Milestones",
-                    on: { Settings.instance.tracking.milestoneNotifications },
+                    on: { Settings.sharedInstance.tracking.milestoneNotifications },
                     switchAction: { voiceViewController, switcher, on in
-                        Settings.instance.tracking.milestoneNotifications = on
+                        Settings.sharedInstance.tracking.milestoneNotifications = on
                     },
-                    enabled: { Settings.instance.tracking.on }
+                    enabled: { Settings.sharedInstance.tracking.on }
                 ),
                 TrackingSwitchItem(
                     title: "tracking_weekly_status_notifications".localized,
                     iconImageName: "Weekday",
-                    on: { Settings.instance.tracking.weeklyStatusNotifications },
+                    on: { Settings.sharedInstance.tracking.weeklyStatusNotifications },
                     switchAction: { voiceViewController, switcher, on in
-                        Settings.instance.tracking.weeklyStatusNotifications = on
+                        Settings.sharedInstance.tracking.weeklyStatusNotifications = on
                     },
-                    enabled: { Settings.instance.tracking.on }
+                    enabled: { Settings.sharedInstance.tracking.on }
                 ),
             ]
         ),
@@ -112,7 +112,7 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
         super.viewDidAppear(animated)
      
         if pendingEnableTracking && UserHelper.checkEnableTracking() == .Allowed {
-            Settings.instance.tracking.on = true
+            Settings.sharedInstance.tracking.on = true
             tableView.beginUpdates()
             let indexPaths = tableView.indexPathsForVisibleRows()!
             tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)

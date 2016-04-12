@@ -11,7 +11,7 @@ import UIKit
 let settingsUpdatedNotification = "settingsUpdatedNotification"
 
 class Settings: NSObject {
-    static let instance = Settings()
+    static let sharedInstance = Settings()
     
     class Voice {
         private let onKey = "voiceOn"

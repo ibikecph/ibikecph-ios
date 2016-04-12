@@ -9,7 +9,7 @@
 import Foundation
 
 class TracksClient: ServerClient {
-    static let instance = TracksClient()
+    static let sharedInstance = TracksClient()
     
     private let baseUrl = API_SERVER
     

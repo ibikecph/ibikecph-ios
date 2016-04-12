@@ -103,7 +103,7 @@ class MainMapViewController: MapViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // Update tracking information
-        if Settings.instance.tracking.on {
+        if Settings.sharedInstance.tracking.on {
             TracksHandler.setNeedsProcessData(userInitiated: true)
         }
         

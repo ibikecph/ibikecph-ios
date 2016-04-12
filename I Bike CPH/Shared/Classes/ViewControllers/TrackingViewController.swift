@@ -93,7 +93,7 @@ class TrackingViewController: ToolbarViewController {
         
         // Leave view controller if user hasn't enabled tracking and has no tracking data.
         // This will happen when user disable tracking in tracking settings and returns to this view controller.
-        if !Settings.instance.tracking.on && !BikeStatistics.hasTrackedBikeData() {
+        if !Settings.sharedInstance.tracking.on && !BikeStatistics.hasTrackedBikeData() {
             dismiss()
         }
         
@@ -102,7 +102,7 @@ class TrackingViewController: ToolbarViewController {
         
         // Check if tracking should be enabled
         if pendingEnableTracking && UserHelper.checkEnableTracking() == .Allowed {
-            Settings.instance.tracking.on = true
+            Settings.sharedInstance.tracking.on = true
             tableView.beginUpdates()
             let indexPaths = tableView.indexPathsForVisibleRows()!
             tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
@@ -128,7 +128,7 @@ class TrackingViewController: ToolbarViewController {
     func updateUI() {
         
         // Re-enable button
-        if Settings.instance.tracking.on {
+        if Settings.sharedInstance.tracking.on {
             removeToolbar()
         } else {
             add(toolbarView: enableTrackingToolbarView)
@@ -272,7 +272,7 @@ extension TrackingViewController: UITableViewDataSource {
                 deleteLocalClosure()
             } else {
                 // Delete from server
-                TracksClient.instance.delete(track) { result in
+                TracksClient.sharedInstance.delete(track) { result in
                     switch result {
                         case .Success(_): fallthrough
                         case .NotFound:
@@ -334,7 +334,7 @@ extension TrackingViewController: EnableTrackingToolbarDelegate {
             alertController.addAction(loginAction)
             alertController.showWithSender(self, controller: self, animated: true, completion: nil)
         case .Allowed:
-            Settings.instance.tracking.on = true
+            Settings.sharedInstance.tracking.on = true
         case .LacksTrackToken:
             // User is logged in but doesn't have a trackToken
             pendingEnableTracking = true

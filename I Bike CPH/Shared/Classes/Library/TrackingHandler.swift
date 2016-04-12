@@ -90,7 +90,7 @@ let trackingHandler = TrackingHandler()
     }
     
     func checkMotionTracking() {
-        if !Settings.instance.tracking.on {
+        if !Settings.sharedInstance.tracking.on {
             motionDetector.stop()
             return
         }
@@ -117,19 +117,19 @@ let trackingHandler = TrackingHandler()
     
     func setupBackgroundHandling() {
         observerTokens.append(NotificationCenter.observe(UIApplicationDidEnterBackgroundNotification) { notification in
-            if Settings.instance.tracking.on {
+            if Settings.sharedInstance.tracking.on {
                 return
             }
             // TODO: Check if app is routing
             let currentlyRouting = false // WARNING: FIXME: get actual value
-            if Settings.instance.voice.on && currentlyRouting {
+            if Settings.sharedInstance.voice.on && currentlyRouting {
                 return
             }
             // Stop location manager
-            SMLocationManager.instance().stop()
+            SMLocationManager.sharedInstance().stopUpdating()
         })
         observerTokens.append(NotificationCenter.observe(UIApplicationWillEnterForegroundNotification) { notification in
-            SMLocationManager.instance().start()
+            SMLocationManager.sharedInstance().startUpdating()
         })
     }
     
@@ -142,7 +142,7 @@ let trackingHandler = TrackingHandler()
     }
     
     func checkMilestoneNotification() {
-        if !Settings.instance.tracking.on {
+        if !Settings.sharedInstance.tracking.on {
             return
         }
         statsNotificationHandler.checkPresentNotificationToUser()
@@ -152,7 +152,7 @@ let trackingHandler = TrackingHandler()
         println("Start tracking")
         
         // Start location manager
-        SMLocationManager.instance().start()
+        SMLocationManager.sharedInstance().startUpdating()
         
         // Initialize track
         thread.enqueue() { [weak self] in
@@ -165,12 +165,12 @@ let trackingHandler = TrackingHandler()
     }
     
     func stopTracking() {
-        if Settings.instance.tracking.on {
+        if Settings.sharedInstance.tracking.on {
             // Idle location manager
-            SMLocationManager.instance().idle()
+            SMLocationManager.sharedInstance().idleUpdating()
         } else {
             // Stop location manager
-            SMLocationManager.instance().stop()
+            SMLocationManager.sharedInstance().stopUpdating()
         }
         
         thread.enqueue() { [weak self] in

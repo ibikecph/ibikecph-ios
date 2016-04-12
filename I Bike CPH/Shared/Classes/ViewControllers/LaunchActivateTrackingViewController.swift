@@ -20,7 +20,7 @@ class LaunchActivateTrackingViewController: SMTranslatedViewController {
         case .NotLoggedIn:
             performSegueWithIdentifier(toLoginNavigationControllerSegue, sender: self)
         case .Allowed:
-            Settings.instance.tracking.on = true
+            Settings.sharedInstance.tracking.on = true
             dismiss()
         case .LacksTrackToken:
             // User is logged in but doesn't have a trackToken
@@ -38,7 +38,7 @@ class LaunchActivateTrackingViewController: SMTranslatedViewController {
         super.viewDidLoad()
         updateActivateButton()
         // Register visit to this view
-        Settings.instance.onboarding.didSeeActivateTracking = true
+        Settings.sharedInstance.onboarding.didSeeActivateTracking = true
         // Hide navigationbar initially
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -51,7 +51,7 @@ class LaunchActivateTrackingViewController: SMTranslatedViewController {
 
         // Check if tracking should be enabled
         if pendingEnableTrackingFromTrackToken && UserHelper.checkEnableTracking() == .Allowed {
-            Settings.instance.tracking.on = true
+            Settings.sharedInstance.tracking.on = true
             pendingEnableTrackingFromTrackToken = false
             dismiss()
         } else {

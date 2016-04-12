@@ -23,7 +23,7 @@ import CoreLocation
     var country: String = ""
     var location: CLLocation? {
         get {
-            return SMLocationManager.instance().lastValidLocation
+            return SMLocationManager.sharedInstance().lastValidLocation
         }
         set {
             println("Can't set location on CurrentLocationItem")
