@@ -17,12 +17,10 @@ protocol MapViewDelegate {
     func didSelectAnnotation(annotation: Annotation)
 }
 
-
 extension RMUserTrackingMode: Equatable {}
 public func ==(lhs: RMUserTrackingMode, rhs: RMUserTrackingMode) -> Bool {
     return lhs.value == rhs.value
 }
-
 
 class MapView: UIView {
     
@@ -88,6 +86,8 @@ class MapView: UIView {
         // Add long-press to drop pin
         let longPress = UILongPressGestureRecognizer(target: self, action: "didLongPress:")
         mapView.addGestureRecognizer(longPress)
+        
+        self.setupBackgroundHandling()
     }
     
     var initialRegionLoadNecessary = true
@@ -250,6 +250,37 @@ class MapView: UIView {
             return annotations
         }
     }
+    
+// MARK: To avoid location updates when app is in background
+    private var foregroundUserTrackingMode: UserTrackingMode = .None
+    private var foregroundShowsUserLocation: Bool = false
+    private var observerTokens = [AnyObject]()
+    
+    private func unobserve() {
+        for observerToken in observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
+        NotificationCenter.unobserve(self)
+    }
+    
+    func setupBackgroundHandling() {
+        // When the app is in the background userTrackingMode/showsUserLocation must be set to .None/false
+        // in order to stop location updates in the map view.
+        observerTokens.append(NotificationCenter.observe(UIApplicationDidEnterBackgroundNotification) { notification in
+            self.foregroundUserTrackingMode = self.userTrackingMode
+            self.foregroundShowsUserLocation = self.showsUserLocation
+            self.userTrackingMode = .None
+            self.showsUserLocation = false
+        })
+        observerTokens.append(NotificationCenter.observe(UIApplicationWillEnterForegroundNotification) { notification in
+            self.userTrackingMode = self.foregroundUserTrackingMode
+            self.showsUserLocation = self.foregroundShowsUserLocation
+        })
+    }
+    
+    deinit {
+        unobserve()
+    }
 }
 
 
@@ -262,7 +293,6 @@ class LayerAnnotation: Annotation {
         self.mapView = mapView.mapView
     }
 }
-
 
 /// Proxy for RMMapView
 extension MapView {
@@ -321,7 +351,6 @@ extension MapView {
     }
 }
 
-
 extension MapView: RMMapViewDelegate {
     
     func mapView(mapView: RMMapView, didSelectAnnotation annotation: RMAnnotation) {
@@ -352,7 +381,6 @@ extension MapView: RMMapViewDelegate {
     }
 }
 
-
 extension RMSphericalTrapezium {
     func padded(padding: Double = 0.25) -> RMSphericalTrapezium {
         var northEast = self.northEast
@@ -371,7 +399,6 @@ extension RMSphericalTrapezium {
     }
 }
 
-
 extension RMMapView {
     func sphericalTrapezium(forProjectedRect rect: RMProjectedRect) -> RMSphericalTrapezium {
         let neProjected = RMProjectedPoint(x: rect.origin.x + rect.size.width, y: rect.origin.y + rect.size.height)
@@ -381,4 +408,3 @@ extension RMMapView {
         return RMSphericalTrapezium(southWest: sw, northEast: ne)
     }
 }
-
