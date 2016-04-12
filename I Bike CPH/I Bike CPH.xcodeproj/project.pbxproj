@@ -414,6 +414,8 @@
 		4EFDA4831AB87A6E00522A41 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
 		4EFDA4861AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */; };
 		4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */; };
+		7D03242E1CBD38D0002DADDE /* NonTrackingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D03242D1CBD38D0002DADDE /* NonTrackingHandler.swift */; };
+		7D03242F1CBD3990002DADDE /* NonTrackingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D03242D1CBD38D0002DADDE /* NonTrackingHandler.swift */; };
 		7D1D9C3F1CB7B961007F1D30 /* SMAddressParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A21CB3EB4D0079801B /* SMAddressParser.h */; };
 		7D1D9C401CB7C008007F1D30 /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		7D1D9C5F1CB7EA07007F1D30 /* SMGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C4D1CB7EA07007F1D30 /* SMGeocoder.m */; };
@@ -833,6 +835,7 @@
 		4EFB7DB51B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchActivateTrackingViewController.swift; sourceTree = "<group>"; };
 		4EFDA4811AB87A6D00522A41 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativeDateFormatter.swift; sourceTree = "<group>"; };
+		7D03242D1CBD38D0002DADDE /* NonTrackingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTrackingHandler.swift; sourceTree = "<group>"; };
 		7D1D9C451CB7E92C007F1D30 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		7D1D9C4C1CB7EA07007F1D30 /* SMGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGeocoder.h; sourceTree = "<group>"; };
 		7D1D9C4D1CB7EA07007F1D30 /* SMGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGeocoder.m; sourceTree = "<group>"; };
@@ -1158,6 +1161,7 @@
 				4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */,
 				4E56745C1A92469000BF4A28 /* TrackingHandler.swift */,
 				4E56745F1A92521800BF4A28 /* MotionDetector.swift */,
+				7D03242D1CBD38D0002DADDE /* NonTrackingHandler.swift */,
 				4E5258C61A9B9C8300BE55C8 /* String.swift */,
 				4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */,
 				4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */,
@@ -2290,6 +2294,7 @@
 				4E5E878A1B31D6560021F5E9 /* FindRouteToolbarView.swift in Sources */,
 				7D1D9C621CB7EA07007F1D30 /* SMNearbyPlaces.m in Sources */,
 				4EC56E711A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
+				7D03242E1CBD38D0002DADDE /* NonTrackingHandler.swift in Sources */,
 				4EC56EA11A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */,
 				4E5258CA1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */,
 				4E65D2A21AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */,
@@ -2419,6 +2424,7 @@
 				4EC56E4B1A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
 				4EE06C331A10FC5600DE4226 /* SMArrivalInformation.m in Sources */,
 				4EC56E2B1A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
+				7D03242F1CBD3990002DADDE /* NonTrackingHandler.swift in Sources */,
 				4EC56E3B1A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
 				4EC56EDD1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */,
 				4E0176891AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */,

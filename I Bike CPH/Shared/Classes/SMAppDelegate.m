@@ -89,6 +89,8 @@
 
 #if TRACKING_ENABLED
     [TrackingHandler sharedInstance];
+#else
+    [NonTrackingHandler sharedInstance];
 #endif
     
     // DEBUG ONLY
