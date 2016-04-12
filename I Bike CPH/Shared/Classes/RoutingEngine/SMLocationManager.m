@@ -51,11 +51,11 @@
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedAlways) {
-        
-        [self.locationManager startUpdatingLocation];
-        [self.locationManager startMonitoringSignificantLocationChanges];
-        
+        [self startUpdating];
         self.locationServicesEnabled = YES;
+    } else {
+        [self stopUpdating];
+        self.locationServicesEnabled = NO;
     }
 }
 
@@ -80,7 +80,7 @@
 		switch ([error code])
 		{
 			case kCLErrorDenied:
-				[self.locationManager stopUpdatingLocation];
+                [self stopUpdating];
                 self.locationServicesEnabled = NO;
                 NSLog(@"Location services denied!");
 				break;
