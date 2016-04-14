@@ -7,9 +7,7 @@
 ## Submodules
 The repository has a single git submodule containing the localization files used between all I Bike CPH apps. To initialize/add git submodules:
 
-`$ git submodule init`
-
-`$ git submodule update`
+`$ git submodule update --init`
 
 ### Enable/disable tracking features
 To enabled tracking features you must do two things:
