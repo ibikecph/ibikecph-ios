@@ -11,3 +11,6 @@ env:
   - APPNAME=CykelPlanen
 #   - 'DEVELOPER_NAME="iPhone Distribution: NAME_OF_THE_DEVELOPER (CODE)"'
 #   - PROFILE_UUID=PROVISIONING_PROFILE_UUID
+
+#notifications:
+  slack: ttcodes:MMoN8DaMqrcd7s8D3mSg6geN
