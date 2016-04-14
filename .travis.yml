@@ -17,5 +17,6 @@ env:
 #   - 'DEVELOPER_NAME="iPhone Distribution: NAME_OF_THE_DEVELOPER (CODE)"'
 #   - PROFILE_UUID=PROVISIONING_PROFILE_UUID
 
-#notifications:
-  slack: ttcodes:MMoN8DaMqrcd7s8D3mSg6geN
+notifications:
+  slack:
+    secure: w8+eX+RCiNvZ4iA1M2mY5dGAqHvnBaE77Jw68JFspg1eJAQsiq1rQDZnWhgZbSZSflEXUuPE0pkMrOGBGrSZ+npx3UnwX17voy7E/Zl7RBWYJzfNmn6gtnEzieWWL4IW43o2Ep/k1UvJLBw9kQzJYjT1BXlY+oMJYhT/MZty2xI=
