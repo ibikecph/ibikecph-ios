@@ -1,0 +1,13 @@
+language: objective-c
+osx_image: xcode6.4
+# before_script:
+# - ./scripts/travis/add-key.sh
+# after_script:
+# - ./scripts/travis/remove-key.sh
+# after_success:
+# - ./scripts/travis/testflight.sh
+env:
+  global:
+  - APPNAME=CykelPlanen
+#   - 'DEVELOPER_NAME="iPhone Distribution: NAME_OF_THE_DEVELOPER (CODE)"'
+#   - PROFILE_UUID=PROVISIONING_PROFILE_UUID
