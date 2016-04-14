@@ -1,11 +1,16 @@
 language: objective-c
 osx_image: xcode6.4
+xcode_workspace: 'I Bike CPH/I Bike CPH.xcworkspace'
+xcode_scheme: 'CykelPlanen'
+podfile: 'I Bike CPH/Podfile'
+
 # before_script:
 # - ./scripts/travis/add-key.sh
 # after_script:
 # - ./scripts/travis/remove-key.sh
 # after_success:
 # - ./scripts/travis/testflight.sh
+
 env:
   global:
   - APPNAME=CykelPlanen
