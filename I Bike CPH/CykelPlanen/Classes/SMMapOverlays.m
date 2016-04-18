@@ -110,7 +110,7 @@
     
     [self.mapView removeAnnotations:self.bikeRouteAnnotations];
     [self.bikeRouteAnnotations removeAllObjects];
-    if ([Settings instance].overlays.cycleSuperHighways) {
+    if ([Settings sharedInstance].overlays.cycleSuperHighways) {
         for (NSArray *locations in self.bikeRouteLocations) {
             UIColor *color = [[Styler tintColor] colorWithAlphaComponent:0.5];
             Annotation *pathAnnotation = [self.mapView addPathWithLocations:locations lineColor:color lineWidth:4.0];
@@ -119,7 +119,7 @@
         [self.mapView addAnnotations:self.bikeRouteAnnotations];
     }
     [self.mapView removeAnnotations:self.serviceMarkers];
-    if ([Settings instance].overlays.bikeServiceStations) {
+    if ([Settings sharedInstance].overlays.bikeServiceStations) {
         [self.mapView addAnnotations:self.serviceMarkers];
     }
     
