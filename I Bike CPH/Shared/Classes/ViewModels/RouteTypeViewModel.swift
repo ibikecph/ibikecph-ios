@@ -13,20 +13,18 @@ struct RouteTypeViewModel {
         return self.type.localizedDescription
     }
     var iconImage: UIImage? {
-        let name: String = {
-            switch self.type {
-                case .Regular: return "Fast"
-                case .Cargo: return "Cargo"
-                case .Green: return "Green"
-                case .Broken: return "BrokenRoute"
-            }
-        }()
-        return UIImage(named: name)
+        switch self.type {
+            case .Disabled: return nil
+            case .Fast: return UIImage(named:"Fast")
+            case .Cargo: return UIImage(named:"Cargo")
+            case .Green: return UIImage(named:"Green")
+            case .Broken: return UIImage(named:"BrokenRoute")
+        }
     }
     let type: RouteType
     var selected: Bool {
         get {
-            return type == RouteTypeHandler.instance.type
+            return (type == .Disabled) ? false : type == RouteTypeHandler.instance.type
         }
         set {
             if newValue {

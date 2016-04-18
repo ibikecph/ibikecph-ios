@@ -43,35 +43,29 @@ class RouteTypeToolbarView: ToolbarView {
         updateUI()
     }
     
-    private func validType(index: Int) -> RouteType? {
-        return index < validTypes.count ? validTypes[index] : nil
+    private func validType(index: Int) -> RouteType {
+        return index < validTypes.count ? validTypes[index] : .Disabled
     }
     
     @IBAction func didTapLeftButton(sender: AnyObject) {
-        type = validType(0) ?? .Regular
+        type = validType(0)
     }
     @IBAction func didTapCenterButton(sender: AnyObject) {
-        type = validType(1) ?? .Regular
+        type = validType(1)
     }
     @IBAction func didTapRightButton(sender: AnyObject) {
-        type = validType(2) ?? .Regular
+        type = validType(2)
     }
     
     func updateUI() {
         for (index, button) in enumerate(buttons) {
-            if let type = validType(index) {
-                button.enabled = true
-                let type = validTypes[index]
-                let typeViewModel = RouteTypeViewModel(type: type)
-                // Set image
-                button.setImage(typeViewModel.iconImage, forState: .Normal)
-                // Set selection
-                button.tintColor = typeViewModel.selected ? Styler.tintColor() : Styler.foregroundColor()
-                continue
-            }
-            button.enabled = false
-            button.setImage(nil, forState: .Normal)
-            button.tintColor = Styler.foregroundColor()
+            let type = validType(index)
+            button.enabled = (type != .Disabled)
+            let typeViewModel = RouteTypeViewModel(type: type)
+            // Set image
+            button.setImage(typeViewModel.iconImage, forState: .Normal)
+            // Set selection
+            button.tintColor = typeViewModel.selected ? Styler.tintColor() : Styler.foregroundColor()
         }
     }
 }
