@@ -16,7 +16,7 @@ class Settings: NSObject {
     class Voice {
         private let onKey = "voiceOn"
         var on: Bool {
-            get { return Defaults[onKey].bool ?? true }
+            get { return Defaults[onKey].bool ?? false }
             set {
                 Defaults[onKey] = newValue
                 NotificationCenter.post(settingsUpdatedNotification, object: self)

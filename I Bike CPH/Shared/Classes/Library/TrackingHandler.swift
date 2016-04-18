@@ -13,7 +13,8 @@ import CoreMotion
 let trackingHandler = TrackingHandler()
 
 @objc class TrackingHandler {
-
+    var isCurrentlyRouting: Bool = false
+    
     private var currentTrack: Track?
     
     private let thread: Thread = {
@@ -120,9 +121,8 @@ let trackingHandler = TrackingHandler()
             if Settings.sharedInstance.tracking.on {
                 return
             }
-            // TODO: Check if app is routing
-            let currentlyRouting = false // WARNING: FIXME: get actual value
-            if Settings.sharedInstance.voice.on && currentlyRouting {
+            // TODO: Revisit functionality of isCurrentlyRouting
+            if Settings.sharedInstance.voice.on && self.isCurrentlyRouting {
                 return
             }
             // Stop location manager

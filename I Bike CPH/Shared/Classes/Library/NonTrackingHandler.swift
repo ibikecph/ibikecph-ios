@@ -12,6 +12,8 @@ import CoreMotion
 let nonTrackingHandler = NonTrackingHandler()
 
 @objc class NonTrackingHandler {
+    
+    var isCurrentlyRouting: Bool = false
 
     private var observerTokens = [AnyObject]()
     
@@ -32,9 +34,8 @@ let nonTrackingHandler = NonTrackingHandler()
     
     func setupBackgroundHandling() {
         observerTokens.append(NotificationCenter.observe(UIApplicationDidEnterBackgroundNotification) { notification in
-            // TODO: Check if app is routing
-            let currentlyRouting = false // WARNING: FIXME: get actual value
-            if Settings.sharedInstance.voice.on && currentlyRouting {
+            // TODO: Revisit functionality of isCurrentlyRouting
+            if Settings.sharedInstance.voice.on && self.isCurrentlyRouting {
                 return
             }
             // Stop location manager

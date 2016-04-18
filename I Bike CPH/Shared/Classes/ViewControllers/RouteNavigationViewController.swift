@@ -44,11 +44,21 @@ class RouteNavigationViewController: MapViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         addObservers()
+#if TRACKING_ENABLED
+        TrackingHandler.sharedInstance().isCurrentlyRouting = true
+#else
+        NonTrackingHandler.sharedInstance().isCurrentlyRouting = true
+#endif
     }
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         unobserve()
+#if TRACKING_ENABLED
+        TrackingHandler.sharedInstance().isCurrentlyRouting = false
+#else
+        NonTrackingHandler.sharedInstance().isCurrentlyRouting = false
+#endif
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
