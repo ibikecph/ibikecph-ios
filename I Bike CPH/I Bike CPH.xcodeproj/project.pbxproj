@@ -1827,7 +1827,7 @@
 				TargetAttributes = {
 					4EE05F491A10EBFA00DE4226 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 2FB83229Z8;
+						DevelopmentTeam = SP46WFGATT;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1843,7 +1843,7 @@
 					};
 					4EE05F781A10EDE700DE4226 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 2S6P2V9TSL;
+						DevelopmentTeam = SP46WFGATT;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
