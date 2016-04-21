@@ -11,17 +11,19 @@ env:
   - secure: fLkpILcvsjBRzBEIMpBe2/dEYxTBCS4zHoGZ/0g98NHeI41tG/NQuvWz9VlImWO/g3SqtVcAw+Z7UGJoEEjXyQ9m0Y+uwPa7sYPeb8QK5c8NQOz6jTOKSMN7xam5x59cBO6QqYTuJEyb8ODtssb3Evm4hQDfpPRPSZ4kt2/a80g=
   - secure: qsyGczDbFlP0OGg1OUyYclaTAmtMc9+f7DL6St6FuH3uFeVP+Fz0mkE2UdvV8ewndG82Z/UGqlj+A7EytaRalffKzzQfw7AP+im0Wn+r3lxeU1IjY3t//4MRK9JMwQZCuG6H/29jD3udV+VJryij0th8uU6O0LDz0FaDW4tSnu4=
 before_install:
-- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/certs/distribution.cer.gpg
-- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/certs/distribution.p12.gpg
-- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/profile/cykelplanen_ad_hoc.mobileprovision.gpg
-- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/profile/ibikecph_ad_hoc.mobileprovision.gpg
-- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/shared/smroute_settings_private.plist.gpg
-- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/ibikecph/smroute_settings_app_private.plist.gpg
-- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/cykelplanen/smroute_settings_app_private.plist.gpg
+  #- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/certs/distribution.cer.gpg
+  #- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/certs/distribution.p12.gpg
+  #- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/profile/cykelplanen_ad_hoc.mobileprovision.gpg
+  #- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/profile/ibikecph_ad_hoc.mobileprovision.gpg
+  #- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/shared/smroute_settings_private.plist.gpg
+  #- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/ibikecph/smroute_settings_app_private.plist.gpg
+  #- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/cykelplanen/smroute_settings_app_private.plist.gpg
+- "./scripts/decrypt-secrets.sh"
+- "./scripts/copy-plists.sh"
 before_script:
 - "./scripts/add-key.sh"
 after_success:
-- "./scripts/testflight.sh"
+- "./scripts/sign-and-upload.sh"
 after_script:
 - "./scripts/remove-key.sh"
 notifications:
