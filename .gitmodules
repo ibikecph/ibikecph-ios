@@ -1,3 +1,6 @@
 [submodule "strings"]
 	path = strings
 	url = https://github.com/ibikecph/strings
+[submodule "secrets"]
+	path = secrets
+	url = https://github.com/ibikecph/secrets.git
