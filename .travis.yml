@@ -1,22 +1,29 @@
 language: objective-c
 osx_image: xcode6.4
-xcode_workspace: 'I Bike CPH/I Bike CPH.xcworkspace'
-xcode_scheme: 'CykelPlanen'
-podfile: 'I Bike CPH/Podfile'
-
-# before_script:
-# - ./scripts/travis/add-key.sh
-# after_script:
-# - ./scripts/travis/remove-key.sh
-# after_success:
-# - ./scripts/travis/testflight.sh
-
+xcode_workspace: I Bike CPH/I Bike CPH.xcworkspace
+xcode_scheme: I Bike CPH
+podfile: I Bike CPH/Podfile
 env:
   global:
-  - APPNAME=CykelPlanen
-#   - 'DEVELOPER_NAME="iPhone Distribution: NAME_OF_THE_DEVELOPER (CODE)"'
-#   - PROFILE_UUID=PROVISIONING_PROFILE_UUID
-
+  - app_name="I Bike CPH"
+  - prov_profile_name="ibikecph_ad_hoc"
+  - 'developer_name="iPhone Distribution: Socialsquare Aps (SP46WFGATT)"'
+  - secure: 4e/iPtHJnt50duE2l2fdNBjdziSKvRykSqIk7Dy/xAqxUWlC/tjQfhxvZs0UXSISGQ0oe0oUZHcHYsAcUjqirzImQxdjbBltykHme5Xjz/ab3P4TEOce2u+6DQBC65qR1+OZ8pDMqKC6elWu9f02CH74dehQgDAwum7pXATX1Dk=
+  - secure: 3AsjonPJROzmB9tq9OSJmbuGmeMTNOU8VQyAeV0X1Pn11k+fohnuIepFPDvmCjynzKoJZT414YGe9PQiMoQM8Q8M0jkFApCR82jUei8rp9YuOQcTvTYgxMfLKzqvNPQTPSwVOjKNgO1p/H5lYbLKCsgG+IFW47jnAqxxGoU0Wgg=
+before_install:
+- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/certs/distribution.cer.gpg
+- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/certs/distribution.p12.gpg
+- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/profile/cykelplanen_ad_hoc.mobileprovision.gpg
+- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/profile/ibikecph_ad_hoc.mobileprovision.gpg
+- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/shared/smroute_settings_private.plist.gpg
+- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/ibikecph/smroute_settings_app_private.plist.gpg
+- echo $file_enc_password | gpg --passphrase-fd 0 secrets/ios/cykelplanen/smroute_settings_app_private.plist.gpg
+before_script:
+- ./scripts/add-key.sh
+after_success:
+- ./scripts/testflight.sh
+after_script:
+- ./scripts/remove-key.sh
 notifications:
   slack:
     secure: w8+eX+RCiNvZ4iA1M2mY5dGAqHvnBaE77Jw68JFspg1eJAQsiq1rQDZnWhgZbSZSflEXUuPE0pkMrOGBGrSZ+npx3UnwX17voy7E/Zl7RBWYJzfNmn6gtnEzieWWL4IW43o2Ep/k1UvJLBw9kQzJYjT1BXlY+oMJYhT/MZty2xI=
