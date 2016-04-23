@@ -484,6 +484,8 @@
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		CBB78EC39B066CA0779C3D9D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		CC8334260326B19073009BF6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335D1E0C4C3B6EA9C90D1EE /* Pods.framework */; };
+		DE5557741CCBC00F00D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
+		DE5557751CCBC01000D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2387,6 +2389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EE05F6A1A10EBFA00DE4226 /* I_Bike_CPHTests.m in Sources */,
+				DE5557741CCBC00F00D7DB8A /* SMAddressParser.m in Sources */,
 				7D1D9CB51CB7EF77007F1D30 /* FoursquareItem.swift in Sources */,
 				4E6BD7C71A56FE320049F1DB /* AddressParser_Tests.swift in Sources */,
 				7D1D9CBB1CB7F1E2007F1D30 /* SwiftyJSON.swift in Sources */,
@@ -2609,6 +2612,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E6BD7C81A56FE320049F1DB /* AddressParser_Tests.swift in Sources */,
+				DE5557751CCBC01000D7DB8A /* SMAddressParser.m in Sources */,
 				7D1D9CB61CB7EF7A007F1D30 /* FoursquareItem.swift in Sources */,
 				4EE05F981A10EDE700DE4226 /* CykelPlanenTests.m in Sources */,
 				7D1D9CBC1CB7F1E3007F1D30 /* SwiftyJSON.swift in Sources */,
