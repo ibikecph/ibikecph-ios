@@ -15,7 +15,7 @@ OUTPUTDIR="$PWD/build/Release-iphoneos"
 echo "********************"
 echo "*     Signing      *"
 echo "********************"
-xcrun -log -sdk iphoneos PackageApplication "$OUTPUTDIR/$app_name.app" -o "$OUTPUTDIR/$app_name.ipa" -sign "$DEVELOPER_NAME" -embed "$PROVISIONING_PROFILE"
+xcrun -log -sdk iphoneos PackageApplication "$OUTPUTDIR/$app_name.app" -o "$OUTPUTDIR/$app_name.ipa" -sign "$developer_name" -embed "$PROVISIONING_PROFILE"
 
 # RELEASE_NOTES="Build: $TRAVIS_BUILD_NUMBER\nUploaded: $RELEASE_DATE"
 # 
