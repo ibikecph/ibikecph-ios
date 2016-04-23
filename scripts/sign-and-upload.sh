@@ -17,17 +17,4 @@ echo "*     Signing      *"
 echo "********************"
 xcrun -log -sdk iphoneos PackageApplication "$OUTPUTDIR/$app_name.app" -o "$OUTPUTDIR/$app_name.ipa" -sign "$developer_name" -embed "$PROVISIONING_PROFILE"
 
-# RELEASE_NOTES="Build: $TRAVIS_BUILD_NUMBER\nUploaded: $RELEASE_DATE"
-# 
-# zip -r -9 "$OUTPUTDIR/$app_name.app.dSYM.zip" "$OUTPUTDIR/$app_name.app.dSYM"
-# 
-# echo "********************"
-# echo "*    Uploading     *"
-# echo "********************"
-# curl http://testflightapp.com/api/builds.json \
-#   -F file="@$OUTPUTDIR/$app_name.ipa" \
-#   -F dsym="@$OUTPUTDIR/$app_name.app.dSYM.zip" \
-#   -F api_token="$API_TOKEN" \
-#   -F team_token="$TEAM_TOKEN" \
-#   -F distribution_lists='Internal' \
-#   -F notes="$RELEASE_NOTES" -v
+deliver --ipa "$OUTPUTDIR/$app_name.ipa"
