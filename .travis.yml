@@ -11,6 +11,7 @@ env:
   - secure: fLkpILcvsjBRzBEIMpBe2/dEYxTBCS4zHoGZ/0g98NHeI41tG/NQuvWz9VlImWO/g3SqtVcAw+Z7UGJoEEjXyQ9m0Y+uwPa7sYPeb8QK5c8NQOz6jTOKSMN7xam5x59cBO6QqYTuJEyb8ODtssb3Evm4hQDfpPRPSZ4kt2/a80g=
   - secure: qsyGczDbFlP0OGg1OUyYclaTAmtMc9+f7DL6St6FuH3uFeVP+Fz0mkE2UdvV8ewndG82Z/UGqlj+A7EytaRalffKzzQfw7AP+im0Wn+r3lxeU1IjY3t//4MRK9JMwQZCuG6H/29jD3udV+VJryij0th8uU6O0LDz0FaDW4tSnu4=
 before_install:
+- deliver --version
 - openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/certs/distribution.cer.enc -out secrets/ios/certs/distribution.cer -d
 - openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/certs/distribution.p12.enc -out secrets/ios/certs/distribution.p12 -d
 - openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/certs/development.cer.enc -out secrets/ios/certs/development.cer -d
