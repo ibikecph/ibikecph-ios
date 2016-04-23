@@ -13,6 +13,8 @@ env:
 before_install:
 - openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/certs/distribution.cer.enc -out secrets/ios/certs/distribution.cer -d
 - openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/certs/distribution.p12.enc -out secrets/ios/certs/distribution.p12 -d
+- openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/certs/development.cer.enc -out secrets/ios/certs/development.cer -d
+- openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/certs/development.p12.enc -out secrets/ios/certs/development.p12 -d
 - openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/profile/ibikecph_ad_hoc.mobileprovision.enc -out secrets/ios/profile/ibikecph_ad_hoc.mobileprovision -d
 - openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/profile/cykelplanen_ad_hoc.mobileprovision.enc -out secrets/ios/profile/cykelplanen_ad_hoc.mobileprovision -d
 - openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/shared/smroute_settings_private.plist.enc -out secrets/ios/shared/smroute_settings_private.plist -d
