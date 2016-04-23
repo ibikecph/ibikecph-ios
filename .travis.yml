@@ -8,6 +8,7 @@ env:
   - app_name="I Bike CPH"
   - prov_profile_name="ibikecph_ad_hoc"
   - 'developer_name="iPhone Distribution: Socialsquare ApS (SP46WFGATT)"'
+  - FASTLANE_ITUNES_TRANSPORTER_USE_SHELL_SCRIPT=1
   - secure: fLkpILcvsjBRzBEIMpBe2/dEYxTBCS4zHoGZ/0g98NHeI41tG/NQuvWz9VlImWO/g3SqtVcAw+Z7UGJoEEjXyQ9m0Y+uwPa7sYPeb8QK5c8NQOz6jTOKSMN7xam5x59cBO6QqYTuJEyb8ODtssb3Evm4hQDfpPRPSZ4kt2/a80g=
   - secure: qsyGczDbFlP0OGg1OUyYclaTAmtMc9+f7DL6St6FuH3uFeVP+Fz0mkE2UdvV8ewndG82Z/UGqlj+A7EytaRalffKzzQfw7AP+im0Wn+r3lxeU1IjY3t//4MRK9JMwQZCuG6H/29jD3udV+VJryij0th8uU6O0LDz0FaDW4tSnu4=
   - secure: wK2B3GeLZ62OOrFot6JfTto5d6qp/+8KwcaAVxahinBfDjMsmG04C9mtCXApEDVzLzuLv0IK9vjnLTXLvyaS6htSUfBfEQsOWkDgRMEnPxQDqv4fqD3F6ImNOYjh3XtgurSUZvhg5c59HYP62CjWYcDQTbN2LDaCJjUAo3whLrc=
