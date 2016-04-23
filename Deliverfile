@@ -7,3 +7,4 @@
 # Feel free to remove the following line if you use fastlane (which you should)
 
 app_identifier "dk.socialsquare.ibikecph" # The bundle identifier of your app
+force true
