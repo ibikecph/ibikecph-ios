@@ -18,7 +18,6 @@ before_install:
 - openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/shared/smroute_settings_private.plist.enc -out secrets/ios/shared/smroute_settings_private.plist -d
 - openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/ibikecph/smroute_settings_app_private.plist.enc -out secrets/ios/ibikecph/smroute_settings_app_private.plist -d
 - openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/cykelplanen/smroute_settings_app_private.plist.enc -out secrets/ios/cykelplanen/smroute_settings_app_private.plist -d
-#- "./scripts/decrypt-secrets.sh"
 - "./scripts/copy-plists.sh"
 before_script:
 - "./scripts/add-key.sh"
