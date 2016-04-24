@@ -7,6 +7,8 @@ env:
   - APP_NAME_1="cykelplanen"
   - BUNDLE_IDENTIFIER_0="dk.socialsquare.ibikecph"
   - BUNDLE_IDENTIFIER_1="dk.socialsquare.CykelPlanen"
+  - METADATA_PATH_0="./metadata/ibikecph"
+  - METADATA_PATH_1="./metadata/cykelplanen"
   - SCHEME_NAME_0="I Bike CPH"
   - SCHEME_NAME_1="CykelPlanen"
   - WORKSPACE_NAME="I Bike CPH/I Bike CPH.xcworkspace"

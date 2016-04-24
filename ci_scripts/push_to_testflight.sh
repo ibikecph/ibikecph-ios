@@ -12,5 +12,5 @@ echo "********************"
 echo "*     Uploading    *"
 echo "********************"
 
-deliver -a "$BUNDLE_IDENTIFIER_0" -i "$OUTPUTDIR/$APP_NAME_0.ipa"
-deliver -a "$BUNDLE_IDENTIFIER_1" -i "$OUTPUTDIR/$APP_NAME_1.ipa"
+deliver -a "$BUNDLE_IDENTIFIER_0" -i "$OUTPUTDIR/$APP_NAME_0.ipa" -m "$METADATA_PATH_0"
+deliver -a "$BUNDLE_IDENTIFIER_1" -i "$OUTPUTDIR/$APP_NAME_1.ipa" -m "$METADATA_PATH_1"
