@@ -7,10 +7,9 @@ env:
   - APP_NAME_1="cykelplanen"
   - SCHEME_NAME_0="I Bike CPH"
   - SCHEME_NAME_1="CykelPlanen"
-  - WORKSPACE_NAME_0="I Bike CPH/I Bike CPH.xcworkspace"
-  - WORKSPACE_NAME_1="I Bike CPH/I Bike CPH.xcworkspace"
+  - WORKSPACE_NAME="I Bike CPH/I Bike CPH.xcworkspace"
   - PROV_PROFILE_NAME_0="ibikecph_distribution"
-  - PROV_PROFILE_NAME_1="ibikecph_distribution"
+  - PROV_PROFILE_NAME_1="cykelplanen_distribution"
   - 'CODE_SIGNING_IDENTITY="iPhone Distribution: Socialsquare ApS"'
   - PROVISIONING_PROFILE_0="$HOME/Library/MobileDevice/Provisioning Profiles/$PROV_PROFILE_NAME_0.mobileprovision"
   - PROVISIONING_PROFILE_1="$HOME/Library/MobileDevice/Provisioning Profiles/$PROV_PROFILE_NAME_1.mobileprovision"
@@ -46,9 +45,9 @@ before_install:
 before_script:
 - "./ci_scripts/add_keys.sh"
 script:
-- gym -w "$WORKSPACE_NAME_0" -s "$SCHEME_NAME_0" -o "$OUTPUTDIR" -n "$APP_NAME_0" -i "$CODE_SIGNING_IDENTITY"
+- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_0" -o "$OUTPUTDIR" -n "$APP_NAME_0" -i "$CODE_SIGNING_IDENTITY"
   -e "$PROVISIONING_PROFILE_0" -k "$SDK"
-- gym -w "$WORKSPACE_NAME_1" -s "$SCHEME_NAME_1" -o "$OUTPUTDIR" -n "$APP_NAME_1" -i "$CODE_SIGNING_IDENTITY"
+- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_1" -o "$OUTPUTDIR" -n "$APP_NAME_1" -i "$CODE_SIGNING_IDENTITY"
   -e "$PROVISIONING_PROFILE_1" -k "$SDK"
 after_success:
 - "./ci_scripts/push_to_testflight.sh"
