@@ -12,4 +12,5 @@ echo "********************"
 echo "*     Uploading    *"
 echo "********************"
 
-deliver --ipa "$OUTPUTDIR/$APP_NAME.ipa"
+deliver --ipa "$OUTPUTDIR/$APP_NAME_0.ipa"
+deliver --ipa "$OUTPUTDIR/$APP_NAME_1.ipa"

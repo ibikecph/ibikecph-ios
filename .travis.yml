@@ -3,13 +3,19 @@ osx_image: xcode6.4
 podfile: I Bike CPH/Podfile
 env:
   global:
-  - APP_NAME="ibikecph"
-  - SCHEME_NAME="I Bike CPH"
-  - WORKSPACE_NAME="I Bike CPH/I Bike CPH.xcworkspace"
-  - PROV_PROFILE_NAME="ibikecph_distribution"
+  - APP_NAME_0="ibikecph"
+  - APP_NAME_1="cykelplanen"
+  - SCHEME_NAME_0="I Bike CPH"
+  - SCHEME_NAME_1="CykelPlanen"
+  - WORKSPACE_NAME_0="I Bike CPH/I Bike CPH.xcworkspace"
+  - WORKSPACE_NAME_1="I Bike CPH/I Bike CPH.xcworkspace"
+  - PROV_PROFILE_NAME_0="ibikecph_distribution"
+  - PROV_PROFILE_NAME_1="ibikecph_distribution"
   - 'CODE_SIGNING_IDENTITY="iPhone Distribution: Socialsquare ApS"'
-  - PROVISIONING_PROFILE="$HOME/Library/MobileDevice/Provisioning Profiles/$PROV_PROFILE_NAME.mobileprovision"
+  - PROVISIONING_PROFILE_0="$HOME/Library/MobileDevice/Provisioning Profiles/$PROV_PROFILE_NAME_0.mobileprovision"
+  - PROVISIONING_PROFILE_1="$HOME/Library/MobileDevice/Provisioning Profiles/$PROV_PROFILE_NAME_1.mobileprovision"
   - OUTPUTDIR="$PWD/build"
+  - SDK="iphoneos8.4"
   - FASTLANE_ITUNES_TRANSPORTER_USE_SHELL_SCRIPT=1
   - secure: wK2B3GeLZ62OOrFot6JfTto5d6qp/+8KwcaAVxahinBfDjMsmG04C9mtCXApEDVzLzuLv0IK9vjnLTXLvyaS6htSUfBfEQsOWkDgRMEnPxQDqv4fqD3F6ImNOYjh3XtgurSUZvhg5c59HYP62CjWYcDQTbN2LDaCJjUAo3whLrc=
   - secure: MeCVPr8Nr/Cb5bh5/2eIy9EDYmtXmBhpfNLQk420BRoMFto/qPp1Gl9EENApscUukqDET7iDiuehCQhOF2qs+n6glSsuRQNvPAM44s5l1f9bqnWVeCKTG7lbNtUsaPn/6lPXHEDFFz6ONOlJxW2H3tnIaVI1V1QFtR601YBFR6s=
@@ -40,8 +46,10 @@ before_install:
 before_script:
 - "./ci_scripts/add_keys.sh"
 script:
-- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME" -o "$OUTPUTDIR" -n "$APP_NAME" -i "$CODE_SIGNING_IDENTITY"
-  -e "$PROVISIONING_PROFILE" -k "iphoneos8.4"
+- gym -w "$WORKSPACE_NAME_0" -s "$SCHEME_NAME_0" -o "$OUTPUTDIR" -n "$APP_NAME_0" -i "$CODE_SIGNING_IDENTITY"
+  -e "$PROVISIONING_PROFILE_0" -k "$SDK"
+- gym -w "$WORKSPACE_NAME_1" -s "$SCHEME_NAME_1" -o "$OUTPUTDIR" -n "$APP_NAME_1" -i "$CODE_SIGNING_IDENTITY"
+  -e "$PROVISIONING_PROFILE_1" -k "$SDK"
 after_success:
 - "./ci_scripts/push_to_testflight.sh"
 after_script:
