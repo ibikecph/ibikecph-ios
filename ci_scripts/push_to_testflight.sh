@@ -8,10 +8,8 @@ if [[ "$TRAVIS_BRANCH" != "ci-test" ]]; then
   exit 0
 fi
 
-RELEASE_DATE=`date '+%Y-%m-%d %H:%M:%S'`
-
 echo "********************"
 echo "*     Uploading    *"
 echo "********************"
 
-deliver --ipa "$OUTPUTDIR/$app_name.ipa"
+deliver --ipa "$OUTPUTDIR/$APP_NAME.ipa"

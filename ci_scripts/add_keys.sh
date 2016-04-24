@@ -16,9 +16,9 @@ security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain
 # Add certificates to keychain and allow codesign to access them
 security import ./secrets/ios/certs/apple.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
 security import ./secrets/ios/certs/distribution.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
-security import ./secrets/ios/certs/distribution.p12 -k ~/Library/Keychains/ios-build.keychain -P $key_password -T /usr/bin/codesign
+security import ./secrets/ios/certs/distribution.p12 -k ~/Library/Keychains/ios-build.keychain -P $SIGNING_KEY_PASSWORD -T /usr/bin/codesign
 security import ./secrets/ios/certs/development.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
-security import ./secrets/ios/certs/development.p12 -k ~/Library/Keychains/ios-build.keychain -P $key_password -T /usr/bin/codesign
+security import ./secrets/ios/certs/development.p12 -k ~/Library/Keychains/ios-build.keychain -P $SIGNING_KEY_PASSWORD -T /usr/bin/codesign
 
 # Put the provisioning profile in place
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles

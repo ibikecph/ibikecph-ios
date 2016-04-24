@@ -1,53 +1,51 @@
 language: objective-c
 osx_image: xcode6.4
-xcode_workspace: I Bike CPH/I Bike CPH.xcworkspace
-xcode_scheme: I Bike CPH
 podfile: I Bike CPH/Podfile
 env:
   global:
-  - app_name="ibikecph"
-  - scheme_name="I Bike CPH"
-  - workspace_name="I Bike CPH/I Bike CPH.xcworkspace"
-  - prov_profile_name="ibikecph_distribution"
-  - 'developer_name="iPhone Distribution: Socialsquare ApS (SP46WFGATT)"'
-  - 'code_signing_identity="iPhone Distribution: Socialsquare ApS"'
-  - 'PROVISIONING_PROFILE="$HOME/Library/MobileDevice/Provisioning Profiles/$prov_profile_name.mobileprovision"'
-  - 'OUTPUTDIR="$PWD/build"'
+  - APP_NAME="ibikecph"
+  - SCHEME_NAME="I Bike CPH"
+  - WORKSPACE_NAME="I Bike CPH/I Bike CPH.xcworkspace"
+  - PROV_PROFILE_NAME="ibikecph_distribution"
+  - 'CODE_SIGNING_IDENTITY="iPhone Distribution: Socialsquare ApS"'
+  - PROVISIONING_PROFILE="$HOME/Library/MobileDevice/Provisioning Profiles/$PROV_PROFILE_NAME.mobileprovision"
+  - OUTPUTDIR="$PWD/build"
   - FASTLANE_ITUNES_TRANSPORTER_USE_SHELL_SCRIPT=1
-  - secure: fLkpILcvsjBRzBEIMpBe2/dEYxTBCS4zHoGZ/0g98NHeI41tG/NQuvWz9VlImWO/g3SqtVcAw+Z7UGJoEEjXyQ9m0Y+uwPa7sYPeb8QK5c8NQOz6jTOKSMN7xam5x59cBO6QqYTuJEyb8ODtssb3Evm4hQDfpPRPSZ4kt2/a80g=
-  - secure: qsyGczDbFlP0OGg1OUyYclaTAmtMc9+f7DL6St6FuH3uFeVP+Fz0mkE2UdvV8ewndG82Z/UGqlj+A7EytaRalffKzzQfw7AP+im0Wn+r3lxeU1IjY3t//4MRK9JMwQZCuG6H/29jD3udV+VJryij0th8uU6O0LDz0FaDW4tSnu4=
   - secure: wK2B3GeLZ62OOrFot6JfTto5d6qp/+8KwcaAVxahinBfDjMsmG04C9mtCXApEDVzLzuLv0IK9vjnLTXLvyaS6htSUfBfEQsOWkDgRMEnPxQDqv4fqD3F6ImNOYjh3XtgurSUZvhg5c59HYP62CjWYcDQTbN2LDaCJjUAo3whLrc=
   - secure: MeCVPr8Nr/Cb5bh5/2eIy9EDYmtXmBhpfNLQk420BRoMFto/qPp1Gl9EENApscUukqDET7iDiuehCQhOF2qs+n6glSsuRQNvPAM44s5l1f9bqnWVeCKTG7lbNtUsaPn/6lPXHEDFFz6ONOlJxW2H3tnIaVI1V1QFtR601YBFR6s=
+  - secure: 1+wppINsT52gDO3crwNl6c/e3q3cfdktx3BTj0kATXFAtmPSXOHLdOv5HQmmr5dV3mA4MAg6u2fsGFE7UzizRdmxeAtrqCaRmlEhzoyL0fgeTkGKXqY/U7AG1geNOFcp/GtIcCSKFt3/DIQcjRvEahj0MWZV+xhdCD8FxIPewvg=
+  - secure: ufu97qJ9d+eTTKaoVxOjJnFLLlZ+KRqXvjbibHGOx0So0SnydKx3jBr/uPZ4YxiNu1M0fjNZK8+Ir1H01FgoXKmGQEKZvonI5ATPCvv30YNRiTMl1O5u2qyyhI0Mwtz2uVtCqANC7wGrp6+0i+ovYS2plRh2w/YbuIJLfNkfX50=
 before_install:
 - gem install deliver
 - gem install gym
-- openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/certs/distribution.cer.enc
+- openssl aes-256-cbc -k "$FILE_ENC_PASSWORD" -in secrets/ios/certs/distribution.cer.enc
   -out secrets/ios/certs/distribution.cer -d
-- openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/certs/distribution.p12.enc
+- openssl aes-256-cbc -k "$FILE_ENC_PASSWORD" -in secrets/ios/certs/distribution.p12.enc
   -out secrets/ios/certs/distribution.p12 -d
-- openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/certs/development.cer.enc
+- openssl aes-256-cbc -k "$FILE_ENC_PASSWORD" -in secrets/ios/certs/development.cer.enc
   -out secrets/ios/certs/development.cer -d
-- openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/certs/development.p12.enc
+- openssl aes-256-cbc -k "$FILE_ENC_PASSWORD" -in secrets/ios/certs/development.p12.enc
   -out secrets/ios/certs/development.p12 -d
-- openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/profile/ibikecph_distribution.mobileprovision.enc
+- openssl aes-256-cbc -k "$FILE_ENC_PASSWORD" -in secrets/ios/profile/ibikecph_distribution.mobileprovision.enc
   -out secrets/ios/profile/ibikecph_distribution.mobileprovision -d
-- openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/profile/cykelplanen_distribution.mobileprovision.enc
+- openssl aes-256-cbc -k "$FILE_ENC_PASSWORD" -in secrets/ios/profile/cykelplanen_distribution.mobileprovision.enc
   -out secrets/ios/profile/cykelplanen_distribution.mobileprovision -d
-- openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/shared/smroute_settings_private.plist.enc
+- openssl aes-256-cbc -k "$FILE_ENC_PASSWORD" -in secrets/ios/shared/smroute_settings_private.plist.enc
   -out secrets/ios/shared/smroute_settings_private.plist -d
-- openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/ibikecph/smroute_settings_app_private.plist.enc
+- openssl aes-256-cbc -k "$FILE_ENC_PASSWORD" -in secrets/ios/ibikecph/smroute_settings_app_private.plist.enc
   -out secrets/ios/ibikecph/smroute_settings_app_private.plist -d
-- openssl aes-256-cbc -k "$file_enc_password" -in secrets/ios/cykelplanen/smroute_settings_app_private.plist.enc
+- openssl aes-256-cbc -k "$FILE_ENC_PASSWORD" -in secrets/ios/cykelplanen/smroute_settings_app_private.plist.enc
   -out secrets/ios/cykelplanen/smroute_settings_app_private.plist -d
-- "./scripts/copy-plists.sh"
+- "./ci_scripts/copy_plists.sh"
 before_script:
-- "./scripts/add-key.sh"
+- "./ci_scripts/add_keys.sh"
 script:
-- gym -w "$workspace_name" -s "$scheme_name" -o "$OUTPUTDIR" -n "$app_name" -i "$code_signing_identity" -e "$PROVISIONING_PROFILE" -k "iphoneos8.4"
+- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME" -o "$OUTPUTDIR" -n "$APP_NAME" -i "$CODE_SIGNING_IDENTITY"
+  -e "$PROVISIONING_PROFILE" -k "iphoneos8.4"
 after_success:
-- "./scripts/sign-and-upload.sh"
+- "./ci_scripts/push_to_testflight.sh"
 after_script:
-- "./scripts/remove-key.sh"
+- "./ci_scripts/remove_keys.sh"
 notifications:
   slack:
     secure: w8+eX+RCiNvZ4iA1M2mY5dGAqHvnBaE77Jw68JFspg1eJAQsiq1rQDZnWhgZbSZSflEXUuPE0pkMrOGBGrSZ+npx3UnwX17voy7E/Zl7RBWYJzfNmn6gtnEzieWWL4IW43o2Ep/k1UvJLBw9kQzJYjT1BXlY+oMJYhT/MZty2xI=
