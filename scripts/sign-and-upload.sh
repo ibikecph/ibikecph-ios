@@ -8,9 +8,7 @@ if [[ "$TRAVIS_BRANCH" != "ci-test" ]]; then
   exit 0
 fi
 
-PROVISIONING_PROFILE="$HOME/Library/MobileDevice/Provisioning Profiles/$prov_profile_name.mobileprovision"
 RELEASE_DATE=`date '+%Y-%m-%d %H:%M:%S'`
-OUTPUTDIR="$PWD/build/Release-iphoneos"
 
 echo "********************"
 echo "*     Uploading    *"

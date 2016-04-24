@@ -6,10 +6,13 @@ podfile: I Bike CPH/Podfile
 env:
   global:
   - app_name="ibikecph"
+  - scheme_name="I Bike CPH"
+  - workspace_name="I Bike CPH/I Bike CPH.xcworkspace"
   - prov_profile_name="ibikecph_distribution"
   - 'developer_name="iPhone Distribution: Socialsquare ApS (SP46WFGATT)"'
   - 'code_signing_identity="iPhone Distribution: Socialsquare ApS"'
   - 'PROVISIONING_PROFILE="$HOME/Library/MobileDevice/Provisioning Profiles/$prov_profile_name.mobileprovision"'
+  - 'OUTPUTDIR="$PWD/build"'
   - FASTLANE_ITUNES_TRANSPORTER_USE_SHELL_SCRIPT=1
   - secure: fLkpILcvsjBRzBEIMpBe2/dEYxTBCS4zHoGZ/0g98NHeI41tG/NQuvWz9VlImWO/g3SqtVcAw+Z7UGJoEEjXyQ9m0Y+uwPa7sYPeb8QK5c8NQOz6jTOKSMN7xam5x59cBO6QqYTuJEyb8ODtssb3Evm4hQDfpPRPSZ4kt2/a80g=
   - secure: qsyGczDbFlP0OGg1OUyYclaTAmtMc9+f7DL6St6FuH3uFeVP+Fz0mkE2UdvV8ewndG82Z/UGqlj+A7EytaRalffKzzQfw7AP+im0Wn+r3lxeU1IjY3t//4MRK9JMwQZCuG6H/29jD3udV+VJryij0th8uU6O0LDz0FaDW4tSnu4=
@@ -40,7 +43,7 @@ before_install:
 before_script:
 - "./scripts/add-key.sh"
 script:
-- gym -w "I Bike CPH/I Bike CPH.xcworkspace" -s "I Bike CPH" -o "$PWD/build" -n "$app_name" -i "$code_signing_identity" -e "$PROVISIONING_PROFILE" -k "iphoneos8.4"
+- gym -w "$workspace_name" -s "$scheme_name" -o "$OUTPUTDIR" -n "$app_name" -i "$code_signing_identity" -e "$PROVISIONING_PROFILE" -k "iphoneos8.4"
 after_success:
 - "./scripts/sign-and-upload.sh"
 after_script:
