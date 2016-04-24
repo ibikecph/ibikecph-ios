@@ -5,6 +5,8 @@ env:
   global:
   - APP_NAME_0="ibikecph"
   - APP_NAME_1="cykelplanen"
+  - BUNDLE_IDENTIFIER_0="dk.socialsquare.ibikecph"
+  - BUNDLE_IDENTIFIER_1="dk.socialsquare.CykelPlanen"
   - SCHEME_NAME_0="I Bike CPH"
   - SCHEME_NAME_1="CykelPlanen"
   - WORKSPACE_NAME="I Bike CPH/I Bike CPH.xcworkspace"
