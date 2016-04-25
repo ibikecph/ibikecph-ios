@@ -50,9 +50,9 @@ before_script:
 - "./ci_scripts/add_keys.sh"
 script:
 - gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_0" -o "$OUTPUTDIR" -n "$APP_NAME_0" -i
-  "$CODE_SIGNING_IDENTITY" -e "$PROVISIONING_PROFILE_0" -k "$SDK"
+  "$CODE_SIGNING_IDENTITY" -e "$PROVISIONING_PROFILE_0" -k "$SDK" -m true
 - gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_1" -o "$OUTPUTDIR" -n "$APP_NAME_1" -i
-  "$CODE_SIGNING_IDENTITY" -e "$PROVISIONING_PROFILE_1" -k "$SDK"
+  "$CODE_SIGNING_IDENTITY" -e "$PROVISIONING_PROFILE_1" -k "$SDK" -m true
 after_success:
 - "./ci_scripts/push_to_testflight.sh"
 after_script:
