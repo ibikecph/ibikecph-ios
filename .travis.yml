@@ -11,12 +11,12 @@ env:
   - METADATA_PATH_1="./metadata/cykelplanen"
   - SCHEME_NAME_0="I Bike CPH"
   - SCHEME_NAME_1="CykelPlanen"
-  - WORKSPACE_NAME="I Bike CPH/I Bike CPH.xcworkspace"
   - PROV_PROFILE_NAME_0="ibikecph_distribution"
   - PROV_PROFILE_NAME_1="cykelplanen_distribution"
-  - 'CODE_SIGNING_IDENTITY="iPhone Distribution: Socialsquare ApS"'
   - PROVISIONING_PROFILE_0="$HOME/Library/MobileDevice/Provisioning Profiles/$PROV_PROFILE_NAME_0.mobileprovision"
   - PROVISIONING_PROFILE_1="$HOME/Library/MobileDevice/Provisioning Profiles/$PROV_PROFILE_NAME_1.mobileprovision"
+  - WORKSPACE_NAME="I Bike CPH/I Bike CPH.xcworkspace"
+  - 'CODE_SIGNING_IDENTITY="iPhone Distribution: Socialsquare ApS"'
   - OUTPUTDIR="$PWD/build"
   - SDK="iphoneos8.4"
   - FASTLANE_ITUNES_TRANSPORTER_USE_SHELL_SCRIPT=1
@@ -49,14 +49,14 @@ before_install:
 before_script:
 - "./ci_scripts/add_keys.sh"
 script:
-- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_0" -o "$OUTPUTDIR" -n "$APP_NAME_0" -i "$CODE_SIGNING_IDENTITY"
-  -e "$PROVISIONING_PROFILE_0" -k "$SDK"
-- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_1" -o "$OUTPUTDIR" -n "$APP_NAME_1" -i "$CODE_SIGNING_IDENTITY"
-  -e "$PROVISIONING_PROFILE_1" -k "$SDK"
+- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_0" -o "$OUTPUTDIR" -n "$APP_NAME_0" -i
+  "$CODE_SIGNING_IDENTITY" -e "$PROVISIONING_PROFILE_0" -k "$SDK"
+- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_1" -o "$OUTPUTDIR" -n "$APP_NAME_1" -i
+  "$CODE_SIGNING_IDENTITY" -e "$PROVISIONING_PROFILE_1" -k "$SDK"
 after_success:
 - "./ci_scripts/push_to_testflight.sh"
 after_script:
 - "./ci_scripts/remove_keys.sh"
 notifications:
   slack:
-    secure: w8+eX+RCiNvZ4iA1M2mY5dGAqHvnBaE77Jw68JFspg1eJAQsiq1rQDZnWhgZbSZSflEXUuPE0pkMrOGBGrSZ+npx3UnwX17voy7E/Zl7RBWYJzfNmn6gtnEzieWWL4IW43o2Ep/k1UvJLBw9kQzJYjT1BXlY+oMJYhT/MZty2xI=
+    secure: SGLcRraETRIzzgmv/2/gMbeAmuVVElxcbpZlYY/64ujRmE/gtsCM4PWEBx4IB0iKahrNriH+/n5yM7SwR1TwbjybBYy3eRogBI7Q6xlQvDj6kNU0PvH2JMemmjjCuIvZatrYSVcLrpvNAASZ9BIBt4oThf2PWpmwEf41/zni2P8=

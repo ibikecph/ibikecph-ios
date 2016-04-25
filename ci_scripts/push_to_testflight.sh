@@ -3,8 +3,8 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   echo "This is a pull request. No deployment will be done."
   exit 0
 fi
-if [[ "$TRAVIS_BRANCH" != "ci-test" ]]; then
-  echo "Testing on a branch other than develop. No deployment will be done."
+if [[ "$TRAVIS_BRANCH" != "ci-testflight" ]]; then
+  echo "Building on a branch other than ci-testflight. No deployment will be done."
   exit 0
 fi
 
