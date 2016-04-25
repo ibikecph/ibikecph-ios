@@ -60,3 +60,7 @@ after_script:
 notifications:
   slack:
     secure: SGLcRraETRIzzgmv/2/gMbeAmuVVElxcbpZlYY/64ujRmE/gtsCM4PWEBx4IB0iKahrNriH+/n5yM7SwR1TwbjybBYy3eRogBI7Q6xlQvDj6kNU0PvH2JMemmjjCuIvZatrYSVcLrpvNAASZ9BIBt4oThf2PWpmwEf41/zni2P8=
+branches:
+  only:
+    - develop
+    - ci-testflight
