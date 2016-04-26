@@ -60,27 +60,32 @@ void AddressBookUpdated(ABAddressBookRef addressBook, CFDictionaryRef info, SMCo
 
         NSString *contactFirstLast = nil;
 
-        if (ABRecordCopyValue(thisPerson, kABPersonFirstNameProperty)) {
-            contactFirstLast = [NSString stringWithFormat:@"%@", ABRecordCopyValue(thisPerson, kABPersonFirstNameProperty)];
+        CFTypeRef firstName = ABRecordCopyValue(thisPerson, kABPersonFirstNameProperty);
+        if (firstName) {
+            contactFirstLast = [NSString stringWithFormat:@"%@", firstName];
+            CFRelease(firstName);
         }
 
-        if (ABRecordCopyValue(thisPerson, kABPersonLastNameProperty)) {
+        CFTypeRef lastName = ABRecordCopyValue(thisPerson, kABPersonLastNameProperty);
+        if (lastName) {
             if (contactFirstLast) {
-                contactFirstLast = [NSString stringWithFormat:@"%@ %@", contactFirstLast, ABRecordCopyValue(thisPerson, kABPersonLastNameProperty)];
+                contactFirstLast = [NSString stringWithFormat:@"%@ %@", contactFirstLast, lastName];
             }
             else {
-                contactFirstLast = [NSString stringWithFormat:@"%@", ABRecordCopyValue(thisPerson, kABPersonLastNameProperty)];
+                contactFirstLast = [NSString stringWithFormat:@"%@", lastName];
             }
+            CFRelease(lastName);
         }
 
-        if (ABRecordCopyValue(thisPerson, kABPersonOrganizationProperty)) {
+        CFTypeRef organization = ABRecordCopyValue(thisPerson, kABPersonOrganizationProperty);
+        if (organization) {
             if (contactFirstLast) {
-                contactFirstLast =
-                    [NSString stringWithFormat:@"%@ %@", contactFirstLast, ABRecordCopyValue(thisPerson, kABPersonOrganizationProperty)];
+                contactFirstLast = [NSString stringWithFormat:@"%@ %@", contactFirstLast, organization];
             }
             else {
-                contactFirstLast = [NSString stringWithFormat:@"%@", ABRecordCopyValue(thisPerson, kABPersonOrganizationProperty)];
+                contactFirstLast = [NSString stringWithFormat:@"%@", organization];
             }
+            CFRelease(organization);
         }
 
         if (contactFirstLast == nil) {
@@ -89,20 +94,21 @@ void AddressBookUpdated(ABAddressBookRef addressBook, CFDictionaryRef info, SMCo
 
         NSString *address = nil;
 
-        ABMultiValueRef st = ABRecordCopyValue(thisPerson, kABPersonAddressProperty);
-        NSInteger n = ABMultiValueGetCount(st);
-        if (n > 0) {
-            CFDictionaryRef dict = ABMultiValueCopyValueAtIndex(st, 0);
-            address = CFDictionaryGetValue(dict, kABPersonAddressStreetKey);
-            if (CFDictionaryGetValue(dict, kABPersonAddressCityKey)) {
-                address = [NSString stringWithFormat:@"%@, %@", address, CFDictionaryGetValue(dict, kABPersonAddressCityKey)];
+        ABMultiValueRef addressList = ABRecordCopyValue(thisPerson, kABPersonAddressProperty);
+        if (addressList) {
+            if (ABMultiValueGetCount(addressList) > 0) {
+                CFDictionaryRef dict = ABMultiValueCopyValueAtIndex(addressList, 0);
+                address = CFDictionaryGetValue(dict, kABPersonAddressStreetKey);
+                if (CFDictionaryGetValue(dict, kABPersonAddressCityKey)) {
+                    address = [NSString stringWithFormat:@"%@, %@", address, CFDictionaryGetValue(dict, kABPersonAddressCityKey)];
+                }
+                if (CFDictionaryGetValue(dict, kABPersonAddressCountryKey)) {
+                    address = [NSString stringWithFormat:@"%@, %@", address, CFDictionaryGetValue(dict, kABPersonAddressCountryKey)];
+                }
+                CFRelease(dict);
             }
-            if (CFDictionaryGetValue(dict, kABPersonAddressCountryKey)) {
-                address = [NSString stringWithFormat:@"%@, %@", address, CFDictionaryGetValue(dict, kABPersonAddressCountryKey)];
-            }
+            CFRelease(addressList);
         }
-
-        CFRelease(st);
 
         if (contactFirstLast && address) {
             NSMutableDictionary *cnt = [@{
@@ -113,7 +119,7 @@ void AddressBookUpdated(ABAddressBookRef addressBook, CFDictionaryRef info, SMCo
 
             CFDataRef imageData = ABPersonCopyImageData(thisPerson);
             UIImage *image = [UIImage imageWithData:(__bridge NSData *)imageData];
-            //            CFRelease(imageData);
+            CFRelease(imageData);
 
             if (image) {
                 [cnt setValue:image forKey:@"image"];

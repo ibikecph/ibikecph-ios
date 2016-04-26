@@ -316,7 +316,7 @@
     }
 
     NSInteger len = MIN(MIN(rangeN.location, rangeZ.location), [addressString length]);
-    NSRange rangeS = NSMakeRange(0, 0);
+    NSRange rangeS;
     if (len > 0) {
         exp = [NSRegularExpression regularExpressionWithPattern:@"^[\\s,]*([^\\d,]+)" options:0 error:NULL];
         rangeS = [exp rangeOfFirstMatchInString:addressString options:0 range:NSMakeRange(0, len)];
@@ -341,8 +341,8 @@
     
     
     exp = [NSRegularExpression regularExpressionWithPattern:@"[^,\\d]+" options:0 error:NULL];
-    NSRegularExpression * e2 = [NSRegularExpression regularExpressionWithPattern:@"\\b(kbh|cph)\\.\\s*" options:NSRegularExpressionCaseInsensitive error:NULL];
-    NSRegularExpression * e3 = [NSRegularExpression regularExpressionWithPattern:@"\\b(kbh|cph)\\b" options:NSRegularExpressionCaseInsensitive error:NULL];
+//    NSRegularExpression * e2 = [NSRegularExpression regularExpressionWithPattern:@"\\b(kbh|cph)\\.\\s*" options:NSRegularExpressionCaseInsensitive error:NULL];
+//    NSRegularExpression * e3 = [NSRegularExpression regularExpressionWithPattern:@"\\b(kbh|cph)\\b" options:NSRegularExpressionCaseInsensitive error:NULL];
     NSRange rangeC = [exp rangeOfFirstMatchInString:addressString options:0 range:NSMakeRange(0, [addressString length])];
     if (rangeC.location != NSNotFound) {
         NSString * s = [addressString substringWithRange:rangeC];
@@ -354,8 +354,8 @@
         }
         if (s && [[s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] == NO) {
             NSMutableString * s1 = [NSMutableString stringWithString:[s stringByTrimmingCharactersInSet:set]];
-            NSUInteger count = [e2 replaceMatchesInString:s1 options:0 range:NSMakeRange(0, [s1 length]) withTemplate:@"København "];
-            count = [e3 replaceMatchesInString:s1 options:0 range:NSMakeRange(0, [s1 length]) withTemplate:@"København"];
+//            NSUInteger count = [e2 replaceMatchesInString:s1 options:0 range:NSMakeRange(0, [s1 length]) withTemplate:@"København "];
+//            count = [e3 replaceMatchesInString:s1 options:0 range:NSMakeRange(0, [s1 length]) withTemplate:@"København"];
             city = s1;
         }
     }

@@ -668,13 +668,13 @@ NSMutableArray* decodePolyline (NSString *encodedString) {
         return;
     }
     
-    NSUInteger currentIndex = 0;
+//    NSUInteger currentIndex = 0;
     NSMutableArray * past = [NSMutableArray array];
     NSMutableArray * future = [NSMutableArray array];
     for (int i = 0; i < self.allTurnInstructions.count; i++) {
         SMTurnInstruction * currentTurn = self.allTurnInstructions[i];
         if (self.lastVisitedWaypointIndex < currentTurn.waypointsIndex) {
-            currentIndex = i;
+//            currentIndex = i;
             [future addObject:currentTurn];
         } else {
             [past addObject:currentTurn];
