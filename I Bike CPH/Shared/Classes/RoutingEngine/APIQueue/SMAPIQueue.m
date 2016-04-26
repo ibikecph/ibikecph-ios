@@ -16,9 +16,10 @@
 
 #define MAX_CONCURENT_OPERATIONS 4
 
-- (id)initWithMaxOperations:(NSInteger)maxOps {
+- (id)initWithMaxOperations:(NSInteger)maxOps
+{
     self = [super init];
-	if (self) {
+    if (self) {
         [self setQueue:[[NSOperationQueue alloc] init]];
         self.queue.name = @"API queue";
         self.queue.maxConcurrentOperationCount = maxOps ?: MAX_CONCURENT_OPERATIONS;
@@ -27,64 +28,77 @@
     return self;
 }
 
-- (void)addTasks:(NSString *)searchString {
+- (void)dealloc
+{
+    [self.queue removeObserver:self forKeyPath:NSStringFromSelector(@selector(operations))];
+}
+
+- (void)addTasks:(NSString *)searchString
+{
     UnknownSearchListItem *item = [SMAddressParser parseAddress:searchString];
-    if (item.number.length == 0 &&
-        item.city.length == 0 &&
-        item.zip.length == 0) {
+    if (item.number.length == 0 && item.city.length == 0 && item.zip.length == 0) {
         [self addKMSPlacesTask:item];
         [self addKMSStreetTask:item];
-    } else {
+    }
+    else {
         [self addKMSAddressTask:item];
     }
-    
+
     if (item.number.length == 0 && searchString.length > 2) {
         [self addFoursquareTask:item];
     }
 }
 
-- (SMFoursquareOperation*)addFoursquareTask:(NSObject<SearchListItem> *)item {
-    SMFoursquareOperation * task = [[SMFoursquareOperation alloc] initWithItem:item andDelegate:self];
+- (SMFoursquareOperation *)addFoursquareTask:(NSObject<SearchListItem> *)item
+{
+    SMFoursquareOperation *task = [[SMFoursquareOperation alloc] initWithItem:item andDelegate:self];
     [task setQueuePriority:NSOperationQueuePriorityNormal];
     [self.queue addOperation:task];
     return task;
 }
 
-- (SMKMSStreetOperation*)addKMSStreetTask:(NSObject<SearchListItem> *)item {
-    SMKMSStreetOperation * task = [[SMKMSStreetOperation alloc] initWithItem:item andDelegate:self];
+- (SMKMSStreetOperation *)addKMSStreetTask:(NSObject<SearchListItem> *)item
+{
+    SMKMSStreetOperation *task = [[SMKMSStreetOperation alloc] initWithItem:item andDelegate:self];
     [task setQueuePriority:NSOperationQueuePriorityNormal];
     [self.queue addOperation:task];
     return task;
 }
 
-- (SMKMSAddressOperation*)addKMSAddressTask:(NSObject<SearchListItem> *)item {
-    SMKMSAddressOperation * task = [[SMKMSAddressOperation alloc] initWithItem:item andDelegate:self];
+- (SMKMSAddressOperation *)addKMSAddressTask:(NSObject<SearchListItem> *)item
+{
+    SMKMSAddressOperation *task = [[SMKMSAddressOperation alloc] initWithItem:item andDelegate:self];
     [task setQueuePriority:NSOperationQueuePriorityNormal];
     [self.queue addOperation:task];
     return task;
 }
 
-- (SMKMSPlacesOperation*)addKMSPlacesTask:(NSObject<SearchListItem> *)item {
-    SMKMSPlacesOperation * task = [[SMKMSPlacesOperation alloc] initWithItem:item andDelegate:self];
+- (SMKMSPlacesOperation *)addKMSPlacesTask:(NSObject<SearchListItem> *)item
+{
+    SMKMSPlacesOperation *task = [[SMKMSPlacesOperation alloc] initWithItem:item andDelegate:self];
     [task setQueuePriority:NSOperationQueuePriorityNormal];
     [self.queue addOperation:task];
     return task;
 }
 
-- (void)cancelTask:(SMAPIOperation*)task {
-    @synchronized(self.queue) {
+- (void)cancelTask:(SMAPIOperation *)task
+{
+    @synchronized(self.queue)
+    {
         [task cancel];
     }
 }
 
 #pragma mark - file download delegate
 
-- (void)stopAllRequests {
+- (void)stopAllRequests
+{
     [self.queue cancelAllOperations];
     debugLog(@"Cancel all operations!");
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
     if (object == self.queue && [keyPath isEqualToString:NSStringFromSelector(@selector(operations))]) {
         debugLog(@"Operations queue: %@ count: %ld", self.queue, self.queue.operationCount);
     }
@@ -92,16 +106,20 @@
 
 #pragma mark - api operations delegate
 
-- (void)queuedRequest:(SMAPIOperation *)object failedWithError:(NSError *)error {
-    @synchronized(self.queue) {
+- (void)queuedRequest:(SMAPIOperation *)object failedWithError:(NSError *)error
+{
+    @synchronized(self.queue)
+    {
         if (self.delegate && [self.delegate respondsToSelector:@selector(queuedRequest:failedWithError:)]) {
             [self.delegate queuedRequest:object failedWithError:error];
         }
     }
 }
 
-- (void)queuedRequest:(SMAPIOperation *)object finishedWithResult:(id)result {
-    @synchronized(self.queue) {
+- (void)queuedRequest:(SMAPIOperation *)object finishedWithResult:(id)result
+{
+    @synchronized(self.queue)
+    {
         if (self.delegate && [self.delegate respondsToSelector:@selector(queuedRequest:finishedWithResult:)]) {
             [self.delegate queuedRequest:object finishedWithResult:result];
         }
