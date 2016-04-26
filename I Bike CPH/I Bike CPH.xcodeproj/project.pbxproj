@@ -1744,6 +1744,7 @@
 				4EE05F481A10EBFA00DE4226 /* Resources */,
 				37B4B92B914D1C42FB8F4A42 /* Copy Pods Resources */,
 				3B55A56B90BF3EDEB7F58A19 /* Embed Pods Frameworks */,
+				DEF202CB1CCFF265009CCC8E /* Fabric Integration Phase */,
 			);
 			buildRules = (
 			);
@@ -1786,6 +1787,7 @@
 				4EE05F771A10EDE700DE4226 /* Resources */,
 				E30B861333E8242813AA62CD /* Copy Pods Resources */,
 				3FAB1B7E55E241434B45041D /* Embed Pods Frameworks */,
+				DEF202CC1CCFF2A0009CCC8E /* Fabric Integration Phase */,
 			);
 			buildRules = (
 			);
@@ -2178,6 +2180,34 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		DEF202CB1CCFF265009CCC8E /* Fabric Integration Phase */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Integration Phase";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 4b03ae94613016b718b0175087421d8bbe22f1e6 32d0d932721d7351ef9f5ffb454d78783cb9697f8b1135fbe59e8b49067305c0";
+		};
+		DEF202CC1CCFF2A0009CCC8E /* Fabric Integration Phase */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Integration Phase";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 4b03ae94613016b718b0175087421d8bbe22f1e6 32d0d932721d7351ef9f5ffb454d78783cb9697f8b1135fbe59e8b49067305c0";
 		};
 		E30B861333E8242813AA62CD /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

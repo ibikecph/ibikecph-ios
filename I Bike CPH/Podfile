@@ -17,6 +17,8 @@ pod 'Realm', '0.95.0'
 pod 'Mapbox-iOS-SDK', '1.6.0'
 pod 'NibDesignable', '~>1.1.0'
 pod 'ORStackView',  '~>3.0'
+pod 'Fabric'
+pod 'Crashlytics'
 
 target :CykelPlanenTests, :exclusive => true do
     pod 'OCMockito', '~> 1.0'

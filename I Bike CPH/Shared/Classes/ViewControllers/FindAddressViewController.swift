@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol FindAddressViewControllerProtocol {
     
     func foundAddress(item: SearchListItem)
