@@ -520,7 +520,7 @@
 
     if (tempStartRoute) {
         [tempStartRoute removeObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedRouteDistance))];
-        [tempStartRoute removeObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedTimeForRoute)];
+        [tempStartRoute removeObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedTimeForRoute))];
     }
 
     tempStartRoute = [[SMRoute alloc] initWithRouteStart:start andEnd:end andDelegate:nil];
