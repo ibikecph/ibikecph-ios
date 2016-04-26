@@ -22,7 +22,7 @@
         [self setQueue:[[NSOperationQueue alloc] init]];
         self.queue.name = @"API queue";
         self.queue.maxConcurrentOperationCount = maxOps ?: MAX_CONCURENT_OPERATIONS;
-        [self.queue addObserver:self forKeyPath:@"operations" options:NSKeyValueObservingOptionNew context:NULL];
+        [self.queue addObserver:self forKeyPath:NSStringFromSelector(@selector(operations)) options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
 }
@@ -85,7 +85,7 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (object == self.queue && [keyPath isEqualToString:@"operations"]) {
+    if (object == self.queue && [keyPath isEqualToString:NSStringFromSelector(@selector(operations))]) {
         debugLog(@"Operations queue: %@ count: %ld", self.queue, self.queue.operationCount);
     }
 }

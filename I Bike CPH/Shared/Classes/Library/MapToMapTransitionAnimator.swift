@@ -28,7 +28,7 @@ class MapToMapTransitionAnimator: NSObject, UIViewControllerAnimatedTransitionin
             containerView.addSubview(toViewController.view)
             
             // Fade in toViewController
-            var maskLayerAnimation = CABasicAnimation(keyPath: "opacity")
+            var maskLayerAnimation = CABasicAnimation(keyPath:NSStringFromSelector(Selector("opacity")))
             maskLayerAnimation.fromValue = 0
             maskLayerAnimation.toValue = 1
             maskLayerAnimation.duration = self.transitionDuration(transitionContext)
