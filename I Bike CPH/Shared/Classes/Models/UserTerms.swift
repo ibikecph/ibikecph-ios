@@ -19,10 +19,10 @@ struct UserTerms {
         let language = NSUserDefaults.standardUserDefaults().arrayForKey("AppleLanguages")?.first as? String
         let humanReadableKey = "important_parts_description_" + (language == "da" ? "da" : "en")
         if let
-            version = json["version"].int,
+            versionString = json["version"].string,
             humanReadableText = json[humanReadableKey].string
         {
-            self.version = version
+            self.version = versionString.toInt() ?? 0
             self.humanReadableText = humanReadableText
             return
         }
