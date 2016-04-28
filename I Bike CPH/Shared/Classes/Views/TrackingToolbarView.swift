@@ -26,17 +26,17 @@ class TrackingToolbarView: ToolbarView {
     
     var distance: Double = 0 {
         didSet {
-            distanceLabel?.text = distanceFormatter.string(meters: distance)
+            distanceLabel?.text = distanceFormatter.string(distance)
         }
     }
     var duration: Double = 0 {
         didSet {
-            durationLabel?.text = hourMinutesFormatter.string(seconds: duration)
+            durationLabel?.text = hourMinutesFormatter.string(duration)
         }
     }
     var kiloCalories: Double = 0 {
         didSet {
-            caloriesLabel?.text = caloriesFormatter.string(kiloCalories: kiloCalories)
+            caloriesLabel?.text = caloriesFormatter.string(kiloCalories)
         }
     }
     @IBAction func didTapView(sender: AnyObject) {

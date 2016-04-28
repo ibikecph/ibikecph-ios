@@ -56,17 +56,17 @@ class TrackTableViewCell: UITableViewCell {
             
             // Duration in minutes
             let duration = track.duration
-            durationLabel.text = hourMinutesFormatter.string(seconds: duration)
+            durationLabel.text = hourMinutesFormatter.string(duration)
             // Distance in km
             let distance = track.length
-            distanceLabel.text = distanceFormatter.string(meters: distance)
+            distanceLabel.text = distanceFormatter.string(distance)
             
             topAddressLabel.text = track.end == "" ? "–" : track.end
             bottomAddressLabel.text = track.start == "" ? "–" : track.start
         } else {
             timeLabel.text = "–"
-            durationLabel.text = hourMinutesFormatter.string(seconds: 0)
-            distanceLabel.text = distanceFormatter.string(meters: 0)
+            durationLabel.text = hourMinutesFormatter.string(0)
+            distanceLabel.text = distanceFormatter.string(0)
             topAddressLabel.text = "–"
             bottomAddressLabel.text = "–"
         }

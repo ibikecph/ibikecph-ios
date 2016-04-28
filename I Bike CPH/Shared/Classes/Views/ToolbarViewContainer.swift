@@ -21,7 +21,7 @@ class ToolbarViewContainer: UIView {
         // Add new toolbar
         toolbarView = new
         addSubview(new)
-        new.setTranslatesAutoresizingMaskIntoConstraints(false)
+        new.translatesAutoresizingMaskIntoConstraints = false
         addConstraints([
             NSLayoutConstraint(item: new, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: new, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0),

@@ -17,11 +17,6 @@ protocol MapViewDelegate {
     func didSelectAnnotation(annotation: Annotation)
 }
 
-extension RMUserTrackingMode: Equatable {}
-public func ==(lhs: RMUserTrackingMode, rhs: RMUserTrackingMode) -> Bool {
-    return lhs.value == rhs.value
-}
-
 class MapView: UIView {
     
     enum UserTrackingMode: Int {
@@ -61,7 +56,7 @@ class MapView: UIView {
         setup()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -73,7 +68,7 @@ class MapView: UIView {
     
     func setup() {
         addSubview(mapView)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
             NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: mapView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0),
@@ -138,7 +133,7 @@ class MapView: UIView {
     
     func zoomToAnnotation(annotation: Annotation, animated: Bool = true, padding: Double = 0.25) {
         // Padding
-        let bounds = mapView.sphericalTrapezium(forProjectedRect: annotation.projectedBoundingBox).padded(padding: padding)
+        let bounds = mapView.sphericalTrapezium(forProjectedRect: annotation.projectedBoundingBox).padded(padding)
         // Zoom
         mapView.zoomWithLatitudeLongitudeBoundsSouthWest(bounds.southWest, northEast: bounds.northEast, animated: animated)
 
@@ -169,7 +164,7 @@ class MapView: UIView {
                 totalBounds = bounds
             }
         }
-        if let bounds = totalBounds?.padded(padding: padding) {
+        if let bounds = totalBounds?.padded(padding) {
             // Zoom
             mapView.zoomWithLatitudeLongitudeBoundsSouthWest(bounds.southWest, northEast: bounds.northEast, animated: animated)
 
@@ -181,7 +176,7 @@ class MapView: UIView {
         var annotations = [Annotation]()
         if let locations = route.waypoints?.copy() as? [CLLocation] { // Copy since it is NSMutableArray
             let coordinates = locations.map { $0.coordinate } // Map to coordinates
-            let lineColor = SMRouteTypeBike.value == route.routeType.value ? Styler.tintColor() : Styler.foregroundColor()
+            let lineColor = SMRouteTypeBike == route.routeType ? Styler.tintColor() : Styler.foregroundColor()
             let annotation = addPath(coordinates, lineColor: lineColor, lineWidth: 5)
             annotations.append(annotation)
             if zoom {
@@ -210,7 +205,7 @@ class MapView: UIView {
             let startPin = PinAnnotation(mapView: self, coordinate: startCoordinate, type: .Start)
             addAnnotation(startPin)
             annotations.append(startPin)
-        } else if SMRouteTypeBike.value != route.routeType.value,
+        } else if SMRouteTypeBike != route.routeType,
             let pinType = PinAnnotation.typeForRouteType(route.routeType),
             coordinate = (route.waypoints?.copy() as? [CLLocation])?.first?.coordinate
         {
@@ -242,7 +237,7 @@ class MapView: UIView {
                         return self.addAnnotationsForRoute(route, from: nil, to: nil, zoom: false)
                     }
                 }()
-                annotations.extend(routeAnnotations)
+                annotations.appendContentsOf(routeAnnotations)
             }
             if zoom {
                 zoomToAnnotations(annotations)

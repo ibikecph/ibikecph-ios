@@ -35,6 +35,6 @@ class IconLabelTableViewCell: NibDesignableTableViewCell {
         } else if let item = item as? HistoryItem {
             icon = UIImage(named: "findHistory")
         }
-        configure(text: item.name, icon: icon)
+        configure(item.name, icon: icon)
     }
 }

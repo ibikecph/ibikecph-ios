@@ -125,31 +125,31 @@ class RouteBrokenPartView: UIView {
         let arrivalDate = route.endDate != nil ? route.endDate : departureDate.dateByAddingTimeInterval(NSTimeInterval(route.estimatedRouteDistance))
         let startPlace = route.startDescription.localized
         let endPlace = route.endDescription.localized
-        let distance = distanceFormatter.string(meters: Double(route.estimatedRouteDistance))
-        let duration = hourMinuteFormatter.string(seconds: NSTimeInterval(route.estimatedTimeForRoute))
+        let distance = distanceFormatter.string(Double(route.estimatedRouteDistance))
+        let duration = hourMinuteFormatter.string(NSTimeInterval(route.estimatedTimeForRoute))
 
         var topLabelString = startPlace
         var bottomLabelString = route.transportLine + " " + "to".localized + "\n" + endPlace
         var imageName = ""
 
-        switch route.routeType.value {
-        case SMRouteTypeBike.value:
+        switch route.routeType {
+        case SMRouteTypeBike:
             imageName = "Bike"
             topLabelString = "vehicle_1".localized + " " + distance +  ", " + duration
             bottomLabelString = "from".localized + " " + startPlace + " " + "to".localized + "\n" + endPlace
-        case SMRouteTypeWalk.value:
+        case SMRouteTypeWalk:
             imageName = "Walk"
             topLabelString = "vehicle_2".localized + " " + distance +  ", " + duration
             bottomLabelString = "from".localized + " " + startPlace + " " + "to".localized + "\n" + endPlace
-        case SMRouteTypeSTrain.value:
+        case SMRouteTypeSTrain:
             imageName = "STrain"
-        case SMRouteTypeMetro.value:
+        case SMRouteTypeMetro:
             imageName = "Metro"
-        case SMRouteTypeFerry.value:
+        case SMRouteTypeFerry:
             imageName = "Ferry"
-        case SMRouteTypeBus.value:
+        case SMRouteTypeBus:
             imageName = "Bus"
-        case SMRouteTypeTrain.value:
+        case SMRouteTypeTrain:
             imageName = "Train"
         default: break
         }

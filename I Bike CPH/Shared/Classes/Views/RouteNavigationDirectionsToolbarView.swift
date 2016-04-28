@@ -42,7 +42,7 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
                 let view = TurnInstructionsCollectionViewCell()
                 view.configure(extra)
                 topContainer.addSubview(view)
-                view.setTranslatesAutoresizingMaskIntoConstraints(false)
+                view.translatesAutoresizingMaskIntoConstraints = false
                 self.addConstraints([
                     NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: topContainer, attribute: .Top, multiplier: 1, constant: 0),
                     NSLayoutConstraint(item: view, attribute: .Left, relatedBy: .Equal, toItem: topContainer, attribute: .Left, multiplier: 1, constant: 0),

@@ -41,7 +41,7 @@ extension Speak { // AVAudioSession
     private func setAudioSessionActive(beActive: Bool) {
         var error: NSError? = nil
         if audioSession.setActive(beActive, error: &error) {
-            println("Setting AVAudiosession active: ", beActive)
+            print("Setting AVAudiosession active: ", beActive)
             if let error = error {
                  print(" failed: %@", error.description)
             }

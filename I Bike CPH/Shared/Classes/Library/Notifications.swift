@@ -9,7 +9,7 @@
 import UIKit
 
 
-@objc class Notifications {
+class Notifications {
     
     class func register() {
         let settings = UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: nil)

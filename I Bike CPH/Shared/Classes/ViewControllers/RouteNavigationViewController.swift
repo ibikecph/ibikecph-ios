@@ -38,7 +38,7 @@ class RouteNavigationViewController: MapViewController {
         routeComposite?.currentRoute?.delegate = self
         
         // Setup UI
-        updateUI(zoom: true)
+        updateUI(true)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -113,7 +113,7 @@ class RouteNavigationViewController: MapViewController {
     }
     
     private func updateUI(zoom: Bool) {
-        updateRouteUI(zoom: zoom)
+        updateRouteUI(zoom)
         // Directions
         updateTurnInstructions()
         // Stats
@@ -155,8 +155,8 @@ class RouteNavigationViewController: MapViewController {
                             break
                         } // Has previous route
                         let previousRoute = routes[previousIndex]
-                        if previousRoute.routeType.value == SMRouteTypeBike.value ||
-                            previousRoute.routeType.value == SMRouteTypeWalk.value {
+                        if previousRoute.routeType == SMRouteTypeBike ||
+                            previousRoute.routeType == SMRouteTypeWalk {
                             break
                         } // Previous route was public
                         let distanceFromPreviousRouteEndLocation = previousRoute.getEndLocation().distanceFromLocation(currentRoute.lastCorrectedLocation)
@@ -166,7 +166,7 @@ class RouteNavigationViewController: MapViewController {
                         // Keep showing last instruction of previous route
                         if let lastInstruction = (previousRoute.turnInstructions.copy() as? [SMTurnInstruction])?.first {
                             routeNavigationDirectionsToolbarView.extraInstruction = lastInstruction
-                            println("\(lastInstruction)")
+                            print("\(lastInstruction)")
                         }
                         return
                     }
@@ -228,7 +228,7 @@ extension RouteNavigationViewController: SMRouteDelegate {
     }
     func updateRoute() {
         print("Found new route")
-        updateUI(zoom: false)
+        updateUI(false)
     }
     func startRoute(route: SMRoute!) {
         
@@ -244,6 +244,6 @@ extension RouteNavigationViewController: SMRouteDelegate {
     }
     
     func routeRecalculationDone() {
-        println("")
+        print("")
     }
 }

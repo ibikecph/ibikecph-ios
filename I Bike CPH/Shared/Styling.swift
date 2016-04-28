@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@objc protocol StyleProtocol {
+protocol StyleProtocol {
     
     static func setupAppearance()
     

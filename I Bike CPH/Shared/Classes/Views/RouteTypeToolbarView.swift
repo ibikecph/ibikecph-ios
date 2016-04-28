@@ -58,7 +58,7 @@ class RouteTypeToolbarView: ToolbarView {
     }
     
     func updateUI() {
-        for (index, button) in enumerate(buttons) {
+        for (index, button) in buttons.enumerate() {
             let type = validType(index)
             button.enabled = (type != .Disabled)
             let typeViewModel = RouteTypeViewModel(type: type)

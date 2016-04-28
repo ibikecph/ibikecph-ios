@@ -19,13 +19,13 @@ class PinAnnotation: Annotation {
         case Regular, Start, End, Metro, STrain, Bus, Ferry, Train, Walk
     }
     static func typeForRouteType(routeType: SMRouteType) -> Type? {
-        switch routeType.value {
-        case SMRouteTypeWalk.value: return .Walk
-        case SMRouteTypeSTrain.value: return .STrain
-        case SMRouteTypeMetro.value: return .Metro
-        case SMRouteTypeFerry.value: return .Ferry
-        case SMRouteTypeBus.value: return .Bus
-        case SMRouteTypeTrain.value: return .Train
+        switch routeType {
+        case SMRouteTypeWalk: return .Walk
+        case SMRouteTypeSTrain: return .STrain
+        case SMRouteTypeMetro: return .Metro
+        case SMRouteTypeFerry: return .Ferry
+        case SMRouteTypeBus: return .Bus
+        case SMRouteTypeTrain: return .Train
         default: return nil
         }
     }
