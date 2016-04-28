@@ -1,4 +1,7 @@
-[![Build Status](https://travis-ci.org/mbogh/NibDesignable.svg?branch=master)](https://travis-ci.org/mbogh/NibDesignable)
+[![Build Status](https://travis-ci.org/mbogh/NibDesignable.svg?branch=master)](https://travis-ci.org/mbogh/NibDesignable) 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
+[![Pod version](http://img.shields.io/cocoapods/v/NibDesignable.svg)](http://cocoadocs.org/docsets/NibDesignable/) 
+[![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/mbogh/NibDesignable/master/LICENSE)
 
 Nib Designable
 =============
@@ -6,19 +9,12 @@ Nib Designable
 ## Installation
 
 ### CocoaPods
+Add `pod 'NibDesignable'` to your `Podfile`
 
-1. Add `pod 'NibDesignable'` to your `Podfile`
-2. Add `import NibDesignable`
-3. Sometimes Xcode/Interface Builder does not recognize `NibDesignable` as `@IBDesignable`. **Workaround** Declare your custom class as `@IBDesignable` like:
-  ``` swift
-  @IBDesignable
-  class CustomView: NibDesignable {
-
-  }
-  ```
+### Carthage
+Add `github "mbogh/NibDesignable"` to your `Cartfile`.
 
 ### Manual
-
 Simply drop `NibDesignable.swift` into your project and it is ready to use.
 
 ## Usage
@@ -31,6 +27,13 @@ Simply drop `NibDesignable.swift` into your project and it is ready to use.
   ```
 2. Create a nib, place a `UIView` and change the `File's Owner` to `CustomView`
 3. Design your view and add `@IBInspectable` properties.
+4. Sometimes Xcode/Interface Builder does not recognize `NibDesignable` as `@IBDesignable`. **Workaround** Declare your custom class as `@IBDesignable` like:
+  ``` swift
+  @IBDesignable
+  class CustomView: NibDesignable {
+
+  }
+  ```
 
 ## Thanks
 
@@ -46,6 +49,22 @@ Follow me on Twitter ([@mbogh](https://twitter.com/mbogh)) and/or visit my blog 
 Nib Designable is released under an MIT license. See LICENSE for more information.
 
 ## Release Notes
+
+Version 2.3.0
+
+- `UICollectionReusableView` support added by @ikesyo
+
+Version 2.2.0
+
+- `UICollectionViewCell` support added by @pyankoff
+
+Version 2.1.0
+
+- `UIControl` support added by @illaz
+
+Version 2.0.0
+
+- Swift 2.0 for everyone, thanks to @bjarkehs
 
 Version 1.1.1
 

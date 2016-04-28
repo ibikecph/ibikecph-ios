@@ -7,18 +7,19 @@ link_with 'I Bike CPH', 'CykelPlanen'
 use_frameworks!
 inhibit_all_warnings!
 
-pod 'GoogleAnalytics-iOS-SDK', '~>3.10'
-pod 'TTTAttributedLabel', '~>1.13'
-pod 'DAKeyboardControl', '~>2.4'
-pod 'UIImage-Categories', '~>1.0'
+pod 'GoogleAnalytics-iOS-SDK', '~> 3.10'
+pod 'TTTAttributedLabel', '~> 1.13'
+pod 'DAKeyboardControl', '~> 2.4'
+pod 'UIImage-Categories', '~> 1.0'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'PSTAlertController', '1.1.0'
 pod 'Realm', '0.95.0'
 pod 'Mapbox-iOS-SDK', '1.6.0'
-pod 'NibDesignable', '~>1.1.0'
-pod 'ORStackView',  '~>3.0'
-pod 'Fabric'
-pod 'Crashlytics'
+pod 'NibDesignable'
+pod 'SwiftyJSON'
+pod 'ORStackView',  '~> 3.0'
+pod 'Fabric', '~> 1.6.3'
+pod 'Crashlytics', '~> 3.7.0'
 
 target :CykelPlanenTests, :exclusive => true do
     pod 'OCMockito', '~> 1.0'

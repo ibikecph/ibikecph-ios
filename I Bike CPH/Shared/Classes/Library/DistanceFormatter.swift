@@ -19,7 +19,7 @@ class DistanceFormatter: NSNumberFormatter {
         return formatter
     }()
     
-    func string(#meters: Double) -> String {
+    func string(meters: Double) -> String {
         return (numberFormatter.stringFromNumber(meters / 1000) ?? "0") + " " + "unit_km".localized
     }
 }

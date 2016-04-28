@@ -19,7 +19,7 @@ PODS:
     - FMDB (= 2.3)
     - GRMustache (= 7.3.0)
     - SMCalloutView (= 2.0)
-  - NibDesignable (1.1.1)
+  - NibDesignable (2.3.0)
   - OCHamcrest (4.3.0)
   - OCMockito (1.4.0):
     - OCHamcrest (~> 4.0)
@@ -31,21 +31,23 @@ PODS:
   - Realm/Headers (0.95.0)
   - Reveal-iOS-SDK (1.6.2)
   - SMCalloutView (2.0)
+  - SwiftyJSON (2.3.2)
   - TTTAttributedLabel (1.13.4)
   - UIImage-Categories (1.0.0)
 
 DEPENDENCIES:
-  - Crashlytics
+  - Crashlytics (~> 3.7.0)
   - DAKeyboardControl (~> 2.4)
-  - Fabric
+  - Fabric (~> 1.6.3)
   - GoogleAnalytics-iOS-SDK (~> 3.10)
   - Mapbox-iOS-SDK (= 1.6.0)
-  - NibDesignable (~> 1.1.0)
+  - NibDesignable
   - OCMockito (~> 1.0)
   - ORStackView (~> 3.0)
   - PSTAlertController (= 1.1.0)
   - Realm (= 0.95.0)
   - Reveal-iOS-SDK
+  - SwiftyJSON
   - TTTAttributedLabel (~> 1.13)
   - UIImage-Categories (~> 1.0)
 
@@ -59,7 +61,7 @@ SPEC CHECKSUMS:
   GRMustache: 6baee020c5644416c034f5afb1607f6219e7f753
   JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
   Mapbox-iOS-SDK: ee136ca5b7f853456b50dfd7a7f0e243288cf86f
-  NibDesignable: 95579fc418e1922f341f51fc1243a1a21af04ccf
+  NibDesignable: 10eb4480cab249bb5d5ba273061b026df824087b
   OCHamcrest: cd63d27f48a266d4412c0b295b01b8f0940efa81
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   ORStackView: a1bb52748cd0ae29891c140baf22ff8972fb363c
@@ -67,6 +69,7 @@ SPEC CHECKSUMS:
   Realm: bbb171b96728ea136ed5cd354dca2a3d6529923c
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   SMCalloutView: f758edd824b18bf4f42de00df1e299861a2d1950
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIImage-Categories: a0593f6a7991c99016b9ecadfbd38b3717ff1a73
 

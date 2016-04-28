@@ -105,7 +105,7 @@ extension Track {
         }
     }
     
-    func speeding(#speedLimit: Double, minLength: Double = 0.050) -> Bool {
+    func speeding(speedLimit: Double, minLength: Double = 0.050) -> Bool {
         let duration = self.duration / 3600
         if duration <= 0 {
             return false
@@ -121,7 +121,7 @@ extension Track {
         return true
     }
     
-    func slow(#speedLimit: Double, minLength: Double = 0.05) -> Bool {
+    func slow(speedLimit: Double, minLength: Double = 0.05) -> Bool {
         let duration = self.duration / 3600
         if duration <= 0 {
             return false

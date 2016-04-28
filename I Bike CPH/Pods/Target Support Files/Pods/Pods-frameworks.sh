@@ -95,6 +95,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/PSTAlertController.framework"
   install_framework "Pods/Realm.framework"
   install_framework "Pods/SMCalloutView.framework"
+  install_framework "Pods/SwiftyJSON.framework"
   install_framework "Pods/TTTAttributedLabel.framework"
   install_framework "Pods/UIImage_Categories.framework"
 fi
@@ -110,6 +111,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/PSTAlertController.framework"
   install_framework "Pods/Realm.framework"
   install_framework "Pods/SMCalloutView.framework"
+  install_framework "Pods/SwiftyJSON.framework"
   install_framework "Pods/TTTAttributedLabel.framework"
   install_framework "Pods/UIImage_Categories.framework"
 fi

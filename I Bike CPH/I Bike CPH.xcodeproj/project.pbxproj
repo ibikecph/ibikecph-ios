@@ -471,8 +471,6 @@
 		7D1D9CAF1CB7EBF3007F1D30 /* SMKMSAddressOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C6F1CB7EA1E007F1D30 /* SMKMSAddressOperation.m */; };
 		7D1D9CB01CB7EBF3007F1D30 /* SMKMSPlacesOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C711CB7EA1E007F1D30 /* SMKMSPlacesOperation.m */; };
 		7D1D9CB11CB7EBF3007F1D30 /* SMKMSStreetOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C731CB7EA1E007F1D30 /* SMKMSStreetOperation.m */; };
-		7D1D9CB31CB7ED5A007F1D30 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C451CB7E92C007F1D30 /* SwiftyJSON.swift */; };
-		7D1D9CB41CB7ED5E007F1D30 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C451CB7E92C007F1D30 /* SwiftyJSON.swift */; };
 		7D1D9CB51CB7EF77007F1D30 /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C881CB7EA6F007F1D30 /* FoursquareItem.swift */; };
 		7D1D9CB61CB7EF7A007F1D30 /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C881CB7EA6F007F1D30 /* FoursquareItem.swift */; };
 		7D1D9CB91CB7F1CF007F1D30 /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C8D1CB7EA6F007F1D30 /* SearchListItem.swift */; };
@@ -844,7 +842,6 @@
 		4EFDA4811AB87A6D00522A41 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		4EFDA4851AB884AD00522A41 /* RelativeDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativeDateFormatter.swift; sourceTree = "<group>"; };
 		7D03242D1CBD38D0002DADDE /* NonTrackingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTrackingHandler.swift; sourceTree = "<group>"; };
-		7D1D9C451CB7E92C007F1D30 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		7D1D9C4C1CB7EA07007F1D30 /* SMGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGeocoder.h; sourceTree = "<group>"; };
 		7D1D9C4D1CB7EA07007F1D30 /* SMGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGeocoder.m; sourceTree = "<group>"; };
 		7D1D9C4E1CB7EA07007F1D30 /* SMGPSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGPSUtil.h; sourceTree = "<group>"; };
@@ -985,7 +982,6 @@
 		4E2A92541A3B43050032ACD4 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
-				7D1D9C451CB7E92C007F1D30 /* SwiftyJSON.swift */,
 				4E58C30C1B0E16160041255B /* ENSwiftSideMenu */,
 				4E2A92551A3B43130032ACD4 /* Async.swift */,
 				4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */,
@@ -1850,7 +1846,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "I Bike CPH";
 				TargetAttributes = {
 					4EE05F491A10EBFA00DE4226 = {
@@ -2276,7 +2272,6 @@
 			files = (
 				4E2CF5051B85C17A004BDCAB /* ServerClient.swift in Sources */,
 				4EAB12471A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */,
-				7D1D9CB41CB7ED5E007F1D30 /* SwiftyJSON.swift in Sources */,
 				4E5E87861B31D4760021F5E9 /* FindRouteViewController.swift in Sources */,
 				4E5B906E1B5FABC0008AC960 /* SplashViewController.swift in Sources */,
 				7D1D9C671CB7EA07007F1D30 /* SMTurnInstruction.m in Sources */,
@@ -2453,7 +2448,6 @@
 				DE5557741CCBC00F00D7DB8A /* SMAddressParser.m in Sources */,
 				7D1D9CB51CB7EF77007F1D30 /* FoursquareItem.swift in Sources */,
 				4E6BD7C71A56FE320049F1DB /* AddressParser_Tests.swift in Sources */,
-				7D1D9CBB1CB7F1E2007F1D30 /* SwiftyJSON.swift in Sources */,
 				4EDC4DE81A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */,
 				4EED54911AF249B000A1DBB1 /* NSDate.swift in Sources */,
 				7D1D9CB91CB7F1CF007F1D30 /* SearchListItem.swift in Sources */,
@@ -2538,7 +2532,6 @@
 				4EC56E831A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
 				4EC56E531A2A2C3D00B696B4 /* SMCustomButton.m in Sources */,
 				4E33B9201A640700007D4C82 /* AppHelper.swift in Sources */,
-				7D1D9CB31CB7ED5A007F1D30 /* SwiftyJSON.swift in Sources */,
 				4EB70F4D1B6B62A900AB48CB /* CaloriesFormatter.swift in Sources */,
 				4EC56E9B1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4EC56DDA1A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
@@ -2677,7 +2670,6 @@
 				DE5557751CCBC01000D7DB8A /* SMAddressParser.m in Sources */,
 				7D1D9CB61CB7EF7A007F1D30 /* FoursquareItem.swift in Sources */,
 				4EE05F981A10EDE700DE4226 /* CykelPlanenTests.m in Sources */,
-				7D1D9CBC1CB7F1E3007F1D30 /* SwiftyJSON.swift in Sources */,
 				4EED54921AF249B000A1DBB1 /* NSDate.swift in Sources */,
 				4E7BA9E61A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */,
 				7D1D9CBA1CB7F1D0007F1D30 /* SearchListItem.swift in Sources */,
@@ -2760,6 +2752,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2812,7 +2805,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shared/Bridging-Header.h";
-				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2849,6 +2842,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.ibikecph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2887,6 +2881,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.ibikecph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2926,6 +2921,7 @@
 				INFOPLIST_FILE = "I Bike CPHTests/Info.plist";
 				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I Bike CPH.app/I Bike CPH";
@@ -2963,6 +2959,7 @@
 				INFOPLIST_FILE = "I Bike CPHTests/Info.plist";
 				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I Bike CPH.app/I Bike CPH";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -3000,6 +2997,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D CYKELPLANEN";
+				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.CykelPlanen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3036,6 +3034,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D CYKELPLANEN";
+				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.CykelPlanen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3073,6 +3072,7 @@
 				);
 				INFOPLIST_FILE = CykelPlanenTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CykelPlanen.app/CykelPlanen";
@@ -3108,6 +3108,7 @@
 				);
 				INFOPLIST_FILE = CykelPlanenTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CykelPlanen.app/CykelPlanen";
 			};

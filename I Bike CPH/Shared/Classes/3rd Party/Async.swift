@@ -115,22 +115,22 @@ public extension Async { // Static methods
         dispatch_after(time, queue, _block)
         return Async(_block)
     }
-    static func main(#after: Double, block: dispatch_block_t) -> Async {
+    static func main(after: Double, block: dispatch_block_t) -> Async {
         return Async.after(after, block: block, inQueue: GCD.mainQueue())
     }
-    static func userInteractive(#after: Double, block: dispatch_block_t) -> Async {
+    static func userInteractive(after: Double, block: dispatch_block_t) -> Async {
         return Async.after(after, block: block, inQueue: GCD.userInteractiveQueue())
     }
-    static func userInitiated(#after: Double, block: dispatch_block_t) -> Async {
+    static func userInitiated(after: Double, block: dispatch_block_t) -> Async {
         return Async.after(after, block: block, inQueue: GCD.userInitiatedQueue())
     }
-    static func utility(#after: Double, block: dispatch_block_t) -> Async {
+    static func utility(after: Double, block: dispatch_block_t) -> Async {
         return Async.after(after, block: block, inQueue: GCD.utilityQueue())
     }
-    static func background(#after: Double, block: dispatch_block_t) -> Async {
+    static func background(after: Double, block: dispatch_block_t) -> Async {
         return Async.after(after, block: block, inQueue: GCD.backgroundQueue())
     }
-    static func customQueue(#after: Double, queue: dispatch_queue_t, block: dispatch_block_t) -> Async {
+    static func customQueue(after: Double, queue: dispatch_queue_t, block: dispatch_block_t) -> Async {
         return Async.after(after, block: block, inQueue: queue)
     }
 }
@@ -193,22 +193,22 @@ public extension Async {
         // Wrap block in a struct since dispatch_block_t can't be extended
         return Async(_chainingBlock)
     }
-    func main(#after: Double, block: dispatch_block_t) -> Async {
+    func main(after: Double, block: dispatch_block_t) -> Async {
         return self.after(after, block: block, runInQueue: GCD.mainQueue())
     }
-    func userInteractive(#after: Double, block: dispatch_block_t) -> Async {
+    func userInteractive(after: Double, block: dispatch_block_t) -> Async {
         return self.after(after, block: block, runInQueue: GCD.userInteractiveQueue())
     }
-    func userInitiated(#after: Double, block: dispatch_block_t) -> Async {
+    func userInitiated(after: Double, block: dispatch_block_t) -> Async {
         return self.after(after, block: block, runInQueue: GCD.userInitiatedQueue())
     }
-    func utility(#after: Double, block: dispatch_block_t) -> Async {
+    func utility(after: Double, block: dispatch_block_t) -> Async {
         return self.after(after, block: block, runInQueue: GCD.utilityQueue())
     }
-    func background(#after: Double, block: dispatch_block_t) -> Async {
+    func background(after: Double, block: dispatch_block_t) -> Async {
         return self.after(after, block: block, runInQueue: GCD.backgroundQueue())
     }
-    func customQueue(#after: Double, queue: dispatch_queue_t, block: dispatch_block_t) -> Async {
+    func customQueue(after: Double, queue: dispatch_queue_t, block: dispatch_block_t) -> Async {
         return self.after(after, block: block, runInQueue: queue)
     }
     

@@ -123,7 +123,7 @@ class FindRouteViewController: MapViewController {
         routeManager.delegate = self
         
         // Search for route
-        searchForNewRoute(server: RouteTypeHandler.instance.type.server)
+        searchForNewRoute(RouteTypeHandler.instance.type.server)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -198,7 +198,7 @@ class FindRouteViewController: MapViewController {
         }
     }
      
-    private func searchForNewRoute(#server: String) {
+    private func searchForNewRoute(server: String) {
         if let toItem = toItem {
             routeManager.findRoute(self.fromItem, to: toItem, server: server)
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -216,7 +216,7 @@ extension FindRouteViewController: FindRouteToolbarDelegate {
             self.fromItem = toItem
             self.toItem = fromItem
             // Update route
-            searchForNewRoute(server: RouteTypeHandler.instance.type.server)
+            searchForNewRoute(RouteTypeHandler.instance.type.server)
 
             clearUI()
         }
@@ -238,7 +238,7 @@ extension FindRouteViewController: FindRouteToolbarDelegate {
 extension FindRouteViewController: RouteTypeToolbarDelegate {
     func didChangeType(type: RouteType) {
         clearUI()
-        searchForNewRoute(server: type.server)
+        searchForNewRoute(type.server)
     }
 }
 
@@ -248,7 +248,7 @@ extension FindRouteViewController: RouteManagerDelegate {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         switch result {
             case .Error(let error):
-                println(error)
+                print(error)
                 fallthrough
             case .ErrorOfType(_):
                 let alert = UIAlertController(title: nil, message: "error_route_not_found".localized, preferredStyle: .Alert)
@@ -258,7 +258,7 @@ extension FindRouteViewController: RouteManagerDelegate {
                     })
                 alert.addAction(UIAlertAction(title: "Try_again".localized, style: .Default) { action in
                     self.clearUI()
-                    self.searchForNewRoute(server: RouteTypeHandler.instance.type.server)
+                    self.searchForNewRoute(RouteTypeHandler.instance.type.server)
                     })
                 presentViewController(alert, animated: true, completion: nil)
             case .Success(let json, let osrmServer):
@@ -356,7 +356,7 @@ extension FindRouteViewController: FindAddressViewControllerProtocol {
         }
         itemOrigin = .None
         // Update route
-        searchForNewRoute(server: RouteTypeHandler.instance.type.server)
+        searchForNewRoute(RouteTypeHandler.instance.type.server)
 
         clearUI()
     }

@@ -59,7 +59,7 @@ class RouteStatsToolbarView: ToolbarView {
         updateTo(distance: distanceLeft, duration: durationLeft, eta: eta)
     }
     
-    func updateTo(#distance: Double, duration: Double, eta: NSDate?) {
+    func updateTo(distance: Double, duration: Double, eta: NSDate?) {
         distanceLabel.text = distanceFormatter.string(meters: distance)
         durationLabel.text = hourMinuteFormatter.string(seconds: duration)
         arrivalTime.text = eta == nil ? "" : dateFormatter.stringFromDate(eta!)

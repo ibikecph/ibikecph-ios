@@ -16,7 +16,7 @@ class CaloriesFormatter: NSNumberFormatter {
         return formatter
     }()
     
-    func string(#kiloCalories: Double) -> String {
+    func string(kiloCalories: Double) -> String {
         return (numberFormatter.stringFromNumber(kiloCalories) ?? "0") + " " + "unit_kcal".localized
     }
 }

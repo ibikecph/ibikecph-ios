@@ -53,7 +53,7 @@ public extension UIViewController {
         if (iteration == nil) {
             return topMostController()
         }
-        do {
+        repeat {
             if (iteration is ENSideMenuProtocol) {
                 return iteration as? ENSideMenuProtocol
             } else if (iteration?.parentViewController != nil && iteration?.parentViewController != iteration) {
@@ -103,12 +103,12 @@ public class ENSideMenu: NSObject {
         self.setupMenuView()
     
         // Edge swipe
-        screenEdgePan1GestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "handlePan:")
+        screenEdgePan1GestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(ENSideMenu.handlePan(_:)))
         screenEdgePan1GestureRecognizer!.delegate = self
         screenEdgePan1GestureRecognizer!.edges = (menuPosition == .Left) ? .Left : .Right
         sourceView.addGestureRecognizer(screenEdgePan1GestureRecognizer!)
         // Add swipe gesture recognizer to container
-        screenEdgePan2GestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "handlePan:")
+        screenEdgePan2GestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(ENSideMenu.handlePan(_:)))
         screenEdgePan2GestureRecognizer!.delegate = self
         screenEdgePan2GestureRecognizer!.edges = (menuPosition == .Left) ? .Right : .Left
         sideMenuContainerView.addGestureRecognizer(screenEdgePan2GestureRecognizer!)
@@ -124,7 +124,7 @@ public class ENSideMenu: NSObject {
         sideMenuContainerView.addSubview(menuView)
         menuViewController.didMoveToParentViewController(sourceViewController)
         
-        menuView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        menuView.translatesAutoresizingMaskIntoConstraints = false
         sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Left, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Left, multiplier: 1, constant: 0))
         sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Right, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Right, multiplier: 1, constant: 0))
         sourceView.addConstraint(NSLayoutConstraint(item: menuView, attribute: .Bottom, relatedBy: .Equal, toItem: sideMenuContainerView, attribute: .Bottom, multiplier: 1, constant: 0))
@@ -143,7 +143,7 @@ public class ENSideMenu: NSObject {
         
         sourceView.addSubview(sideMenuContainerView)
         
-        sideMenuContainerView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        sideMenuContainerView.translatesAutoresizingMaskIntoConstraints = false
         leftConstraint = NSLayoutConstraint(item: sideMenuContainerView, attribute: .Left, relatedBy: .Equal, toItem: sourceView, attribute: .Left, multiplier: 1, constant: 0)
         sourceView.addConstraint(leftConstraint!)
         sourceView.addConstraint(NSLayoutConstraint(item: sideMenuContainerView, attribute: .Width, relatedBy: .Equal, toItem: sourceView, attribute: .Width, multiplier: 1, constant: 0))

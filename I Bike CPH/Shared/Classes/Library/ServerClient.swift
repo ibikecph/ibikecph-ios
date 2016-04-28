@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 private let bundleVersion = NSBundle.mainBundle().objectForInfoDictionaryKey(String(kCFBundleVersionKey)) as! String
 private let userAgent = "IBikeCPH/\(bundleVersion)/iOS"
@@ -134,13 +135,13 @@ extension String {
         var newString = self
         for (key, value) in parameters {
             if let string = value.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
-                newString = stringByAddingUrlParameter(key: key, value: string)
+                newString = stringByAddingUrlParameter(key, value: string)
             }
         }
         return newString
     }
     
-    func stringByAddingUrlParameter(#key: String, value: String) -> String {
+    func stringByAddingUrlParameter(key: String, value: String) -> String {
         let first = !(self as NSString).containsString("?")
         var newString = self
         newString += first ? "?" : "&"

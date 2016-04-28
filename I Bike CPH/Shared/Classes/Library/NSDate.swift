@@ -37,7 +37,7 @@ public extension NSDate {
         case Other(Int)
     }
     
-    func relativeDay(#fromDate : NSDate) -> Int {
+    func relativeDay(fromDate : NSDate) -> Int {
         let calendar = NSCalendar.currentCalendar()
         let unitFlags: NSCalendarUnit = .CalendarUnitDay
         let fromDate = fromDate.withComponents(hour: 12, minute: 0, second: 0)!

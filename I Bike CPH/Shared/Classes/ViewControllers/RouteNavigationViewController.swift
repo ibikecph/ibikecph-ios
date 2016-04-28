@@ -112,7 +112,7 @@ class RouteNavigationViewController: MapViewController {
         NotificationCenter.unobserve(self)
     }
     
-    private func updateUI(#zoom: Bool) {
+    private func updateUI(zoom: Bool) {
         updateRouteUI(zoom: zoom)
         // Directions
         updateTurnInstructions()
@@ -120,7 +120,7 @@ class RouteNavigationViewController: MapViewController {
         updateStats()
     }
 
-    private func updateRouteUI(#zoom: Bool) {
+    private func updateRouteUI(zoom: Bool) {
         mapView.removeAnnotations(routeAnnotations)
         routeAnnotations = [Annotation]()
         if let routeComposite = routeComposite
@@ -216,7 +216,7 @@ extension RouteNavigationViewController: SMRouteDelegate {
             case .Single(_): return
             case .Multiple(let routes): //  Go to next route if route contains more subroutes
                 if routeComposite.currentRouteIndex + 1 < routes.count {
-                    println("Going to next route segment")
+                    print("Going to next route segment")
                     self.routeComposite?.currentRoute?.delegate = nil
                     self.routeComposite?.currentRouteIndex++
                     self.routeComposite?.currentRoute?.delegate = self
@@ -227,7 +227,7 @@ extension RouteNavigationViewController: SMRouteDelegate {
         }
     }
     func updateRoute() {
-        println("Found new route")
+        print("Found new route")
         updateUI(zoom: false)
     }
     func startRoute(route: SMRoute!) {
@@ -240,7 +240,7 @@ extension RouteNavigationViewController: SMRouteDelegate {
         
     }
     func routeRecalculationStarted() {
-        println("Recalculating")
+        print("Recalculating")
     }
     
     func routeRecalculationDone() {
