@@ -25,11 +25,12 @@ RLM_ASSUME_NONNULL_BEGIN
 @class RLMSchema;
 @class RLMObjectSchema;
 
+/// :nodoc:
 @interface RLMObjectBase : NSObject
 
 @property (nonatomic, readonly, getter = isInvalidated) BOOL invalidated;
 
-- (instancetype)init;
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 + (NSString *)className;
 

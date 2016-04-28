@@ -26,9 +26,9 @@ PODS:
   - ORStackView (3.0.1):
     - FLKAutoLayout (~> 0.2)
   - PSTAlertController (1.1.0)
-  - Realm (0.95.0):
-    - Realm/Headers (= 0.95.0)
-  - Realm/Headers (0.95.0)
+  - Realm (0.99.1):
+    - Realm/Headers (= 0.99.1)
+  - Realm/Headers (0.99.1)
   - Reveal-iOS-SDK (1.6.2)
   - SMCalloutView (2.0)
   - SwiftyJSON (2.3.2)
@@ -41,13 +41,13 @@ DEPENDENCIES:
   - Fabric (~> 1.6.3)
   - GoogleAnalytics-iOS-SDK (~> 3.10)
   - Mapbox-iOS-SDK (= 1.6.0)
-  - NibDesignable
+  - NibDesignable (~> 2.3)
   - OCMockito (~> 1.0)
   - ORStackView (~> 3.0)
   - PSTAlertController (= 1.1.0)
-  - Realm (= 0.95.0)
+  - Realm (~> 0.99.0)
   - Reveal-iOS-SDK
-  - SwiftyJSON
+  - SwiftyJSON (~> 2.3)
   - TTTAttributedLabel (~> 1.13)
   - UIImage-Categories (~> 1.0)
 
@@ -66,7 +66,7 @@ SPEC CHECKSUMS:
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   ORStackView: a1bb52748cd0ae29891c140baf22ff8972fb363c
   PSTAlertController: cb21afcfa76c3229feec7db044afd4f60dab5892
-  Realm: bbb171b96728ea136ed5cd354dca2a3d6529923c
+  Realm: 522a0cc8e1f8755ee56d7dc16ca0fc380d045766
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   SMCalloutView: f758edd824b18bf4f42de00df1e299861a2d1950
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a

@@ -18,47 +18,37 @@
 
 #import <Realm/RLMRealm.h>
 
-@class RLMFastEnumerator, RLMNotifier;
+@class RLMFastEnumerator;
 
 // Disable syncing files to disk. Cannot be re-enabled. Use only for tests.
 FOUNDATION_EXTERN void RLMDisableSyncToDisk();
 
 FOUNDATION_EXTERN NSData *RLMRealmValidatedEncryptionKey(NSData *key);
 
-FOUNDATION_EXTERN void RLMRealmSetEncryptionKeyForPath(NSData *encryptionKey, NSString *path);
-
-FOUNDATION_EXTERN void RLMRealmSetSchemaVersionForPath(uint64_t version, NSString *path, RLMMigrationBlock migrationBlock);
-
-FOUNDATION_EXTERN void RLMRealmAddPathSettingsToConfiguration(RLMRealmConfiguration *configuration);
+// Translate an in-flight exception resulting from opening a SharedGroup to
+// an NSError or NSException (if error is nil)
+void RLMRealmTranslateException(NSError **error);
 
 // RLMRealm private members
-@interface RLMRealm () {
-    @public
-    // expose ivar to to avoid objc messages in accessors
-    BOOL _inWriteTransaction;
-    mach_port_t _threadID;
-}
+@interface RLMRealm ()
 
 @property (nonatomic, readonly) BOOL dynamic;
 @property (nonatomic, readwrite) RLMSchema *schema;
-@property (nonatomic, strong) RLMNotifier *notifier;
 
 + (void)resetRealmState;
-
-- (instancetype)initWithPath:(NSString *)path key:(NSData *)key readOnly:(BOOL)readonly inMemory:(BOOL)inMemory dynamic:(BOOL)dynamic error:(NSError **)error;
 
 /**
  This method is useful only in specialized circumstances, for example, when opening Realm files
  retrieved externally that contain a different schema than defined in your application.
  If you are simply building an app on Realm you should consider using:
- [defaultRealm]([RLMRealm defaultRealm]) or [realmWithPath:]([RLMRealm realmWithPath:])
+ [defaultRealm]([RLMRealm defaultRealm]) or [realmWithURL:]([RLMRealm realmWithURL:])
  
  Obtains an `RLMRealm` instance with persistence to a specific file path with
  options.
  
  @warning This method is useful only in specialized circumstances.
  
- @param path         Path to the file you want the data saved in.
+ @param fileURL      Local URL to the file you want the data saved in.
  @param key          64-byte key to use to encrypt the data.
  @param readonly     `BOOL` indicating if this Realm is read-only (must use for read-only files)
  @param inMemory     `BOOL` indicating if this Realm is in-memory
@@ -71,19 +61,26 @@ FOUNDATION_EXTERN void RLMRealmAddPathSettingsToConfiguration(RLMRealmConfigurat
  @return An `RLMRealm` instance.
  
  @see RLMRealm defaultRealm
- @see RLMRealm realmWithPath:
- @see RLMRealm realmWithPath:readOnly:error:
- @see RLMRealm realmWithPath:encryptionKey:readOnly:error:
+ @see RLMRealm realmWithURL:
+ @see RLMRealm realmWithURL:readOnly:error:
+ @see RLMRealm realmWithURL:encryptionKey:readOnly:error:
  */
-+ (instancetype)realmWithPath:(NSString *)path
-                          key:(NSData *)key
-                     readOnly:(BOOL)readonly
-                     inMemory:(BOOL)inMemory
-                      dynamic:(BOOL)dynamic
-                       schema:(RLMSchema *)customSchema
-                        error:(NSError **)outError;
++ (instancetype)realmWithURL:(NSURL *)fileURL
+                         key:(NSData *)key
+                    readOnly:(BOOL)readonly
+                    inMemory:(BOOL)inMemory
+                     dynamic:(BOOL)dynamic
+                      schema:(RLMSchema *)customSchema
+                       error:(NSError **)outError;
 
 - (void)registerEnumerator:(RLMFastEnumerator *)enumerator;
 - (void)unregisterEnumerator:(RLMFastEnumerator *)enumerator;
+- (void)detachAllEnumerators;
+
+- (void)sendNotifications:(NSString *)notification;
+- (void)verifyThread;
+- (void)verifyNotificationsAreSupported;
+
++ (NSString *)writeableTemporaryPathForFile:(NSString *)fileName;
 
 @end

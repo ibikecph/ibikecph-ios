@@ -24,8 +24,17 @@ RLM_ASSUME_NONNULL_BEGIN
 /**
  An `RLMRealmConfiguration` is used to describe the different options used to
  create an `RLMRealm` instance.
+
+ `RLMRealmConfiguration` instances are just plain NSObjects, and unlike RLMRealm
+ and RLMObjects can be freely shared between threads as long as you do not
+ mutate them. Creating configuration objects for class subsets (by setting the
+ `objectClasses` property) can be expensive, and so you will normally want to
+ cache and reuse a single configuration object for each distinct configuration
+ that you are using rather than creating a new one each time you open a Realm.
  */
 @interface RLMRealmConfiguration : NSObject<NSCopying>
+
+#pragma mark - Default Configuration
 
 /**
  Returns the default configuration used to create Realms when no other
@@ -42,8 +51,13 @@ RLM_ASSUME_NONNULL_BEGIN
  */
 + (void)setDefaultConfiguration:(RLMRealmConfiguration *)configuration;
 
+#pragma mark - Properties
+
+/// The local URL to the realm file. Mutually exclusive with `inMemoryIdentifier`.
+@property (nonatomic, copy, nullable) NSURL *fileURL;
+
 /// The path to the realm file. Mutually exclusive with `inMemoryIdentifier`.
-@property (nonatomic, copy, nullable) NSString *path;
+@property (nonatomic, copy, nullable) NSString *path DEPRECATED_MSG_ATTRIBUTE("use fileURL");
 
 /// A string used to identify a particular in-memory Realm. Mutually exclusive with `path`.
 @property (nonatomic, copy, nullable) NSString *inMemoryIdentifier;

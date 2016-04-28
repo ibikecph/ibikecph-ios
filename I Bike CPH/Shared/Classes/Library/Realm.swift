@@ -81,8 +81,12 @@ var compressingRealm = false
 extension RLMRealm {
     
     class func deleteDefaultRealmFile() {
-        if let path = RLMRealmConfiguration.defaultConfiguration().path {
-            NSFileManager.defaultManager().removeItemAtPath(path, error: nil)
+        if let fileURL = RLMRealmConfiguration.defaultConfiguration().fileURL {
+            do {
+                try NSFileManager.defaultManager().removeItemAtURL(fileURL)
+            } catch {
+                print("Couldn't delete Realm file!")
+            }
         }
     }
     
@@ -91,21 +95,26 @@ extension RLMRealm {
     }
     
     class func removeNotification(token: RLMNotificationToken) {
-        return RLMRealm.defaultRealm().removeNotification(token)
+        token.stop()
     }
     
     class func beginWriteTransaction() {
         return RLMRealm.defaultRealm().beginWriteTransaction()
     }
     class func commitWriteTransaction() {
-        return RLMRealm.defaultRealm().commitWriteTransaction()
+        do {
+            try RLMRealm.defaultRealm().commitWriteTransaction()
+        } catch {
+            print("Could not commit Realm write transaction!")
+        }
     }
     
     class func compress(ifNecessary: Bool = true) {
-        if let defaultPath = RLMRealmConfiguration.defaultConfiguration().path {
+        if let defaultFileURL = RLMRealmConfiguration.defaultConfiguration().fileURL,
+               defaultPath = defaultFileURL.path {
             var sizeError: NSError? = nil
             if let
-                attributes = NSFileManager.defaultManager().attributesOfItemAtPath(defaultPath, error: &sizeError),
+                attributes = try? NSFileManager.defaultManager().attributesOfItemAtPath(defaultPath),
                 size = attributes[NSFileSize] as? Int
                 where size < 100*1024*1024 // 100 mb
             {
