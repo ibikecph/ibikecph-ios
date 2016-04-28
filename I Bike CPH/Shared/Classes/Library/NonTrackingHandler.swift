@@ -11,7 +11,7 @@ import CoreMotion
 
 let nonTrackingHandler = NonTrackingHandler()
 
-@objc class NonTrackingHandler {
+class NonTrackingHandler {
     
     var isCurrentlyRouting: Bool = false
 

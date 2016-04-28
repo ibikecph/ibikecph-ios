@@ -33,7 +33,7 @@ struct RouteComposite {
         case .Single(let route):
             return Double(route.distanceLeft)
         case .Multiple(let routes):
-            let bikeRoutes = routes.filter { return SMRouteTypeBike.value == $0.routeType.value }
+            let bikeRoutes = routes.filter { return SMRouteTypeBike == $0.routeType }
             return bikeRoutes.map { Double($0.distanceLeft) }.reduce(0) { $0 + $1 }
         }
     }
@@ -58,17 +58,17 @@ struct RouteComposite {
         switch composite {
         case .Multiple(let routes):
 
-            for (index, route) in enumerate(routes) {
+            for (index, route) in routes.enumerate() {
                 // If route is public, finish route earlier
-                if route.routeType.value != SMRouteTypeBike.value &&
-                    route.routeType.value != SMRouteTypeWalk.value {
+                if route.routeType != SMRouteTypeBike &&
+                    route.routeType != SMRouteTypeWalk {
                         route.maxMarginRadius = CGFloat(MAX_DISTANCE_FOR_PUBLIC_TRANSPORT)
                 }
                 // If next route is public, finish current route earlier
                 if index+1 < routes.count {
                     let nextRoute = routes[index+1]
-                    if nextRoute.routeType.value != SMRouteTypeBike.value &&
-                        nextRoute.routeType.value != SMRouteTypeWalk.value {
+                    if nextRoute.routeType != SMRouteTypeBike &&
+                        nextRoute.routeType != SMRouteTypeWalk {
                         route.maxMarginRadius = CGFloat(MAX_DISTANCE_FOR_PUBLIC_TRANSPORT)
                     }
                 }

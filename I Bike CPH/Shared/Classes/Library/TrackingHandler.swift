@@ -12,7 +12,7 @@ import CoreMotion
 
 let trackingHandler = TrackingHandler()
 
-@objc class TrackingHandler {
+class TrackingHandler {
     var isCurrentlyRouting: Bool = false
     
     private var currentTrack: Track?

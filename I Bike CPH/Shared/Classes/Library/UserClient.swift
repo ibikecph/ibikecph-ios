@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-@objc class UserClient: ServerClient {
+class UserClient: ServerClient {
     static let instance = UserClient()
     
     private let baseUrl = SMRouteSettings.sharedInstance().api_base_url

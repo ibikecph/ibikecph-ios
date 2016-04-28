@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 
 struct UserTerms {
     
@@ -22,7 +22,7 @@ struct UserTerms {
             versionString = json["version"].string,
             humanReadableText = json[humanReadableKey].string
         {
-            self.version = versionString.toInt() ?? 0
+            self.version = Int(versionString) ?? 0
             self.humanReadableText = humanReadableText
             return
         }

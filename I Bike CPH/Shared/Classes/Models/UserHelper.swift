@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc class UserHelper {
+class UserHelper {
     
     enum EnableTrackingOptions {
         case Allowed, LacksTrackToken, NotLoggedIn
