@@ -64,7 +64,7 @@ class ServerClient {
         }
     }
     
-    func upload(data: NSData, var toPath path: String, configureRequest: (NSMutableURLRequest -> NSMutableURLRequest)? = nil, completion: (ServerResult) -> ()) {
+    func upload(data: NSData, toPath path: String, configureRequest: (NSMutableURLRequest -> NSMutableURLRequest)? = nil, completion: (ServerResult) -> ()) {
         if let url = NSURL(string: path.stringByAddingUrlAuthToken()) {
             var request = NSMutableURLRequest(URL: url)
             request.addDefaultHeaders()

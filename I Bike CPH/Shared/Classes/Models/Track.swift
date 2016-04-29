@@ -7,7 +7,7 @@
 //
 
 import CoreLocation
-
+import SwiftyJSON
 
 class Track: RLMObject {
     dynamic var activity: TrackActivity = TrackActivity()
@@ -50,7 +50,11 @@ extension Track {
         recalculateDuration()
         recalculateLength()
         if transact {
-            realm.commitWriteTransaction()
+            do {
+                try realm.commitWriteTransaction()
+            } catch {
+                print("Could not commit Realm write transaction!")
+            }
         }
     }
     
@@ -68,7 +72,11 @@ extension Track {
         }
         deleteFromRealm()
         if transact {
-            realm.commitWriteTransaction()
+            do {
+                try realm.commitWriteTransaction()
+            } catch {
+                print("Could not commit Realm write transaction!")
+            }
         }
     }
     
@@ -81,7 +89,7 @@ extension Track {
     private func recalculateLength() {
         var newLength: Double = 0
         let locations = locationsSorted()
-        for (index, location) in enumerate(locations) {
+        for (index, location) in locations.enumerate() {
             if index + 1 >= Int(locations.count) {
                 continue
             }
@@ -179,7 +187,7 @@ extension Track {
     func speeds() -> [Double] {
         var speeds = [Double]()
         let locations = locationsSorted()
-        for (index, location) in enumerate(locations) {
+        for (index, location) in locations.enumerate() {
             if index + 1 >= Int(locations.count) {
                 continue
             }
@@ -218,7 +226,7 @@ extension Track {
     */
     func topSpeed() -> Double {
         let speeds = smoothSpeeds()
-        return speeds.count > 0 ? maxElement(speeds) : 0
+        return speeds.count > 0 ? speeds.maxElement() ?? 0 : 0
     }
     
     func geocode(synchronous: Bool = false, completion:((Bool) -> ())? = nil) {
@@ -243,7 +251,11 @@ extension Track {
                         succeeded = true
                     }
                     if transact {
-                        realm.commitWriteTransaction()
+                        do {
+                            try realm.commitWriteTransaction()
+                        } catch {
+                            print("Could not commit Realm write transaction!")
+                        }
                     }
                     if !succeeded {
                         return // Only proceed if "start" was set
@@ -270,7 +282,11 @@ extension Track {
                                 completion?(false)
                             }
                             if transact {
-                                realm.commitWriteTransaction()
+                                do {
+                                    try realm.commitWriteTransaction()
+                                } catch {
+                                    print("Could not commit Realm write transaction!")
+                                }
                             }
                         }
                     }

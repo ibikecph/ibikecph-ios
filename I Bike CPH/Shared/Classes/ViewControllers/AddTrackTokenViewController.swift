@@ -41,7 +41,7 @@ class AddTrackTokenViewController: SMTranslatedViewController {
             }
             UserClient.instance.userData { result in
                 switch result {
-                case .Success(let name, var image):
+                case .Success(let name, let image):
                     self.profileLabel.text = name
                     self.imageView.image = image
                 default: break
@@ -110,9 +110,7 @@ class AddTrackTokenViewController: SMTranslatedViewController {
             return
         }
         // Password has some length
-        let password = passwordLabel.text
-        if password.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 {
-            // Show error
+        guard let password = passwordLabel.text where password.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 0 else {
             let alertView = UIAlertView(title: "Error".localized, message: "register_error_fields".localized, delegate: nil, cancelButtonTitle: "OK".localized)
             alertView.show()
             return
@@ -125,7 +123,7 @@ class AddTrackTokenViewController: SMTranslatedViewController {
                 switch result {
                 case .Success:
                     self.dismiss()
-                case .Other(let result):
+                case .Other(_):
                     let alertView = UIAlertView(title: "Error".localized, message: "network_error_text".localized, delegate: nil, cancelButtonTitle: "OK".localized)
                     alertView.show()
                 }

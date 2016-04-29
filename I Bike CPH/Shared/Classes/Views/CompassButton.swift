@@ -50,7 +50,7 @@ class CompassButton: UIButton {
         highlight(false)
     }
     
-    func highlight(_ highlight: Bool = false) {
+    func highlight(highlight: Bool = false) {
         shadow(highlight)
     }
     

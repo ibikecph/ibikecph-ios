@@ -52,7 +52,7 @@ struct Milestone {
 
     func shouldPresent(forValue value: Int) -> Response {
         let nextMilestone = nextMilestoneToPresentToUser()
-        if value >= nextMilestone, let index = find(values, nextMilestone) {
+        if value >= nextMilestone, let index = values.indexOf(nextMilestone) {
             let reducedValue = nextMilestone / valueDividerForDescription
             let description = String(format: descriptions[index].localized, reducedValue)
             setLatestPresentedValue(value)
@@ -150,8 +150,8 @@ class StatsNotificationHandler {
                 // Update notification with latest statistics
                 let durationThisWeek = round(BikeStatistics.durationThisWeek()/60)*60 // Round to minutes
                 let calendar = NSCalendar.currentCalendar()
-                let unitFlags: NSCalendarUnit = .CalendarUnitHour | .CalendarUnitMinute
-                let components = calendar.components(unitFlags, fromDate: NSDate(), toDate: NSDate(timeIntervalSinceNow: durationThisWeek), options: nil)
+                let unitFlags: NSCalendarUnit = [.Hour, .Minute]
+                let components = calendar.components(unitFlags, fromDate: NSDate(), toDate: NSDate(timeIntervalSinceNow: durationThisWeek), options: NSCalendarOptions(rawValue: 0))
                 let description = String(format: "weekly_status_description".localized, BikeStatistics.distanceThisWeek()/1000, components.hour, components.minute)
                 Notifications.scheduleLocalNotification(description, fireDate: nextSundayAt18)
             }

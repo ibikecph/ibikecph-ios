@@ -288,5 +288,5 @@ public extension qos_class_t {
 
 // Binary operator for qos_class_t allows for comparison in switch-statements
 func ~=(lhs: qos_class_t, rhs: qos_class_t) -> Bool {
-    return lhs.value ~= rhs.value
+    return lhs ~= rhs
 }

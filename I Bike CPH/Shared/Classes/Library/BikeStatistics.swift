@@ -112,7 +112,7 @@ class BikeStatistics {
         if let
             endOfToday = now.endOfDay(),
             nextSunday = now.nextWeekday(1, fromDate: endOfToday),
-            thisMonday = NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitWeekOfYear, value: -1, toDate: nextSunday, options: nil)
+            thisMonday = NSCalendar.currentCalendar().dateByAddingUnit(.WeekOfYear, value: -1, toDate: nextSunday, options: NSCalendarOptions(rawValue: 0))
         {
             return tracks().objectsWhere("endTimestamp BETWEEN %@", [thisMonday.timeIntervalSince1970, nextSunday.timeIntervalSince1970])
         }

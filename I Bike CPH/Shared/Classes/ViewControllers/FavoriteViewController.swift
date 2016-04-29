@@ -114,7 +114,6 @@ class FavoriteViewController: SMTranslatedViewController {
             return
         }
         if let item = favoriteItem {
-            let add = item.address
             addressTextField.text = item.address
             nameTextField.text = item.name
             nameLabel.hidden = false
@@ -160,7 +159,7 @@ class FavoriteViewController: SMTranslatedViewController {
     func save() {
         let hasContent = addressTextField.text != nil && nameTextField.text != nil
         if !hasContent {
-            println("No content to save")
+            print("No content to save")
             return
         }
         if creating {
@@ -168,7 +167,7 @@ class FavoriteViewController: SMTranslatedViewController {
                 SMFavoritesUtil.instance().addFavoriteToServer(item)
                 creating = false
             } else {
-                println("No item to save")
+                print("No item to save")
                 return
             }
         } else {
@@ -194,7 +193,7 @@ extension FavoriteViewController: UITableViewDataSource {
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
         let typeItem = typeItems[indexPath.row]
         
-        cell.configure(text: typeItem.title, icon: typeItem.iconImage)
+        cell.configure(typeItem.title, icon: typeItem.iconImage)
         cell.accessoryType = favoriteItem?.origin == typeItem.type ? .Checkmark : .None
 
         return cell
@@ -221,7 +220,7 @@ extension FavoriteViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         if textField == nameTextField {
-            favoriteItem?.name = nameTextField.text
+            favoriteItem?.name = nameTextField.text ?? ""
             save()
         }
         updateViews()

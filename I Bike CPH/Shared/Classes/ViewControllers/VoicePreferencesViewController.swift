@@ -89,13 +89,13 @@ extension VoicePreferencesViewController: UITableViewDataSource {
         if let item = item as? VoiceSwitchItem {
             tableView.cellWithIdentifier(reuseIdentifier: cellSwitchID)
             let cell = tableView.dequeueReusableCellWithIdentifier(cellSwitchID, forIndexPath: indexPath) as! IconLabelSwitchTableViewCell
-            cell.configure(text: item.title, icon: UIImage(named: item.iconImageName))
+            cell.configure(item.title, icon: UIImage(named: item.iconImageName))
             cell.switcher.on = item.on
             cell.switchChanged = { on in item.switchAction(self, on) }
             return cell
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! IconLabelTableViewCell
-        cell.configure(text: item.title, icon: UIImage(named: item.iconImageName))
+        cell.configure(item.title, icon: UIImage(named: item.iconImageName))
         return cell
     }
 }

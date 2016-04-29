@@ -22,7 +22,7 @@ class HourMinuteFormatter {
     }
     
     func string(seconds: NSTimeInterval) -> String {
-        let (hours, minutes) = hoursAndMinutes(seconds: seconds)
+        let (hours, minutes) = hoursAndMinutes(seconds)
         let description = String(format: "hour_minute_format".localized, hours, minutes)
         return description
     }

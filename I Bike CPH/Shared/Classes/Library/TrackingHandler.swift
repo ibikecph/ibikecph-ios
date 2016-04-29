@@ -36,7 +36,7 @@ class TrackingHandler {
                 thread.enqueue() { [weak self] in
                     RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
                         if let track = self?.currentTrack where !track.invalidated {
-                            println("Tracking: Add new activity")
+                            print("Tracking: Add new activity")
                             let newActivity = TrackActivity.build(activity)
                             track.activity.deleteFromRealm() // Delete current
                             track.activity = newActivity
@@ -102,13 +102,13 @@ class TrackingHandler {
             self!.thread.enqueue() { [weak self] in
                 RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
                     if let currentTrack = self?.currentTrack where !currentTrack.invalidated && currentTrack.activity.realm != nil && currentTrack.activity.sameActivityTypeAs(cmMotionActivity: activity) {
-                        println("Tracking: New confidence for activity")
+                        print("Tracking: New confidence for activity")
                         // Activity just updated it's confidence
                         currentTrack.activity.confidence = activity.confidence.rawValue
                         return
                     }
                     Async.main {
-                        println("Tracking: Set new activity")
+                        print("Tracking: Set new activity")
                         self?.currentActivity = activity
                     }
                 }
@@ -149,7 +149,7 @@ class TrackingHandler {
     }
     
     func startTracking() {
-        println("Start tracking")
+        print("Start tracking")
         
         // Start location manager
         SMLocationManager.sharedInstance().startUpdating()
@@ -157,7 +157,7 @@ class TrackingHandler {
         // Initialize track
         thread.enqueue() { [weak self] in
             RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
-                println("Tracking: New track")
+                print("Tracking: New track")
                 self?.currentTrack = Track()
                 self?.currentTrack!.addToRealm()
             }
@@ -180,7 +180,7 @@ class TrackingHandler {
                     currentTrack.recalculate()
                 }
             }
-            println("Tracking: End track")
+            print("Tracking: End track")
             self?.currentTrack = nil
             
             TracksHandler.setNeedsProcessData()

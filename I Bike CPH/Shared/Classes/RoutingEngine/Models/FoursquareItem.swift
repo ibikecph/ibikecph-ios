@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreLocation
-
+import SwiftyJSON
 
 @objc class FoursquareItem: NSObject, SearchListItem {
     

@@ -31,7 +31,6 @@ class UserClient: ServerClient {
     
     func hasTrackToken(completion: (HasTokenResult) -> ()) {
         let path = baseUrl + "/users/has_password"
-        var error: NSError?
         
         request(path, configureRequest: { theRequest in
             theRequest.HTTPMethod = "POST"
@@ -117,7 +116,6 @@ class UserClient: ServerClient {
     }
 }
 
-
 extension UserClient {
     @objc func hasTrackTokenObjc(completion: (success: Bool, error: NSError?) -> ()) {
         hasTrackToken { result in
@@ -125,7 +123,7 @@ extension UserClient {
             case .Success(let hasToken): completion(success: hasToken, error: nil)
             case .Other(let otherResult):
                 switch otherResult {
-                case .SuccessJSON(let json, let statusCode):
+                case .SuccessJSON(let json, let _):
                     let message = json["info"].stringValue
                     completion(success: false, error: NSError(domain: "UserClient", code: 0, userInfo: [NSLocalizedDescriptionKey : message]))
                 case .Failed(let error):

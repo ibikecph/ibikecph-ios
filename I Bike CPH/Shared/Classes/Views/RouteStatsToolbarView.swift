@@ -26,7 +26,7 @@ class RouteStatsToolbarView: ToolbarView {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        updateTo(distance: 0, duration: 0, eta: NSDate())
+        updateTo(0, duration: 0, eta: NSDate())
     }
     
     func updateToRoute(routeComposite: RouteComposite) {
@@ -40,7 +40,7 @@ class RouteStatsToolbarView: ToolbarView {
                 let currentRoute = routes[current]
                 var duration: NSTimeInterval = 0
                 // Current route
-                let bikeOrWalk = SMRouteTypeBike.value == currentRoute.routeType.value || SMRouteTypeWalk.value == currentRoute.routeType.value
+                let bikeOrWalk = SMRouteTypeBike == currentRoute.routeType || SMRouteTypeWalk == currentRoute.routeType
                 if bikeOrWalk,
                     let endDate = currentRoute.endDate {
                     duration += max(endDate.timeIntervalSinceNow, 0)
@@ -56,12 +56,12 @@ class RouteStatsToolbarView: ToolbarView {
             }
         }()
         let eta = NSDate(timeIntervalSinceNow: durationLeft)
-        updateTo(distance: distanceLeft, duration: durationLeft, eta: eta)
+        updateTo(distanceLeft, duration: durationLeft, eta: eta)
     }
     
     func updateTo(distance: Double, duration: Double, eta: NSDate?) {
-        distanceLabel.text = distanceFormatter.string(meters: distance)
-        durationLabel.text = hourMinuteFormatter.string(seconds: duration)
+        distanceLabel.text = distanceFormatter.string(distance)
+        durationLabel.text = hourMinuteFormatter.string(duration)
         arrivalTime.text = eta == nil ? "" : dateFormatter.stringFromDate(eta!)
     }
 }

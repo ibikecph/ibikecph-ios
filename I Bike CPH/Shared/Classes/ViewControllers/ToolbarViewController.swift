@@ -31,7 +31,7 @@ class ToolbarViewController: SMTranslatedViewController {
         // Add new toolbar
         toolbarView = new
         toolbarContainer.addSubview(new)
-        new.setTranslatesAutoresizingMaskIntoConstraints(false)
+        new.translatesAutoresizingMaskIntoConstraints = false
         toolbarContainer.addConstraints([
             NSLayoutConstraint(item: new, attribute: .Top, relatedBy: .Equal, toItem: toolbarContainer, attribute: .Top, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: new, attribute: .Left, relatedBy: .Equal, toItem: toolbarContainer, attribute: .Left, multiplier: 1, constant: 0),

@@ -41,7 +41,7 @@ class MainMapViewController: MapViewController {
             self?.checkUserTerms()
         })
         observerTokens.append(NotificationCenter.observe("UserRegistered") { [weak self] notification in
-            self?.checkUserTerms(forceAccept: true)
+            self?.checkUserTerms(true)
         })
         
         // Follow user if possible
@@ -104,7 +104,7 @@ class MainMapViewController: MapViewController {
         super.viewDidAppear(animated)
         // Update tracking information
         if Settings.sharedInstance.tracking.on {
-            TracksHandler.setNeedsProcessData(userInitiated: true)
+            TracksHandler.setNeedsProcessData(true)
         }
         
         #if TRACKING_ENABLED
@@ -161,9 +161,9 @@ class MainMapViewController: MapViewController {
                         self.showUserTerms()
                     }
                 case .Success(_, _):
-                    println("No new user terms")
+                    print("No new user terms")
                 default:
-                    println("Failed to get user terms: \(result)")
+                    print("Failed to get user terms: \(result)")
             }
         }
     }
