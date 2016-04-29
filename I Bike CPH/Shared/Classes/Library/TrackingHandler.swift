@@ -34,13 +34,17 @@ class TrackingHandler {
                 }
                 // Add activity to current track
                 thread.enqueue() { [weak self] in
-                    RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
-                        if let track = self?.currentTrack where !track.invalidated {
-                            print("Tracking: Add new activity")
-                            let newActivity = TrackActivity.build(activity)
-                            track.activity.deleteFromRealm() // Delete current
-                            track.activity = newActivity
+                    do {
+                        try RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
+                            if let track = self?.currentTrack where !track.invalidated {
+                                print("Tracking: Add new activity")
+                                let newActivity = TrackActivity.build(activity)
+                                track.activity.deleteFromRealm() // Delete current
+                                track.activity = newActivity
+                            }
                         }
+                    } catch let error as NSError {
+                       print("Realm transaction failed: \(error.description)")
                     }
                 }
             } else {
@@ -100,17 +104,21 @@ class TrackingHandler {
         }
         motionDetector.start { [weak self] activity in
             self!.thread.enqueue() { [weak self] in
-                RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
-                    if let currentTrack = self?.currentTrack where !currentTrack.invalidated && currentTrack.activity.realm != nil && currentTrack.activity.sameActivityTypeAs(cmMotionActivity: activity) {
-                        print("Tracking: New confidence for activity")
-                        // Activity just updated it's confidence
-                        currentTrack.activity.confidence = activity.confidence.rawValue
-                        return
+                do {
+                    try RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
+                        if let currentTrack = self?.currentTrack where !currentTrack.invalidated && currentTrack.activity.realm != nil && currentTrack.activity.sameActivityTypeAs(cmMotionActivity: activity) {
+                            print("Tracking: New confidence for activity")
+                            // Activity just updated it's confidence
+                            currentTrack.activity.confidence = activity.confidence.rawValue
+                            return
+                        }
+                        Async.main {
+                            print("Tracking: Set new activity")
+                            self?.currentActivity = activity
+                        }
                     }
-                    Async.main {
-                        print("Tracking: Set new activity")
-                        self?.currentActivity = activity
-                    }
+                } catch let error as NSError {
+                   print("Realm transaction failed: \(error.description)")
                 }
             }
         }
@@ -156,10 +164,14 @@ class TrackingHandler {
         
         // Initialize track
         thread.enqueue() { [weak self] in
-            RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
-                print("Tracking: New track")
-                self?.currentTrack = Track()
-                self?.currentTrack!.addToRealm()
+            do {
+                try RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
+                    print("Tracking: New track")
+                    self?.currentTrack = Track()
+                    self?.currentTrack!.addToRealm()
+                }
+            } catch let error as NSError {
+               print("Realm transaction failed: \(error.description)")
             }
         }
     }
@@ -175,15 +187,19 @@ class TrackingHandler {
         
         thread.enqueue() { [weak self] in
             // Stop track
-            RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
-                if let currentTrack = self?.currentTrack where !currentTrack.invalidated {
-                    currentTrack.recalculate()
+            do {
+                try RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
+                    if let currentTrack = self?.currentTrack where !currentTrack.invalidated {
+                        currentTrack.recalculate()
+                    }
                 }
+                print("Tracking: End track")
+                self?.currentTrack = nil
+                
+                TracksHandler.setNeedsProcessData()
+            } catch let error as NSError {
+               print("Realm transaction failed: \(error.description)")
             }
-            print("Tracking: End track")
-            self?.currentTrack = nil
-            
-            TracksHandler.setNeedsProcessData()
         }
     }
     

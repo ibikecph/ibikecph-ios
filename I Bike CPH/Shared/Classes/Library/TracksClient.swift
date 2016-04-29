@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class TracksClient: ServerClient {
     static let sharedInstance = TracksClient()
@@ -32,8 +33,12 @@ class TracksClient: ServerClient {
     
     func upload(track: Track, completion: (UploadResult) -> ()) {
         let path = baseUrl + "/tracks"
-        var error: NSError?
-        if let data = track.jsonForServerUpload()?.rawData(error: &error) {
+        guard let serverUpload = track.jsonForServerUpload() else {
+            completion(.Other(ServerResult.Failed(error: NSError(domain: "No JSON for server upload.", code: 0, userInfo: nil))))
+            return
+        }
+        do {
+            let data = try serverUpload.rawData()
             upload(data, toPath: path, configureRequest: { theRequest in
                 theRequest.allowsCellularAccess = false
                 return theRequest
@@ -49,11 +54,11 @@ class TracksClient: ServerClient {
                 }
             }
             return
-        }
-        if let error = error {
+        } catch let error as NSError {
             completion(.Other(ServerResult.Failed(error: error)))
             return
         }
+        // Is this ever reached?!
         completion(.Other(ServerResult.FailedEncodingError))
     }
     

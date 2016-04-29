@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 @objc class OiorestItem: NSObject, SearchListItem {
     

@@ -26,7 +26,7 @@ import CoreLocation
             return SMLocationManager.sharedInstance().lastValidLocation
         }
         set {
-            println("Can't set location on CurrentLocationItem")
+            print("Can't set location on CurrentLocationItem")
         }
     }
     var relevance: Int = 0

@@ -98,15 +98,16 @@ class TrackingViewController: ToolbarViewController {
         }
         
         // Request new data
-        TracksHandler.setNeedsProcessData(userInitiated: true)
+        TracksHandler.setNeedsProcessData(true)
         
         // Check if tracking should be enabled
         if pendingEnableTracking && UserHelper.checkEnableTracking() == .Allowed {
             Settings.sharedInstance.tracking.on = true
-            tableView.beginUpdates()
-            let indexPaths = tableView.indexPathsForVisibleRows()!
-            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
-            tableView.endUpdates()
+            if let indexPaths = tableView.indexPathsForVisibleRows {
+                tableView.beginUpdates()
+                tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+                tableView.endUpdates()
+            }
         } else if pendingEnableTracking && UserHelper.checkEnableTracking() == .LacksTrackToken {
             performSegueWithIdentifier(TrackingViewController.toAddTrackTokenSegue, sender: self)
         } else {
@@ -146,7 +147,7 @@ class TrackingViewController: ToolbarViewController {
         
         if let startDate = BikeStatistics.firstTrackStartDate() {
             sinceLabel.text = "Since".localized + " " + sinceFormatter.stringFromDate(startDate)
-            let totalDays = NSDate().relativeDay(fromDate: startDate) + 1
+            let totalDays = NSDate().relativeDay(startDate) + 1
             let averageDayDistance = BikeStatistics.totalDistance() / Double(totalDays)
             let averageDayCalories = BikeStatistics.kiloCaloriesPerBikedDistance(averageDayDistance)
             calorieLabel.text = numberFormatter.stringFromNumber(averageDayCalories)
@@ -176,7 +177,7 @@ class TrackingViewController: ToolbarViewController {
                     track = track as? Track,
                     date = track.startDate()
                 {
-                    let sameDay = date.relativeDay(fromDate: currentDate) == 0
+                    let sameDay = date.relativeDay(currentDate) == 0
                     if !sameDay {
                         currentDate = date
                         section++
@@ -287,9 +288,9 @@ extension TrackingViewController: UITableViewDataSource {
                             }
                             switch result {
                                 case .Failed(let error):
-                                    println(error.localizedDescription)
+                                    print(error.localizedDescription)
                                 default:
-                                    println("Other upload error \(result)")
+                                    print("Other upload error \(result)")
                             }
                     }
                 }

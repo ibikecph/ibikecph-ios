@@ -41,7 +41,7 @@ extension TurnInstructionsCollectionViewCell {
             distanceLabel.text = timeFormatter.stringFromDate(instruction.routeLineTime)
         } else {
             wayNameLabel.text = instruction.wayName.localized
-            distanceLabel.text = formatDistance(Float(instruction.lengthInMeters))
+            distanceLabel.text = SMRouteUtils.formatDistanceInMeters(Float(instruction.lengthInMeters))
         }
     }
 }

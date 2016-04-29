@@ -59,12 +59,12 @@ class TracksHandler {
         })
         observerTokens.append(NotificationCenter.observe(processedSmallNoticationKey) { [weak self] notification in
             if self?.pendingUserInitiatedProcess ?? false {
-                TracksHandler.setNeedsProcessData(userInitiated: true)
+                TracksHandler.setNeedsProcessData(true)
             }
         })
         observerTokens.append(NotificationCenter.observe(processedGeocodingNoticationKey) { [weak self] notification in
             if self?.pendingUserInitiatedProcess ?? false {
-                TracksHandler.setNeedsProcessData(userInitiated: true)
+                TracksHandler.setNeedsProcessData(true)
             }
         })
     }
@@ -93,12 +93,12 @@ class TracksHandler {
             userInitiated &&
             timeIntervalSinceBig > 60*1 // Allow userInitiated every 1 min
         {
-            sharedInstance.cleanUpBig(asap: true)
+            sharedInstance.cleanUpBig(true)
             sharedInstance.lastProcessedBig = NSDate()
             return
         }
         if timeIntervalSinceBig > 60*60*2 { // Do big stuff every other hour
-            sharedInstance.cleanUpBig(asap: false)
+            sharedInstance.cleanUpBig(false)
             sharedInstance.lastProcessedBig = NSDate()
             return
         }
@@ -265,7 +265,7 @@ class TracksOperation: NSOperation {
     
     /// Add dependency to previous operation in array
     class func addDependencies(operations: [TracksOperation]) {
-        for (index, operation) in enumerate(operations) {
+        for (index, operation) in operations.enumerate() {
             if index + 1 >= operations.count {
                 continue
             }
@@ -281,13 +281,11 @@ class RecalculateTracksOperation: TracksOperation {
     override func main() {
         super.main()
         print("Recalculating tracks")
-//        realm.beginWriteTransaction()
         for track in tracks()  {
             if let track = track as? Track {
                 track.recalculate()
             }
         }
-//        realm.commitWriteTransaction()
         print("Recalculating tracks DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
@@ -303,7 +301,7 @@ class RemoveEmptyTracksOperation: TracksOperation {
         while count < tracksResults.count {
             if let track = tracksResults[count] as? Track {
                 if track.locations.count == 0 {
-                    track.deleteFromRealmWithRelationships(realm: realm)
+                    track.deleteFromRealmWithRelationships(realm)
                     continue
                 }
 // TODO: Remove the uncommented?
@@ -368,7 +366,11 @@ class RemoveUnownedDataOperation: TracksOperation {
                 track.activity.owned = uuid
             }
         }
-        realm.commitWriteTransaction()
+        do {
+            try realm.commitWriteTransaction()
+        } catch {
+            print("Could not commit Realm write transaction!")
+        }
         
         // Delete unowned data
         let unownedLocations = someLocations.objectsWhere("owned != %@", uuid)
@@ -394,7 +396,11 @@ func deleteObjectsInParts(results: RLMResults) {
             realm.beginWriteTransaction()
             let slicedArray = Array(array[i*max..<((i+1)*max)])
             realm.deleteObjects(slicedArray)
-            realm.commitWriteTransaction()
+            do {
+                try realm.commitWriteTransaction()
+            } catch {
+                print("Could not commit Realm write transaction!")
+            }
             print("\(results.count) \(NSDate().timeIntervalSinceDate(date)) .a")
         }
     }
@@ -402,7 +408,11 @@ func deleteObjectsInParts(results: RLMResults) {
         let date = NSDate()
         realm.beginWriteTransaction()
         realm.deleteObjects(results.toArray(RLMObject.self))
-        realm.commitWriteTransaction()
+        do {
+            try realm.commitWriteTransaction()
+        } catch {
+            print("Could not commit Realm write transaction!")
+        }
         print("\(results.count) \(NSDate().timeIntervalSinceDate(date)) .b")
     }
 }
@@ -431,12 +441,12 @@ class InferBikingFromSpeedOperation: TracksOperation {
                     continue
                 }
                 if let minSpeedLimit = minSpeedLimit {
-                    if !track.speeding(speedLimit: minSpeedLimit, minLength: minLength) {
+                    if !track.speeding(minSpeedLimit, minLength: minLength) {
                         continue
                     }
                 }
                 if let maxSpeedLimit = maxSpeedLimit {
-                    if !track.slow(speedLimit: maxSpeedLimit, minLength: minLength) {
+                    if !track.slow(maxSpeedLimit, minLength: minLength) {
                         continue
                     }
                 }
@@ -447,7 +457,11 @@ class InferBikingFromSpeedOperation: TracksOperation {
                     track.activity.walking = false
                     track.activity.cycling = true // Force cycling
                     track.activity.stationary = false // Force non-stationary
-                    realm.commitWriteTransaction()
+                    do {
+                        try realm.commitWriteTransaction()
+                    } catch {
+                        print("Could not commit Realm write transaction!")
+                    }
                     print("Infered biking \(track.startDate())")
                 }
             }
@@ -486,15 +500,15 @@ class ClearLeftOversOperation: TracksOperation {
                     }
                 }
                 // Very slow
-                let verySlow = track.slow(speedLimit: 2, minLength: 0.020)
+                let verySlow = track.slow(2, minLength: 0.020)
                 if verySlow {
                     print("Deleted slow: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
                 // Somewhat slow + low accuracy
-                let someWhatSlow = track.slow(speedLimit: 5, minLength: 0.020)
-                let lowAccuracy = track.lowAccuracy(minAccuracy: 50)
+                let someWhatSlow = track.slow(5, minLength: 0.020)
+                let lowAccuracy = track.lowAccuracy(50)
                 if someWhatSlow && lowAccuracy {
                     print("Deleted low accuracy: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
@@ -509,14 +523,14 @@ class ClearLeftOversOperation: TracksOperation {
                 }
                 
                 // Somewhat slow + long distance
-                let someWhatSlowLongDistance = track.slow(speedLimit: 5, minLength: 0.200)
+                let someWhatSlowLongDistance = track.slow(5, minLength: 0.200)
                 if someWhatSlowLongDistance {
                     print("Deleted someWhatSlowLongDistance: \(track.startDate())")
                     track.deleteFromRealmWithRelationships()
                     continue
                 }
                 // Very fast
-                let veryFast = track.speeding(speedLimit: 50, minLength: 0.200)
+                let veryFast = track.speeding(50, minLength: 0.200)
                 if veryFast {
                     print("Deleted fast: \(track.startDate) - \(track.endDate())")
                     track.deleteFromRealmWithRelationships()
@@ -524,7 +538,6 @@ class ClearLeftOversOperation: TracksOperation {
                 }
                 // Odd flight distance (for stationary device with fluctuating data)
                 if let flightWithOneMedianStopDistance = track.flightWithOneMedianStopDistance() {
-                    let shortFlight = track.flightDistance() < 50
                     let flightLengthRatio = track.length / flightWithOneMedianStopDistance
                     let flightSuspicious = 10 < flightLengthRatio
                     //                print("PP \(shortFlight) \(flightSuspicious) \(track.flightDistance()) \(flightLengthRatio) \(track.duration) \(track.locations.count) \(formatter.stringFromDate(track.startDate!))")
@@ -606,13 +619,17 @@ class PruneSimilarLocationOperation: TracksOperation {
         if transact {
             realm.beginWriteTransaction()
         }
-        for track in tracks().objectsWhere("activity.cycling == TRUE") {
-            if let track = track as? Track where !track.invalidated {
-                let t = pruneSimilarLocation(track)
-            }
-        }
+//        for track in tracks().objectsWhere("activity.cycling == TRUE") {
+//            if let track = track as? Track where !track.invalidated {
+//                let t = pruneSimilarLocation(track)
+//            }
+//        }
         if transact {
-            realm.commitWriteTransaction()
+            do {
+                try realm.commitWriteTransaction()
+            } catch {
+                print("Could not commit Realm write transaction!")
+            }
         }
         print("Prune similar locations DONE \(-startDate.timeIntervalSinceNow)")
     }
@@ -625,7 +642,7 @@ class PruneCurlyEndsOperation: TracksOperation {
         
         let rotations: [Double] = {
             var rotations = [Double]()
-            for (index, coordinate) in enumerate(coordinates) {
+            for (index, coordinate) in coordinates.enumerate() {
                 let nextIndex = index + 1
                 if nextIndex < Int(coordinates.count) {
                     let nextCoordinate = coordinates[nextIndex]
@@ -673,7 +690,7 @@ class PruneCurlyEndsOperation: TracksOperation {
             }()
             let removeToIndex: UInt? = {
                 // Find first coordinate with high deviation
-                for (index, diff) in enumerate(variancesFromStart) {
+                for (index, diff) in variancesFromStart.enumerate() {
                     if diff > varianceLimit { return UInt(index) }
                 }
                 return nil
@@ -686,9 +703,8 @@ class PruneCurlyEndsOperation: TracksOperation {
         
         if let lastLocation = locations.lastObject() as? TrackLocation {
             // Go back 60 seconds from end
-            var lastLocations = locations.objectsWhere("timestamp >= %lf", lastLocation.timestamp - extendSeconds)
-            let t = path(lastLocations.toArray(TrackLocation).map { $0.location() })
-            var lastCoordinates = lastLocations.toArray(TrackLocation).map { $0.coordinate() }
+            let lastLocations = locations.objectsWhere("timestamp >= %lf", lastLocation.timestamp - extendSeconds)
+            let lastCoordinates = lastLocations.toArray(TrackLocation).map { $0.coordinate() }
             let degreeDifferencesLast = difference(lastCoordinates)
             let variancesToEnd: [Double] = {
                 var vars = [Double]()
@@ -700,7 +716,7 @@ class PruneCurlyEndsOperation: TracksOperation {
                 return vars
             }()
             let removeFromIndex: UInt? = {
-                for (index, diff) in enumerate(variancesToEnd.reverse()) {
+                for (index, diff) in variancesToEnd.reverse().enumerate() {
                     if diff > varianceLimit {
                         return locations.count - UInt(index) - 1 // Subtract from count since enumerating over reverse
                     }
@@ -726,7 +742,7 @@ class PruneCurlyEndsOperation: TracksOperation {
     
     func removeLocations(inRange range: Range<UInt>, fromTrack track: Track) {
         // Delete from high index to low to not mess up order while deleting
-        let indeces = range.startIndex < range.endIndex ? reverse(range) : [UInt](range)
+        let indeces = range.startIndex < range.endIndex ? range.reverse() : [UInt](range)
         for i in indeces {
             let locations = track.locationsSorted()
             if let location = locations[i] as? TrackLocation {
@@ -775,14 +791,18 @@ class PruneCurlyEndsOperation: TracksOperation {
         if transact {
             realm.beginWriteTransaction()
         }
-        for track in tracks().objectsWhere("activity.cycling == TRUE") {
-            if let track = track as? Track where !track.invalidated {
-                while pruneCurl(track) { } // Keep pruning untill nothing changes
-                let d = 0
-            }
-        }
+//        for track in tracks().objectsWhere("activity.cycling == TRUE") {
+//            if let track = track as? Track where !track.invalidated {
+//                while pruneCurl(track) { } // Keep pruning untill nothing changes
+//                let d = 0
+//            }
+//        }
         if transact {
-            realm.commitWriteTransaction()
+            do {
+                try realm.commitWriteTransaction()
+            } catch {
+                print("Could not commit Realm write transaction!")
+            }
         }
         print("Prune culry ends DONE \(-startDate.timeIntervalSinceNow)")
     }
@@ -830,7 +850,11 @@ class PruneSlowEndsOperation: TracksOperation {
             }
         }
         if transact {
-            realm.commitWriteTransaction()
+            do {
+                try realm.commitWriteTransaction()
+            } catch {
+                print("Could not commit Realm write transaction!")
+            }
         }
         print("Prune slow ends DONE \(-startDate.timeIntervalSinceNow)")
     }
@@ -871,8 +895,12 @@ class MergeTracksOperation: TracksOperation {
         if useFirstTrackActivity {
             track2.activity.deleteFromRealm()
         }
-        track2.deleteFromRealmWithRelationships(realm: realm, keepLocations: true, keepActivity: true) // Keep relationships, since they have been transferred to another track or deleted manually
-        realm.commitWriteTransaction()
+        track2.deleteFromRealmWithRelationships(realm, keepLocations: true, keepActivity: true) // Keep relationships, since they have been transferred to another track or deleted manually
+        do {
+            try realm.commitWriteTransaction()
+        } catch {
+            print("Could not commit Realm write transaction!")
+        }
         
         return track1
     }
@@ -1019,10 +1047,10 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
                 mergeTracks(tracksToMerge)
                 tracks = tracksSorted().toArray(Track.self)
             } else {
-                count++
+                count += 1
             }
         }
-        prinprint("Merge track between bike tracks DONE \(-startDate.timeIntervalSinceNow)")
+        print("Merge track between bike tracks DONE \(-startDate.timeIntervalSinceNow)")
     }
 }
 
@@ -1039,8 +1067,8 @@ class MergeBikeCloseWithMoveTracksOperation: MergeTimeTracksOperation {
                 let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
                 let cycling = track.activity.cycling
                 let cyclingNext = nextTrack.activity.cycling
-                let move = track.activity.moving() || track.speeding(speedLimit: 10, minLength: 0.1)
-                let moveNext = nextTrack.activity.moving() || nextTrack.speeding(speedLimit: 10, minLength: 0.1)
+                let move = track.activity.moving() || track.speeding(10, minLength: 0.1)
+                let moveNext = nextTrack.activity.moving() || nextTrack.speeding(10, minLength: 0.1)
                 let bikeCloseAndMoving = (cycling && moveNext) || (cyclingNext && move)
                 let merge = close && bikeCloseAndMoving
                 if merge {
@@ -1048,7 +1076,7 @@ class MergeBikeCloseWithMoveTracksOperation: MergeTimeTracksOperation {
                     tracks = tracksSorted()
                     print("Bike close w. move: \(mergedTrack.startDate)")
                 } else {
-                    count++
+                    count += 1
                 }
                 //                print(" \(count) / \(tracks.count)")
             }
@@ -1074,7 +1102,7 @@ class GeocodeBikeTracksOperation: TracksOperation {
         for track in bikeTracks {
             if let track = track as? Track where !track.hasBeenGeocoded {
                 // Geocode synchronously to make sure writes are happening on same thread
-                track.geocode(synchronous: true)
+                track.geocode(true)
             }
         }
         print("Geocode bike tracks DONE \(-startDate.timeIntervalSinceNow)")

@@ -24,8 +24,6 @@
  */
 @interface SMRouteUtils : NSObject
 
-// Format distance string (choose between meters and kilometers)
-NSString *formatDistance(float distance);
 // Format time duration string (choose between seconds and hours)
 NSString *formatTime(float seconds);
 // Format time passed between two dates
@@ -36,6 +34,9 @@ float caloriesBurned(float avgSpeed, float timeSpent);
 NSString *expectedArrivalTime(NSInteger seconds);
 
 NSString *formatTimeLeft(NSInteger seconds);
+
+// Format distance string (choose between meters and kilometers)
++ (NSString *)formatDistanceInMeters:(float)distanceInMeters;
 
 + (NSString *)routeFilenameFromTimestampForExtension:(NSString *)ext;
 

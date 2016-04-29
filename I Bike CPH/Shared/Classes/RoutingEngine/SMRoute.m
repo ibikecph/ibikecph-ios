@@ -387,7 +387,7 @@ NSMutableArray *decodePolyline(NSString *encodedString)
                  * Save length to next turn with units so we don't have to generate it each time
                  * It's formatted just the way we like it
                  */
-                instruction.fixedLengthWithUnit = formatDistance(prevlengthInMeters);
+                instruction.fixedLengthWithUnit = [SMRouteUtils formatDistanceInMeters:prevlengthInMeters];
                 prevlengthWithUnit = (NSString *)jsonObject[5];
                 instruction.directionAbrevation = (NSString *)jsonObject[6];
                 instruction.azimuth = [(NSNumber *)jsonObject[7] floatValue];
@@ -476,9 +476,8 @@ NSMutableArray *decodePolyline(NSString *encodedString)
         // calculate distance from location to the next turn
         SMTurnInstruction *nextTurn = self.turnInstructions[0];
         nextTurn.lengthInMeters = [self calculateDistanceToNextTurn:loc];
-        nextTurn.lengthWithUnit = formatDistance(nextTurn.lengthInMeters);
-        @synchronized(self.turnInstructions)
-        {
+        nextTurn.lengthWithUnit = [SMRouteUtils formatDistanceInMeters:nextTurn.lengthInMeters];
+        @synchronized(self.turnInstructions) {
             [self.turnInstructions setObject:nextTurn atIndexedSubscript:0];
         }
         self.distanceLeft = nextTurn.lengthInMeters;

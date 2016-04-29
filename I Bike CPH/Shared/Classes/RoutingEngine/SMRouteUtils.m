@@ -16,23 +16,6 @@
 
 @implementation SMRouteUtils
 
-// Format distance string (choose between meters and kilometers)
-NSString *formatDistance(float meters)
-{
-    if (meters < 5) {
-        return @"";
-    }
-    else if (meters <= 94) {
-        return [NSString stringWithFormat:@"%.0f %@", roundf(meters / 10.0f) * 10, DISTANCE_M_SHORT];
-    }
-    else if (meters < 1000) {
-        return [NSString stringWithFormat:@"%.0f %@", roundf(meters / 100.0f) * 100, DISTANCE_M_SHORT];
-    }
-    else {
-        return [NSString stringWithFormat:@"%.1f %@", meters / 1000.0f, DISTANCE_KM_SHORT];
-    }
-}
-
 // Format time duration string (choose between seconds and hours)
 NSString *formatTime(float seconds)
 {
@@ -151,6 +134,22 @@ float caloriesBurned(float avgSpeed, float timeSpent)
     }
 
     return roundf(calBurned);
+}
+
++ (NSString *)formatDistanceInMeters:(float)distanceInMeters
+{
+    if (distanceInMeters < 5) {
+        return @"";
+    }
+    else if (distanceInMeters <= 94) {
+        return [NSString stringWithFormat:@"%.0f %@", roundf(distanceInMeters / 10.0f) * 10, DISTANCE_M_SHORT];
+    }
+    else if (distanceInMeters < 1000) {
+        return [NSString stringWithFormat:@"%.0f %@", roundf(distanceInMeters / 100.0f) * 100, DISTANCE_M_SHORT];
+    }
+    else {
+        return [NSString stringWithFormat:@"%.1f %@", distanceInMeters / 1000.0f, DISTANCE_KM_SHORT];
+    }
 }
 
 + (NSString *)routeFilenameFromTimestampForExtension:(NSString *)ext

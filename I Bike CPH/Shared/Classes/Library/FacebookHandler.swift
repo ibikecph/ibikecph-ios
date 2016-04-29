@@ -54,13 +54,13 @@ import Social
                 return
             }
             
-            println("Facebook granted access")
+            print("Facebook granted access")
             if let account = self.accountStore.accountsWithAccountType(accountType).first as? ACAccount {
-                println("Facebook has account")
+                print("Facebook has account")
                 self.renewAccount(account, completion: completion)
                 return
             }
-            println("Facebook has no account")
+            print("Facebook has no account")
         }
     }
     
@@ -71,27 +71,27 @@ import Social
                 case .Failed:
                     print("Facebook failed renew credentials for account: \(account)")
                     if let error = error {
-                        println("...with error: \(error)")
+                        print("...with error: \(error)")
                     }
-                    self.failed(account: account, error: error, completion: completion)
+                    self.failed(account, error: error, completion: completion)
                 case .Rejected:
                     print("Facebook rejected renew credentials for account: \(account)")
                     if let error = error {
-                        println("...with error: \(error)")
+                        print("...with error: \(error)")
                     }
-                    self.failed(account: account, error: error, completion: completion)
+                    self.failed(account, error: error, completion: completion)
                 case .Renewed:
-                    println("Facebook renewed credentials for account: \(account)")
+                    print("Facebook renewed credentials for account: \(account)")
                     self.accountStore.saveAccount(account) { (success, error) -> Void in
                         if !success {
                             print("Facebook account save failed")
                             if let error = error {
-                                println("... with error: \(error)")
+                                print("... with error: \(error)")
                             }
-                            self.failed(account: account, error: error, completion: completion)
+                            self.failed(account, error: error, completion: completion)
                             return
                         }
-                        println("Facebook account saved")
+                        print("Facebook account saved")
                         let token = account.credential.oauthToken
                         self.getInfoFromAccount(account, token: token, completion: completion)
                     }
@@ -111,28 +111,30 @@ import Social
         request.account = account
         request.performRequestWithHandler { (data, response, error) -> Void in
             if let error = error {
-                println("Facebook failed request with error \(error)")
+                print("Facebook failed request with error \(error)")
                 return
             }
             if response.statusCode != 200 {
-                println("Facebook failed request with statuscode \(response.statusCode)")
+                print("Facebook failed request with statuscode \(response.statusCode)")
                 return
             }
-            var deserializationError: NSError?
-            if let userData = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &deserializationError) as? NSDictionary {
-                if let deserializationError = deserializationError {
-                    self.failed(account: account,  error: deserializationError, completion: completion)
-                    return
+            
+            do {
+                let userData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
+                if userData != nil {
+                    
+                    self.succeededWithUserData(userData!, token: token, completion: completion)
                 }
-                self.succeededWithUserData(userData, token: token, completion: completion)
-            } else {
-                println("Facebook failed request with no deserialized data")
+            } catch let error as NSError {
+                print("Facebook failed request with no deserialized data")
+                self.failed(account,  error: error, completion: completion)
+                return
             }
         }
     }
     
     func succeededWithUserData(data: NSDictionary, token: String, completion: Completion) {
-        println("Facebook succeeded with user data \(data)")
+        print("Facebook succeeded with user data \(data)")
         if let
             userID = data["id"] as? String,
             email = data["email"] as? String
