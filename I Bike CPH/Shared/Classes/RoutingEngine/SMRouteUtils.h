@@ -6,7 +6,7 @@
 //  Copyright (C) 2013 City of Copenhagen.
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
-//  If a copy of the MPL was not distributed with this file, You can obtain one at 
+//  If a copy of the MPL was not distributed with this file, You can obtain one at
 //  http://mozilla.org/MPL/2.0/.
 //
 
@@ -24,7 +24,6 @@
  */
 @interface SMRouteUtils : NSObject
 
-
 // Format distance string (choose between meters and kilometers)
 NSString *formatDistance(float distance);
 // Format time duration string (choose between seconds and hours)
@@ -38,8 +37,8 @@ NSString *expectedArrivalTime(NSInteger seconds);
 
 NSString *formatTimeLeft(NSInteger seconds);
 
-+ (NSString*)routeFilenameFromTimestampForExtension:(NSString*) ext;
++ (NSString *)routeFilenameFromTimestampForExtension:(NSString *)ext;
 
-+ (NSInteger)pointsForName:(NSString*)name andAddress:(NSString*)address andTerms:(NSString*)srchString;
++ (NSInteger)pointsForName:(NSString *)name andAddress:(NSString *)address andTerms:(NSString *)srchString;
 
 @end
