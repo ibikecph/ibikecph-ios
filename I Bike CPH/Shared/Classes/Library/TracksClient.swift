@@ -70,12 +70,13 @@ class TracksClient: ServerClient {
             return
         }
         let path = baseUrl + "/tracks/" + serverId
-        var error: NSError?
         
-        if let
-            trackToken = UserHelper.trackToken(),
-            data = JSON(["signature" : trackToken]).rawData(error: &error)
-        {
+        guard let trackToken = UserHelper.trackToken() else {
+            completion(.Other(ServerResult.FailedEncodingError))
+            return
+        }
+        do {
+            let data = try JSON(["signature" : trackToken]).rawData()
             request(path, configureRequest: { theRequest in
                 theRequest.HTTPMethod = "DELETE"
                 theRequest.HTTPBody = data
@@ -101,12 +102,10 @@ class TracksClient: ServerClient {
                 return
             }
             return
-        }
-        if let error = error {
+        } catch let error as NSError {
             completion(.Other(ServerResult.Failed(error: error)))
             return
         }
-        completion(.Other(ServerResult.FailedEncodingError))
     }
 }
 

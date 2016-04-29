@@ -12,7 +12,7 @@ import CoreMotion
 
 let trackingHandler = TrackingHandler()
 
-class TrackingHandler {
+class TrackingHandler: NSObject {
     var isCurrentlyRouting: Bool = false
     
     private var currentTrack: Track?
@@ -61,7 +61,8 @@ class TrackingHandler {
     }
     private var observerTokens = [AnyObject]()
     
-    init() {
+    override init() {
+        super.init()
         setup()
         check()
     }

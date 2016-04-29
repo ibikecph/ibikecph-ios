@@ -11,13 +11,14 @@ import CoreMotion
 
 let nonTrackingHandler = NonTrackingHandler()
 
-class NonTrackingHandler {
+class NonTrackingHandler: NSObject {
     
     var isCurrentlyRouting: Bool = false
 
     private var observerTokens = [AnyObject]()
     
-    init() {
+    override init() {
+        super.init()
         setupBackgroundHandling()
     }
     

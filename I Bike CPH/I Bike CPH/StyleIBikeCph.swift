@@ -18,33 +18,33 @@ extension UIColor {
     }
 }
 
-class Styler: StyleProtocol {
+@objc class Styler: NSObject, StyleProtocol {
     
-    class func backgroundColor() -> UIColor {
+    @objc class func backgroundColor() -> UIColor {
         return .whiteColor()
     }
     
-    class func tintColor() -> UIColor {
+    @objc class func tintColor() -> UIColor {
         return .red()
     }
     
-    class func foregroundColor() -> UIColor {
+    @objc class func foregroundColor() -> UIColor {
         return .darkGrayColor()
     }
 
-    class func foregroundSecondaryColor() -> UIColor {
+    @objc class func foregroundSecondaryColor() -> UIColor {
         return .lightGrayColor()
     }
     
-    class func navigationBarTintColor() -> UIColor {
+    @objc class func navigationBarTintColor() -> UIColor {
         return .red()
     }
     
-    class func navigationBarContentTintColor() -> UIColor {
+    @objc class func navigationBarContentTintColor() -> UIColor {
         return .whiteColor()
     }
     
-    class func logo() -> UIImage? {
+    @objc class func logo() -> UIImage? {
         return UIImage(named: "Logo")
     }
 }

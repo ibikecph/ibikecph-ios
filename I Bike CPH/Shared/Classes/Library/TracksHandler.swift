@@ -313,7 +313,7 @@ class RemoveEmptyTracksOperation: TracksOperation {
 //                    continue
 //                }
             }
-            count++
+            count += 1
         }
         print("Remove empty tracks DONE \(-startDate.timeIntervalSinceNow)")
     }
@@ -604,7 +604,7 @@ class PruneSimilarLocationOperation: TracksOperation {
                     center.deleteFromRealm()
                     changed = true
                 } else {
-                    index++
+                    index += 1
                 }
             }
         }
@@ -959,7 +959,7 @@ class MergeCloseSameActivityTracksOperation : MergeTimeTracksOperation {
                     let mergedTrack = mergeTrack(track, toTrack: nextTrack)
                     tracks = tracksSorted()
                 } else {
-                    count++
+                    count += 1
                 }
                 //                print(" \(count) / \(tracks.count)")
             }
@@ -991,7 +991,7 @@ class MergeCloseToUnknownActivityTracksOperation: MergeTimeTracksOperation {
                     tracks = tracksSorted()
                     print("Close to empty activity: \(mergedTrack.startDate())")
                 } else {
-                    count++
+                    count += 1
                 }
                 //                print(" \(count) / \(tracks.count)")
             }
@@ -1016,7 +1016,7 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
         while count + 2 < tracks.count {
             let track = tracks[count]
             if !track.activity.cycling { // Is not biking
-                count++
+                count += 1
                 continue
             }
             // Find latest bike track within time interval
@@ -1025,7 +1025,7 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
             while nextCount < tracks.count - 3 {
                 let _nextTrack = tracks[nextCount+1]
                 if !_nextTrack.activity.cycling {
-                    nextCount++ // Skip and keep searching
+                    nextCount += 1 // Skip and keep searching
                     continue
                 }
                 if !closeTracks(track: track, toTrack: _nextTrack, closerThanSeconds: seconds) {
@@ -1034,7 +1034,7 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
                 // Found a bike track
                 print("\(formatter.stringFromDate(track.endDate()!)) | \(formatter.stringFromDate(_nextTrack.startDate()!))")
                 nextTrack = _nextTrack
-                nextCount++ // Keep searching
+                nextCount += 1 // Keep searching
             }
             if let nextTrack = nextTrack where nextCount > count {
                 // Merge tracks between bike tracks
@@ -1135,8 +1135,12 @@ class UploadBikeTracksOperation: TracksOperation {
         for track in Track.allObjects() {
             if let track = track as? Track {
                 if track.serverId.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == dummyTrackId.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) {
-                    track.realm?.transactionWithBlock {
-                        track.serverId = ""
+                    do {
+                        try track.realm?.transactionWithBlock {
+                            track.serverId = ""
+                        }
+                    } catch let error as NSError {
+                        print("Realm transaction failed: \(error.description)")
                     }
                 }
             }
@@ -1147,28 +1151,44 @@ class UploadBikeTracksOperation: TracksOperation {
         for track in bikeTracks {
             if let track = track as? Track {
                 let temporaryTrackId = NSUUID().UUIDString
-                track.realm?.transactionWithBlock {
-                    track.serverId = temporaryTrackId
+                do {
+                    try track.realm?.transactionWithBlock {
+                        track.serverId = temporaryTrackId
+                    }
+                } catch let error as NSError {
+                    print("Realm transaction failed: \(error.description)")
                 }
                 TracksClient.sharedInstance.upload(track) { result in
                     if let track = Track.allObjects().objectsWhere("serverId == %@", temporaryTrackId).firstObject() as? Track {
                         switch result {
                             case .Success(let trackServerId):
-                                track.realm?.transactionWithBlock {
-                                    track.serverId = trackServerId
-                                    print("Track stored on server: " + trackServerId)
+                                do {
+                                    try track.realm?.transactionWithBlock {
+                                        track.serverId = trackServerId
+                                        print("Track stored on server: " + trackServerId)
+                                    }
+                                } catch let error as NSError {
+                                    print("Realm transaction failed: \(error.description)")
                                 }
                             case .Other(let result):
                                 switch result {
                                     case .Failed(let error):
                                         print(error.localizedDescription)
-                                        track.realm?.transactionWithBlock {
-                                            track.serverId = ""
+                                        do {
+                                            try track.realm?.transactionWithBlock {
+                                                track.serverId = ""
+                                            }
+                                        } catch let error as NSError {
+                                            print("Realm transaction failed: \(error.description)")
                                         }
                                     default:
                                         print("Other upload error \(result)")
-                                        track.realm?.transactionWithBlock {
-                                            track.serverId = ""
+                                        do {
+                                            try track.realm?.transactionWithBlock {
+                                                track.serverId = ""
+                                            }
+                                        } catch let error as NSError {
+                                            print("Realm transaction failed: \(error.description)")
                                         }
                                 }
                         }
