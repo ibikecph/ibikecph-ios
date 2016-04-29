@@ -9,9 +9,8 @@
 import Foundation
 
 class Macro: MacroProtocol {
-    
-    var isCykelPlanen = false
-    var isIBikeCph = true
-    var initialMapCoordinate = CLLocationCoordinate2DMake(55.688, 12.559)
-    var initialMapZoom: Double = 11
+    @objc var isCykelPlanen = false
+    @objc var isIBikeCph = true
+    @objc var initialMapCoordinate = CLLocationCoordinate2DMake(55.688, 12.559)
+    @objc var initialMapZoom: Double = 11
 }

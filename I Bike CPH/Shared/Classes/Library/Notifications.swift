@@ -12,7 +12,7 @@ import UIKit
 class Notifications {
     
     class func register() {
-        let settings = UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: nil)
+        let settings = UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
     }
     
@@ -34,7 +34,7 @@ class Notifications {
     }
     
     class func localNotificationScheduledAtDate(date: NSDate) -> UILocalNotification? {
-        if let scheduledNotifications = UIApplication.sharedApplication().scheduledLocalNotifications as? [UILocalNotification] {
+        if let scheduledNotifications = UIApplication.sharedApplication().scheduledLocalNotifications {
             for scheduledNotification in scheduledNotifications {
                 if let
                     fireDate = scheduledNotification.fireDate

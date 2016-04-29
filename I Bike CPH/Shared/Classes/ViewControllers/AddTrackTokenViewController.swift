@@ -81,7 +81,7 @@ class AddTrackTokenViewController: SMTranslatedViewController {
     }
     
     func updateUI() {
-        let isLoggedIn = UserHelper.loggedIn()
+//        let isLoggedIn = UserHelper.loggedIn()
         let isFacebook = UserHelper.isFacebook()
         
         passwordRepeatLabel.hidden = true

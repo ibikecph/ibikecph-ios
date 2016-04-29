@@ -16,7 +16,6 @@
 
 @implementation SMRouteUtils
 
-
 // Format distance string (choose between meters and kilometers)
 NSString *formatDistance(float meters) {
     if (meters < 5) {

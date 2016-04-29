@@ -16,8 +16,9 @@ public class Speak: NSObject {
     
     private let audioSession: AVAudioSession = {
         var audioSession = AVAudioSession.sharedInstance()
-        var error: NSError? = nil
-        if audioSession.setCategory(AVAudioSessionCategoryPlayback, withOptions: .DuckOthers, error: &error) {
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback, withOptions: .DuckOthers)
+        } catch {
             // TODO: Handle error
         }
         return audioSession
@@ -39,13 +40,11 @@ public class Speak: NSObject {
 extension Speak { // AVAudioSession
 
     private func setAudioSessionActive(beActive: Bool) {
-        var error: NSError? = nil
-        if audioSession.setActive(beActive, error: &error) {
+        do {
+            try audioSession.setActive(beActive)
             print("Setting AVAudiosession active: ", beActive)
-            if let error = error {
-                 print(" failed: %@", error.description)
-            }
-            return
+        } catch let error as NSError {
+            print("Setting AVAudiosession state failed: \(error.description)")
         }
     }
 

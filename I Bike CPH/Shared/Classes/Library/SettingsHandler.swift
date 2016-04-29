@@ -51,7 +51,7 @@ class Settings: NSObject {
         }
     }
     
-    @objc class Overlays {
+    class Overlays {
         private let bikeServiceStationsKey = "overlayBikeServiceStationsKey"
         var showBikeServiceStations: Bool {
             get { return Defaults[bikeServiceStationsKey].bool ?? false }
