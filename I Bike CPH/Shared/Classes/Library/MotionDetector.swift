@@ -25,20 +25,23 @@ class MotionDetector {
         if !isAvailable() {
             return
         }
-        println("Start activity updates")
+        print("Start activity updates")
         let manager = CMMotionActivityManager()
-        manager.startActivityUpdatesToQueue(NSOperationQueue.mainQueue()) { activity in
-            if !Settings.sharedInstance.tracking.on {
+        manager.startActivityUpdatesToQueue(NSOperationQueue.mainQueue()) { act in
+            guard let activity = act else {
+               return
+            }
+            guard Settings.sharedInstance.tracking.on else {
                 return // Received activity even though it should have been stopped
             }
-            println("stationary: \(activity.stationary), bike: \(activity.cycling),  walk: \(activity.walking), run: \(activity.running), automotive: \(activity.automotive), unknown: \(activity.unknown), confidence: \(activity.confidence.rawValue), start: \(activity.startDate), ")
+            print("stationary: \(activity.stationary), bike: \(activity.cycling),  walk: \(activity.walking), run: \(activity.running), automotive: \(activity.automotive), unknown: \(activity.unknown), confidence: \(activity.confidence.rawValue), start: \(activity.startDate), ")
             handler(activity: activity)
         }
         self.motionActivityManager = manager
     }
     
     func stop() {
-        println("Stop activity updates")
+        print("Stop activity updates")
         if let motionActivityManager = motionActivityManager {
             motionActivityManager.stopActivityUpdates()
         }

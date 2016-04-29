@@ -74,10 +74,11 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
                         } else {
                             Settings.sharedInstance.tracking.on = false
                         }
-                        viewController.tableView.beginUpdates()
-                        let indexPaths = viewController.tableView.indexPathsForVisibleRows()!
-                        viewController.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
-                        viewController.tableView.endUpdates()
+                        if let indexPaths = viewController.tableView.indexPathsForVisibleRows {
+                            viewController.tableView.beginUpdates()
+                            viewController.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+                            viewController.tableView.endUpdates()
+                        }
                 }, enabled: nil
                 ),
                 TrackingSwitchItem(
@@ -113,10 +114,11 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
      
         if pendingEnableTracking && UserHelper.checkEnableTracking() == .Allowed {
             Settings.sharedInstance.tracking.on = true
-            tableView.beginUpdates()
-            let indexPaths = tableView.indexPathsForVisibleRows()!
-            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
-            tableView.endUpdates()
+            if let indexPaths = tableView.indexPathsForVisibleRows {
+                tableView.beginUpdates()
+                tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+                tableView.endUpdates()
+            }
         } else if pendingEnableTracking && UserHelper.checkEnableTracking() == .LacksTrackToken {
             performSegueWithIdentifier(toAddTrackTokenSegue, sender: self)
         } else {
@@ -153,7 +155,7 @@ extension TrackingPreferencesViewController: UITableViewDataSource {
         
         if let item = item as? TrackingSwitchItem {
             let cell = tableView.cellWithIdentifier(cellSwitchID, forIndexPath: indexPath) as IconLabelSwitchTableViewCell
-            cell.configure(text: item.title, icon: UIImage(named: item.iconImageName))
+            cell.configure(item.title, icon: UIImage(named: item.iconImageName))
             // Configure switcher
             cell.switcher.on = item.on()
             cell.switchChanged = { on in item.switchAction(self, cell.switcher, on) }
@@ -162,7 +164,7 @@ extension TrackingPreferencesViewController: UITableViewDataSource {
             return cell
         }
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
-        cell.configure(text: item.title, icon: UIImage(named: item.iconImageName))
+        cell.configure(item.title, icon: UIImage(named: item.iconImageName))
         return cell
     }
 }

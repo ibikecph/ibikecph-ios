@@ -12,23 +12,21 @@ class MapToMapTransitionAnimator: NSObject, UIViewControllerAnimatedTransitionin
   
     weak var transitionContext: UIViewControllerContextTransitioning?
   
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.2;
     }
   
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         self.transitionContext = transitionContext
         
-        var containerView = transitionContext.containerView()
-        if let
-            fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as? MapViewController,
+        if let containerView = transitionContext.containerView(),
             toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as? MapViewController
         {
             // Add toViewController to view hierarchy
             containerView.addSubview(toViewController.view)
             
             // Fade in toViewController
-            var maskLayerAnimation = CABasicAnimation(keyPath:NSStringFromSelector(Selector("opacity")))
+            let maskLayerAnimation = CABasicAnimation(keyPath:NSStringFromSelector(Selector("opacity")))
             maskLayerAnimation.fromValue = 0
             maskLayerAnimation.toValue = 1
             maskLayerAnimation.duration = self.transitionDuration(transitionContext)

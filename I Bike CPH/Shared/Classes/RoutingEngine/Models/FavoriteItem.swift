@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import SwiftyJSON
 
 @objc class FavoriteItem: NSObject, SearchListItem {
     

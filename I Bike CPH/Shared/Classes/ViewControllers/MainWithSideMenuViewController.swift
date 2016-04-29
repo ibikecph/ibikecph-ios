@@ -26,7 +26,7 @@ class MainWithSideMenuViewController: UIViewController {
             return
         }
         
-        if let mainViewController = storyboard?.instantiateViewControllerWithIdentifier("MainNavigationViewController") as? UIViewController {
+        if let mainViewController = storyboard?.instantiateViewControllerWithIdentifier("MainNavigationViewController") {
             self.mainViewController = mainViewController
             
             addChildViewController(mainViewController)
@@ -34,14 +34,14 @@ class MainWithSideMenuViewController: UIViewController {
             mainViewController.didMoveToParentViewController(self)
             
             let mainView = mainViewController.view
-            mainView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            mainView.translatesAutoresizingMaskIntoConstraints = false
             view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1, constant: 0))
             view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1, constant: 0))
             view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
             view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1, constant: 0))
         }
 
-        if let menuNavigationViewController = storyboard?.instantiateViewControllerWithIdentifier("MenuNavigationViewController") as? UIViewController {
+        if let menuNavigationViewController = storyboard?.instantiateViewControllerWithIdentifier("MenuNavigationViewController") {
             menuNavigationViewController.beginAppearanceTransition(true, animated: false)
             sideMenu = ENSideMenu(sourceViewController: self, menuViewController: menuNavigationViewController, menuPosition: .Left)
             sideMenu?.delegate = self

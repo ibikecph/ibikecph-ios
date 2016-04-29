@@ -25,7 +25,8 @@ class FindAddressViewController: SMTranslatedViewController {
         case Favorites
         static var count: Int {
             var max = 0
-            while let _ = self(rawValue: ++max) {}
+            max = max + 1
+            while let _ = self.init(rawValue: max) {}
             return max
         }
     }
@@ -80,7 +81,7 @@ class FindAddressViewController: SMTranslatedViewController {
         {
             viewController.delegate = self
             viewController.shouldAllowCurrentPosition = false
-            if let item = currentItem as? NSObject {
+            if let item = currentItem as? protocol<SearchListItem, NSObjectProtocol> {
                 viewController.locationItem = item
             }
         }
@@ -151,16 +152,14 @@ extension FindAddressViewController: UITableViewDelegate {
 
 extension FindAddressViewController: SMSearchDelegate {
     
-    func locationFound(locationItem: NSObject!) {
-        if let item = locationItem as? SearchListItem {
-            currentItem = item
-            
-            let date = NSDate()
-            let historyItem = HistoryItem(other: item, startDate: date, endDate: date)
-            SMSearchHistory.saveToSearchHistory(historyItem)
-            if UserHelper.loggedIn() {
-                SMSearchHistory.instance().addSearchToServer(historyItem)
-            }
+    func locationFound(locationItem: protocol<SearchListItem, NSObjectProtocol>!) {
+        currentItem = locationItem
+        
+        let date = NSDate()
+        let historyItem = HistoryItem(other: locationItem, startDate: date, endDate: date)
+        SMSearchHistory.saveToSearchHistory(historyItem)
+        if UserHelper.loggedIn() {
+            SMSearchHistory.instance().addSearchToServer(historyItem)
         }
     }
 }

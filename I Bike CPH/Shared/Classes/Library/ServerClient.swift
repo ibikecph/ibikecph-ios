@@ -15,7 +15,7 @@ private let apiDefaultAccept = ["Accept": "application/vnd.ibikecph.v1"]
 private let apiUserAgent = ["User-Agent": userAgent]
 private let apiDefaultHeaders = ["Content-Type": "application/json"]
 
-class ServerClient {
+class ServerClient: NSObject {
     let session: NSURLSession
     
     init(session: NSURLSession = NSURLSession.sharedSession()) {

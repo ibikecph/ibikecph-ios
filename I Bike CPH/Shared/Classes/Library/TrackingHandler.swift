@@ -192,13 +192,17 @@ class TrackingHandler {
             return
         }
         thread.enqueue() { [weak self] in
-            RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
-                if let currentTrack = self?.currentTrack where !currentTrack.invalidated {
-                    for location in locations {
-                        let location = TrackLocation.build(location)
-                        currentTrack.locations.addObject(location)
+            do {
+                try RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
+                    if let currentTrack = self?.currentTrack where !currentTrack.invalidated {
+                        for location in locations {
+                            let location = TrackLocation.build(location)
+                            currentTrack.locations.addObject(location)
+                        }
                     }
                 }
+            } catch {
+                print("Realm transaction failed!")
             }
         }
     }

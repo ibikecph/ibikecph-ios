@@ -238,24 +238,22 @@ extension FavoriteViewController: UITextFieldDelegate {
 
 extension FavoriteViewController: SMSearchDelegate {
     
-    func locationFound(locationItem: NSObject!) {
-        if let foundItem = locationItem as? SearchListItem {
-            if let currentItem = favoriteItem {
-                // Update current item
-                let newItem = FavoriteItem(other: foundItem)
-                newItem.name = currentItem.name
-                newItem.origin = currentItem.origin
-                newItem.identifier = currentItem.identifier
-                favoriteItem = newItem
-                save()
-            } else {
-                // Create new favorite item
-                favoriteItem = FavoriteItem(other: foundItem)
-                if let currentName = nameTextField.text {
-                    favoriteItem?.name = currentName
-                }
-                save()
+    func locationFound(locationItem: protocol<SearchListItem, NSObjectProtocol>!) {
+        if let currentItem = favoriteItem {
+            // Update current item
+            let newItem = FavoriteItem(other: locationItem)
+            newItem.name = currentItem.name
+            newItem.origin = currentItem.origin
+            newItem.identifier = currentItem.identifier
+            favoriteItem = newItem
+            save()
+        } else {
+            // Create new favorite item
+            favoriteItem = FavoriteItem(other: locationItem)
+            if let currentName = nameTextField.text {
+                favoriteItem?.name = currentName
             }
+            save()
         }
     }
 }

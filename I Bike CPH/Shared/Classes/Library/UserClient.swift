@@ -55,9 +55,8 @@ class UserClient: ServerClient {
         let path = baseUrl + "/users/add_password"
         
         let json: JSON = [ "user" : ["password" : token]]
-        var error: NSError?
-        if let data = json.rawData(error: &error)
-        {
+        do {
+            let data = try json.rawData()
             request(path, configureRequest: { theRequest in
                 theRequest.HTTPBody = data
                 theRequest.HTTPMethod = "POST"
@@ -78,8 +77,7 @@ class UserClient: ServerClient {
                 return
             }
             return
-        }
-        if let error = error {
+        } catch let error as NSError {
             completion(.Other(ServerResult.Failed(error: error)))
             return
         }
@@ -123,7 +121,7 @@ extension UserClient {
             case .Success(let hasToken): completion(success: hasToken, error: nil)
             case .Other(let otherResult):
                 switch otherResult {
-                case .SuccessJSON(let json, let _):
+                case .SuccessJSON(let json, _):
                     let message = json["info"].stringValue
                     completion(success: false, error: NSError(domain: "UserClient", code: 0, userInfo: [NSLocalizedDescriptionKey : message]))
                 case .Failed(let error):
@@ -135,7 +133,7 @@ extension UserClient {
         }
     }
     
-    @objc class func sharedInstance() -> UserClient {
+    class func sharedInstance() -> UserClient {
         return instance
     }
 }

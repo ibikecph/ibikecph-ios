@@ -87,7 +87,10 @@ class MainMapViewController: MapViewController {
             let alertController = PSTAlertController(title: "", message: "invalid_token_user_logged_out".localized, preferredStyle: .Alert)
             alertController.addCancelActionWithHandler(nil)
             let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
-                self?.performSegueWithIdentifier(self?.mainToLoginSegue, sender: self)
+                guard let nonNilSelf = self else {
+                    return
+                }
+                nonNilSelf.performSegueWithIdentifier(nonNilSelf.mainToLoginSegue, sender: nonNilSelf)
             }
             alertController.addAction(loginAction)
             alertController.showWithSender(self, controller: self, animated: true, completion: nil)
