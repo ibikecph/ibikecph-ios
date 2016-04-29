@@ -30,7 +30,7 @@ class CompassButton: UIButton {
         }
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -51,7 +51,7 @@ class CompassButton: UIButton {
     }
     
     func highlight(_ highlight: Bool = false) {
-        shadow(lifted: highlight)
+        shadow(highlight)
     }
     
     func shadow(lifted: Bool = false) {

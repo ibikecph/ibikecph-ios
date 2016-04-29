@@ -27,7 +27,7 @@ class RouteBrokenPartView: UIView {
         let scroll = ORStackView()
         scroll.direction = .Horizontal
         self.addSubview(scroll)
-        scroll.setTranslatesAutoresizingMaskIntoConstraints(false)
+        scroll.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
             NSLayoutConstraint(item: scroll, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: scroll, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0),

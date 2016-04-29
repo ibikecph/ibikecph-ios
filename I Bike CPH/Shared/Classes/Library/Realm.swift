@@ -21,7 +21,11 @@ extension RLMObject {
         }
         realm.addObject(self)
         if transact {
-            realm.commitWriteTransaction()
+            do {
+                try realm.commitWriteTransaction()
+            } catch {
+                print("Could not commit Realm write transaction!")
+            }
         }
     }
     
@@ -38,7 +42,11 @@ extension RLMObject {
             // Remove from the Realm inside a transaction
             realm.deleteObject(self)
             if transact {
-                realm.commitWriteTransaction()
+                do {
+                    try realm.commitWriteTransaction()
+                } catch {
+                    print("Could not commit Realm write transaction!")
+                }
             }
         }
     }
@@ -112,7 +120,6 @@ extension RLMRealm {
     class func compress(ifNecessary: Bool = true) {
         if let defaultFileURL = RLMRealmConfiguration.defaultConfiguration().fileURL,
                defaultPath = defaultFileURL.path {
-            var sizeError: NSError? = nil
             if let
                 attributes = try? NSFileManager.defaultManager().attributesOfItemAtPath(defaultPath),
                 size = attributes[NSFileSize] as? Int
@@ -122,14 +129,16 @@ extension RLMRealm {
             }
             compressingRealm = true
             
-            var error: NSError? = nil
-            let tempPath = defaultPath + "_copy"
-            NSFileManager.defaultManager().removeItemAtPath(tempPath, error: nil)
-            RLMRealm.defaultRealm().writeCopyToPath(tempPath, error: &error)
-            NSFileManager.defaultManager().removeItemAtPath(defaultPath, error: nil)
-            NSFileManager.defaultManager().moveItemAtPath(tempPath, toPath: defaultPath, error: nil)
+            let tempFileURL = NSURL.fileURLWithPath(defaultPath + "_copy")
+            do {
+                try NSFileManager.defaultManager().removeItemAtURL(tempFileURL)
+                try RLMRealm.defaultRealm().writeCopyToURL(tempFileURL, encryptionKey: nil)
+                try NSFileManager.defaultManager().removeItemAtURL(defaultFileURL)
+                try NSFileManager.defaultManager().moveItemAtURL(tempFileURL, toURL: defaultFileURL)
+            } catch {
+                print("Realm file swapping failed!")
+            }
             RLMRealm.defaultRealm()
-            
             compressingRealm = false
         }
     }

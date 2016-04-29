@@ -24,7 +24,7 @@ class Settings: NSObject {
         }
     }
     
-    @objc class Tracking {
+    class Tracking {
         private let onKey = "trackingOn"
         var on: Bool {
             get { return Defaults[onKey].bool ?? false }

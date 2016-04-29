@@ -58,7 +58,7 @@ class RouteBrokenToolbarView: ToolbarView {
     func updateToViews(views: [UIView]) {
         if stackScrollView.superview == nil {
             contentView.addSubview(stackScrollView)
-            stackScrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            stackScrollView.translatesAutoresizingMaskIntoConstraints == false
             addConstraints([
                 NSLayoutConstraint(item: stackScrollView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1, constant: 5),
                 NSLayoutConstraint(item: stackScrollView, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1, constant: 0),
@@ -67,7 +67,7 @@ class RouteBrokenToolbarView: ToolbarView {
         }
         if pageControl.superview == nil {
             contentView.addSubview(pageControl)
-            pageControl.setTranslatesAutoresizingMaskIntoConstraints(false)
+            pageControl.translatesAutoresizingMaskIntoConstraints == false
             addConstraints([
                 NSLayoutConstraint(item: pageControl, attribute: .Top, relatedBy: .Equal, toItem: stackScrollView, attribute: .Bottom, multiplier: 1, constant: 0),
                 NSLayoutConstraint(item: pageControl, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1, constant: 0),

@@ -62,7 +62,7 @@ class TracksViewController: SMTranslatedViewController {
     }
     
     @IBAction func didTapCleanUp(sender: AnyObject) {
-        TracksHandler.setNeedsProcessData(userInitiated: true)
+        TracksHandler.setNeedsProcessData(true)
     }
 }
 
