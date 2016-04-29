@@ -98,7 +98,7 @@ extension OverlaysViewController: UITableViewDataSource {
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
         let item = items[indexPath.row]
         
-        cell.configure(text: item.title, icon: item.iconImage)
+        cell.configure(item.title, icon: item.iconImage)
         cell.accessoryType = item.selected ? .Checkmark : .None
         
         return cell

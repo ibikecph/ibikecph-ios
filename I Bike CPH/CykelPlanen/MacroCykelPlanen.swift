@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc class Macro: MacroProtocol {
+class Macro: NSObject, MacroProtocol {
     
     var isCykelPlanen = true
     var isIBikeCph = false

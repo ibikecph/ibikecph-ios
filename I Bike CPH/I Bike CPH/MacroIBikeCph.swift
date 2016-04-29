@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Macro: MacroProtocol {
+class Macro: NSObject, MacroProtocol {
     @objc var isCykelPlanen = false
     @objc var isIBikeCph = true
     @objc var initialMapCoordinate = CLLocationCoordinate2DMake(55.688, 12.559)

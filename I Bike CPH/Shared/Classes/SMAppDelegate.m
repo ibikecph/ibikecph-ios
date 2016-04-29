@@ -89,7 +89,8 @@
     };
     [RLMRealmConfiguration setDefaultConfiguration:config];
     [RLMRealm defaultRealm];
-    [RLMRealm compressWithIfNecessary:true];
+//    [RLMRealm compressWithIfNecessary:true];
+    [RLMRealm compress:true];
 
 #if TRACKING_ENABLED
     [TrackingHandler sharedInstance];

@@ -15,7 +15,7 @@ extension UIColor {
     }
 }
 
-@objc class Styler: StyleProtocol {
+class Styler: NSObject, StyleProtocol {
     
     class func backgroundColor() -> UIColor {
         return .whiteColor()
