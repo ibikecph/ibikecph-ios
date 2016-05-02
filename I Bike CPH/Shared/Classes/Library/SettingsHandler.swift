@@ -51,44 +51,6 @@ class Settings: NSObject {
         }
     }
     
-    class Overlays {
-        private let bikeServiceStationsKey = "overlayBikeServiceStationsKey"
-        var showBikeServiceStations: Bool {
-            get { return Defaults[bikeServiceStationsKey].bool ?? false }
-            set {
-                Defaults[bikeServiceStationsKey] = newValue
-                NotificationCenter.post(settingsUpdatedNotification, object: self)
-            }
-        }
-        private let cycleSuperHighwaysKey = "overlayCycleSuperHighways"
-        var showCycleSuperHighways: Bool {
-            get {
-                return false // Disable until routes are updated
-//                return Defaults[cycleSuperHighwaysKey].bool ?? false
-            }
-            set {
-                Defaults[cycleSuperHighwaysKey] = newValue
-                NotificationCenter.post(settingsUpdatedNotification, object: self)
-            }
-        }
-        private let harborRingKey = "overlayHarborRingKey"
-        var showHarborRing: Bool {
-            get { return Defaults[harborRingKey].bool ?? false }
-            set {
-                Defaults[harborRingKey] = newValue
-                NotificationCenter.post(settingsUpdatedNotification, object: self)
-            }
-        }
-        private let greenPathsKey = "overlayGreenPathsKey"
-        var showGreenPaths: Bool {
-            get { return Defaults[greenPathsKey].bool ?? false }
-            set {
-                Defaults[greenPathsKey] = newValue
-                NotificationCenter.post(settingsUpdatedNotification, object: self)
-            }
-        }
-    }
-    
     class Onboarding {
         private let onboardingDidSeeActivateTrackingKey = "onboardingDidSeeActivateTrackingKey"
         var didSeeActivateTracking: Bool {
@@ -112,9 +74,43 @@ class Settings: NSObject {
     }
 }
 
-
-
-
+class Overlays: NSObject {
+    private let bikeServiceStationsKey = "overlayBikeServiceStationsKey"
+    var showBikeServiceStations: Bool {
+        get { return Defaults[bikeServiceStationsKey].bool ?? false }
+        set {
+            Defaults[bikeServiceStationsKey] = newValue
+            NotificationCenter.post(settingsUpdatedNotification, object: self)
+        }
+    }
+    private let cycleSuperHighwaysKey = "overlayCycleSuperHighways"
+    var showCycleSuperHighways: Bool {
+        get {
+            return false // Disable until routes are updated
+//            return Defaults[cycleSuperHighwaysKey].bool ?? false
+        }
+        set {
+            Defaults[cycleSuperHighwaysKey] = newValue
+            NotificationCenter.post(settingsUpdatedNotification, object: self)
+        }
+    }
+    private let harborRingKey = "overlayHarborRingKey"
+    var showHarborRing: Bool {
+        get { return Defaults[harborRingKey].bool ?? false }
+        set {
+            Defaults[harborRingKey] = newValue
+            NotificationCenter.post(settingsUpdatedNotification, object: self)
+        }
+    }
+    private let greenPathsKey = "overlayGreenPathsKey"
+    var showGreenPaths: Bool {
+        get { return Defaults[greenPathsKey].bool ?? false }
+        set {
+            Defaults[greenPathsKey] = newValue
+            NotificationCenter.post(settingsUpdatedNotification, object: self)
+        }
+    }
+}
 
 // TODO: Move to a cocoapods when stable
 
