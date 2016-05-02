@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode6.4
+osx_image: xcode7.3
 podfile: I Bike CPH/Podfile
 env:
   global:
@@ -18,14 +18,16 @@ env:
   - WORKSPACE_NAME="I Bike CPH/I Bike CPH.xcworkspace"
   - 'CODE_SIGNING_IDENTITY="iPhone Distribution: Socialsquare ApS"'
   - OUTPUTDIR="$PWD/build"
-  - SDK="iphoneos8.4"
+  - SDK="iphoneos9.3"
   - FASTLANE_ITUNES_TRANSPORTER_USE_SHELL_SCRIPT=1
   - secure: wK2B3GeLZ62OOrFot6JfTto5d6qp/+8KwcaAVxahinBfDjMsmG04C9mtCXApEDVzLzuLv0IK9vjnLTXLvyaS6htSUfBfEQsOWkDgRMEnPxQDqv4fqD3F6ImNOYjh3XtgurSUZvhg5c59HYP62CjWYcDQTbN2LDaCJjUAo3whLrc=
   - secure: MeCVPr8Nr/Cb5bh5/2eIy9EDYmtXmBhpfNLQk420BRoMFto/qPp1Gl9EENApscUukqDET7iDiuehCQhOF2qs+n6glSsuRQNvPAM44s5l1f9bqnWVeCKTG7lbNtUsaPn/6lPXHEDFFz6ONOlJxW2H3tnIaVI1V1QFtR601YBFR6s=
   - secure: 1+wppINsT52gDO3crwNl6c/e3q3cfdktx3BTj0kATXFAtmPSXOHLdOv5HQmmr5dV3mA4MAg6u2fsGFE7UzizRdmxeAtrqCaRmlEhzoyL0fgeTkGKXqY/U7AG1geNOFcp/GtIcCSKFt3/DIQcjRvEahj0MWZV+xhdCD8FxIPewvg=
   - secure: ufu97qJ9d+eTTKaoVxOjJnFLLlZ+KRqXvjbibHGOx0So0SnydKx3jBr/uPZ4YxiNu1M0fjNZK8+Ir1H01FgoXKmGQEKZvonI5ATPCvv30YNRiTMl1O5u2qyyhI0Mwtz2uVtCqANC7wGrp6+0i+ovYS2plRh2w/YbuIJLfNkfX50=
 before_install:
+- deliver --version
 - gem install deliver
+- gym --version
 - gem install gym
 - openssl aes-256-cbc -k "$FILE_ENC_PASSWORD" -in secrets/ios/certs/distribution.cer.enc
   -out secrets/ios/certs/distribution.cer -d
