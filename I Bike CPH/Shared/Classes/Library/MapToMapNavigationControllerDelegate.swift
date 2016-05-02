@@ -15,7 +15,7 @@ class MapToMapNavigationControllerDelegate: NSObject, UINavigationControllerDele
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        var panGesture = UIScreenEdgePanGestureRecognizer(target: self, action: Selector("panned:"))
+        let panGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(MapToMapNavigationControllerDelegate.panned(_:)))
         panGesture.edges = .Left
         panGesture.delegate = self
         self.navigationController!.view.addGestureRecognizer(panGesture)
@@ -29,8 +29,8 @@ class MapToMapNavigationControllerDelegate: NSObject, UINavigationControllerDele
                 self.navigationController?.popViewControllerAnimated(true)
             }
         case .Changed:
-            var translation = gestureRecognizer.translationInView(self.navigationController!.view)
-            var completionProgress = translation.x/CGRectGetWidth(self.navigationController!.view.bounds)
+            let translation = gestureRecognizer.translationInView(self.navigationController!.view)
+            let completionProgress = translation.x/CGRectGetWidth(self.navigationController!.view.bounds)
             self.interactionController?.updateInteractiveTransition(completionProgress)
         case .Ended:
             if (gestureRecognizer.velocityInView(self.navigationController!.view).x > 0) {
@@ -67,10 +67,7 @@ extension MapToMapNavigationControllerDelegate: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         // Check if did push from Map to Map
         let stackCount = navigationController?.viewControllers.count ?? 0
-        if stackCount >= 2, let
-            lastMap = navigationController?.viewControllers.last as? MapViewController,
-            secondLastMap = navigationController?.viewControllers[stackCount-2] as? MapViewController
-        {
+        if stackCount >= 2 {
             return true
         }
         return false

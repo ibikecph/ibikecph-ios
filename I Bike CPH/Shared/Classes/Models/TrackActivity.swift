@@ -20,7 +20,7 @@ class TrackActivity: RLMObject {
     dynamic var owned: String = ""
     
     class func build(activity: CMMotionActivity) -> TrackActivity {
-        var newActivity = TrackActivity()
+        let newActivity = TrackActivity()
         newActivity.unknown = activity.unknown
         newActivity.stationary = activity.stationary
         newActivity.walking = activity.walking

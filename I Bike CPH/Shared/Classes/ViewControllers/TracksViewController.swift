@@ -228,14 +228,15 @@ class TrackMapView: MKMapView {
 
 extension TrackMapView: MKMapViewDelegate {
     
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         if let polyline = overlay as? MKPolyline {
             let renderer = MKPolylineRenderer(polyline: polyline)
             renderer.strokeColor = Styler.tintColor()
             renderer.lineWidth = 4
             return renderer
         }
-        return nil
+        assert(false,"Unexpected overlay!")
+        return MKOverlayRenderer()
     }
 }
 

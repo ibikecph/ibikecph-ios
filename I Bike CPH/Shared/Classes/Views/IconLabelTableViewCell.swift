@@ -32,7 +32,7 @@ class IconLabelTableViewCell: NibDesignableTableViewCell {
         var icon: UIImage?
         if let favorite = item as? FavoriteItem {
             icon = FavoriteTypeViewModel(type: favorite.origin).iconImage
-        } else if let item = item as? HistoryItem {
+        } else if item is HistoryItem {
             icon = UIImage(named: "findHistory")
         }
         configure(item.name, icon: icon)

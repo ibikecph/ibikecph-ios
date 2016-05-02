@@ -20,7 +20,7 @@ class IconLabelSwitchTableViewCell: IconLabelTableViewCell {
     
     var switchChanged: ((on: Bool) -> ())? {
         didSet {
-            switcher.addTarget(self, action: "switched:", forControlEvents: .ValueChanged)
+            switcher.addTarget(self, action: #selector(IconLabelSwitchTableViewCell.switched(_:)), forControlEvents: .ValueChanged)
         }
     }
     

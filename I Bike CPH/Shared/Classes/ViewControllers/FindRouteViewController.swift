@@ -134,8 +134,7 @@ class FindRouteViewController: MapViewController {
         if
             segue.identifier == findRouteToRouteNavigationSegue,
             let routeNavigationViewController = segue.destinationViewController as? RouteNavigationViewController,
-            routeComposite = routeComposite,
-            toItem = toItem
+            routeComposite = routeComposite
         {
             routeNavigationViewController.routeComposite = routeComposite
         }

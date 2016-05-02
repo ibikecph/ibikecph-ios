@@ -134,6 +134,7 @@ extension String {
      func stringByAddingUrlParameters(parameters: [String: String]) -> String {
         var newString = self
         for (key, value) in parameters {
+// TODO: Use NSURLComponents to encode to components component-wiser instead
             if let string = value.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
                 newString = stringByAddingUrlParameter(key, value: string)
             }

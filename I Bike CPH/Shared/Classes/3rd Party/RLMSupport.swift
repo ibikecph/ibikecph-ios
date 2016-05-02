@@ -38,7 +38,9 @@ extension RLMArray: SequenceType {
             if (i >= self.count) {
                 return .None
             } else {
-                return self[i++] as? RLMObject
+                let returnObject = self[i] as RLMObject
+                i += 1
+                return returnObject
             }
         }
     }
@@ -62,7 +64,9 @@ extension RLMResults: SequenceType {
             if (i >= self.count) {
                 return .None
             } else {
-                return self[i++] as? RLMObject
+                let returnObject = self[i] as? RLMObject
+                i += 1
+                return returnObject
             }
         }
     }

@@ -78,10 +78,6 @@ class MapView: UIView {
         
         mapView.delegate = self
         
-        // Add long-press to drop pin
-        let longPress = UILongPressGestureRecognizer(target: self, action: "didLongPress:")
-        mapView.addGestureRecognizer(longPress)
-        
         self.setupBackgroundHandling()
     }
     
@@ -104,14 +100,12 @@ class MapView: UIView {
     let lineDashLengths = [1, 0.1, 1, 10, 100]
     func addPath(coordinates: [CLLocationCoordinate2D], lineColor: UIColor = Styler.tintColor(), lineWidth: Float = 4.0) -> Annotation {
         // Shape
-        var shape = RMShape(view: mapView)
+        let shape = RMShape(view: mapView)
         shape.lineColor = lineColor
         shape.lineWidth = lineWidth
         shape.lineJoin = "round"
         shape.lineCap = "round"
-//        shape.lineDashLengths = lineDashLengths
-//        shape.lineDashPhase = 2
-//        shape.scaleLineDash = true
+        
         // Add coordinates
         var waypoints: [CLLocation] = [CLLocation]()
         for coordinate in coordinates {
@@ -120,7 +114,7 @@ class MapView: UIView {
             waypoints.append(location)
         }
         // Annotation
-        var pathAnnotation = LayerAnnotation(layer: shape, mapView: self)
+        let pathAnnotation = LayerAnnotation(layer: shape, mapView: self)
         if let firstCoordinate = coordinates.first {
             pathAnnotation.coordinate = firstCoordinate
         }
@@ -145,7 +139,7 @@ class MapView: UIView {
         var totalBounds: RMSphericalTrapezium? = nil
         for annotation in annotations {
             let bounds = mapView.sphericalTrapezium(forProjectedRect: annotation.projectedBoundingBox)
-            if var tempTotalBounds = totalBounds {
+            if let tempTotalBounds = totalBounds {
                 let newSW = bounds.southWest
                 if newSW.latitude < tempTotalBounds.southWest.latitude {
                     totalBounds?.southWest.latitude = newSW.latitude
@@ -397,9 +391,9 @@ extension RMSphericalTrapezium {
 extension RMMapView {
     func sphericalTrapezium(forProjectedRect rect: RMProjectedRect) -> RMSphericalTrapezium {
         let neProjected = RMProjectedPoint(x: rect.origin.x + rect.size.width, y: rect.origin.y + rect.size.height)
-        var ne = projectedPointToCoordinate(neProjected)
+        let ne = projectedPointToCoordinate(neProjected)
         let swProjected = RMProjectedPoint(x: rect.origin.x, y: rect.origin.y )
-        var sw = projectedPointToCoordinate(swProjected)
+        let sw = projectedPointToCoordinate(swProjected)
         return RMSphericalTrapezium(southWest: sw, northEast: ne)
     }
 }

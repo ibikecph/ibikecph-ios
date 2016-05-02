@@ -59,7 +59,7 @@ class FavoriteListViewController: SMTranslatedViewController {
         let edit = !tableView.editing
         tableView.setEditing(edit, animated: true)
         let systemItem: UIBarButtonSystemItem = edit ? .Done : .Edit
-        let newButton = UIBarButtonItem(barButtonSystemItem: systemItem, target: self, action: "edit:")
+        let newButton = UIBarButtonItem(barButtonSystemItem: systemItem, target: self, action: #selector(FavoriteListViewController.edit(_:)))
         toolbar.setItems([newButton], animated: true)
     }
     

@@ -218,7 +218,7 @@ extension RouteNavigationViewController: SMRouteDelegate {
                 if routeComposite.currentRouteIndex + 1 < routes.count {
                     print("Going to next route segment")
                     self.routeComposite?.currentRoute?.delegate = nil
-                    self.routeComposite?.currentRouteIndex++
+                    self.routeComposite?.currentRouteIndex += 1
                     self.routeComposite?.currentRoute?.delegate = self
                     updateTurnInstructions()
                     updateStats()

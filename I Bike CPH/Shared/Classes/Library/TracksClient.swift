@@ -58,7 +58,6 @@ class TracksClient: ServerClient {
             completion(.Other(ServerResult.Failed(error: error)))
             return
         }
-        // Is this ever reached?!
         completion(.Other(ServerResult.FailedEncodingError))
     }
     

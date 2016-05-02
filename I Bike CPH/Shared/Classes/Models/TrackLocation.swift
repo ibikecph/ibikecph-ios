@@ -30,7 +30,7 @@ extension TrackLocation {
     }
     
     class func build(location: CLLocation) -> TrackLocation {
-        var point = TrackLocation()
+        let point = TrackLocation()
         point.timestamp = location.timestamp.timeIntervalSince1970
         point.latitude = location.coordinate.latitude
         point.longitude = location.coordinate.longitude

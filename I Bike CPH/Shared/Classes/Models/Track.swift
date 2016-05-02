@@ -103,9 +103,6 @@ extension Track {
     }
     
     private func recalculateDuration() {
-        let start = startDate() ?? endDate()
-        let end = endDate()
-        let locs = locations
         if let newDuration = endDate()?.timeIntervalSinceDate(startDate() ?? endDate()!) {
             duration = newDuration
         } else {

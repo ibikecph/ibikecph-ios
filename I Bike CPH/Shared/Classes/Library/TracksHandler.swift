@@ -590,7 +590,7 @@ class PruneSimilarLocationOperation: TracksOperation {
                     first.coordinate().latitude == last.coordinate().latitude &&
                     first.coordinate().longitude == last.coordinate().longitude
 
-                var deleteCenter = squeezedBetweenSimilar &&
+                let deleteCenter = squeezedBetweenSimilar &&
                     first.coordinate().latitude == center.coordinate().latitude &&
                     first.coordinate().longitude == center.coordinate().longitude &&
                     abs(first.timestamp - center.timestamp) < 2 // Less than two seconds between
@@ -675,7 +675,7 @@ class PruneCurlyEndsOperation: TracksOperation {
         let locations = track.locationsSorted()
         if let firstLocation = locations.firstObject() as? TrackLocation {
             // Go 60 seconds from start
-            var firstLocations = locations.objectsWhere("timestamp <= %lf", firstLocation.timestamp + extendSeconds)
+            let firstLocations = locations.objectsWhere("timestamp <= %lf", firstLocation.timestamp + extendSeconds)
             
             let firstCoordinates = firstLocations.toArray(TrackLocation).map { $0.coordinate() }
         
@@ -956,7 +956,6 @@ class MergeCloseSameActivityTracksOperation : MergeTimeTracksOperation {
                 let merge = close && sameType
                 if merge {
                     print("Close tracks: \(track.endDate()) to \(nextTrack.startDate())")
-                    let mergedTrack = mergeTrack(track, toTrack: nextTrack)
                     tracks = tracksSorted()
                 } else {
                     count += 1
@@ -1021,7 +1020,6 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
             }
             // Find latest bike track within time interval
             var nextCount = count
-            var nextTrack: Track?
             while nextCount < tracks.count - 3 {
                 let _nextTrack = tracks[nextCount+1]
                 if !_nextTrack.activity.cycling {
@@ -1033,10 +1031,9 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
                 }
                 // Found a bike track
                 print("\(formatter.stringFromDate(track.endDate()!)) | \(formatter.stringFromDate(_nextTrack.startDate()!))")
-                nextTrack = _nextTrack
                 nextCount += 1 // Keep searching
             }
-            if let nextTrack = nextTrack where nextCount > count {
+            if nextCount > count {
                 // Merge tracks between bike tracks
                 print("MERGEEEEE")
                 let tracksToMerge = Array(tracks[count...nextCount])
@@ -1098,7 +1095,7 @@ class GeocodeBikeTracksOperation: TracksOperation {
         
         print("Geocode bike tracks")
         
-        var bikeTracks = tracks().objectsWhere("activity.cycling == TRUE")
+        let bikeTracks = tracks().objectsWhere("activity.cycling == TRUE")
         for track in bikeTracks {
             if let track = track as? Track where !track.hasBeenGeocoded {
                 // Geocode synchronously to make sure writes are happening on same thread
@@ -1147,7 +1144,7 @@ class UploadBikeTracksOperation: TracksOperation {
         }
         
         let timestamp = NSDate(timeIntervalSinceNow: -60*60*1).timeIntervalSince1970 // Only upload tracks older than an hour
-        var bikeTracks = tracks().objectsWhere("endTimestamp <= %lf AND serverId == '' AND activity.cycling == TRUE", timestamp)
+        let bikeTracks = tracks().objectsWhere("endTimestamp <= %lf AND serverId == '' AND activity.cycling == TRUE", timestamp)
         for track in bikeTracks {
             if let track = track as? Track {
                 let temporaryTrackId = NSUUID().UUIDString

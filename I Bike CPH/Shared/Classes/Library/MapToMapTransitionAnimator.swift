@@ -35,7 +35,7 @@ class MapToMapTransitionAnimator: NSObject, UIViewControllerAnimatedTransitionin
         }
     }
   
-    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         self.transitionContext?.completeTransition(!self.transitionContext!.transitionWasCancelled())
     }
 }

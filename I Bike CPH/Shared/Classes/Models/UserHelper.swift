@@ -53,7 +53,6 @@ class UserHelper: NSObject {
     
     class func checkEnableTracking() -> EnableTrackingOptions {
         let isLoggedIn = UserHelper.loggedIn()
-        let isFacebook = UserHelper.isFacebook()
         let hasTrackToken = UserHelper.trackToken() != nil
         
         if !isLoggedIn {

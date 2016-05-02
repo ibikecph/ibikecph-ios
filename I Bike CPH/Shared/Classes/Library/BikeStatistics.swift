@@ -70,7 +70,7 @@ class BikeStatistics {
         var date = NSDate()
         var streak = 0
         while tracksForDayOfDate(date)?.count > 0 {
-            streak++
+            streak += 1
             date = date.dateByAddingTimeInterval(-60*60*24)
         }
         return streak

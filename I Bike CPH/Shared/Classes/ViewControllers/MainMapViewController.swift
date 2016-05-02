@@ -77,7 +77,6 @@ class MainMapViewController: MapViewController {
         })
         observerTokens.append(NotificationCenter.observe(kFAVORITES_CHANGED){ [weak self] notification in
             if let item = self?.currentLocationItem {
-                let oldFavorite = item
                 let newFavorite = self?.favoriteForItem(item) ?? item
                 self?.currentLocationItem = newFavorite
                 self?.addressToolbarView.updateToItem(item)
@@ -212,7 +211,7 @@ class MainMapViewController: MapViewController {
             segue.identifier == mainToTrackingSegue,
             let navigationController = segue.destinationViewController as? UINavigationController
         {
-            let backButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "dismissViewController")
+            let backButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(MainMapViewController.dismissViewController))
             navigationController.viewControllers.first?.navigationItem.leftBarButtonItem = backButton
         }
         if
@@ -340,7 +339,7 @@ extension MainMapViewController: MapViewDelegate {
         currentLocationItem = nil
         addressToolbarView.prepareForReuse()
         SMGeocoder.reverseGeocode(coordinate, synchronous: false) { [weak self] item, error in
-            if let error = error {
+            if error != nil {
                 self?.failedFindSelectCoordinate()
                 return
             }
