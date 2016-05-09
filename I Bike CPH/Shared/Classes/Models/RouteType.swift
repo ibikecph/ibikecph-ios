@@ -41,9 +41,8 @@ enum RouteType {
     static func validTypes() -> [RouteType] {
         if Macro.instance().isCykelPlanen {
 //            return [.Fast, .Green, .Broken]
-            return [.Disabled, .Fast, .Disabled]
+            return [.Fast, .Disabled, .Green]
         }
-//        return [.Fast, .Cargo, .Green]
-        return [.Fast, .Disabled, .Cargo]
+        return [.Fast, .Cargo, .Green]
     }
 }
