@@ -24,9 +24,10 @@ class FindAddressViewController: SMTranslatedViewController {
         case History
         case Favorites
         static var count: Int {
-            var max = 0
-            max = max + 1
-            while let _ = self.init(rawValue: max) {}
+            var max = 1
+            while let _ = self.init(rawValue: max) {
+                max += 1
+            }
             return max
         }
     }
