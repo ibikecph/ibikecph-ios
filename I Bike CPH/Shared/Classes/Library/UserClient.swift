@@ -11,7 +11,7 @@ import UIKit
 @objc class UserClient: ServerClient {
     static let instance = UserClient()
     
-    private let baseUrl = API_SERVER
+    private let baseUrl = SMRouteSettings.sharedInstance().api_base_url
     
     enum HasTokenResult {
         case Success(hasToken: Bool)

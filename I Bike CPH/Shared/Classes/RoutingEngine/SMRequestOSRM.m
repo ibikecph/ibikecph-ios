@@ -60,7 +60,7 @@ static dispatch_queue_t reachabilityQueue;
 
 - (BOOL)serverReachable
 {
-    Reachability *r = [Reachability reachabilityWithHostName:OSRM_ADDRESS];
+    Reachability *r = [Reachability reachabilityWithHostName:OSRM_HOSTNAME];
     NetworkStatus s = [r currentReachabilityStatus];
     if (s == NotReachable) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(serverNotReachable)]) {

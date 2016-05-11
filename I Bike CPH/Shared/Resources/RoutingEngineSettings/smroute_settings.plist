@@ -4,7 +4,9 @@
 <dict>
 	<key>GEOCODING_SEARCH_RADIUS</key>
 	<real>250</real>
-	<key>OSRM_ADDRESS</key>
+	<key>API_BASE_URL</key>
+	<string>https://www.ibikecph.dk/api</string>
+	<key>OSRM_HOSTNAME</key>
 	<string>router.project-osrm.org</string>
 	<key>OSRM_SERVER</key>
 	<string>https://routes.ibikecph.dk/v1.1/fast</string>
@@ -12,6 +14,8 @@
 	<string>https://routes.ibikecph.dk/v1.1/cargo</string>
 	<key>OSRM_SERVER_GREEN</key>
 	<string>https://routes.ibikecph.dk/v1.1/green</string>
+	<key>BROKEN_JOURNEY_SERVER</key>
+	<string>https://www.ibikecph.dk/api/journey</string>
 	<key>PLACES_SEARCH_RADIUS</key>
 	<string>20000</string>
 	<key>FOURSQUARE_SEARCH_RADIUS</key>

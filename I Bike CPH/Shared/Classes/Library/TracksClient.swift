@@ -11,7 +11,7 @@ import Foundation
 class TracksClient: ServerClient {
     static let sharedInstance = TracksClient()
     
-    private let baseUrl = API_SERVER
+    private let baseUrl = SMRouteSettings.sharedInstance().api_base_url
     
     enum UploadResult {
         case Success(trackServerId: String)

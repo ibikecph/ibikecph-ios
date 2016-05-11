@@ -28,9 +28,6 @@
 
 #define translateString(txt) [SMTranslation decodeString:(txt)]
 
-
-//#define TILE_SOURCE [[RMOpenStreetMapSource alloc] init]
-
 #define TILE_SOURCE [[SMiBikeCPHMapTileSource alloc] init]
 
 #define MIN_DISTANCE_FOR_RECALCULATION 20.0
@@ -48,7 +45,7 @@
 #define BUNDLE_VERSION [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*) kCFBundleVersionKey]
 #define USER_AGENT [NSString stringWithFormat:@"IBikeCPH/%@/iOS", BUNDLE_VERSION]
 
-#define OSRM_ADDRESS [SMRouteSettings sharedInstance].osrm_address
+#define OSRM_HOSTNAME [SMRouteSettings sharedInstance].osrm_hostname
 #define OSRM_SERVER [SMRouteSettings sharedInstance].osrm_server
 #define OSRM_SERVER_CARGO [SMRouteSettings sharedInstance].osrm_server_cargo
 #define OSRM_SERVER_GREEN [SMRouteSettings sharedInstance].osrm_server_green

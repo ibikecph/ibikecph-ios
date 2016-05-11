@@ -9,9 +9,7 @@
 #ifndef I_Bike_CPH_SharedConstants_h
 #define I_Bike_CPH_SharedConstants_h
 
-#define API_ADDRESS @"www.ibikecph.dk"
-//#define API_SERVER @"https://ibikecph-staging.herokuapp.com/api"
-#define API_SERVER @"https://www.ibikecph.dk/api"
+#define REACHABILITY_CHECK_HOSTNAME @"www.ibikecph.dk"
 
 #define CURRENT_POSITION_STRING [SMTranslation decodeString:@"current_position"]
 

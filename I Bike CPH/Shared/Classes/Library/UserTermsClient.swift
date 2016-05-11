@@ -11,7 +11,7 @@ import Foundation
 class UserTermsClient: ServerClient {
     static let instance = UserTermsClient()
     
-    private let baseUrl = API_SERVER + "/terms"
+    private let baseUrl = SMRouteSettings.sharedInstance().api_base_url + "/terms"
     
     private let latestVerifiedVersionKey = "UserTermsLatestVerifiedVersionKey"
     var latestVerifiedVersion: Int? {

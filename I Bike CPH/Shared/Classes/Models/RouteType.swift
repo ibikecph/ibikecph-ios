@@ -33,14 +33,13 @@ enum RouteType {
             case .Fast: return settings.osrm_server
             case .Cargo: return settings.osrm_server_cargo
             case .Green: return settings.osrm_server_green
-            case .Broken: return "https://www.ibikecph.dk/api/journey"
+            case .Broken: return settings.broken_journey_server
             }
         }
     }
 
     static func validTypes() -> [RouteType] {
         if Macro.instance().isCykelPlanen {
-//            return [.Fast, .Green, .Broken]
             return [.Fast, .Disabled, .Green]
         }
         return [.Fast, .Cargo, .Green]
