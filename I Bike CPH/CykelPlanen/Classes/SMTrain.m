@@ -83,7 +83,7 @@
         NSInteger smallestDiff = INT_MAX;
         for (SMTime *lTime in srcArr) {
             SMTime *diffTime = [time differenceFrom:lTime];
-            NSNumber *diff = [NSNumber numberWithInt:diffTime.hour * 60 + diffTime.minutes];
+            NSNumber *diff = [NSNumber numberWithInteger:diffTime.hour * 60 + diffTime.minutes];
             NSLog(@"%@ %d", lTime.description, diff.intValue);
             if (diff.intValue < smallestDiff && diff.intValue >= 0) {
                 NSLog(@"Smallest is %@", diffTime);

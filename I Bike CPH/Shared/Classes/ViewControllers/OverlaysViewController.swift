@@ -18,7 +18,7 @@ private struct OverlayTypeViewModel {
     let type: OverlayType
     var selected: Bool {
         get {
-            if let overlays = OverlayTypeViewModel.mapOverlays() {
+            if OverlayTypeViewModel.mapOverlays() != nil {
                 switch type {
                     case .CycleSuperHighways: return Settings.sharedInstance.overlays.showCycleSuperHighways
                     case .BikeServiceStations: return Settings.sharedInstance.overlays.showBikeServiceStations
@@ -29,7 +29,7 @@ private struct OverlayTypeViewModel {
             return false
         }
         set {
-            if let mapOverlays = OverlayTypeViewModel.mapOverlays() {
+            if OverlayTypeViewModel.mapOverlays() != nil {
                 switch type {
                     case .CycleSuperHighways: Settings.sharedInstance.overlays.showCycleSuperHighways = newValue
                     case .BikeServiceStations: Settings.sharedInstance.overlays.showBikeServiceStations = newValue

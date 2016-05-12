@@ -88,7 +88,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%ld:%d", (long)self.hour, self.minutes];
+    return [NSString stringWithFormat:@"%ld:%ld", (long)self.hour, (long)self.minutes];
 }
 
 - (BOOL)isEqual:(id)object

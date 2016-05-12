@@ -13,6 +13,10 @@
     #import "SMUser.h"
 #endif
 
+#if defined(OSRM_SERVERS)
+    #undef OSRM_SERVERS
+#endif
+
 #define OSRM_SERVERS @[@{@"name" : translateString(@"marker_type_1"), @"image" : @"bike_route_gray", @"imageHighlighted" : @"bike_route_white", @"server" : OSRM_SERVER}, @{@"name" : translateString(@"marker_type_2"), @"image" :  @"service_station_gray", @"imageHighlighted" : @"service_station_white", @"server" : OSRM_SERVER_CARGO}, @{@"name" : translateString(@"marker_type_3"), @"image" :  @"s_station_gray", @"imageHighlighted" : @"s_station_white", @"server" : OSRM_SERVER_CARGO}, @{@"name" : translateString(@"marker_type_4"), @"image" :  @"metro_station_gray", @"imageHighlighted" : @"metro_station_white", @"server" : OSRM_SERVER_CARGO}, @{@"name" : translateString(@"marker_type_5"), @"image" :  @"l-gray", @"imageHighlighted" : @"l-white", @"server" : OSRM_SERVER_CARGO}]
 
 #define LOCATION_STATION_DISTANCE_ON_BIKE 20

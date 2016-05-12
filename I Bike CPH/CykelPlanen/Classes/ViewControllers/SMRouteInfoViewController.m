@@ -63,7 +63,7 @@
 
     if (self.singleRouteInfo.type == SMStationInfoTypeLocalTrain) {
         // temp
-        NSArray *trains = [SMTransportation sharedInstance].trains;
+        NSArray *trains = transportation.trains;
         NSMutableArray *timesArray = [NSMutableArray new];
         for (SMTrain *train in trains) {
             NSArray *array = [train routeTimestampsForSourceStation:self.singleRouteInfo.sourceStation
@@ -105,7 +105,7 @@
                 }
             }
         } while (hasDuplicates);
-        times = [NSArray arrayWithArray:timesArray];
+        times = [NSMutableArray arrayWithArray:timesArray];
     }
     else {
         NSString *urlString = [NSString
@@ -136,7 +136,7 @@
                 [line addTimestampsForRouteInfo:self.singleRouteInfo array:timesArr currentTime:date time:time];
             }
         }
-        times= [NSArray arrayWithArray:timesArr];
+        times = [NSMutableArray arrayWithArray:timesArr];
     }else if(self.singleRouteInfo.type == SMStationInfoTypeMetro){
         SMTime* firstTime= [[SMTime alloc] initWithTime:cTime];
         NSMutableArray* arr= [NSMutableArray new];
@@ -258,7 +258,7 @@
             [arr addObject:routeTimeInfo];
         }
 
-        times= [NSArray arrayWithArray:arr];
+        times = [NSMutableArray arrayWithArray:arr];
     } */
     [self.tableView reloadData];
 }
@@ -350,11 +350,11 @@
 
             SMTime *difference = [routeTimeInfo.sourceTime differenceFrom:routeTimeInfo.destTime];
             UILabel *lbl = (UILabel *)[cell viewWithTag:1];
-            [lbl setText:[NSString stringWithFormat:@"%02d:%02d", routeTimeInfo.sourceTime.hour, routeTimeInfo.sourceTime.minutes]];
+            [lbl setText:[NSString stringWithFormat:@"%02lu:%02lu", routeTimeInfo.sourceTime.hour, (long)routeTimeInfo.sourceTime.minutes]];
             lbl = (UILabel *)[cell viewWithTag:2];
-            [lbl setText:[NSString stringWithFormat:@"%02d:%02d", routeTimeInfo.destTime.hour, routeTimeInfo.destTime.minutes]];
+            [lbl setText:[NSString stringWithFormat:@"%02lu:%02lu", routeTimeInfo.destTime.hour, routeTimeInfo.destTime.minutes]];
             lbl = (UILabel *)[cell viewWithTag:3];
-            [lbl setText:[NSString stringWithFormat:@"%02d:%02d", difference.hour, difference.minutes]];
+            [lbl setText:[NSString stringWithFormat:@"%02lu:%02lu", difference.hour, difference.minutes]];
             lbl = (UILabel *)[cell viewWithTag:4];
             [lbl setText:@"0"];
             UIColor *bgColor;
@@ -413,7 +413,7 @@
         NSString *destY = [self eightCharacterFormattedDouble:lat];
         NSString *destCoordName = [self.singleRouteInfo.destStation.name urlEncode];
 
-        NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         NSDate *date = [NSDate new];
 
         // Rejseplanen returns trains that are already departed
@@ -421,16 +421,16 @@
         NSDate *datePlusFiveMinutes = [date dateByAddingTimeInterval:60 * 5];
 
         NSDateComponents *components =
-            [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:datePlusFiveMinutes];
-        NSDateComponents *timeComponents = [cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:datePlusFiveMinutes];
+            [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:datePlusFiveMinutes];
+        NSDateComponents *timeComponents = [cal components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:datePlusFiveMinutes];
 
         NSInteger hour = [timeComponents hour];
         NSInteger mins = [timeComponents minute];
 
-        NSLog(@"Modified TIME: %d:%d", hour, mins);
+        NSLog(@"Modified TIME: %lu:%lu", hour, mins);
 
-        NSString *dateString = [NSString stringWithFormat:@"%02d.%02d", [components day], [components month]];
-        NSString *timeString = [NSString stringWithFormat:@"%d:%d", hour, mins];
+        NSString *dateString = [NSString stringWithFormat:@"%02lu.%02lu", [components day], [components month]];
+        NSString *timeString = [NSString stringWithFormat:@"%lu:%lu", hour, mins];
         NSString *URLString = [NSString
             stringWithFormat:
                 @"https://xmlopen.rejseplanen.dk/bin/rest.exe/trip?originId=%@&destCoordX=%@&destCoordY=%@&destCoordName=%@&date=%@&time=%@&useBus=0",

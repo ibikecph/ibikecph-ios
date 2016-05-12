@@ -58,7 +58,7 @@ class TracksClient: ServerClient {
             completion(.Other(ServerResult.Failed(error: error)))
             return
         }
-        completion(.Other(ServerResult.FailedEncodingError))
+//        completion(.Other(ServerResult.FailedEncodingError))
     }
     
     
