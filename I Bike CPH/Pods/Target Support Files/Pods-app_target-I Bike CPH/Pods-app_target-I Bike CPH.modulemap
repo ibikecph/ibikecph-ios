@@ -1,0 +1,6 @@
+framework module Pods_app_target_I_Bike_CPH {
+  umbrella header "Pods-app_target-I Bike CPH-umbrella.h"
+
+  export *
+  module * { export * }
+}

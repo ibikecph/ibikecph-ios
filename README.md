@@ -4,12 +4,16 @@
 ### CocoaPods
 [CocoaPods](http://cocoapods.org) is used for most 3rd party dependencies. The pods are commited to the repository, so there is no need to install Cocoapods to build and run the project. To update the pods see [here](http://guides.cocoapods.org/using/getting-started.html) for instructions.
 
-## Submodules
+The currently used pod version (1.6.0) of MapBox is quite outdated an in order for it to work the committed versions of the following files should not be changed unless the pod is updated:
+* `GRMustaceTag.h`
+* `RMMapView.m`
+
+### Git submodules
 The repository has a single git submodule containing the localization files used between all I Bike CPH apps. To initialize/add git submodules:
 
 `$ git submodule update --init`
 
-### Enable/disable tracking features
+## Enable/disable tracking features
 To enabled tracking features you must do two things:
 1. Define the following Objective-C preprocessor macro in `ibikecph-ios/I Bike CPH/Shared/SharedConstants.h`: `#define TRACKING_ENABLED 1`
 2. Make sure the following custom Swift compiler flag is present in the build settings for each app target: `-D TRACKING_ENABLED`

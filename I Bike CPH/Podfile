@@ -2,37 +2,48 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '8.0'
 
-link_with 'I Bike CPH', 'CykelPlanen'
-
 use_frameworks!
 inhibit_all_warnings!
 
-pod 'GoogleAnalytics-iOS-SDK', '~> 3.10'
-pod 'TTTAttributedLabel', '~> 1.13'
-pod 'DAKeyboardControl', '~> 2.4'
-pod 'UIImage-Categories', '~> 1.0'
-pod 'PSTAlertController', '1.1.0'
-pod 'Realm', '~> 0.99.0'
-pod 'Mapbox-iOS-SDK', '1.6.0'
-pod 'NibDesignable', '~> 2.3'
-pod 'SwiftyJSON', '~> 2.3'
-pod 'ORStackView',  '~> 3.0'
-pod 'Fabric', '~> 1.6.3'
-pod 'Crashlytics', '~> 3.7.0'
+abstract_target 'app_target' do
 
-target :CykelPlanenTests, :exclusive => true do
-    pod 'OCMockito', '~> 1.0'
+  pod 'GoogleAnalytics-iOS-SDK', '~> 3.10'
+  pod 'TTTAttributedLabel', '~> 1.13'
+  pod 'DAKeyboardControl', '~> 2.4'
+  pod 'UIImage-Categories', '~> 1.0'
+  pod 'PSTAlertController', '1.1.0'
+  pod 'Realm', '~> 0.99.0'
+  pod 'Mapbox-iOS-SDK', '1.6.0'
+  pod 'NibDesignable', '~> 2.3'
+  pod 'SwiftyJSON', '~> 2.3'
+  pod 'ORStackView',  '~> 3.0'
+  pod 'Fabric', '~> 1.6.3'
+  pod 'Crashlytics', '~> 3.7.0'
+
+  target 'I Bike CPH'
+  target 'CykelPlanen'
+
 end
-target :'I Bike CPHTests', :exclusive => true do
-    pod 'OCMockito', '~> 1.0'
+
+abstract_target 'test_target' do
+
+  pod 'OCMockito', '~> 1.0'
+
+  target 'I Bike CPHTests'
+  target 'CykelPlanenTests'
+
 end
 
 post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
-            config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
-            config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
-        end
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+        config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
+        config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
+        config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
     end
+  end
+
+  installer.pods_project.build_configuration_list.build_configurations.each do |configuration|
+    configuration.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+  end
 end
