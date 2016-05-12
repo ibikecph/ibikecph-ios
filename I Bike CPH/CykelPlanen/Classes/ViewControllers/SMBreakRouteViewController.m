@@ -342,7 +342,7 @@
 - (NSString *)formatAddressComponent:(NSString *)comp
 {
     NSString *trimmed = [comp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    int i = 0;
+    NSInteger i = 0;
 
     while ((i < [trimmed length]) && [[NSCharacterSet whitespaceCharacterSet] characterIsMember:[trimmed characterAtIndex:i]]) {
         i++;
@@ -416,7 +416,7 @@
     self.tripRoute.brokenRouteInfo = brokenRouteInfo;
 }
 
-- (NSString *)addressView:(SMAddressPickerView *)pAddressPickerView titleForRow:(int)row
+- (NSString *)addressView:(SMAddressPickerView *)pAddressPickerView titleForRow:(NSInteger)row
 {
     SMStationInfo *info = pickerModel[row];
     return info.name;
@@ -430,7 +430,7 @@
     [self dismiss];
 }
 
-- (void)addressView:(SMAddressPickerView *)pAddressPickerView didSelectItemAtIndex:(int)index forAddressType:(AddressType)pAddressType
+- (void)addressView:(SMAddressPickerView *)pAddressPickerView didSelectItemAtIndex:(NSInteger)index forAddressType:(AddressType)pAddressType
 {
     NSAssert(pAddressType != AddressTypeUndefined, @"Address type is undefined");
     if (pAddressType == AddressTypeDestination) {
@@ -460,7 +460,7 @@
 {
     NSArray *arr = [route.transportationRoutes valueForKey:@"sourceStation"];
     NSMutableArray *temp = [NSMutableArray new];
-    for (int i = 0; i < arr.count; i++) {
+    for (NSInteger i = 0; i < arr.count; i++) {
         SMStationInfo *station = [arr objectAtIndex:i];
         if (![temp containsObject:station]) {
             [temp addObject:station];

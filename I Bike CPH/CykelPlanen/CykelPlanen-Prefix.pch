@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'I Bike CPH' target in the 'I Bike CPH' project
+// Prefix header for all source files of the 'CykelPlanen' target in the 'I Bike CPH' project
 //
 
 #import <Availability.h>

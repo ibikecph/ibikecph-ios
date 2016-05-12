@@ -12,26 +12,24 @@
 
 @class SMStationInfo;
 
-typedef enum{
-    TravelTimeWeekDay = 0,
-    TravelTimeWeekend = 1,
-    TravelTimeWeekendNight = 2
-}  TravelTime ;
+typedef enum { TravelTimeWeekDay = 0, TravelTimeWeekend = 1, TravelTimeWeekendNight = 2 } TravelTime;
 
 /**
- * Handler for transportation. Has stations, lines (FIXME: mutable), trains, bool data loaded, bool loading stations. Used in SMBreakRouteViewController, SMMapOverlays, SMRouteInforViewController, SMRouteNavigationController, SMSplashController, SMStationInfo, SMStationsCache, SMTransportation, SMTransportationLine, SMTripRoute.
+ * Handler for transportation. Has stations, lines (FIXME: mutable), trains, bool data loaded, bool loading stations. Used in
+ * SMBreakRouteViewController, SMMapOverlays, SMRouteInforViewController, SMRouteNavigationController, SMSplashController, SMStationInfo,
+ * SMStationsCache, SMTransportation, SMTransportationLine, SMTripRoute.
  */
-@interface SMTransportation : NSObject<NSXMLParserDelegate,NSCoding>
+@interface SMTransportation : NSObject<NSXMLParserDelegate, NSCoding>
 
-+(SMTransportation*)instance;
-+(NSOperationQueue*) transportationQueue;
++ (SMTransportation *)sharedInstance;
++ (NSOperationQueue *)transportationQueue;
 
-@property(nonatomic, strong) NSArray* allStations;
-@property(nonatomic, strong) NSMutableArray* lines;
-@property(nonatomic, strong) NSArray* trains;
+@property(nonatomic, strong) NSArray *allStations;
+@property(nonatomic, strong) NSArray *lines;
+@property(nonatomic, strong) NSArray *trains;
 @property(nonatomic, assign) BOOL dataLoaded;
 @property(nonatomic, assign) BOOL loadingStations;
--(void)save;
--(void)validateAndSave;
--(SMStationInfo*)stationWithName:(NSString*)name;
+- (void)save;
+- (void)validateAndSave;
+- (SMStationInfo *)stationWithName:(NSString *)name;
 @end

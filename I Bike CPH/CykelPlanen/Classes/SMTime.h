@@ -9,18 +9,20 @@
 #import <Foundation/Foundation.h>
 
 /**
- * Time to calculate difference between two and format to string. Has hours and minutes. Used in SMDepartureInfo, SMRouteInfoViewController, SMTransportation, SMTransportationLine.
+ * Time to calculate difference between two and format to string. Has hours and minutes. Used in SMDepartureInfo, SMRouteInfoViewController,
+ * SMTransportation, SMTransportationLine.
  */
 @interface SMTime : NSObject
 
-+(SMTime*)timeFromString:(NSString*)timeString;
--(id)initWithTime:(SMTime*)time;
++ (SMTime *)timeFromString:(NSString *)timeString;
+- (id)initWithTime:(SMTime *)time;
 
-@property(nonatomic, assign) int hour;
-@property(nonatomic, assign) int minutes;
+@property(nonatomic, assign) NSInteger hour;
+@property(nonatomic, assign) NSInteger minutes;
 
--(int)differenceInMinutesFrom:(SMTime *)other;
--(SMTime*)differenceFrom:(SMTime*)other;
--(BOOL)isBetween:(SMTime*)first and:(SMTime*)second;
--(void)addMinutes:(int)mins;
+- (NSInteger)differenceInMinutesFrom:(SMTime *)other;
+- (SMTime *)differenceFrom:(SMTime *)other;
+- (BOOL)isBetween:(SMTime *)first and:(SMTime *)second;
+- (void)addMinutes:(NSInteger)mins;
+
 @end
