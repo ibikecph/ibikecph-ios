@@ -26,8 +26,8 @@ private struct OverlayTypeViewModel {
         get {
             if let overlays = OverlayTypeViewModel.mapOverlays() {
                 switch type {
-                    case .CycleSuperHighways: return Settings.sharedInstance.overlays.cycleSuperHighways
-                    case .BikeServiceStations: return Settings.sharedInstance.overlays.bikeServiceStations
+                    case .CycleSuperHighways: return Settings.sharedInstance.overlays.showCycleSuperHighways
+                    case .BikeServiceStations: return Settings.sharedInstance.overlays.showBikeServiceStations
                 }
             }
             return false
@@ -35,8 +35,8 @@ private struct OverlayTypeViewModel {
         set {
             if let mapOverlays = OverlayTypeViewModel.mapOverlays() {
                 switch type {
-                    case .CycleSuperHighways: Settings.sharedInstance.overlays.cycleSuperHighways = newValue
-                    case .BikeServiceStations: Settings.sharedInstance.overlays.bikeServiceStations = newValue
+                    case .CycleSuperHighways: Settings.sharedInstance.overlays.showCycleSuperHighways = newValue
+                    case .BikeServiceStations: Settings.sharedInstance.overlays.showBikeServiceStations = newValue
                 }
             }
         }
