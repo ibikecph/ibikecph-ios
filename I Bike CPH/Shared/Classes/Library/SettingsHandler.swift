@@ -53,7 +53,7 @@ class Settings: NSObject {
     
     @objc class Overlays {
         private let bikeServiceStationsKey = "overlayBikeServiceStationsKey"
-        var bikeServiceStations: Bool {
+        var showBikeServiceStations: Bool {
             get { return Defaults[bikeServiceStationsKey].bool ?? false }
             set {
                 Defaults[bikeServiceStationsKey] = newValue
@@ -61,13 +61,29 @@ class Settings: NSObject {
             }
         }
         private let cycleSuperHighwaysKey = "overlayCycleSuperHighways"
-        var cycleSuperHighways: Bool {
+        var showCycleSuperHighways: Bool {
             get {
-                return false // Disable until routes are update
+                return false // Disable until routes are updated
 //                return Defaults[cycleSuperHighwaysKey].bool ?? false
             }
             set {
                 Defaults[cycleSuperHighwaysKey] = newValue
+                NotificationCenter.post(settingsUpdatedNotification, object: self)
+            }
+        }
+        private let harborRingKey = "overlayHarborRingKey"
+        var showHarborRing: Bool {
+            get { return Defaults[harborRingKey].bool ?? false }
+            set {
+                Defaults[harborRingKey] = newValue
+                NotificationCenter.post(settingsUpdatedNotification, object: self)
+            }
+        }
+        private let greenPathsKey = "overlayGreenPathsKey"
+        var showGreenPaths: Bool {
+            get { return Defaults[greenPathsKey].bool ?? false }
+            set {
+                Defaults[greenPathsKey] = newValue
                 NotificationCenter.post(settingsUpdatedNotification, object: self)
             }
         }
