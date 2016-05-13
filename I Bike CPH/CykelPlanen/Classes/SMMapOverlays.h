@@ -14,8 +14,8 @@
  */
 @interface SMMapOverlays : NSObject
 
-- (SMMapOverlays*)initWithMapView:(MapView*)mapView;
-- (void)useMapView:(MapView*)mapView;
+- (SMMapOverlays *)initWithMapView:(MapView *)mapView;
+- (void)useMapView:(MapView *)mapView;
 - (void)updateOverlays;
 
 @end

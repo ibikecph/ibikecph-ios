@@ -665,7 +665,7 @@
     },                 
     { 
       "name":"Kejserinde Dagmars Plads", 
-      "point":"12.5346 55.6813",
+      "coords":"12.5346 55.6813",
       "line":"0", 
       "type":"service"
     },
