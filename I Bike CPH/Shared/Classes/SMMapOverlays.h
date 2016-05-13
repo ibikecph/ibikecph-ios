@@ -10,7 +10,7 @@
 @class MapView;
 
 /**
- * Map overlays. Handle markers/annotations for metro, service, station, and local train.
+ * Map overlays. Handles markers/annotations for the map view.
  */
 @interface SMMapOverlays : NSObject
 

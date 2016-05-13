@@ -10,9 +10,7 @@
 #import "SMSearchHistory.h"
 
 @protocol GAITracker;
-#if defined(CYKEL_PLANEN)
 #import "SMMapOverlays.h"
-#endif
 
 /**
  * App delegate. Handles facebook session, contacts, events, routes history, search history, Google Analytics trakcing, and app settings.
@@ -28,9 +26,7 @@
 
 @property(nonatomic, strong) id<GAITracker> tracker;
 
-#if defined(CYKEL_PLANEN)
 @property (nonatomic, strong) SMMapOverlays *mapOverlays;
-#endif
 
 @property (nonatomic, strong) NSMutableDictionary * appSettings;
 - (BOOL)saveSettings;

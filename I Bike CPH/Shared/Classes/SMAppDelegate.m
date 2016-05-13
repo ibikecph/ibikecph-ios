@@ -207,4 +207,14 @@
     [SMSearchHistory saveSearchHistory];
 }
 
+#pragma mark - Getters
+
+- (SMMapOverlays *)mapOverlays
+{
+    if (!_mapOverlays) {
+        _mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
+    }
+    return _mapOverlays;
+}
+
 @end

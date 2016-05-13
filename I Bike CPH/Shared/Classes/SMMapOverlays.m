@@ -129,7 +129,7 @@
 {
     if (!_cycleSuperHighwayLocations) {
         NSMutableArray *ma = [NSMutableArray new];
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"farum-route" ofType:@"json"];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"cycle_super_highways" ofType:@"json"];
         NSError *error;
         NSData *data = [NSData dataWithContentsOfFile:filePath];
         NSDictionary *dict;

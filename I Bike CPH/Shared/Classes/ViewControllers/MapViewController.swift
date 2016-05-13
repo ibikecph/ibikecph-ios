@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class MapViewController: ToolbarViewController {
 
     @IBOutlet weak var mapView: MapView!
@@ -20,26 +19,16 @@ class MapViewController: ToolbarViewController {
         // Delegate
         mapView.trackingDelegate = self
         
-#if CYKELPLANEN
-        // Load overlays
-        if appDelegate.mapOverlays == nil {
-            appDelegate.mapOverlays = SMMapOverlays(mapView: mapView)
-        }
-        appDelegate.mapOverlays.updateOverlays()
-    
         NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.appDelegate.mapOverlays.updateOverlays()
         }
-#endif
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-#if CYKELPLANEN
         appDelegate.mapOverlays.useMapView(mapView)
         appDelegate.mapOverlays.updateOverlays() // Load annotations to view
-#endif
         mapView.loadInitialRegionIfNecessary()
     }
     

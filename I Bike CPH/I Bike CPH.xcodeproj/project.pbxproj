@@ -198,8 +198,8 @@
 		4EB70F4D1B6B62A900AB48CB /* CaloriesFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB70F4B1B6B62A900AB48CB /* CaloriesFormatter.swift */; };
 		4EB8B1881B25D20F00A1C53E /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */; };
 		4EB8B1891B25D20F00A1C53E /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */; };
-		4EBB7B3A1A5EB4E70064B530 /* farum-route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* farum-route.json */; };
-		4EBB7B3B1A5EB4E70064B530 /* farum-route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* farum-route.json */; };
+		4EBB7B3A1A5EB4E70064B530 /* cycle_super_highways.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* cycle_super_highways.json */; };
+		4EBB7B3B1A5EB4E70064B530 /* cycle_super_highways.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* cycle_super_highways.json */; };
 		4EBB7B421A5EB4E70064B530 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B391A5EB4E70064B530 /* stations.json */; };
 		4EBB7B431A5EB4E70064B530 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B391A5EB4E70064B530 /* stations.json */; };
 		4EBB7B481A5EC2A00064B530 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B471A5EC2A00064B530 /* RouteType.swift */; };
@@ -319,7 +319,6 @@
 		4EE06C361A10FC5600DE4226 /* SMBrokenRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06BD21A10FC5600DE4226 /* SMBrokenRouteInfo.m */; };
 		4EE06C381A10FC5600DE4226 /* SMDepartureInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06BD61A10FC5600DE4226 /* SMDepartureInfo.m */; };
 		4EE06C3C1A10FC5600DE4226 /* SMLineData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06BDE1A10FC5600DE4226 /* SMLineData.m */; };
-		4EE06C3E1A10FC5600DE4226 /* SMMapOverlays.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06BE21A10FC5600DE4226 /* SMMapOverlays.m */; };
 		4EE06C3F1A10FC5600DE4226 /* SMMetroStationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06BE41A10FC5600DE4226 /* SMMetroStationInfo.m */; };
 		4EE06C401A10FC5600DE4226 /* SMNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06BE61A10FC5600DE4226 /* SMNode.m */; };
 		4EE06C411A10FC5600DE4226 /* SMRelation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE06BE81A10FC5600DE4226 /* SMRelation.m */; };
@@ -480,6 +479,8 @@
 		7D1D9CBA1CB7F1D0007F1D30 /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C8D1CB7EA6F007F1D30 /* SearchListItem.swift */; };
 		7D1D9CBB1CB7F1E2007F1D30 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C451CB7E92C007F1D30 /* SwiftyJSON.swift */; };
 		7D1D9CBC1CB7F1E3007F1D30 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C451CB7E92C007F1D30 /* SwiftyJSON.swift */; };
+		7D49213C1CE5F3F300BAADEB /* SMMapOverlays.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D49213B1CE5F3F300BAADEB /* SMMapOverlays.m */; };
+		7D49213D1CE5F3F300BAADEB /* SMMapOverlays.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D49213B1CE5F3F300BAADEB /* SMMapOverlays.m */; };
 		7D7F99A11CB3C5F30079801B /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */; };
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		CBB78EC39B066CA0779C3D9D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
@@ -621,7 +622,7 @@
 		4EB610E41AD69D2500CEC994 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		4EB70F4B1B6B62A900AB48CB /* CaloriesFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaloriesFormatter.swift; sourceTree = "<group>"; };
 		4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
-		4EBB7B351A5EB4E70064B530 /* farum-route.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "farum-route.json"; sourceTree = "<group>"; };
+		4EBB7B351A5EB4E70064B530 /* cycle_super_highways.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cycle_super_highways.json; sourceTree = "<group>"; };
 		4EBB7B391A5EB4E70064B530 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		4EBB7B471A5EC2A00064B530 /* RouteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
 		4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTypeHandler.swift; sourceTree = "<group>"; };
@@ -745,8 +746,6 @@
 		4EE06BD61A10FC5600DE4226 /* SMDepartureInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDepartureInfo.m; sourceTree = "<group>"; };
 		4EE06BDD1A10FC5600DE4226 /* SMLineData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLineData.h; sourceTree = "<group>"; };
 		4EE06BDE1A10FC5600DE4226 /* SMLineData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLineData.m; sourceTree = "<group>"; };
-		4EE06BE11A10FC5600DE4226 /* SMMapOverlays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMapOverlays.h; sourceTree = "<group>"; };
-		4EE06BE21A10FC5600DE4226 /* SMMapOverlays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMapOverlays.m; sourceTree = "<group>"; };
 		4EE06BE31A10FC5600DE4226 /* SMMetroStationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMetroStationInfo.h; sourceTree = "<group>"; };
 		4EE06BE41A10FC5600DE4226 /* SMMetroStationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMetroStationInfo.m; sourceTree = "<group>"; };
 		4EE06BE51A10FC5600DE4226 /* SMNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNode.h; sourceTree = "<group>"; };
@@ -887,6 +886,8 @@
 		7D1D9C8C1CB7EA6F007F1D30 /* OiorestItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OiorestItem.swift; sourceTree = "<group>"; };
 		7D1D9C8D1CB7EA6F007F1D30 /* SearchListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListItem.swift; sourceTree = "<group>"; };
 		7D1D9C8E1CB7EA6F007F1D30 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7D49213A1CE5F3F300BAADEB /* SMMapOverlays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMapOverlays.h; sourceTree = "<group>"; };
+		7D49213B1CE5F3F300BAADEB /* SMMapOverlays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMapOverlays.m; sourceTree = "<group>"; };
 		7D7F99A21CB3EB4D0079801B /* SMAddressParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddressParser.h; sourceTree = "<group>"; };
 		7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddressParser.m; sourceTree = "<group>"; };
 		A44BC1E9CE220BE043EB736A /* Pods-I Bike CPHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-I Bike CPHTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-I Bike CPHTests/Pods-I Bike CPHTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1126,7 +1127,7 @@
 		4EBB7B341A5EB4E70064B530 /* LocationData */ = {
 			isa = PBXGroup;
 			children = (
-				4EBB7B351A5EB4E70064B530 /* farum-route.json */,
+				4EBB7B351A5EB4E70064B530 /* cycle_super_highways.json */,
 				4EBB7B391A5EB4E70064B530 /* stations.json */,
 			);
 			path = LocationData;
@@ -1312,6 +1313,8 @@
 				7D1D9C441CB7E8C9007F1D30 /* RoutingEngine */,
 				4EC56DDC1A2A262800B696B4 /* SMAppDelegate.h */,
 				4EC56DDD1A2A262800B696B4 /* SMAppDelegate.m */,
+				7D49213A1CE5F3F300BAADEB /* SMMapOverlays.h */,
+				7D49213B1CE5F3F300BAADEB /* SMMapOverlays.m */,
 				7D7F99A21CB3EB4D0079801B /* SMAddressParser.h */,
 				7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */,
 				4E1000DD1B00A6B0005C7FE7 /* ViewModels */,
@@ -1341,8 +1344,6 @@
 				4EE06BD61A10FC5600DE4226 /* SMDepartureInfo.m */,
 				4EE06BDD1A10FC5600DE4226 /* SMLineData.h */,
 				4EE06BDE1A10FC5600DE4226 /* SMLineData.m */,
-				4EE06BE11A10FC5600DE4226 /* SMMapOverlays.h */,
-				4EE06BE21A10FC5600DE4226 /* SMMapOverlays.m */,
 				4EE06BE31A10FC5600DE4226 /* SMMetroStationInfo.h */,
 				4EE06BE41A10FC5600DE4226 /* SMMetroStationInfo.m */,
 				4EE06BE51A10FC5600DE4226 /* SMNode.h */,
@@ -1907,7 +1908,7 @@
 				4E10EBBA1B3AE6480012245E /* RouteNavigationToolbarView.xib in Resources */,
 				4E4AC4541A8502E80037A65E /* Logo@2x.png in Resources */,
 				4E10EBC81B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */,
-				4EBB7B3A1A5EB4E70064B530 /* farum-route.json in Resources */,
+				4EBB7B3A1A5EB4E70064B530 /* cycle_super_highways.json in Resources */,
 				4E5E878C1B31D6560021F5E9 /* FindRouteToolbarView.xib in Resources */,
 				4E59822B1A24C4DD00A40484 /* BitBlueprint.gpx in Resources */,
 				4EEE91B91A1245610006BD95 /* test2.gpx in Resources */,
@@ -1953,7 +1954,7 @@
 				4EC56E8B1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
 				4EE06E5F1A11298800DE4226 /* SMAddressPickerView.xib in Resources */,
 				4E4AC4571A8502FC0037A65E /* Logo@2x.png in Resources */,
-				4EBB7B3B1A5EB4E70064B530 /* farum-route.json in Resources */,
+				4EBB7B3B1A5EB4E70064B530 /* cycle_super_highways.json in Resources */,
 				4EEE91B61A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */,
 				4E3C3A8B1A39E80300C79E52 /* SharedImages.xcassets in Resources */,
 				4E5B907B1B60D408008AC960 /* markerStart@3x.png in Resources */,
@@ -2367,6 +2368,7 @@
 				4EFDA4821AB87A6D00522A41 /* NSDate.swift in Sources */,
 				7D1D9C641CB7EA07007F1D30 /* SMRoute.m in Sources */,
 				4E5674601A92521800BF4A28 /* MotionDetector.swift in Sources */,
+				7D49213C1CE5F3F300BAADEB /* SMMapOverlays.m in Sources */,
 				4EEC6D281B20788E003AE8DF /* MapViewController.swift in Sources */,
 				4E32B29B1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */,
 				4EFDA4861AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */,
@@ -2459,6 +2461,7 @@
 				4EC56E2B1A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
 				7D03242F1CBD3990002DADDE /* NonTrackingHandler.swift in Sources */,
 				4EC56E3B1A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
+				7D49213D1CE5F3F300BAADEB /* SMMapOverlays.m in Sources */,
 				4EC56EDD1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */,
 				4E0176891AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */,
 				4EC56DC61A2A25E900B696B4 /* SMContacts.m in Sources */,
@@ -2586,7 +2589,6 @@
 				4EEC6D381B20B14F003AE8DF /* TrackingToolbarView.swift in Sources */,
 				4EC56E771A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
 				4EC56DE01A2A262800B696B4 /* SMAppDelegate.m in Sources */,
-				4EE06C3E1A10FC5600DE4226 /* SMMapOverlays.m in Sources */,
 				4EE671C71A2F25F00037865B /* UINavigationController.swift in Sources */,
 				7D1D9CA41CB7EBCF007F1D30 /* SMRoute.m in Sources */,
 				4E1000E11B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */,
