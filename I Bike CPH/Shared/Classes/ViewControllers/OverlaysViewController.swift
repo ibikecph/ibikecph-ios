@@ -13,13 +13,7 @@ private struct OverlayTypeViewModel {
         return self.type.localizedDescription
     }
     var iconImage: UIImage? {
-        let name: String = {
-            switch self.type {
-                case .CycleSuperHighways: return "SuperCycleHighway"
-                case .BikeServiceStations: return "serviceStation"
-            }
-        }()
-        return UIImage(named: name)
+        return self.type.menuIcon
     }
     let type: OverlayType
     var selected: Bool {
@@ -28,6 +22,8 @@ private struct OverlayTypeViewModel {
                 switch type {
                     case .CycleSuperHighways: return Settings.sharedInstance.overlays.showCycleSuperHighways
                     case .BikeServiceStations: return Settings.sharedInstance.overlays.showBikeServiceStations
+                    case .HarborRing: return Settings.sharedInstance.overlays.showHarborRing
+                    case .GreenPaths: return Settings.sharedInstance.overlays.showGreenPaths
                 }
             }
             return false
@@ -37,6 +33,8 @@ private struct OverlayTypeViewModel {
                 switch type {
                     case .CycleSuperHighways: Settings.sharedInstance.overlays.showCycleSuperHighways = newValue
                     case .BikeServiceStations: Settings.sharedInstance.overlays.showBikeServiceStations = newValue
+                    case .HarborRing: Settings.sharedInstance.overlays.showHarborRing = newValue
+                    case .GreenPaths: Settings.sharedInstance.overlays.showGreenPaths = newValue
                 }
             }
         }
@@ -60,10 +58,22 @@ class OverlaysViewController: UIViewController {
 
     private let cellID = "OverlayCellID"
     
-    private var items = [
-//        OverlayTypeViewModel(type: .CycleSuperHighways),
-        OverlayTypeViewModel(type: .BikeServiceStations)
-    ]
+    private let items: [OverlayTypeViewModel] = {
+        if Macro.instance().isCykelPlanen {
+            return [
+//                OverlayTypeViewModel(type: .CycleSuperHighways),
+                OverlayTypeViewModel(type: .BikeServiceStations)
+            ]
+        }
+        if Macro.instance().isIBikeCph {
+            return [
+                OverlayTypeViewModel(type: .HarborRing),
+                OverlayTypeViewModel(type: .GreenPaths)
+            ]
+        }
+        return []
+        
+        }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

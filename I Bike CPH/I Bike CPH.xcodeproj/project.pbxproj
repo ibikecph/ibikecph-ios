@@ -489,6 +489,7 @@
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		CBB78EC39B066CA0779C3D9D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		CC8334260326B19073009BF6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335D1E0C4C3B6EA9C90D1EE /* Pods.framework */; };
+		DE5170751CE7B2C70088B5E3 /* OverlaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */; };
 		DE5557741CCBC00F00D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		DE5557751CCBC01000D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		DE56DDBF1CE7993300E60C57 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56DDBE1CE7993300E60C57 /* UIColor+Hex.m */; };
@@ -2340,6 +2341,7 @@
 				4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */,
 				4E818EB71BF3872C0058C090 /* RouteBrokenToolbarView.swift in Sources */,
 				4E3C3A8D1A3A043900C79E52 /* FavoriteViewController.swift in Sources */,
+				DE5170751CE7B2C70088B5E3 /* OverlaysViewController.swift in Sources */,
 				4EADAE511B5024CA00A2E43F /* ServiceStationsAnnotation.swift in Sources */,
 				4EC56E491A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
 				4EDC5E071B20EBD5009189EE /* ToolbarView.swift in Sources */,

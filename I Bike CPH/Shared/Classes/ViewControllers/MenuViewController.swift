@@ -69,15 +69,10 @@ class MenuViewController: UIViewController {
             menuViewController.performSegueWithIdentifier("menuToAbout", sender: menuViewController)
         })
         
-        //
         var menuItems = [favItem]
         
-        if macro.isCykelPlanen {
-            menuItems.append(overlayItem)
-        }
+        menuItems.append(overlayItem)
 //        menuItems.append(voiceItem)
-        if macro.isIBikeCph {
-        }
 //        menuItems.append(speedItem)
         #if TRACKING_ENABLED
             menuItems.append(trackingItem)
