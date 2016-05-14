@@ -196,21 +196,7 @@
 - (NSArray *)harborRingLocations
 {
     if (!_harborRingLocations) {
-        NSDictionary *JSONDictionary = [self JSONDictionaryFromFileWithName:@"harbor_ring" extension:@"geojson"];
-        NSArray *features = JSONDictionary[@"features"];
-        NSMutableArray *ma = [NSMutableArray new];
-        for (NSDictionary *feature in features) {
-            NSArray *coordinates = [[feature objectForKey:@"geometry"] objectForKey:@"coordinates"];
-            NSMutableArray *locations = [NSMutableArray new];
-            for (NSArray *coordinate in coordinates) {
-                float longitude = [coordinate[0] floatValue];
-                float latitude = [coordinate[1] floatValue];
-                CLLocation *location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
-                [locations addObject:location];
-            }
-            [ma addObject:locations];
-        }
-        _harborRingLocations = ma.copy;
+        _harborRingLocations = [self locationsFromGeoJSONFileWithName:@"harbor_ring" extension:@"geojson"];
     }
     return _harborRingLocations;
 }
@@ -226,21 +212,7 @@
 - (NSArray *)greenPathsLocations
 {
     if (!_greenPathsLocations) {
-        NSDictionary *JSONDictionary = [self JSONDictionaryFromFileWithName:@"green_paths" extension:@"geojson"];
-        NSArray *features = JSONDictionary[@"features"];
-        NSMutableArray *ma = [NSMutableArray new];
-        for (NSDictionary *feature in features) {
-            NSArray *coordinates = [[feature objectForKey:@"geometry"] objectForKey:@"coordinates"];
-            NSMutableArray *locations = [NSMutableArray new];
-            for (NSArray *coordinate in coordinates) {
-                float longitude = [coordinate[0] floatValue];
-                float latitude = [coordinate[1] floatValue];
-                CLLocation *location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
-                [locations addObject:location];
-            }
-            [ma addObject:locations];
-        }
-        _greenPathsLocations = ma.copy;
+        _greenPathsLocations = [self locationsFromGeoJSONFileWithName:@"green_paths" extension:@"geojson"];
     }
     return _greenPathsLocations;
 }
@@ -285,6 +257,25 @@
         return nil;
     }
     return dictionary;
+}
+
+- (NSArray *)locationsFromGeoJSONFileWithName:(NSString *)name extension:(NSString *)extension
+{
+    NSDictionary *JSONDictionary = [self JSONDictionaryFromFileWithName:name extension:extension];
+    NSArray *features = JSONDictionary[@"features"];
+    NSMutableArray *ma = [NSMutableArray new];
+    for (NSDictionary *feature in features) {
+        NSArray *coordinates = [[feature objectForKey:@"geometry"] objectForKey:@"coordinates"];
+        NSMutableArray *locations = [NSMutableArray new];
+        for (NSArray *coordinate in coordinates) {
+            float longitude = [coordinate[0] floatValue];
+            float latitude = [coordinate[1] floatValue];
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+            [locations addObject:location];
+        }
+        [ma addObject:locations];
+    }
+    return ma.copy;
 }
 
 - (NSArray *)annotationColorsFromGeoJSONFileWithName:(NSString *)name extension:(NSString *)extension
