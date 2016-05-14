@@ -11,6 +11,7 @@
 #import "SMStationInfo.h"
 #import "SMTransportation.h"
 #import "SMTransportationLine.h"
+#import "UIColor+Hex.h"
 
 @interface SMMapOverlays ()
 @property(nonatomic, weak) MapView *mapView;
@@ -217,18 +218,7 @@
 - (NSArray *)harborRingAnnotationColors
 {
     if (!_harborRingAnnotationColors) {
-        NSDictionary *JSONDictionary = [self JSONDictionaryFromFileWithName:@"harbor_ring" extension:@"geojson"];
-        NSArray *features = JSONDictionary[@"features"];
-        NSMutableArray *ma = [NSMutableArray new];
-        for (NSDictionary *feature in features) {
-            NSString *colorString = [[feature objectForKey:@"properties"] objectForKey:@"color"];
-            UIColor *color = [[Styler tintColor] colorWithAlphaComponent:0.5f];
-            if (colorString) {
-                color = [[UIColor greenColor] colorWithAlphaComponent:0.5f];
-            }
-            [ma addObject:color];
-        }
-        _harborRingAnnotationColors = ma.copy;
+        _harborRingAnnotationColors = [self annotationColorsFromGeoJSONFileWithName:@"harbor_ring" extension:@"geojson"];
     }
     return _harborRingAnnotationColors;
 }
@@ -258,18 +248,7 @@
 - (NSArray *)greenPathsAnnotationColors
 {
     if (!_greenPathsAnnotationColors) {
-        NSDictionary *JSONDictionary = [self JSONDictionaryFromFileWithName:@"green_paths" extension:@"geojson"];
-        NSArray *features = JSONDictionary[@"features"];
-        NSMutableArray *ma = [NSMutableArray new];
-        for (NSDictionary *feature in features) {
-            NSString *colorString = [[feature objectForKey:@"properties"] objectForKey:@"color"];
-            UIColor *color = [[Styler tintColor] colorWithAlphaComponent:0.5f];
-            if (colorString) {
-                color = [[UIColor greenColor] colorWithAlphaComponent:0.5f];
-            }
-            [ma addObject:color];
-        }
-        _greenPathsAnnotationColors = ma.copy;
+        _greenPathsAnnotationColors = [self annotationColorsFromGeoJSONFileWithName:@"green_paths" extension:@"geojson"];
     }
     return _greenPathsAnnotationColors;
 }
@@ -306,6 +285,22 @@
         return nil;
     }
     return dictionary;
+}
+
+- (NSArray *)annotationColorsFromGeoJSONFileWithName:(NSString *)name extension:(NSString *)extension
+{
+    NSDictionary *JSONDictionary = [self JSONDictionaryFromFileWithName:name extension:extension];
+    NSArray *features = JSONDictionary[@"features"];
+    NSMutableArray *ma = [NSMutableArray new];
+    for (NSDictionary *feature in features) {
+        NSString *colorString = [[feature objectForKey:@"properties"] objectForKey:@"color"];
+        UIColor *color = [[Styler tintColor] colorWithAlphaComponent:0.5f];
+        if (colorString) {
+            color = [UIColor hex_colorFromStringWithHexRGBValue:colorString alpha:0.5f];
+        }
+        [ma addObject:color];
+    }
+    return ma.copy;
 }
 
 @end

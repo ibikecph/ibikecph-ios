@@ -491,6 +491,8 @@
 		CC8334260326B19073009BF6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335D1E0C4C3B6EA9C90D1EE /* Pods.framework */; };
 		DE5557741CCBC00F00D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		DE5557751CCBC01000D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
+		DE56DDBF1CE7993300E60C57 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56DDBE1CE7993300E60C57 /* UIColor+Hex.m */; };
+		DE56DDC01CE79A4100E60C57 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56DDBE1CE7993300E60C57 /* UIColor+Hex.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -901,6 +903,8 @@
 		C335D1E0C4C3B6EA9C90D1EE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40C9EBA1FFAC0ACBC43C5B1 /* Pods-CykelPlanenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.release.xcconfig"; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DE56DDBD1CE7993300E60C57 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		DE56DDBE1CE7993300E60C57 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1308,6 +1312,7 @@
 				4E4AC4591A8505BE0037A65E /* Macro.swift */,
 				4EFA280F1A2BA1330050450C /* Main.storyboard */,
 				4E7BA9E31A1E2A1800F9744A /* Tests */,
+				DE56DDBC1CE798FD00E60C57 /* Categories */,
 				4EE05FA01A10EE8400DE4226 /* Classes */,
 				4EEE91B01A1245610006BD95 /* Resources */,
 				4E7BA9D01A1E1AD100F9744A /* Bridging-Header.h */,
@@ -1724,6 +1729,15 @@
 				489F1201F655BED5B68DD674 /* Pods_I_Bike_CPHTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE56DDBC1CE798FD00E60C57 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				DE56DDBD1CE7993300E60C57 /* UIColor+Hex.h */,
+				DE56DDBE1CE7993300E60C57 /* UIColor+Hex.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		EB75382B6E76E7EF0729C786 /* Pods */ = {
@@ -2293,6 +2307,7 @@
 				4E4F5FE01A2BB3A000233ACA /* StyleIBikeCph.swift in Sources */,
 				4EC56E9D1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */,
 				4EC56EE71A2A3AAE00B696B4 /* SMRegisterController.m in Sources */,
+				DE56DDBF1CE7993300E60C57 /* UIColor+Hex.m in Sources */,
 				4E59591B1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */,
 				4ECA91A11AB2EED800F4BB4F /* NotificationCenter.swift in Sources */,
 				4EB610E21AD69B8800CEC994 /* SectionViewModel.swift in Sources */,
@@ -2470,6 +2485,7 @@
 				4EE06C411A10FC5600DE4226 /* SMRelation.m in Sources */,
 				4EC56E4B1A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
 				4EE06C331A10FC5600DE4226 /* SMArrivalInformation.m in Sources */,
+				DE56DDC01CE79A4100E60C57 /* UIColor+Hex.m in Sources */,
 				4EC56E2B1A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
 				7D03242F1CBD3990002DADDE /* NonTrackingHandler.swift in Sources */,
 				4EC56E3B1A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
