@@ -121,34 +121,12 @@
 
 - (void)updateHarborRingAnnotations
 {
-    self.harborRingAnnotations = @[];
-    if (!self.mapView) {
-        return;
-    }
-    NSMutableArray *ma = [NSMutableArray new];
-    for (NSUInteger i = 0; i < self.harborRingLocations.count; i++) {
-        NSArray *locations = self.harborRingLocations[i];
-        UIColor *color = self.harborRingAnnotationColors[i];
-        Annotation *annotation = [self.mapView addPathWithLocations:locations lineColor:color lineWidth:4.0];
-        [ma addObject:annotation];
-    }
-    self.harborRingAnnotations = ma.copy;
+    self.harborRingAnnotations = [self annotationsFromLocations:self.harborRingLocations colors:self.harborRingAnnotationColors];
 }
 
 - (void)updateGreenPathsAnnotations
 {
-    self.greenPathsAnnotations = @[];
-    if (!self.mapView) {
-        return;
-    }
-    NSMutableArray *ma = [NSMutableArray new];
-    for (NSUInteger i = 0; i < self.greenPathsLocations.count; i++) {
-        NSArray *locations = self.greenPathsLocations[i];
-        UIColor *color = self.greenPathsAnnotationColors[i];
-        Annotation *annotation = [self.mapView addPathWithLocations:locations lineColor:color lineWidth:4.0];
-        [ma addObject:annotation];
-    }
-    self.greenPathsAnnotations = ma.copy;
+    self.greenPathsAnnotations = [self annotationsFromLocations:self.greenPathsLocations colors:self.greenPathsAnnotationColors];
 }
 
 #pragma mark - Getters
@@ -257,6 +235,21 @@
         return nil;
     }
     return dictionary;
+}
+
+- (NSArray *)annotationsFromLocations:(NSArray *)locations colors:(NSArray *)colors
+{
+    if (!self.mapView) {
+        return @[];
+    }
+    NSMutableArray *ma = [NSMutableArray new];
+    for (NSUInteger i = 0; i < locations.count; i++) {
+        NSArray *locationsSubArray = locations[i];
+        UIColor *color = colors[i];
+        Annotation *annotation = [self.mapView addPathWithLocations:locationsSubArray lineColor:color lineWidth:4.0];
+        [ma addObject:annotation];
+    }
+    return ma.copy;
 }
 
 - (NSArray *)locationsFromGeoJSONFileWithName:(NSString *)name extension:(NSString *)extension
