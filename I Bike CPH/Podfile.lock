@@ -9,9 +9,7 @@ PODS:
   - FMDB/common (2.3)
   - FMDB/standard (2.3):
     - FMDB/common
-  - GoogleAnalytics-iOS-SDK (3.12):
-    - GoogleAnalytics-iOS-SDK/Core (= 3.12)
-  - GoogleAnalytics-iOS-SDK/Core (3.12)
+  - GoogleAnalytics (3.14.0)
   - GRMustache (7.3.0):
     - JRSwizzle (~> 1.0)
   - JRSwizzle (1.0)
@@ -38,7 +36,7 @@ DEPENDENCIES:
   - Crashlytics (~> 3.7.0)
   - DAKeyboardControl (~> 2.4)
   - Fabric (~> 1.6.3)
-  - GoogleAnalytics-iOS-SDK (~> 3.10)
+  - GoogleAnalytics (~> 3.10)
   - Mapbox-iOS-SDK (= 1.6.0)
   - NibDesignable (~> 2.3)
   - OCMockito (~> 1.0)
@@ -55,7 +53,7 @@ SPEC CHECKSUMS:
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
   FMDB: e78c5941bb10563f2b707255119e3655e790c29e
-  GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
+  GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   GRMustache: 6baee020c5644416c034f5afb1607f6219e7f753
   JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
   Mapbox-iOS-SDK: ee136ca5b7f853456b50dfd7a7f0e243288cf86f
@@ -70,6 +68,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIImage-Categories: a0593f6a7991c99016b9ecadfbd38b3717ff1a73
 
-PODFILE CHECKSUM: 1c5f298e953322dd738aa479c1f91fb6c65bedfa
+PODFILE CHECKSUM: 8a28d4f9390535402ca88ca8a87d0bb5604562ca
 
 COCOAPODS: 1.0.0
