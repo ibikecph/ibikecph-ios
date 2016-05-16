@@ -14,59 +14,10 @@ let settingsUpdatedNotification = "settingsUpdatedNotification"
 class Settings: NSObject {
     static let sharedInstance = Settings()
     
-    class Voice {
-        private let onKey = "voiceOn"
-        var on: Bool {
-            get { return Defaults[onKey].bool ?? false }
-            set {
-                Defaults[onKey] = newValue
-                NotificationCenter.post(settingsUpdatedNotification, object: self)
-            }
-        }
-    }
-    
-    class Tracking {
-        private let onKey = "trackingOn"
-        var on: Bool {
-            get { return Defaults[onKey].bool ?? false }
-            set {
-                Defaults[onKey] = newValue
-                NotificationCenter.post(settingsUpdatedNotification, object: self)
-            }
-        }
-        private let milestoneNotificationsKey = "milestoneNotifications"
-        var milestoneNotifications: Bool {
-            get { return Defaults[milestoneNotificationsKey].bool ?? true }
-            set {
-                Defaults[milestoneNotificationsKey] = newValue
-                NotificationCenter.post(settingsUpdatedNotification, object: self)
-            }
-        }
-        private let weeklyStatusNotificationsKey = "weeklyStatusNotifications"
-        var weeklyStatusNotifications: Bool {
-            get { return Defaults[weeklyStatusNotificationsKey].bool ?? true }
-            set {
-                Defaults[weeklyStatusNotificationsKey] = newValue
-                NotificationCenter.post(settingsUpdatedNotification, object: self)
-            }
-        }
-    }
-    
-    class Onboarding {
-        private let onboardingDidSeeActivateTrackingKey = "onboardingDidSeeActivateTrackingKey"
-        var didSeeActivateTracking: Bool {
-            get { return Defaults[onboardingDidSeeActivateTrackingKey].bool ?? false }
-            set {
-                Defaults[onboardingDidSeeActivateTrackingKey] = newValue
-                NotificationCenter.post(settingsUpdatedNotification, object: self)
-            }
-        }
-    }
-   
-    let voice = Voice()
-    let tracking = Tracking()
-    let overlays = Overlays()
-    let onboarding = Onboarding()
+    let voice = VoiceSettings()
+    let tracking = TrackingSettings()
+    let overlays = OverlaysSettings()
+    let onboarding = OnboardingSettings()
     
     func clear() {
         if let bundleID = NSBundle.mainBundle().bundleIdentifier {
@@ -75,7 +26,56 @@ class Settings: NSObject {
     }
 }
 
-class Overlays: NSObject {
+class VoiceSettings {
+    private let onKey = "voiceOn"
+    var on: Bool {
+        get { return Defaults[onKey].bool ?? false }
+        set {
+            Defaults[onKey] = newValue
+            NotificationCenter.post(settingsUpdatedNotification, object: self)
+        }
+    }
+}
+
+class TrackingSettings {
+    private let onKey = "trackingOn"
+    var on: Bool {
+        get { return Defaults[onKey].bool ?? false }
+        set {
+            Defaults[onKey] = newValue
+            NotificationCenter.post(settingsUpdatedNotification, object: self)
+        }
+    }
+    private let milestoneNotificationsKey = "milestoneNotifications"
+    var milestoneNotifications: Bool {
+        get { return Defaults[milestoneNotificationsKey].bool ?? true }
+        set {
+            Defaults[milestoneNotificationsKey] = newValue
+            NotificationCenter.post(settingsUpdatedNotification, object: self)
+        }
+    }
+    private let weeklyStatusNotificationsKey = "weeklyStatusNotifications"
+    var weeklyStatusNotifications: Bool {
+        get { return Defaults[weeklyStatusNotificationsKey].bool ?? true }
+        set {
+            Defaults[weeklyStatusNotificationsKey] = newValue
+            NotificationCenter.post(settingsUpdatedNotification, object: self)
+        }
+    }
+}
+
+class OnboardingSettings {
+    private let onboardingDidSeeActivateTrackingKey = "onboardingDidSeeActivateTrackingKey"
+    var didSeeActivateTracking: Bool {
+        get { return Defaults[onboardingDidSeeActivateTrackingKey].bool ?? false }
+        set {
+            Defaults[onboardingDidSeeActivateTrackingKey] = newValue
+            NotificationCenter.post(settingsUpdatedNotification, object: self)
+        }
+    }
+}
+
+class OverlaysSettings: NSObject {
     private let bikeServiceStationsKey = "overlayBikeServiceStationsKey"
     var showBikeServiceStations: Bool {
         get { return Defaults[bikeServiceStationsKey].bool ?? false }

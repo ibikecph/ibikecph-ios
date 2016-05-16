@@ -19,6 +19,7 @@ abstract_target 'app_target' do
   pod 'ORStackView',  '~> 3.0'
   pod 'Crashlytics', '~> 3.7.0'
   pod 'SwiftyUserDefaults', '~> 2.2.0'
+  pod 'SwiftHEXColors', '~> 1.0'
 
   target 'I Bike CPH'
   target 'CykelPlanen'

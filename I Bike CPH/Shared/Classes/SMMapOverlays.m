@@ -23,6 +23,7 @@
 @property(nonatomic) NSArray *bikeServiceStationAnnotations;
 @property(nonatomic) NSArray *harborRingAnnotations;
 @property(nonatomic) NSArray *greenPathsAnnotations;
+@property(nonatomic, readonly) NSArray *cycleSuperHighwayAnnotationColors;
 @property(nonatomic, readonly) NSArray *harborRingAnnotationColors;
 @property(nonatomic, readonly) NSArray *greenPathsAnnotationColors;
 @end
@@ -33,6 +34,7 @@
 @synthesize bikeServiceStationLocations = _bikeServiceStationLocations;
 @synthesize harborRingLocations = _harborRingLocations;
 @synthesize greenPathsLocations = _greenPathsLocations;
+@synthesize cycleSuperHighwayAnnotationColors = _cycleSuperHighwayAnnotationColors;
 @synthesize harborRingAnnotationColors = _harborRingAnnotationColors;
 @synthesize greenPathsAnnotationColors = _greenPathsAnnotationColors;
 
@@ -87,20 +89,10 @@
 
 - (void)updateCycleSuperHighwayAnnotations
 {
-    self.cycleSuperHighwayAnnotations = @[];
-    if (!self.mapView) {
-        return;
-    }
-    NSMutableArray *ma = [NSMutableArray new];
-    for (NSArray *locations in self.cycleSuperHighwayLocations) {
-        UIColor *color = [[Styler tintColor] colorWithAlphaComponent:0.5];
-        Annotation *annotation = [self.mapView addPathWithLocations:locations lineColor:color lineWidth:4.0];
-        [ma addObject:annotation];
-    }
-    self.cycleSuperHighwayAnnotations = ma.copy;
+    self.cycleSuperHighwayAnnotations = [self annotationsFromLocations:self.cycleSuperHighwayLocations colors:self.cycleSuperHighwayAnnotationColors];
 }
 
-- (void)updateCycleServiceStationAnnotations
+- (void)updateBikeServiceStationAnnotations
 {
     self.bikeServiceStationAnnotations = @[];
     if (!self.mapView) {
@@ -134,22 +126,17 @@
 - (NSArray *)cycleSuperHighwayLocations
 {
     if (!_cycleSuperHighwayLocations) {
-        NSDictionary *JSONDictionary = [self JSONDictionaryFromFileWithName:@"cycle_super_highways" extension:@"json"];
-        NSArray *lines = JSONDictionary[@"coordinates"];
-        NSMutableArray *ma = [NSMutableArray new];
-        for (NSArray *line in lines) {
-            NSMutableArray *locations = [NSMutableArray new];
-            for (NSArray *coordinate in line) {
-                float longitude = [coordinate[0] floatValue];
-                float latitude = [coordinate[1] floatValue];
-                CLLocation *location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
-                [locations addObject:location];
-            }
-            [ma addObject:locations];
-        }
-        _cycleSuperHighwayLocations = ma.copy;
+        _cycleSuperHighwayLocations = [self locationsFromGeoJSONFileWithName:@"cycle_super_highways" extension:@"geojson"];
     }
     return _cycleSuperHighwayLocations;
+}
+
+- (NSArray *)cycleSuperHighwayAnnotationColors
+{
+    if (!_cycleSuperHighwayAnnotationColors) {
+        _cycleSuperHighwayAnnotationColors = [self annotationColorsFromGeoJSONFileWithName:@"cycle_super_highways" extension:@"geojson"];
+    }
+    return _cycleSuperHighwayAnnotationColors;
 }
 
 - (NSArray *)bikeServiceStationLocations
@@ -209,7 +196,7 @@
 {
     _mapView = mapView;
     [self updateCycleSuperHighwayAnnotations];
-    [self updateCycleServiceStationAnnotations];
+    [self updateBikeServiceStationAnnotations];
     [self updateHarborRingAnnotations];
     [self updateGreenPathsAnnotations];
 }

@@ -28,6 +28,7 @@ PODS:
     - Realm/Headers (= 0.99.1)
   - Realm/Headers (0.99.1)
   - SMCalloutView (2.0)
+  - SwiftHEXColors (1.0.4)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.2.0)
   - TTTAttributedLabel (1.13.4)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - ORStackView (~> 3.0)
   - PSTAlertController (= 1.1.0)
   - Realm (~> 0.99.0)
+  - SwiftHEXColors
   - SwiftyJSON (~> 2.3)
   - SwiftyUserDefaults (~> 2.2.0)
   - TTTAttributedLabel (~> 1.13)
@@ -65,11 +67,12 @@ SPEC CHECKSUMS:
   PSTAlertController: cb21afcfa76c3229feec7db044afd4f60dab5892
   Realm: 522a0cc8e1f8755ee56d7dc16ca0fc380d045766
   SMCalloutView: f758edd824b18bf4f42de00df1e299861a2d1950
+  SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIImage-Categories: a0593f6a7991c99016b9ecadfbd38b3717ff1a73
 
-PODFILE CHECKSUM: 0cb978eebfd93ca83a4c3b010b4f8ce954f816a7
+PODFILE CHECKSUM: ad1570b36f7b11a452422ad48c7a7840b03de42f
 
 COCOAPODS: 1.0.0

@@ -200,8 +200,6 @@
 		4EB70F4D1B6B62A900AB48CB /* CaloriesFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB70F4B1B6B62A900AB48CB /* CaloriesFormatter.swift */; };
 		4EB8B1881B25D20F00A1C53E /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */; };
 		4EB8B1891B25D20F00A1C53E /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */; };
-		4EBB7B3A1A5EB4E70064B530 /* cycle_super_highways.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* cycle_super_highways.json */; };
-		4EBB7B3B1A5EB4E70064B530 /* cycle_super_highways.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B351A5EB4E70064B530 /* cycle_super_highways.json */; };
 		4EBB7B421A5EB4E70064B530 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B391A5EB4E70064B530 /* stations.json */; };
 		4EBB7B431A5EB4E70064B530 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB7B391A5EB4E70064B530 /* stations.json */; };
 		4EBB7B481A5EC2A00064B530 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B471A5EC2A00064B530 /* RouteType.swift */; };
@@ -477,8 +475,6 @@
 		7D1D9CB61CB7EF7A007F1D30 /* FoursquareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C881CB7EA6F007F1D30 /* FoursquareItem.swift */; };
 		7D1D9CB91CB7F1CF007F1D30 /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C8D1CB7EA6F007F1D30 /* SearchListItem.swift */; };
 		7D1D9CBA1CB7F1D0007F1D30 /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C8D1CB7EA6F007F1D30 /* SearchListItem.swift */; };
-		7D1D9CBB1CB7F1E2007F1D30 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C451CB7E92C007F1D30 /* SwiftyJSON.swift */; };
-		7D1D9CBC1CB7F1E3007F1D30 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C451CB7E92C007F1D30 /* SwiftyJSON.swift */; };
 		7D49213C1CE5F3F300BAADEB /* SMMapOverlays.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D49213B1CE5F3F300BAADEB /* SMMapOverlays.m */; };
 		7D49213D1CE5F3F300BAADEB /* SMMapOverlays.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D49213B1CE5F3F300BAADEB /* SMMapOverlays.m */; };
 		7D4D6DA21CE5F9A4009D5727 /* green_paths.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D6DA01CE5F9A4009D5727 /* green_paths.geojson */; };
@@ -487,12 +483,14 @@
 		7D4D6DA51CE5F9A4009D5727 /* harbor_ring.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D6DA11CE5F9A4009D5727 /* harbor_ring.geojson */; };
 		7D7F99A11CB3C5F30079801B /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */; };
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
-		DE5170751CE7B2C70088B5E3 /* OverlaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */; };
 		8CC05C2DBF8DA677FD28AFF3 /* Pods_app_target_I_Bike_CPH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE3E3F28EF50DD375ABBB57 /* Pods_app_target_I_Bike_CPH.framework */; };
+		DE5170751CE7B2C70088B5E3 /* OverlaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */; };
 		DE5557741CCBC00F00D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		DE5557751CCBC01000D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
-		DE56DDBF1CE7993300E60C57 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56DDBE1CE7993300E60C57 /* UIColor+Hex.m */; };
-		DE56DDC01CE79A4100E60C57 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = DE56DDBE1CE7993300E60C57 /* UIColor+Hex.m */; };
+		DE911BE01CEA7C66001A0D96 /* cycle_super_highways.geojson in Resources */ = {isa = PBXBuildFile; fileRef = DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */; };
+		DE911BE11CEA7C7C001A0D96 /* cycle_super_highways.geojson in Resources */ = {isa = PBXBuildFile; fileRef = DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */; };
+		DEC980A81CEA71F7006F5BD3 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC980A71CEA71F7006F5BD3 /* UIColor+Hex.m */; };
+		DEC980A91CEA71F7006F5BD3 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC980A71CEA71F7006F5BD3 /* UIColor+Hex.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -635,7 +633,6 @@
 		4EB610E41AD69D2500CEC994 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		4EB70F4B1B6B62A900AB48CB /* CaloriesFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaloriesFormatter.swift; sourceTree = "<group>"; };
 		4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
-		4EBB7B351A5EB4E70064B530 /* cycle_super_highways.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cycle_super_highways.json; sourceTree = "<group>"; };
 		4EBB7B391A5EB4E70064B530 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		4EBB7B471A5EC2A00064B530 /* RouteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
 		4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTypeHandler.swift; sourceTree = "<group>"; };
@@ -913,8 +910,9 @@
 		C40C9EBA1FFAC0ACBC43C5B1 /* Pods-CykelPlanenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.release.xcconfig"; sourceTree = "<group>"; };
 		CDB68DE70198E82D8B39AFB2 /* Pods-app_target-I Bike CPH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_target-I Bike CPH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app_target-I Bike CPH/Pods-app_target-I Bike CPH.debug.xcconfig"; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		DE56DDBD1CE7993300E60C57 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
-		DE56DDBE1CE7993300E60C57 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cycle_super_highways.geojson; sourceTree = "<group>"; };
+		DEC980A61CEA71F7006F5BD3 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Hex.h"; path = "Categories/UIColor+Hex.h"; sourceTree = "<group>"; };
+		DEC980A71CEA71F7006F5BD3 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Hex.m"; path = "Categories/UIColor+Hex.m"; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1147,9 +1145,9 @@
 		4EBB7B341A5EB4E70064B530 /* LocationData */ = {
 			isa = PBXGroup;
 			children = (
+				DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */,
 				7D4D6DA01CE5F9A4009D5727 /* green_paths.geojson */,
 				7D4D6DA11CE5F9A4009D5727 /* harbor_ring.geojson */,
-				4EBB7B351A5EB4E70064B530 /* cycle_super_highways.json */,
 				4EBB7B391A5EB4E70064B530 /* stations.json */,
 			);
 			path = LocationData;
@@ -1318,11 +1316,12 @@
 			children = (
 				4EC282111A9C862B0036AE4E /* SharedConstants.h */,
 				4EE06E091A11267D00DE4226 /* SharedImport.h */,
+				DEC980A61CEA71F7006F5BD3 /* UIColor+Hex.h */,
+				DEC980A71CEA71F7006F5BD3 /* UIColor+Hex.m */,
 				4E4F5FD91A2BAC4700233ACA /* Styling.swift */,
 				4E4AC4591A8505BE0037A65E /* Macro.swift */,
 				4EFA280F1A2BA1330050450C /* Main.storyboard */,
 				4E7BA9E31A1E2A1800F9744A /* Tests */,
-				DE56DDBC1CE798FD00E60C57 /* Categories */,
 				4EE05FA01A10EE8400DE4226 /* Classes */,
 				4EEE91B01A1245610006BD95 /* Resources */,
 				4E7BA9D01A1E1AD100F9744A /* Bridging-Header.h */,
@@ -1744,15 +1743,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DE56DDBC1CE798FD00E60C57 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				DE56DDBD1CE7993300E60C57 /* UIColor+Hex.h */,
-				DE56DDBE1CE7993300E60C57 /* UIColor+Hex.m */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
 		EB75382B6E76E7EF0729C786 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1951,7 +1941,6 @@
 				4E10EBBA1B3AE6480012245E /* RouteNavigationToolbarView.xib in Resources */,
 				4E4AC4541A8502E80037A65E /* Logo@2x.png in Resources */,
 				4E10EBC81B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */,
-				4EBB7B3A1A5EB4E70064B530 /* cycle_super_highways.json in Resources */,
 				4E5E878C1B31D6560021F5E9 /* FindRouteToolbarView.xib in Resources */,
 				4E59822B1A24C4DD00A40484 /* BitBlueprint.gpx in Resources */,
 				4EEE91B91A1245610006BD95 /* test2.gpx in Resources */,
@@ -1962,6 +1951,7 @@
 				4E54C3471BF3887E00E935B0 /* RouteBrokenToolbarView.xib in Resources */,
 				4E5B90841B60D41A008AC960 /* markerFinish@2x.png in Resources */,
 				7D4D6DA41CE5F9A4009D5727 /* harbor_ring.geojson in Resources */,
+				DE911BE01CEA7C66001A0D96 /* cycle_super_highways.geojson in Resources */,
 				4EF4DF7E1B28461E00B64D3B /* AddressToolbarView.xib in Resources */,
 				4EC56E891A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
 				4E3C3A8A1A39E80300C79E52 /* SharedImages.xcassets in Resources */,
@@ -1999,9 +1989,9 @@
 				4EC56E8B1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
 				4EE06E5F1A11298800DE4226 /* SMAddressPickerView.xib in Resources */,
 				4E4AC4571A8502FC0037A65E /* Logo@2x.png in Resources */,
-				4EBB7B3B1A5EB4E70064B530 /* cycle_super_highways.json in Resources */,
 				4EEE91B61A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */,
 				4E3C3A8B1A39E80300C79E52 /* SharedImages.xcassets in Resources */,
+				DE911BE11CEA7C7C001A0D96 /* cycle_super_highways.geojson in Resources */,
 				4E5B907B1B60D408008AC960 /* markerStart@3x.png in Resources */,
 				4EEE91BA1A1245610006BD95 /* test2.gpx in Resources */,
 				4E392ADE1A308DBE0076BA86 /* smroute_settings_private.plist in Resources */,
@@ -2328,8 +2318,8 @@
 				4E4F5FE01A2BB3A000233ACA /* StyleIBikeCph.swift in Sources */,
 				4EC56E9D1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */,
 				4EC56EE71A2A3AAE00B696B4 /* SMRegisterController.m in Sources */,
-				DE56DDBF1CE7993300E60C57 /* UIColor+Hex.m in Sources */,
 				4E59591B1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */,
+				DEC980A81CEA71F7006F5BD3 /* UIColor+Hex.m in Sources */,
 				4ECA91A11AB2EED800F4BB4F /* NotificationCenter.swift in Sources */,
 				4EB610E21AD69B8800CEC994 /* SectionViewModel.swift in Sources */,
 				7D1D9C7F1CB7EA41007F1D30 /* NSString+URLEncode.m in Sources */,
@@ -2506,7 +2496,6 @@
 				4EE06C411A10FC5600DE4226 /* SMRelation.m in Sources */,
 				4EC56E4B1A2A2C3D00B696B4 /* SMContactsCell.m in Sources */,
 				4EE06C331A10FC5600DE4226 /* SMArrivalInformation.m in Sources */,
-				DE56DDC01CE79A4100E60C57 /* UIColor+Hex.m in Sources */,
 				4EC56E2B1A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
 				7D03242F1CBD3990002DADDE /* NonTrackingHandler.swift in Sources */,
 				4EC56E3B1A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
@@ -2647,6 +2636,7 @@
 				4EE06C471A10FC5600DE4226 /* SMSingleRouteInfo.m in Sources */,
 				4EC56E2F1A2A2C3D00B696B4 /* FlickableView.m in Sources */,
 				7D1D9C9C1CB7EBAF007F1D30 /* OiorestItem.swift in Sources */,
+				DEC980A91CEA71F7006F5BD3 /* UIColor+Hex.m in Sources */,
 				4E7BD0801A92354E00BFDC7B /* Realm.swift in Sources */,
 				4E32B2A21AADCC8A00583811 /* BikeStatistics.swift in Sources */,
 				7D1D9C9F1CB7EBBD007F1D30 /* SMGeocoder.m in Sources */,
