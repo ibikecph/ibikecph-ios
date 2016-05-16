@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 import CoreLocation
+import SwiftyUserDefaults
 
 let processedSmallNoticationKey = "processedSmallNoticationKey"
 let processedBigNoticationKey = "processedBigNoticationKey"

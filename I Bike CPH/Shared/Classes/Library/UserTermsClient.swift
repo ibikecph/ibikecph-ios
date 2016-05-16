@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyUserDefaults
 
 class UserTermsClient: ServerClient {
     static let instance = UserTermsClient()

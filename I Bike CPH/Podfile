@@ -17,8 +17,8 @@ abstract_target 'app_target' do
   pod 'NibDesignable', '~> 2.3'
   pod 'SwiftyJSON', '~> 2.3'
   pod 'ORStackView',  '~> 3.0'
-  pod 'Fabric', '~> 1.6.3'
   pod 'Crashlytics', '~> 3.7.0'
+  pod 'SwiftyUserDefaults', '~> 2.2.0'
 
   target 'I Bike CPH'
   target 'CykelPlanen'
