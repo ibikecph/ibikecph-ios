@@ -16,7 +16,7 @@ typedef enum { TravelTimeWeekDay = 0, TravelTimeWeekend = 1, TravelTimeWeekendNi
 
 /**
  * Handler for transportation. Has stations, lines (FIXME: mutable), trains, bool data loaded, bool loading stations. Used in
- * SMBreakRouteViewController, SMMapOverlays, SMRouteInforViewController, SMRouteNavigationController, SMSplashController, SMStationInfo,
+ * SMBreakRouteViewController, SMRouteInforViewController, SMRouteNavigationController, SMSplashController, SMStationInfo,
  * SMStationsCache, SMTransportation, SMTransportationLine, SMTripRoute.
  */
 @interface SMTransportation : NSObject<NSXMLParserDelegate, NSCoding>

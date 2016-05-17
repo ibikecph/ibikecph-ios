@@ -20,15 +20,15 @@ class MapViewController: ToolbarViewController {
         mapView.trackingDelegate = self
         
         NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
-            self?.appDelegate.mapOverlays.updateOverlays()
+            self?.appDelegate.mapOverlays.updateAllOverlays()
         }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        appDelegate.mapOverlays.useMapView(mapView)
-        appDelegate.mapOverlays.updateOverlays() // Load annotations to view
+        appDelegate.mapOverlays.mapView = mapView
+//        appDelegate.mapOverlays.updateAllOverlays() // Load annotations to view
         mapView.loadInitialRegionIfNecessary()
     }
     

@@ -402,8 +402,8 @@
 "s_train_stations" = "S-train stations";
 "metro_stations" = "Metro stations";
 "local_trains_stations" = "Local trains stations";
-"harbor_ring" = "The harbor ring";
-"green_paths" = "Green paths";
+"harbor_ring" = "Harbour Ring";
+"green_paths" = "Green Paths";
 
 // these are in the storyboard
 "register_with_mail" = "Register with email";

@@ -12,7 +12,6 @@
 #import "SMFavoritesUtil.h"
 #import "SMSearchController.h"
 #import "SMRouteSettings.h"
-#import "SMMapOverlays.h"
 #import "SMAppDelegate.h"
 
 #import "SMRoute.h"

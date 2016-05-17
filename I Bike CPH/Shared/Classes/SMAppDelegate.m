@@ -12,6 +12,7 @@
 
 #import <Crashlytics/Crashlytics.h>
 #import <Fabric/Fabric.h>
+#import "SharedImport.h"
 
 #if defined(CYKEL_PLANEN)
 #import "SMReminder.h"
@@ -210,10 +211,10 @@
 
 #pragma mark - Getters
 
-- (SMMapOverlays *)mapOverlays
+- (Overlays *)mapOverlays
 {
     if (!_mapOverlays) {
-        _mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
+        _mapOverlays = [[Overlays alloc] init];
     }
     return _mapOverlays;
 }

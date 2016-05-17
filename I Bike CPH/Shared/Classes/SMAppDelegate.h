@@ -10,25 +10,24 @@
 #import "SMSearchHistory.h"
 
 @protocol GAITracker;
-#import "SMMapOverlays.h"
 
-/**
- * App delegate. Handles facebook session, contacts, events, routes history, search history, Google Analytics trakcing, and app settings.
- */
-@interface SMAppDelegate : UIResponder <UIApplicationDelegate, SMSearchHistoryDelegate>
+@class Overlays;
 
-@property (strong, nonatomic) UIWindow *window;
+@interface SMAppDelegate : UIResponder<UIApplicationDelegate, SMSearchHistoryDelegate>
 
-@property (nonatomic, strong) NSArray * currentContacts;
-@property (nonatomic, strong) NSArray * currentEvents;
-@property (nonatomic, strong) NSArray * pastRoutes;
-@property (nonatomic, strong) NSArray * searchHistory;
+@property(strong, nonatomic) UIWindow *window;
+
+@property(nonatomic, strong) NSArray *currentContacts;
+@property(nonatomic, strong) NSArray *currentEvents;
+@property(nonatomic, strong) NSArray *pastRoutes;
+@property(nonatomic, strong) NSArray *searchHistory;
 
 @property(nonatomic, strong) id<GAITracker> tracker;
 
-@property (nonatomic, strong) SMMapOverlays *mapOverlays;
+@property (nonatomic, strong) Overlays *mapOverlays;
 
-@property (nonatomic, strong) NSMutableDictionary * appSettings;
+@property(nonatomic, strong) NSMutableDictionary *appSettings;
+
 - (BOOL)saveSettings;
 - (void)loadSettings;
 - (void)clearSettings;
