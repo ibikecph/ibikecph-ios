@@ -477,10 +477,10 @@
 		7D1D9CBA1CB7F1D0007F1D30 /* SearchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1D9C8D1CB7EA6F007F1D30 /* SearchListItem.swift */; };
 		7D49213C1CE5F3F300BAADEB /* SMMapOverlays.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D49213B1CE5F3F300BAADEB /* SMMapOverlays.m */; };
 		7D49213D1CE5F3F300BAADEB /* SMMapOverlays.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D49213B1CE5F3F300BAADEB /* SMMapOverlays.m */; };
-		7D4D6DA21CE5F9A4009D5727 /* green_paths.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D6DA01CE5F9A4009D5727 /* green_paths.geojson */; };
-		7D4D6DA31CE5F9A4009D5727 /* green_paths.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D6DA01CE5F9A4009D5727 /* green_paths.geojson */; };
-		7D4D6DA41CE5F9A4009D5727 /* harbor_ring.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D6DA11CE5F9A4009D5727 /* harbor_ring.geojson */; };
-		7D4D6DA51CE5F9A4009D5727 /* harbor_ring.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D6DA11CE5F9A4009D5727 /* harbor_ring.geojson */; };
+		7D4BC49A1CEB32FA007ABD0F /* groenne_stier.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7D4BC4981CEB32F9007ABD0F /* groenne_stier.geojson */; };
+		7D4BC49B1CEB32FA007ABD0F /* groenne_stier.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7D4BC4981CEB32F9007ABD0F /* groenne_stier.geojson */; };
+		7D4BC49C1CEB32FA007ABD0F /* havneringen.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7D4BC4991CEB32F9007ABD0F /* havneringen.geojson */; };
+		7D4BC49D1CEB32FA007ABD0F /* havneringen.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7D4BC4991CEB32F9007ABD0F /* havneringen.geojson */; };
 		7D7F99A11CB3C5F30079801B /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */; };
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		8CC05C2DBF8DA677FD28AFF3 /* Pods_app_target_I_Bike_CPH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE3E3F28EF50DD375ABBB57 /* Pods_app_target_I_Bike_CPH.framework */; };
@@ -899,8 +899,8 @@
 		7D1D9C8E1CB7EA6F007F1D30 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7D49213A1CE5F3F300BAADEB /* SMMapOverlays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMapOverlays.h; sourceTree = "<group>"; };
 		7D49213B1CE5F3F300BAADEB /* SMMapOverlays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMapOverlays.m; sourceTree = "<group>"; };
-		7D4D6DA01CE5F9A4009D5727 /* green_paths.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = green_paths.geojson; sourceTree = "<group>"; };
-		7D4D6DA11CE5F9A4009D5727 /* harbor_ring.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = harbor_ring.geojson; sourceTree = "<group>"; };
+		7D4BC4981CEB32F9007ABD0F /* groenne_stier.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = groenne_stier.geojson; sourceTree = "<group>"; };
+		7D4BC4991CEB32F9007ABD0F /* havneringen.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = havneringen.geojson; sourceTree = "<group>"; };
 		7D7F99A21CB3EB4D0079801B /* SMAddressParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddressParser.h; sourceTree = "<group>"; };
 		7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddressParser.m; sourceTree = "<group>"; };
 		8904AA8137BBFA7F81B08670 /* Pods-app_target-CykelPlanen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_target-CykelPlanen.release.xcconfig"; path = "Pods/Target Support Files/Pods-app_target-CykelPlanen/Pods-app_target-CykelPlanen.release.xcconfig"; sourceTree = "<group>"; };
@@ -1146,8 +1146,8 @@
 			isa = PBXGroup;
 			children = (
 				DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */,
-				7D4D6DA01CE5F9A4009D5727 /* green_paths.geojson */,
-				7D4D6DA11CE5F9A4009D5727 /* harbor_ring.geojson */,
+				7D4BC4981CEB32F9007ABD0F /* groenne_stier.geojson */,
+				7D4BC4991CEB32F9007ABD0F /* havneringen.geojson */,
 				4EBB7B391A5EB4E70064B530 /* stations.json */,
 			);
 			path = LocationData;
@@ -1928,6 +1928,7 @@
 				4EBB7B421A5EB4E70064B530 /* stations.json in Resources */,
 				4EEE91BE1A1245910006BD95 /* Albertslundruten.line in Resources */,
 				4E392ADD1A308DBE0076BA86 /* smroute_settings_private.plist in Resources */,
+				7D4BC49A1CEB32FA007ABD0F /* groenne_stier.geojson in Resources */,
 				4E5B90831B60D41A008AC960 /* marker@3x.png in Resources */,
 				4EE0631C1A10FA4900DE4226 /* Images.xcassets in Resources */,
 				4EE82FB51B0BCE300089147A /* LaunchScreen.xib in Resources */,
@@ -1950,18 +1951,17 @@
 				4EEE91B51A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */,
 				4E54C3471BF3887E00E935B0 /* RouteBrokenToolbarView.xib in Resources */,
 				4E5B90841B60D41A008AC960 /* markerFinish@2x.png in Resources */,
-				7D4D6DA41CE5F9A4009D5727 /* harbor_ring.geojson in Resources */,
 				DE911BE01CEA7C66001A0D96 /* cycle_super_highways.geojson in Resources */,
 				4EF4DF7E1B28461E00B64D3B /* AddressToolbarView.xib in Resources */,
 				4EC56E891A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
 				4E3C3A8A1A39E80300C79E52 /* SharedImages.xcassets in Resources */,
-				7D4D6DA21CE5F9A4009D5727 /* green_paths.geojson in Resources */,
 				4EDC5E0D1B21BDE1009189EE /* IconLabelTableViewCell.xib in Resources */,
 				4EDC4DD31A7A540A00FD37C2 /* nrbrogade-vestergade.gpx in Resources */,
 				4EEE91B71A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */,
 				4EEC6D341B20B139003AE8DF /* TrackingToolbarView.xib in Resources */,
 				4EEE91BB1A1245610006BD95 /* testing.gpx in Resources */,
 				4E5B90861B60D41A008AC960 /* markerStart@2x.png in Resources */,
+				7D4BC49C1CEB32FA007ABD0F /* havneringen.geojson in Resources */,
 				4EFA28101A2BA1330050450C /* Main.storyboard in Resources */,
 				4E5E87981B31F7DC0021F5E9 /* RouteTypeToolbarView.xib in Resources */,
 				4E5B90871B60D41A008AC960 /* markerStart@3x.png in Resources */,
@@ -2008,7 +2008,6 @@
 				4E5E878D1B31D6560021F5E9 /* FindRouteToolbarView.xib in Resources */,
 				4EE82FB61B0BCE350089147A /* LaunchScreen.xib in Resources */,
 				4EDC4DD41A7A540A00FD37C2 /* nrbrogade-vestergade.gpx in Resources */,
-				7D4D6DA51CE5F9A4009D5727 /* harbor_ring.geojson in Resources */,
 				4EDC5E111B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib in Resources */,
 				4EEE91D71A1246920006BD95 /* s-train-lines.json in Resources */,
 				4E392ADC1A308DBE0076BA86 /* smroute_settings.plist in Resources */,
@@ -2018,8 +2017,9 @@
 				4EEE91D41A1246920006BD95 /* local-trains-timetable.json in Resources */,
 				4E10EBC91B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */,
 				4E5B907A1B60D408008AC960 /* markerStart@2x.png in Resources */,
+				7D4BC49D1CEB32FA007ABD0F /* havneringen.geojson in Resources */,
+				7D4BC49B1CEB32FA007ABD0F /* groenne_stier.geojson in Resources */,
 				4EEE91D61A1246920006BD95 /* metro.json in Resources */,
-				7D4D6DA31CE5F9A4009D5727 /* green_paths.geojson in Resources */,
 				4EADAE4F1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */,
 				4E5E87931B31DC520021F5E9 /* RouteStatsToolbarView.xib in Resources */,
 				4EBB7B431A5EB4E70064B530 /* stations.json in Resources */,

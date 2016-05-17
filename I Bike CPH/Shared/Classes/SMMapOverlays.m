@@ -23,9 +23,9 @@
 @property(nonatomic) NSArray *bikeServiceStationAnnotations;
 @property(nonatomic) NSArray *harborRingAnnotations;
 @property(nonatomic) NSArray *greenPathsAnnotations;
-@property(nonatomic, readonly) NSArray *cycleSuperHighwayAnnotationColors;
-@property(nonatomic, readonly) NSArray *harborRingAnnotationColors;
-@property(nonatomic, readonly) NSArray *greenPathsAnnotationColors;
+@property(nonatomic, readonly) UIColor *cycleSuperHighwayAnnotationColor;
+@property(nonatomic, readonly) UIColor *harborRingAnnotationColor;
+@property(nonatomic, readonly) UIColor *greenPathsAnnotationColor;
 @end
 
 @implementation SMMapOverlays
@@ -34,9 +34,9 @@
 @synthesize bikeServiceStationLocations = _bikeServiceStationLocations;
 @synthesize harborRingLocations = _harborRingLocations;
 @synthesize greenPathsLocations = _greenPathsLocations;
-@synthesize cycleSuperHighwayAnnotationColors = _cycleSuperHighwayAnnotationColors;
-@synthesize harborRingAnnotationColors = _harborRingAnnotationColors;
-@synthesize greenPathsAnnotationColors = _greenPathsAnnotationColors;
+@synthesize cycleSuperHighwayAnnotationColor = _cycleSuperHighwayAnnotationColor;
+@synthesize harborRingAnnotationColor = _harborRingAnnotationColor;
+@synthesize greenPathsAnnotationColor = _greenPathsAnnotationColor;
 
 - (SMMapOverlays *)initWithMapView:(MapView *)mapView
 {
@@ -89,7 +89,7 @@
 
 - (void)updateCycleSuperHighwayAnnotations
 {
-    self.cycleSuperHighwayAnnotations = [self annotationsFromLocations:self.cycleSuperHighwayLocations colors:self.cycleSuperHighwayAnnotationColors];
+    self.cycleSuperHighwayAnnotations = [self annotationsFromLocations:self.cycleSuperHighwayLocations color:self.cycleSuperHighwayAnnotationColor];
 }
 
 - (void)updateBikeServiceStationAnnotations
@@ -113,12 +113,12 @@
 
 - (void)updateHarborRingAnnotations
 {
-    self.harborRingAnnotations = [self annotationsFromLocations:self.harborRingLocations colors:self.harborRingAnnotationColors];
+    self.harborRingAnnotations = [self annotationsFromLocations:self.harborRingLocations color:self.harborRingAnnotationColor];
 }
 
 - (void)updateGreenPathsAnnotations
 {
-    self.greenPathsAnnotations = [self annotationsFromLocations:self.greenPathsLocations colors:self.greenPathsAnnotationColors];
+    self.greenPathsAnnotations = [self annotationsFromLocations:self.greenPathsLocations color:self.greenPathsAnnotationColor];
 }
 
 #pragma mark - Getters
@@ -131,12 +131,12 @@
     return _cycleSuperHighwayLocations;
 }
 
-- (NSArray *)cycleSuperHighwayAnnotationColors
+- (UIColor *)cycleSuperHighwayAnnotationColor
 {
-    if (!_cycleSuperHighwayAnnotationColors) {
-        _cycleSuperHighwayAnnotationColors = [self annotationColorsFromGeoJSONFileWithName:@"cycle_super_highways" extension:@"geojson"];
+    if (!_cycleSuperHighwayAnnotationColor) {
+        _cycleSuperHighwayAnnotationColor = [self annotationColorFromGeoJSONFileWithName:@"cycle_super_highways" extension:@"geojson"];
     }
-    return _cycleSuperHighwayAnnotationColors;
+    return _cycleSuperHighwayAnnotationColor;
 }
 
 - (NSArray *)bikeServiceStationLocations
@@ -161,33 +161,33 @@
 - (NSArray *)harborRingLocations
 {
     if (!_harborRingLocations) {
-        _harborRingLocations = [self locationsFromGeoJSONFileWithName:@"harbor_ring" extension:@"geojson"];
+        _harborRingLocations = [self locationsFromGeoJSONFileWithName:@"havneringen" extension:@"geojson"];
     }
     return _harborRingLocations;
 }
 
-- (NSArray *)harborRingAnnotationColors
+- (UIColor *)harborRingAnnotationColor
 {
-    if (!_harborRingAnnotationColors) {
-        _harborRingAnnotationColors = [self annotationColorsFromGeoJSONFileWithName:@"harbor_ring" extension:@"geojson"];
+    if (!_harborRingAnnotationColor) {
+        _harborRingAnnotationColor = [self annotationColorFromGeoJSONFileWithName:@"havneringen" extension:@"geojson"];
     }
-    return _harborRingAnnotationColors;
+    return _harborRingAnnotationColor;
 }
 
 - (NSArray *)greenPathsLocations
 {
     if (!_greenPathsLocations) {
-        _greenPathsLocations = [self locationsFromGeoJSONFileWithName:@"green_paths" extension:@"geojson"];
+        _greenPathsLocations = [self locationsFromGeoJSONFileWithName:@"groenne_stier" extension:@"geojson"];
     }
     return _greenPathsLocations;
 }
 
-- (NSArray *)greenPathsAnnotationColors
+- (UIColor *)greenPathsAnnotationColor
 {
-    if (!_greenPathsAnnotationColors) {
-        _greenPathsAnnotationColors = [self annotationColorsFromGeoJSONFileWithName:@"green_paths" extension:@"geojson"];
+    if (!_greenPathsAnnotationColor) {
+        _greenPathsAnnotationColor = [self annotationColorFromGeoJSONFileWithName:@"groenne_stier" extension:@"geojson"];
     }
-    return _greenPathsAnnotationColors;
+    return _greenPathsAnnotationColor;
 }
 
 #pragma mark - Setters
@@ -224,7 +224,7 @@
     return dictionary;
 }
 
-- (NSArray *)annotationsFromLocations:(NSArray *)locations colors:(NSArray *)colors
+- (NSArray *)annotationsFromLocations:(NSArray *)locations color:(UIColor *)color
 {
     if (!self.mapView) {
         return @[];
@@ -232,7 +232,6 @@
     NSMutableArray *ma = [NSMutableArray new];
     for (NSUInteger i = 0; i < locations.count; i++) {
         NSArray *locationsSubArray = locations[i];
-        UIColor *color = colors[i];
         Annotation *annotation = [self.mapView addPathWithLocations:locationsSubArray lineColor:color lineWidth:4.0];
         [ma addObject:annotation];
     }
@@ -258,20 +257,17 @@
     return ma.copy;
 }
 
-- (NSArray *)annotationColorsFromGeoJSONFileWithName:(NSString *)name extension:(NSString *)extension
+- (UIColor *)annotationColorFromGeoJSONFileWithName:(NSString *)name extension:(NSString *)extension
 {
     NSDictionary *JSONDictionary = [self JSONDictionaryFromFileWithName:name extension:extension];
-    NSArray *features = JSONDictionary[@"features"];
-    NSMutableArray *ma = [NSMutableArray new];
-    for (NSDictionary *feature in features) {
-        NSString *colorString = [[feature objectForKey:@"properties"] objectForKey:@"color"];
-        UIColor *color = [[Styler tintColor] colorWithAlphaComponent:0.5f];
+    NSDictionary *properties = JSONDictionary[@"properties"];
+    if (properties) {
+        NSString *colorString = properties[@"color"];
         if (colorString) {
-            color = [UIColor hex_colorFromStringWithHexRGBValue:colorString alpha:0.5f];
+            return [UIColor hex_colorFromStringWithHexRGBValue:colorString alpha:0.5f];
         }
-        [ma addObject:color];
     }
-    return ma.copy;
+    return [[Styler tintColor] colorWithAlphaComponent:0.5f];
 }
 
 @end

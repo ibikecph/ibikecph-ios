@@ -41,7 +41,7 @@ enum OverlayType {
 class Overlays {
     struct OverlayAnnotations {
         var locations = [[CLLocation]]()
-        var colors = [UIColor]()
+        var color = Styler.tintColor().colorWithAlphaComponent(0.5)
         var annotations = [Annotation]()
         var type: OverlayType
         
@@ -58,14 +58,14 @@ class Overlays {
 //            case .CycleSuperHighways:
 //            case .BikeServiceStations:
 //            case .HarborRing:
-//                if let json = self.JSONFromFile("harbor_ring", fileExtension: "geojson") {
+//                if let json = self.JSONFromFile("havneringen", fileExtension: "geojson") {
 //                    self.setLocationsFromJSON(json)
 //                    self.setColorsFromJSON(json)
 //                    self.setPathAnnotations(mv)
 //                }
 //                
 //            case .GreenPaths:
-//                if let json = self.JSONFromFile("green_paths", fileExtension: "geojson") {
+//                if let json = self.JSONFromFile("groenne_stier", fileExtension: "geojson") {
 //                    self.setLocationsFromJSON(json)
 //                    self.setColorsFromJSON(json)
 //                    self.setPathAnnotations(mv)
@@ -76,11 +76,9 @@ class Overlays {
         
         mutating func setPathAnnotations(mapView: MapView) {
             self.annotations = []
-            if self.locations.count == self.colors.count {
-                for (color, locations) in zip(self.colors, self.locations) {
-                    let annotation = mapView.addPathWithLocations(locations, lineColor: color, lineWidth: 4.0)
-                    self.annotations.append(annotation)
-                }
+            for locations in self.locations {
+                let annotation = mapView.addPathWithLocations(locations, lineColor: self.color, lineWidth: 4.0)
+                self.annotations.append(annotation)
             }
         }
         
@@ -104,17 +102,12 @@ class Overlays {
         }
         
         mutating func setColorsFromJSON(json: JSON) {
-            self.colors.removeAll()
-            guard let features = json["features"].array else {
+            self.color = Styler.tintColor().colorWithAlphaComponent(0.5)
+            guard let colorString = json["properties", "color"].string else {
                 return
             }
-            for feature in features {
-                guard let colorString = feature["properties", "color"].string else {
-                    continue
-                }
-                if let color = UIColor(hexString: colorString, alpha: 0.5) {
-                    self.colors.append(color)
-                }
+            if let color = UIColor(hexString: colorString, alpha: 0.5) {
+                self.color = color
             }
         }
         

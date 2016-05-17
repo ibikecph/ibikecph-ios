@@ -1,12 +1,13 @@
 {
   "type": "FeatureCollection",
+  "properties": {
+    "name": "Supercykelstier",
+    "color": "#ff6600"
+  },
   "features": [
     {
       "type": "Feature",
-      "properties": {
-        "name": "Supercykelstier",
-        "color": "#ff6600"
-      },
+      "properties": {},
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -69,10 +70,7 @@
     },
     {
       "type": "Feature",
-      "properties": {
-        "name": "Supercykelstier",
-        "color": "#ff6600"
-      },
+      "properties": {},
       "geometry": {
         "type": "LineString",
         "coordinates": [
