@@ -132,8 +132,6 @@
 		4E5B90691B5F990E008AC960 /* UserTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B90671B5F990E008AC960 /* UserTerms.swift */; };
 		4E5B906B1B5F99AE008AC960 /* UserTermsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */; };
 		4E5B906C1B5F99AE008AC960 /* UserTermsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */; };
-		4E5B906E1B5FABC0008AC960 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B906D1B5FABC0008AC960 /* SplashViewController.swift */; };
-		4E5B906F1B5FABC0008AC960 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B906D1B5FABC0008AC960 /* SplashViewController.swift */; };
 		4E5B90761B60D408008AC960 /* marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B90701B60D408008AC960 /* marker@2x.png */; };
 		4E5B90771B60D408008AC960 /* marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B90711B60D408008AC960 /* marker@3x.png */; };
 		4E5B90781B60D408008AC960 /* markerFinish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5B90721B60D408008AC960 /* markerFinish@2x.png */; };
@@ -482,6 +480,7 @@
 		7D7F99A11CB3C5F30079801B /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */; };
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		8CC05C2DBF8DA677FD28AFF3 /* Pods_app_target_I_Bike_CPH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE3E3F28EF50DD375ABBB57 /* Pods_app_target_I_Bike_CPH.framework */; };
+		DE32712F1CEF447900291A57 /* IntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32712E1CEF447900291A57 /* IntroductionView.swift */; };
 		DE5170751CE7B2C70088B5E3 /* OverlaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */; };
 		DE5557741CCBC00F00D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		DE5557751CCBC01000D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
@@ -589,7 +588,6 @@
 		4E5B90641B5F98BF008AC960 /* UserTermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTermsViewController.swift; sourceTree = "<group>"; };
 		4E5B90671B5F990E008AC960 /* UserTerms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTerms.swift; sourceTree = "<group>"; };
 		4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTermsClient.swift; sourceTree = "<group>"; };
-		4E5B906D1B5FABC0008AC960 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		4E5B90701B60D408008AC960 /* marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker@2x.png"; sourceTree = "<group>"; };
 		4E5B90711B60D408008AC960 /* marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker@3x.png"; sourceTree = "<group>"; };
 		4E5B90721B60D408008AC960 /* markerFinish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "markerFinish@2x.png"; sourceTree = "<group>"; };
@@ -906,6 +904,7 @@
 		C40C9EBA1FFAC0ACBC43C5B1 /* Pods-CykelPlanenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.release.xcconfig"; sourceTree = "<group>"; };
 		CDB68DE70198E82D8B39AFB2 /* Pods-app_target-I Bike CPH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_target-I Bike CPH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app_target-I Bike CPH/Pods-app_target-I Bike CPH.debug.xcconfig"; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DE32712E1CEF447900291A57 /* IntroductionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionView.swift; sourceTree = "<group>"; };
 		DE5AD90B1CEB94420068C436 /* OverlaysClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaysClient.swift; sourceTree = "<group>"; };
 		DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cycle_super_highways.geojson; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -1227,6 +1226,7 @@
 		4EE05F4C1A10EBFA00DE4226 /* I Bike CPH */ = {
 			isa = PBXGroup;
 			children = (
+				DE3271271CEF34D500291A57 /* Classes */,
 				4E4F5FDF1A2BB3A000233ACA /* StyleIBikeCph.swift */,
 				4E4AC45B1A8506540037A65E /* MacroIBikeCph.swift */,
 				4EE0631B1A10FA4900DE4226 /* Images.xcassets */,
@@ -1451,7 +1451,6 @@
 				4EC56ECA1A2A3AAD00B696B4 /* SMSettingsController.m */,
 				4EC56ECD1A2A3AAD00B696B4 /* SMTranslatedViewController.h */,
 				4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */,
-				4E5B906D1B5FABC0008AC960 /* SplashViewController.swift */,
 				4EDC5E091B21B0F0009189EE /* FindAddressViewController.swift */,
 				4E5B90641B5F98BF008AC960 /* UserTermsViewController.swift */,
 				4EFB7DB51B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift */,
@@ -1733,6 +1732,14 @@
 				0B7CB2BAFF13FEC84F7212FB /* Pods_test_target_I_Bike_CPHTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE3271271CEF34D500291A57 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DE32712E1CEF447900291A57 /* IntroductionView.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		EB75382B6E76E7EF0729C786 /* Pods */ = {
@@ -2280,7 +2287,6 @@
 				4E2CF5051B85C17A004BDCAB /* ServerClient.swift in Sources */,
 				4EAB12471A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */,
 				4E5E87861B31D4760021F5E9 /* FindRouteViewController.swift in Sources */,
-				4E5B906E1B5FABC0008AC960 /* SplashViewController.swift in Sources */,
 				7D1D9C671CB7EA07007F1D30 /* SMTurnInstruction.m in Sources */,
 				4EC56E851A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
 				4EB8B1881B25D20F00A1C53E /* PinAnnotation.swift in Sources */,
@@ -2288,6 +2294,7 @@
 				4EC56DB81A2A25E900B696B4 /* SMAnalytics.m in Sources */,
 				4EC56E991A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4E5E87961B31F7DC0021F5E9 /* RouteTypeToolbarView.swift in Sources */,
+				DE32712F1CEF447900291A57 /* IntroductionView.swift in Sources */,
 				7D1D9C751CB7EA1E007F1D30 /* SMAPIQueue.m in Sources */,
 				4EC56E811A2A2C3D00B696B4 /* SMMenuCell.m in Sources */,
 				4EEC6D2B1B207AA6003AE8DF /* MapView.swift in Sources */,
@@ -2526,7 +2533,6 @@
 				4EE06C421A10FC5600DE4226 /* SMReminder.m in Sources */,
 				4EE633771A5E8A94009DA49B /* OverlaysViewController.swift in Sources */,
 				4EC56EE51A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
-				4E5B906F1B5FABC0008AC960 /* SplashViewController.swift in Sources */,
 				4E65D2A31AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */,
 				4E5B906C1B5F99AE008AC960 /* UserTermsClient.swift in Sources */,
 				4EF4DF7D1B28461E00B64D3B /* AddressToolbarView.swift in Sources */,

@@ -9,11 +9,12 @@
 import UIKit
 import PSTAlertController
 import MapKit
+import EAIntroView
 
 let routeToItemNotificationKey = "routeToItemNotificationKey"
 let routeToItemNotificationItemKey = "routeToItemNotificationItemKey"
 
-class MainMapViewController: MapViewController {
+class MainMapViewController: MapViewController, EAIntroDelegate {
 
     private let trackingToolbarView = TrackingToolbarView()
     private let addressToolbarView = AddressToolbarView()
@@ -117,6 +118,10 @@ class MainMapViewController: MapViewController {
         #else
             checkUserTerms()
         #endif
+        
+        if macro.isIBikeCph {
+            possiblyShowIntroductionView()
+        }
     }
     
     private func unobserve() {
@@ -133,40 +138,6 @@ class MainMapViewController: MapViewController {
     func showUserTerms() {
         if pendingUserTerms != nil {
             self.performSegueWithIdentifier(self.mainToUserTermsSegue, sender: self)
-        }
-    }
-
-    #if TRACKING_ENABLED
-    func checkActivateTracking() -> Bool {
-        if Settings.instance.onboarding.didSeeActivateTracking {
-            return false
-        }
-        performSegueWithIdentifier(mainToActivateTrackingSegue, sender: self)
-        return true
-    }
-    #endif
-    
-    func checkUserTerms(forceAccept: Bool = false) {
-        if !UserHelper.loggedIn() {
-            return // Only check when logged in
-        }
-        // Check if user has accepted user terms
-        UserTermsClient.instance.requestUserTerms() { result in
-            switch result {
-                case .Success(let userTerms, let new) where new == true:
-                    if forceAccept {
-                        UserTermsClient.instance.latestVerifiedVersion = userTerms.version
-                        return
-                    }
-                    self.pendingUserTerms = userTerms
-                    if self.isViewLoaded() {
-                        self.showUserTerms()
-                    }
-                case .Success(_, _):
-                    print("No new user terms")
-                default:
-                    print("Failed to get user terms: \(result)")
-            }
         }
     }
 
@@ -374,6 +345,57 @@ extension MainMapViewController: MapViewDelegate {
             closeAddressToolbarView()
         }
     }
+    
+// MARK: Introduction
+
+    func possiblyShowIntroductionView() {
+        if Settings.sharedInstance.turnstile.didSeeIntroduction {
+            return
+        }
+        let introView = IntroductionView.init(frame: self.view.frame)
+        introView.delegate = self
+        introView.showInView(self.view)
+    }
+    
+    func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
+        Settings.sharedInstance.turnstile.didSeeIntroduction = true
+    }
+    
+// MARK: User Terms
+    
+    func checkUserTerms(forceAccept: Bool = false) {
+        if !UserHelper.loggedIn() {
+            return // Only check when logged in
+        }
+        // Check if user has accepted user terms
+        UserTermsClient.instance.requestUserTerms() { result in
+            switch result {
+                case .Success(let userTerms, let new) where new == true:
+                    if forceAccept {
+                        UserTermsClient.instance.latestVerifiedVersion = userTerms.version
+                        return
+                    }
+                    self.pendingUserTerms = userTerms
+                    if self.isViewLoaded() {
+                        self.showUserTerms()
+                    }
+                case .Success(_, _):
+                    print("No new user terms")
+                default:
+                    print("Failed to get user terms: \(result)")
+            }
+        }
+    }
+    
+    #if TRACKING_ENABLED
+    func checkActivateTracking() -> Bool {
+        if Settings.sharedInstance.turnstile.didSeeActivateTracking {
+            return false
+        }
+        performSegueWithIdentifier(mainToActivateTrackingSegue, sender: self)
+        return true
+    }
+    #endif
 }
 
 
@@ -385,5 +407,3 @@ extension MainMapViewController: FindAddressViewControllerProtocol {
         updateToCurrentItem(item)
     }
 }
-
-

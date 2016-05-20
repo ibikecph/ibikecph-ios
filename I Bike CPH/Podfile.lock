@@ -2,6 +2,9 @@ PODS:
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - DAKeyboardControl (2.4.0)
+  - EAIntroView (2.9.0):
+    - EARestrictedScrollView (~> 1.1.0)
+  - EARestrictedScrollView (1.1.0)
   - Fabric (1.6.7)
   - FLKAutoLayout (0.2.1)
   - FMDB (2.3):
@@ -37,6 +40,7 @@ PODS:
 DEPENDENCIES:
   - Crashlytics (~> 3.7.0)
   - DAKeyboardControl (~> 2.4)
+  - EAIntroView (~> 2.9.0)
   - GoogleAnalytics (~> 3.10)
   - Mapbox-iOS-SDK (= 1.6.0)
   - NibDesignable (~> 2.3)
@@ -44,7 +48,7 @@ DEPENDENCIES:
   - ORStackView (~> 3.0)
   - PSTAlertController (= 1.1.0)
   - Realm (~> 0.99.0)
-  - SwiftHEXColors
+  - SwiftHEXColors (~> 1.0)
   - SwiftyJSON (~> 2.3)
   - SwiftyUserDefaults (~> 2.2.0)
   - TTTAttributedLabel (~> 1.13)
@@ -53,6 +57,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
+  EAIntroView: 76f68cc56242f2e25359419e6ecc2344ee7e1756
+  EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
   FMDB: e78c5941bb10563f2b707255119e3655e790c29e
@@ -73,6 +79,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIImage-Categories: a0593f6a7991c99016b9ecadfbd38b3717ff1a73
 
-PODFILE CHECKSUM: ad1570b36f7b11a452422ad48c7a7840b03de42f
+PODFILE CHECKSUM: 7fbe949da3f08851b694ad606186170e9e42eb27
 
 COCOAPODS: 1.0.0

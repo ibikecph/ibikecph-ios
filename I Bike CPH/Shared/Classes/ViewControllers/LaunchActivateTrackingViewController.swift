@@ -38,7 +38,7 @@ class LaunchActivateTrackingViewController: SMTranslatedViewController {
         super.viewDidLoad()
         updateActivateButton()
         // Register visit to this view
-        Settings.sharedInstance.onboarding.didSeeActivateTracking = true
+        Settings.sharedInstance.turnstile.didSeeActivateTracking = true
         // Hide navigationbar initially
         navigationController?.setNavigationBarHidden(true, animated: false)
     }

@@ -17,7 +17,7 @@ class Settings: NSObject {
     let voice = VoiceSettings()
     let tracking = TrackingSettings()
     let overlays = OverlaysSettings()
-    let onboarding = OnboardingSettings()
+    let turnstile = TurnstileSettings()
     
     func clear() {
         if let bundleID = NSBundle.mainBundle().bundleIdentifier {
@@ -64,12 +64,21 @@ class TrackingSettings {
     }
 }
 
-class OnboardingSettings {
-    private let onboardingDidSeeActivateTrackingKey = "onboardingDidSeeActivateTrackingKey"
+class TurnstileSettings {
+    private let turnstileDidSeeActivateTrackingKey = "turnstileDidSeeActivateTrackingKey"
     var didSeeActivateTracking: Bool {
-        get { return Defaults[onboardingDidSeeActivateTrackingKey].bool ?? false }
+        get { return Defaults[turnstileDidSeeActivateTrackingKey].bool ?? false }
         set {
-            Defaults[onboardingDidSeeActivateTrackingKey] = newValue
+            Defaults[turnstileDidSeeActivateTrackingKey] = newValue
+            NotificationCenter.post(settingsUpdatedNotification, object: self)
+        }
+    }
+    
+    private let turnstileDidSeeIntroductionKey = "turnstileDidSeeIntroductionKey"
+    var didSeeIntroduction: Bool {
+        get { return Defaults[turnstileDidSeeIntroductionKey].bool ?? false }
+        set {
+            Defaults[turnstileDidSeeIntroductionKey] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
