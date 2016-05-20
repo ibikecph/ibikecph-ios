@@ -349,9 +349,9 @@ extension MainMapViewController: MapViewDelegate {
 // MARK: Introduction
 
     func possiblyShowIntroductionView() {
-        if Settings.sharedInstance.turnstile.didSeeIntroduction {
-            return
-        }
+//        if Settings.sharedInstance.turnstile.didSeeIntroduction {
+//            return
+//        }
         let introView = IntroductionView.init(frame: self.view.frame)
         introView.delegate = self
         introView.showInView(self.view)
