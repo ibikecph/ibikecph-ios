@@ -8,6 +8,9 @@
 
 import UIKit
 
+#if IBIKECPH
+import EAIntroView
+#endif
 
 struct RouteComposite {
     enum Composite {
@@ -124,6 +127,13 @@ class FindRouteViewController: MapViewController {
         
         // Search for route
         searchForNewRoute(RouteTypeHandler.instance.type.server)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        #if IBIKECPH
+            possiblyShowIntroductionView()
+        #endif
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -358,3 +368,27 @@ extension FindRouteViewController: FindAddressViewControllerProtocol {
         clearUI()
     }
 }
+
+// MARK: Introduction
+
+#if IBIKECPH
+extension FindRouteViewController: EAIntroDelegate {
+    
+    func possiblyShowIntroductionView() {
+        if !macro.isIBikeCph {
+            return
+        }
+        if Settings.sharedInstance.turnstile.didSeeIntroduction {
+            return
+        }
+        let introView = IntroductionView.init(frame: self.view.frame)
+        introView.delegate = self
+        introView.showFullscreenWithAnimateDuration(0.5)
+    }
+    
+    func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
+        Settings.sharedInstance.turnstile.didSeeIntroduction = true
+    }
+    
+}
+#endif

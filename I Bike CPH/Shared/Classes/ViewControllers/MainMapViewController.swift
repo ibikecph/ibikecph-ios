@@ -10,10 +10,6 @@ import UIKit
 import PSTAlertController
 import MapKit
 
-#if IBIKECPH
-import EAIntroView
-#endif
-
 let routeToItemNotificationKey = "routeToItemNotificationKey"
 let routeToItemNotificationItemKey = "routeToItemNotificationItemKey"
 
@@ -120,10 +116,6 @@ class MainMapViewController: MapViewController {
             }
         #else
             checkUserTerms()
-        #endif
-        
-        #if IBIKECPH
-            possiblyShowIntroductionView()
         #endif
     }
     
@@ -385,30 +377,6 @@ extension MainMapViewController: MapViewDelegate {
     }
     #endif
 }
-
-// MARK: Introduction
-
-#if IBIKECPH
-extension MainMapViewController: EAIntroDelegate {
-    
-    func possiblyShowIntroductionView() {
-        if !macro.isIBikeCph {
-            return
-        }
-        if Settings.sharedInstance.turnstile.didSeeIntroduction {
-            return
-        }
-        let introView = IntroductionView.init(frame: self.view.frame)
-        introView.delegate = self
-        introView.showFullscreenWithAnimateDuration(0.5)
-    }
-    
-    func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
-        Settings.sharedInstance.turnstile.didSeeIntroduction = true
-    }
-    
-}
-#endif
 
 extension MainMapViewController: FindAddressViewControllerProtocol {
     
