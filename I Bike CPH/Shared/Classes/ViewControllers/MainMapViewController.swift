@@ -9,12 +9,15 @@
 import UIKit
 import PSTAlertController
 import MapKit
+
+#if IBIKECPH
 import EAIntroView
+#endif
 
 let routeToItemNotificationKey = "routeToItemNotificationKey"
 let routeToItemNotificationItemKey = "routeToItemNotificationItemKey"
 
-class MainMapViewController: MapViewController, EAIntroDelegate {
+class MainMapViewController: MapViewController {
 
     private let trackingToolbarView = TrackingToolbarView()
     private let addressToolbarView = AddressToolbarView()
@@ -119,9 +122,9 @@ class MainMapViewController: MapViewController, EAIntroDelegate {
             checkUserTerms()
         #endif
         
-        if macro.isIBikeCph {
+        #if IBIKECPH
             possiblyShowIntroductionView()
-        }
+        #endif
     }
     
     private func unobserve() {
@@ -346,21 +349,6 @@ extension MainMapViewController: MapViewDelegate {
         }
     }
     
-// MARK: Introduction
-
-    func possiblyShowIntroductionView() {
-//        if Settings.sharedInstance.turnstile.didSeeIntroduction {
-//            return
-//        }
-        let introView = IntroductionView.init(frame: self.view.frame)
-        introView.delegate = self
-        introView.showInView(self.view)
-    }
-    
-    func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
-        Settings.sharedInstance.turnstile.didSeeIntroduction = true
-    }
-    
 // MARK: User Terms
     
     func checkUserTerms(forceAccept: Bool = false) {
@@ -398,6 +386,29 @@ extension MainMapViewController: MapViewDelegate {
     #endif
 }
 
+// MARK: Introduction
+
+#if IBIKECPH
+extension MainMapViewController: EAIntroDelegate {
+    
+    func possiblyShowIntroductionView() {
+        if !macro.isIBikeCph {
+            return
+        }
+        if Settings.sharedInstance.turnstile.didSeeIntroduction {
+            return
+        }
+        let introView = IntroductionView.init(frame: self.view.frame)
+        introView.delegate = self
+        introView.showInView(self.view)
+    }
+    
+    func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
+        Settings.sharedInstance.turnstile.didSeeIntroduction = true
+    }
+    
+}
+#endif
 
 extension MainMapViewController: FindAddressViewControllerProtocol {
     
