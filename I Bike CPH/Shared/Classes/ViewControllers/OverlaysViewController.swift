@@ -8,67 +8,21 @@
 
 import UIKit
 
-private struct OverlayTypeViewModel {
-    var title: String {
-        return self.type.localizedDescription
-    }
-    var iconImage: UIImage? {
-        return self.type.menuIcon
-    }
-    let type: OverlayType
-    var selected: Bool {
-        get {
-            if OverlayTypeViewModel.mapOverlays() != nil {
-                switch type {
-                    case .CycleSuperHighways: return Settings.sharedInstance.overlays.showCycleSuperHighways
-                    case .BikeServiceStations: return Settings.sharedInstance.overlays.showBikeServiceStations
-                    case .HarborRing: return Settings.sharedInstance.overlays.showHarborRing
-                    case .GreenPaths: return Settings.sharedInstance.overlays.showGreenPaths
-                }
-            }
-            return false
-        }
-        set {
-            if OverlayTypeViewModel.mapOverlays() != nil {
-                switch type {
-                    case .CycleSuperHighways: Settings.sharedInstance.overlays.showCycleSuperHighways = newValue
-                    case .BikeServiceStations: Settings.sharedInstance.overlays.showBikeServiceStations = newValue
-                    case .HarborRing: Settings.sharedInstance.overlays.showHarborRing = newValue
-                    case .GreenPaths: Settings.sharedInstance.overlays.showGreenPaths = newValue
-                }
-            }
-        }
-    }
-    
-    static func appDelegate() -> SMAppDelegate? {
-        return UIApplication.sharedApplication().delegate as? SMAppDelegate ?? nil
-    }
-    
-    static func mapOverlays() -> OverlaysManager? {
-        return OverlaysManager.sharedInstance
-    }
-    
-    init(type: OverlayType) {
-        self.type = type
-    }
-}
-
-
 class OverlaysViewController: UIViewController {
 
     private let cellID = "OverlayCellID"
     
-    private let items: [OverlayTypeViewModel] = {
+    private let items: [OverlayType] = {
         if Macro.instance().isCykelPlanen {
             return [
-//                OverlayTypeViewModel(type: .CycleSuperHighways),
-                OverlayTypeViewModel(type: .BikeServiceStations)
+//               .CycleSuperHighways,
+                .BikeServiceStations
             ]
         }
         if Macro.instance().isIBikeCph {
             return [
-                OverlayTypeViewModel(type: .HarborRing),
-                OverlayTypeViewModel(type: .GreenPaths)
+                .HarborRing,
+                .GreenPaths
             ]
         }
         return []
@@ -98,8 +52,12 @@ extension OverlaysViewController: UITableViewDataSource {
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
         let item = items[indexPath.row]
         
-        cell.configure(item.title, icon: item.iconImage)
-        cell.accessoryType = item.selected ? .Checkmark : .None
+        let title = OverlaysManager.sharedInstance.titleForOverlay(item)
+        let iconImage = OverlaysManager.sharedInstance.iconImageForOverlay(item)
+        let selected = OverlaysManager.sharedInstance.isOverlaySelected(item)
+        
+        cell.configure(title, icon: iconImage)
+        cell.accessoryType = selected ? .Checkmark : .None
         
         return cell
     }
@@ -110,8 +68,9 @@ extension OverlaysViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView .deselectRowAtIndexPath(indexPath, animated: true)
         
-        var item = items[indexPath.row]
-        item.selected = !item.selected
+        let item = items[indexPath.row]
+        let selected = OverlaysManager.sharedInstance.isOverlaySelected(item)
+        OverlaysManager.sharedInstance.selectOverlay(!selected, type: item)
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
     }
 }

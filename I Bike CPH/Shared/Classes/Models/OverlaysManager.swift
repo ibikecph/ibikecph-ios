@@ -39,8 +39,10 @@ enum OverlayType {
 }
 
 @objc class OverlaysManager: NSObject {
+    
     static let sharedInstance = OverlaysManager()
-    struct OverlayAnnotations {
+    
+    private struct OverlayAnnotations {
         var locations = [[CLLocationCoordinate2D]]()
         var color = Styler.tintColor().colorWithAlphaComponent(0.5)
         var annotations = [Annotation]()
@@ -230,6 +232,48 @@ enum OverlayType {
                     self.greenPathsAnnotations = OverlayAnnotations(type: .GreenPaths, json: json)
                 default: print("Failed to get geoJSON for Green Paths")
             }
+        }
+    }
+    
+    private func annotationOfType(type: OverlayType) -> OverlayAnnotations? {
+        switch type {
+        case .CycleSuperHighways:
+            return self.cycleSuperHighwayAnnotations
+        case .BikeServiceStations:
+            return self.bikeServiceAnnotations
+        case .HarborRing:
+            return self.harborRingAnnotations
+        case .GreenPaths:
+            return self.greenPathsAnnotations
+        }
+    }
+    
+    func titleForOverlay(type: OverlayType) -> String {
+        guard self.annotationOfType(type) != nil else {
+            return type.localizedDescription + " (" + "not_currently_available".localized + ")"
+        }
+        return type.localizedDescription
+    }
+    
+    func iconImageForOverlay(type: OverlayType) -> UIImage? {
+        return type.menuIcon
+    }
+    
+    func isOverlaySelected(type: OverlayType) -> Bool {
+        switch type {
+            case .CycleSuperHighways: return Settings.sharedInstance.overlays.showCycleSuperHighways
+            case .BikeServiceStations: return Settings.sharedInstance.overlays.showBikeServiceStations
+            case .HarborRing: return Settings.sharedInstance.overlays.showHarborRing
+            case .GreenPaths: return Settings.sharedInstance.overlays.showGreenPaths
+        }
+    }
+    
+    func selectOverlay(selected: Bool, type: OverlayType) {
+        switch type {
+            case .CycleSuperHighways: Settings.sharedInstance.overlays.showCycleSuperHighways = selected
+            case .BikeServiceStations: Settings.sharedInstance.overlays.showBikeServiceStations = selected
+            case .HarborRing: Settings.sharedInstance.overlays.showHarborRing = selected
+            case .GreenPaths: Settings.sharedInstance.overlays.showGreenPaths = selected
         }
     }
     
