@@ -44,8 +44,8 @@ private struct OverlayTypeViewModel {
         return UIApplication.sharedApplication().delegate as? SMAppDelegate ?? nil
     }
     
-    static func mapOverlays() -> Overlays? {
-        return OverlayTypeViewModel.appDelegate()?.mapOverlays
+    static func mapOverlays() -> OverlaysManager? {
+        return OverlaysManager.sharedInstance
     }
     
     init(type: OverlayType) {

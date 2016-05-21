@@ -345,8 +345,8 @@
 		4EE59AF41A6485BA00B89D71 /* SMAccountNativeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE59AF31A6485BA00B89D71 /* SMAccountNativeViewController.m */; };
 		4EE59AF51A6485BA00B89D71 /* SMAccountNativeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE59AF31A6485BA00B89D71 /* SMAccountNativeViewController.m */; };
 		4EE633771A5E8A94009DA49B /* OverlaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */; };
-		4EE6337A1A5E8B6D009DA49B /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633791A5E8B6D009DA49B /* Overlays.swift */; };
-		4EE6337B1A5E8B6D009DA49B /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633791A5E8B6D009DA49B /* Overlays.swift */; };
+		4EE6337A1A5E8B6D009DA49B /* OverlaysManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633791A5E8B6D009DA49B /* OverlaysManager.swift */; };
+		4EE6337B1A5E8B6D009DA49B /* OverlaysManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633791A5E8B6D009DA49B /* OverlaysManager.swift */; };
 		4EE671C61A2F25F00037865B /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C51A2F25F00037865B /* UINavigationController.swift */; };
 		4EE671C71A2F25F00037865B /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE671C51A2F25F00037865B /* UINavigationController.swift */; };
 		4EE683741B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */; };
@@ -804,7 +804,7 @@
 		4EE59AF21A6485BA00B89D71 /* SMAccountNativeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountNativeViewController.h; sourceTree = "<group>"; };
 		4EE59AF31A6485BA00B89D71 /* SMAccountNativeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountNativeViewController.m; sourceTree = "<group>"; };
 		4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaysViewController.swift; sourceTree = "<group>"; };
-		4EE633791A5E8B6D009DA49B /* Overlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
+		4EE633791A5E8B6D009DA49B /* OverlaysManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaysManager.swift; sourceTree = "<group>"; };
 		4EE671C51A2F25F00037865B /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2D.swift; sourceTree = "<group>"; };
 		4EE8A83A1BF487FA00369B27 /* ToolbarViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewContainer.swift; sourceTree = "<group>"; };
@@ -1557,7 +1557,7 @@
 		4EE633781A5E8B54009DA49B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4EE633791A5E8B6D009DA49B /* Overlays.swift */,
+				4EE633791A5E8B6D009DA49B /* OverlaysManager.swift */,
 				4EBB7B471A5EC2A00064B530 /* RouteType.swift */,
 				4E33B91B1A640579007D4C82 /* UserHelper.swift */,
 				4E33B91D1A640590007D4C82 /* AppHelper.swift */,
@@ -2424,7 +2424,7 @@
 				7D1D9C741CB7EA1E007F1D30 /* SMAPIOperation.m in Sources */,
 				4EC56DD01A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
 				4EC56E291A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
-				4EE6337A1A5E8B6D009DA49B /* Overlays.swift in Sources */,
+				4EE6337A1A5E8B6D009DA49B /* OverlaysManager.swift in Sources */,
 				4EC56E511A2A2C3D00B696B4 /* SMCustomButton.m in Sources */,
 				4EC56EDB1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */,
 				4E651D2F1A93EA5B00497C70 /* TrackingPromptViewController.swift in Sources */,
@@ -2595,7 +2595,7 @@
 				4EC56E731A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
 				4EC56DCA1A2A25E900B696B4 /* SMEvents.m in Sources */,
 				4EE06C4A1A10FC5600DE4226 /* SMStationsCache.m in Sources */,
-				4EE6337B1A5E8B6D009DA49B /* Overlays.swift in Sources */,
+				4EE6337B1A5E8B6D009DA49B /* OverlaysManager.swift in Sources */,
 				4E2B08F51B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift in Sources */,
 				7D1D9CAE1CB7EBF3007F1D30 /* SMFoursquareOperation.m in Sources */,
 				4EE06C4E1A10FC5600DE4226 /* SMTransportation.m in Sources */,

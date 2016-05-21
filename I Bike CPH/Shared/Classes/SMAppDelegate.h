@@ -24,8 +24,6 @@
 
 @property(nonatomic, strong) id<GAITracker> tracker;
 
-@property (nonatomic, strong) Overlays *mapOverlays;
-
 @property(nonatomic, strong) NSMutableDictionary *appSettings;
 
 - (BOOL)saveSettings;

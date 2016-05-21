@@ -1,5 +1,5 @@
 //
-//  Overlays.swift
+//  OverlaysManager.swift
 //  I Bike CPH
 //
 //  Created by Tobias Due Munk on 08/01/15.
@@ -38,7 +38,8 @@ enum OverlayType {
     }
 }
 
-@objc class Overlays: NSObject {
+@objc class OverlaysManager: NSObject {
+    static let sharedInstance = OverlaysManager()
     struct OverlayAnnotations {
         var locations = [[CLLocationCoordinate2D]]()
         var color = Styler.tintColor().colorWithAlphaComponent(0.5)

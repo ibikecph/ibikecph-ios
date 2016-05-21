@@ -167,14 +167,4 @@
     [SMSearchHistory saveSearchHistory];
 }
 
-#pragma mark - Getters
-
-- (Overlays *)mapOverlays
-{
-    if (!_mapOverlays) {
-        _mapOverlays = [[Overlays alloc] init];
-    }
-    return _mapOverlays;
-}
-
 @end
