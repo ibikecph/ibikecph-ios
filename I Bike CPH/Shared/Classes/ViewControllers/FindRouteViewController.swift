@@ -233,14 +233,12 @@ extension FindRouteViewController: FindRouteToolbarDelegate {
     }
 }
 
-
 extension FindRouteViewController: RouteTypeToolbarDelegate {
     func didChangeType(type: RouteType) {
         clearUI()
         searchForNewRoute(type.server)
     }
 }
-
 
 extension FindRouteViewController: RouteManagerDelegate {
     func didGetResultForRoute(result: RouteManager.Result) {

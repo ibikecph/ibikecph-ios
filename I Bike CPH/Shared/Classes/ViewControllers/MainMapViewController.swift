@@ -400,7 +400,7 @@ extension MainMapViewController: EAIntroDelegate {
         }
         let introView = IntroductionView.init(frame: self.view.frame)
         introView.delegate = self
-        introView.showInView(self.view)
+        introView.showFullscreenWithAnimateDuration(0.5)
     }
     
     func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
