@@ -17,8 +17,6 @@ env:
   - PROVISIONING_PROFILE_1="$HOME/Library/MobileDevice/Provisioning Profiles/$PROV_PROFILE_NAME_1.mobileprovision"
   - WORKSPACE_NAME="I Bike CPH/I Bike CPH.xcworkspace"
   - 'CODE_SIGNING_IDENTITY="iPhone Distribution: Socialsquare ApS"'
-  - OUTPUTDIR="$PWD/build"
-  - SDK="iphoneos9.3"
   - FASTLANE_ITUNES_TRANSPORTER_USE_SHELL_SCRIPT=1
   - secure: wK2B3GeLZ62OOrFot6JfTto5d6qp/+8KwcaAVxahinBfDjMsmG04C9mtCXApEDVzLzuLv0IK9vjnLTXLvyaS6htSUfBfEQsOWkDgRMEnPxQDqv4fqD3F6ImNOYjh3XtgurSUZvhg5c59HYP62CjWYcDQTbN2LDaCJjUAo3whLrc=
   - secure: MeCVPr8Nr/Cb5bh5/2eIy9EDYmtXmBhpfNLQk420BRoMFto/qPp1Gl9EENApscUukqDET7iDiuehCQhOF2qs+n6glSsuRQNvPAM44s5l1f9bqnWVeCKTG7lbNtUsaPn/6lPXHEDFFz6ONOlJxW2H3tnIaVI1V1QFtR601YBFR6s=
