@@ -13,11 +13,13 @@ struct RouteTypeViewModel {
         return self.type.localizedDescription
     }
     var iconImage: UIImage? {
+        let iconWidth: CGFloat = 25
+        let iconColor = UIColor.grayColor()
         switch self.type {
             case .Disabled: return nil
-            case .Fast: return UIImage(named:"Fast")
-            case .Cargo: return UIImage(named:"Cargo")
-            case .Green: return UIImage(named:"Green")
+            case .Fast: return poFastRouteImage(width: iconWidth, color: iconColor)?.imageWithRenderingMode(.AlwaysTemplate)
+            case .Cargo: return poCargoRouteImage(width: iconWidth, color: iconColor)?.imageWithRenderingMode(.AlwaysTemplate)
+            case .Green: return poGreenRouteImage(width: iconWidth, color: iconColor)?.imageWithRenderingMode(.AlwaysTemplate)
             case .Broken: return UIImage(named:"BrokenRoute")
         }
     }
