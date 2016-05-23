@@ -15,6 +15,7 @@ env:
   - PROV_PROFILE_NAME_1="cykelplanen_distribution"
   - PROVISIONING_PROFILE_0="$HOME/Library/MobileDevice/Provisioning Profiles/$PROV_PROFILE_NAME_0.mobileprovision"
   - PROVISIONING_PROFILE_1="$HOME/Library/MobileDevice/Provisioning Profiles/$PROV_PROFILE_NAME_1.mobileprovision"
+  - OUTPUTDIR="$PWD/build"
   - WORKSPACE_NAME="I Bike CPH/I Bike CPH.xcworkspace"
   - 'CODE_SIGNING_IDENTITY="iPhone Distribution: Socialsquare ApS"'
   - FASTLANE_ITUNES_TRANSPORTER_USE_SHELL_SCRIPT=1
@@ -49,9 +50,9 @@ before_install:
 before_script:
 - "./ci_scripts/add_keys.sh"
 script:
-- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_0" -n "$APP_NAME_0" -i
+- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_0" -o "$OUTPUTDIR" -n "$APP_NAME_0" -i
   "$CODE_SIGNING_IDENTITY" -e "$PROVISIONING_PROFILE_0" -m true
-- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_1" -n "$APP_NAME_1" -i
+- gym -w "$WORKSPACE_NAME" -s "$SCHEME_NAME_1" -o "$OUTPUTDIR" -n "$APP_NAME_1" -i
   "$CODE_SIGNING_IDENTITY" -e "$PROVISIONING_PROFILE_1" -m true
 after_success:
 - "./ci_scripts/push_to_testflight.sh"

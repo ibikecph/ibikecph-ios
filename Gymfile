@@ -9,5 +9,4 @@
 # scheme "Example"
 
 sdk "iphoneos9.3"
-output_directory "./build"
 use_legacy_build_api true
