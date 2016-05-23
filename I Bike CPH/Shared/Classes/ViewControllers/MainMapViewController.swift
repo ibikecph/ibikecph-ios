@@ -65,6 +65,10 @@ class MainMapViewController: MapViewController {
         })
         #endif
         
+        self.setupObservers()
+    }
+    
+    func setupObservers() {
         // Observe
         observerTokens.append(NotificationCenter.observe(routeToItemNotificationKey) { [weak self] notification in
             if let
@@ -117,8 +121,10 @@ class MainMapViewController: MapViewController {
         #else
             checkUserTerms()
         #endif
-        let introView = IntroductionView.init(frame: self.view.frame)
-        introView.showFullscreenWithAnimateDuration(0.5)
+        
+        #if IBIKECPH
+            possiblyShowIntroductionView()
+        #endif
     }
     
     private func unobserve() {
@@ -388,3 +394,21 @@ extension MainMapViewController: FindAddressViewControllerProtocol {
         updateToCurrentItem(item)
     }
 }
+
+// MARK: Introduction
+
+#if IBIKECPH
+extension MainMapViewController {
+    
+    func possiblyShowIntroductionView() {
+        if !macro.isIBikeCph {
+            return
+        }
+        if Settings.sharedInstance.turnstile.didSeeIntroduction {
+            return
+        }
+        let introView = IntroductionView.init(frame: self.view.frame)
+        introView.showFullscreenWithAnimateDuration(0.5)
+    }
+}
+#endif
