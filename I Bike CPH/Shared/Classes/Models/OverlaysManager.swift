@@ -165,7 +165,7 @@ enum OverlayType {
             guard let colorString = json["properties", "color"].string else {
                 return
             }
-            if let color = UIColor(hexString: colorString, alpha: 0.5) {
+            if let color = UIColor(hexString: colorString, alpha: 0.66) {
                 self.color = color
             }
         }
