@@ -63,31 +63,53 @@ class IntroductionView: EAIntroView, EAIntroDelegate {
         titleLabel.font = UIFont.boldSystemFontOfSize(24)
         introPageView.addSubview(titleLabel)
         
+        let scrollViewFrame = CGRect(x: 0,
+                                     y: titleLabelFrame.origin.y + titleLabelFrame.size.height,
+                                     width: frame.size.width,
+                                     height: frame.size.height - (titleLabelFrame.origin.y + titleLabelFrame.size.height) - footerButtonFrame.size.height)
+        let scrollView = UIScrollView.init(frame: scrollViewFrame)
+        scrollView.showsHorizontalScrollIndicator = false
+        introPageView.addSubview(scrollView)
+        
+        let bodyAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody),
+                              NSForegroundColorAttributeName: UIColor.blackColor()]
+        let bodyAttributedText = NSAttributedString.init(string: "introduction_greenest_route_body_ibc".localized, attributes: bodyAttributes)
+        let bodyLabelRect = bodyAttributedText.boundingRectWithSize(CGSize(width: frame.size.width-40, height: CGFloat.max) , options: .UsesLineFragmentOrigin, context: nil)
+        let bodyLabelFrame = CGRect(x: 20,
+                                    y: 10,
+                                    width: frame.size.width-40,
+                                    height: bodyLabelRect.size.height)
+        let bodyLabel = UILabel.init(frame: bodyLabelFrame)
+        bodyLabel.textColor = UIColor.blackColor()
+        bodyLabel.attributedText = bodyAttributedText
+        bodyLabel.textAlignment = .Left
+        bodyLabel.numberOfLines = 0
+        scrollView.addSubview(bodyLabel)
+        
         let leafIconImage = poGreenRouteImage(width: 44, color: Styler.tintColor())
         let leafIconImageViewFrame = CGRect(x: 0,
-                                            y: titleLabelFrame.origin.y + titleLabelFrame.size.height + 10,
+                                            y: bodyLabelFrame.origin.y + bodyLabelFrame.size.height + 10,
                                             width: frame.size.width,
                                             height: leafIconImage?.size.height ?? 0)
         let leafIconImageView = UIImageView.init(frame: leafIconImageViewFrame)
         leafIconImageView.image = leafIconImage
         leafIconImageView.contentMode = .Center
-        introPageView.addSubview(leafIconImageView)
+        scrollView.addSubview(leafIconImageView)
         
-        let bodyTextViewFrame = CGRect(x: 20,
-                                       y: leafIconImageViewFrame.origin.y + leafIconImageViewFrame.size.height + 10,
-                                       width: frame.size.width-40,
-                                       height: frame.size.height - (titleLabelFrame.origin.y + titleLabelFrame.size.height) - footerButtonFrame.size.height - 30)
-        let bodyTextView = UITextView.init(frame: bodyTextViewFrame)
-        bodyTextView.textColor = UIColor.blackColor()
-        bodyTextView.text = "introduction_greenest_route_body_ibc".localized + "\n\n" + "introduction_greenest_route_footer_ibc".localized
-        bodyTextView.textAlignment = .Left
-        bodyTextView.editable = false
-        bodyTextView.selectable = false
-        bodyTextView.showsHorizontalScrollIndicator = false
-        bodyTextView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
-        bodyTextView.backgroundColor = UIColor.clearColor()
-        bodyTextView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        introPageView.addSubview(bodyTextView)
+        let footerAttributedText = NSAttributedString.init(string: "introduction_greenest_route_footer_ibc".localized, attributes: bodyAttributes)
+        let footerLabelRect = footerAttributedText.boundingRectWithSize(CGSize(width: frame.size.width-40, height: CGFloat.max) , options: .UsesLineFragmentOrigin, context: nil)
+        let footerLabelFrame = CGRect(x: 20,
+                                      y: leafIconImageViewFrame.origin.y + leafIconImageViewFrame.size.height + 10,
+                                      width: frame.size.width-40,
+                                      height: footerLabelRect.size.height)
+        let footerLabel = UILabel.init(frame: footerLabelFrame)
+        footerLabel.textColor = UIColor.blackColor()
+        footerLabel.attributedText = footerAttributedText
+        footerLabel.textAlignment = .Left
+        footerLabel.numberOfLines = 0
+        scrollView.addSubview(footerLabel)
+        
+        scrollView.contentSize = CGSize(width: frame.size.width, height: footerLabelFrame.origin.y + footerLabelFrame.size.height + 20)
         
         introPage.customView = introPageView
         pages.append(introPage)
