@@ -63,7 +63,7 @@ class IntroductionView: EAIntroView, EAIntroDelegate {
         titleLabel.font = UIFont.boldSystemFontOfSize(24)
         introPageView.addSubview(titleLabel)
         
-        let leafIconImage = UIImage(named: "Green")
+        let leafIconImage = poGreenRouteImage(height: 44, color: Styler.tintColor())
         let leafIconImageViewFrame = CGRect(x: 0,
                                             y: titleLabelFrame.origin.y + titleLabelFrame.size.height + 10,
                                             width: frame.size.width,

@@ -480,6 +480,8 @@
 		7D7F99A11CB3C5F30079801B /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */; };
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		8CC05C2DBF8DA677FD28AFF3 /* Pods_app_target_I_Bike_CPH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE3E3F28EF50DD375ABBB57 /* Pods_app_target_I_Bike_CPH.framework */; };
+		DE1032761CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
+		DE1032771CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
 		DE32712F1CEF447900291A57 /* IntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32712E1CEF447900291A57 /* IntroductionView.swift */; };
 		DE5170751CE7B2C70088B5E3 /* OverlaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */; };
 		DE5557741CCBC00F00D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
@@ -904,6 +906,7 @@
 		C40C9EBA1FFAC0ACBC43C5B1 /* Pods-CykelPlanenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.release.xcconfig"; sourceTree = "<group>"; };
 		CDB68DE70198E82D8B39AFB2 /* Pods-app_target-I Bike CPH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_target-I Bike CPH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app_target-I Bike CPH/Pods-app_target-I Bike CPH.debug.xcconfig"; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DE1032751CF363380099D170 /* ProgrammaticAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammaticAssets.swift; sourceTree = "<group>"; };
 		DE32712E1CEF447900291A57 /* IntroductionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionView.swift; sourceTree = "<group>"; };
 		DE5AD90B1CEB94420068C436 /* OverlaysClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaysClient.swift; sourceTree = "<group>"; };
 		DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cycle_super_highways.geojson; sourceTree = "<group>"; };
@@ -1179,6 +1182,7 @@
 				4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */,
 				4E56745C1A92469000BF4A28 /* TrackingHandler.swift */,
 				4E56745F1A92521800BF4A28 /* MotionDetector.swift */,
+				DE1032751CF363380099D170 /* ProgrammaticAssets.swift */,
 				7D03242D1CBD38D0002DADDE /* NonTrackingHandler.swift */,
 				4E5258C61A9B9C8300BE55C8 /* String.swift */,
 				4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */,
@@ -2336,6 +2340,7 @@
 				4EC56E791A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
 				4EEC6D311B208156003AE8DF /* CompassButton.swift in Sources */,
 				4E10EBC61B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */,
+				DE1032761CF363380099D170 /* ProgrammaticAssets.swift in Sources */,
 				4EE05F501A10EBFA00DE4226 /* main.m in Sources */,
 				4E2A92561A3B43130032ACD4 /* Async.swift in Sources */,
 				7D1D9C921CB7EA6F007F1D30 /* HistoryItem.swift in Sources */,
@@ -2525,6 +2530,7 @@
 				4E10EBB51B3AE4B10012245E /* RouteNavigationViewController.swift in Sources */,
 				4EE06F051A112F6D00DE4226 /* SMBreakRouteButtonCell.m in Sources */,
 				4EEC6D291B20788E003AE8DF /* MapViewController.swift in Sources */,
+				DE1032771CF363380099D170 /* ProgrammaticAssets.swift in Sources */,
 				4EADAE4D1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift in Sources */,
 				7D1D9CA11CB7EBC7007F1D30 /* SMLocationManager.m in Sources */,
 				4EC56EB31A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */,
