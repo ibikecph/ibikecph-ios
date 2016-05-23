@@ -386,6 +386,7 @@
 "harbor_ring" = "Harbour Ring";
 "green_paths" = "Green Paths";
 "not_currently_available" = "not currently available";
+"continue_button_text" = "Continue";
 
 /* CykelPlanen */
 

@@ -117,6 +117,8 @@ class MainMapViewController: MapViewController {
         #else
             checkUserTerms()
         #endif
+        let introView = IntroductionView.init(frame: self.view.frame)
+        introView.showFullscreenWithAnimateDuration(0.5)
     }
     
     private func unobserve() {

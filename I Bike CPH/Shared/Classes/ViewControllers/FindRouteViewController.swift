@@ -382,13 +382,7 @@ extension FindRouteViewController: EAIntroDelegate {
             return
         }
         let introView = IntroductionView.init(frame: self.view.frame)
-        introView.delegate = self
         introView.showFullscreenWithAnimateDuration(0.5)
     }
-    
-    func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
-        Settings.sharedInstance.turnstile.didSeeIntroduction = true
-    }
-    
 }
 #endif

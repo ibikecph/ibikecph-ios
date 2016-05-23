@@ -389,6 +389,7 @@
 "harbor_ring" = "Havneringen";
 "green_paths" = "Grønne Stier";
 "not_currently_available" = "ikke tilgængelig lige nu";
+"continue_button_text" = "Videre";
 
 /* CykelPlanen */
 
