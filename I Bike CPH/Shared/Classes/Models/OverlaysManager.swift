@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import SwiftyUserDefaults
 import SwiftHEXColors
 
 enum OverlayType {
@@ -24,6 +25,12 @@ enum OverlayType {
             case .GreenPaths: return "green_paths".localized
         }
     }
+}
+
+extension DefaultsKeys {
+    // Saved Overlays GeoJSON
+    static let harborRingGeoJSON = DefaultsKey<Dictionary<String,AnyObject>?>("harborRingGeoJSON")
+    static let greenPathsGeoJSON = DefaultsKey<Dictionary<String,AnyObject>?>("greenPathsGeoJSON")
 }
 
 @objc class OverlaysManager: NSObject {
@@ -210,7 +217,14 @@ enum OverlayType {
             switch result {
                 case .Success(let json):
                     self.harborRingAnnotations = OverlayAnnotations(type: .HarborRing, json: json)
-                default: print("Failed to get geoJSON for Harbour Ring")
+                    if let dictionary = json.dictionaryObject {
+                        Defaults[.harborRingGeoJSON] = dictionary
+                    }
+                default:
+                    // Try to use cached GeoJSON data if available
+                    if let dictionary = Defaults[.harborRingGeoJSON] {
+                        self.harborRingAnnotations = OverlayAnnotations(type: .HarborRing, json: JSON(dictionary))
+                    }
             }
         }
         
@@ -218,7 +232,14 @@ enum OverlayType {
             switch result {
                 case .Success(let json):
                     self.greenPathsAnnotations = OverlayAnnotations(type: .GreenPaths, json: json)
-                default: print("Failed to get geoJSON for Green Paths")
+                    if let dictionary = json.dictionaryObject {
+                        Defaults[.greenPathsGeoJSON] = dictionary
+                    }
+                default:
+                    // Try to use cached GeoJSON data if available
+                    if let dictionary = Defaults[.greenPathsGeoJSON] {
+                        self.greenPathsAnnotations = OverlayAnnotations(type: .GreenPaths, json: JSON(dictionary))
+                    }
             }
         }
     }
