@@ -71,7 +71,7 @@ class IntroductionView: EAIntroView, EAIntroDelegate {
         scrollView.showsHorizontalScrollIndicator = false
         introPageView.addSubview(scrollView)
         
-        let bodyAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody),
+        let bodyAttributes = [NSFontAttributeName: UIFont.systemFontOfSize(16),
                               NSForegroundColorAttributeName: UIColor.blackColor()]
         let bodyAttributedText = NSAttributedString.init(string: "introduction_greenest_route_body_ibc".localized, attributes: bodyAttributes)
         let bodyLabelRect = bodyAttributedText.boundingRectWithSize(CGSize(width: frame.size.width-40, height: CGFloat.max) , options: .UsesLineFragmentOrigin, context: nil)
