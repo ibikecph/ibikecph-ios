@@ -404,7 +404,7 @@ extension MainMapViewController {
         if !macro.isIBikeCph {
             return
         }
-        if Settings.sharedInstance.turnstile.didSeeIntroduction {
+        if Settings.sharedInstance.turnstile.didSeeGreenestRouteIntroduction {
             return
         }
         let introView = IntroductionView.init(frame: self.view.frame)

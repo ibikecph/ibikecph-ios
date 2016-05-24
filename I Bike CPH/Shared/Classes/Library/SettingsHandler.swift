@@ -11,6 +11,26 @@ import SwiftyUserDefaults
 
 let settingsUpdatedNotification = "settingsUpdatedNotification"
 
+extension DefaultsKeys {
+    // Voice Settings
+    static let voiceOn = DefaultsKey<Bool>("voiceOn")
+   
+    // Tracking Settings
+    static let trackingOn = DefaultsKey<Bool>("trackingOn")
+    static let milestoneNotificationsOn = DefaultsKey<Bool>("milestoneNotifications")
+    static let weeklyStatusNotificationsOn = DefaultsKey<Bool>("weeklyStatusNotifications")
+    
+    // Turnstile Settings
+    static let turnstileDidSeeActivateTracking = DefaultsKey<Bool>("turnstileDidSeeActivateTrackingKey")
+    static let turnstileDidSeeGreenestRouteIntroduction = DefaultsKey<Bool>("turnstileDidSeeGreenestRouteIntroductionKey")
+    
+    // Overlays Settings
+    static let showBikeServiceStationsOverlay = DefaultsKey<Bool>("overlayBikeServiceStationsKey")
+    static let showCycleSuperHighwaysOverlay = DefaultsKey<Bool>("overlayCycleSuperHighways")
+    static let showHarborRingOverlay = DefaultsKey<Bool>("overlayHarborRingKey")
+    static let showGreenPathsOverlay = DefaultsKey<Bool>("overlayGreenPathsKey")
+}
+
 class Settings: NSObject {
     static let sharedInstance = Settings()
     
@@ -27,96 +47,86 @@ class Settings: NSObject {
 }
 
 class VoiceSettings {
-    private let onKey = "voiceOn"
     var on: Bool {
-        get { return Defaults[onKey].bool ?? false }
+        get { return Defaults[.voiceOn] ?? false }
         set {
-            Defaults[onKey] = newValue
+            Defaults[.voiceOn] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
 }
 
 class TrackingSettings {
-    private let onKey = "trackingOn"
     var on: Bool {
-        get { return Defaults[onKey].bool ?? false }
+        get { return Defaults[.trackingOn] ?? false }
         set {
-            Defaults[onKey] = newValue
+            Defaults[.trackingOn] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
-    private let milestoneNotificationsKey = "milestoneNotifications"
     var milestoneNotifications: Bool {
-        get { return Defaults[milestoneNotificationsKey].bool ?? true }
+        get { return Defaults[.milestoneNotificationsOn] ?? true }
         set {
-            Defaults[milestoneNotificationsKey] = newValue
+            Defaults[.milestoneNotificationsOn] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
-    private let weeklyStatusNotificationsKey = "weeklyStatusNotifications"
     var weeklyStatusNotifications: Bool {
-        get { return Defaults[weeklyStatusNotificationsKey].bool ?? true }
+        get { return Defaults[.weeklyStatusNotificationsOn] ?? true }
         set {
-            Defaults[weeklyStatusNotificationsKey] = newValue
+            Defaults[.weeklyStatusNotificationsOn] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
 }
 
 class TurnstileSettings {
-    private let turnstileDidSeeActivateTrackingKey = "turnstileDidSeeActivateTrackingKey"
     var didSeeActivateTracking: Bool {
-        get { return Defaults[turnstileDidSeeActivateTrackingKey].bool ?? false }
+        get { return Defaults[.turnstileDidSeeActivateTracking] ?? false }
         set {
-            Defaults[turnstileDidSeeActivateTrackingKey] = newValue
+            Defaults[.turnstileDidSeeActivateTracking] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
     
-    private let turnstileDidSeeIntroductionKey = "turnstileDidSeeIntroductionKey"
-    var didSeeIntroduction: Bool {
-        get { return Defaults[turnstileDidSeeIntroductionKey].bool ?? false }
+    var didSeeGreenestRouteIntroduction: Bool {
+        get { return Defaults[.turnstileDidSeeGreenestRouteIntroduction] ?? false }
         set {
-            Defaults[turnstileDidSeeIntroductionKey] = newValue
+            Defaults[.turnstileDidSeeGreenestRouteIntroduction] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
 }
 
 class OverlaysSettings: NSObject {
-    private let bikeServiceStationsKey = "overlayBikeServiceStationsKey"
     var showBikeServiceStations: Bool {
-        get { return Defaults[bikeServiceStationsKey].bool ?? false }
+        get { return Defaults[.showBikeServiceStationsOverlay] ?? false }
         set {
-            Defaults[bikeServiceStationsKey] = newValue
+            Defaults[.showBikeServiceStationsOverlay] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
-    private let cycleSuperHighwaysKey = "overlayCycleSuperHighways"
     var showCycleSuperHighways: Bool {
         get {
             return false // Disable until routes are updated
-//            return Defaults[cycleSuperHighwaysKey].bool ?? false
+//            return Defaults[.showCycleSuperHighwaysOverlay] ?? false
         }
         set {
-            Defaults[cycleSuperHighwaysKey] = newValue
+            Defaults[.showCycleSuperHighwaysOverlay] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
-    private let harborRingKey = "overlayHarborRingKey"
     var showHarborRing: Bool {
-        get { return Defaults[harborRingKey].bool ?? false }
+        get { return Defaults[.showHarborRingOverlay] ?? false }
         set {
-            Defaults[harborRingKey] = newValue
+            Defaults[.showHarborRingOverlay] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
-    private let greenPathsKey = "overlayGreenPathsKey"
     var showGreenPaths: Bool {
-        get { return Defaults[greenPathsKey].bool ?? false }
+        get { return Defaults[.showGreenPathsOverlay] ?? false }
         set {
-            Defaults[greenPathsKey] = newValue
+            Defaults[.showGreenPathsOverlay] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }

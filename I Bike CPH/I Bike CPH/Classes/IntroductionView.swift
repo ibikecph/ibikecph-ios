@@ -137,6 +137,6 @@ class IntroductionView: EAIntroView, EAIntroDelegate {
 // MARK: EAIntroDelegate
     
     func introDidFinish(introView: EAIntroView!, wasSkipped: Bool) {
-        Settings.sharedInstance.turnstile.didSeeIntroduction = true
+        Settings.sharedInstance.turnstile.didSeeGreenestRouteIntroduction = true
     }
 }
