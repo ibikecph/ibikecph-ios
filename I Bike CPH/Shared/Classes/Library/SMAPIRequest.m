@@ -106,10 +106,7 @@
 
         debugLog(@"*** %@ %@", service[@"transferMethod"], urlString);
 
-        //        NSData * data = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
-
         NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-        //        [req setHTTPBody:data];
         [req setHTTPMethod:service[@"transferMethod"]];
         for (NSDictionary *d in service[@"headers"]) {
             [req setValue:d[@"value"] forHTTPHeaderField:d[@"key"]];

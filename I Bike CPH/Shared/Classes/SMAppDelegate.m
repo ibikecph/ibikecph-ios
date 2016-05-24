@@ -65,9 +65,6 @@
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults stringForKey:@"appLanguage"]) {
-        /**
-         * init default settings
-         */
         NSArray *languages = [defaults objectForKey:@"AppleLanguages"];
         if ([languages.firstObject isEqualToString:@"da"] || [languages.firstObject isEqualToString:@"dan"]) {
             [defaults setObject:@"dk" forKey:@"appLanguage"];
@@ -80,8 +77,6 @@
 
     [Styler setupAppearance];
     self.window.tintColor = [Styler tintColor];
-
-    //    [RLMRealm deleteDefaultRealmFile];
 
     // Auto migrate Realm
     RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];

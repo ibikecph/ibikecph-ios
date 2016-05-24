@@ -8,6 +8,25 @@
 
 import Foundation
 
+func poPathOverlayIconImage(width width: CGFloat, color: UIColor) -> UIImage? {
+    if (width <= 0) {
+        return nil
+    }
+
+    let bezierPath = UIBezierPath()
+    bezierPath.moveToPoint(CGPoint(x: 0, y: 0.85))
+    bezierPath.addLineToPoint(CGPoint(x: 0.85, y: 0))
+    bezierPath.addLineToPoint(CGPoint(x: 1, y: 0.15))
+    bezierPath.addLineToPoint(CGPoint(x: 0.15, y: 1))
+    bezierPath.addLineToPoint(CGPoint(x: 0, y: 0.85))
+    bezierPath.miterLimit = 4
+    bezierPath.lineWidth = 0.0
+    
+    bezierPath.scale(width: width)
+    
+    return bezierPath.renderFilledImage(color)
+}
+
 func poGreenRouteImage(width width: CGFloat, color: UIColor) -> UIImage? {
     if (width <= 0) {
         return nil

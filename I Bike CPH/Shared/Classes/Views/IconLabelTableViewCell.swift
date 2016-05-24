@@ -25,7 +25,7 @@ class IconLabelTableViewCell: NibDesignableTableViewCell {
         label.textColor = textColor
         label.text = text
         
-        iconImageView.image = icon?.imageWithRenderingMode(.AlwaysTemplate)
+        iconImageView.image = icon
     }
     
     func configure(item: SearchListItem) {

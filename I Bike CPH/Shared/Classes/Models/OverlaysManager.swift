@@ -24,18 +24,6 @@ enum OverlayType {
             case .GreenPaths: return "green_paths".localized
         }
     }
-    
-    var menuIcon: UIImage? {
-        let name: String = {
-            switch self {
-                case .CycleSuperHighways: return "SuperCycleHighway"
-                case .BikeServiceStations: return "serviceStation"
-                case .HarborRing: return "serviceStation"
-                case .GreenPaths: return "serviceStation"
-            }
-        }()
-        return UIImage(named: name)
-    }
 }
 
 @objc class OverlaysManager: NSObject {
@@ -256,7 +244,16 @@ enum OverlayType {
     }
     
     func iconImageForOverlay(type: OverlayType) -> UIImage? {
-        return type.menuIcon
+        let iconWidth: CGFloat = 22
+        switch type {
+            case .CycleSuperHighways: return UIImage(named: "SuperCycleHighway")
+            case .BikeServiceStations: return UIImage(named: "serviceStation")
+            case .HarborRing, .GreenPaths:
+                guard let annotations = self.annotationOfType(type) else {
+                    return poPathOverlayIconImage(width: iconWidth, color: UIColor.grayColor())
+                }
+                return poPathOverlayIconImage(width: iconWidth, color: annotations.color)
+        }
     }
     
     func isOverlaySelected(type: OverlayType) -> Bool {
