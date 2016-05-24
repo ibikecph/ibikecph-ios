@@ -29,10 +29,34 @@ class OverlaysViewController: UIViewController {
         
         }()
     
+    private var observerTokens = [AnyObject]()
+    
+    deinit {
+        unobserve()
+    }
+    
+    private func unobserve() {
+        for observerToken in observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
+        NotificationCenter.unobserve(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "map_overlays".localized
+        
+        observerTokens.append(NotificationCenter.observe(overlaysUpdatedNotification) { [weak self] notification in
+            // Find relevant table view in messy Nib labyrinth and update it
+            if let view = self?.view {
+                for v: UIView in view.subviews {
+                    if let tv = v as? UITableView {
+                        tv.reloadData()
+                    }
+                }
+            }
+        })
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

@@ -11,6 +11,8 @@ import SwiftyJSON
 import SwiftyUserDefaults
 import SwiftHEXColors
 
+let overlaysUpdatedNotification = "overlaysUpdatedNotification"
+
 enum OverlayType {
     case CycleSuperHighways
     case BikeServiceStations
@@ -183,12 +185,14 @@ extension DefaultsKeys {
         didSet {
             self.harborRingAnnotations?.updateAnnotations(self.mapView)
             self.harborRingAnnotations?.updateOverlay(self.mapView)
+            NotificationCenter.post(overlaysUpdatedNotification, object: self)
         }
     }
     private var greenPathsAnnotations: OverlayAnnotations? {
         didSet {
             self.greenPathsAnnotations?.updateAnnotations(self.mapView)
             self.greenPathsAnnotations?.updateOverlay(self.mapView)
+            NotificationCenter.post(overlaysUpdatedNotification, object: self)
         }
     }
     
@@ -202,6 +206,11 @@ extension DefaultsKeys {
     override init() {
         super.init()
         fetchData()
+        
+        // Since the class is a singleton there's no need to unobserve
+        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+            self?.updateAllOverlays()
+        }
     }
     
     private func fetchData() {

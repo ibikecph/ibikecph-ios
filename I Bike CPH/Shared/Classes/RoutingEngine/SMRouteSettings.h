@@ -16,10 +16,6 @@
 #define DEFAULT_PRIVATE_SUFFIX @"_private"
 #define DEFAULT_PRIVATE_APP_SUFFIX @"_app_private"
 
-/**
- * \ingroup libs
- * Routing engine settings object
- */
 @interface SMRouteSettings : NSObject
 
 @property(nonatomic, strong) NSString *api_base_url;
@@ -29,7 +25,7 @@
 @property(nonatomic, strong) NSString *osrm_server_green;
 @property(nonatomic, strong) NSString *broken_journey_server;
 
-@property(nonatomic, strong) NSNumber *geocoding_search_radius;  // float
+@property(nonatomic, strong) NSNumber *geocoding_search_radius; // float
 
 @property(nonatomic, strong) NSString *places_search_radius;
 @property(nonatomic, strong) NSString *foursquare_search_radius;
@@ -39,16 +35,14 @@
 @property(nonatomic, strong) NSString *oiorest_search_radius;
 @property(nonatomic, strong) NSString *oiorest_autocomplete_search_radius;
 
-@property(nonatomic, strong) NSNumber *use_apple_geocoder;  // BOOL
+@property(nonatomic, strong) NSNumber *use_apple_geocoder; // BOOL
 
-//@property (nonatomic, strong) NSString*  google_analytics_key;
-//@property (nonatomic, strong) NSString*  google_api_key;
+//@property (nonatomic, strong) NSString *google_analytics_key;
+//@property (nonatomic, strong) NSString *google_api_key;
 @property(nonatomic, strong) NSString *foursquare_id;
 @property(nonatomic, strong) NSString *foursquare_secret;
 @property(nonatomic, strong) NSString *foursquare_categories;
 @property(nonatomic, strong) NSString *foursquare_limit;
-//@property (nonatomic, strong) NSString*  hockeyapp_beta_identifier;
-//@property (nonatomic, strong) NSString*  hockeyapp_live_identifier;
 @property(nonatomic, strong) NSString *fb_app_id;
 @property(nonatomic, strong) NSString *kort_username;
 @property(nonatomic, strong) NSString *kort_password;
@@ -56,4 +50,5 @@
 @property CGFloat route_polyline_precision;
 
 + (SMRouteSettings *)sharedInstance;
+
 @end

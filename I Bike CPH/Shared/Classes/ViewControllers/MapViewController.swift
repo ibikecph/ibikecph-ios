@@ -18,10 +18,6 @@ class MapViewController: ToolbarViewController {
         
         // Delegate
         mapView.trackingDelegate = self
-        
-        NotificationCenter.observe(settingsUpdatedNotification) { notification in
-            OverlaysManager.sharedInstance.updateAllOverlays()
-        }
     }
     
     override func viewDidAppear(animated: Bool) {
