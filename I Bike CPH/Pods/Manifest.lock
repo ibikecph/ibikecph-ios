@@ -2,9 +2,6 @@ PODS:
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - DAKeyboardControl (2.4.0)
-  - EAIntroView (2.9.0):
-    - EARestrictedScrollView (~> 1.1.0)
-  - EARestrictedScrollView (1.1.0)
   - Fabric (1.6.7)
   - FLKAutoLayout (0.2.1)
   - FMDB (2.3):
@@ -31,6 +28,7 @@ PODS:
     - Realm/Headers (= 0.99.1)
   - Realm/Headers (0.99.1)
   - SMCalloutView (2.0)
+  - SnapKit (0.21.0)
   - SwiftHEXColors (1.0.4)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.2.0)
@@ -40,7 +38,6 @@ PODS:
 DEPENDENCIES:
   - Crashlytics (~> 3.7.0)
   - DAKeyboardControl (~> 2.4)
-  - EAIntroView (~> 2.9.0)
   - GoogleAnalytics (~> 3.10)
   - Mapbox-iOS-SDK (= 1.6.0)
   - NibDesignable (~> 2.3)
@@ -48,6 +45,7 @@ DEPENDENCIES:
   - ORStackView (~> 3.0)
   - PSTAlertController (= 1.1.0)
   - Realm (~> 0.99.0)
+  - SnapKit (~> 0.21.0)
   - SwiftHEXColors (~> 1.0)
   - SwiftyJSON (~> 2.3)
   - SwiftyUserDefaults (~> 2.2.0)
@@ -57,8 +55,6 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
-  EAIntroView: 76f68cc56242f2e25359419e6ecc2344ee7e1756
-  EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
   FMDB: e78c5941bb10563f2b707255119e3655e790c29e
@@ -73,12 +69,13 @@ SPEC CHECKSUMS:
   PSTAlertController: cb21afcfa76c3229feec7db044afd4f60dab5892
   Realm: 522a0cc8e1f8755ee56d7dc16ca0fc380d045766
   SMCalloutView: f758edd824b18bf4f42de00df1e299861a2d1950
+  SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
   SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIImage-Categories: a0593f6a7991c99016b9ecadfbd38b3717ff1a73
 
-PODFILE CHECKSUM: 7fbe949da3f08851b694ad606186170e9e42eb27
+PODFILE CHECKSUM: fcda9ac6164f343f9f60cf94a28e68dc0465e1b6
 
 COCOAPODS: 1.0.0

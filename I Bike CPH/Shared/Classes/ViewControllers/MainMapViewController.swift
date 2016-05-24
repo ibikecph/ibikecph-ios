@@ -100,11 +100,6 @@ class MainMapViewController: MapViewController {
             NotificationCenter.post("closeMenu")
         })
     }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -407,8 +402,8 @@ extension MainMapViewController {
         if Settings.sharedInstance.turnstile.didSeeGreenestRouteIntroduction {
             return
         }
-        let introView = IntroductionView.init(frame: self.view.frame)
-        introView.showInView(self.navigationController?.view, animateDuration: 0.3)
+        let introViewController = GreenestRouteIntroductionViewController()
+        self.presentViewController(introViewController, animated: true, completion: nil)
     }
 }
 #endif
