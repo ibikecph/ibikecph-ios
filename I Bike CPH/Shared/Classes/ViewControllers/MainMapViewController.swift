@@ -408,7 +408,7 @@ extension MainMapViewController {
             return
         }
         let introView = IntroductionView.init(frame: self.view.frame)
-        introView.showFullscreenWithAnimateDuration(0.5)
+        introView.showInView(self.navigationController?.view, animateDuration: 0.3)
     }
 }
 #endif

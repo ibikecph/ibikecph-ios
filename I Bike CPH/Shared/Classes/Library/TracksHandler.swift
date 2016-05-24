@@ -1036,7 +1036,6 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
             }
             if nextCount > count {
                 // Merge tracks between bike tracks
-                print("MERGEEEEE")
                 let tracksToMerge = Array(tracks[count...nextCount])
                 
                 for track in tracksToMerge {

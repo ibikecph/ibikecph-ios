@@ -227,7 +227,6 @@ extension RouteNavigationViewController: SMRouteDelegate {
         }
     }
     func updateRoute() {
-        print("Found new route")
         updateUI(false)
     }
     func startRoute(route: SMRoute!) {
@@ -240,10 +239,8 @@ extension RouteNavigationViewController: SMRouteDelegate {
         
     }
     func routeRecalculationStarted() {
-        print("Recalculating")
     }
     
     func routeRecalculationDone() {
-        print("")
     }
 }
