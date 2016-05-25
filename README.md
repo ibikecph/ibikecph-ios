@@ -4,8 +4,8 @@
 ### CocoaPods
 [CocoaPods](http://cocoapods.org) is used for most 3rd party dependencies. The pods are commited to the repository, so there is no need to install Cocoapods to build and run the project. To update the pods see [here](http://guides.cocoapods.org/using/getting-started.html) for instructions.
 
-The currently used pod version (1.6.0) of MapBox is quite outdated an in order for it to work the committed versions of the following files should not be changed unless the pod is updated:
-* `GRMustaceTag.h`
+The currently used pod version (1.6.0) of MapBox is quite outdated and in order for it to work the committed versions of the following files should not be changed unless the pod is updated:
+* `GRMustacheTag.h`
 * `RMMapView.m`
 
 ### Git submodules
