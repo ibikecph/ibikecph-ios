@@ -81,6 +81,7 @@ class GreenestRouteIntroductionView: UIView {
         self.headerImageView.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(self).offset(20)
             make.left.right.equalTo(self)
+            make.height.equalTo(self).multipliedBy(0.25)
         }
         
         self.titleLabel.snp_makeConstraints { (make) -> Void in
