@@ -145,7 +145,7 @@ static dispatch_queue_t reachabilityQueue;
               stringByAppendingFormat:@"?&loc[]=%.6f,%.6f&loc[]=%.6f,%.6f", start.latitude, start.longitude, end.latitude, end.longitude];
       }
       else {
-          NSMutableString *s1 = [NSMutableString stringWithFormat:@"%@/viaroute?z=%li&alt=false", self.osrmServer, z];
+          NSMutableString *s1 = [NSMutableString stringWithFormat:@"%@/viaroute?z=%li&alt=false", self.osrmServer, (long)z];
 
           if (startHint) {
               s1 = [NSMutableString stringWithFormat:@"%@&loc=%.6f,%.6f&hint=%@", s1, start.latitude, start.longitude, startHint];

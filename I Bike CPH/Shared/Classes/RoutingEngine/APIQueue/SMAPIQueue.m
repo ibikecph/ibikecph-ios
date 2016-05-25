@@ -100,7 +100,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (object == self.queue && [keyPath isEqualToString:NSStringFromSelector(@selector(operations))]) {
-        debugLog(@"Operations queue: %@ count: %ld", self.queue, self.queue.operationCount);
+        debugLog(@"Operations queue: %@ count: %ld", self.queue, (unsigned long)self.queue.operationCount);
     }
 }
 

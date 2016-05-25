@@ -737,7 +737,7 @@ NSMutableArray *decodePolyline(NSString *encodedString)
 {
     double min = MAXFLOAT;
 
-    locLog(@"Last visited waypoint index: %lu", self.lastVisitedWaypointIndex);
+    locLog(@"Last visited waypoint index: %lu", (long)self.lastVisitedWaypointIndex);
 
     if (self.routeType != SMRouteTypeBike && self.routeType != SMRouteTypeWalk) {
         for (NSUInteger i = 0; i < self.waypoints.count - 1; i++) {
@@ -869,7 +869,7 @@ NSMutableArray *decodePolyline(NSString *encodedString)
 
         if ([a distanceFromLocation:b] > 0.0f) {
             locLog(@"=========");
-            locLog(@"Last visited waypoint index: %li", self.lastVisitedWaypointIndex);
+            locLog(@"Last visited waypoint index: %li", (long)self.lastVisitedWaypointIndex);
             locLog(@"Loc A: (%f, %f)", a.coordinate.latitude, a.coordinate.longitude);
             locLog(@"Loc B: (%f, %f)", b.coordinate.latitude, b.coordinate.longitude);
             self.lastCorrectedHeading = [SMGPSUtil bearingBetweenStartLocation:a andEndLocation:b];
@@ -953,7 +953,7 @@ NSMutableArray *decodePolyline(NSString *encodedString)
 - (void)setLastVisitedWaypointIndex:(NSInteger)lastVisitedWaypointIndex
 {
     if (lastVisitedWaypointIndex != _lastVisitedWaypointIndex) {
-        NSLog(@"Last visit: %lu", lastVisitedWaypointIndex);
+        NSLog(@"Last visit: %lu", (long)lastVisitedWaypointIndex);
     }
     _lastVisitedWaypointIndex = lastVisitedWaypointIndex;
 }

@@ -34,16 +34,16 @@ NSString *formatTimePassed(NSDate *startDate, NSDate *endDate)
 
     NSString *timestr = @"";
     if (comp.day > 0) {
-        timestr = [timestr stringByAppendingFormat:@"%li%@ ", comp.day, TIME_DAYS_SHORT];
+        timestr = [timestr stringByAppendingFormat:@"%li%@ ", (long)comp.day, TIME_DAYS_SHORT];
     }
     if (comp.hour > 0) {
-        timestr = [timestr stringByAppendingFormat:@"%li%@ ", comp.hour, TIME_HOURS_SHORT];
+        timestr = [timestr stringByAppendingFormat:@"%li%@ ", (long)comp.hour, TIME_HOURS_SHORT];
     }
     if (comp.minute > 0) {
-        timestr = [timestr stringByAppendingFormat:@"%li%@ ", comp.minute, TIME_MINUTES_SHORT];
+        timestr = [timestr stringByAppendingFormat:@"%li%@ ", (long)comp.minute, TIME_MINUTES_SHORT];
     }
     if (comp.second > 0) {
-        timestr = [timestr stringByAppendingFormat:@"%li%@", comp.second, TIME_SECONDS_SHORT];
+        timestr = [timestr stringByAppendingFormat:@"%li%@", (long)comp.second, TIME_SECONDS_SHORT];
     }
     return timestr;
 }
@@ -54,25 +54,25 @@ NSString *formatTimeLeft(NSInteger seconds)
 
     NSInteger x = seconds / 86400;
     if (x > 0) {
-        [arr addObject:[NSString stringWithFormat:@"%02li", x]];
+        [arr addObject:[NSString stringWithFormat:@"%02li", (long)x]];
     }
     seconds = seconds % 86400;
     x = seconds / 3600;
     if (x > 0 || [arr count] > 0) {
-        [arr addObject:[NSString stringWithFormat:@"%02li", x]];
+        [arr addObject:[NSString stringWithFormat:@"%02li", (long)x]];
     }
     seconds = seconds % 3600;
     x = seconds / 60;
     if (x > 0 || [arr count] > 0) {
-        [arr addObject:[NSString stringWithFormat:@"%02li", x]];
+        [arr addObject:[NSString stringWithFormat:@"%02li", (long)x]];
     }
     seconds = seconds % 60;
     if ([arr count] > 0) {
-        [arr addObject:[NSString stringWithFormat:@"%02li", seconds]];
+        [arr addObject:[NSString stringWithFormat:@"%02li", (long)seconds]];
     }
     else {
         [arr addObject:@"00"];
-        [arr addObject:[NSString stringWithFormat:@"%02li", seconds]];
+        [arr addObject:[NSString stringWithFormat:@"%02li", (long)seconds]];
     }
     return [arr componentsJoinedByString:@":"];
 }
