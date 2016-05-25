@@ -135,7 +135,7 @@ extension MenuViewController: UITableViewDataSource {
         
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
         let item = sections[indexPath.section].items[indexPath.row]
-        cell.configure(item.title, icon: UIImage(named: item.iconImageName))
+        cell.configure(item.title, icon: UIImage(named: item.iconImageName)?.imageWithRenderingMode(.AlwaysTemplate))
         
         return cell
     }
