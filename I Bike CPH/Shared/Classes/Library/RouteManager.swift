@@ -61,7 +61,8 @@ extension RouteManager: SMRequestOSRMDelegate {
     func request(req: SMRequestOSRM!, finishedWithResult res: AnyObject!) {
         
         let json = JSON(data: req.responseData)
-        if let status = json["status"].int where status != 0 {
+        // TODO: Get this status code thing sorted
+        if let status = json["status"].int where (status != 200 && status != 0) {
             delegate?.didGetResultForRoute(.ErrorOfType(.RouteNotFound))
             return
         }
