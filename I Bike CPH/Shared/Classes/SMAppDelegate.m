@@ -78,11 +78,27 @@
     [Styler setupAppearance];
     self.window.tintColor = [Styler tintColor];
 
-    // Auto migrate Realm
+    // Initialize Realm DB
     RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
     config.schemaVersion = REALM_SCHEMA_VERSION;
-    config.migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
-    };
+    config.migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) { };
+
+#warning This block of code will delete the existing Realm DB if the REALM_SCHEMA_VERSION is higher than the existing DB's. When Realm is put into use again please take steps to use it properly, update the Realm pod version and possibly start using RealmSwift.
+    NSError *error = NULL;
+    NSUInteger currentSchemaVersion = [RLMRealm schemaVersionAtURL:config.fileURL encryptionKey:nil error:&error];
+    if (currentSchemaVersion == RLMNotVersioned) {
+        // New Realm DB, do nothing
+    } else if (currentSchemaVersion < config.schemaVersion) {
+        // Delete obsolete Realm DB
+        NSLog(@"Will delete old Realm DB");
+        [[NSFileManager defaultManager] removeItemAtURL:config.fileURL error:&error];
+        if (error) {
+            NSLog(@"Realm deletion error: %@", error);
+        }
+    } else if (error) {
+        NSLog(@"Realm schema retrieval error: %@", error);
+    }
+    
     [RLMRealmConfiguration setDefaultConfiguration:config];
     [RLMRealm defaultRealm];
 //    [RLMRealm compressWithIfNecessary:true];

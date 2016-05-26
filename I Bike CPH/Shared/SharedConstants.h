@@ -75,7 +75,7 @@
 
 #define kFAVORITES_CHANGED @"favoritesChanged"
 
-#define REALM_SCHEMA_VERSION 12
+#define REALM_SCHEMA_VERSION 13
 
 #define TRACKING_ENABLED 0
 
