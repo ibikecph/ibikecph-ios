@@ -85,7 +85,7 @@
 
 #warning This block of code will delete the existing Realm DB if the REALM_SCHEMA_VERSION is higher than the existing DB's. When Realm is put into use again please take steps to use it properly, update the Realm pod version and possibly start using RealmSwift.
     NSError *error = NULL;
-    NSUInteger currentSchemaVersion = [RLMRealm schemaVersionAtURL:config.fileURL encryptionKey:nil error:&error];
+    uint64_t currentSchemaVersion = [RLMRealm schemaVersionAtURL:config.fileURL encryptionKey:nil error:&error];
     if (currentSchemaVersion == RLMNotVersioned) {
         // New Realm DB, do nothing
     } else if (currentSchemaVersion < config.schemaVersion) {
