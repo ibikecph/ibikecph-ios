@@ -144,17 +144,30 @@ extension DefaultsKeys {
                 return
             }
             for feature in features {
-                guard let coordinates = feature["geometry", "coordinates"].array else {
+                guard let type = feature["geometry","type"].string, let coordinates = feature["geometry","coordinates"].array else {
                     continue
                 }
-                var featureLocations = [CLLocationCoordinate2D]()
-                for coordinate in coordinates {
-                    if let longitude = coordinate[0].double, latitude = coordinate[1].double {
-                        featureLocations.append(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+                if type == "LineString" {
+                    self.locations.append(self.locationsFromCoordinatesArray(coordinates))
+                }
+                if type == "MultiLineString" {
+                    for subArray in coordinates {
+                        if let subCoordinatesArray = subArray.array {
+                            self.locations.append(self.locationsFromCoordinatesArray(subCoordinatesArray))
+                        }
                     }
                 }
-                self.locations.append(featureLocations)
             }
+        }
+        
+        private func locationsFromCoordinatesArray(coordinates: [JSON]) -> [CLLocationCoordinate2D] {
+            var featureLocations = [CLLocationCoordinate2D]()
+            for coordinate in coordinates {
+                if let longitude = coordinate[0].double, latitude = coordinate[1].double {
+                    featureLocations.append(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+                }
+            }
+            return featureLocations
         }
         
         private mutating func setColorFromGeoJSON(json: JSON) {
