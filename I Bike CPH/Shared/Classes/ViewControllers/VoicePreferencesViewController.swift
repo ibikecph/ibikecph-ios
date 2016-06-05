@@ -106,7 +106,7 @@ extension VoicePreferencesViewController: UITableViewDelegate {
         if let item = sections[indexPath.section].items[indexPath.row] as? VoiceItem {
             item.action(self)
         }
-        tableView .deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
 

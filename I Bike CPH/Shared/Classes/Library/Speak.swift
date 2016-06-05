@@ -23,10 +23,9 @@ public class Speak: NSObject {
         }
         return audioSession
     }()
+    
     private let synth: AVSpeechSynthesizer
     
-    public var language: String = "en-US"
-
     override init () {
         synth = AVSpeechSynthesizer()
         
@@ -51,7 +50,7 @@ extension Speak { // AVAudioSession
     public func speak(string: String) {
         let utterance = AVSpeechUtterance(string: string)
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate / 2
-        utterance.voice = AVSpeechSynthesisVoice(language: language)
+        utterance.voice = AVSpeechSynthesisVoice(language: AVSpeechSynthesisVoice.currentLanguageCode())
         synth.speakUtterance(utterance)
     }
 }

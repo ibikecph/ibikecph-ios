@@ -74,7 +74,7 @@ class MenuViewController: UIViewController {
         if OverlaysManager.sharedInstance.availableOverlays.count > 0 {
             menuItems.append(overlayItem)
         }
-//        menuItems.append(voiceItem)
+        menuItems.append(voiceItem)
 //        menuItems.append(speedItem)
         #if TRACKING_ENABLED
             menuItems.append(trackingItem)

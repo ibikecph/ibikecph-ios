@@ -6,16 +6,16 @@
 //  Copyright (C) 2013 City of Copenhagen.  All rights reserved.
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
-//  If a copy of the MPL was not distributed with this file, You can obtain one at 
+//  If a copy of the MPL was not distributed with this file, You can obtain one at
 //  http://mozilla.org/MPL/2.0/.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 #import "SMRoute.h"
+#import <CoreLocation/CoreLocation.h>
+#import <Foundation/Foundation.h>
 
 typedef enum {
-    NoTurn = 0, //Give no instruction at all
+    NoTurn = 0,  // Give no instruction at all
     GoStraight = 1,
     TurnSlightRight = 2,
     TurnRight = 3,
@@ -47,27 +47,27 @@ typedef enum {
     // not the locaiton itself.
     // We keep index so we know where turn location in this array of route locations is.
     // (needed for some SMRoute distance calculations, see where waypointsIndex is used in SMRoute.m)
-//    __weak NSArray *waypoints;
+    //    __weak NSArray *waypoints;
 }
 
-@property (nonatomic, assign) TurnDirection drivingDirection;
-@property (nonatomic, strong) NSString *ordinalDirection;
-@property (nonatomic, strong) NSString *wayName;
+@property(nonatomic, assign) TurnDirection drivingDirection;
+@property(nonatomic, strong) NSString *ordinalDirection;
+@property(nonatomic, strong) NSString *wayName;
 @property int lengthInMeters;
 @property int timeInSeconds;
-@property (nonatomic, strong) NSString *lengthWithUnit;
-@property (nonatomic, strong) NSString* imageName;
-@property (nonatomic, assign) SMRouteType routeType;
-@property (nonatomic, strong) NSString* routeLineName;
-@property (nonatomic, strong) NSString* routeLineStart;
-@property (nonatomic, strong) NSString* routeLineDestination;
-@property (nonatomic, strong) NSDate *routeLineTime;
+@property(nonatomic, strong) NSString *lengthWithUnit;
+@property(nonatomic, strong) NSString *imageName;
+@property(nonatomic, assign) SMRouteType routeType;
+@property(nonatomic, strong) NSString *routeLineName;
+@property(nonatomic, strong) NSString *routeLineStart;
+@property(nonatomic, strong) NSString *routeLineDestination;
+@property(nonatomic, strong) NSDate *routeLineTime;
 /**
  * Length to next turn in units (km or m)
  * This value will not auto update
  */
-@property (nonatomic, strong) NSString *fixedLengthWithUnit;
-@property (nonatomic, strong) NSString *directionAbrevation; // N: north, S: south, E: east, W: west, NW: North West, ...
+@property(nonatomic, strong) NSString *fixedLengthWithUnit;
+@property(nonatomic, strong) NSString *directionAbrevation;  // N: north, S: south, E: east, W: west, NW: North West, ...
 @property float azimuth;
 
 /**
@@ -80,13 +80,12 @@ typedef enum {
  */
 @property NSInteger vehicle;
 
-
 @property int waypointsIndex;
-@property (nonatomic, strong) CLLocation *loc;
+@property(nonatomic, strong) CLLocation *loc;
 
-@property (nonatomic, strong) NSString * shortDescriptionString;
-@property (nonatomic, strong) NSString * descriptionString;
-@property (nonatomic, strong) NSString * fullDescriptionString;
+@property(nonatomic, strong) NSString *shortDescriptionString;
+@property(nonatomic, strong) NSString *descriptionString;
+@property(nonatomic, strong) NSString *fullDescriptionString;
 
 - (CLLocation *)getLocation;
 
