@@ -12,23 +12,6 @@ class OverlaysViewController: UIViewController {
 
     private let cellID = "OverlayCellID"
     
-    private let items: [OverlayType] = {
-        if Macro.instance().isCykelPlanen {
-            return [
-//               .CycleSuperHighways,
-                .BikeServiceStations
-            ]
-        }
-        if Macro.instance().isIBikeCph {
-            return [
-                .HarborRing,
-                .GreenPaths
-            ]
-        }
-        return []
-        
-        }()
-    
     private var observerTokens = [AnyObject]()
     
     deinit {
@@ -64,17 +47,16 @@ class OverlaysViewController: UIViewController {
     }
 }
 
-
 extension OverlaysViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return OverlaysManager.sharedInstance.availableOverlays.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
-        let item = items[indexPath.row]
+        let item = OverlaysManager.sharedInstance.availableOverlays[indexPath.row]
         
         let title = OverlaysManager.sharedInstance.titleForOverlay(item)
         let iconImage = OverlaysManager.sharedInstance.iconImageForOverlay(item)
@@ -92,7 +74,7 @@ extension OverlaysViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView .deselectRowAtIndexPath(indexPath, animated: true)
         
-        let item = items[indexPath.row]
+        let item = OverlaysManager.sharedInstance.availableOverlays[indexPath.row]
         let selected = OverlaysManager.sharedInstance.isOverlaySelected(item)
         OverlaysManager.sharedInstance.selectOverlay(!selected, type: item)
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)

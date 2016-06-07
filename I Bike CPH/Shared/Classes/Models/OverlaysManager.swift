@@ -39,6 +39,22 @@ extension DefaultsKeys {
     
     static let sharedInstance = OverlaysManager()
     
+    let availableOverlays: [OverlayType] = {
+        if macro.isCykelPlanen {
+            return [
+//                .CycleSuperHighways,
+//                .BikeServiceStations
+            ]
+        }
+        if macro.isIBikeCph {
+            return [
+                .HarborRing,
+                .GreenPaths
+            ]
+        }
+        return []
+    }()
+    
     private struct OverlayAnnotations {
         var locations = [[CLLocationCoordinate2D]]()
         var color = Styler.tintColor().colorWithAlphaComponent(0.5)
@@ -84,6 +100,9 @@ extension DefaultsKeys {
             case .GreenPaths:
                 overlayEnabled = settings.overlays.showGreenPaths
             }
+            // If Overlay is not even available then it should always be disabled
+            // This can happen if an overlay has turn unavailable from one app version to the next
+            overlayEnabled = overlayEnabled && OverlaysManager.sharedInstance.availableOverlays.contains(self.type)
             mv.removeAnnotations(self.annotations)
             if (overlayEnabled) {
                 mv.addAnnotations(self.annotations)

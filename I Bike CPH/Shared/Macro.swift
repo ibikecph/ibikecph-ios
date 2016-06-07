@@ -9,7 +9,6 @@
 import Foundation
 import CoreLocation
 
-let macro = Macro()
 @objc protocol MacroProtocol {
 
     var isCykelPlanen: Bool {get}
@@ -18,8 +17,12 @@ let macro = Macro()
     var initialMapZoom: Double {get}
 }
 
+// To access using Swift just use `macro`
+let macro = Macro()
+
+// To access using Objective-C use [Macro sharedInstance]
 extension Macro {
-    class func instance() -> Macro {
+    class func sharedInstance() -> Macro {
         return macro
     }
 }
