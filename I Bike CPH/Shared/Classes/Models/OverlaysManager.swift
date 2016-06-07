@@ -58,6 +58,7 @@ extension DefaultsKeys {
     private struct OverlayAnnotations {
         var locations = [[CLLocationCoordinate2D]]()
         var color = Styler.tintColor().colorWithAlphaComponent(0.5)
+        var name = ""
         var annotations = [Annotation]()
         var type: OverlayType
         
@@ -69,6 +70,7 @@ extension DefaultsKeys {
             case .CycleSuperHighways, .HarborRing, .GreenPaths:
                 self.setPathLocationsFromGeoJSON(json)
                 self.setColorFromGeoJSON(json)
+                self.setNameFromGeoJSON(json)
             }
         }
         
@@ -199,6 +201,23 @@ extension DefaultsKeys {
             }
         }
         
+        private mutating func setNameFromGeoJSON(json: JSON) {
+            self.name = self.type.localizedDescription
+            
+            // Default to English locale
+            var localePrefix = "en"
+            guard let preferredLocale = NSLocale.preferredLanguages().first else {
+                return
+            }
+            if preferredLocale.hasPrefix("da") {
+                localePrefix = "da"
+            }
+            guard let nameString = json["properties", "name", localePrefix].string else {
+                return
+            }
+            self.name = nameString
+        }
+        
     }
     
     private var cycleSuperHighwayAnnotations: OverlayAnnotations? {
@@ -299,10 +318,10 @@ extension DefaultsKeys {
     }
     
     func titleForOverlay(type: OverlayType) -> String {
-        guard self.annotationOfType(type) != nil else {
+        guard let annotation = self.annotationOfType(type) else {
             return type.localizedDescription + " (" + "not_currently_available".localized + ")"
         }
-        return type.localizedDescription
+        return annotation.name
     }
     
     func iconImageForOverlay(type: OverlayType) -> UIImage? {
