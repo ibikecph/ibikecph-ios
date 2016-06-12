@@ -186,43 +186,49 @@ class RouteNavigationViewController: MapViewController {
     }
     
     
-    
     var lastSpokenTurnInstruction: String = ""
     var previousDistanceToNextTurn: Int = Int.max
+    var previousTurnInstructionTime: NSDate = NSDate()
     var turnInstructionSpoken: Bool = false
     
     func readAloud(instruction: SMTurnInstruction) {
         var nextTurnInstruction = instruction.fullDescriptionString
-        let distanceToNextTurn = Int(instruction.lengthInMeters)
+        let metersToNextTurn = Int(instruction.lengthInMeters)
+        let secondsToNextTurn = Int(instruction.timeInSeconds)
         let minimumDistanceBeforeTurn: Int = 50
-        let distanceDelta: Int = 300
+        let timeDelta: NSTimeInterval = 120
+        let now = NSDate()
         if (self.lastSpokenTurnInstruction != nextTurnInstruction) {
             // The next turn instruction has changed
-            if distanceToNextTurn < minimumDistanceBeforeTurn {
+            self.previousDistanceToNextTurn = Int.max
+            self.previousTurnInstructionTime = NSDate()
+            if metersToNextTurn < minimumDistanceBeforeTurn {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
-                self.previousDistanceToNextTurn = distanceToNextTurn
+                self.previousDistanceToNextTurn = metersToNextTurn
+                self.previousTurnInstructionTime = now
                 self.textToSpeechSynthesizer.speak(nextTurnInstruction)
-                print(nextTurnInstruction)
             } else {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
-                self.previousDistanceToNextTurn = distanceToNextTurn
+                self.previousDistanceToNextTurn = metersToNextTurn
+                self.previousTurnInstructionTime = now
                 nextTurnInstruction = "In \(instruction.lengthWithUnit), " + nextTurnInstruction
                 self.textToSpeechSynthesizer.speak(nextTurnInstruction)
-                print(nextTurnInstruction)
             }
         } else {
             // The next turn instruction is the same as before
-            if distanceToNextTurn < minimumDistanceBeforeTurn && self.previousDistanceToNextTurn >= minimumDistanceBeforeTurn {
+            if metersToNextTurn < minimumDistanceBeforeTurn && self.previousDistanceToNextTurn >= minimumDistanceBeforeTurn {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
-                self.previousDistanceToNextTurn = distanceToNextTurn
+                self.previousDistanceToNextTurn = metersToNextTurn
+                self.previousTurnInstructionTime = now
                 self.textToSpeechSynthesizer.speak(nextTurnInstruction)
-                print(nextTurnInstruction)
-            } else if distanceToNextTurn <= (self.previousDistanceToNextTurn - distanceDelta) {
+            } else if now.timeIntervalSinceDate(self.previousTurnInstructionTime) > timeDelta {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
-                self.previousDistanceToNextTurn = distanceToNextTurn
-                nextTurnInstruction = "in".localized + " \(instruction.lengthWithUnit), " + nextTurnInstruction
-                self.textToSpeechSynthesizer.speak(nextTurnInstruction)
-                print(nextTurnInstruction)
+                self.previousDistanceToNextTurn = metersToNextTurn
+                self.previousTurnInstructionTime = now
+                let minutesLeft = (secondsToNextTurn / 60) + 1
+                var encouragement = (minutesLeft == 1) ? "read_aloud_encouragement_singular".localized : "read_aloud_encouragement".localized
+                encouragement = String(format: encouragement, String(minutesLeft))
+                self.textToSpeechSynthesizer.speak(encouragement)
             }
         }
         
