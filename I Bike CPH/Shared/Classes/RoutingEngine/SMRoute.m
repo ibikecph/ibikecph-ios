@@ -486,14 +486,14 @@ NSMutableArray *decodePolyline(NSString *encodedString)
         for (int i = 1; i < self.turnInstructions.count; i++) {
             self.distanceLeft += ((SMTurnInstruction *)self.turnInstructions[i]).lengthInMeters;
         }
-        debugLog(@"distance left: %.1f", self.distanceLeft);
+//        debugLog(@"Total distance left: %.1f", self.distanceLeft);
     }
 }
 
 - (NSDictionary *)save
 {
     // TODO save visited locations and posibly some other info
-    debugLog(@"Saving route");
+//    debugLog(@"Saving route");
     return @{
         @"data" : [NSKeyedArchiver archivedDataWithRootObject:self.visitedLocations],
         @"polyline" : [SMRoute encodePolyline:self.visitedLocations]
@@ -528,7 +528,7 @@ NSMutableArray *decodePolyline(NSString *encodedString)
         }
     }
 
-    debugLog(@"distance to next turn: %.1f", distance);
+//    debugLog(@"Distance to next turn: %.1f", distance);
     return distance;
 }
 

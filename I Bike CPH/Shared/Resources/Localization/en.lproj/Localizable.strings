@@ -96,6 +96,13 @@
 "direction_number_10" = "10th";
 "direction_number_11" = "11th";
 
+"read_aloud_in" = "in";
+"read_aloud_enabled" = "I will read aloud the route.";
+"read_aloud_encouragement" = "You're on the right track. Arriving in %@ minutes.";
+"read_aloud_encouragement_singular" = "You're almost there. Arriving in %@ minute.";
+"read_aloud_error_initalizing" = "Could not start the text-to-speech service.";
+"read_aloud_error_unsupported_language" = "Unfortunately, the device does not support text to speech in English";
+
 "new_route" = "Route";
 "Start" = "Start";
 "Stop" = "Stop";

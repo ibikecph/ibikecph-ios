@@ -1,5 +1,5 @@
 //
-//  Speak.swift
+//  TextToSpeechSynthesizer.swift
 //  Open Ascent
 //
 //  Created by Tobias DM on 25/08/14.
@@ -12,7 +12,7 @@ import AVFoundation.AVAudioSession
 import AVFoundation.AVSpeechSynthesis
 
 
-public class Speak: NSObject {
+public class TextToSpeechSynthesizer: NSObject {
     
     private let audioSession: AVAudioSession = {
         var audioSession = AVAudioSession.sharedInstance()
@@ -24,19 +24,25 @@ public class Speak: NSObject {
         return audioSession
     }()
     
-    private let synth: AVSpeechSynthesizer
+    private let speechSynthesizer: AVSpeechSynthesizer
     
     override init () {
-        synth = AVSpeechSynthesizer()
+        speechSynthesizer = AVSpeechSynthesizer()
         
         super.init()
         
-        synth.delegate = self
+        speechSynthesizer.delegate = self
+        self.setAudioSessionActive(true)
+    }
+    
+    deinit {
+        self.setAudioSessionActive(false)
+        
     }
 }
 
 
-extension Speak { // AVAudioSession
+extension TextToSpeechSynthesizer { // AVAudioSession
 
     private func setAudioSessionActive(beActive: Bool) {
         do {
@@ -49,14 +55,13 @@ extension Speak { // AVAudioSession
 
     public func speak(string: String) {
         let utterance = AVSpeechUtterance(string: string)
-        utterance.rate = AVSpeechUtteranceDefaultSpeechRate / 2
         utterance.voice = AVSpeechSynthesisVoice(language: AVSpeechSynthesisVoice.currentLanguageCode())
-        synth.speakUtterance(utterance)
+        speechSynthesizer.speakUtterance(utterance)
     }
 }
 
 
-extension Speak: AVSpeechSynthesizerDelegate {
+extension TextToSpeechSynthesizer: AVSpeechSynthesizerDelegate {
     
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
 //        setAudioSessionActive(true)
@@ -66,10 +71,10 @@ extension Speak: AVSpeechSynthesizerDelegate {
         if (synthesizer.speaking) {
             return
         }
-        setAudioSessionActive(false)
+//        setAudioSessionActive(false)
     }
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didPauseSpeechUtterance utterance: AVSpeechUtterance) {
-        setAudioSessionActive(false)
+//        setAudioSessionActive(false)
     }
 
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didContinueSpeechUtterance utterance: AVSpeechUtterance) {
@@ -77,6 +82,6 @@ extension Speak: AVSpeechSynthesizerDelegate {
     }
 
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
-        setAudioSessionActive(false)
+//        setAudioSessionActive(false)
     }
 }

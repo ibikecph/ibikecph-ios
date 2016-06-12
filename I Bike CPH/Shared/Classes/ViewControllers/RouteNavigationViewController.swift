@@ -13,6 +13,7 @@ class RouteNavigationViewController: MapViewController {
     @IBOutlet var routeNavigationDirectionsToolbarView: RouteNavigationDirectionsToolbarView!
     let routeNavigationToolbarView = RouteNavigationToolbarView()
     let routeNavigationToReportErrorSegue = "routeNavigationToReportError"
+    let textToSpeechSynthesizer = TextToSpeechSynthesizer()
     var routeComposite: RouteComposite?
     var routeAnnotations = [Annotation]()
     var observerTokens = [AnyObject]()
@@ -145,6 +146,10 @@ class RouteNavigationViewController: MapViewController {
         if let instructions = routeComposite?.currentRoute?.turnInstructions.copy() as? [SMTurnInstruction] {
             // Default
             routeNavigationDirectionsToolbarView.instructions = instructions
+            
+            if let instruction = instructions.first {
+                self.readAloud(instruction)
+            }
 
             if let routeComposite = routeComposite {
                 switch routeComposite.composite {
@@ -178,6 +183,49 @@ class RouteNavigationViewController: MapViewController {
         } else {
             routeNavigationDirectionsToolbarView.prepareForReuse()
         }
+    }
+    
+    
+    
+    var lastSpokenTurnInstruction: String = ""
+    var previousDistanceToNextTurn: Int = Int.max
+    var turnInstructionSpoken: Bool = false
+    
+    func readAloud(instruction: SMTurnInstruction) {
+        var nextTurnInstruction = instruction.fullDescriptionString
+        let distanceToNextTurn = Int(instruction.lengthInMeters)
+        let minimumDistanceBeforeTurn: Int = 50
+        let distanceDelta: Int = 300
+        if (self.lastSpokenTurnInstruction != nextTurnInstruction) {
+            // The next turn instruction has changed
+            if distanceToNextTurn < minimumDistanceBeforeTurn {
+                self.lastSpokenTurnInstruction = nextTurnInstruction
+                self.previousDistanceToNextTurn = distanceToNextTurn
+                self.textToSpeechSynthesizer.speak(nextTurnInstruction)
+                print(nextTurnInstruction)
+            } else {
+                self.lastSpokenTurnInstruction = nextTurnInstruction
+                self.previousDistanceToNextTurn = distanceToNextTurn
+                nextTurnInstruction = "In \(instruction.lengthWithUnit), " + nextTurnInstruction
+                self.textToSpeechSynthesizer.speak(nextTurnInstruction)
+                print(nextTurnInstruction)
+            }
+        } else {
+            // The next turn instruction is the same as before
+            if distanceToNextTurn < minimumDistanceBeforeTurn && self.previousDistanceToNextTurn >= minimumDistanceBeforeTurn {
+                self.lastSpokenTurnInstruction = nextTurnInstruction
+                self.previousDistanceToNextTurn = distanceToNextTurn
+                self.textToSpeechSynthesizer.speak(nextTurnInstruction)
+                print(nextTurnInstruction)
+            } else if distanceToNextTurn <= (self.previousDistanceToNextTurn - distanceDelta) {
+                self.lastSpokenTurnInstruction = nextTurnInstruction
+                self.previousDistanceToNextTurn = distanceToNextTurn
+                nextTurnInstruction = "in".localized + " \(instruction.lengthWithUnit), " + nextTurnInstruction
+                self.textToSpeechSynthesizer.speak(nextTurnInstruction)
+                print(nextTurnInstruction)
+            }
+        }
+        
     }
 }
 

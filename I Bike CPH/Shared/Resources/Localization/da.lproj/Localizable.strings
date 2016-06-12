@@ -96,6 +96,13 @@
 "direction_number_10" = "10.";
 "direction_number_11" = "11.";
 
+"read_aloud_in" = "om";
+"read_aloud_enabled" = "Nu læser jeg ruten op.";
+"read_aloud_encouragement" = "Du er på rette vej. Ankomst om %@ minutter.";
+"read_aloud_encouragement_singular" = "Du er næste fremme. Ankomst om %@ minut.";
+"read_aloud_error_initalizing" = "Kunne ikke starte tekst-til-tale-tjenesten.";
+"read_aloud_error_unsupported_language" = "Enheden understøtter desværre ikke oplæsning på dansk.";
+
 "new_route" = "Rute";
 "Start" = "Start";
 "Stop" = "Stop";
