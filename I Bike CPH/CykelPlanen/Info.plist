@@ -60,6 +60,7 @@
 	<array>
 		<string>armv7</string>
 	</array>
+        <key>ITSAppUsesNonExemptEncryption</key><false/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
