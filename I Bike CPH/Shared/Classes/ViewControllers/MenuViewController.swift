@@ -41,9 +41,6 @@ class MenuViewController: UIViewController {
         let overlayItem = MenuItem(title: "map_overlays".localized, iconImageName: "Maps overlay", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToOverlays", sender: menuViewController)
         })
-        let voiceItem = MenuItem(title: "voice".localized, iconImageName: "Speaker", action: { menuViewController in
-            menuViewController.performSegueWithIdentifier("menuToVoice", sender: menuViewController)
-        })
         let speedItem = MenuItem(title: "speedguide".localized, iconImageName: "Fartguide", action: { menuViewController in
             menuViewController.performSegueWithIdentifier("menuToSpeedGuide", sender: menuViewController)
         })
@@ -74,7 +71,6 @@ class MenuViewController: UIViewController {
         if OverlaysManager.sharedInstance.availableOverlays.count > 0 {
             menuItems.append(overlayItem)
         }
-        menuItems.append(voiceItem)
 //        menuItems.append(speedItem)
         #if TRACKING_ENABLED
             menuItems.append(trackingItem)

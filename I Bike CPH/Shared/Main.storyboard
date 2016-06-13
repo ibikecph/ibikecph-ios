@@ -1856,7 +1856,6 @@ God tur og tak fordi du cykler!</string>
                         <segue destination="HgL-f2-3Al" kind="show" identifier="menuToAccountNative" id="UPU-A9-0r1"/>
                         <segue destination="hsI-UY-mY8" kind="show" identifier="menuToOverlays" id="meI-YB-opB"/>
                         <segue destination="CaA-EE-oV6" kind="show" identifier="menuToAccountFacebook" id="TIc-7B-BT4"/>
-                        <segue destination="hv3-0N-UL0" kind="show" identifier="menuToVoice" id="4W3-LP-Kkg"/>
                         <segue destination="6SA-JC-lpZ" kind="show" identifier="menuToTracking" id="dc7-Qo-Oev"/>
                         <segue destination="LFA-zU-Kks" kind="presentation" identifier="menuToTrackingPrompt" id="Mi0-cv-iMd"/>
                         <segue destination="1LE-2H-OUo" kind="presentation" identifier="menuToTrackingNotAvailable" id="QA5-zs-o45"/>
@@ -3330,73 +3329,6 @@ God tur og tak fordi du cykler!</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8r-Vk-82e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-909" y="4340"/>
-        </scene>
-        <!--Voice Preferences View Controller-->
-        <scene sceneID="vaM-hN-ynh">
-            <objects>
-                <viewController id="hv3-0N-UL0" customClass="VoicePreferencesViewController" customModule="CykelPlanen" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RVc-2D-W2f"/>
-                        <viewControllerLayoutGuide type="bottom" id="KSz-eG-V1o"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wsq-XU-XeE">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cU3-AK-MQ4">
-                                <rect key="frame" x="215" y="290.5" width="170" height="20.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="bWW-Li-hUA">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VoiceCellID" id="C5c-Ic-R6L" customClass="IconLabelTableViewCell" customModule="CykelPlanen" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C5c-Ic-R6L" id="nG9-xd-AFK">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VoiceSwitchCellID" id="58x-td-OT3" customClass="IconLabelSwitchTableViewCell" customModule="CykelPlanen" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="158" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="58x-td-OT3" id="CYN-oU-Blx">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                                <connections>
-                                    <outlet property="dataSource" destination="hv3-0N-UL0" id="4JZ-en-JJ0"/>
-                                    <outlet property="delegate" destination="hv3-0N-UL0" id="sPj-vV-yMZ"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="cU3-AK-MQ4" secondAttribute="centerX" id="2UG-Pl-fQ2"/>
-                            <constraint firstAttribute="trailing" secondItem="bWW-Li-hUA" secondAttribute="trailing" id="4p7-ra-ze1"/>
-                            <constraint firstItem="KSz-eG-V1o" firstAttribute="top" secondItem="bWW-Li-hUA" secondAttribute="bottom" id="f3v-i8-W8E"/>
-                            <constraint firstAttribute="centerY" secondItem="cU3-AK-MQ4" secondAttribute="centerY" id="hUM-XI-dAo"/>
-                            <constraint firstItem="bWW-Li-hUA" firstAttribute="top" secondItem="wsq-XU-XeE" secondAttribute="top" id="m3Y-ga-pVf"/>
-                            <constraint firstItem="bWW-Li-hUA" firstAttribute="leading" secondItem="wsq-XU-XeE" secondAttribute="leading" id="mIt-us-XEr"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="cU3-AK-MQ4"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ba1-bS-fbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1605" y="5862"/>
         </scene>
         <!--Tracking Preferences View Controller-->
         <scene sceneID="q6a-qV-KeS">

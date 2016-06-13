@@ -178,8 +178,6 @@
 		4E818EB81BF3872C0058C090 /* RouteBrokenToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818EB51BF3872C0058C090 /* RouteBrokenToolbarView.swift */; };
 		4E90B42E1A9739A900A5F4C5 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */; };
 		4E90B42F1A9739A900A5F4C5 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */; };
-		4EAB12441A769BB60099AC54 /* VoicePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */; };
-		4EAB12451A769BB90099AC54 /* VoicePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */; };
 		4EAB12471A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */; };
 		4EAB12481A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */; };
 		4EAB124A1A76AEF50099AC54 /* SettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */; };
@@ -626,7 +624,6 @@
 		4E818EB51BF3872C0058C090 /* RouteBrokenToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteBrokenToolbarView.swift; sourceTree = "<group>"; };
 		4E8C1E4B1BFF63DF00D757AA /* keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = keys.h; path = Shared/Resources/keys.h; sourceTree = "<group>"; };
 		4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
-		4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoicePreferencesViewController.swift; sourceTree = "<group>"; };
 		4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabelSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandler.swift; sourceTree = "<group>"; };
 		4EADAE4A1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableTrackingToolbarView.swift; sourceTree = "<group>"; };
@@ -1093,7 +1090,6 @@
 				4E3C3A861A39DEFC00C79E52 /* FavoriteListViewController.swift */,
 				4E3C3A8C1A3A043900C79E52 /* FavoriteViewController.swift */,
 				4EE633751A5E8A94009DA49B /* OverlaysViewController.swift */,
-				4EAB12431A769BB60099AC54 /* VoicePreferencesViewController.swift */,
 				4EE671C51A2F25F00037865B /* UINavigationController.swift */,
 				4E651D2E1A93EA5B00497C70 /* TrackingPromptViewController.swift */,
 				4E5258A51A9B580000BE55C8 /* TrackingNotAvailableViewController.swift */,
@@ -2388,7 +2384,6 @@
 				4EC56E751A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
 				7D1D9C761CB7EA1E007F1D30 /* SMFoursquareOperation.m in Sources */,
 				4E7BD07B1A9234EF00BFDC7B /* RLMSupport.swift in Sources */,
-				4EAB12441A769BB60099AC54 /* VoicePreferencesViewController.swift in Sources */,
 				7D1D9C601CB7EA07007F1D30 /* SMGPSUtil.m in Sources */,
 				4EC56DD41A2A25E900B696B4 /* SMUtil.m in Sources */,
 				7D1D9C961CB7EA6F007F1D30 /* User.swift in Sources */,
@@ -2622,7 +2617,6 @@
 				4EEC6D321B208156003AE8DF /* CompassButton.swift in Sources */,
 				4E58C30B1B0E15DC0041255B /* MainWithSideMenuViewController.swift in Sources */,
 				7D1D9C9A1CB7EB9E007F1D30 /* HistoryItem.swift in Sources */,
-				4EAB12451A769BB90099AC54 /* VoicePreferencesViewController.swift in Sources */,
 				4E5959191BFC824500271376 /* RouteBrokenView.swift in Sources */,
 				4EAB124B1A76AEF50099AC54 /* SettingsHandler.swift in Sources */,
 				DE4460EB1CF4E10800865E88 /* GreenestRouteIntroductionView.swift in Sources */,
