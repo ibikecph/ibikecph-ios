@@ -12,6 +12,7 @@ class MapViewController: ToolbarViewController {
 
     @IBOutlet weak var mapView: MapView!
     @IBOutlet weak var compassButton: CompassButton!
+    @IBOutlet weak var readAloudButton: ReadAloudButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,10 @@ class MapViewController: ToolbarViewController {
             case .Follow: mapView.userTrackingMode = .FollowWithHeading // Follow -> Heading
             case .FollowWithHeading: mapView.userTrackingMode = .Follow // Heading -> Follow
         }
+    }
+    
+    @IBAction func readAloudButtonTapped(sender: AnyObject) {
+       print("Read aloud")
     }
     
     func removePin(pin: PinAnnotation) {

@@ -479,6 +479,8 @@
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		7D92B9F51D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92B9F41D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift */; };
 		7D92B9F61D0ED3840022400E /* InstructionTextToSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92B9F41D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift */; };
+		7D92B9F81D0EECE30022400E /* ReadAloudButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92B9F71D0EECE30022400E /* ReadAloudButton.swift */; };
+		7D92B9F91D0EECE30022400E /* ReadAloudButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92B9F71D0EECE30022400E /* ReadAloudButton.swift */; };
 		8CC05C2DBF8DA677FD28AFF3 /* Pods_app_target_I_Bike_CPH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE3E3F28EF50DD375ABBB57 /* Pods_app_target_I_Bike_CPH.framework */; };
 		DE1032761CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
 		DE1032771CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
@@ -902,6 +904,7 @@
 		7D7F99A21CB3EB4D0079801B /* SMAddressParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddressParser.h; sourceTree = "<group>"; };
 		7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddressParser.m; sourceTree = "<group>"; };
 		7D92B9F41D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionTextToSpeechSynthesizer.swift; sourceTree = "<group>"; };
+		7D92B9F71D0EECE30022400E /* ReadAloudButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadAloudButton.swift; sourceTree = "<group>"; };
 		8904AA8137BBFA7F81B08670 /* Pods-app_target-CykelPlanen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_target-CykelPlanen.release.xcconfig"; path = "Pods/Target Support Files/Pods-app_target-CykelPlanen/Pods-app_target-CykelPlanen.release.xcconfig"; sourceTree = "<group>"; };
 		A44BC1E9CE220BE043EB736A /* Pods-I Bike CPHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-I Bike CPHTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-I Bike CPHTests/Pods-I Bike CPHTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADB6492F313076A311C7CA75 /* Pods-I Bike CPHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-I Bike CPHTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-I Bike CPHTests/Pods-I Bike CPHTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1137,6 +1140,7 @@
 			children = (
 				4EEC6D2A1B207AA6003AE8DF /* MapView.swift */,
 				4EEC6D301B208156003AE8DF /* CompassButton.swift */,
+				7D92B9F71D0EECE30022400E /* ReadAloudButton.swift */,
 				4EB8B1871B25D20F00A1C53E /* PinAnnotation.swift */,
 				4EADAE501B5024CA00A2E43F /* ServiceStationsAnnotation.swift */,
 			);
@@ -2415,6 +2419,7 @@
 				7D1D9C931CB7EA6F007F1D30 /* KortforItem.swift in Sources */,
 				4EFDA4821AB87A6D00522A41 /* NSDate.swift in Sources */,
 				7D1D9C641CB7EA07007F1D30 /* SMRoute.m in Sources */,
+				7D92B9F81D0EECE30022400E /* ReadAloudButton.swift in Sources */,
 				4E5674601A92521800BF4A28 /* MotionDetector.swift in Sources */,
 				4EEC6D281B20788E003AE8DF /* MapViewController.swift in Sources */,
 				4E32B29B1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */,
@@ -2517,6 +2522,7 @@
 				4EE06C491A10FC5600DE4226 /* SMStationPickerView.m in Sources */,
 				7D1D9CAA1CB7EBE6007F1D30 /* NSString+URLEncode.m in Sources */,
 				4E651D301A93EA5B00497C70 /* TrackingPromptViewController.swift in Sources */,
+				7D92B9F91D0EECE30022400E /* ReadAloudButton.swift in Sources */,
 				4EBB7B491A5EC2A00064B530 /* RouteType.swift in Sources */,
 				4E58C31A1B0E35000041255B /* ENSideMenu.swift in Sources */,
 				4E23D6DD1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */,
