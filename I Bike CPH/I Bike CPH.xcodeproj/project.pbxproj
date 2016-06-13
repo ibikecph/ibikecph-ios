@@ -480,6 +480,7 @@
 		7D7F99A11CB3C5F30079801B /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */; };
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		7D92B9F51D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92B9F41D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift */; };
+		7D92B9F61D0ED3840022400E /* InstructionTextToSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92B9F41D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift */; };
 		8CC05C2DBF8DA677FD28AFF3 /* Pods_app_target_I_Bike_CPH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE3E3F28EF50DD375ABBB57 /* Pods_app_target_I_Bike_CPH.framework */; };
 		DE1032761CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
 		DE1032771CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
@@ -2546,6 +2547,7 @@
 				4EC56EB31A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */,
 				7D1D9CA91CB7EBE1007F1D30 /* Reachability.m in Sources */,
 				7D1D9C971CB7EB93007F1D30 /* CurrentLocationItem.swift in Sources */,
+				7D92B9F61D0ED3840022400E /* InstructionTextToSpeechSynthesizer.swift in Sources */,
 				4EE06C421A10FC5600DE4226 /* SMReminder.m in Sources */,
 				4EE633771A5E8A94009DA49B /* OverlaysViewController.swift in Sources */,
 				4EC56EE51A2A3AAE00B696B4 /* SMLoginController.m in Sources */,
