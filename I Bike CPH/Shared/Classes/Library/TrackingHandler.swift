@@ -131,7 +131,7 @@ class TrackingHandler: NSObject {
                 return
             }
             // TODO: Revisit functionality of isCurrentlyRouting
-            if Settings.sharedInstance.voice.on && self.isCurrentlyRouting {
+            if Settings.sharedInstance.readAloud.on && self.isCurrentlyRouting {
                 return
             }
             // Stop location manager

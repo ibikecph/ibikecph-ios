@@ -12,8 +12,8 @@ import SwiftyUserDefaults
 let settingsUpdatedNotification = "settingsUpdatedNotification"
 
 extension DefaultsKeys {
-    // Voice Settings
-    static let voiceOn = DefaultsKey<Bool>("voiceOn")
+    // Read Aloud Settings
+    static let readAloudOn = DefaultsKey<Bool>("readAloudOn")
    
     // Tracking Settings
     static let trackingOn = DefaultsKey<Bool>("trackingOn")
@@ -34,7 +34,7 @@ extension DefaultsKeys {
 class Settings: NSObject {
     static let sharedInstance = Settings()
     
-    let voice = VoiceSettings()
+    let readAloud = ReadAloudSettings()
     let tracking = TrackingSettings()
     let overlays = OverlaysSettings()
     let turnstile = TurnstileSettings()
@@ -46,11 +46,11 @@ class Settings: NSObject {
     }
 }
 
-class VoiceSettings {
+class ReadAloudSettings {
     var on: Bool {
-        get { return Defaults[.voiceOn] ?? false }
+        get { return Defaults[.readAloudOn] ?? false }
         set {
-            Defaults[.voiceOn] = newValue
+            Defaults[.readAloudOn] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }

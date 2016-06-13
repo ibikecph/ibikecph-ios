@@ -8,18 +8,6 @@ import UIKit
 
 class ReadAloudButton: UIButton {
 
-    var userTrackingMode: MapView.UserTrackingMode = .None {
-        didSet {
-            let imageName: String = {
-                switch self.userTrackingMode {
-                    case .None: return "Compas unselected"
-                    case .Follow: return "Compas selected"
-                    case .FollowWithHeading: return "Compas active"
-                }
-            }()
-            setImage(UIImage(named: imageName), forState: .Normal)
-        }
-    }
     var circleColor: UIColor = Styler.tintColor()
     override var highlighted: Bool {
         didSet {
@@ -42,9 +30,41 @@ class ReadAloudButton: UIButton {
         setup()
     }
     
+    deinit {
+        unobserve()
+    }
+    
+    private var observerTokens = [AnyObject]()
+    private func unobserve() {
+        for observerToken in self.observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
+        NotificationCenter.unobserve(self)
+    }
+    
     func setup() {
         adjustsImageWhenHighlighted = false
         highlight(false)
+        self.setupSettingsObserver()
+        self.updateState()
+        
+        self.addTarget(self, action: #selector(self.touchedUpInside(_:)), forControlEvents: .TouchUpInside)
+    }
+    
+    private func setupSettingsObserver() {
+        self.observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+            self?.updateState()
+        })
+    }
+    
+    private func updateState() {
+        let imageName = Settings.sharedInstance.readAloud.on ? "Compas unselected" : "Compas selected"
+        self.setImage(UIImage(named: imageName), forState: .Normal)
+        self.setNeedsDisplay()
+    }
+    
+    @objc private func touchedUpInside(sender: UIButton!) {
+        Settings.sharedInstance.readAloud.on = !Settings.sharedInstance.readAloud.on
     }
     
     func highlight(highlight: Bool = false) {
@@ -66,7 +86,7 @@ class ReadAloudButton: UIButton {
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         
-        // Take account for off-center content 
+        // Take account for off-center content
         let verticalOffset = contentEdgeInsets.top - contentEdgeInsets.bottom
         let horizontalOffset = contentEdgeInsets.left - contentEdgeInsets.right
         let topInset = max(verticalOffset, 0)

@@ -36,10 +36,6 @@ class MapViewController: ToolbarViewController {
         }
     }
     
-    @IBAction func readAloudButtonTapped(sender: AnyObject) {
-       print("Read aloud")
-    }
-    
     func removePin(pin: PinAnnotation) {
         mapView.removeAnnotation(pin)
     }
