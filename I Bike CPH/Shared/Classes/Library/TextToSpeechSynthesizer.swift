@@ -31,13 +31,12 @@ public class TextToSpeechSynthesizer: NSObject {
         
         super.init()
         
-        speechSynthesizer.delegate = self
+        self.speechSynthesizer.delegate = self
         self.setAudioSessionActive(true)
     }
     
     deinit {
         self.setAudioSessionActive(false)
-        
     }
 }
 
@@ -53,13 +52,12 @@ extension TextToSpeechSynthesizer { // AVAudioSession
         }
     }
 
-    public func speak(string: String) {
+    public func speakString(string: String) {
         let utterance = AVSpeechUtterance(string: string)
         utterance.voice = AVSpeechSynthesisVoice(language: AVSpeechSynthesisVoice.currentLanguageCode())
         speechSynthesizer.speakUtterance(utterance)
     }
 }
-
 
 extension TextToSpeechSynthesizer: AVSpeechSynthesizerDelegate {
     

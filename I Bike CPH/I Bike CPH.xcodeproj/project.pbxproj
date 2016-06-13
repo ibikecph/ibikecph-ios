@@ -479,6 +479,7 @@
 		7D4BC49D1CEB32FA007ABD0F /* havneringen.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 7D4BC4991CEB32F9007ABD0F /* havneringen.geojson */; };
 		7D7F99A11CB3C5F30079801B /* smroute_settings_app_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E4566611A8A61FA006563D1 /* smroute_settings_app_private.plist */; };
 		7D7F99A41CB3EB4D0079801B /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
+		7D92B9F51D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92B9F41D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift */; };
 		8CC05C2DBF8DA677FD28AFF3 /* Pods_app_target_I_Bike_CPH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE3E3F28EF50DD375ABBB57 /* Pods_app_target_I_Bike_CPH.framework */; };
 		DE1032761CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
 		DE1032771CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
@@ -902,6 +903,7 @@
 		7D4BC4991CEB32F9007ABD0F /* havneringen.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = havneringen.geojson; sourceTree = "<group>"; };
 		7D7F99A21CB3EB4D0079801B /* SMAddressParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddressParser.h; sourceTree = "<group>"; };
 		7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddressParser.m; sourceTree = "<group>"; };
+		7D92B9F41D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionTextToSpeechSynthesizer.swift; sourceTree = "<group>"; };
 		8904AA8137BBFA7F81B08670 /* Pods-app_target-CykelPlanen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_target-CykelPlanen.release.xcconfig"; path = "Pods/Target Support Files/Pods-app_target-CykelPlanen/Pods-app_target-CykelPlanen.release.xcconfig"; sourceTree = "<group>"; };
 		A44BC1E9CE220BE043EB736A /* Pods-I Bike CPHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-I Bike CPHTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-I Bike CPHTests/Pods-I Bike CPHTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADB6492F313076A311C7CA75 /* Pods-I Bike CPHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-I Bike CPHTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-I Bike CPHTests/Pods-I Bike CPHTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1182,6 +1184,7 @@
 				4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */,
 				4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */,
 				4E3A7EF51A7793980020A8B4 /* TextToSpeechSynthesizer.swift */,
+				7D92B9F41D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift */,
 				4E7BD07E1A92354E00BFDC7B /* Realm.swift */,
 				4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */,
 				4E56745C1A92469000BF4A28 /* TrackingHandler.swift */,
@@ -2312,6 +2315,7 @@
 				7D1D9C851CB7EA5B007F1D30 /* SMTranslation.m in Sources */,
 				4EC56ED71A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
 				4EEA6A911BA0633F009E9020 /* AddTrackTokenViewController.swift in Sources */,
+				7D92B9F51D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift in Sources */,
 				4E3A7EF61A7793980020A8B4 /* TextToSpeechSynthesizer.swift in Sources */,
 				4E55A0241A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */,
 				7D1D9C611CB7EA07007F1D30 /* SMLocationManager.m in Sources */,
