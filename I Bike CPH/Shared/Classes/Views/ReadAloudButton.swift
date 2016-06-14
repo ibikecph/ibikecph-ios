@@ -9,7 +9,7 @@ import UIKit
 class ReadAloudButton: UIButton {
 
     var circleColor: UIColor {
-        return Settings.sharedInstance.readAloud.on ? Styler.tintColor() : UIColor.lightGrayColor()
+        return Settings.sharedInstance.readAloud.on ? Styler.tintColor() : UIColor(red:0.41, green:0.41, blue:0.41, alpha:1)
     }
     override var highlighted: Bool {
         didSet {
