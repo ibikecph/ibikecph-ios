@@ -11,13 +11,17 @@ import UIKit
 import AVFoundation.AVAudioSession
 import AVFoundation.AVSpeechSynthesis
 
-
 public class TextToSpeechSynthesizer: NSObject {
     
     private let audioSession: AVAudioSession = {
         var audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayback, withOptions: .DuckOthers)
+            if #available(iOS 9.0, *) {
+                try audioSession.setCategory(AVAudioSessionCategoryPlayback, withOptions: [.DuckOthers, .InterruptSpokenAudioAndMixWithOthers])
+            } else {
+                // Fallback on earlier versions
+                try audioSession.setCategory(AVAudioSessionCategoryPlayback, withOptions: .DuckOthers)
+            }
         } catch {
             // TODO: Handle error
         }
@@ -32,7 +36,6 @@ public class TextToSpeechSynthesizer: NSObject {
         super.init()
         
         self.speechSynthesizer.delegate = self
-        self.setAudioSessionActive(true)
     }
     
     deinit {
@@ -43,10 +46,9 @@ public class TextToSpeechSynthesizer: NSObject {
 
 extension TextToSpeechSynthesizer { // AVAudioSession
 
-    private func setAudioSessionActive(beActive: Bool) {
+    func setAudioSessionActive(beActive: Bool) {
         do {
             try audioSession.setActive(beActive)
-            print("Setting AVAudiosession active: ", beActive)
         } catch let error as NSError {
             print("Setting AVAudiosession state failed: \(error.description)")
         }
@@ -62,24 +64,24 @@ extension TextToSpeechSynthesizer { // AVAudioSession
 extension TextToSpeechSynthesizer: AVSpeechSynthesizerDelegate {
     
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
-//        setAudioSessionActive(true)
+        setAudioSessionActive(true)
     }
 
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
         if (synthesizer.speaking) {
             return
         }
-//        setAudioSessionActive(false)
+        setAudioSessionActive(false)
     }
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didPauseSpeechUtterance utterance: AVSpeechUtterance) {
-//        setAudioSessionActive(false)
+        setAudioSessionActive(false)
     }
 
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didContinueSpeechUtterance utterance: AVSpeechUtterance) {
-//        setAudioSessionActive(true)
+        setAudioSessionActive(true)
     }
 
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
-//        setAudioSessionActive(false)
+        setAudioSessionActive(false)
     }
 }

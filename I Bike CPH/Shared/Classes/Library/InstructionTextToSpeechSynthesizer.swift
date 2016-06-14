@@ -52,4 +52,27 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
             }
         }
     }
+    
+    override init () {
+        super.init()
+        self.setupSettingsObserver()
+    }
+    
+    deinit {
+        self.unobserve()
+    }
+    
+    private var observerTokens = [AnyObject]()
+    private func unobserve() {
+        for observerToken in self.observerTokens {
+            NotificationCenter.unobserve(observerToken)
+        }
+        NotificationCenter.unobserve(self)
+    }
+    
+    private func setupSettingsObserver() {
+        self.observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+            self?.setAudioSessionActive(Settings.sharedInstance.readAloud.on)
+        })
+    }
 }

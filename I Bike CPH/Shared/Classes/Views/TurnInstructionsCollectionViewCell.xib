@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -19,24 +19,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zlv-ec-hUf">
-                    <rect key="frame" x="221" y="10" width="143" height="52.5"/>
+                    <rect key="frame" x="221" y="10" width="143" height="53"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="center" image="up-left.png" translatesAutoresizingMaskIntoConstraints="NO" id="SrQ-gj-suu">
-                            <rect key="frame" x="0.0" y="0.0" width="60" height="52.5"/>
-                            <animations/>
+                        <imageView userInteractionEnabled="NO" contentMode="center" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SrQ-gj-suu">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="53"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="SrQ-gj-suu" secondAttribute="height" multiplier="15:13" id="I1V-gt-Fdv"/>
                                 <constraint firstAttribute="width" constant="60" id="cd4-BZ-lom"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" misplaced="YES" text="100 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Rn-Jc-VNK">
-                            <rect key="frame" x="60" y="10" width="73" height="31.5"/>
-                            <animations/>
+                            <rect key="frame" x="60" y="10" width="73" height="32"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </label>
                     </subviews>
-                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="SrQ-gj-suu" secondAttribute="bottom" id="0td-1f-Wh7"/>
@@ -57,15 +54,13 @@
                         </mask>
                     </variation>
                 </view>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Gammeltorv" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="194" translatesAutoresizingMaskIntoConstraints="NO" id="Yfg-8x-Atn">
-                    <rect key="frame" x="10" y="62.5" width="565" height="27.5"/>
-                    <animations/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Gammeltorv" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="194" translatesAutoresizingMaskIntoConstraints="NO" id="Yfg-8x-Atn">
+                    <rect key="frame" x="10" y="63" width="565" height="27"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
             </subviews>
-            <animations/>
             <constraints>
                 <constraint firstItem="Yfg-8x-Atn" firstAttribute="leading" secondItem="Zlv-ec-hUf" secondAttribute="trailing" constant="-173" id="Asd-o0-phc"/>
                 <constraint firstAttribute="bottom" secondItem="Zlv-ec-hUf" secondAttribute="bottom" constant="10" id="BRK-0g-R7k"/>
@@ -89,7 +84,4 @@
             <point key="canvasLocation" x="346.5" y="229"/>
         </view>
     </objects>
-    <resources>
-        <image name="up-left.png" width="56" height="56"/>
-    </resources>
 </document>
