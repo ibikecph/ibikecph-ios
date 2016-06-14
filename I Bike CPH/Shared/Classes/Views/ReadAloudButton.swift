@@ -8,7 +8,9 @@ import UIKit
 
 class ReadAloudButton: UIButton {
 
-    var circleColor: UIColor = Styler.tintColor()
+    var circleColor: UIColor {
+        return Settings.sharedInstance.readAloud.on ? Styler.tintColor() : UIColor.lightGrayColor()
+    }
     override var highlighted: Bool {
         didSet {
             highlight(highlighted)
@@ -77,10 +79,6 @@ class ReadAloudButton: UIButton {
         layer.shadowOffset = CGSize(width: 0, height: offset)
         layer.shadowRadius = lifted ? 4.5 : 1.5
         layer.shadowOpacity =  0.5
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
     }
     
     override func drawRect(rect: CGRect) {

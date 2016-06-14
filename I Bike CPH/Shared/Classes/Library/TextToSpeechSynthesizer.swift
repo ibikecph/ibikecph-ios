@@ -28,13 +28,10 @@ public class TextToSpeechSynthesizer: NSObject {
         return audioSession
     }()
     
-    private let speechSynthesizer: AVSpeechSynthesizer
+    private let speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     
     override init () {
-        speechSynthesizer = AVSpeechSynthesizer()
-        
         super.init()
-        
         self.speechSynthesizer.delegate = self
     }
     
