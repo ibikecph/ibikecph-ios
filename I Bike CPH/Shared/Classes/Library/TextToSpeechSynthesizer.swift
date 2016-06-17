@@ -41,19 +41,30 @@ public class TextToSpeechSynthesizer: NSObject {
 }
 
 
-extension TextToSpeechSynthesizer { // AVAudioSession
+extension TextToSpeechSynthesizer {
+    
+    func enabledSpeech(enable: Bool) {
+        self.setAudioSessionActive(enable)
+        if enable {
+            self.speechSynthesizer.continueSpeaking()
+        } else {
+            self.speechSynthesizer.pauseSpeakingAtBoundary(.Immediate)
+        }
+    }
 
-    func setAudioSessionActive(beActive: Bool) {
+    private func setAudioSessionActive(beActive: Bool) {
         do {
             try audioSession.setActive(beActive)
         } catch let error as NSError {
             print("Setting AVAudiosession state failed: \(error.description)")
         }
     }
+    
 
     public func speakString(string: String) {
         let utterance = AVSpeechUtterance(string: string)
         utterance.voice = AVSpeechSynthesisVoice(language: AVSpeechSynthesisVoice.currentLanguageCode())
+        print("Will speak: \(string)")
         speechSynthesizer.speakUtterance(utterance)
     }
 }

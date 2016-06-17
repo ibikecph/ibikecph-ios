@@ -950,12 +950,4 @@ NSMutableArray *decodePolyline(NSString *encodedString)
     }
 }
 
-- (void)setLastVisitedWaypointIndex:(NSInteger)lastVisitedWaypointIndex
-{
-    if (lastVisitedWaypointIndex != _lastVisitedWaypointIndex) {
-        NSLog(@"Last visit: %lu", (long)lastVisitedWaypointIndex);
-    }
-    _lastVisitedWaypointIndex = lastVisitedWaypointIndex;
-}
-
 @end

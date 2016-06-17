@@ -11,6 +11,11 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
     var turnInstructionSpoken: Bool = false
     
     func speakInstruction(instruction: SMTurnInstruction) {
+        if !Settings.sharedInstance.readAloud.on {
+            // Reading aloud is not enabled
+            return
+        }
+        
         var nextTurnInstruction = instruction.fullDescriptionString
         let metersToNextTurn = Int(instruction.lengthInMeters)
         let secondsToNextTurn = Int(instruction.timeInSeconds)
@@ -72,7 +77,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
     
     private func setupSettingsObserver() {
         self.observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
-            self?.setAudioSessionActive(Settings.sharedInstance.readAloud.on)
+            self?.enabledSpeech(Settings.sharedInstance.readAloud.on)
         })
     }
 }
