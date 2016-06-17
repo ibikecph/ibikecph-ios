@@ -77,7 +77,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
     
     private func setupSettingsObserver() {
         self.observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
-            self?.enabledSpeech(Settings.sharedInstance.readAloud.on)
+            self?.enableSpeech(Settings.sharedInstance.readAloud.on)
         })
     }
 }

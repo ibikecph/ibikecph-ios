@@ -494,13 +494,6 @@
                                     <action selector="compassButtonTapped:" destination="T3l-69-wdf" eventType="touchUpInside" id="b0n-BW-fhk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ch-zL-zXI" customClass="ReadAloudButton" customModule="CykelPlanen" customModuleProvider="target">
-                                <rect key="frame" x="548" y="496" width="52" height="52"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="20" maxY="20"/>
-                                <state key="normal" image="Compas unselected">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aB4-Ri-e7J" userLabel="ToolbarContainer">
                                 <rect key="frame" x="0.0" y="64" width="600" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -510,11 +503,9 @@
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="5sB-FJ-axe" firstAttribute="trailing" secondItem="1Ch-zL-zXI" secondAttribute="trailing" id="6aT-9P-r8W"/>
                             <constraint firstItem="g6B-ap-OTz" firstAttribute="leading" secondItem="Dha-kl-JcM" secondAttribute="leading" id="8TS-9H-eEa"/>
                             <constraint firstItem="g6B-ap-OTz" firstAttribute="top" secondItem="aB4-Ri-e7J" secondAttribute="bottom" id="G9h-29-Mkp"/>
                             <constraint firstAttribute="bottom" secondItem="g6B-ap-OTz" secondAttribute="bottom" id="JUf-pd-5Mb"/>
-                            <constraint firstItem="5sB-FJ-axe" firstAttribute="top" secondItem="1Ch-zL-zXI" secondAttribute="bottom" id="LqK-o9-jvL"/>
                             <constraint firstAttribute="trailing" secondItem="5sB-FJ-axe" secondAttribute="trailing" id="YcS-AQ-oKm"/>
                             <constraint firstAttribute="trailing" secondItem="aB4-Ri-e7J" secondAttribute="trailing" id="fOZ-7x-u6S"/>
                             <constraint firstItem="aB4-Ri-e7J" firstAttribute="top" secondItem="pq5-8Y-pYM" secondAttribute="bottom" id="l7B-J5-euq"/>
@@ -539,7 +530,6 @@
                     <connections>
                         <outlet property="compassButton" destination="5sB-FJ-axe" id="a0D-hm-x0T"/>
                         <outlet property="mapView" destination="g6B-ap-OTz" id="ycV-pH-bgU"/>
-                        <outlet property="readAloudButton" destination="1Ch-zL-zXI" id="V7n-FB-Keg"/>
                         <outlet property="toolbarContainer" destination="aB4-Ri-e7J" id="U4B-6T-Y0J"/>
                         <segue destination="wg4-md-R9W" kind="presentation" identifier="mainToTracking" id="yfF-jS-f4E"/>
                         <segue destination="h7b-VQ-XtA" kind="show" identifier="mainToLogin" id="8Kg-rW-C0r"/>

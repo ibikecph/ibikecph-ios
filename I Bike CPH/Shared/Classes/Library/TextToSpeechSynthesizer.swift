@@ -43,12 +43,11 @@ public class TextToSpeechSynthesizer: NSObject {
 
 extension TextToSpeechSynthesizer {
     
-    func enabledSpeech(enable: Bool) {
-        self.setAudioSessionActive(enable)
+    func enableSpeech(enable: Bool) {
         if enable {
             self.speechSynthesizer.continueSpeaking()
         } else {
-            self.speechSynthesizer.pauseSpeakingAtBoundary(.Immediate)
+            self.speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
         }
     }
 
@@ -64,7 +63,6 @@ extension TextToSpeechSynthesizer {
     public func speakString(string: String) {
         let utterance = AVSpeechUtterance(string: string)
         utterance.voice = AVSpeechSynthesisVoice(language: AVSpeechSynthesisVoice.currentLanguageCode())
-        print("Will speak: \(string)")
         speechSynthesizer.speakUtterance(utterance)
     }
 }
@@ -76,9 +74,6 @@ extension TextToSpeechSynthesizer: AVSpeechSynthesizerDelegate {
     }
 
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
-        if (synthesizer.speaking) {
-            return
-        }
         setAudioSessionActive(false)
     }
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didPauseSpeechUtterance utterance: AVSpeechUtterance) {
@@ -90,6 +85,8 @@ extension TextToSpeechSynthesizer: AVSpeechSynthesizerDelegate {
     }
 
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
+        // This will from time to time provoke errors from the audio session because its I/O has not stopped completely.
+        // It does however seem necessary to call the following function to stop the audio session.
         setAudioSessionActive(false)
     }
 }
