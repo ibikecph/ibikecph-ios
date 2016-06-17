@@ -60,7 +60,7 @@ class ReadAloudButton: UIButton {
     }
     
     private func updateState() {
-        let imageName = Settings.sharedInstance.readAloud.on ? "Compas unselected" : "Compas selected"
+        let imageName = Settings.sharedInstance.readAloud.on ? "read_aloud_on" : "read_aloud_off"
         self.setImage(UIImage(named: imageName), forState: .Normal)
         self.setNeedsDisplay()
     }

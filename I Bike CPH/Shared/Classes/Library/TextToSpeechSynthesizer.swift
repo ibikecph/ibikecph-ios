@@ -76,6 +76,7 @@ extension TextToSpeechSynthesizer: AVSpeechSynthesizerDelegate {
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
         setAudioSessionActive(false)
     }
+    
     public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didPauseSpeechUtterance utterance: AVSpeechUtterance) {
         setAudioSessionActive(false)
     }
