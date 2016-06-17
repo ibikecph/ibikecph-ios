@@ -699,8 +699,15 @@ God tur og tak fordi du cykler!</string>
                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-LC-UdU" customClass="MapView" customModule="CykelPlanen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="436"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dyj-2u-WaP" customClass="ReadAloudButton" customModule="CykelPlanen" customModuleProvider="target">
+                                <rect key="frame" x="548" y="-40" width="52" height="52"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="20" maxY="20"/>
+                                <state key="normal" image="Compas unselected">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDH-94-tHy" customClass="CompassButton" customModule="CykelPlanen" customModuleProvider="target">
-                                <rect key="frame" x="548" y="448" width="52" height="52"/>
+                                <rect key="frame" x="548" y="548" width="52" height="52"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="20" maxY="20"/>
                                 <state key="normal" image="Compas unselected">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -739,14 +746,10 @@ God tur og tak fordi du cykler!</string>
                             <constraint firstAttribute="trailing" secondItem="gIQ-mB-Wlj" secondAttribute="trailing" id="Rz1-Uf-BuL"/>
                             <constraint firstItem="m8f-LC-UdU" firstAttribute="top" secondItem="Qwr-r2-t5R" secondAttribute="bottom" id="V4D-kI-XrF"/>
                             <constraint firstItem="gIQ-mB-Wlj" firstAttribute="top" secondItem="m8f-LC-UdU" secondAttribute="bottom" id="adT-FT-rMr"/>
-                            <constraint firstItem="gIQ-mB-Wlj" firstAttribute="leading" secondItem="159-dI-AuV" secondAttribute="leadingMargin" id="hhj-Ub-rzB"/>
+                            <constraint firstItem="jDH-94-tHy" firstAttribute="top" secondItem="Dyj-2u-WaP" secondAttribute="bottom" id="ikG-RH-qAl"/>
+                            <constraint firstItem="jDH-94-tHy" firstAttribute="trailing" secondItem="Dyj-2u-WaP" secondAttribute="trailing" id="t7c-rO-hDx"/>
                             <constraint firstItem="Mb2-Mw-5tH" firstAttribute="top" secondItem="gIQ-mB-Wlj" secondAttribute="bottom" id="url-Bv-fTV"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="hhj-Ub-rzB"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="yTU-l4-nT2">
                         <barButtonItem key="rightBarButtonItem" title="Problem" id="BWY-Sz-zGo">
@@ -758,6 +761,7 @@ God tur og tak fordi du cykler!</string>
                     <connections>
                         <outlet property="compassButton" destination="jDH-94-tHy" id="pkV-4g-9Dn"/>
                         <outlet property="mapView" destination="m8f-LC-UdU" id="pnO-PP-Tbj"/>
+                        <outlet property="readAloudButton" destination="Dyj-2u-WaP" id="0bs-d5-edS"/>
                         <outlet property="routeNavigationDirectionsToolbarView" destination="gIQ-mB-Wlj" id="by8-4P-g6h"/>
                         <outlet property="toolbarContainer" destination="Qwr-r2-t5R" id="J7h-u9-OHc"/>
                         <segue destination="Ebm-yV-wF5" kind="show" identifier="routeNavigationToReportError" id="cR0-BE-PFO"/>
@@ -3967,11 +3971,11 @@ God tur og tak fordi du cykler!</string>
     <inferredMetricsTieBreakers>
         <segue reference="hGb-e2-eVV"/>
         <segue reference="8Kg-rW-C0r"/>
-        <segue reference="JQ9-ES-ZWW"/>
-        <segue reference="2b1-pa-RYn"/>
         <segue reference="cR0-BE-PFO"/>
-        <segue reference="dc7-Qo-Oev"/>
-        <segue reference="7W8-lE-WHM"/>
+        <segue reference="2b1-pa-RYn"/>
         <segue reference="t11-Tv-7cG"/>
+        <segue reference="dc7-Qo-Oev"/>
+        <segue reference="RdX-SF-NXa"/>
+        <segue reference="7W8-lE-WHM"/>
     </inferredMetricsTieBreakers>
 </document>
