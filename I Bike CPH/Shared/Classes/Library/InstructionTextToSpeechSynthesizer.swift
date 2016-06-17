@@ -14,12 +14,12 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
         var nextTurnInstruction = instruction.fullDescriptionString
         let metersToNextTurn = Int(instruction.lengthInMeters)
         let secondsToNextTurn = Int(instruction.timeInSeconds)
-        let minimumDistanceBeforeTurn: Int = 50
+        let minimumDistanceBeforeTurn: Int = 75
         let timeDelta: NSTimeInterval = 120
         let now = NSDate()
         
         if (self.lastSpokenTurnInstruction != nextTurnInstruction) {
-            // The next turn instruction has changed
+            // The turn instruction has changed
             self.previousDistanceToNextTurn = Int.max
             self.previousTurnInstructionTime = NSDate()
             if metersToNextTurn < minimumDistanceBeforeTurn {
@@ -35,7 +35,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
                 self.speakString(nextTurnInstruction)
             }
         } else {
-            // The next turn instruction is the same as before
+            // The turn instruction is the same as before
             if metersToNextTurn < minimumDistanceBeforeTurn && self.previousDistanceToNextTurn >= minimumDistanceBeforeTurn {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
                 self.previousDistanceToNextTurn = metersToNextTurn
