@@ -28,6 +28,15 @@ public class TextToSpeechSynthesizer: NSObject {
         return audioSession
     }()
     
+    private let acceptableLanguageCodes: [String] = ["en-GB", "en-AU", "en-IE", "en-US", "en-ZA", "da-DK"]
+    private var voiceLanguageCode: String {
+        let currentLanguageCode = AVSpeechSynthesisVoice.currentLanguageCode()
+        if self.acceptableLanguageCodes.contains(currentLanguageCode) {
+            return currentLanguageCode
+        }
+        return self.acceptableLanguageCodes.first!
+    }
+    
     private let speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     
     override init () {
@@ -62,7 +71,7 @@ extension TextToSpeechSynthesizer {
 
     public func speakString(string: String) {
         let utterance = AVSpeechUtterance(string: string)
-        utterance.voice = AVSpeechSynthesisVoice(language: AVSpeechSynthesisVoice.currentLanguageCode())
+        utterance.voice = AVSpeechSynthesisVoice(language: self.voiceLanguageCode)
         speechSynthesizer.speakUtterance(utterance)
     }
 }
