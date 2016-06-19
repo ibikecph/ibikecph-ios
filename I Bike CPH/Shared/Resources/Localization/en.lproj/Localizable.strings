@@ -97,11 +97,15 @@
 "direction_number_11" = "11th";
 
 "read_aloud_in" = "in";
-"read_aloud_enabled" = "I will read aloud the route.";
+"read_aloud_enabled" = "Starting route to %@.";
 "read_aloud_encouragement" = "You're on the right track. Arriving in %@ minutes.";
 "read_aloud_encouragement_singular" = "You're almost there. Arriving in %@ minute.";
 "read_aloud_error_initalizing" = "Could not start the text-to-speech service.";
 "read_aloud_error_unsupported_language" = "Unfortunately, the device does not support text to speech in English";
+"read_aloud_encouragement_time_h_m" = "You're on the right track. Arriving in %@ %@, %@ %@.";
+"read_aloud_encouragement_time_m" = "You're on the right track. Arriving in %@ %@.";
+
+"meters" = "meters";
 
 "new_route" = "Route";
 "Start" = "Start";
@@ -335,6 +339,8 @@
 "unit_h_long" = "hours";
 "unit_h_long_singular" = "hour";
 "unit_h_short" = "h";
+"unit_m_long" = "minutes";
+"unit_m_long_singular" = "minute";
 "unit_min" = "min";
 "dum_km" = "55.3";
 "dum_kmh" = "23.3";

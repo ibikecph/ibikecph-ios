@@ -9,16 +9,21 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
     var previousDistanceToNextTurn: Int = Int.max
     var previousTurnInstructionTime: NSDate = NSDate()
     var turnInstructionSpoken: Bool = false
+    lazy var dateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        formatter.dateStyle = .NoStyle
+        return formatter
+    }()
     
-    func speakInstruction(instruction: SMTurnInstruction) {
-        if !Settings.sharedInstance.readAloud.on {
-            // Reading aloud is not enabled
-            return
-        }
-        
+    func speakDestination(item: SearchListItem) {
+        let stringToBeSpoken = String.init(format: "read_aloud_enabled".localized, item.name)
+        self.speakString(stringToBeSpoken)
+    }
+    
+    func speakTurnInstruction(instruction: SMTurnInstruction, routeComposite: RouteComposite) {
         var nextTurnInstruction = instruction.fullDescriptionString
         let metersToNextTurn = Int(instruction.lengthInMeters)
-        let secondsToNextTurn = Int(instruction.timeInSeconds)
         let minimumDistanceBeforeTurn: Int = 75
         let timeDelta: NSTimeInterval = 120
         let now = NSDate()
@@ -50,12 +55,39 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
                 self.previousDistanceToNextTurn = metersToNextTurn
                 self.previousTurnInstructionTime = now
-                let minutesLeft = (secondsToNextTurn / 60) + 1
-                var encouragement = (minutesLeft == 1) ? "read_aloud_encouragement_singular".localized : "read_aloud_encouragement".localized
-                encouragement = String(format: encouragement, String(minutesLeft))
+                
+                let (hours, minutes) = self.hoursAndMinutes(routeComposite.durationLeft)
+                var encouragement: String
+                let hoursString = (hours == 1) ? "unit_h_long_singular".localized : "unit_h_long".localized
+                let minutesString = (minutes == 1) ? "unit_m_long_singular".localized : "unit_m_long".localized
+                if hours > 0 {
+                    encouragement = "read_aloud_encouragement_time_h_m".localized
+                    encouragement = String(format: encouragement, String(hours), hoursString, String(minutes), minutesString)
+                } else {
+                    encouragement = "read_aloud_encouragement_time_m".localized
+                    encouragement = String(format: encouragement, String(minutes), minutesString)
+                }
                 self.speakString(encouragement)
             }
         }
+    }
+    
+    private let calendar = NSCalendar.currentCalendar()
+    private let unitFlags: NSCalendarUnit = [.Hour, .Minute]
+    private func hoursAndMinutes(seconds: NSTimeInterval) -> (hour: Int, minutes: Int) {
+        let rounded = round(seconds/60)*60 // Round to minutes
+        let components = calendar.components(unitFlags, fromDate: NSDate(), toDate: NSDate(timeIntervalSinceNow: rounded), options: NSCalendarOptions(rawValue: 0))
+        let hours = components.hour
+        let minutes = components.minute
+        return (hours, minutes)
+    }
+    
+    override func speakString(string: String) {
+        if !Settings.sharedInstance.readAloud.on {
+            // Reading aloud is not enabled
+            return
+        }
+        super.speakString(string)
     }
     
     override init () {

@@ -14,7 +14,14 @@ class RouteNavigationViewController: MapViewController {
     let routeNavigationToolbarView = RouteNavigationToolbarView()
     let routeNavigationToReportErrorSegue = "routeNavigationToReportError"
     let instructionTextToSpeechSynthesizer = InstructionTextToSpeechSynthesizer()
-    var routeComposite: RouteComposite?
+    var routeComposite: RouteComposite? {
+        didSet {
+            // Read aloud the route destination
+            if let destination = self.routeComposite?.to {
+                self.instructionTextToSpeechSynthesizer.speakDestination(destination)
+            }
+        }
+    }
     var routeAnnotations = [Annotation]()
     var observerTokens = [AnyObject]()
     
@@ -146,8 +153,8 @@ class RouteNavigationViewController: MapViewController {
             // Default
             routeNavigationDirectionsToolbarView.instructions = instructions
             
-            if let instruction = instructions.first {
-                self.instructionTextToSpeechSynthesizer.speakInstruction(instruction)
+            if let instruction = instructions.first, routeComposite = self.routeComposite {
+                self.instructionTextToSpeechSynthesizer.speakTurnInstruction(instruction, routeComposite: routeComposite)
             }
 
             if let routeComposite = routeComposite {

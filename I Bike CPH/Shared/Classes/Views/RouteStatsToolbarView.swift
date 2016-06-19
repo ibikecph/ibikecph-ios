@@ -15,8 +15,6 @@ class RouteStatsToolbarView: ToolbarView {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var arrivalTime: UILabel!
     
-    let hourMinuteFormatter = HourMinuteFormatter()
-    let distanceFormatter = DistanceFormatter()
     lazy var dateFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
         formatter.timeStyle = .ShortStyle
@@ -26,42 +24,19 @@ class RouteStatsToolbarView: ToolbarView {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        updateTo(0, duration: 0, eta: NSDate())
+        updateTo("", durationLeft: "", eta: NSDate())
     }
     
     func updateToRoute(routeComposite: RouteComposite) {
-        let distanceLeft = routeComposite.bikeDistanceLeft
-        let durationLeft: NSTimeInterval = {
-            switch routeComposite.composite {
-            case .Single(_):
-                return routeComposite.estimatedTime * routeComposite.distanceLeft / routeComposite.estimatedDistance
-            case .Multiple(let routes):
-                let current = routeComposite.currentRouteIndex
-                let currentRoute = routes[current]
-                var duration: NSTimeInterval = 0
-                // Current route
-                let bikeOrWalk = SMRouteTypeBike == currentRoute.routeType || SMRouteTypeWalk == currentRoute.routeType
-                if bikeOrWalk,
-                    let endDate = currentRoute.endDate {
-                    duration += max(endDate.timeIntervalSinceNow, 0)
-                } else {
-                    return Double(currentRoute.distanceLeft) / Double(currentRoute.estimatedRouteDistance) * NSTimeInterval(currentRoute.estimatedTimeForRoute)
-                }
-                // Routes after current
-                let afterCurrentRoutes = current+1 < routes.count ? routes[current+1..<routes.count] : []
-                for route in afterCurrentRoutes {
-                    duration += NSTimeInterval(route.estimatedTimeForRoute)
-                }
-                return duration
-            }
-        }()
-        let eta = NSDate(timeIntervalSinceNow: durationLeft)
-        updateTo(distanceLeft, duration: durationLeft, eta: eta)
+        let distanceLeft = routeComposite.formattedBikeDistanceLeft
+        let durationLeft = routeComposite.formattedDurationLeft
+        let eta = routeComposite.estimatedTimeOfArrival
+        updateTo(distanceLeft, durationLeft: durationLeft, eta: eta)
     }
     
-    func updateTo(distance: Double, duration: Double, eta: NSDate?) {
-        distanceLabel.text = distanceFormatter.string(distance)
-        durationLabel.text = hourMinuteFormatter.string(duration)
+    func updateTo(distanceLeft: String, durationLeft: String, eta: NSDate?) {
+        distanceLabel.text = distanceLeft
+        durationLabel.text = durationLeft
         arrivalTime.text = eta == nil ? "" : dateFormatter.stringFromDate(eta!)
     }
 }

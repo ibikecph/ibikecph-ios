@@ -27,6 +27,10 @@ struct RouteComposite {
             return routes.map { Double($0.distanceLeft) }.reduce(0) { $0 + $1 }
         }
     }
+    var formattedBikeDistanceLeft: String {
+        let distanceFormatter = DistanceFormatter()
+        return distanceFormatter.string(self.bikeDistanceLeft)
+    }
     var bikeDistanceLeft: Double {
         switch composite {
         case .Single(let route):
@@ -46,6 +50,37 @@ struct RouteComposite {
             }
             return nil
         }
+    }
+    var formattedDurationLeft: String {
+        let hourMinuteFormatter = HourMinuteFormatter()
+        return hourMinuteFormatter.string(self.durationLeft)
+    }
+    var durationLeft: NSTimeInterval {
+        switch self.composite {
+        case .Single(_):
+            return self.estimatedTime * self.distanceLeft / self.estimatedDistance
+        case .Multiple(let routes):
+            let current = self.currentRouteIndex
+            let currentRoute = routes[current]
+            var duration: NSTimeInterval = 0
+            // Current route
+            let bikeOrWalk = SMRouteTypeBike == currentRoute.routeType || SMRouteTypeWalk == currentRoute.routeType
+            if bikeOrWalk,
+                let endDate = currentRoute.endDate {
+                duration += max(endDate.timeIntervalSinceNow, 0)
+            } else {
+                return Double(currentRoute.distanceLeft) / Double(currentRoute.estimatedRouteDistance) * NSTimeInterval(currentRoute.estimatedTimeForRoute)
+            }
+            // Routes after current
+            let afterCurrentRoutes = current+1 < routes.count ? routes[current+1..<routes.count] : []
+            for route in afterCurrentRoutes {
+                duration += NSTimeInterval(route.estimatedTimeForRoute)
+            }
+            return duration
+        }
+    }
+    var estimatedTimeOfArrival: NSDate {
+        return NSDate(timeIntervalSinceNow: self.durationLeft)
     }
     private init(composite: Composite, from: SearchListItem, to: SearchListItem, estimatedDistance: Double, estimatedBikeDistance: Double? = nil, estimatedTime: NSTimeInterval) {
         self.composite = composite
