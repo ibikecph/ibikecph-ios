@@ -138,4 +138,13 @@ NSString *directionString(NSString *abbreviation)
     }
 }
 
+#pragma mark - Getters
+
+- (NSString *)localizedRoundedDistanceToNextTurnWithUnit
+{
+    int moduloLength = self.lengthInMeters % 100;
+    NSString *string = [NSString stringWithFormat:@"%i ",self.lengthInMeters - moduloLength + (moduloLength < 50 ? 0 : 100)];
+    return [string stringByAppendingString:@"meters".localized];
+}
+
 @end

@@ -56,6 +56,7 @@ typedef enum {
 @property int lengthInMeters;
 @property int timeInSeconds;
 @property(nonatomic, strong) NSString *lengthWithUnit;
+@property(nonatomic, readonly) NSString *localizedRoundedDistanceToNextTurnWithUnit;
 @property(nonatomic, strong) NSString *imageName;
 @property(nonatomic, assign) SMRouteType routeType;
 @property(nonatomic, strong) NSString *routeLineName;
