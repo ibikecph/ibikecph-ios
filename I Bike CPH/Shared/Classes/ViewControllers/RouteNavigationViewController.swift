@@ -13,12 +13,11 @@ class RouteNavigationViewController: MapViewController {
     @IBOutlet var routeNavigationDirectionsToolbarView: RouteNavigationDirectionsToolbarView!
     let routeNavigationToolbarView = RouteNavigationToolbarView()
     let routeNavigationToReportErrorSegue = "routeNavigationToReportError"
-    let instructionTextToSpeechSynthesizer = InstructionTextToSpeechSynthesizer()
     var routeComposite: RouteComposite? {
         didSet {
             // Read aloud the route destination
-            if let destination = self.routeComposite?.to {
-                self.instructionTextToSpeechSynthesizer.speakDestination(destination)
+            if let routeComposite = routeComposite {
+                InstructionTextToSpeechSynthesizer.sharedInstance.routeComposite = routeComposite
             }
         }
     }
@@ -63,7 +62,7 @@ class RouteNavigationViewController: MapViewController {
         unobserve()
         
         // Stop reading aloud
-        self.instructionTextToSpeechSynthesizer.enableSpeech(false)
+        InstructionTextToSpeechSynthesizer.sharedInstance.routeComposite = nil
         
 #if TRACKING_ENABLED
         TrackingHandler.sharedInstance().isCurrentlyRouting = false
@@ -156,10 +155,6 @@ class RouteNavigationViewController: MapViewController {
         if let instructions = routeComposite?.currentRoute?.turnInstructions.copy() as? [SMTurnInstruction] {
             // Default
             routeNavigationDirectionsToolbarView.instructions = instructions
-            
-            if let instruction = instructions.first, routeComposite = self.routeComposite {
-                self.instructionTextToSpeechSynthesizer.speakTurnInstruction(instruction, routeComposite: routeComposite)
-            }
 
             if let routeComposite = routeComposite {
                 switch routeComposite.composite {

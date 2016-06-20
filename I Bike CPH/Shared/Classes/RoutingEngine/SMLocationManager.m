@@ -122,4 +122,16 @@
     }
 }
 
+#pragma mark - Properties
+
+- (BOOL)allowsBackgroundLocationUpdates
+{
+    return self.locationManager.allowsBackgroundLocationUpdates;
+}
+
+- (void)setAllowsBackgroundLocationUpdates:(BOOL)allowsBackgroundLocationUpdates
+{
+    self.locationManager.allowsBackgroundLocationUpdates = allowsBackgroundLocationUpdates;
+}
+
 @end

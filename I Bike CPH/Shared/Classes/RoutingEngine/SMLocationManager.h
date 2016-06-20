@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) BOOL hasValidLocation;
 @property (nonatomic, readonly) CLLocation *lastValidLocation;
 @property (nonatomic, readonly) BOOL locationServicesEnabled;
+@property (nonatomic) BOOL allowsBackgroundLocationUpdates;
 
 + (SMLocationManager *)sharedInstance;
 - (void)startUpdating;

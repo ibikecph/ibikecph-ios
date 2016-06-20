@@ -5,37 +5,50 @@
 
 class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
 
+    static let sharedInstance = InstructionTextToSpeechSynthesizer()
+    
     var lastSpokenTurnInstruction: String = ""
     var previousDistanceToNextTurn: Int = Int.max
-    var previousTurnInstructionTime: NSDate = NSDate()
-    var turnInstructionSpoken: Bool = false
-    
-    func speakDestination(item: SearchListItem) {
-        let destinationName = (item.name.containsString(item.street)) ? item.street + " " + item.number : item.name
-        let stringToBeSpoken = String.init(format: "read_aloud_enabled".localized, destinationName)
-        self.speakString(stringToBeSpoken)
+    var routeComposite: RouteComposite? {
+        didSet {
+            self.lastSpokenTurnInstruction = ""
+            self.previousDistanceToNextTurn = Int.max
+            self.speakDestination()
+            self.updateBackgroundLocationsAllowance()
+            self.updateSpeechAllowance()
+        }
     }
     
-    func speakTurnInstruction(instruction: SMTurnInstruction, routeComposite: RouteComposite) {
+    private func speakDestination() {
+        if let destination = self.routeComposite?.to {
+            let destinationName = (destination.name.containsString(destination.street)) ? destination.street + " " + destination.number : destination.name
+            let stringToBeSpoken = String.init(format: "read_aloud_enabled".localized, destinationName)
+            self.speakString(stringToBeSpoken)
+        }
+    }
+    
+    func speakTurnInstruction() {
+        guard let routeComposite = self.routeComposite,
+                  instructions = self.routeComposite?.currentRoute?.turnInstructions.copy() as? [SMTurnInstruction],
+                  instruction = instructions.first else {
+            return
+        }
+        
         var nextTurnInstruction = instruction.fullDescriptionString
         let metersToNextTurn = Int(instruction.lengthInMeters)
         let minimumDistanceBeforeTurn: Int = 75
         let distanceDelta: Int = 500
-        let now = NSDate()
         
         if (self.lastSpokenTurnInstruction != nextTurnInstruction) {
             // The turn instruction has changed
             self.previousDistanceToNextTurn = Int.max
-            self.previousTurnInstructionTime = NSDate()
             if metersToNextTurn < minimumDistanceBeforeTurn {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
                 self.previousDistanceToNextTurn = metersToNextTurn
-                self.previousTurnInstructionTime = now
                 self.speakString(nextTurnInstruction)
             } else {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
                 self.previousDistanceToNextTurn = metersToNextTurn
-                self.previousTurnInstructionTime = now
                 nextTurnInstruction = String(format:"read_aloud_upcoming_instruction".localized + ", \(nextTurnInstruction)",instruction.roundedDistanceToNextTurn)
                 self.speakString(nextTurnInstruction)
             }
@@ -44,12 +57,10 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
             if metersToNextTurn < minimumDistanceBeforeTurn && self.previousDistanceToNextTurn >= minimumDistanceBeforeTurn {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
                 self.previousDistanceToNextTurn = metersToNextTurn
-                self.previousTurnInstructionTime = now
                 self.speakString(nextTurnInstruction)
             } else if self.previousDistanceToNextTurn - metersToNextTurn >= distanceDelta {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
                 self.previousDistanceToNextTurn = metersToNextTurn
-                self.previousTurnInstructionTime = now
                 
                 let (hours, minutes) = self.hoursAndMinutes(routeComposite.durationLeft)
                 var encouragement: String
@@ -88,6 +99,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
     override init () {
         super.init()
         self.setupSettingsObserver()
+        self.setupLocationObserver()
     }
     
     deinit {
@@ -104,7 +116,33 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
     
     private func setupSettingsObserver() {
         self.observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
-            self?.enableSpeech(Settings.sharedInstance.readAloud.on)
+            self?.updateSpeechAllowance()
         })
+    }
+    private func setupLocationObserver() {
+        observerTokens.append(NotificationCenter.observe("refreshPosition") { [weak self] notification in
+            if let
+                locations = notification.userInfo?["locations"] as? [CLLocation],
+                location = locations.first
+            {
+                // Tell route about new user location
+                self?.routeComposite?.currentRoute?.visitLocation(location)
+                self?.speakTurnInstruction()
+            }
+        })
+    }
+    private func updateSpeechAllowance() {
+        if self.routeComposite != nil && Settings.sharedInstance.readAloud.on {
+            self.enableSpeech(true)
+        } else {
+            self.enableSpeech(false)
+        }
+    }
+    private func updateBackgroundLocationsAllowance() {
+        if self.routeComposite != nil && Settings.sharedInstance.readAloud.on {
+            SMLocationManager.sharedInstance().allowsBackgroundLocationUpdates = true
+        } else {
+            SMLocationManager.sharedInstance().allowsBackgroundLocationUpdates = false
+        }
     }
 }
