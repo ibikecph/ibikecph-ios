@@ -96,7 +96,7 @@
 "direction_number_10" = "10th";
 "direction_number_11" = "11th";
 
-"read_aloud_in" = "in";
+"read_aloud_upcoming_instruction" = "In %@ meters";
 "read_aloud_enabled" = "Starting route to %@.";
 "read_aloud_encouragement" = "You're on the right track. Arriving in %@ minutes.";
 "read_aloud_encouragement_singular" = "You're almost there. Arriving in %@ minute.";
@@ -104,8 +104,6 @@
 "read_aloud_error_unsupported_language" = "Unfortunately, the device does not support text to speech in English";
 "read_aloud_encouragement_time_h_m" = "You're on the right track. Arriving in %@ %@, %@ %@.";
 "read_aloud_encouragement_time_m" = "You're on the right track. Arriving in %@ %@.";
-
-"meters" = "meters";
 
 "new_route" = "Route";
 "Start" = "Start";

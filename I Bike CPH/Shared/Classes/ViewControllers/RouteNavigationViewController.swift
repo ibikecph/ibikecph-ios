@@ -61,6 +61,10 @@ class RouteNavigationViewController: MapViewController {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         unobserve()
+        
+        // Stop reading aloud
+        self.instructionTextToSpeechSynthesizer.enableSpeech(false)
+        
 #if TRACKING_ENABLED
         TrackingHandler.sharedInstance().isCurrentlyRouting = false
 #else

@@ -36,7 +36,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
                 self.previousDistanceToNextTurn = metersToNextTurn
                 self.previousTurnInstructionTime = now
-                nextTurnInstruction = "read_aloud_in".localized + " \(instruction.localizedRoundedDistanceToNextTurnWithUnit), " + nextTurnInstruction
+                nextTurnInstruction = String(format:"read_aloud_upcoming_instruction".localized + ", \(nextTurnInstruction)",instruction.roundedDistanceToNextTurn)
                 self.speakString(nextTurnInstruction)
             }
         } else {
