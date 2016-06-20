@@ -12,6 +12,8 @@ extension UIColor {
     
     class func red() -> UIColor {
         return UIColor(red: 255/255, green: 13/255, blue: 0/255, alpha: 1)
+//        return UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1) // Color from Android version
+//        return UIColor(red:0.93, green:0.18, blue:0.14, alpha:1) // Color from logo
     }
     class func blue() -> UIColor {
         return UIColor(red: 0/255, green: 174/255, blue: 255/255, alpha: 1)

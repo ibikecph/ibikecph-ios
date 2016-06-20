@@ -142,8 +142,8 @@ NSString *directionString(NSString *abbreviation)
 
 - (NSString *)roundedDistanceToNextTurn
 {
-    int moduloLength = self.lengthInMeters % 100;
-    return [NSString stringWithFormat:@"%i",self.lengthInMeters - moduloLength + (moduloLength < 50 ? 0 : 100)];
+    int moduloLength = self.lengthInMeters % 10;
+    return [NSString stringWithFormat:@"%i",self.lengthInMeters - moduloLength + (moduloLength < 5 ? 0 : 10)];
 }
 
 @end
