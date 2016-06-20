@@ -9,15 +9,10 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
     var previousDistanceToNextTurn: Int = Int.max
     var previousTurnInstructionTime: NSDate = NSDate()
     var turnInstructionSpoken: Bool = false
-    lazy var dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .ShortStyle
-        formatter.dateStyle = .NoStyle
-        return formatter
-    }()
     
     func speakDestination(item: SearchListItem) {
-        let stringToBeSpoken = String.init(format: "read_aloud_enabled".localized, item.name)
+        let destinationName = (item.name.containsString(item.street)) ? item.street + " " + item.number : item.name
+        let stringToBeSpoken = String.init(format: "read_aloud_enabled".localized, destinationName)
         self.speakString(stringToBeSpoken)
     }
     

@@ -132,30 +132,30 @@
     [r getRouteFrom:loc.coordinate to:end.coordinate via:nil checksum:self.routeChecksum destinationHint:self.destinationHint];
 }
 
-- (void)updateSegment
-{
-    debugLog(@"Update segment!!!!");
-    if (!self.delegate) {
-        NSLog(@"Warning: delegate not set while in updateSegment()!");
-        return;
-    }
-
-    if (self.turnInstructions.count > 0) {
-        @synchronized(self.turnInstructions)
-        {
-            [self.pastTurnInstructions addObject:[self.turnInstructions objectAtIndex:0]];
-            debugLog(@"===========================");
-            debugLog(@"Past instructions: %@", self.pastTurnInstructions);
-            debugLog(@"===========================");
-            [self.turnInstructions removeObjectAtIndex:0];
-            [self.delegate updateTurn:YES];
-        }
-
-        if (self.turnInstructions.count == 0) {
-            [self.delegate reachedDestination];
-        }
-    }
-}
+//- (void)updateSegment
+//{
+//    debugLog(@"Update segment!!!!");
+//    if (!self.delegate) {
+//        NSLog(@"Warning: delegate not set while in updateSegment()!");
+//        return;
+//    }
+//
+//    if (self.turnInstructions.count > 0) {
+//        @synchronized(self.turnInstructions)
+//        {
+//            [self.pastTurnInstructions addObject:[self.turnInstructions objectAtIndex:0]];
+//            debugLog(@"===========================");
+//            debugLog(@"Past instructions: %@", self.pastTurnInstructions);
+//            debugLog(@"===========================");
+//            [self.turnInstructions removeObjectAtIndex:0];
+//            [self.delegate updateTurn:YES];
+//        }
+//
+//        if (self.turnInstructions.count == 0) {
+//            [self.delegate reachedDestination];
+//        }
+//    }
+//}
 
 - (BOOL)approachingFinish
 {
