@@ -484,6 +484,7 @@
 		8CC05C2DBF8DA677FD28AFF3 /* Pods_app_target_I_Bike_CPH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE3E3F28EF50DD375ABBB57 /* Pods_app_target_I_Bike_CPH.framework */; };
 		DE1032761CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
 		DE1032771CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
+		DE30AEEB1D1BDF4D0076550A /* RouteComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE30AEEA1D1BDF4D0076550A /* RouteComposite.swift */; };
 		DE4460E71CF4E0E600865E88 /* GreenestRouteIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4460E61CF4E0E600865E88 /* GreenestRouteIntroductionViewController.swift */; };
 		DE4460E81CF4E0EC00865E88 /* GreenestRouteIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4460E61CF4E0E600865E88 /* GreenestRouteIntroductionViewController.swift */; };
 		DE4460EA1CF4E10800865E88 /* GreenestRouteIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4460E91CF4E10800865E88 /* GreenestRouteIntroductionView.swift */; };
@@ -913,6 +914,7 @@
 		CDB68DE70198E82D8B39AFB2 /* Pods-app_target-I Bike CPH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_target-I Bike CPH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app_target-I Bike CPH/Pods-app_target-I Bike CPH.debug.xcconfig"; sourceTree = "<group>"; };
 		D0E4FBBDAC02F6E3157AA3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DE1032751CF363380099D170 /* ProgrammaticAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammaticAssets.swift; sourceTree = "<group>"; };
+		DE30AEEA1D1BDF4D0076550A /* RouteComposite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteComposite.swift; sourceTree = "<group>"; };
 		DE4460E61CF4E0E600865E88 /* GreenestRouteIntroductionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenestRouteIntroductionViewController.swift; sourceTree = "<group>"; };
 		DE4460E91CF4E10800865E88 /* GreenestRouteIntroductionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenestRouteIntroductionView.swift; sourceTree = "<group>"; };
 		DE5AD90B1CEB94420068C436 /* OverlaysClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaysClient.swift; sourceTree = "<group>"; };
@@ -1689,6 +1691,7 @@
 				7D1D9C8C1CB7EA6F007F1D30 /* OiorestItem.swift */,
 				7D1D9C8D1CB7EA6F007F1D30 /* SearchListItem.swift */,
 				7D1D9C8E1CB7EA6F007F1D30 /* User.swift */,
+				DE30AEEA1D1BDF4D0076550A /* RouteComposite.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2376,6 +2379,7 @@
 				4E5E87901B31DC520021F5E9 /* RouteStatsToolbarView.swift in Sources */,
 				DE4460E71CF4E0E600865E88 /* GreenestRouteIntroductionViewController.swift in Sources */,
 				4EE683741B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */,
+				DE30AEEB1D1BDF4D0076550A /* RouteComposite.swift in Sources */,
 				4EEC6D251B207844003AE8DF /* MainMapViewController.swift in Sources */,
 				4E5E878A1B31D6560021F5E9 /* FindRouteToolbarView.swift in Sources */,
 				7D1D9C621CB7EA07007F1D30 /* SMNearbyPlaces.m in Sources */,
