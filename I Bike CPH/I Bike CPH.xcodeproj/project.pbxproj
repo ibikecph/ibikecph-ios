@@ -494,6 +494,7 @@
 		DE5557751CCBC01000D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		DE5AD90C1CEB94420068C436 /* OverlaysClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5AD90B1CEB94420068C436 /* OverlaysClient.swift */; };
 		DE5AD90D1CEB96010068C436 /* OverlaysClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5AD90B1CEB94420068C436 /* OverlaysClient.swift */; };
+		DE7CFE681D1DEC7D000AACCD /* RouteComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE30AEEA1D1BDF4D0076550A /* RouteComposite.swift */; };
 		DE911BE01CEA7C66001A0D96 /* cycle_super_highways.geojson in Resources */ = {isa = PBXBuildFile; fileRef = DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */; };
 		DE911BE11CEA7C7C001A0D96 /* cycle_super_highways.geojson in Resources */ = {isa = PBXBuildFile; fileRef = DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */; };
 /* End PBXBuildFile section */
@@ -2678,6 +2679,7 @@
 				4EE06C4B1A10FC5600DE4226 /* SMTime.m in Sources */,
 				4EE06C5F1A10FC5600DE4226 /* SMRouteInfoViewController.m in Sources */,
 				7D1D9CA21CB7EBC7007F1D30 /* SMNearbyPlaces.m in Sources */,
+				DE7CFE681D1DEC7D000AACCD /* RouteComposite.swift in Sources */,
 				4E10EBBF1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.swift in Sources */,
 				7D1D9CA51CB7EBCF007F1D30 /* SMRouteSettings.m in Sources */,
 				7D1D9CA01CB7EBC3007F1D30 /* SMGPSUtil.m in Sources */,

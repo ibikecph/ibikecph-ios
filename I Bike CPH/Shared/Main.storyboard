@@ -3959,13 +3959,13 @@ God tur og tak fordi du cykler!</string>
         <image name="settings" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hGb-e2-eVV"/>
+        <segue reference="dc7-Qo-Oev"/>
+        <segue reference="t11-Tv-7cG"/>
+        <segue reference="7W8-lE-WHM"/>
+        <segue reference="RdX-SF-NXa"/>
         <segue reference="8Kg-rW-C0r"/>
+        <segue reference="WjL-tL-I1v"/>
         <segue reference="cR0-BE-PFO"/>
         <segue reference="2b1-pa-RYn"/>
-        <segue reference="t11-Tv-7cG"/>
-        <segue reference="dc7-Qo-Oev"/>
-        <segue reference="RdX-SF-NXa"/>
-        <segue reference="7W8-lE-WHM"/>
     </inferredMetricsTieBreakers>
 </document>
