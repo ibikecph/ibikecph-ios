@@ -350,11 +350,11 @@
 
             SMTime *difference = [routeTimeInfo.sourceTime differenceFrom:routeTimeInfo.destTime];
             UILabel *lbl = (UILabel *)[cell viewWithTag:1];
-            [lbl setText:[NSString stringWithFormat:@"%02lu:%02lu", routeTimeInfo.sourceTime.hour, (long)routeTimeInfo.sourceTime.minutes]];
+            [lbl setText:[NSString stringWithFormat:@"%02li:%02li", routeTimeInfo.sourceTime.hour, routeTimeInfo.sourceTime.minutes]];
             lbl = (UILabel *)[cell viewWithTag:2];
-            [lbl setText:[NSString stringWithFormat:@"%02lu:%02lu", routeTimeInfo.destTime.hour, routeTimeInfo.destTime.minutes]];
+            [lbl setText:[NSString stringWithFormat:@"%02li:%02li", routeTimeInfo.destTime.hour, routeTimeInfo.destTime.minutes]];
             lbl = (UILabel *)[cell viewWithTag:3];
-            [lbl setText:[NSString stringWithFormat:@"%02lu:%02lu", difference.hour, difference.minutes]];
+            [lbl setText:[NSString stringWithFormat:@"%02li:%02li", difference.hour, difference.minutes]];
             lbl = (UILabel *)[cell viewWithTag:4];
             [lbl setText:@"0"];
             UIColor *bgColor;

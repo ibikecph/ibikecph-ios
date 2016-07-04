@@ -60,8 +60,6 @@ extension RouteManager: SMRequestOSRMDelegate {
     
     func request(req: SMRequestOSRM!, finishedWithResult res: AnyObject!) {
         
-        let isBrokenJourney = SMRouteSettings.sharedInstance().broken_journey_server == req.osrmServer
-        
         let json = JSON(data: req.responseData)
         // TODO: Get this status code thing sorted
         if let status = json["status"].int where (status != 200 && status != 0) {
