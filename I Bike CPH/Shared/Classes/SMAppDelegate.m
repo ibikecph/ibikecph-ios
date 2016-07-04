@@ -30,7 +30,6 @@
     [SMReminder clear];
 #endif
 
-    NSLog(@"Host: %@",[@"C+gFpAyD45eR8sGgB91qVQ==" stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet]);
     self.pastRoutes = @[];
     self.currentContacts = @[];
     self.currentEvents = @[];
