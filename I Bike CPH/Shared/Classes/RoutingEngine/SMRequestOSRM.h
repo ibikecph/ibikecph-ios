@@ -29,6 +29,7 @@
  */
 @interface SMRequestOSRM : NSObject<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
+@property(nonatomic, readonly) NSURLConnection *conn;
 @property(nonatomic, weak) id<SMRequestOSRMDelegate> delegate;
 @property(nonatomic, strong) CLLocation *coord;
 @property(nonatomic, strong) NSString *requestIdentifier;

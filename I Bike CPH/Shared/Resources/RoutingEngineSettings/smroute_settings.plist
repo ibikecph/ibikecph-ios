@@ -15,7 +15,7 @@
 	<key>OSRM_SERVER_GREEN</key>
 	<string>https://routes.ibikecph.dk/v1.1/green</string>
 	<key>BROKEN_JOURNEY_SERVER</key>
-	<string>https://www.ibikecph.dk/api/journey</string>
+	<string>http://staging.ibikecph.dk/api/journeys</string>
 	<key>PLACES_SEARCH_RADIUS</key>
 	<string>20000</string>
 	<key>FOURSQUARE_SEARCH_RADIUS</key>

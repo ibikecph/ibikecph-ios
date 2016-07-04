@@ -33,6 +33,10 @@
 @property(nonatomic, strong) NSArray *originalViaPoints;
 @property CLLocationCoordinate2D originalStart;
 @property CLLocationCoordinate2D originalEnd;
+
+@property (nonatomic, assign) NSUInteger latestHTTPStatusCode;
+@property (nonatomic, copy) NSString *brokenJourneyToken;
+
 @end
 
 static dispatch_queue_t reachabilityQueue;
@@ -136,15 +140,13 @@ static dispatch_queue_t reachabilityQueue;
       self.currentZ = z;
       self.currentRequest = @"getRouteFrom:to:via:";
 
-      BOOL isBrokenRoute = [self.osrmServer rangeOfString:@"api/journey"].location != NSNotFound;
+      BOOL isBrokenRoute = [self isBrokenJourneyURLInString:self.osrmServer];
 
       NSString *requestString = @"";
 
       if (isBrokenRoute) {
-          requestString = [self.osrmServer
-              stringByAppendingFormat:@"?&loc[]=%.6f,%.6f&loc[]=%.6f,%.6f", start.latitude, start.longitude, end.latitude, end.longitude];
-      }
-      else {
+          requestString = self.osrmServer;
+      } else {
           NSMutableString *s1 = [NSMutableString stringWithFormat:@"%@/viaroute?z=%li&alt=false", self.osrmServer, (long)z];
 
           if (startHint) {
@@ -179,7 +181,9 @@ static dispatch_queue_t reachabilityQueue;
       [req setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
       if (isBrokenRoute) {
           [req setValue:@"application/vnd.ibikecph.v1" forHTTPHeaderField:@"Accept"];
-          [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+          [req setHTTPMethod:@"POST"];
+          NSString *postString = [NSString stringWithFormat:@"loc[]=%.6f,%.6f&loc[]=%.6f,%.6f", start.latitude, start.longitude, end.latitude, end.longitude];
+          [req setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
       }
       if (self.conn) {
           [self.conn cancel];
@@ -223,11 +227,63 @@ static dispatch_queue_t reachabilityQueue;
     //    }
 }
 
-#pragma mark - url connection delegate
+- (BOOL)isBrokenJourneyURLInString:(NSString *)string
+{
+    return [string rangeOfString:SMRouteSettings.sharedInstance.broken_journey_server].location != NSNotFound;
+}
+
+- (void)scheduleBrokenJourneyPoll
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+      NSString *requestString = [NSMutableString stringWithFormat:@"%@/%@", self.osrmServer, self.brokenJourneyToken];
+      NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]];
+      [request setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
+      [request setValue:@"application/vnd.ibikecph.v1" forHTTPHeaderField:@"Accept"];
+        
+      if (self.conn) {
+          [self.conn cancel];
+          self.conn = nil;
+      }
+      self.responseData = [NSMutableData data];
+      NSURLConnection *c = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+      self.conn = c;
+      [self.conn start];
+    });
+}
+
+- (void)setBrokenJourneyToken:(NSString *)brokenJourneyToken
+{
+    _brokenJourneyToken = [brokenJourneyToken stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];
+}
+
+#pragma mark - Block methods
+
+- (void)runBlockIfServerReachable:(void (^)(void))block
+{
+    __weak SMRequestOSRM *selfRef = self;
+    __weak NSThread *threadRef = [NSThread currentThread];
+    dispatch_async(reachabilityQueue, ^{
+      if ([selfRef serverReachable]) {
+          [selfRef performSelector:@selector(runBlock:) onThread:threadRef withObject:block waitUntilDone:NO];
+      }
+    });
+}
+
+- (void)runBlock:(void (^)(void))block
+{
+    block();
+}
+
+#pragma mark - NSURLConnectionDataDelegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     [self.responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    self.latestHTTPStatusCode = [(NSHTTPURLResponse *)response statusCode];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -261,11 +317,35 @@ static dispatch_queue_t reachabilityQueue;
             }
         }
         else {
-            BOOL isBrokenRoute = [connection.originalRequest.URL.absoluteString rangeOfString:@"api/journey"].location != NSNotFound;
-
-            if (isBrokenRoute) {
+            if ([self isBrokenJourneyURLInString:connection.originalRequest.URL.absoluteString]) {
+                // Yes, this whole bit is hackish
+                NSString *responseString = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
+                NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>");
+                NSLog(@"Code: %lu, RESPONSE: %@",self.latestHTTPStatusCode, responseString);
+                NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>");
+                if (self.latestHTTPStatusCode == 200) {
+                    if ([r isKindOfClass:NSDictionary.class] && r[@"token"]) {
+                        // Start polling for broken journey
+                        self.brokenJourneyToken = r[@"token"];
+                        [self scheduleBrokenJourneyPoll];
+                        return;
+                    } else {
+                        // Broken journey is presumably ready
+                        if ([self.delegate conformsToProtocol:@protocol(SMRequestOSRMDelegate)]) {
+                            [self.delegate request:self finishedWithResult:r];
+                        }
+                        return;
+                    }
+                } else if (self.latestHTTPStatusCode == 422) {
+                    // Broken journey still not ready; continue polling
+                    [self scheduleBrokenJourneyPoll];
+                    return;
+                }
+                
+                // Something's wrong...
+                NSError *error = [NSError errorWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey:@"Unable to get broken journey!"}];
                 if ([self.delegate conformsToProtocol:@protocol(SMRequestOSRMDelegate)]) {
-                    [self.delegate request:self finishedWithResult:r];
+                    [self.delegate request:self failedWithError:error];
                 }
                 return;
             }
@@ -279,12 +359,12 @@ static dispatch_queue_t reachabilityQueue;
                     }
                     else {
                         [self getRouteFrom:self.originalStart
-                                         to:self.originalEnd
-                                        via:self.originalViaPoints
-                                   checksum:self.originalChecksum
-                               andStartHint:self.originalStartHint
-                            destinationHint:self.originalDestinationHint
-                                       andZ:MINIMUM_Z];
+                                        to:self.originalEnd
+                                       via:self.originalViaPoints
+                                  checksum:self.originalChecksum
+                              andStartHint:self.originalStartHint
+                           destinationHint:self.originalDestinationHint
+                                      andZ:MINIMUM_Z];
                     }
                 }
                 else {
@@ -311,21 +391,21 @@ static dispatch_queue_t reachabilityQueue;
                         CLLocationCoordinate2D start = ((CLLocation *)[points objectAtIndex:0]).coordinate;
                         CLLocationCoordinate2D end = ((CLLocation *)[points lastObject]).coordinate;
                         [self getRouteFrom:start
-                                         to:end
-                                        via:self.originalViaPoints
-                                   checksum:[NSString stringWithFormat:@"%@", r[@"hint_data"][@"checksum"]]
-                               andStartHint:self.originalStartHint
-                            destinationHint:self.originalDestinationHint
-                                       andZ:DEFAULT_Z];
+                                        to:end
+                                       via:self.originalViaPoints
+                                  checksum:[NSString stringWithFormat:@"%@", r[@"hint_data"][@"checksum"]]
+                              andStartHint:self.originalStartHint
+                           destinationHint:self.originalDestinationHint
+                                      andZ:DEFAULT_Z];
                     }
                     else {
                         [self getRouteFrom:self.originalStart
-                                         to:self.originalEnd
-                                        via:self.originalViaPoints
-                                   checksum:self.originalChecksum
-                               andStartHint:self.originalStartHint
-                            destinationHint:self.originalDestinationHint
-                                       andZ:DEFAULT_Z];
+                                        to:self.originalEnd
+                                       via:self.originalViaPoints
+                                  checksum:self.originalChecksum
+                              andStartHint:self.originalStartHint
+                           destinationHint:self.originalDestinationHint
+                                      andZ:DEFAULT_Z];
                     }
                 }
             }
@@ -339,22 +419,6 @@ static dispatch_queue_t reachabilityQueue;
     if ([self.delegate conformsToProtocol:@protocol(SMRequestOSRMDelegate)]) {
         [self.delegate request:self failedWithError:error];
     }
-}
-
-- (void)runBlockIfServerReachable:(void (^)(void))block
-{
-    __weak SMRequestOSRM *selfRef = self;
-    __weak NSThread *threadRef = [NSThread currentThread];
-    dispatch_async(reachabilityQueue, ^{
-      if ([selfRef serverReachable]) {
-          [selfRef performSelector:@selector(runBlock:) onThread:threadRef withObject:block waitUntilDone:NO];
-      }
-    });
-}
-
-- (void)runBlock:(void (^)(void))block
-{
-    block();
 }
 
 @end

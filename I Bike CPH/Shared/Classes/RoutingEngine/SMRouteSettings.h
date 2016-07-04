@@ -10,7 +10,7 @@
 //  http://mozilla.org/MPL/2.0/.
 //
 
-#import <CoreGraphics/CoreGraphics.h>
+@import CoreGraphics;
 
 #define DEFAULT_ROUTESETTINGS_FILENAME @"smroute_settings"
 #define DEFAULT_PRIVATE_SUFFIX @"_private"
