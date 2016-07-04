@@ -35,8 +35,6 @@
     self.currentEvents = @[];
     self.searchHistory = [SMSearchHistory getSearchHistory];
 
-    //    [[Settings sharedInstance] clear];
-
     // Initialize location manager (not used for map, but for getting current location)
     [SMLocationManager sharedInstance];
 
@@ -101,7 +99,6 @@
     
     [RLMRealmConfiguration setDefaultConfiguration:config];
     [RLMRealm defaultRealm];
-//    [RLMRealm compressWithIfNecessary:true];
     [RLMRealm compress:true];
 
 #if TRACKING_ENABLED

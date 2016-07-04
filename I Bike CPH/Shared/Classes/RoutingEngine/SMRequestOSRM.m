@@ -36,6 +36,7 @@
 
 @property (nonatomic, assign) NSUInteger latestHTTPStatusCode;
 @property (nonatomic, copy) NSString *brokenJourneyToken;
+@property (nonatomic) NSDate *brokenJourneyTimeoutDate;
 
 @end
 
@@ -319,14 +320,11 @@ static dispatch_queue_t reachabilityQueue;
         else {
             if ([self isBrokenJourneyURLInString:connection.originalRequest.URL.absoluteString]) {
                 // Yes, this whole bit is hackish
-                NSString *responseString = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
-                NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>");
-                NSLog(@"Code: %lu, RESPONSE: %@",self.latestHTTPStatusCode, responseString);
-                NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>");
                 if (self.latestHTTPStatusCode == 200) {
                     if ([r isKindOfClass:NSDictionary.class] && r[@"token"]) {
                         // Start polling for broken journey
                         self.brokenJourneyToken = r[@"token"];
+                        self.brokenJourneyTimeoutDate = [NSDate dateWithTimeIntervalSinceNow:20];
                         [self scheduleBrokenJourneyPoll];
                         return;
                     } else {
@@ -337,9 +335,11 @@ static dispatch_queue_t reachabilityQueue;
                         return;
                     }
                 } else if (self.latestHTTPStatusCode == 422) {
-                    // Broken journey still not ready; continue polling
-                    [self scheduleBrokenJourneyPoll];
-                    return;
+                    if ([self.brokenJourneyTimeoutDate compare:[NSDate date]] != NSOrderedAscending) {
+                        // Broken journey still not ready; continue polling
+                        [self scheduleBrokenJourneyPoll];
+                        return;
+                    }
                 }
                 
                 // Something's wrong...
