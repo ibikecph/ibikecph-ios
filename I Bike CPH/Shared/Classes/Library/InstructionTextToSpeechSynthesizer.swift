@@ -32,6 +32,11 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
         }
     }
     
+    func speakRecalculatingRoute() {
+        let stringToBeSpoken = "read_aloud_recalculating_route".localized
+        self.speakString(stringToBeSpoken)
+    }
+    
     func speakTurnInstruction() {
         guard let routeComposite = self.routeComposite,
                   instructions = self.routeComposite?.currentRoute?.turnInstructions.copy() as? [SMTurnInstruction],
