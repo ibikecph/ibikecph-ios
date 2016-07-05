@@ -350,11 +350,11 @@
 
             SMTime *difference = [routeTimeInfo.sourceTime differenceFrom:routeTimeInfo.destTime];
             UILabel *lbl = (UILabel *)[cell viewWithTag:1];
-            [lbl setText:[NSString stringWithFormat:@"%02li:%02li", routeTimeInfo.sourceTime.hour, routeTimeInfo.sourceTime.minutes]];
+            [lbl setText:[NSString stringWithFormat:@"%02li:%02li", (long)routeTimeInfo.sourceTime.hour, (long)routeTimeInfo.sourceTime.minutes]];
             lbl = (UILabel *)[cell viewWithTag:2];
-            [lbl setText:[NSString stringWithFormat:@"%02li:%02li", routeTimeInfo.destTime.hour, routeTimeInfo.destTime.minutes]];
+            [lbl setText:[NSString stringWithFormat:@"%02li:%02li", (long)routeTimeInfo.destTime.hour, (long)routeTimeInfo.destTime.minutes]];
             lbl = (UILabel *)[cell viewWithTag:3];
-            [lbl setText:[NSString stringWithFormat:@"%02li:%02li", difference.hour, difference.minutes]];
+            [lbl setText:[NSString stringWithFormat:@"%02li:%02li", (long)difference.hour, (long)difference.minutes]];
             lbl = (UILabel *)[cell viewWithTag:4];
             [lbl setText:@"0"];
             UIColor *bgColor;
@@ -427,10 +427,10 @@
         NSInteger hour = [timeComponents hour];
         NSInteger mins = [timeComponents minute];
 
-        NSLog(@"Modified TIME: %lu:%lu", hour, mins);
+        NSLog(@"Modified TIME: %li:%li", (long)hour, (long)mins);
 
-        NSString *dateString = [NSString stringWithFormat:@"%02lu.%02lu", [components day], [components month]];
-        NSString *timeString = [NSString stringWithFormat:@"%lu:%lu", hour, mins];
+        NSString *dateString = [NSString stringWithFormat:@"%02li.%02li", (long)[components day], (long)[components month]];
+        NSString *timeString = [NSString stringWithFormat:@"%li:%li", (long)hour, (long)mins];
         NSString *URLString = [NSString
             stringWithFormat:
                 @"https://xmlopen.rejseplanen.dk/bin/rest.exe/trip?originId=%@&destCoordX=%@&destCoordY=%@&destCoordName=%@&date=%@&time=%@&useBus=0",

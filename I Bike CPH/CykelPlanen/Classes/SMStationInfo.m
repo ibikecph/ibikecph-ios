@@ -103,7 +103,7 @@
 
 - (BOOL)isValid
 {
-    return self.name;
+    return self.name != nil;
 }
 
 + (NSString *)imageNameForType:(SMStationInfoType)type
