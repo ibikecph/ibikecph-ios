@@ -7,19 +7,24 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
 
     static let sharedInstance = InstructionTextToSpeechSynthesizer()
     
+    var hasReachedDestination: Bool = false
     var lastSpokenTurnInstruction: String = ""
     var previousDistanceToNextTurn: Int = Int.max
     var routeComposite: RouteComposite? {
         didSet {
+            self.hasReachedDestination = false
             self.lastSpokenTurnInstruction = ""
             self.previousDistanceToNextTurn = Int.max
-            self.speakDestination()
             self.updateBackgroundLocationsAllowance()
             self.updateSpeechAllowance()
+            
+            // Speak destination and first instruction
+            self.speakDestination()
+            self.speakTurnInstruction()
         }
     }
     
-    private func speakDestination() {
+    func speakDestination() {
         if let destination = self.routeComposite?.to {
             let destinationName = (destination.name.containsString(destination.street)) ? destination.street + " " + destination.number : destination.name
             let stringToBeSpoken = String.init(format: "read_aloud_enabled".localized, destinationName)
@@ -94,13 +99,16 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
             // Reading aloud is not enabled
             return
         }
+        if self.hasReachedDestination {
+            // Do not speak anymore after destination has been reached
+            return
+        }
         super.speakString(string)
     }
     
     override init () {
         super.init()
         self.setupSettingsObserver()
-        self.setupLocationObserver()
     }
     
     deinit {
@@ -120,18 +128,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
             self?.updateSpeechAllowance()
         })
     }
-    private func setupLocationObserver() {
-        observerTokens.append(NotificationCenter.observe("refreshPosition") { [weak self] notification in
-            if let
-                locations = notification.userInfo?["locations"] as? [CLLocation],
-                location = locations.first
-            {
-                // Tell route about new user location
-                self?.routeComposite?.currentRoute?.visitLocation(location)
-                self?.speakTurnInstruction()
-            }
-        })
-    }
+    
     private func updateSpeechAllowance() {
         if self.routeComposite != nil && Settings.sharedInstance.readAloud.on {
             self.enableSpeech(true)
@@ -139,6 +136,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
             self.enableSpeech(false)
         }
     }
+    
     private func updateBackgroundLocationsAllowance() {
         if self.routeComposite != nil && Settings.sharedInstance.readAloud.on {
             SMLocationManager.sharedInstance().allowsBackgroundLocationUpdates = true

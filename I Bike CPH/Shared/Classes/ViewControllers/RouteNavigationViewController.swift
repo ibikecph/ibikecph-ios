@@ -188,6 +188,9 @@ class RouteNavigationViewController: MapViewController {
         } else {
             routeNavigationDirectionsToolbarView.prepareForReuse()
         }
+        
+        // The route has updated, so speak its next turn instruction
+        InstructionTextToSpeechSynthesizer.sharedInstance.speakTurnInstruction()
     }
 }
 
@@ -223,7 +226,9 @@ extension RouteNavigationViewController: SMRouteDelegate {
     func reachedDestination() {
         if let routeComposite = routeComposite {
             switch routeComposite.composite {
-            case .Single(_): return
+            case .Single(_):
+                InstructionTextToSpeechSynthesizer.sharedInstance.hasReachedDestination = true
+                return
             case .Multiple(let routes): //  Go to next route if route contains more subroutes
                 if routeComposite.currentRouteIndex + 1 < routes.count {
                     self.routeComposite?.currentRoute?.delegate = nil
@@ -231,7 +236,10 @@ extension RouteNavigationViewController: SMRouteDelegate {
                     self.routeComposite?.currentRoute?.delegate = self
                     updateTurnInstructions()
                     updateStats()
+                } else {
+                    InstructionTextToSpeechSynthesizer.sharedInstance.hasReachedDestination = true
                 }
+                return
             }
         }
     }
