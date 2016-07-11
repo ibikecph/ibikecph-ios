@@ -199,9 +199,8 @@ class MapView: UIView {
             let startPin = PinAnnotation(mapView: self, coordinate: startCoordinate, type: .Start)
             addAnnotation(startPin)
             annotations.append(startPin)
-        } else if SMRouteTypeBike != route.routeType,
-            let pinType = PinAnnotation.typeForRouteType(route.routeType),
-            coordinate = (route.waypoints?.copy() as? [CLLocation])?.first?.coordinate
+        } else if let pinType = PinAnnotation.typeForRouteType(route.routeType),
+                      coordinate = (route.waypoints?.copy() as? [CLLocation])?.first?.coordinate
         {
             let startPin = PinAnnotation(mapView: self, coordinate: coordinate, type: pinType)
             addAnnotation(startPin)
