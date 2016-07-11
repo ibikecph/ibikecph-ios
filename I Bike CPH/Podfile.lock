@@ -1,5 +1,5 @@
 PODS:
-  - Crashlytics (3.7.1):
+  - Crashlytics (3.7.2):
     - Fabric (~> 1.6.3)
   - DAKeyboardControl (2.4.0)
   - Fabric (1.6.7)
@@ -53,7 +53,7 @@ DEPENDENCIES:
   - UIImage-Categories (~> 1.0)
 
 SPEC CHECKSUMS:
-  Crashlytics: 3cdd4c9655be68032a0cf0379e0fb5ef6af22cad
+  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
