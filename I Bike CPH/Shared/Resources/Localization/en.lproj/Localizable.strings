@@ -26,8 +26,8 @@
 "direction_15" = "You have reached your destination";
 "direction_16" = "Start pushing your bike on";
 "direction_17" = "Stop pushing your bike";
-"direction_18" = "%@: Take %@ to %@";
-"direction_19" = "Get off on %@";
+"direction_18" = "On %@: Take %@ to %@";
+"direction_19" = "Get off on";
 "direction_100" = "Reaching destination";
 
 "first_direction_0" = "";
@@ -48,6 +48,8 @@
 "first_direction_15" = "You have reached your destination";
 "first_direction_16" = "Head %@ and start pushing your bike on";
 "first_direction_17" = "Head %@ and stop pushing your bike";
+"first_direction_18" = "On %@: Take %@ to %@";
+"first_direction_19" = "Get off on";
 "first_direction_100" = "Reaching destination";
 
 "direction_N" = "north";
@@ -96,14 +98,13 @@
 "direction_number_10" = "10th";
 "direction_number_11" = "11th";
 
-"read_aloud_upcoming_instruction" = "In %@ meters";
+"read_aloud_upcoming_instruction" = "In %@ %@";
 "read_aloud_enabled" = "Starting route to %@.";
-"read_aloud_encouragement" = "You're on the right track. Arriving in %@ minutes.";
-"read_aloud_encouragement_singular" = "You're almost there. Arriving in %@ minute.";
 "read_aloud_error_initalizing" = "Could not start the text-to-speech service.";
 "read_aloud_error_unsupported_language" = "Unfortunately, the device does not support text to speech in English";
 "read_aloud_encouragement_time_h_m" = "You're on the right track. Arriving in %@ %@, %@ %@.";
 "read_aloud_encouragement_time_m" = "You're on the right track. Arriving in %@ %@.";
+"read_aloud_recalculating_route" = "Recalculating route.";
 
 "new_route" = "Route";
 "Start" = "Start";
@@ -303,6 +304,12 @@
 "vehicle_3" = "Ferry";
 "vehicle_4" = "Train";
 
+"vehicle_changed_instruction_0" = "Park the bike. ";
+"vehicle_changed_instruction_1" = "Get on the bike and ";
+"vehicle_changed_instruction_2" = "Get off the bike, walk and ";
+"vehicle_changed_instruction_3" = "Go aboard the ferry and ";
+"vehicle_changed_instruction_4" = "Go aboard the train and ";
+
 "voice_option" = "Voice guide";
 "voice_option_detail" = "Voice guide gives you the possibility of having route instructions read out loud. Are you using headphones? Please be aware of the traffic around you and obey the traffic rules.";
 
@@ -344,6 +351,10 @@
 "dum_kmh" = "23.3";
 "dum_kcalday" = "78.1";
 "dum_h" = "14.3";
+"unit_metre" = "metre";
+"unit_metres" = "metres";
+"unit_kilometre" = "kilometre";
+"unit_kilometres" = "kilometres";
 
 "milestone_distance_1_description" = "Alright! You have cycled your first %d km.";
 "milestone_distance_2_description" = "%d km, it's starting to look good!";
