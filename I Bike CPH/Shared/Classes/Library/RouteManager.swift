@@ -35,7 +35,7 @@ class RouteManager: NSObject {
     }
     
     
-    func findRoute(from: SearchListItem, to: SearchListItem, server osrmServer: String) {
+    func findRoute(from: SearchListItem, to: SearchListItem, server osrmServer: String) -> SMRequestOSRM? {
         
         if let
             fromCoordinate = from.location?.coordinate,
@@ -45,9 +45,10 @@ class RouteManager: NSObject {
             requestOSRM.auxParam = "startRoute"
             requestOSRM.osrmServer = osrmServer
             requestOSRM.getRouteFrom(fromCoordinate, to: toCoordinate, via: nil)
-            return
+            return requestOSRM
         }
         delegate?.didGetResultForRoute(.ErrorOfType(.MissingCoordinates))
+        return nil
     }
 }
 
