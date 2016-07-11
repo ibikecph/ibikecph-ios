@@ -260,6 +260,5 @@ extension RouteNavigationViewController: SMRouteDelegate {
     }
     
     func routeRecalculationDone() {
-        InstructionTextToSpeechSynthesizer.sharedInstance.hasReachedDestination = false
     }
 }
