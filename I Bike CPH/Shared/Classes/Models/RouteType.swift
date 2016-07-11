@@ -40,7 +40,7 @@ enum RouteType {
 
     static func validTypes() -> [RouteType] {
         if macro.isCykelPlanen {
-            return [.Fast, .Broken, .Green]
+            return [.Fast, .Green, .Broken]
         }
         if macro.isIBikeCph {
             return [.Fast, .Cargo, .Green]
