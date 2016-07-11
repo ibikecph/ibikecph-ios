@@ -48,6 +48,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
         let metersToNextTurn = Int(instruction.lengthInMeters)
         let minimumDistanceBeforeTurn: Int = 75
         let distanceDelta: Int = 500
+        let onPublicTransport = instruction.routeType != SMRouteTypeBike && instruction.routeType != SMRouteTypeWalk
         
         if (self.lastSpokenTurnInstruction != nextTurnInstruction) {
             // The turn instruction has changed
@@ -69,7 +70,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
                 self.previousDistanceToNextTurn = metersToNextTurn
                 self.speakString(nextTurnInstruction)
-            } else if self.previousDistanceToNextTurn - metersToNextTurn >= distanceDelta {
+            } else if self.previousDistanceToNextTurn - metersToNextTurn >= distanceDelta && !onPublicTransport {
                 self.lastSpokenTurnInstruction = nextTurnInstruction
                 self.previousDistanceToNextTurn = metersToNextTurn
                 
