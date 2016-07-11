@@ -124,7 +124,7 @@ class FindRouteViewController: MapViewController {
     }
      
     private func searchForNewRoute(server: String) {
-//        self.currentRequestOSRM?.delegate = nil
+        self.currentRequestOSRM?.delegate = nil
         if let toItem = toItem {
             self.currentRequestOSRM = routeManager.findRoute(self.fromItem, to: toItem, server: server)
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
