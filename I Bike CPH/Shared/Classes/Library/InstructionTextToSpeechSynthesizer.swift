@@ -28,7 +28,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
         if let destination = self.routeComposite?.to {
             let destinationName = (destination.name.containsString(destination.street)) ? destination.street + " " + destination.number : destination.name
             let stringToBeSpoken = String.init(format: "read_aloud_enabled".localized, destinationName)
-            self.speakString(stringToBeSpoken)
+            self.speakString(self.replaceSubstrings(stringToBeSpoken))
         }
     }
     
@@ -44,7 +44,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
             return
         }
         
-        var nextTurnInstruction = instruction.fullDescriptionString
+        var nextTurnInstruction = self.replaceSubstrings(instruction.fullDescriptionString)
         let metersToNextTurn = Int(instruction.lengthInMeters)
         let minimumDistanceBeforeTurn: Int = 75
         let distanceDelta: Int = 500
@@ -97,6 +97,11 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
         let hours = components.hour
         let minutes = components.minute
         return (hours, minutes)
+    }
+    
+    private func replaceSubstrings(string: String) -> String {
+        let mutatedString = string.stringByReplacingOccurrencesOfString(" st.", withString: " station")
+        return mutatedString
     }
     
     override func speakString(string: String) {
