@@ -44,9 +44,7 @@
 - (void)getRouteFrom:(CLLocationCoordinate2D)start
                   to:(CLLocationCoordinate2D)end
                  via:(NSArray *)viaPoints
-            checksum:(NSString *)chksum
      destinationHint:(NSString *)hint;
-- (void)getRouteFrom:(CLLocationCoordinate2D)start to:(CLLocationCoordinate2D)end via:(NSArray *)viaPoints checksum:(NSString *)chksum;
 - (void)getRouteFrom:(CLLocationCoordinate2D)start to:(CLLocationCoordinate2D)end via:(NSArray *)viaPoints;
 
 - (void)findNearestPointForStart:(CLLocation *)start andEnd:(CLLocation *)end;

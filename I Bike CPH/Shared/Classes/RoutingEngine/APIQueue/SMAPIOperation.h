@@ -15,9 +15,9 @@
 @class SMAPIOperation;
 @protocol SearchListItem;
 
-@protocol SMAPIOperationDelegate <NSObject>
-- (void)queuedRequest:(SMAPIOperation*) object failedWithError:(NSError*)error;
-- (void)queuedRequest:(SMAPIOperation*) object finishedWithResult:(id)result;
+@protocol SMAPIOperationDelegate<NSObject>
+- (void)queuedRequest:(SMAPIOperation *)object failedWithError:(NSError *)error;
+- (void)queuedRequest:(SMAPIOperation *)object finishedWithResult:(id)result;
 @end
 
 #define URL_CONNECTION_TIMEOUT 15.0f
@@ -29,22 +29,22 @@
  */
 @interface SMAPIOperation : NSOperation
 
-@property (nonatomic, weak) id<SMAPIOperationDelegate> delegate;
-@property (nonatomic, strong) NSTimer * timeoutTimer;
-@property (nonatomic, strong) NSObject<SearchListItem> *startItem;
-@property (nonatomic, strong) NSMutableData * responseData;
-@property (nonatomic, strong) NSURLConnection * conn;
-@property (nonatomic, strong) NSArray * results;
+@property(nonatomic, weak) id<SMAPIOperationDelegate> delegate;
+@property(nonatomic, strong) NSTimer *timeoutTimer;
+@property(nonatomic, strong) NSObject<SearchListItem> *startItem;
+@property(nonatomic, strong) NSMutableData *responseData;
+@property(nonatomic, strong) NSURLConnection *conn;
+@property(nonatomic, strong) NSArray *results;
 
 @property BOOL taskFinished;
 @property BOOL inProgress;
 @property BOOL isStopped;
 
 @property NSInteger statusCode;
-@property (nonatomic, strong) NSString * searchString;
+@property(nonatomic, strong) NSString *searchString;
 
 - (void)terminate;
-- (void)timeoutCancel:(NSTimer*)timer;
+- (void)timeoutCancel:(NSTimer *)timer;
 
 - (id)initWithItem:(NSObject<SearchListItem> *)item andDelegate:(id<SMAPIOperationDelegate>)dlg;
 

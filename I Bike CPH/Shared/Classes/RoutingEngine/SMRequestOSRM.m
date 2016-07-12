@@ -26,7 +26,6 @@
 
 @property NSInteger currentZ;
 @property(nonatomic, strong) NSDictionary *originalJSON;
-@property(nonatomic, strong) NSString *originalChecksum;
 @property(nonatomic, strong) NSString *originalStartHint;
 @property(nonatomic, strong) NSString *originalDestinationHint;
 
@@ -87,15 +86,16 @@ static dispatch_queue_t reachabilityQueue;
     [self runBlockIfServerReachable:^{
       self.currentRequest = @"findNearestPointForLocation:";
       self.coord = loc;
-      NSString *s = [NSString stringWithFormat:@"%@/nearest?loc=%.6f,%.6f", self.osrmServer, loc.coordinate.latitude, loc.coordinate.longitude];
-      NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:s]];
-      [req setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
+        NSMutableString *requestString = [self.osrmServer stringByReplacingOccurrencesOfString:@"route" withString:@"nearest"].mutableCopy;
+        [requestString appendFormat:@"%.6f,%.6f", loc.coordinate.longitude, loc.coordinate.latitude];
+      NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]];
+      [request setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
       if (self.conn) {
           [self.conn cancel];
           self.conn = nil;
       }
       self.responseData = [NSMutableData data];
-      NSURLConnection *c = [[NSURLConnection alloc] initWithRequest:req delegate:self startImmediately:NO];
+      NSURLConnection *c = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
       self.conn = c;
       [self.conn start];
     }];
@@ -104,18 +104,12 @@ static dispatch_queue_t reachabilityQueue;
 // via may be null
 - (void)getRouteFrom:(CLLocationCoordinate2D)start to:(CLLocationCoordinate2D)end via:(NSArray *)viaPoints
 {
-    [self getRouteFrom:start to:end via:viaPoints checksum:nil destinationHint:nil];
-}
-
-- (void)getRouteFrom:(CLLocationCoordinate2D)start to:(CLLocationCoordinate2D)end via:(NSArray *)viaPoints checksum:(NSString *)chksum
-{
-    [self getRouteFrom:start to:end via:viaPoints checksum:chksum destinationHint:nil];
+    [self getRouteFrom:start to:end via:viaPoints destinationHint:nil];
 }
 
 - (void)getRouteFrom:(CLLocationCoordinate2D)start
                   to:(CLLocationCoordinate2D)end
                  via:(NSArray *)viaPoints
-            checksum:(NSString *)chksum
      destinationHint:(NSString *)hint
 {
     self.originalJSON = nil;
@@ -124,15 +118,13 @@ static dispatch_queue_t reachabilityQueue;
     self.originalViaPoints = viaPoints;
     self.originalDestinationHint = hint;
     self.originalStartHint = nil;
-    self.originalChecksum = chksum;
-    [self getRouteFrom:start to:end via:viaPoints checksum:chksum andStartHint:nil destinationHint:hint andZ:DEFAULT_Z];
+    [self getRouteFrom:start to:end via:viaPoints startHint:nil destinationHint:hint andZ:DEFAULT_Z];
 }
 
 - (void)getRouteFrom:(CLLocationCoordinate2D)start
                   to:(CLLocationCoordinate2D)end
                  via:(NSArray *)viaPoints
-            checksum:(NSString *)chksum
-        andStartHint:(NSString *)startHint
+           startHint:(NSString *)startHint
      destinationHint:(NSString *)hint
                 andZ:(NSInteger)z
 {
@@ -143,36 +135,32 @@ static dispatch_queue_t reachabilityQueue;
 
       BOOL isBrokenRoute = [self isBrokenJourneyURLInString:self.osrmServer];
 
-      NSString *requestString = @"";
+      NSMutableString *requestString = self.osrmServer.mutableCopy;
 
-      if (isBrokenRoute) {
-          requestString = self.osrmServer;
-      } else {
-          NSMutableString *s1 = [NSMutableString stringWithFormat:@"%@/viaroute?z=%li&alt=false", self.osrmServer, (long)z];
-
-          if (startHint) {
-              s1 = [NSMutableString stringWithFormat:@"%@&loc=%.6f,%.6f&hint=%@", s1, start.latitude, start.longitude, startHint];
-          }
-          else {
-              s1 = [NSMutableString stringWithFormat:@"%@&loc=%.6f,%.6f", s1, start.latitude, start.longitude];
-          }
-
-          if (viaPoints) {
-              for (CLLocation *point in viaPoints) [s1 appendFormat:@"&loc=%f.6,%.6f", point.coordinate.latitude, point.coordinate.longitude];
-          }
-
-          if (chksum) {
-              if (hint) {
-                  requestString = [NSString
-                      stringWithFormat:@"%@&loc=%.6f,%.6f&hint=%@&instructions=true&checksum=%@", s1, end.latitude, end.longitude, hint, chksum];
-              }
-              else {
-                  requestString =
-                      [NSString stringWithFormat:@"%@&loc=%.6f,%.6f&instructions=true&checksum=%@", s1, end.latitude, end.longitude, chksum];
+      if (!isBrokenRoute) {
+          // Start coordinates
+          [requestString appendFormat:@"%.6f,%.6f", start.longitude, start.latitude];
+          
+          if (viaPoints.count > 0) {
+              for (CLLocation *point in viaPoints) {
+                  [requestString appendFormat:@";%.6f,%.6f", point.coordinate.longitude, point.coordinate.latitude];
               }
           }
-          else {
-              requestString = [NSString stringWithFormat:@"%@&loc=%.6f,%.6f&instructions=true", s1, end.latitude, end.longitude];
+          
+          // End coordinates
+          [requestString appendFormat:@";%.6f,%.6f", end.longitude, end.latitude];
+          
+          // Constant options
+          [requestString appendFormat:@"?overview=full&geometries=polyline&steps=true&alternatives=false"];
+          
+          // Hints
+          if (startHint.length > 0) {
+              [requestString appendFormat:@"&hints=%@", startHint];
+              if (hint.length > 0) {
+                  [requestString appendFormat:@";%@", hint];
+              }
+          } else if (hint.length > 0) {
+              [requestString appendFormat:@"&hints=%@", hint];
           }
       }
 
@@ -201,24 +189,24 @@ static dispatch_queue_t reachabilityQueue;
 {
     [self runBlockIfServerReachable:^{
       self.currentRequest = @"findNearestPointForStart:andEnd:";
-      NSString *s;
+      NSMutableString *requestString = [self.osrmServer stringByReplacingOccurrencesOfString:@"route" withString:@"nearest"].mutableCopy;
       if (self.locStep == 0) {
           self.startLoc = start;
           self.endLoc = end;
-          s = [NSString stringWithFormat:@"%@/nearest?loc=%.6f,%.6f", self.osrmServer, start.coordinate.latitude, start.coordinate.longitude];
+          [requestString appendFormat:@"%.6f,%.6f", start.coordinate.longitude, start.coordinate.latitude];
       }
       else {
-          s = [NSString stringWithFormat:@"%@/nearest?loc=%.6f,%.6f", self.osrmServer, end.coordinate.latitude, end.coordinate.longitude];
+          [requestString appendFormat:@"%.6f,%.6f", end.coordinate.longitude, end.coordinate.latitude];
       }
       self.locStep += 1;
-      NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:s]];
-      [req setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
+      NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]];
+      [request setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
       if (self.conn) {
           [self.conn cancel];
           self.conn = nil;
       }
       self.responseData = [NSMutableData data];
-      NSURLConnection *c = [[NSURLConnection alloc] initWithRequest:req delegate:self startImmediately:NO];
+      NSURLConnection *c = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
       self.conn = c;
       [self.conn start];
 
@@ -295,9 +283,12 @@ static dispatch_queue_t reachabilityQueue;
         id r = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingAllowFragments error:nil];
         if ([self.currentRequest isEqualToString:@"findNearestPointForStart:andEnd:"]) {
             if (self.locStep > 1) {
-                if (r[@"mapped_coordinate"] && [r[@"mapped_coordinate"] isKindOfClass:[NSArray class]] && ([r[@"mapped_coordinate"] count] > 1)) {
-                    self.endLoc = [[CLLocation alloc] initWithLatitude:[r[@"mapped_coordinate"][0] doubleValue]
-                                                             longitude:[r[@"mapped_coordinate"][1] doubleValue]];
+                if ([r[@"waypoints"] isKindOfClass:[NSArray class]] && ([r[@"waypoints"] count] > 0)) {
+                    NSDictionary *waypoint = [(NSArray *)r[@"waypoints"] firstObject];
+                    if ([waypoint[@"location"] isKindOfClass:[NSArray class]] && ([waypoint[@"location"] count] > 1)) {
+                        self.endLoc = [[CLLocation alloc] initWithLatitude:[waypoint[@"location"][0] doubleValue]
+                                                                 longitude:[waypoint[@"location"][1] doubleValue]];
+                    }
                 }
                 if ([self.delegate conformsToProtocol:@protocol(SMRequestOSRMDelegate)]) {
                     [self.delegate request:self finishedWithResult:@{ @"start" : self.startLoc, @"end" : self.endLoc }];
@@ -305,9 +296,12 @@ static dispatch_queue_t reachabilityQueue;
                 self.locStep = 0;
             }
             else {
-                if (r[@"mapped_coordinate"] && [r[@"mapped_coordinate"] isKindOfClass:[NSArray class]] && ([r[@"mapped_coordinate"] count] > 1)) {
-                    self.startLoc = [[CLLocation alloc] initWithLatitude:[r[@"mapped_coordinate"][0] doubleValue]
-                                                               longitude:[r[@"mapped_coordinate"][1] doubleValue]];
+                if ([r[@"waypoints"] isKindOfClass:[NSArray class]] && ([r[@"waypoints"] count] > 0)) {
+                    NSDictionary *waypoint = [(NSArray *)r[@"waypoints"] firstObject];
+                    if ([waypoint[@"location"] isKindOfClass:[NSArray class]] && ([waypoint[@"location"] count] > 1)) {
+                        self.startLoc = [[CLLocation alloc] initWithLatitude:[waypoint[@"location"][0] doubleValue]
+                                                                   longitude:[waypoint[@"location"][1] doubleValue]];
+                    }
                 }
                 [self findNearestPointForStart:self.startLoc andEnd:self.endLoc];
             }
@@ -350,7 +344,7 @@ static dispatch_queue_t reachabilityQueue;
                 return;
             }
 
-            if (!r || ([r isKindOfClass:[NSDictionary class]] == NO) || ([r[@"status"] intValue] != 0)) {
+            if (!r || ([r isKindOfClass:[NSDictionary class]] == NO) || ![r[@"code"] isEqualToString:@"Ok"]) {
                 if (self.currentZ == DEFAULT_Z) {
                     if (self.originalJSON) {
                         if ([self.delegate conformsToProtocol:@protocol(SMRequestOSRMDelegate)]) {
@@ -361,8 +355,7 @@ static dispatch_queue_t reachabilityQueue;
                         [self getRouteFrom:self.originalStart
                                         to:self.originalEnd
                                        via:self.originalViaPoints
-                                  checksum:self.originalChecksum
-                              andStartHint:self.originalStartHint
+                                 startHint:self.originalStartHint
                            destinationHint:self.originalDestinationHint
                                       andZ:MINIMUM_Z];
                     }
@@ -381,20 +374,26 @@ static dispatch_queue_t reachabilityQueue;
                 }
                 else {
                     self.originalJSON = r;
-                    self.originalChecksum = [NSString stringWithFormat:@"%@", r[@"hint_data"][@"checksum"]];
-                    self.originalStartHint = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"%@", r[@"hint_data"][@"locations"][0]]];
-                    self.originalDestinationHint =
-                        [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"%@", [r[@"hint_data"][@"locations"] lastObject]]];
-                    if (r[@"route_geometry"]) {
+                    if ([r[@"waypoints"] isKindOfClass:[NSArray class]] && ([r[@"waypoints"] count] > 1)) {
+                        NSDictionary *startWaypoint = [(NSArray *)r[@"waypoints"] objectAtIndex:0];
+                        if ([startWaypoint[@"hint"] isKindOfClass:[NSString class]]) {
+                            self.originalStartHint = startWaypoint[@"hint"];
+                        }
+                        NSDictionary *destinationWaypoint = [(NSArray *)r[@"waypoints"] objectAtIndex:1];
+                        if ([destinationWaypoint[@"hint"] isKindOfClass:[NSString class]]) {
+                            self.originalDestinationHint = destinationWaypoint[@"hint"];
+                        }
+                    }
+                    if ([r[@"routes"] isKindOfClass:[NSArray class]]) {
+                        NSDictionary *firstRoute = [(NSArray *)r[@"routes"] firstObject];
                         NSMutableArray *points =
-                            [SMGPSUtil decodePolyline:r[@"route_geometry"] precision:[SMRouteSettings sharedInstance].route_polyline_precision];
+                            [SMGPSUtil decodePolyline:firstRoute[@"geometry"] precision:[SMRouteSettings sharedInstance].route_polyline_precision];
                         CLLocationCoordinate2D start = ((CLLocation *)[points objectAtIndex:0]).coordinate;
                         CLLocationCoordinate2D end = ((CLLocation *)[points lastObject]).coordinate;
                         [self getRouteFrom:start
                                         to:end
                                        via:self.originalViaPoints
-                                  checksum:[NSString stringWithFormat:@"%@", r[@"hint_data"][@"checksum"]]
-                              andStartHint:self.originalStartHint
+                                 startHint:self.originalStartHint
                            destinationHint:self.originalDestinationHint
                                       andZ:DEFAULT_Z];
                     }
@@ -402,8 +401,7 @@ static dispatch_queue_t reachabilityQueue;
                         [self getRouteFrom:self.originalStart
                                         to:self.originalEnd
                                        via:self.originalViaPoints
-                                  checksum:self.originalChecksum
-                              andStartHint:self.originalStartHint
+                                 startHint:self.originalStartHint
                            destinationHint:self.originalDestinationHint
                                       andZ:DEFAULT_Z];
                     }

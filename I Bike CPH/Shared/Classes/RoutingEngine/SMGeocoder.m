@@ -41,7 +41,7 @@
 
                              id res = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:NSJSONReadingAllowFragments
-                                                                        error:nil];  //[[[SBJsonParser alloc] init] objectWithData:data];
+                                                                        error:nil];
                              if ([res isKindOfClass:[NSArray class]] == NO) {
                                  res = @[ res ];
                              }

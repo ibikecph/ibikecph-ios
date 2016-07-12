@@ -129,7 +129,7 @@
     //        [viaPoints addObject:loc];
     //        [r getRouteFrom:((CLLocation *)[self.waypoints objectAtIndex:0]).coordinate to:end.coordinate via:viaPoints];
 
-    [r getRouteFrom:loc.coordinate to:end.coordinate via:nil checksum:self.routeChecksum destinationHint:self.destinationHint];
+    [r getRouteFrom:loc.coordinate to:end.coordinate via:nil destinationHint:self.destinationHint];
 }
 
 //- (void)updateSegment
@@ -186,42 +186,6 @@
     return NULL;
 }
 
-/*
- * Decoder for the Encoded Polyline Algorithm Format
- * https://developers.google.com/maps/documentation/utilities/polylinealgorithm
- */
-NSMutableArray *decodePolyline(NSString *encodedString)
-{
-    const char *bytes = [encodedString UTF8String];
-    size_t len = strlen(bytes);
-
-    int lat = 0, lng = 0;
-
-    NSMutableArray *locations = [NSMutableArray array];
-    for (int i = 0; i < len;) {
-        for (int k = 0; k < 2; k++) {
-            uint32_t delta = 0;
-            int shift = 0;
-
-            unsigned char c;
-            do {
-                c = bytes[i++] - 63;
-                delta |= (c & 0x1f) << shift;
-                shift += 5;
-            } while (c & 0x20);
-
-            delta = (delta & 0x1) ? ((~delta >> 1) | 0x80000000) : (delta >> 1);
-            (k == 0) ? (lat += delta) : (lng += delta);
-        }
-        //      debugLog(@"decodePolyline(): (%d, %d)", lat, lng);
-
-        [locations addObject:[[CLLocation alloc] initWithLatitude:((double)lat / [SMRouteSettings sharedInstance].route_polyline_precision)
-                                                        longitude:((double)lng / [SMRouteSettings sharedInstance].route_polyline_precision)]];
-    }
-
-    return locations;
-}
-
 + (NSString *)encodePolyline:(NSArray *)locations
 {
     NSMutableString *encodedString = [NSMutableString string];
@@ -259,6 +223,18 @@ NSMutableArray *decodePolyline(NSString *encodedString)
 }
 
 - (BOOL)parseFromJson:(NSDictionary *)jsonRoot delegate:(id<SMRouteDelegate>)dlg
+{
+    // Hacks incoming!
+    if (jsonRoot[@"route_summary"]) {
+        // This is presumably JSON from an OSRM V4 source
+        return [self parseFromOSRMV4JSON:jsonRoot delegate:dlg];
+    } else {
+        // This is presumably JSON from an OSRM V5 source
+        return [self parseFromOSRMV5JSON:jsonRoot delegate:dlg];
+    }
+}
+
+- (BOOL)parseFromOSRMV4JSON:(NSDictionary *)jsonRoot delegate:(id<SMRouteDelegate>)dlg
 {
     NSString *type = jsonRoot[@"route_summary"][@"type"];
     if (type != nil) {
@@ -459,6 +435,212 @@ NSMutableArray *decodePolyline(NSString *encodedString)
     return YES;
 }
 
+- (BOOL)parseFromOSRMV5JSON:(NSDictionary *)jsonRoot delegate:(id<SMRouteDelegate>)dlg
+{
+    NSArray *routes = jsonRoot[@"routes"];
+    NSDictionary *route;
+    if (![routes isKindOfClass:[NSArray class]] || routes.count == 0) {
+        return NO;
+    }
+    route = [routes firstObject];
+    
+    NSArray *legs = route[@"legs"];
+    NSDictionary *leg;
+    if (![legs isKindOfClass:[NSArray class]] || legs.count == 0) {
+        return NO;
+    }
+    leg = [legs firstObject];
+
+    @synchronized(self.waypoints)
+    {
+        double polylinePrecision = [SMRouteSettings sharedInstance].route_polyline_precision;
+        polylinePrecision /= 10;
+        self.waypoints = [SMGPSUtil decodePolyline:route[@"geometry"] precision:polylinePrecision];
+    }
+
+    if (self.waypoints.count < 2) {
+        return NO;
+    }
+
+    @synchronized(self.turnInstructions)
+    {
+        self.turnInstructions = [NSMutableArray array];
+    }
+    @synchronized(self.pastTurnInstructions)
+    {
+        self.pastTurnInstructions = [NSMutableArray array];
+    }
+    self.estimatedTimeForRoute = [leg[@"duration"] integerValue];
+    self.estimatedRouteDistance = [leg[@"distance"] integerValue];
+    
+    self.destinationHint = nil;
+
+    NSArray *waypoints = jsonRoot[@"waypoints"];
+    if ([waypoints isKindOfClass:[NSArray class]] && (waypoints.count > 1)) {
+        NSDictionary *destinationWaypoint = waypoints.lastObject;
+        self.destinationHint = destinationWaypoint[@"hint"];
+    }
+
+    NSArray *steps = leg[@"steps"];
+    if (steps.count > 1) {
+        self.startDescription = steps.firstObject[@"name"];
+        [self ifNecessaryTranslateStreetname:self.startDescription];
+        self.endDescription = steps.lastObject[@"name"];
+        [self ifNecessaryTranslateStreetname:self.endDescription];
+    }
+    if ([steps isKindOfClass:[NSArray class]] && steps.count > 0) {
+        int prevlengthInMeters = 0;
+        NSString *prevlengthWithUnit = @"";
+        BOOL isFirst = YES;
+        for (NSDictionary *step in steps) {
+            SMTurnInstruction *instruction = [[SMTurnInstruction alloc] init];
+            
+            TurnDirection turnDirection;
+            NSDictionary *maneuver = step[@"maneuver"];
+            NSString *maneuverType = maneuver[@"turn"];
+            NSString *maneuverModifier = maneuver[@"modifier"];
+            if ([maneuverType isEqualToString:@"turn"] || [maneuverType isEqualToString:@"continue"]) {
+                if ([maneuverModifier isEqualToString:@"uturn"]) {
+                    turnDirection = UTurn;
+                } else if ([maneuverType isEqualToString:@"sharp right"]) {
+                    turnDirection = TurnSharpRight;
+                } else if ([maneuverType isEqualToString:@"right"]) {
+                    turnDirection = TurnRight;
+                } else if ([maneuverType isEqualToString:@"slight right"]) {
+                    turnDirection = TurnSlightRight;
+                } else if ([maneuverType isEqualToString:@"straight"]) {
+                    turnDirection = GoStraight;
+                } else if ([maneuverType isEqualToString:@"sharp left"]) {
+                    turnDirection = TurnSharpLeft;
+                } else if ([maneuverType isEqualToString:@"left"]) {
+                    turnDirection = TurnLeft;
+                } else if ([maneuverType isEqualToString:@"slight left"]) {
+                    turnDirection = TurnSlightLeft;
+                }
+            } else if ([maneuverType isEqualToString:@"depart"]) {
+                turnDirection = HeadOn;
+            } else if ([maneuverType isEqualToString:@"arrive"]) {
+                turnDirection = ReachedYourDestination;
+            } else if ([maneuverType isEqualToString:@"roundabout"]) {
+                turnDirection = EnterRoundAbout;
+            }
+
+            if (turnDirection <= UnboardPublicTransport) {
+                instruction.drivingDirection = turnDirection;
+                instruction.routeType = self.routeType;
+                instruction.routeLineName = self.transportLine;
+                if (turnDirection == BoardPublicTransport) {
+                    instruction.routeLineStart = self.startDescription;
+                    instruction.routeLineDestination = self.endDescription;
+                    instruction.routeLineTime = self.startDate;
+                }
+                else if (turnDirection == UnboardPublicTransport) {
+                    instruction.routeLineStart = self.startDescription;
+                    instruction.routeLineDestination = self.endDescription;
+                    instruction.routeLineTime = self.endDate;
+                }
+                
+                instruction.ordinalDirection = @"";
+                instruction.wayName = step[@"name"];
+
+                if ([instruction.wayName rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
+                    instruction.wayName = translateString(instruction.wayName);
+                }
+
+                instruction.lengthInMeters = prevlengthInMeters;
+                prevlengthInMeters = [step[@"distance"] intValue];
+                instruction.timeInSeconds = [step[@"duration"] intValue];
+                instruction.lengthWithUnit = prevlengthWithUnit;
+                /**
+                 * Save length to next turn with units so we don't have to generate it each time
+                 * It's formatted just the way we like it
+                 */
+                instruction.fixedLengthWithUnit = [SMRouteUtils formatDistanceInMeters:prevlengthInMeters];
+                prevlengthWithUnit = [NSString stringWithFormat:@"%im",prevlengthInMeters];
+                instruction.directionAbrevation = @"";
+                instruction.azimuth = 0.0f;
+                instruction.vehicle = 0;
+                
+                NSString *stepMode = step[@"mode"];
+                if ([stepMode isEqualToString:@"cycling"]) {
+                    instruction.vehicle = 1;
+                } else if ([stepMode isEqualToString:@"pushing bike"]) {
+                    instruction.vehicle = 2;
+                } else if ([stepMode isEqualToString:@"?"]) {
+                    instruction.vehicle = 3;
+                } else if ([stepMode isEqualToString:@"?"]) {
+                    instruction.vehicle = 4;
+                }
+
+                if (isFirst) {
+                    [instruction generateStartDescriptionString];
+                    isFirst = NO;
+                }
+                else {
+                    [instruction generateDescriptionString];
+                }
+                [instruction generateFullDescriptionString];
+
+                [instruction generateShortDescriptionString];
+
+                instruction.waypointsIndex = 0;
+                
+                NSArray *location = maneuver[@"location"];
+                if ([location isKindOfClass:[NSArray class]] && location.count == 2) {
+                    instruction.loc = [[CLLocation alloc] initWithLatitude:[location[1] integerValue] longitude:[location[0] integerValue]];
+                }
+
+                @synchronized(self.turnInstructions)
+                {
+                    [self.turnInstructions addObject:instruction];
+                }
+            }
+        }
+
+        self.longestDistance = 0.0f;
+        self.longestStreet = @"";
+
+        NSArray *summaryPoints = [leg[@"summary"] componentsSeparatedByString:@", "];
+        if (summaryPoints.count > 1) {
+            self.longestStreet = summaryPoints.firstObject;
+        }
+        
+        if (!self.longestStreet ||
+            [self.longestStreet stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
+            for (int i = 1; i < self.turnInstructions.count - 1; i++) {
+                SMTurnInstruction *inst = self.turnInstructions[i];
+                if (inst.lengthInMeters > self.longestDistance) {
+                    self.longestDistance = inst.lengthInMeters;
+                    SMTurnInstruction *inst1 = self.turnInstructions[i - 1];
+                    self.longestStreet = inst1.wayName;
+                }
+            }
+        }
+
+        [self ifNecessaryTranslateStreetname:self.longestStreet];
+    }
+
+    @synchronized(self.turnInstructions)
+    {
+        self.allTurnInstructions = [NSMutableArray arrayWithArray:self.turnInstructions];
+    }
+
+    self.lastVisitedWaypointIndex = -1;
+
+    CLLocation *a = self.waypoints[0];
+    CLLocation *b = self.waypoints[1];
+    self.lastCorrectedHeading = [SMGPSUtil bearingBetweenStartLocation:a andEndLocation:b];
+
+    self.snapArrow = NO;
+    return YES;
+}
+
+- (void)ifNecessaryTranslateStreetname:(NSString *)streetname {
+    if ([streetname rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
+        streetname = translateString(streetname);
+    }
+}
+
 - (void)updateDistances:(CLLocation *)loc
 {
     if (self.tripDistance < 0.0) {
@@ -597,9 +779,7 @@ NSMutableArray *decodePolyline(NSString *encodedString)
 
 - (void)setupRoute:(id)jsonRoot
 {
-    BOOL done = [self parseFromJson:jsonRoot delegate:nil];
-    if (done) {
-        //        approachingTurn = NO;
+    if ([self parseFromJson:jsonRoot delegate:nil]) {
         self.tripDistance = 0.0f;
         @synchronized(self.pastTurnInstructions)
         {
@@ -640,8 +820,8 @@ NSMutableArray *decodePolyline(NSString *encodedString)
         if (response) {
             id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData
                                                           options:NSJSONReadingAllowFragments
-                                                            error:nil];  //[[[SBJsonParser alloc] init] objectWithString:response];
-            if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([jsonRoot[@"status"] intValue] != 0)) {
+                                                            error:nil];
+            if (![jsonRoot isKindOfClass:[NSDictionary class]] || ![jsonRoot[@"code"] isEqualToString:@"Ok"]) {
                 if (self.delegate) {
                     [self.delegate routeNotFound];
                 };
@@ -660,8 +840,8 @@ NSMutableArray *decodePolyline(NSString *encodedString)
 
               id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData
                                                             options:NSJSONReadingAllowFragments
-                                                              error:nil];  //[[[SBJsonParser alloc] init] objectWithString:response];
-              if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([jsonRoot[@"status"] intValue] != 0)) {
+                                                              error:nil];
+              if (![jsonRoot isKindOfClass:[NSDictionary class]] || ![jsonRoot[@"code"] isEqualToString:@"Ok"]) {
                   if (self.delegate) {
                       dispatch_async(dispatch_get_main_queue(), ^{
                         [self.delegate routeRecalculationDone];
@@ -672,7 +852,6 @@ NSMutableArray *decodePolyline(NSString *encodedString)
 
               BOOL done = [self parseFromJson:jsonRoot delegate:nil];
               if (done) {
-                  //                    approachingTurn = NO;
                   if ([SMLocationManager sharedInstance].hasValidLocation) {
                       [self updateDistances:[SMLocationManager sharedInstance].lastValidLocation];
                   }

@@ -14,7 +14,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
 
-typedef enum {
+typedef NS_ENUM(NSInteger, TurnDirection) {
     NoTurn = 0,  // Give no instruction at all
     GoStraight = 1,
     TurnSlightRight = 2,
@@ -34,9 +34,9 @@ typedef enum {
     StartPushingBikeInOneway = 16,
     StopPushingBikeInOneway = 17,
     BoardPublicTransport = 18,
-    UnboardPublicTrasnport = 19,
+    UnboardPublicTransport = 19,
     ReachingDestination = 100
-} TurnDirection;
+};
 
 /**
  * \ingroup libs

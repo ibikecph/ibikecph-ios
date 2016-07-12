@@ -270,7 +270,7 @@ typedef enum { fieldTo, fieldFrom } CurrentField;
     }
     else if ([req.auxParam isEqualToString:@"startRoute"]) {
         id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingAllowFragments error:nil];
-        if (!jsonRoot || ([jsonRoot isKindOfClass:[NSDictionary class]] == NO) || ([jsonRoot[@"status"] intValue] != 0)) {
+        if (![jsonRoot isKindOfClass:[NSDictionary class]] || ![jsonRoot[@"code"] isEqualToString:@"Ok"]) {
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil
                                                          message:@"error_route_not_found".localized
                                                         delegate:nil

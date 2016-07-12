@@ -429,7 +429,7 @@ static NSOperationQueue *stationQueue;
 - (void)loadStations
 {
     NSString *KEY_STATIONS_TYPE = @"type";
-//    NSString *KEY_STATIONS_LINES = @"line";
+    //    NSString *KEY_STATIONS_LINES = @"line";
     NSString *KEY_STATIONS_COORDS = @"coords";
     NSString *KEY_STATIONS_NAME = @"name";
 
@@ -450,7 +450,6 @@ static NSOperationQueue *stationQueue;
 
     for (NSDictionary *stationDict in stationsArr) {
         NSString *type = [stationDict objectForKey:KEY_STATIONS_TYPE];
-//        NSString *line = [stationDict objectForKey:KEY_STATIONS_LINES];
         NSString *coords = [stationDict objectForKey:KEY_STATIONS_COORDS];
         NSString *name = [stationDict objectForKey:KEY_STATIONS_NAME];
         // parse coordinates
@@ -490,10 +489,8 @@ static NSOperationQueue *stationQueue;
         SMTransportationLine *line = [[SMTransportationLine alloc] init];
 
         line.name = lineName;
-        //        NSLog(@"Line %@, stations: ", lineName);
         for (NSNumber *stationIndex in stations) {
             [lineStations addObject:[tempStations objectAtIndex:stationIndex.intValue]];
-            //            NSLog(@"%@ %d", ((SMStationInfo*)[tempStations objectAtIndex:stationIndex.intValue]).name, stationIndex.intValue);
         }
 
         SMStationInfoType stationType = SMStationInfoTypeUndefined;

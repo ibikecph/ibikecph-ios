@@ -63,7 +63,6 @@
 #define PLACES_LANGUAGE [SMRouteSettings sharedInstance].places_language
 #define OIOREST_SEARCH_RADIUS [SMRouteSettings sharedInstance].oiorest_search_radius
 #define OIOREST_AUTOCOMPLETE_SEARCH_RADIUS [SMRouteSettings sharedInstance].oiorest_autocomplete_search_radius
-#define ROUTE_POLYLINE_PRECISION [SMRouteSettings sharedInstance].route_polyline_precision
 
 #define USE_APPLE_GEOCODER [[SMRouteSettings sharedInstance].use_apple_geocoder boolValue]
 

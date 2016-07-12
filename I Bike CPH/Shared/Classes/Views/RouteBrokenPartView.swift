@@ -121,8 +121,8 @@ class RouteBrokenPartView: UIView {
     }
 
     private func populateView() {
-        let departureDate = route.startDate != nil ? route.startDate : NSDate()
-        let arrivalDate = route.endDate != nil ? route.endDate : departureDate.dateByAddingTimeInterval(NSTimeInterval(route.estimatedRouteDistance))
+        let departureDate = route.startDate ?? NSDate()
+        let arrivalDate = route.endDate ?? departureDate.dateByAddingTimeInterval(NSTimeInterval(route.estimatedRouteDistance))
         let startPlace = route.startDescription.localized
         let endPlace = route.endDescription.localized
         let distance = distanceFormatter.string(Double(route.estimatedRouteDistance))
