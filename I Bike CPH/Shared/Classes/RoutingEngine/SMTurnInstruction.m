@@ -230,19 +230,15 @@
             break;
         case OSRMV5ManeuverTypeDepart:
             string = translateString(@"depart");
-            string = [string stringByReplacingOccurrencesOfString:@"{{heading}}" withString:modifierDisplayString];
             break;
         case OSRMV5ManeuverTypeArrive:
             string = translateString(@"arrive");
-            string = [string stringByReplacingOccurrencesOfString:@"{{side}}" withString:modifierDisplayString];
             break;
         case OSRMV5ManeuverTypeRoundabout:
             string = translateString(@"roundabout");
-//            string = [string stringByReplacingOccurrencesOfString:@"%{exit}" withString:self.displayName];
             break;
         case OSRMV5ManeuverTypeRotary:
             string = translateString(@"rotary");
-//            string = [string stringByReplacingOccurrencesOfString:@"%{exit}" withString:self.displayName];
             break;
         case OSRMV5ManeuverTypeOnRamp:
             string = translateString(@"on_ramp");
@@ -260,6 +256,16 @@
     }
     if ([string rangeOfString:@"{{name}}"].location == NSNotFound) {
         string = [string stringByReplacingOccurrencesOfString:@"{{name}}" withString:self.wayName];
+    }
+    if ([string rangeOfString:@"{{heading}}"].location == NSNotFound) {
+        string = [string stringByReplacingOccurrencesOfString:@"{{heading}}" withString:modifierDisplayString];
+    }
+    if ([string rangeOfString:@"{{side}}"].location == NSNotFound) {
+        string = [string stringByReplacingOccurrencesOfString:@"{{side}}" withString:modifierDisplayString];
+    }
+    if ([string rangeOfString:@"%{exit}"].location == NSNotFound) {
+        NSString *exitString = translateString([@"direction_number_" stringByAppendingString:self.ordinalDirection]);
+        string = [string stringByReplacingOccurrencesOfString:@"%{exit}" withString:exitString];
     }
     return string;
 }

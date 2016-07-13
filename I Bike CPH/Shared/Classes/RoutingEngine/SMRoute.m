@@ -431,11 +431,16 @@
             instruction.lengthInMeters = prevLengthInMeters;
             prevLengthInMeters = [step[@"distance"] intValue];
 
-            OSRMV4TurnDirection turnDirection;
             NSDictionary *maneuver = step[@"maneuver"];
             [instruction setDirectionAbbreviationWithBearingAfter:[maneuver[@"bearing_after"] unsignedIntegerValue]];
             [instruction setManeuverTypeWithString:maneuver[@"turn"]];
             [instruction setManeuverModifierWithString:maneuver[@"modifier"]];
+            
+            if ([maneuver[@"turn"] isEqualToString:@"roundabout"] || [maneuver[@"turn"] isEqualToString:@"rotary"]) {
+                instruction.ordinalDirection = [NSString stringWithFormat:@"%lu", [maneuver[@"exit"] unsignedIntegerValue]];
+            } else {
+                instruction.ordinalDirection = @"1";
+            }
             
             NSString *mode = step[@"mode"];
             if ([mode isEqualToString:@"cycling"]) {
