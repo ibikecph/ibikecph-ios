@@ -265,7 +265,7 @@
             int pos = [(NSString *)arr[0] intValue];
 
             if (pos <= 19) {
-                instruction.drivingDirection = pos;
+                instruction.turnDirection = pos;
                 instruction.routeType = self.routeType;
                 instruction.routeLineName = self.transportLine;
                 if (pos == 18) {
@@ -462,7 +462,7 @@
             }
 
             if (turnDirection <= OSRMV4TurnDirectionUnboardPublicTransport) {
-                instruction.drivingDirection = turnDirection;
+                instruction.turnDirection = turnDirection;
                 instruction.routeType = self.routeType;
                 instruction.routeLineName = self.transportLine;
                 if (turnDirection == OSRMV4TurnDirectionBoardPublicTransport) {

@@ -15,7 +15,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, OSRMV4TurnDirection) {
-    OSRMV4TurnDirectionNoTurn = 0,  // Give no instruction at all
+    OSRMV4TurnDirectionNoTurn = 0,
     OSRMV4TurnDirectionGoStraight = 1,
     OSRMV4TurnDirectionTurnSlightRight = 2,
     OSRMV4TurnDirectionTurnRight = 3,
@@ -38,6 +38,36 @@ typedef NS_ENUM(NSUInteger, OSRMV4TurnDirection) {
     OSRMV4TurnDirectionReachingDestination = 100
 };
 
+typedef NS_ENUM(NSUInteger, OSRMV5ManeuverType) {
+    OSRMV5ManueverTypeTurn,
+    OSRMV5ManueverTypeNewName,
+    OSRMV5ManueverTypeDepart,
+    OSRMV5ManueverTypeArrive,
+    OSRMV5ManueverTypeMerge,
+    OSRMV5ManueverTypeRamp,
+    OSRMV5ManueverTypeOnRamp,
+    OSRMV5ManueverTypeOffRamp,
+    OSRMV5ManueverTypeFork,
+    OSRMV5ManueverTypeEndOfRoad,
+    OSRMV5ManueverTypeUseLane,
+    OSRMV5ManueverTypeContinue,
+    OSRMV5ManueverTypeRoundabout,
+    OSRMV5ManueverTypeRotary,
+    OSRMV5ManueverTypeRoundaboutTurn,
+    OSRMV5ManueverTypeNotification
+};
+
+typedef NS_ENUM(NSUInteger, OSRMV5ManeuverModifier) {
+    OSRMV5ManueverModifierUTurn,
+    OSRMV5ManueverModifierSharpRight,
+    OSRMV5ManueverModifierRight,
+    OSRMV5ManueverModifierSlightRight,
+    OSRMV5ManueverModifierStraight,
+    OSRMV5ManueverModifierSlightLeft,
+    OSRMV5ManueverModifierLeft,
+    OSRMV5ManueverModifierSharpLeft
+};
+
 typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {
     TurnInstructionOSRMVersion4,
     TurnInstructionOSRMVersion5
@@ -45,6 +75,7 @@ typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {
 
 @interface SMTurnInstruction : NSObject
 
+@property(nonatomic, assign) TurnInstructionOSRMVersion osrmVersion;
 @property(nonatomic, readonly) NSString *roundedDistanceToNextTurn;
 @property(nonatomic, strong) CLLocation *location;
 @property int waypointsIndex;
@@ -61,7 +92,7 @@ typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {
 - (void)generateShortDescriptionString;
 
 #pragma mark - OSRM Version 4 properties
-@property(nonatomic, assign) OSRMV4TurnDirection drivingDirection;
+@property(nonatomic, assign) OSRMV4TurnDirection turnDirection;
 @property(nonatomic, assign) SMRouteType routeType;
 @property(nonatomic, strong) NSString *fixedLengthWithUnit;
 @property(nonatomic, strong) NSDate *routeLineTime;
@@ -74,7 +105,12 @@ typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {
 @property(nonatomic, strong) NSString *wayName;
 @property(nonatomic, strong) NSString *directionAbbreviation;  // N: north, S: south, E: east, W: west, NW: North West, ...
 
-#pragma mark - OSRM Version 5 properties
+#pragma mark - OSRM Version 5 properties, methods
+@property (nonatomic, readonly) OSRMV5ManeuverType maneuverType;
+@property (nonatomic, readonly) OSRMV5ManeuverModifier maneuverModifier;
+
+- (void)setManeuverTypeWithString:(NSString *)maneuverTypeString;
+- (void)setManeuverModifierWithString:(NSString *)maneuverModifierString;
 
 
 @end
