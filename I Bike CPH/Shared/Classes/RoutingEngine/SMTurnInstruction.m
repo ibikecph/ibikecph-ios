@@ -20,39 +20,49 @@
 @implementation SMTurnInstruction
 @synthesize turnDirection = _turnDirection;
 
-// Returns full direction names for abbreviations N NE E SE S SW W NW
-NSString *directionString(NSString *abbreviation)
-{
-    NSString *s = translateString([@"direction_" stringByAppendingString:abbreviation]);
-    return s;
-}
-
 // Returns only string representation of the driving direction
 - (void)generateDescriptionString
 {
-    NSString *key = [@"direction_" stringByAppendingFormat:@"%d", self.turnDirection];
-    if (self.routeType == SMRouteTypeBike || self.routeType == SMRouteTypeWalk) {
-        NSString *desc =
-            [NSString stringWithFormat:translateString(key), translateString([@"direction_number_" stringByAppendingString:self.ordinalDirection])];
-        self.descriptionString = desc;
-    }
-    else {
-        self.descriptionString = [NSString stringWithFormat:translateString(key), self.routeLineDestination];
+    switch (self.osrmVersion) {
+        case TurnInstructionOSRMVersion4: {
+            NSString *key = [@"direction_" stringByAppendingFormat:@"%lu", (unsigned long)self.turnDirection];
+            if (self.routeType == SMRouteTypeBike || self.routeType == SMRouteTypeWalk) {
+                NSString *description =
+                    [NSString stringWithFormat:translateString(key), translateString([@"direction_number_" stringByAppendingString:self.ordinalDirection])];
+                self.descriptionString = description;
+            }
+            else {
+                self.descriptionString = [NSString stringWithFormat:translateString(key), self.routeLineDestination];
+            }
+            break;
+        }
+        case TurnInstructionOSRMVersion5: {
+            self.descriptionString = [self OSRMV5Instruction];
+        }
     }
 }
 
 - (void)generateStartDescriptionString
 {
-    if (self.routeType == SMRouteTypeBike || self.routeType == SMRouteTypeWalk) {
-        NSString *key = [@"first_direction_" stringByAppendingFormat:@"%d", self.turnDirection];
-        NSString *desc =
-            [NSString stringWithFormat:translateString(key), translateString([@"direction_" stringByAppendingString:self.directionAbbreviation]),
-                                       translateString([@"direction_number_" stringByAppendingString:self.ordinalDirection])];
-        self.descriptionString = desc;
-    }
-    else {
-        NSString *key = [@"direction_" stringByAppendingFormat:@"%d", self.turnDirection];
-        self.descriptionString = [NSString stringWithFormat:translateString(key), self.routeLineStart, self.routeLineName, self.routeLineDestination];
+    switch (self.osrmVersion) {
+        case TurnInstructionOSRMVersion4:
+            if (self.routeType == SMRouteTypeBike || self.routeType == SMRouteTypeWalk) {
+                NSString *key = [@"first_direction_" stringByAppendingFormat:@"%lu", (unsigned long)self.turnDirection];
+                NSString *description =
+                    [NSString stringWithFormat:translateString(key),
+                                               translateString([@"direction_" stringByAppendingString:self.directionAbbreviation]),
+                                               translateString([@"direction_number_" stringByAppendingString:self.ordinalDirection])];
+                self.descriptionString = description;
+            }
+            else {
+                NSString *key = [@"direction_" stringByAppendingFormat:@"%lu", (unsigned long)self.turnDirection];
+                self.descriptionString = [NSString stringWithFormat:translateString(key), self.routeLineStart, self.routeLineName, self.routeLineDestination];
+            }
+            break;
+        case TurnInstructionOSRMVersion5: {
+            self.descriptionString = [self OSRMV5Instruction];
+            break;
+        }
     }
 }
 
@@ -64,21 +74,29 @@ NSString *directionString(NSString *abbreviation)
 // Returns only string representation of the driving direction including wayname
 - (void)generateFullDescriptionString
 {
-    NSString *key = [@"direction_" stringByAppendingFormat:@"%d", self.turnDirection];
-
-    if (self.routeType == SMRouteTypeBike || self.routeType == SMRouteTypeWalk) {
-        if (self.turnDirection != 0 && self.turnDirection != 15 && self.turnDirection != 100) {
-            self.fullDescriptionString = [NSString stringWithFormat:@"%@ %@", translateString(key), self.wayName];
-            return;
+    switch (self.osrmVersion) {
+        case TurnInstructionOSRMVersion4: {
+            NSString *key = [@"direction_" stringByAppendingFormat:@"%lu", (unsigned long)self.turnDirection];
+            if (self.routeType == SMRouteTypeBike || self.routeType == SMRouteTypeWalk) {
+                if (self.turnDirection != 0 && self.turnDirection != 15 && self.turnDirection != 100) {
+                    self.fullDescriptionString = [NSString stringWithFormat:@"%@ %@", translateString(key), self.wayName];
+                    return;
+                }
+                self.fullDescriptionString = [NSString stringWithFormat:@"%@", translateString(key)];
+            }
+            else if (self.turnDirection == 18) {
+                self.fullDescriptionString =
+                    [NSString stringWithFormat:translateString(key), self.routeLineStart, self.routeLineName, self.routeLineDestination];
+            }
+            else if (self.turnDirection == 19) {
+                self.fullDescriptionString = [NSString stringWithFormat:translateString(key), self.routeLineDestination];
+            }
+            break;
         }
-        self.fullDescriptionString = [NSString stringWithFormat:@"%@", translateString(key)];
-    }
-    else if (self.turnDirection == 18) {
-        self.fullDescriptionString =
-            [NSString stringWithFormat:translateString(key), self.routeLineStart, self.routeLineName, self.routeLineDestination];
-    }
-    else if (self.turnDirection == 19) {
-        self.fullDescriptionString = [NSString stringWithFormat:translateString(key), self.routeLineDestination];
+        case TurnInstructionOSRMVersion5: {
+            self.descriptionString = [self OSRMV5Instruction];
+            break;
+        }
     }
 }
 
@@ -87,21 +105,13 @@ NSString *directionString(NSString *abbreviation)
     return [UIImage imageNamed:self.imageName];
 }
 
-// Full textual representation of the object, used mainly for debugging
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"%@ %@ [SMTurnInstruction: %d, %@, (%f, %f)]", [self descriptionString], self.wayName,
-                                      self.lengthInMeters, self.directionAbbreviation,
-                                      self.location.coordinate.latitude, self.location.coordinate.longitude];
-}
+#pragma mark - Setters
 
 - (void)setTurnDirection:(OSRMV4TurnDirection)turnDirection
 {
     _turnDirection = turnDirection;
     [self updateImageName];
 }
-
-#pragma mark - Setters
 
 - (void)setRouteType:(SMRouteType)routeType
 {
@@ -166,40 +176,100 @@ NSString *directionString(NSString *abbreviation)
 
 #pragma mark - Helper methods
 
+- (NSString *)OSRMV5Instruction
+{
+    NSString *string;
+    BOOL addModifier = NO;
+    NSString *modifierString = [self stringForManeuverModifier:self.maneuverModifier];
+    NSString *modifierDisplayString = [modifierString stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+    switch (self.maneuverType) {
+        case OSRMV5ManeuverTypeTurn:
+        case OSRMV5ManeuverTypeEndOfRoad:
+        case OSRMV5ManeuverTypeFork:
+        case OSRMV5ManeuverTypeNewName:
+        case OSRMV5ManeuverTypeNotification:
+        case OSRMV5ManeuverTypeRoundaboutTurn:
+            string = @"turn";
+            addModifier = YES;
+            break;
+        case OSRMV5ManeuverTypeContinue:
+            string = @"continue";
+            addModifier = YES;
+            break;
+        case OSRMV5ManeuverTypeMerge:
+            string = @"merge";
+            addModifier = YES;
+            break;
+        case OSRMV5ManeuverTypeDepart:
+            string = translateString(@"depart");
+            string = [string stringByReplacingOccurrencesOfString:@"{{heading}}" withString:modifierDisplayString];
+            break;
+        case OSRMV5ManeuverTypeArrive:
+            string = translateString(@"arrive");
+            string = [string stringByReplacingOccurrencesOfString:@"{{side}}" withString:modifierDisplayString];
+            break;
+        case OSRMV5ManeuverTypeRoundabout:
+            string = translateString(@"roundabout");
+//            string = [string stringByReplacingOccurrencesOfString:@"%{exit}" withString:self.displayName];
+            break;
+        case OSRMV5ManeuverTypeRotary:
+            string = translateString(@"rotary");
+//            string = [string stringByReplacingOccurrencesOfString:@"%{exit}" withString:self.displayName];
+            break;
+        case OSRMV5ManeuverTypeOnRamp:
+            string = translateString(@"on_ramp");
+            break;
+        case OSRMV5ManeuverTypeOffRamp:
+            string = translateString(@"off_ramp");
+            break;
+        default:
+            string = nil;
+            break;
+    }
+    if (addModifier) {
+        string = [string stringByAppendingFormat:@"_%@",modifierString];
+        string = [translateString(string) stringByReplacingOccurrencesOfString:@"{{name}}" withString:self.wayName];
+    }
+    if ([string rangeOfString:@"{{name}}"].location == NSNotFound) {
+        string = [string stringByReplacingOccurrencesOfString:@"{{name}}" withString:self.wayName];
+    }
+    return string;
+}
+
 - (void)setManeuverTypeWithString:(NSString *)maneuverTypeString
 {
     if ([maneuverTypeString isEqualToString:@"turn"]) {
-        self.maneuverType = OSRMV5ManueverTypeTurn;
+        self.maneuverType = OSRMV5ManeuverTypeTurn;
     } else if ([maneuverTypeString isEqualToString:@"new name"]) {
-        self.maneuverType = OSRMV5ManueverTypeNewName;
+        self.maneuverType = OSRMV5ManeuverTypeNewName;
     } else if ([maneuverTypeString isEqualToString:@"depart"]) {
-        self.maneuverType = OSRMV5ManueverTypeDepart;
+        self.maneuverType = OSRMV5ManeuverTypeDepart;
     } else if ([maneuverTypeString isEqualToString:@"arrive"]) {
-        self.maneuverType = OSRMV5ManueverTypeArrive;
+        self.maneuverType = OSRMV5ManeuverTypeArrive;
     } else if ([maneuverTypeString isEqualToString:@"merge"]) {
-        self.maneuverType = OSRMV5ManueverTypeMerge;
+        self.maneuverType = OSRMV5ManeuverTypeMerge;
     } else if ([maneuverTypeString isEqualToString:@"ramp"]) {
-        self.maneuverType = OSRMV5ManueverTypeRamp;
+        self.maneuverType = OSRMV5ManeuverTypeRamp;
     } else if ([maneuverTypeString isEqualToString:@"on ramp"]) {
-        self.maneuverType = OSRMV5ManueverTypeOnRamp;
+        self.maneuverType = OSRMV5ManeuverTypeOnRamp;
     } else if ([maneuverTypeString isEqualToString:@"off ramp"]) {
-        self.maneuverType = OSRMV5ManueverTypeOffRamp;
+        self.maneuverType = OSRMV5ManeuverTypeOffRamp;
     } else if ([maneuverTypeString isEqualToString:@"fork"]) {
-        self.maneuverType = OSRMV5ManueverTypeFork;
+        self.maneuverType = OSRMV5ManeuverTypeFork;
     } else if ([maneuverTypeString isEqualToString:@"end of road"]) {
-        self.maneuverType = OSRMV5ManueverTypeEndOfRoad;
+        self.maneuverType = OSRMV5ManeuverTypeEndOfRoad;
     } else if ([maneuverTypeString isEqualToString:@"use lane"]) {
-        self.maneuverType = OSRMV5ManueverTypeUseLane;
+        self.maneuverType = OSRMV5ManeuverTypeUseLane;
     } else if ([maneuverTypeString isEqualToString:@"continue"]) {
-        self.maneuverType = OSRMV5ManueverTypeContinue;
+        self.maneuverType = OSRMV5ManeuverTypeContinue;
     } else if ([maneuverTypeString isEqualToString:@"roundabout"]) {
-        self.maneuverType = OSRMV5ManueverTypeRoundabout;
+        self.maneuverType = OSRMV5ManeuverTypeRoundabout;
     } else if ([maneuverTypeString isEqualToString:@"rotary"]) {
-        self.maneuverType = OSRMV5ManueverTypeRotary;
+        self.maneuverType = OSRMV5ManeuverTypeRotary;
     } else if ([maneuverTypeString isEqualToString:@"roundabout turn"]) {
-        self.maneuverType = OSRMV5ManueverTypeRoundaboutTurn;
+        self.maneuverType = OSRMV5ManeuverTypeRoundaboutTurn;
     } else if ([maneuverTypeString isEqualToString:@"notification"]) {
-        self.maneuverType = OSRMV5ManueverTypeNotification;
+        self.maneuverType = OSRMV5ManeuverTypeNotification;
     }
     [self updateImageName];
 }
@@ -207,23 +277,53 @@ NSString *directionString(NSString *abbreviation)
 - (void)setManeuverModifierWithString:(NSString *)maneuverModifierString
 {
     if ([maneuverModifierString isEqualToString:@"uturn"]) {
-        self.maneuverModifier = OSRMV5ManueverModifierUTurn;
+        self.maneuverModifier = OSRMV5ManeuverModifierUTurn;
     } else if ([maneuverModifierString isEqualToString:@"sharp right"]) {
-        self.maneuverModifier = OSRMV5ManueverModifierSharpRight;
+        self.maneuverModifier = OSRMV5ManeuverModifierSharpRight;
     } else if ([maneuverModifierString isEqualToString:@"right"]) {
-        self.maneuverModifier = OSRMV5ManueverModifierRight;
+        self.maneuverModifier = OSRMV5ManeuverModifierRight;
     } else if ([maneuverModifierString isEqualToString:@"slight right"]) {
-        self.maneuverModifier = OSRMV5ManueverModifierSlightRight;
+        self.maneuverModifier = OSRMV5ManeuverModifierSlightRight;
     } else if ([maneuverModifierString isEqualToString:@"straight"]) {
-        self.maneuverModifier = OSRMV5ManueverModifierStraight;
+        self.maneuverModifier = OSRMV5ManeuverModifierStraight;
     } else if ([maneuverModifierString isEqualToString:@"slight left"]) {
-        self.maneuverModifier = OSRMV5ManueverModifierSlightLeft;
+        self.maneuverModifier = OSRMV5ManeuverModifierSlightLeft;
     } else if ([maneuverModifierString isEqualToString:@"left"]) {
-        self.maneuverModifier = OSRMV5ManueverModifierLeft;
+        self.maneuverModifier = OSRMV5ManeuverModifierLeft;
     } else if ([maneuverModifierString isEqualToString:@"sharp left"]) {
-        self.maneuverModifier = OSRMV5ManueverModifierSharpLeft;
+        self.maneuverModifier = OSRMV5ManeuverModifierSharpLeft;
     }
     [self updateImageName];
+}
+
+- (NSString *)stringForManeuverModifier:(OSRMV5ManeuverModifier)maneuverModifier
+{
+    switch (self.maneuverModifier) {
+        case OSRMV5ManeuverModifierStraight:
+            return @"straight";
+            break;
+        case OSRMV5ManeuverModifierUTurn:
+            return @"uturn";
+            break;
+        case OSRMV5ManeuverModifierLeft:
+            return @"left";
+            break;
+        case OSRMV5ManeuverModifierSharpLeft:
+            return @"sharp_left";
+            break;
+        case OSRMV5ManeuverModifierSlightLeft:
+            return @"slight_left";
+            break;
+        case OSRMV5ManeuverModifierRight:
+            return @"right";
+            break;
+        case OSRMV5ManeuverModifierSharpRight:
+            return @"shartp_right";
+            break;
+        case OSRMV5ManeuverModifierSlightRight:
+            return @"slight_right";
+            break;
+    }
 }
 
 - (void)updateImageName
@@ -310,48 +410,48 @@ NSString *directionString(NSString *abbreviation)
 - (void)updateImageNameForOSRMV5
 {
     switch (self.maneuverType) {
-        case OSRMV5ManueverTypeDepart:
+        case OSRMV5ManeuverTypeDepart:
             self.imageName = @"bike";
             break;
-        case OSRMV5ManueverTypeArrive:
+        case OSRMV5ManeuverTypeArrive:
             self.imageName = @"near-destination";
             break;
-        case OSRMV5ManueverTypeRoundabout:
-        case OSRMV5ManueverTypeRotary:
-        case OSRMV5ManueverTypeRoundaboutTurn:
+        case OSRMV5ManeuverTypeRoundabout:
+        case OSRMV5ManeuverTypeRotary:
+        case OSRMV5ManeuverTypeRoundaboutTurn:
             self.imageName = @"roundabout";
             break;
-//        case OSRMV5ManueverTypeTurn:
-//        case OSRMV5ManueverTypeNewName:
-//        case OSRMV5ManueverTypeMerge:
-//        case OSRMV5ManueverTypeRamp:
-//        case OSRMV5ManueverTypeOnRamp:
-//        case OSRMV5ManueverTypeOffRamp:
-//        case OSRMV5ManueverTypeFork:
-//        case OSRMV5ManueverTypeEndOfRoad:
-//        case OSRMV5ManueverTypeUseLane:
-//        case OSRMV5ManueverTypeContinue:
-//        case OSRMV5ManueverTypeNotification:
+//        case OSRMV5ManeuverTypeTurn:
+//        case OSRMV5ManeuverTypeNewName:
+//        case OSRMV5ManeuverTypeMerge:
+//        case OSRMV5ManeuverTypeRamp:
+//        case OSRMV5ManeuverTypeOnRamp:
+//        case OSRMV5ManeuverTypeOffRamp:
+//        case OSRMV5ManeuverTypeFork:
+//        case OSRMV5ManeuverTypeEndOfRoad:
+//        case OSRMV5ManeuverTypeUseLane:
+//        case OSRMV5ManeuverTypeContinue:
+//        case OSRMV5ManeuverTypeNotification:
         default:
             switch (self.maneuverModifier) {
-                case OSRMV5ManueverModifierStraight:
+                case OSRMV5ManeuverModifierStraight:
                     self.imageName = @"up";
                     break;
-                case OSRMV5ManueverModifierUTurn:
+                case OSRMV5ManeuverModifierUTurn:
                     self.imageName = @"u-turn";
                     break;
-                case OSRMV5ManueverModifierLeft:
-                case OSRMV5ManueverModifierSharpLeft:
+                case OSRMV5ManeuverModifierLeft:
+                case OSRMV5ManeuverModifierSharpLeft:
                     self.imageName = @"left";
                     break;
-                case OSRMV5ManueverModifierSlightLeft:
+                case OSRMV5ManeuverModifierSlightLeft:
                     self.imageName = @"left-ward";
                     break;
-                case OSRMV5ManueverModifierRight:
-                case OSRMV5ManueverModifierSharpRight:
+                case OSRMV5ManeuverModifierRight:
+                case OSRMV5ManeuverModifierSharpRight:
                     self.imageName = @"right";
                     break;
-                case OSRMV5ManueverModifierSlightRight:
+                case OSRMV5ManeuverModifierSlightRight:
                     self.imageName = @"right-ward";
                     break;
             }

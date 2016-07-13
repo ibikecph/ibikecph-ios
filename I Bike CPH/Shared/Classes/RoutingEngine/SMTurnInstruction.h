@@ -39,33 +39,33 @@ typedef NS_ENUM(NSUInteger, OSRMV4TurnDirection) {
 };
 
 typedef NS_ENUM(NSUInteger, OSRMV5ManeuverType) {
-    OSRMV5ManueverTypeTurn,
-    OSRMV5ManueverTypeNewName,
-    OSRMV5ManueverTypeDepart,
-    OSRMV5ManueverTypeArrive,
-    OSRMV5ManueverTypeMerge,
-    OSRMV5ManueverTypeRamp,
-    OSRMV5ManueverTypeOnRamp,
-    OSRMV5ManueverTypeOffRamp,
-    OSRMV5ManueverTypeFork,
-    OSRMV5ManueverTypeEndOfRoad,
-    OSRMV5ManueverTypeUseLane,
-    OSRMV5ManueverTypeContinue,
-    OSRMV5ManueverTypeRoundabout,
-    OSRMV5ManueverTypeRotary,
-    OSRMV5ManueverTypeRoundaboutTurn,
-    OSRMV5ManueverTypeNotification
+    OSRMV5ManeuverTypeTurn,
+    OSRMV5ManeuverTypeNewName,
+    OSRMV5ManeuverTypeDepart,
+    OSRMV5ManeuverTypeArrive,
+    OSRMV5ManeuverTypeMerge,
+    OSRMV5ManeuverTypeRamp,
+    OSRMV5ManeuverTypeOnRamp,
+    OSRMV5ManeuverTypeOffRamp,
+    OSRMV5ManeuverTypeFork,
+    OSRMV5ManeuverTypeEndOfRoad,
+    OSRMV5ManeuverTypeUseLane,
+    OSRMV5ManeuverTypeContinue,
+    OSRMV5ManeuverTypeRoundabout,
+    OSRMV5ManeuverTypeRotary,
+    OSRMV5ManeuverTypeRoundaboutTurn,
+    OSRMV5ManeuverTypeNotification
 };
 
 typedef NS_ENUM(NSUInteger, OSRMV5ManeuverModifier) {
-    OSRMV5ManueverModifierUTurn,
-    OSRMV5ManueverModifierSharpRight,
-    OSRMV5ManueverModifierRight,
-    OSRMV5ManueverModifierSlightRight,
-    OSRMV5ManueverModifierStraight,
-    OSRMV5ManueverModifierSlightLeft,
-    OSRMV5ManueverModifierLeft,
-    OSRMV5ManueverModifierSharpLeft
+    OSRMV5ManeuverModifierUTurn,
+    OSRMV5ManeuverModifierSharpRight,
+    OSRMV5ManeuverModifierRight,
+    OSRMV5ManeuverModifierSlightRight,
+    OSRMV5ManeuverModifierStraight,
+    OSRMV5ManeuverModifierSlightLeft,
+    OSRMV5ManeuverModifierLeft,
+    OSRMV5ManeuverModifierSharpLeft
 };
 
 typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {
