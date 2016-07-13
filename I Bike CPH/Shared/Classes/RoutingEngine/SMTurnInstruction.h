@@ -79,6 +79,9 @@ typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {
 @property(nonatomic, readonly) NSString *roundedDistanceToNextTurn;
 @property(nonatomic, strong) CLLocation *location;
 @property int waypointsIndex;
+@property int timeInSeconds;
+@property(nonatomic, assign) SMRouteType routeType;
+@property(nonatomic, strong) NSString *fixedLengthWithUnit;
 
 @property(nonatomic, strong) NSString *shortDescriptionString;
 @property(nonatomic, strong) NSString *descriptionString;
@@ -91,10 +94,8 @@ typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {
 - (void)generateFullDescriptionString;
 - (void)generateShortDescriptionString;
 
-#pragma mark - OSRM Version 4 properties
+#pragma mark - OSRM Version 4 only properties
 @property(nonatomic, assign) OSRMV4TurnDirection turnDirection;
-@property(nonatomic, assign) SMRouteType routeType;
-@property(nonatomic, strong) NSString *fixedLengthWithUnit;
 @property(nonatomic, strong) NSDate *routeLineTime;
 @property(nonatomic, strong) NSString *routeLineName;
 @property(nonatomic, strong) NSString *routeLineStart;
@@ -105,7 +106,7 @@ typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {
 @property(nonatomic, strong) NSString *wayName;
 @property(nonatomic, strong) NSString *directionAbbreviation;  // N: north, S: south, E: east, W: west, NW: North West, ...
 
-#pragma mark - OSRM Version 5 properties, methods
+#pragma mark - OSRM Version 5 only properties, methods
 @property (nonatomic, readonly) OSRMV5ManeuverType maneuverType;
 @property (nonatomic, readonly) OSRMV5ManeuverModifier maneuverModifier;
 

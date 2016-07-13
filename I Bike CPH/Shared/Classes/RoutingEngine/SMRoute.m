@@ -260,6 +260,7 @@
         BOOL isFirst = YES;
         for (id jsonObject in routeInstructions) {
             SMTurnInstruction *instruction = [[SMTurnInstruction alloc] init];
+            instruction.osrmVersion = TurnInstructionOSRMVersion4;
 
             NSArray *arr = [[NSString stringWithFormat:@"%@", jsonObject[0]] componentsSeparatedByString:@"-"];
             int pos = [(NSString *)arr[0] intValue];
@@ -420,6 +421,16 @@
         BOOL isFirst = YES;
         for (NSDictionary *step in steps) {
             SMTurnInstruction *instruction = [[SMTurnInstruction alloc] init];
+            instruction.osrmVersion = TurnInstructionOSRMVersion5;
+            
+            instruction.wayName = step[@"name"];
+            if ([instruction.wayName rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
+                instruction.wayName = translateString(instruction.wayName);
+            }
+            
+            instruction.timeInSeconds = [step[@"duration"] intValue];
+            instruction.lengthInMeters = prevLengthInMeters;
+            prevLengthInMeters = [step[@"distance"] intValue];
 
             OSRMV4TurnDirection turnDirection;
             NSDictionary *maneuver = step[@"maneuver"];
@@ -427,60 +438,37 @@
             [instruction setManeuverTypeWithString:maneuver[@"turn"]];
             [instruction setManeuverModifierWithString:maneuver[@"modifier"]];
             
-
-            if (turnDirection <= OSRMV4TurnDirectionUnboardPublicTransport) {
-                instruction.turnDirection = turnDirection;
+            NSString *mode = step[@"mode"];
+            if ([mode isEqualToString:@"cycling"]) {
+                instruction.routeType = SMRouteTypeBike;
+            } else if ([mode isEqualToString:@"pushing bike"]) {
+                instruction.routeType = SMRouteTypeWalk;
+            } else {
                 instruction.routeType = self.routeType;
-                instruction.routeLineName = self.transportLine;
-                if (turnDirection == OSRMV4TurnDirectionBoardPublicTransport) {
-                    instruction.routeLineStart = self.startDescription;
-                    instruction.routeLineDestination = self.endDescription;
-                    instruction.routeLineTime = self.startDate;
-                }
-                else if (turnDirection == OSRMV4TurnDirectionUnboardPublicTransport) {
-                    instruction.routeLineStart = self.startDescription;
-                    instruction.routeLineDestination = self.endDescription;
-                    instruction.routeLineTime = self.endDate;
-                }
+            }
+            
+            NSArray *location = maneuver[@"location"];
+            if ([location isKindOfClass:[NSArray class]] && location.count == 2) {
+                instruction.location = [[CLLocation alloc] initWithLatitude:[location[1] integerValue] longitude:[location[0] integerValue]];
+            }
 
-                instruction.ordinalDirection = @"";
-                instruction.wayName = step[@"name"];
+            if (isFirst) {
+                [instruction generateStartDescriptionString];
+                isFirst = NO;
+            }
+            else {
+                [instruction generateDescriptionString];
+            }
+            [instruction generateFullDescriptionString];
 
-                if ([instruction.wayName rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
-                    instruction.wayName = translateString(instruction.wayName);
-                }
+            [instruction generateShortDescriptionString];
 
-                instruction.lengthInMeters = prevLengthInMeters;
-                prevLengthInMeters = [step[@"distance"] intValue];
-                /**
-                 * Save length to next turn with units so we don't have to generate it each time
-                 * It's formatted just the way we like it
-                 */
-                instruction.fixedLengthWithUnit = [SMRouteUtils formatDistanceInMeters:prevLengthInMeters];
-                instruction.directionAbbreviation = @"";
-
-                if (isFirst) {
-                    [instruction generateStartDescriptionString];
-                    isFirst = NO;
-                }
-                else {
-                    [instruction generateDescriptionString];
-                }
-                [instruction generateFullDescriptionString];
-
-                [instruction generateShortDescriptionString];
-
-                instruction.waypointsIndex = 0;
-
-                NSArray *location = maneuver[@"location"];
-                if ([location isKindOfClass:[NSArray class]] && location.count == 2) {
-                    instruction.location = [[CLLocation alloc] initWithLatitude:[location[1] integerValue] longitude:[location[0] integerValue]];
-                }
-
-                @synchronized(self.turnInstructions)
-                {
-                    [self.turnInstructions addObject:instruction];
-                }
+            instruction.waypointsIndex = 0;
+            instruction.fixedLengthWithUnit = [SMRouteUtils formatDistanceInMeters:prevLengthInMeters];
+            
+            @synchronized(self.turnInstructions)
+            {
+                [self.turnInstructions addObject:instruction];
             }
         }
 
