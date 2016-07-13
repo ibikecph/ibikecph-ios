@@ -221,11 +221,47 @@ double RadiansToDegrees(double radians)
     return RadiansToDegrees(radiansBearing);
 }
 
++ (NSString *)encodePolyline:(NSArray *)locations
+{
+    NSMutableString *encodedString = [NSMutableString string];
+    int val = 0;
+    int value = 0;
+    CLLocationCoordinate2D prevCoordinate = CLLocationCoordinate2DMake(0, 0);
+
+    for (CLLocation *location in locations) {
+        CLLocationCoordinate2D coordinate = location.coordinate;
+
+        // Encode latitude
+        val = round((coordinate.latitude - prevCoordinate.latitude) * [SMRouteSettings sharedInstance].route_polyline_precision);
+        val = (val < 0) ? ~(val << 1) : (val << 1);
+        while (val >= 0x20) {
+            int value = (0x20 | (val & 31)) + 63;
+            [encodedString appendFormat:@"%c", value];
+            val >>= 5;
+        }
+        [encodedString appendFormat:@"%c", val + 63];
+
+        // Encode longitude
+        val = round((coordinate.longitude - prevCoordinate.longitude) * [SMRouteSettings sharedInstance].route_polyline_precision);
+        val = (val < 0) ? ~(val << 1) : (val << 1);
+        while (val >= 0x20) {
+            value = (0x20 | (val & 31)) + 63;
+            [encodedString appendFormat:@"%c", value];
+            val >>= 5;
+        }
+        [encodedString appendFormat:@"%c", val + 63];
+
+        prevCoordinate = coordinate;
+    }
+
+    return encodedString;
+}
+
 /*
  * Decoder for the Encoded Polyline Algorithm Format
  * https://developers.google.com/maps/documentation/utilities/polylinealgorithm
  */
-+ (NSMutableArray *)decodePolyline:(NSString *)encodedString precision:(double)precision
++ (NSArray *)decodePolyline:(NSString *)encodedString precision:(double)precision
 {
     const char *bytes = [encodedString UTF8String];
     size_t len = strlen(bytes);

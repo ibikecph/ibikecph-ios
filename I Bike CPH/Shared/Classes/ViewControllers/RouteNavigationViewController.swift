@@ -210,7 +210,7 @@ extension RouteNavigationViewController: RouteNavigationDirectionsToolbarDelegat
         } else {
             // Disable tracking to allow user to swipe through turn instructions
             mapView.userTrackingMode = .None
-            mapView.centerCoordinate(instruction.loc.coordinate, zoomLevel: mapView.zoomLevel)
+            mapView.centerCoordinate(instruction.location.coordinate, zoomLevel: mapView.zoomLevel)
         }
     }
 }

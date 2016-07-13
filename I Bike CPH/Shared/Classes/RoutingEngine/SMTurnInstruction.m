@@ -12,20 +12,16 @@
 
 #import "SMTurnInstruction.h"
 
+@interface SMTurnInstruction ()
+@property (nonatomic) TurnInstructionOSRMVersion osrmVersion;
+@end
+
 @implementation SMTurnInstruction
 @synthesize drivingDirection = _drivingDirection;
 NSString *icons[] = {
     @"no icon", @"up",         @"right-ward", @"right",      @"right", @"u-turn", @"left", @"left", @"left-ward",        @"location",
     @"up",      @"roundabout", @"roundabout", @"roundabout", @"up",    @"flag",   @"walk", @"bike", @"near-destination",
 };
-
-- (CLLocation *)getLocation
-{
-    return self.loc;
-    //    if (waypoints && self.waypointsIndex >= 0 && self.waypointsIndex < waypoints.count)
-    //        return [waypoints objectAtIndex:self.waypointsIndex];
-    //    return nil;
-}
 
 // Returns full direction names for abbreviations N NE E SE S SW W NW
 NSString *directionString(NSString *abbreviation)
@@ -53,7 +49,7 @@ NSString *directionString(NSString *abbreviation)
     if (self.routeType == SMRouteTypeBike || self.routeType == SMRouteTypeWalk) {
         NSString *key = [@"first_direction_" stringByAppendingFormat:@"%d", self.drivingDirection];
         NSString *desc =
-            [NSString stringWithFormat:translateString(key), translateString([@"direction_" stringByAppendingString:self.directionAbrevation]),
+            [NSString stringWithFormat:translateString(key), translateString([@"direction_" stringByAppendingString:self.directionAbbreviation]),
                                        translateString([@"direction_number_" stringByAppendingString:self.ordinalDirection])];
         self.descriptionString = desc;
     }
@@ -97,9 +93,9 @@ NSString *directionString(NSString *abbreviation)
 // Full textual representation of the object, used mainly for debugging
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ %@ [SMTurnInstruction: %d, %d, %@, %@, %f, (%f, %f)]", [self descriptionString], self.wayName,
-                                      self.lengthInMeters, self.timeInSeconds, self.lengthWithUnit, self.directionAbrevation, self.azimuth,
-                                      [self getLocation].coordinate.latitude, [self getLocation].coordinate.longitude];
+    return [NSString stringWithFormat:@"%@ %@ [SMTurnInstruction: %d, %@, (%f, %f)]", [self descriptionString], self.wayName,
+                                      self.lengthInMeters, self.directionAbbreviation,
+                                      self.location.coordinate.latitude, self.location.coordinate.longitude];
 }
 
 - (void)setDrivingDirection:(OSRMV4TurnDirection)drivingDirection

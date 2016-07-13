@@ -14,7 +14,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, OSRMV4TurnDirection) {
+typedef NS_ENUM(NSUInteger, OSRMV4TurnDirection) {
     OSRMV4TurnDirectionNoTurn = 0,  // Give no instruction at all
     OSRMV4TurnDirectionGoStraight = 1,
     OSRMV4TurnDirectionTurnSlightRight = 2,
@@ -38,62 +38,20 @@ typedef NS_ENUM(NSInteger, OSRMV4TurnDirection) {
     OSRMV4TurnDirectionReachingDestination = 100
 };
 
-/**
- * \ingroup libs
- * Turn instruction object
- */
-@interface SMTurnInstruction : NSObject {
-    // We need this array to calculate the location, since we only keep array index of the turn location (waypointsIndex),
-    // not the locaiton itself.
-    // We keep index so we know where turn location in this array of route locations is.
-    // (needed for some SMRoute distance calculations, see where waypointsIndex is used in SMRoute.m)
-    //    __weak NSArray *waypoints;
-}
+typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {
+    TurnInstructionOSRMVersion4,
+    TurnInstructionOSRMVersion5
+};
 
-@property(nonatomic, assign) OSRMV4TurnDirection drivingDirection;
-@property(nonatomic, strong) NSString *ordinalDirection;
-@property(nonatomic, strong) NSString *wayName;
-@property int lengthInMeters;
-@property int timeInSeconds;
-@property(nonatomic, strong) NSString *lengthWithUnit;
+@interface SMTurnInstruction : NSObject
+
 @property(nonatomic, readonly) NSString *roundedDistanceToNextTurn;
-@property(nonatomic, strong) NSString *imageName;
-@property(nonatomic, assign) SMRouteType routeType;
-@property(nonatomic, strong) NSString *routeLineName;
-@property(nonatomic, strong) NSString *routeLineStart;
-@property(nonatomic, strong) NSString *routeLineDestination;
-@property(nonatomic, strong) NSDate *routeLineTime;
-/**
- * Length to next turn in units (km or m)
- * This value will not auto update
- */
-@property(nonatomic, strong) NSString *fixedLengthWithUnit;
-@property(nonatomic, strong) NSString *directionAbrevation;  // N: north, S: south, E: east, W: west, NW: North West, ...
-@property float azimuth;
-
-/**
- * Indicate type of transport
- *
- * 1 - bike
- * 2 - walking
- * 3 - ferry
- * 4 - train
- */
-@property NSInteger vehicle;
-
+@property(nonatomic, strong) CLLocation *location;
 @property int waypointsIndex;
-@property(nonatomic, strong) CLLocation *loc;
 
 @property(nonatomic, strong) NSString *shortDescriptionString;
 @property(nonatomic, strong) NSString *descriptionString;
 @property(nonatomic, strong) NSString *fullDescriptionString;
-
-- (CLLocation *)getLocation;
-
-// Returns only string representation of the driving direction
-//- (NSString *)descriptionString;
-// Returns only string representation of the driving direction including wayname
-//- (NSString *)fullDescriptionString; // including wayname
 
 - (UIImage *)directionIcon;
 
@@ -101,5 +59,22 @@ typedef NS_ENUM(NSInteger, OSRMV4TurnDirection) {
 - (void)generateStartDescriptionString;
 - (void)generateFullDescriptionString;
 - (void)generateShortDescriptionString;
+
+#pragma mark - OSRM Version 4 properties
+@property(nonatomic, assign) OSRMV4TurnDirection drivingDirection;
+@property(nonatomic, assign) SMRouteType routeType;
+@property(nonatomic, strong) NSString *fixedLengthWithUnit;
+@property(nonatomic, strong) NSDate *routeLineTime;
+@property(nonatomic, strong) NSString *routeLineName;
+@property(nonatomic, strong) NSString *routeLineStart;
+@property(nonatomic, strong) NSString *routeLineDestination;
+@property(nonatomic, strong) NSString *imageName;
+@property int lengthInMeters;
+@property(nonatomic, strong) NSString *ordinalDirection;
+@property(nonatomic, strong) NSString *wayName;
+@property(nonatomic, strong) NSString *directionAbbreviation;  // N: north, S: south, E: east, W: west, NW: North West, ...
+
+#pragma mark - OSRM Version 5 properties
+
 
 @end

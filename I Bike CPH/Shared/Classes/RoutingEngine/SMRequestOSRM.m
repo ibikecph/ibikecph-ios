@@ -386,7 +386,7 @@ static dispatch_queue_t reachabilityQueue;
                     }
                     if ([r[@"routes"] isKindOfClass:[NSArray class]]) {
                         NSDictionary *firstRoute = [(NSArray *)r[@"routes"] firstObject];
-                        NSMutableArray *points =
+                        NSArray *points =
                             [SMGPSUtil decodePolyline:firstRoute[@"geometry"] precision:[SMRouteSettings sharedInstance].route_polyline_precision];
                         CLLocationCoordinate2D start = ((CLLocation *)[points objectAtIndex:0]).coordinate;
                         CLLocationCoordinate2D end = ((CLLocation *)[points lastObject]).coordinate;

@@ -31,9 +31,15 @@ BOOL sameCoordinates(CLLocation *loc1, CLLocation *loc2);
 + (double)bearingBetweenStartLocation:(CLLocation *)startLocation andEndLocation:(CLLocation *)endLocation;
 
 /*
+ * Encoder for the Polyline Algorithm Format
+ * https://developers.google.com/maps/documentation/utilities/polylinealgorithm
+ */
++ (NSString *)encodePolyline:(NSArray *)locations;
+
+/*
  * Decoder for the Encoded Polyline Algorithm Format
  * https://developers.google.com/maps/documentation/utilities/polylinealgorithm
  */
-+ (NSMutableArray *)decodePolyline:(NSString *)encodedString precision:(double)precision;
++ (NSArray *)decodePolyline:(NSString *)encodedString precision:(double)precision;
 
 @end

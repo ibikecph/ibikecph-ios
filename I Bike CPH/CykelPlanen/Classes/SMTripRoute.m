@@ -200,7 +200,7 @@
 {
     SMTurnInstruction *turnInstruction = [SMTurnInstruction new];
     turnInstruction.wayName = station.name;
-    turnInstruction.loc = station.location;
+    turnInstruction.location = station.location;
     turnInstruction.imageName = [SMStationInfo imageNameForType:station.type];
     return turnInstruction;
 }

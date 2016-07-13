@@ -42,10 +42,7 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
 - (void)routeRecalculationDone;
 @end
 
-@interface SMRoute : NSObject<SMRequestOSRMDelegate> {
-    BOOL approachingTurn;
-    double distanceFromStart;
-}
+@interface SMRoute : NSObject<SMRequestOSRMDelegate>
 
 @property(nonatomic, weak) id<SMRouteDelegate> delegate;
 

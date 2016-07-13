@@ -35,7 +35,6 @@
         self.tripDistance = -1;
         self.caloriesBurned = -1;
         self.averageSpeed = -1;
-        approachingTurn = NO;
         self.lastVisitedWaypointIndex = -1;
         self.recalculationInProgress = NO;
         self.lastRecalcLocation = [[CLLocation alloc] initWithLatitude:0 longitude:0];
@@ -158,42 +157,6 @@
     return NULL;
 }
 
-+ (NSString *)encodePolyline:(NSArray *)locations
-{
-    NSMutableString *encodedString = [NSMutableString string];
-    int val = 0;
-    int value = 0;
-    CLLocationCoordinate2D prevCoordinate = CLLocationCoordinate2DMake(0, 0);
-
-    for (CLLocation *location in locations) {
-        CLLocationCoordinate2D coordinate = location.coordinate;
-
-        // Encode latitude
-        val = round((coordinate.latitude - prevCoordinate.latitude) * [SMRouteSettings sharedInstance].route_polyline_precision);
-        val = (val < 0) ? ~(val << 1) : (val << 1);
-        while (val >= 0x20) {
-            int value = (0x20 | (val & 31)) + 63;
-            [encodedString appendFormat:@"%c", value];
-            val >>= 5;
-        }
-        [encodedString appendFormat:@"%c", val + 63];
-
-        // Encode longitude
-        val = round((coordinate.longitude - prevCoordinate.longitude) * [SMRouteSettings sharedInstance].route_polyline_precision);
-        val = (val < 0) ? ~(val << 1) : (val << 1);
-        while (val >= 0x20) {
-            value = (0x20 | (val & 31)) + 63;
-            [encodedString appendFormat:@"%c", value];
-            val >>= 5;
-        }
-        [encodedString appendFormat:@"%c", val + 63];
-
-        prevCoordinate = coordinate;
-    }
-
-    return encodedString;
-}
-
 - (BOOL)parseFromJson:(NSDictionary *)jsonRoot delegate:(id<SMRouteDelegate>)dlg
 {
     // Hacks incoming!
@@ -245,7 +208,7 @@
 
     @synchronized(self.waypoints)
     {
-        self.waypoints = [SMGPSUtil decodePolyline:jsonRoot[@"route_geometry"] precision:polylinePrecision];
+        self.waypoints = [SMGPSUtil decodePolyline:jsonRoot[@"route_geometry"] precision:polylinePrecision].mutableCopy;
     }
 
     if (self.waypoints.count < 2) {
@@ -293,8 +256,7 @@
 
     NSArray *routeInstructions = jsonRoot[@"route_instructions"];
     if (routeInstructions && routeInstructions.count > 0) {
-        int prevlengthInMeters = 0;
-        NSString *prevlengthWithUnit = @"";
+        int prevLengthInMeters = 0;
         BOOL isFirst = YES;
         for (id jsonObject in routeInstructions) {
             SMTurnInstruction *instruction = [[SMTurnInstruction alloc] init];
@@ -328,22 +290,14 @@
                     instruction.wayName = translateString(instruction.wayName);
                 }
 
-                instruction.lengthInMeters = prevlengthInMeters;
-                prevlengthInMeters = [(NSNumber *)jsonObject[2] intValue];
-                instruction.timeInSeconds = [(NSNumber *)jsonObject[4] intValue];
-                instruction.lengthWithUnit = prevlengthWithUnit;
+                instruction.lengthInMeters = prevLengthInMeters;
+                prevLengthInMeters = [(NSNumber *)jsonObject[2] intValue];
                 /**
                  * Save length to next turn with units so we don't have to generate it each time
                  * It's formatted just the way we like it
                  */
-                instruction.fixedLengthWithUnit = [SMRouteUtils formatDistanceInMeters:prevlengthInMeters];
-                prevlengthWithUnit = (NSString *)jsonObject[5];
-                instruction.directionAbrevation = (NSString *)jsonObject[6];
-                instruction.azimuth = [(NSNumber *)jsonObject[7] floatValue];
-                instruction.vehicle = 0;
-                if ([jsonObject count] > 8) {
-                    instruction.vehicle = [(NSNumber *)jsonObject[8] intValue];
-                }
+                instruction.fixedLengthWithUnit = [SMRouteUtils formatDistanceInMeters:prevLengthInMeters];
+                instruction.directionAbbreviation = (NSString *)jsonObject[6];
 
                 if (isFirst) {
                     [instruction generateStartDescriptionString];
@@ -360,7 +314,7 @@
                 instruction.waypointsIndex = position;
 
                 if (self.waypoints && position >= 0 && position < self.waypoints.count) {
-                    instruction.loc = self.waypoints[position];
+                    instruction.location = self.waypoints[position];
                 }
 
                 @synchronized(self.turnInstructions)
@@ -428,7 +382,7 @@
     {
         double polylinePrecision = [SMRouteSettings sharedInstance].route_polyline_precision;
         polylinePrecision /= 10;
-        self.waypoints = [SMGPSUtil decodePolyline:route[@"geometry"] precision:polylinePrecision];
+        self.waypoints = [SMGPSUtil decodePolyline:route[@"geometry"] precision:polylinePrecision].mutableCopy;
     }
 
     if (self.waypoints.count < 2) {
@@ -462,8 +416,7 @@
         [self ifNecessaryTranslateStreetname:self.endDescription];
     }
     if ([steps isKindOfClass:[NSArray class]] && steps.count > 0) {
-        int prevlengthInMeters = 0;
-        NSString *prevlengthWithUnit = @"";
+        int prevLengthInMeters = 0;
         BOOL isFirst = YES;
         for (NSDictionary *step in steps) {
             SMTurnInstruction *instruction = [[SMTurnInstruction alloc] init];
@@ -530,33 +483,14 @@
                     instruction.wayName = translateString(instruction.wayName);
                 }
 
-                instruction.lengthInMeters = prevlengthInMeters;
-                prevlengthInMeters = [step[@"distance"] intValue];
-                instruction.timeInSeconds = [step[@"duration"] intValue];
-                instruction.lengthWithUnit = prevlengthWithUnit;
+                instruction.lengthInMeters = prevLengthInMeters;
+                prevLengthInMeters = [step[@"distance"] intValue];
                 /**
                  * Save length to next turn with units so we don't have to generate it each time
                  * It's formatted just the way we like it
                  */
-                instruction.fixedLengthWithUnit = [SMRouteUtils formatDistanceInMeters:prevlengthInMeters];
-                prevlengthWithUnit = [NSString stringWithFormat:@"%im", prevlengthInMeters];
-                instruction.directionAbrevation = @"";
-                instruction.azimuth = 0.0f;
-                instruction.vehicle = 0;
-
-                NSString *stepMode = step[@"mode"];
-                if ([stepMode isEqualToString:@"cycling"]) {
-                    instruction.vehicle = 1;
-                }
-                else if ([stepMode isEqualToString:@"pushing bike"]) {
-                    instruction.vehicle = 2;
-                }
-                else if ([stepMode isEqualToString:@"?"]) {
-                    instruction.vehicle = 3;
-                }
-                else if ([stepMode isEqualToString:@"?"]) {
-                    instruction.vehicle = 4;
-                }
+                instruction.fixedLengthWithUnit = [SMRouteUtils formatDistanceInMeters:prevLengthInMeters];
+                instruction.directionAbbreviation = @"";
 
                 if (isFirst) {
                     [instruction generateStartDescriptionString];
@@ -573,7 +507,7 @@
 
                 NSArray *location = maneuver[@"location"];
                 if ([location isKindOfClass:[NSArray class]] && location.count == 2) {
-                    instruction.loc = [[CLLocation alloc] initWithLatitude:[location[1] integerValue] longitude:[location[0] integerValue]];
+                    instruction.location = [[CLLocation alloc] initWithLatitude:[location[1] integerValue] longitude:[location[0] integerValue]];
                 }
 
                 @synchronized(self.turnInstructions)
@@ -644,7 +578,6 @@
         // calculate distance from location to the next turn
         SMTurnInstruction *nextTurn = self.turnInstructions[0];
         nextTurn.lengthInMeters = [self calculateDistanceToNextTurn:loc];
-        nextTurn.lengthWithUnit = [SMRouteUtils formatDistanceInMeters:nextTurn.lengthInMeters];
         @synchronized(self.turnInstructions)
         {
             [self.turnInstructions setObject:nextTurn atIndexedSubscript:0];
@@ -661,11 +594,9 @@
 
 - (NSDictionary *)save
 {
-    // TODO save visited locations and posibly some other info
-    //    debugLog(@"Saving route");
     return @{
         @"data" : [NSKeyedArchiver archivedDataWithRootObject:self.visitedLocations],
-        @"polyline" : [SMRoute encodePolyline:self.visitedLocations]
+        @"polyline" : [SMGPSUtil encodePolyline:self.visitedLocations]
     };
 }
 
@@ -682,7 +613,7 @@
 
     // If first turn still hasn't been reached, return linear distance to it.
     if (self.pastTurnInstructions.count == 0) {
-        return [loc distanceFromLocation:nextTurn.loc];
+        return [loc distanceFromLocation:nextTurn.location];
     }
 
     NSUInteger firstIndex = self.lastVisitedWaypointIndex >= 0 ? self.lastVisitedWaypointIndex + 1 : 0;
