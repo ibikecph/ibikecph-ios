@@ -423,43 +423,10 @@
 
             OSRMV4TurnDirection turnDirection;
             NSDictionary *maneuver = step[@"maneuver"];
-            NSString *maneuverType = maneuver[@"turn"];
-            NSString *maneuverModifier = maneuver[@"modifier"];
-            if ([maneuverType isEqualToString:@"turn"] || [maneuverType isEqualToString:@"continue"]) {
-                if ([maneuverModifier isEqualToString:@"uturn"]) {
-                    turnDirection = OSRMV4TurnDirectionUTurn;
-                }
-                else if ([maneuverType isEqualToString:@"sharp right"]) {
-                    turnDirection = OSRMV4TurnDirectionTurnSharpRight;
-                }
-                else if ([maneuverType isEqualToString:@"right"]) {
-                    turnDirection = OSRMV4TurnDirectionTurnRight;
-                }
-                else if ([maneuverType isEqualToString:@"slight right"]) {
-                    turnDirection = OSRMV4TurnDirectionTurnSlightRight;
-                }
-                else if ([maneuverType isEqualToString:@"straight"]) {
-                    turnDirection = OSRMV4TurnDirectionGoStraight;
-                }
-                else if ([maneuverType isEqualToString:@"sharp left"]) {
-                    turnDirection = OSRMV4TurnDirectionTurnSharpLeft;
-                }
-                else if ([maneuverType isEqualToString:@"left"]) {
-                    turnDirection = OSRMV4TurnDirectionTurnLeft;
-                }
-                else if ([maneuverType isEqualToString:@"slight left"]) {
-                    turnDirection = OSRMV4TurnDirectionTurnSlightLeft;
-                }
-            }
-            else if ([maneuverType isEqualToString:@"depart"]) {
-                turnDirection = OSRMV4TurnDirectionHeadOn;
-            }
-            else if ([maneuverType isEqualToString:@"arrive"]) {
-                turnDirection = OSRMV4TurnDirectionReachedYourDestination;
-            }
-            else if ([maneuverType isEqualToString:@"roundabout"]) {
-                turnDirection = OSRMV4TurnDirectionEnterRoundAbout;
-            }
+            [instruction setDirectionAbbreviationWithBearingAfter:[maneuver[@"bearing_after"] unsignedIntegerValue]];
+            [instruction setManeuverTypeWithString:maneuver[@"turn"]];
+            [instruction setManeuverModifierWithString:maneuver[@"modifier"]];
+            
 
             if (turnDirection <= OSRMV4TurnDirectionUnboardPublicTransport) {
                 instruction.turnDirection = turnDirection;

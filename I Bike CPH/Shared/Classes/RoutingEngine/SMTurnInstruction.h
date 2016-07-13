@@ -111,6 +111,6 @@ typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {
 
 - (void)setManeuverTypeWithString:(NSString *)maneuverTypeString;
 - (void)setManeuverModifierWithString:(NSString *)maneuverModifierString;
-
+- (void)setDirectionAbbreviationWithBearingAfter:(NSUInteger)bearingAfter;
 
 @end

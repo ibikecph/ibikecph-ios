@@ -98,8 +98,10 @@ NSString *directionString(NSString *abbreviation)
 - (void)setTurnDirection:(OSRMV4TurnDirection)turnDirection
 {
     _turnDirection = turnDirection;
-    self.imageName = [self imageNameForTurnDirection:self.turnDirection];
+    [self updateImageName];
 }
+
+#pragma mark - Setters
 
 - (void)setRouteType:(SMRouteType)routeType
 {
@@ -128,6 +130,29 @@ NSString *directionString(NSString *abbreviation)
             default:
                 break;
         }
+    }
+}
+
+- (void)setDirectionAbbreviationWithBearingAfter:(NSUInteger)bearingAfter
+{
+    if (bearingAfter < 23) {
+        self.directionAbbreviation = @"N";
+    } else if (bearingAfter < 23 + 45) {
+        self.directionAbbreviation = @"NE";
+    } else if (bearingAfter < 23 + 45 * 2) {
+        self.directionAbbreviation = @"E";
+    } else if (bearingAfter < 23 + 45 * 3) {
+        self.directionAbbreviation = @"SE";
+    } else if (bearingAfter < 23 + 45 * 4) {
+        self.directionAbbreviation = @"S";
+    } else if (bearingAfter < 23 + 45 * 5) {
+        self.directionAbbreviation = @"SW";
+    } else if (bearingAfter < 23 + 45 * 6) {
+        self.directionAbbreviation = @"W";
+    } else if (bearingAfter < 23 + 45 * 7) {
+        self.directionAbbreviation = @"NW";
+    } else {
+        self.directionAbbreviation = @"N";
     }
 }
 
@@ -176,6 +201,7 @@ NSString *directionString(NSString *abbreviation)
     } else if ([maneuverTypeString isEqualToString:@"notification"]) {
         self.maneuverType = OSRMV5ManueverTypeNotification;
     }
+    [self updateImageName];
 }
 
 - (void)setManeuverModifierWithString:(NSString *)maneuverModifierString
@@ -197,74 +223,140 @@ NSString *directionString(NSString *abbreviation)
     } else if ([maneuverModifierString isEqualToString:@"sharp left"]) {
         self.maneuverModifier = OSRMV5ManueverModifierSharpLeft;
     }
+    [self updateImageName];
 }
 
-- (NSString *)imageNameForTurnDirection:(OSRMV4TurnDirection)turnDirection
+- (void)updateImageName
 {
-    switch (turnDirection) {
+    switch (self.osrmVersion) {
+        case TurnInstructionOSRMVersion4:
+            [self updateImageNameForOSRMV4];
+            break;
+        case TurnInstructionOSRMVersion5:
+            [self updateImageNameForOSRMV5];
+            break;
+    }
+}
+
+- (void)updateImageNameForOSRMV4
+{
+    switch (self.turnDirection) {
         case OSRMV4TurnDirectionNoTurn:
-            return @"no icon";
+            self.imageName = @"no icon";
             break;
         case OSRMV4TurnDirectionGoStraight:
-            return @"up";
+            self.imageName = @"up";
             break;
         case OSRMV4TurnDirectionTurnSlightRight:
-            return @"right-ward";
+            self.imageName = @"right-ward";
             break;
         case OSRMV4TurnDirectionTurnRight:
-            return @"right";
+            self.imageName = @"right";
             break;
         case OSRMV4TurnDirectionTurnSharpRight:
-            return @"right";
+            self.imageName = @"right";
             break;
         case OSRMV4TurnDirectionUTurn:
-            return @"u-turn";
+            self.imageName = @"u-turn";
             break;
         case OSRMV4TurnDirectionTurnSharpLeft:
-            return @"left";
+            self.imageName = @"left";
             break;
         case OSRMV4TurnDirectionTurnLeft:
-            return @"left";
+            self.imageName = @"left";
             break;
         case OSRMV4TurnDirectionTurnSlightLeft:
-            return @"left-ward";
+            self.imageName = @"left-ward";
             break;
         case OSRMV4TurnDirectionReachViaPoint:
-            return @"location";
+            self.imageName = @"location";
             break;
         case OSRMV4TurnDirectionHeadOn:
-            return @"up";
+            self.imageName = @"up";
             break;
         case OSRMV4TurnDirectionEnterRoundAbout:
-            return @"roundabout";
+            self.imageName = @"roundabout";
             break;
         case OSRMV4TurnDirectionLeaveRoundAbout:
-            return @"roundabout";
+            self.imageName = @"roundabout";
             break;
         case OSRMV4TurnDirectionStayOnRoundAbout:
-            return @"roundabout";
+            self.imageName = @"roundabout";
             break;
         case OSRMV4TurnDirectionStartAtEndOfStreet:
-            return @"up";
+            self.imageName = @"up";
             break;
         case OSRMV4TurnDirectionReachedYourDestination:
-            return @"flag";
+            self.imageName = @"flag";
             break;
         case OSRMV4TurnDirectionStartPushingBikeInOneway:
-            return @"walk";
+            self.imageName = @"walk";
             break;
         case OSRMV4TurnDirectionStopPushingBikeInOneway:
-            return @"bike";
+            self.imageName = @"bike";
             break;
         case OSRMV4TurnDirectionBoardPublicTransport:
-            return @"near-destination";
+            self.imageName = @"near-destination";
             break;
         case OSRMV4TurnDirectionUnboardPublicTransport:
-            return @"near-destination";
+            self.imageName = @"near-destination";
             break;
         default:
-            return @"";
+            self.imageName = @"";
             break;
+    }
+}
+
+- (void)updateImageNameForOSRMV5
+{
+    switch (self.maneuverType) {
+        case OSRMV5ManueverTypeDepart:
+            self.imageName = @"bike";
+            break;
+        case OSRMV5ManueverTypeArrive:
+            self.imageName = @"near-destination";
+            break;
+        case OSRMV5ManueverTypeRoundabout:
+        case OSRMV5ManueverTypeRotary:
+        case OSRMV5ManueverTypeRoundaboutTurn:
+            self.imageName = @"roundabout";
+            break;
+//        case OSRMV5ManueverTypeTurn:
+//        case OSRMV5ManueverTypeNewName:
+//        case OSRMV5ManueverTypeMerge:
+//        case OSRMV5ManueverTypeRamp:
+//        case OSRMV5ManueverTypeOnRamp:
+//        case OSRMV5ManueverTypeOffRamp:
+//        case OSRMV5ManueverTypeFork:
+//        case OSRMV5ManueverTypeEndOfRoad:
+//        case OSRMV5ManueverTypeUseLane:
+//        case OSRMV5ManueverTypeContinue:
+//        case OSRMV5ManueverTypeNotification:
+        default:
+            switch (self.maneuverModifier) {
+                case OSRMV5ManueverModifierStraight:
+                    self.imageName = @"up";
+                    break;
+                case OSRMV5ManueverModifierUTurn:
+                    self.imageName = @"u-turn";
+                    break;
+                case OSRMV5ManueverModifierLeft:
+                case OSRMV5ManueverModifierSharpLeft:
+                    self.imageName = @"left";
+                    break;
+                case OSRMV5ManueverModifierSlightLeft:
+                    self.imageName = @"left-ward";
+                    break;
+                case OSRMV5ManueverModifierRight:
+                case OSRMV5ManueverModifierSharpRight:
+                    self.imageName = @"right";
+                    break;
+                case OSRMV5ManueverModifierSlightRight:
+                    self.imageName = @"right-ward";
+                    break;
+            }
+            break;
+            
     }
 }
 
