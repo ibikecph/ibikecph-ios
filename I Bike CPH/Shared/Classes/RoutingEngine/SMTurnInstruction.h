@@ -83,11 +83,10 @@ typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {
 @property(nonatomic, assign) SMRouteType routeType;
 @property(nonatomic, strong) NSString *fixedLengthWithUnit;
 
-@property(nonatomic, strong) NSString *shortDescriptionString;
-@property(nonatomic, strong) NSString *descriptionString;
-@property(nonatomic, strong) NSString *fullDescriptionString;
-
-- (UIImage *)directionIcon;
+@property(nonatomic, readonly) NSString *shortDescriptionString;
+@property(nonatomic, readonly) NSString *descriptionString;
+@property(nonatomic, readonly) NSString *fullDescriptionString;
+@property(nonatomic, readonly) UIImage *directionIcon;
 
 - (void)generateDescriptionString;
 - (void)generateStartDescriptionString;

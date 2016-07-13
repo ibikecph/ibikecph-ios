@@ -418,7 +418,6 @@
     }
     if ([steps isKindOfClass:[NSArray class]] && steps.count > 0) {
         int prevLengthInMeters = 0;
-        BOOL isFirst = YES;
         for (NSDictionary *step in steps) {
             SMTurnInstruction *instruction = [[SMTurnInstruction alloc] init];
             instruction.osrmVersion = TurnInstructionOSRMVersion5;
@@ -451,17 +450,6 @@
             if ([location isKindOfClass:[NSArray class]] && location.count == 2) {
                 instruction.location = [[CLLocation alloc] initWithLatitude:[location[1] integerValue] longitude:[location[0] integerValue]];
             }
-
-            if (isFirst) {
-                [instruction generateStartDescriptionString];
-                isFirst = NO;
-            }
-            else {
-                [instruction generateDescriptionString];
-            }
-            [instruction generateFullDescriptionString];
-
-            [instruction generateShortDescriptionString];
 
             instruction.waypointsIndex = 0;
             instruction.fixedLengthWithUnit = [SMRouteUtils formatDistanceInMeters:prevLengthInMeters];

@@ -34,7 +34,7 @@ class TurnInstructionsCollectionViewCell: NibDesignableCollectionViewCell {
 extension TurnInstructionsCollectionViewCell {
     
     func configure(instruction: SMTurnInstruction) {
-        directionImageView.image = instruction.directionIcon()
+        directionImageView.image = instruction.directionIcon
         let isPublic = instruction.routeType != .Bike && instruction.routeType != .Walk
         if isPublic {
             wayNameLabel.text = instruction.descriptionString

@@ -15,10 +15,18 @@
 @interface SMTurnInstruction ()
 @property (nonatomic, assign) OSRMV5ManeuverType maneuverType;
 @property (nonatomic, assign) OSRMV5ManeuverModifier maneuverModifier;
+@property (nonatomic) NSString *shortDescriptionString;
+@property (nonatomic) NSString *descriptionString;
+@property (nonatomic) NSString *fullDescriptionString;
 @end
 
 @implementation SMTurnInstruction
 @synthesize turnDirection = _turnDirection;
+
+- (void)generateShortDescriptionString
+{
+    self.shortDescriptionString = self.wayName;
+}
 
 // Returns only string representation of the driving direction
 - (void)generateDescriptionString
@@ -66,11 +74,6 @@
     }
 }
 
-- (void)generateShortDescriptionString
-{
-    self.shortDescriptionString = self.wayName;
-}
-
 // Returns only string representation of the driving direction including wayname
 - (void)generateFullDescriptionString
 {
@@ -94,15 +97,10 @@
             break;
         }
         case TurnInstructionOSRMVersion5: {
-            self.descriptionString = [self OSRMV5Instruction];
+            self.fullDescriptionString = [self OSRMV5Instruction];
             break;
         }
     }
-}
-
-- (UIImage *)directionIcon
-{
-    return [UIImage imageNamed:self.imageName];
 }
 
 #pragma mark - Setters
@@ -167,6 +165,36 @@
 }
 
 #pragma mark - Getters
+
+- (UIImage *)directionIcon
+{
+    return [UIImage imageNamed:self.imageName];
+}
+
+
+- (NSString *)shortDescriptionString
+{
+    if (!_shortDescriptionString) {
+        [self generateShortDescriptionString];
+    }
+    return _shortDescriptionString;
+}
+
+- (NSString *)descriptionString
+{
+    if (!_descriptionString) {
+        [self generateDescriptionString];
+    }
+    return _descriptionString;
+}
+
+- (NSString *)fullDescriptionString
+{
+    if (!_fullDescriptionString) {
+        [self generateFullDescriptionString];
+    }
+    return _fullDescriptionString;
+}
 
 - (NSString *)roundedDistanceToNextTurn
 {
