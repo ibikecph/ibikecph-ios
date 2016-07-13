@@ -35,7 +35,7 @@ extension TurnInstructionsCollectionViewCell {
     
     func configure(instruction: SMTurnInstruction) {
         directionImageView.image = instruction.directionIcon()
-        let isPublic = instruction.routeType != SMRouteTypeBike && instruction.routeType != SMRouteTypeWalk
+        let isPublic = instruction.routeType != .Bike && instruction.routeType != .Walk
         if isPublic {
             wayNameLabel.text = instruction.descriptionString
             distanceLabel.text = timeFormatter.stringFromDate(instruction.routeLineTime)

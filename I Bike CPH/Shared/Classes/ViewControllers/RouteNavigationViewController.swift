@@ -165,8 +165,8 @@ class RouteNavigationViewController: MapViewController {
                             break
                         } // Has previous route
                         let previousRoute = routes[previousIndex]
-                        if previousRoute.routeType == SMRouteTypeBike ||
-                            previousRoute.routeType == SMRouteTypeWalk {
+                        if previousRoute.routeType == .Bike ||
+                            previousRoute.routeType == .Walk {
                             break
                         } // Previous route was public
                         let distanceFromPreviousRouteEndLocation = previousRoute.getEndLocation().distanceFromLocation(currentRoute.lastCorrectedLocation)

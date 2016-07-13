@@ -102,7 +102,7 @@ NSString *directionString(NSString *abbreviation)
                                       [self getLocation].coordinate.latitude, [self getLocation].coordinate.longitude];
 }
 
-- (void)setDrivingDirection:(TurnDirection)drivingDirection
+- (void)setDrivingDirection:(OSRMV4TurnDirection)drivingDirection
 {
     _drivingDirection = drivingDirection;
     self.imageName = icons[self.drivingDirection];

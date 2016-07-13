@@ -133,23 +133,23 @@ class RouteBrokenPartView: UIView {
         var imageName = ""
 
         switch route.routeType {
-        case SMRouteTypeBike:
+        case .Bike:
             imageName = "Bike"
             topLabelString = "vehicle_1".localized + " " + distance +  ", " + duration
             bottomLabelString = "from".localized + " " + startPlace + " " + "to".localized + "\n" + endPlace
-        case SMRouteTypeWalk:
+        case .Walk:
             imageName = "Walk"
             topLabelString = "vehicle_2".localized + " " + distance +  ", " + duration
             bottomLabelString = "from".localized + " " + startPlace + " " + "to".localized + "\n" + endPlace
-        case SMRouteTypeSTrain:
+        case .STrain:
             imageName = "STrain"
-        case SMRouteTypeMetro:
+        case .Metro:
             imageName = "Metro"
-        case SMRouteTypeFerry:
+        case .Ferry:
             imageName = "Ferry"
-        case SMRouteTypeBus:
+        case .Bus:
             imageName = "Bus"
-        case SMRouteTypeTrain:
+        case .Train:
             imageName = "Train"
         default: break
         }

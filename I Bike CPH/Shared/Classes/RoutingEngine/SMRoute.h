@@ -13,7 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
 
-typedef enum SMRouteType : NSUInteger {
+typedef NS_ENUM(NSUInteger, SMRouteType) {
     SMRouteTypeBike = 0,
     SMRouteTypeWalk = 1,
     SMRouteTypeSTrain = 2,
@@ -21,7 +21,7 @@ typedef enum SMRouteType : NSUInteger {
     SMRouteTypeBus = 4,
     SMRouteTypeFerry = 5,
     SMRouteTypeTrain = 6,
-} SMRouteType;
+};
 
 #import "SMRequestOSRM.h"
 #import "SMTurnInstruction.h"
@@ -50,11 +50,10 @@ typedef enum SMRouteType : NSUInteger {
 @property(nonatomic, weak) id<SMRouteDelegate> delegate;
 
 @property(nonatomic, strong) NSMutableArray *waypoints;
-@property(nonatomic, strong) NSMutableArray *pastTurnInstructions;  // turn instrucitons from first to the last passed turn
-@property(nonatomic, strong) NSMutableArray *turnInstructions;      // turn instruaciton from next to the last
+@property(nonatomic, strong) NSMutableArray *pastTurnInstructions;  // turn instructions from first to the last passed turn
+@property(nonatomic, strong) NSMutableArray *turnInstructions;      // turn instruction from next to the last
 @property(nonatomic, strong) NSMutableArray *visitedLocations;
 @property(nonatomic, assign) SMRouteType routeType;
-//@property (nonatomic, strong) SMTurnInstruction *lastTurn;
 
 @property CGFloat distanceLeft;
 @property CGFloat tripDistance;

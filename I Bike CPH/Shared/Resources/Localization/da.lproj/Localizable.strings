@@ -477,3 +477,41 @@
 "leave_no_gps" = "Deaktiver GPS";
 
 "play_services_version_error" = "For at opsamle data skal Play Services opdateres";
+
+// OSRM v5 instructions
+
+"depart" = "Start mod {{heading}} ad {{name}}";
+"arrive" = "Mål nået, {{name}} ligger {{side}}";
+
+"turn_uturn" = "Vend om på {{name}}";
+"turn_sharp_right" = "Drej skarp til højre ad {{name}}";
+"turn_right" = "Drej til højre ad {{name}}";
+"turn_slight_right" = "Hold til højre ad {{name}}";
+"turn_straight" = "Fortsæt ligeud ad {{name}}";
+"turn_sharp_left" = "Drej skarpt til venstre ad {{name}}";
+"turn_left" = "Drej til venstre ad {{name}}";
+"turn_slight_left" = "Hold til venstre ad {{name}}";
+
+"merge_uturn" = "Vend om og flet til {{name}}";
+"merge_sharp_right" = "Flet skarpt mod højre til {{name}}";
+"merge_right" = "Flet mod højre til {{name}}";
+"merge_slight_right" = "Flet let mod højre til {{name}}";
+"merge_straight" = "Flet ligeud til {{name}}";
+"merge_left" = "Flet mod venstre til {{name}}";
+"merge_slight_left" = "Flet let mod venstre til {{name}}";
+"merge_sharp_left" = "Flet skarpt mod venstre til {{name}}";
+
+"on_ramp" = "Tilkørsel {{name}}";
+"off_ramp" = "Afkørsel {{name}}";
+
+"continue_uturn" = "Lav u-vending på {{name}}";
+"continue_sharp_right" = "Fortsæt skarp til højre ad {{name}}";
+"continue_right" = "Fortsæt mod højre ad {{name}}";
+"continue_slight_right" = "Fortsæt let mod højre ad {{name}}";
+"continue_straight" = "Fortsæt ligeud ad {{name}}";
+"continue_left" = "Fortsæt mod venstre ad {{name}}";
+"continue_slight_left" = "Fortsæt let mod venstre ad {{name}}";
+"continue_sharp_left" = "Fortsæt skarpt mod venstre ad {{name}}";
+
+"roundabout" = "Ved rundkørsel tag %{exit} afkørsel ad {{name}}";
+"rotary" = "Ved rundkørslen tag %{exit} afkørsel ad {{name}}";

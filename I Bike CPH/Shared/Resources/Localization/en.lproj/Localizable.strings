@@ -52,6 +52,8 @@
 "first_direction_19" = "Get off on";
 "first_direction_100" = "Reaching destination";
 
+"instruction_" = "";
+
 "direction_N" = "north";
 "direction_NE" = "northeast";
 "direction_E" = "east";
@@ -462,3 +464,41 @@
 "leave_no_gps" = "Leave GPS off";
 
 "play_services_version_error" = "To track cycling data, please update Google Play Services";
+
+// OSRM v5 instructions
+
+"depart" = "Head {{heading}} on {{name}}";
+"arrive" = "Destination reached, {{name}} is {{side}}";
+
+"turn_uturn" = "Make a u-turn onto {{name}}";
+"turn_sharp_right" = "Turn sharp right onto {{name}}";
+"turn_right" = "Turn right onto {{name}}";
+"turn_slight_right" = "Keep right onto {{name}}";
+"turn_straight" = "Continue straight onto {{name}}";
+"turn_sharp_left" = "Turn sharp left onto {{name}}";
+"turn_left" = "Turn left onto {{name}}";
+"turn_slight_left" = "Keep left onto {{name}}";
+
+"merge_uturn" = "U-turn merging onto {{name}}";
+"merge_sharp_right" = "Merge sharp right onto {{name}}";
+"merge_right" = "Merge right onto {{name}}";
+"merge_slight_right" = "Merge slight right onto {{name}}";
+"merge_straight" = "Merge straight onto {{name}}";
+"merge_left" = "Merge left onto {{name}}";
+"merge_slight_left" = "Merge slight left onto {{name}}";
+"merge_sharp_left" = "Merge sharp right onto {{name}}";
+
+"on_ramp" = "Take on ramp {{name}}";
+"off_ramp" = "Off ramp {{name}}";
+
+"continue_uturn" = "U-turn on {{name}}";
+"continue_sharp_right" = "Continue sharp right on {{name}}";
+"continue_right" = "Continue right on {{name}}";
+"continue_slight_right" = "Continue slight right on {{name}}";
+"continue_straight" = "Continue straight on {{name}}";
+"continue_left" = "Continue left on {{name}}";
+"continue_slight_left" = "Continue slight left on {{name}}";
+"continue_sharp_left" = "Continue sharp left on {{name}}";
+
+"roundabout" = "At roundabout take %{exit} exit onto {{name}}";
+"rotary" = "At roundabout take %{exit} exit onto {{name}}";

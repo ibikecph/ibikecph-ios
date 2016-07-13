@@ -170,7 +170,7 @@ class MapView: UIView {
         var annotations = [Annotation]()
         if let locations = route.waypoints?.copy() as? [CLLocation] { // Copy since it is NSMutableArray
             let coordinates = locations.map { $0.coordinate } // Map to coordinates
-            let lineColor = SMRouteTypeBike == route.routeType ? Styler.tintColor() : Styler.foregroundColor()
+            let lineColor = .Bike == route.routeType ? Styler.tintColor() : Styler.foregroundColor()
             let annotation = addPath(coordinates, lineColor: lineColor, lineWidth: 5)
             annotations.append(annotation)
             if zoom {

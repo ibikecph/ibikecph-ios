@@ -14,28 +14,28 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, TurnDirection) {
-    NoTurn = 0,  // Give no instruction at all
-    GoStraight = 1,
-    TurnSlightRight = 2,
-    TurnRight = 3,
-    TurnSharpRight = 4,
-    UTurn = 5,
-    TurnSharpLeft = 6,
-    TurnLeft = 7,
-    TurnSlightLeft = 8,
-    ReachViaPoint = 9,
-    HeadOn = 10,
-    EnterRoundAbout = 11,
-    LeaveRoundAbout = 12,
-    StayOnRoundAbout = 13,
-    StartAtEndOfStreet = 14,
-    ReachedYourDestination = 15,
-    StartPushingBikeInOneway = 16,
-    StopPushingBikeInOneway = 17,
-    BoardPublicTransport = 18,
-    UnboardPublicTransport = 19,
-    ReachingDestination = 100
+typedef NS_ENUM(NSInteger, OSRMV4TurnDirection) {
+    OSRMV4TurnDirectionNoTurn = 0,  // Give no instruction at all
+    OSRMV4TurnDirectionGoStraight = 1,
+    OSRMV4TurnDirectionTurnSlightRight = 2,
+    OSRMV4TurnDirectionTurnRight = 3,
+    OSRMV4TurnDirectionTurnSharpRight = 4,
+    OSRMV4TurnDirectionUTurn = 5,
+    OSRMV4TurnDirectionTurnSharpLeft = 6,
+    OSRMV4TurnDirectionTurnLeft = 7,
+    OSRMV4TurnDirectionTurnSlightLeft = 8,
+    OSRMV4TurnDirectionReachViaPoint = 9,
+    OSRMV4TurnDirectionHeadOn = 10,
+    OSRMV4TurnDirectionEnterRoundAbout = 11,
+    OSRMV4TurnDirectionLeaveRoundAbout = 12,
+    OSRMV4TurnDirectionStayOnRoundAbout = 13,
+    OSRMV4TurnDirectionStartAtEndOfStreet = 14,
+    OSRMV4TurnDirectionReachedYourDestination = 15,
+    OSRMV4TurnDirectionStartPushingBikeInOneway = 16,
+    OSRMV4TurnDirectionStopPushingBikeInOneway = 17,
+    OSRMV4TurnDirectionBoardPublicTransport = 18,
+    OSRMV4TurnDirectionUnboardPublicTransport = 19,
+    OSRMV4TurnDirectionReachingDestination = 100
 };
 
 /**
@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger, TurnDirection) {
     //    __weak NSArray *waypoints;
 }
 
-@property(nonatomic, assign) TurnDirection drivingDirection;
+@property(nonatomic, assign) OSRMV4TurnDirection drivingDirection;
 @property(nonatomic, strong) NSString *ordinalDirection;
 @property(nonatomic, strong) NSString *wayName;
 @property int lengthInMeters;

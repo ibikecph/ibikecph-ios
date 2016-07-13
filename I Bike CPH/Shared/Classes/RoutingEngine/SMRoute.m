@@ -13,7 +13,6 @@
 #import "SMGPSUtil.h"
 #import "SMLocationManager.h"
 #import "SMRoute.h"
-//#import "SMUtil.h"
 #import "SMRouteUtils.h"
 
 @interface SMRoute ()
@@ -25,9 +24,7 @@
 @property NSUInteger nextWaypoint;
 @end
 
-@implementation SMRoute {
-    double minDistance;
-}
+@implementation SMRoute
 
 - (id)init
 {
@@ -132,34 +129,9 @@
     [r getRouteFrom:loc.coordinate to:end.coordinate via:nil destinationHint:self.destinationHint];
 }
 
-//- (void)updateSegment
-//{
-//    debugLog(@"Update segment!!!!");
-//    if (!self.delegate) {
-//        NSLog(@"Warning: delegate not set while in updateSegment()!");
-//        return;
-//    }
-//
-//    if (self.turnInstructions.count > 0) {
-//        @synchronized(self.turnInstructions)
-//        {
-//            [self.pastTurnInstructions addObject:[self.turnInstructions objectAtIndex:0]];
-//            debugLog(@"===========================");
-//            debugLog(@"Past instructions: %@", self.pastTurnInstructions);
-//            debugLog(@"===========================");
-//            [self.turnInstructions removeObjectAtIndex:0];
-//            [self.delegate updateTurn:YES];
-//        }
-//
-//        if (self.turnInstructions.count == 0) {
-//            [self.delegate reachedDestination];
-//        }
-//    }
-//}
-
 - (BOOL)approachingFinish
 {
-    return /*approachingTurn && */ self.turnInstructions.count == 1;
+    return self.turnInstructions.count == 1;
 }
 
 - (CLLocation *)getStartLocation
@@ -228,7 +200,8 @@
     if (jsonRoot[@"route_summary"]) {
         // This is presumably JSON from an OSRM V4 source
         return [self parseFromOSRMV4JSON:jsonRoot delegate:dlg];
-    } else {
+    }
+    else {
         // This is presumably JSON from an OSRM V5 source
         return [self parseFromOSRMV5JSON:jsonRoot delegate:dlg];
     }
@@ -443,7 +416,7 @@
         return NO;
     }
     route = [routes firstObject];
-    
+
     NSArray *legs = route[@"legs"];
     NSDictionary *leg;
     if (![legs isKindOfClass:[NSArray class]] || legs.count == 0) {
@@ -472,7 +445,7 @@
     }
     self.estimatedTimeForRoute = [leg[@"duration"] integerValue];
     self.estimatedRouteDistance = [leg[@"distance"] integerValue];
-    
+
     self.destinationHint = nil;
 
     NSArray *waypoints = jsonRoot[@"waypoints"];
@@ -494,52 +467,62 @@
         BOOL isFirst = YES;
         for (NSDictionary *step in steps) {
             SMTurnInstruction *instruction = [[SMTurnInstruction alloc] init];
-            
-            TurnDirection turnDirection;
+
+            OSRMV4TurnDirection turnDirection;
             NSDictionary *maneuver = step[@"maneuver"];
             NSString *maneuverType = maneuver[@"turn"];
             NSString *maneuverModifier = maneuver[@"modifier"];
             if ([maneuverType isEqualToString:@"turn"] || [maneuverType isEqualToString:@"continue"]) {
                 if ([maneuverModifier isEqualToString:@"uturn"]) {
-                    turnDirection = UTurn;
-                } else if ([maneuverType isEqualToString:@"sharp right"]) {
-                    turnDirection = TurnSharpRight;
-                } else if ([maneuverType isEqualToString:@"right"]) {
-                    turnDirection = TurnRight;
-                } else if ([maneuverType isEqualToString:@"slight right"]) {
-                    turnDirection = TurnSlightRight;
-                } else if ([maneuverType isEqualToString:@"straight"]) {
-                    turnDirection = GoStraight;
-                } else if ([maneuverType isEqualToString:@"sharp left"]) {
-                    turnDirection = TurnSharpLeft;
-                } else if ([maneuverType isEqualToString:@"left"]) {
-                    turnDirection = TurnLeft;
-                } else if ([maneuverType isEqualToString:@"slight left"]) {
-                    turnDirection = TurnSlightLeft;
+                    turnDirection = OSRMV4TurnDirectionUTurn;
                 }
-            } else if ([maneuverType isEqualToString:@"depart"]) {
-                turnDirection = HeadOn;
-            } else if ([maneuverType isEqualToString:@"arrive"]) {
-                turnDirection = ReachedYourDestination;
-            } else if ([maneuverType isEqualToString:@"roundabout"]) {
-                turnDirection = EnterRoundAbout;
+                else if ([maneuverType isEqualToString:@"sharp right"]) {
+                    turnDirection = OSRMV4TurnDirectionTurnSharpRight;
+                }
+                else if ([maneuverType isEqualToString:@"right"]) {
+                    turnDirection = OSRMV4TurnDirectionTurnRight;
+                }
+                else if ([maneuverType isEqualToString:@"slight right"]) {
+                    turnDirection = OSRMV4TurnDirectionTurnSlightRight;
+                }
+                else if ([maneuverType isEqualToString:@"straight"]) {
+                    turnDirection = OSRMV4TurnDirectionGoStraight;
+                }
+                else if ([maneuverType isEqualToString:@"sharp left"]) {
+                    turnDirection = OSRMV4TurnDirectionTurnSharpLeft;
+                }
+                else if ([maneuverType isEqualToString:@"left"]) {
+                    turnDirection = OSRMV4TurnDirectionTurnLeft;
+                }
+                else if ([maneuverType isEqualToString:@"slight left"]) {
+                    turnDirection = OSRMV4TurnDirectionTurnSlightLeft;
+                }
+            }
+            else if ([maneuverType isEqualToString:@"depart"]) {
+                turnDirection = OSRMV4TurnDirectionHeadOn;
+            }
+            else if ([maneuverType isEqualToString:@"arrive"]) {
+                turnDirection = OSRMV4TurnDirectionReachedYourDestination;
+            }
+            else if ([maneuverType isEqualToString:@"roundabout"]) {
+                turnDirection = OSRMV4TurnDirectionEnterRoundAbout;
             }
 
-            if (turnDirection <= UnboardPublicTransport) {
+            if (turnDirection <= OSRMV4TurnDirectionUnboardPublicTransport) {
                 instruction.drivingDirection = turnDirection;
                 instruction.routeType = self.routeType;
                 instruction.routeLineName = self.transportLine;
-                if (turnDirection == BoardPublicTransport) {
+                if (turnDirection == OSRMV4TurnDirectionBoardPublicTransport) {
                     instruction.routeLineStart = self.startDescription;
                     instruction.routeLineDestination = self.endDescription;
                     instruction.routeLineTime = self.startDate;
                 }
-                else if (turnDirection == UnboardPublicTransport) {
+                else if (turnDirection == OSRMV4TurnDirectionUnboardPublicTransport) {
                     instruction.routeLineStart = self.startDescription;
                     instruction.routeLineDestination = self.endDescription;
                     instruction.routeLineTime = self.endDate;
                 }
-                
+
                 instruction.ordinalDirection = @"";
                 instruction.wayName = step[@"name"];
 
@@ -556,19 +539,22 @@
                  * It's formatted just the way we like it
                  */
                 instruction.fixedLengthWithUnit = [SMRouteUtils formatDistanceInMeters:prevlengthInMeters];
-                prevlengthWithUnit = [NSString stringWithFormat:@"%im",prevlengthInMeters];
+                prevlengthWithUnit = [NSString stringWithFormat:@"%im", prevlengthInMeters];
                 instruction.directionAbrevation = @"";
                 instruction.azimuth = 0.0f;
                 instruction.vehicle = 0;
-                
+
                 NSString *stepMode = step[@"mode"];
                 if ([stepMode isEqualToString:@"cycling"]) {
                     instruction.vehicle = 1;
-                } else if ([stepMode isEqualToString:@"pushing bike"]) {
+                }
+                else if ([stepMode isEqualToString:@"pushing bike"]) {
                     instruction.vehicle = 2;
-                } else if ([stepMode isEqualToString:@"?"]) {
+                }
+                else if ([stepMode isEqualToString:@"?"]) {
                     instruction.vehicle = 3;
-                } else if ([stepMode isEqualToString:@"?"]) {
+                }
+                else if ([stepMode isEqualToString:@"?"]) {
                     instruction.vehicle = 4;
                 }
 
@@ -584,7 +570,7 @@
                 [instruction generateShortDescriptionString];
 
                 instruction.waypointsIndex = 0;
-                
+
                 NSArray *location = maneuver[@"location"];
                 if ([location isKindOfClass:[NSArray class]] && location.count == 2) {
                     instruction.loc = [[CLLocation alloc] initWithLatitude:[location[1] integerValue] longitude:[location[0] integerValue]];
@@ -604,9 +590,8 @@
         if (summaryPoints.count > 1) {
             self.longestStreet = summaryPoints.firstObject;
         }
-        
-        if (!self.longestStreet ||
-            [self.longestStreet stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
+
+        if (!self.longestStreet || [self.longestStreet stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
             for (int i = 1; i < self.turnInstructions.count - 1; i++) {
                 SMTurnInstruction *inst = self.turnInstructions[i];
                 if (inst.lengthInMeters > self.longestDistance) {
@@ -635,7 +620,8 @@
     return YES;
 }
 
-- (void)ifNecessaryTranslateStreetname:(NSString *)streetname {
+- (void)ifNecessaryTranslateStreetname:(NSString *)streetname
+{
     if ([streetname rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
         streetname = translateString(streetname);
     }
@@ -659,7 +645,8 @@
         SMTurnInstruction *nextTurn = self.turnInstructions[0];
         nextTurn.lengthInMeters = [self calculateDistanceToNextTurn:loc];
         nextTurn.lengthWithUnit = [SMRouteUtils formatDistanceInMeters:nextTurn.lengthInMeters];
-        @synchronized(self.turnInstructions) {
+        @synchronized(self.turnInstructions)
+        {
             [self.turnInstructions setObject:nextTurn atIndexedSubscript:0];
         }
         self.distanceLeft = nextTurn.lengthInMeters;
@@ -668,14 +655,14 @@
         for (int i = 1; i < self.turnInstructions.count; i++) {
             self.distanceLeft += ((SMTurnInstruction *)self.turnInstructions[i]).lengthInMeters;
         }
-//        debugLog(@"Total distance left: %.1f", self.distanceLeft);
+        //        debugLog(@"Total distance left: %.1f", self.distanceLeft);
     }
 }
 
 - (NSDictionary *)save
 {
     // TODO save visited locations and posibly some other info
-//    debugLog(@"Saving route");
+    //    debugLog(@"Saving route");
     return @{
         @"data" : [NSKeyedArchiver archivedDataWithRootObject:self.visitedLocations],
         @"polyline" : [SMRoute encodePolyline:self.visitedLocations]
@@ -710,7 +697,7 @@
         }
     }
 
-//    debugLog(@"Distance to next turn: %.1f", distance);
+    //    debugLog(@"Distance to next turn: %.1f", distance);
     return distance;
 }
 
@@ -818,9 +805,7 @@
     if ([req.auxParam isEqualToString:@"startRoute"]) {
         NSString *response = [[NSString alloc] initWithData:req.responseData encoding:NSUTF8StringEncoding];
         if (response) {
-            id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData
-                                                          options:NSJSONReadingAllowFragments
-                                                            error:nil];
+            id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingAllowFragments error:nil];
             if (![jsonRoot isKindOfClass:[NSDictionary class]] || ![jsonRoot[@"code"] isEqualToString:@"Ok"]) {
                 if (self.delegate) {
                     [self.delegate routeNotFound];
@@ -838,9 +823,7 @@
         if (response) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
-              id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData
-                                                            options:NSJSONReadingAllowFragments
-                                                              error:nil];
+              id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingAllowFragments error:nil];
               if (![jsonRoot isKindOfClass:[NSDictionary class]] || ![jsonRoot[@"code"] isEqualToString:@"Ok"]) {
                   if (self.delegate) {
                       dispatch_async(dispatch_get_main_queue(), ^{

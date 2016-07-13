@@ -33,7 +33,7 @@ struct RouteComposite {
         case .Single(let route):
             return Double(route.distanceLeft)
         case .Multiple(let routes):
-            let bikeRoutes = routes.filter { return SMRouteTypeBike == $0.routeType }
+            let bikeRoutes = routes.filter { return .Bike == $0.routeType }
             return bikeRoutes.map { Double($0.distanceLeft) }.reduce(0) { $0 + $1 }
         }
     }
@@ -61,7 +61,7 @@ struct RouteComposite {
             let currentRoute = routes[current]
             var duration: NSTimeInterval = 0
             // Current route
-            let bikeOrWalk = SMRouteTypeBike == currentRoute.routeType || SMRouteTypeWalk == currentRoute.routeType
+            let bikeOrWalk = .Bike == currentRoute.routeType || .Walk == currentRoute.routeType
             if bikeOrWalk,
                 let endDate = currentRoute.endDate {
                 duration += max(endDate.timeIntervalSinceNow, 0)
@@ -91,15 +91,15 @@ struct RouteComposite {
 
             for (index, route) in routes.enumerate() {
                 // If route is public, finish route earlier
-                if route.routeType != SMRouteTypeBike &&
-                    route.routeType != SMRouteTypeWalk {
+                if route.routeType != .Bike &&
+                    route.routeType != .Walk {
                         route.maxMarginRadius = CGFloat(MAX_DISTANCE_FOR_PUBLIC_TRANSPORT)
                 }
                 // If next route is public, finish current route earlier
                 if index+1 < routes.count {
                     let nextRoute = routes[index+1]
-                    if nextRoute.routeType != SMRouteTypeBike &&
-                        nextRoute.routeType != SMRouteTypeWalk {
+                    if nextRoute.routeType != .Bike &&
+                        nextRoute.routeType != .Walk {
                         route.maxMarginRadius = CGFloat(MAX_DISTANCE_FOR_PUBLIC_TRANSPORT)
                     }
                 }
