@@ -86,8 +86,6 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
 - (void)visitLocation:(CLLocation *)loc;
 - (CLLocation *)getStartLocation;
 - (CLLocation *)getEndLocation;
-- (CLLocation *)getFirstVisitedLocation;
-- (CLLocation *)getLastVisitedLocation;
 - (NSDictionary *)save;
 
 - (CGFloat)calculateDistanceTraveled;

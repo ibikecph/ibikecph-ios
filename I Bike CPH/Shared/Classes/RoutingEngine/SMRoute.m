@@ -128,33 +128,14 @@
     [r getRouteFrom:loc.coordinate to:end.coordinate via:nil destinationHint:self.destinationHint];
 }
 
-- (BOOL)approachingFinish
-{
-    return self.turnInstructions.count == 1;
-}
-
 - (CLLocation *)getStartLocation
 {
-    if (self.waypoints && self.waypoints.count > 0) return [self.waypoints objectAtIndex:0];
-    return NULL;
+    return (self.waypoints && self.waypoints.count > 0) ? [self.waypoints objectAtIndex:0] : NULL;
 }
 
 - (CLLocation *)getEndLocation
 {
-    if (self.waypoints && self.waypoints.count > 0) return [self.waypoints lastObject];
-    return NULL;
-}
-
-- (CLLocation *)getFirstVisitedLocation
-{
-    if (self.visitedLocations && self.visitedLocations.count > 0) return ((CLLocation *)self.visitedLocations.firstObject);
-    return NULL;
-}
-
-- (CLLocation *)getLastVisitedLocation
-{
-    if (self.visitedLocations && self.visitedLocations.count > 0) return ((CLLocation *)self.visitedLocations.lastObject);
-    return NULL;
+    return (self.waypoints && self.waypoints.count > 0) ? [self.waypoints lastObject] : NULL;
 }
 
 - (BOOL)parseFromJson:(NSDictionary *)jsonRoot delegate:(id<SMRouteDelegate>)dlg
@@ -587,9 +568,9 @@
     }
     CGFloat distance = 0.0f;
 
-    if ([self.visitedLocations count] > 1) {
+    if (self.visitedLocations.count > 1) {
         CLLocation *startLoc = ((CLLocation *)self.visitedLocations.firstObject);
-        for (int i = 1; i < [self.visitedLocations count]; i++) {
+        for (int i = 1; i < self.visitedLocations.count; i++) {
             CLLocation *loc = ((CLLocation *)self.visitedLocations[i]);
             distance += [loc distanceFromLocation:startLoc];
             startLoc = loc;
@@ -605,7 +586,7 @@
 {
     CGFloat distance = [self calculateDistanceTraveled];
     CGFloat avgSpeed = 0.0f;
-    if ([self.visitedLocations count] > 1) {
+    if (self.visitedLocations.count > 1) {
         NSDate *startLoc = ((CLLocation *)self.visitedLocations.firstObject).timestamp;
         NSDate *endLoc = ((CLLocation *)self.visitedLocations.lastObject).timestamp;
         if ([endLoc timeIntervalSinceDate:startLoc] > 0) {
@@ -618,7 +599,7 @@
 
 - (NSString *)timePassed
 {
-    if ([self.visitedLocations count] > 1) {
+    if (self.visitedLocations.count > 1) {
         NSDate *startDate = ((CLLocation *)self.visitedLocations.firstObject).timestamp;
         NSDate *endDate = ((CLLocation *)self.visitedLocations.lastObject).timestamp;
         return formatTimePassed(startDate, endDate);
@@ -634,7 +615,7 @@
 
     CGFloat avgSpeed = [self calculateAverageSpeed];
     CGFloat timeSpent = 0.0f;
-    if ([self.visitedLocations count] > 1) {
+    if (self.visitedLocations.count > 1) {
         NSDate *startLoc = ((CLLocation *)self.visitedLocations.firstObject).timestamp;
         NSDate *endLoc = ((CLLocation *)self.visitedLocations.lastObject).timestamp;
         timeSpent = [endLoc timeIntervalSinceDate:startLoc] / 3600.0f;
@@ -944,12 +925,12 @@
     @synchronized(self.visitedLocations)
     {
         [self updateDistances:loc];
-        if (!self.visitedLocations) self.visitedLocations = [NSMutableArray array];
         [self.visitedLocations addObject:loc];
         self.distanceFromRoute = MAXFLOAT;
         isTooFar = [self findNearestRouteSegmentForLocation:loc withMaxDistance:maxD];
         [self updateSegmentBasedOnWaypoint];
     }
+    NSLog(@"maxD: %i, %i",maxD,isTooFar);
 
     @synchronized(self.turnInstructions)
     {
@@ -989,6 +970,16 @@
         self.lastVisitedWaypointIndex = -1;
         [self recalculateRoute:loc];
     }
+}
+
+#pragma mark - Getters
+
+- (NSMutableArray *)visitedLocations
+{
+    if (!_visitedLocations) {
+        _visitedLocations = [NSMutableArray array];
+    }
+    return _visitedLocations;
 }
 
 @end
