@@ -19,9 +19,11 @@
 @property(nonatomic, strong) SMRequestOSRM *request;
 @property(nonatomic, strong) CLLocation *lastRecalcLocation;
 @property(nonatomic, strong) NSObject *recalcMutex;
-@property CGFloat distanceFromRoute;
+@property(nonatomic) CGFloat distanceFromRoute;
 @property(nonatomic, strong) NSMutableArray *allTurnInstructions;
-@property NSUInteger nextWaypoint;
+@property(nonatomic) NSUInteger nextWaypoint;
+@property(nonatomic) NSInteger lastVisitedWaypointIndex;
+
 @end
 
 @implementation SMRoute
@@ -402,12 +404,12 @@
         for (NSDictionary *step in steps) {
             SMTurnInstruction *instruction = [[SMTurnInstruction alloc] init];
             instruction.osrmVersion = TurnInstructionOSRMVersion5;
-            
+
             instruction.wayName = step[@"name"];
             if ([instruction.wayName rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
                 instruction.wayName = translateString(instruction.wayName);
             }
-            
+
             instruction.timeInSeconds = [step[@"duration"] intValue];
             instruction.lengthInMeters = prevLengthInMeters;
             prevLengthInMeters = [step[@"distance"] intValue];
@@ -416,30 +418,42 @@
             [instruction setDirectionAbbreviationWithBearingAfter:[maneuver[@"bearing_after"] unsignedIntegerValue]];
             [instruction setManeuverTypeWithString:maneuver[@"turn"]];
             [instruction setManeuverModifierWithString:maneuver[@"modifier"]];
-            
+
             if ([maneuver[@"turn"] isEqualToString:@"roundabout"] || [maneuver[@"turn"] isEqualToString:@"rotary"]) {
                 instruction.ordinalDirection = [NSString stringWithFormat:@"%lu", [maneuver[@"exit"] unsignedIntegerValue]];
-            } else {
+            }
+            else {
                 instruction.ordinalDirection = @"1";
             }
-            
+
             NSString *mode = step[@"mode"];
             if ([mode isEqualToString:@"cycling"]) {
                 instruction.routeType = SMRouteTypeBike;
-            } else if ([mode isEqualToString:@"pushing bike"]) {
+            }
+            else if ([mode isEqualToString:@"pushing bike"]) {
                 instruction.routeType = SMRouteTypeWalk;
-            } else {
+            }
+            else {
                 instruction.routeType = self.routeType;
             }
-            
+
             NSArray *location = maneuver[@"location"];
             if ([location isKindOfClass:[NSArray class]] && location.count == 2) {
-                instruction.location = [[CLLocation alloc] initWithLatitude:[location[1] integerValue] longitude:[location[0] integerValue]];
+                instruction.location = [[CLLocation alloc] initWithLatitude:[location[1] floatValue] longitude:[location[0] floatValue]];
             }
 
-            instruction.waypointsIndex = 0;
+            CLLocationDistance minDistance = CLLocationDistanceMax;
+            int minDistanceWaypointIndex = 0;
+            for (int i = 0; i < self.waypoints.count; i++) {
+                CLLocationDistance distance = [instruction.location distanceFromLocation:self.waypoints[i]];
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    minDistanceWaypointIndex = i;
+                }
+            }
+            instruction.waypointsIndex = minDistanceWaypointIndex;
             instruction.fixedLengthWithUnit = [SMRouteUtils formatDistanceInMeters:prevLengthInMeters];
-            
+
             @synchronized(self.turnInstructions)
             {
                 [self.turnInstructions addObject:instruction];
@@ -729,17 +743,14 @@
         return;
     }
 
-    //    NSUInteger currentIndex = 0;
     NSMutableArray *past = [NSMutableArray array];
     NSMutableArray *future = [NSMutableArray array];
-    for (int i = 0; i < self.allTurnInstructions.count; i++) {
-        SMTurnInstruction *currentTurn = self.allTurnInstructions[i];
-        if (self.lastVisitedWaypointIndex < currentTurn.waypointsIndex) {
-            //            currentIndex = i;
-            [future addObject:currentTurn];
+    for (SMTurnInstruction *currentTurnInstruction in self.allTurnInstructions) {
+        if (self.lastVisitedWaypointIndex < currentTurnInstruction.waypointsIndex) {
+            [future addObject:currentTurnInstruction];
         }
         else {
-            [past addObject:currentTurn];
+            [past addObject:currentTurnInstruction];
         }
     }
     @synchronized(self.turnInstructions)
@@ -930,7 +941,6 @@
         isTooFar = [self findNearestRouteSegmentForLocation:loc withMaxDistance:maxD];
         [self updateSegmentBasedOnWaypoint];
     }
-    NSLog(@"maxD: %i, %i",maxD,isTooFar);
 
     @synchronized(self.turnInstructions)
     {

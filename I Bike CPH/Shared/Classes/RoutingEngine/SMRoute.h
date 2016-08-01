@@ -77,8 +77,6 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
 @property(nonatomic, strong) NSString *longestStreet;
 @property NSInteger longestDistance;
 
-@property(nonatomic) NSInteger lastVisitedWaypointIndex;
-
 @property BOOL snapArrow;
 
 @property(nonatomic, strong) NSString *osrmServer;
