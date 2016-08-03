@@ -416,10 +416,10 @@
 
             NSDictionary *maneuver = step[@"maneuver"];
             [instruction setDirectionAbbreviationWithBearingAfter:[maneuver[@"bearing_after"] unsignedIntegerValue]];
-            [instruction setManeuverTypeWithString:maneuver[@"turn"]];
+            [instruction setManeuverTypeWithString:maneuver[@"type"]];
             [instruction setManeuverModifierWithString:maneuver[@"modifier"]];
 
-            if ([maneuver[@"turn"] isEqualToString:@"roundabout"] || [maneuver[@"turn"] isEqualToString:@"rotary"]) {
+            if ([maneuver[@"type"] isEqualToString:@"roundabout"] || [maneuver[@"type"] isEqualToString:@"rotary"]) {
                 instruction.ordinalDirection = [NSString stringWithFormat:@"%lu", [maneuver[@"exit"] unsignedIntegerValue]];
             }
             else {

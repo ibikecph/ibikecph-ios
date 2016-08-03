@@ -254,16 +254,18 @@
         string = [string stringByAppendingFormat:@"_%@",modifierString];
         string = [translateString(string) stringByReplacingOccurrencesOfString:@"{{name}}" withString:self.wayName];
     }
-    if ([string rangeOfString:@"{{name}}"].location == NSNotFound) {
+    if ([string rangeOfString:@"{{name}}"].location != NSNotFound) {
         string = [string stringByReplacingOccurrencesOfString:@"{{name}}" withString:self.wayName];
     }
-    if ([string rangeOfString:@"{{heading}}"].location == NSNotFound) {
+    if ([string rangeOfString:@"{{heading}}"].location != NSNotFound) {
+        modifierDisplayString = [modifierDisplayString stringByReplacingOccurrencesOfString:@"uturn" withString:@"straight"];
         string = [string stringByReplacingOccurrencesOfString:@"{{heading}}" withString:modifierDisplayString];
     }
-    if ([string rangeOfString:@"{{side}}"].location == NSNotFound) {
+    if ([string rangeOfString:@"{{side}}"].location != NSNotFound) {
+        modifierDisplayString = [modifierDisplayString stringByReplacingOccurrencesOfString:@"uturn" withString:@"behind"];
         string = [string stringByReplacingOccurrencesOfString:@"{{side}}" withString:modifierDisplayString];
     }
-    if ([string rangeOfString:@"%{exit}"].location == NSNotFound) {
+    if ([string rangeOfString:@"%{exit}"].location != NSNotFound) {
         NSString *exitString = translateString([@"direction_number_" stringByAppendingString:self.ordinalDirection]);
         string = [string stringByReplacingOccurrencesOfString:@"%{exit}" withString:exitString];
     }
