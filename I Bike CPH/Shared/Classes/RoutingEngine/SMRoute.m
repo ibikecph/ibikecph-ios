@@ -696,7 +696,6 @@
         NSString *response = [[NSString alloc] initWithData:req.responseData encoding:NSUTF8StringEncoding];
         if (response) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-
               id jsonRoot = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingAllowFragments error:nil];
               if (![jsonRoot isKindOfClass:[NSDictionary class]] || ![jsonRoot[@"code"] isEqualToString:@"Ok"]) {
                   if (self.delegate) {

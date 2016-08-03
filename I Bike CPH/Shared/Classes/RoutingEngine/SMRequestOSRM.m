@@ -110,22 +110,22 @@ static dispatch_queue_t reachabilityQueue;
 - (void)getRouteFrom:(CLLocationCoordinate2D)start
                   to:(CLLocationCoordinate2D)end
                  via:(NSArray *)viaPoints
-     destinationHint:(NSString *)hint
+     destinationHint:(NSString *)destinationHint
 {
     self.originalJSON = nil;
     self.originalStart = start;
     self.originalEnd = end;
     self.originalViaPoints = viaPoints;
-    self.originalDestinationHint = hint;
+    self.originalDestinationHint = destinationHint;
     self.originalStartHint = nil;
-    [self getRouteFrom:start to:end via:viaPoints startHint:nil destinationHint:hint andZ:DEFAULT_Z];
+    [self getRouteFrom:start to:end via:viaPoints startHint:nil destinationHint:destinationHint andZ:DEFAULT_Z];
 }
 
 - (void)getRouteFrom:(CLLocationCoordinate2D)start
                   to:(CLLocationCoordinate2D)end
                  via:(NSArray *)viaPoints
            startHint:(NSString *)startHint
-     destinationHint:(NSString *)hint
+     destinationHint:(NSString *)destinationHint
                 andZ:(NSInteger)z
 {
     [self runBlockIfServerReachable:^{
@@ -154,13 +154,10 @@ static dispatch_queue_t reachabilityQueue;
           [requestString appendFormat:@"?overview=full&geometries=polyline&steps=true&alternatives=false"];
           
           // Hints
-          if (startHint.length > 0) {
-              [requestString appendFormat:@"&hints=%@", startHint];
-              if (hint.length > 0) {
-                  [requestString appendFormat:@";%@", hint];
-              }
-          } else if (hint.length > 0) {
-              [requestString appendFormat:@"&hints=%@", hint];
+          NSString *sh = (startHint.length > 0) ? startHint : @"";
+          NSString *dh = (destinationHint.length > 0) ? destinationHint : @"";
+          if (sh.length > 0 || dh.length > 0) {
+              [requestString appendFormat:@"&hints=%@;%@", sh, dh];
           }
       }
 
