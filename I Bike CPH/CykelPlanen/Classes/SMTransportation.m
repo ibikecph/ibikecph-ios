@@ -122,15 +122,6 @@ static NSOperationQueue *stationQueue;
     return sRequestQueue;
 }
 
-//-(void) loadDummyData{
-//    NSString * filePath0 = [[NSBundle mainBundle] pathForResource:@"Albertslundruten" ofType:@"line"];
-//    NSString * filePath1 = [[NSBundle mainBundle] pathForResource:@"Farumruten" ofType:@"line"];
-//    SMTransportationLine * line0 = [[SMTransportationLine alloc] initWithFile:filePath0];
-//    SMTransportationLine * line1 = [[SMTransportationLine alloc] initWithFile:filePath1];
-//
-//    self.lines = @[line0,line1];
-//}
-
 - (void)didFinishFetchingStationData
 {
     [self initializeLines];

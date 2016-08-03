@@ -30,8 +30,6 @@
 		4E10EBC71B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E10EBC41B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift */; };
 		4E10EBC81B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E10EBC51B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib */; };
 		4E10EBC91B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E10EBC51B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib */; };
-		4E1258D51A7BA63200A82434 /* routeTestStart.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E1258D41A7BA63200A82434 /* routeTestStart.gpx */; };
-		4E1258D61A7BA63200A82434 /* routeTestStart.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E1258D41A7BA63200A82434 /* routeTestStart.gpx */; };
 		4E20BA691ADC065A00738CA8 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20BA681ADC065A00738CA8 /* Notifications.swift */; };
 		4E20BA6A1ADC065A00738CA8 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20BA681ADC065A00738CA8 /* Notifications.swift */; };
 		4E21F2E61BBD63FE003D097F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E21F2E91BBD63FE003D097F /* InfoPlist.strings */; };
@@ -124,8 +122,6 @@
 		4E5959191BFC824500271376 /* RouteBrokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5959171BFC824500271376 /* RouteBrokenView.swift */; };
 		4E59591B1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59591A1BFC8C5C00271376 /* RouteBrokenPartView.swift */; };
 		4E59591C1BFC8C5C00271376 /* RouteBrokenPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59591A1BFC8C5C00271376 /* RouteBrokenPartView.swift */; };
-		4E59822B1A24C4DD00A40484 /* BitBlueprint.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E59822A1A24C4DD00A40484 /* BitBlueprint.gpx */; };
-		4E59822C1A24C4DD00A40484 /* BitBlueprint.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4E59822A1A24C4DD00A40484 /* BitBlueprint.gpx */; };
 		4E5B90651B5F98BF008AC960 /* UserTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B90641B5F98BF008AC960 /* UserTermsViewController.swift */; };
 		4E5B90661B5F98BF008AC960 /* UserTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B90641B5F98BF008AC960 /* UserTermsViewController.swift */; };
 		4E5B90681B5F990E008AC960 /* UserTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B90671B5F990E008AC960 /* UserTerms.swift */; };
@@ -290,8 +286,6 @@
 		4ECA91A21AB2EED800F4BB4F /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA91A01AB2EED800F4BB4F /* NotificationCenter.swift */; };
 		4ED672501B0F61A00025DFDF /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED6724F1B0F61A00025DFDF /* Thread.swift */; };
 		4ED672511B0F61A00025DFDF /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED6724F1B0F61A00025DFDF /* Thread.swift */; };
-		4EDC4DD31A7A540A00FD37C2 /* nrbrogade-vestergade.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */; };
-		4EDC4DD41A7A540A00FD37C2 /* nrbrogade-vestergade.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */; };
 		4EDC4DE81A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */; };
 		4EDC4DE91A7A8A1D00FD37C2 /* SMRoute_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */; };
 		4EDC5E071B20EBD5009189EE /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDC5E061B20EBD5009189EE /* ToolbarView.swift */; };
@@ -379,16 +373,6 @@
 		4EED54901AF2417E00A1DBB1 /* NSDate_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */; };
 		4EED54911AF249B000A1DBB1 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
 		4EED54921AF249B000A1DBB1 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA4811AB87A6D00522A41 /* NSDate.swift */; };
-		4EEE91B51A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */; };
-		4EEE91B61A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */; };
-		4EEE91B71A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B21A1245610006BD95 /* copenhagen_withtimestamps.gpx */; };
-		4EEE91B81A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B21A1245610006BD95 /* copenhagen_withtimestamps.gpx */; };
-		4EEE91B91A1245610006BD95 /* test2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B31A1245610006BD95 /* test2.gpx */; };
-		4EEE91BA1A1245610006BD95 /* test2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B31A1245610006BD95 /* test2.gpx */; };
-		4EEE91BB1A1245610006BD95 /* testing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B41A1245610006BD95 /* testing.gpx */; };
-		4EEE91BC1A1245610006BD95 /* testing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91B41A1245610006BD95 /* testing.gpx */; };
-		4EEE91BE1A1245910006BD95 /* Albertslundruten.line in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91BD1A1245910006BD95 /* Albertslundruten.line */; };
-		4EEE91BF1A1245910006BD95 /* Albertslundruten.line in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91BD1A1245910006BD95 /* Albertslundruten.line */; };
 		4EEE91D41A1246920006BD95 /* local-trains-timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91C91A1246920006BD95 /* local-trains-timetable.json */; };
 		4EEE91D61A1246920006BD95 /* metro.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CB1A1246920006BD95 /* metro.json */; };
 		4EEE91D71A1246920006BD95 /* s-train-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE91CC1A1246920006BD95 /* s-train-lines.json */; };
@@ -494,6 +478,36 @@
 		DE5557751CCBC01000D7DB8A /* SMAddressParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F99A31CB3EB4D0079801B /* SMAddressParser.m */; };
 		DE5AD90C1CEB94420068C436 /* OverlaysClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5AD90B1CEB94420068C436 /* OverlaysClient.swift */; };
 		DE5AD90D1CEB96010068C436 /* OverlaysClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5AD90B1CEB94420068C436 /* OverlaysClient.swift */; };
+		DE5F91541D5229540037B1D4 /* noerrebrogade-vestergade.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91361D5229540037B1D4 /* noerrebrogade-vestergade.gpx */; };
+		DE5F91551D5229540037B1D4 /* step00.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91371D5229540037B1D4 /* step00.gpx */; };
+		DE5F91561D5229540037B1D4 /* step01.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91381D5229540037B1D4 /* step01.gpx */; };
+		DE5F91571D5229540037B1D4 /* step02.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91391D5229540037B1D4 /* step02.gpx */; };
+		DE5F91581D5229540037B1D4 /* step03.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F913A1D5229540037B1D4 /* step03.gpx */; };
+		DE5F91591D5229540037B1D4 /* step04.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F913B1D5229540037B1D4 /* step04.gpx */; };
+		DE5F915A1D5229540037B1D4 /* step05.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F913C1D5229540037B1D4 /* step05.gpx */; };
+		DE5F915B1D5229540037B1D4 /* step06.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F913D1D5229540037B1D4 /* step06.gpx */; };
+		DE5F915C1D5229540037B1D4 /* step07.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F913E1D5229540037B1D4 /* step07.gpx */; };
+		DE5F915D1D5229540037B1D4 /* step08.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F913F1D5229540037B1D4 /* step08.gpx */; };
+		DE5F915E1D5229540037B1D4 /* step09.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91401D5229540037B1D4 /* step09.gpx */; };
+		DE5F915F1D5229540037B1D4 /* step10.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91411D5229540037B1D4 /* step10.gpx */; };
+		DE5F91601D5229540037B1D4 /* step11.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91421D5229540037B1D4 /* step11.gpx */; };
+		DE5F91611D5229540037B1D4 /* step12.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91431D5229540037B1D4 /* step12.gpx */; };
+		DE5F91621D5229540037B1D4 /* step13.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91441D5229540037B1D4 /* step13.gpx */; };
+		DE5F91631D5229540037B1D4 /* step14.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91451D5229540037B1D4 /* step14.gpx */; };
+		DE5F91641D5229540037B1D4 /* step15.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91461D5229540037B1D4 /* step15.gpx */; };
+		DE5F91651D5229540037B1D4 /* step16.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91471D5229540037B1D4 /* step16.gpx */; };
+		DE5F91661D5229540037B1D4 /* step17.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91481D5229540037B1D4 /* step17.gpx */; };
+		DE5F91671D5229540037B1D4 /* step18.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91491D5229540037B1D4 /* step18.gpx */; };
+		DE5F91681D5229540037B1D4 /* step19.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F914A1D5229540037B1D4 /* step19.gpx */; };
+		DE5F91691D5229540037B1D4 /* step20.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F914B1D5229540037B1D4 /* step20.gpx */; };
+		DE5F916A1D5229540037B1D4 /* step21.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F914C1D5229540037B1D4 /* step21.gpx */; };
+		DE5F916B1D5229540037B1D4 /* step22.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F914D1D5229540037B1D4 /* step22.gpx */; };
+		DE5F916C1D5229540037B1D4 /* step23.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F914E1D5229540037B1D4 /* step23.gpx */; };
+		DE5F916D1D5229540037B1D4 /* step24.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F914F1D5229540037B1D4 /* step24.gpx */; };
+		DE5F916E1D5229540037B1D4 /* step25.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91501D5229540037B1D4 /* step25.gpx */; };
+		DE5F916F1D5229540037B1D4 /* step26.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91511D5229540037B1D4 /* step26.gpx */; };
+		DE5F91701D5229540037B1D4 /* step27.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91521D5229540037B1D4 /* step27.gpx */; };
+		DE5F91711D5229540037B1D4 /* step28.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DE5F91531D5229540037B1D4 /* step28.gpx */; };
 		DE7CFE681D1DEC7D000AACCD /* RouteComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE30AEEA1D1BDF4D0076550A /* RouteComposite.swift */; };
 		DE911BE01CEA7C66001A0D96 /* cycle_super_highways.geojson in Resources */ = {isa = PBXBuildFile; fileRef = DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */; };
 		DE911BE11CEA7C7C001A0D96 /* cycle_super_highways.geojson in Resources */ = {isa = PBXBuildFile; fileRef = DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */; };
@@ -536,7 +550,6 @@
 		4E10EBBD1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RouteNavigationDirectionsToolbarView.xib; sourceTree = "<group>"; };
 		4E10EBC41B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnInstructionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E10EBC51B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TurnInstructionsCollectionViewCell.xib; sourceTree = "<group>"; };
-		4E1258D41A7BA63200A82434 /* routeTestStart.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = routeTestStart.gpx; sourceTree = "<group>"; };
 		4E1CD6401BF4C30F005FCEAA /* Mapbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mapbox.h; path = "Pods/Mapbox-iOS-SDK/MapView/Map/Mapbox.h"; sourceTree = "<group>"; };
 		4E20BA681ADC065A00738CA8 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		4E21F2E81BBD63FE003D097F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -593,7 +606,6 @@
 		4E58C3171B0E35000041255B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenu.swift; path = ENSwiftSideMenu/ENSideMenu.swift; sourceTree = "<group>"; };
 		4E5959171BFC824500271376 /* RouteBrokenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteBrokenView.swift; sourceTree = "<group>"; };
 		4E59591A1BFC8C5C00271376 /* RouteBrokenPartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteBrokenPartView.swift; sourceTree = "<group>"; };
-		4E59822A1A24C4DD00A40484 /* BitBlueprint.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BitBlueprint.gpx; sourceTree = "<group>"; };
 		4E5B90641B5F98BF008AC960 /* UserTermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTermsViewController.swift; sourceTree = "<group>"; };
 		4E5B90671B5F990E008AC960 /* UserTerms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTerms.swift; sourceTree = "<group>"; };
 		4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTermsClient.swift; sourceTree = "<group>"; };
@@ -724,7 +736,6 @@
 		4EC56ECE1A2A3AAE00B696B4 /* SMTranslatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTranslatedViewController.m; sourceTree = "<group>"; };
 		4ECA91A01AB2EED800F4BB4F /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		4ED6724F1B0F61A00025DFDF /* Thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
-		4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "nrbrogade-vestergade.gpx"; sourceTree = "<group>"; };
 		4EDC4DE71A7A8A1D00FD37C2 /* SMRoute_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMRoute_Tests.swift; sourceTree = "<group>"; };
 		4EDC5E061B20EBD5009189EE /* ToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		4EDC5E091B21B0F0009189EE /* FindAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindAddressViewController.swift; sourceTree = "<group>"; };
@@ -829,11 +840,6 @@
 		4EEC6D361B20B14F003AE8DF /* TrackingToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingToolbarView.swift; sourceTree = "<group>"; };
 		4EEC6D391B20B7F8003AE8DF /* DistanceFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceFormatter.swift; sourceTree = "<group>"; };
 		4EED548E1AF2417E00A1DBB1 /* NSDate_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate_Tests.swift; sourceTree = "<group>"; };
-		4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = copenhagen2_withtimestamps.gpx; sourceTree = "<group>"; };
-		4EEE91B21A1245610006BD95 /* copenhagen_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = copenhagen_withtimestamps.gpx; sourceTree = "<group>"; };
-		4EEE91B31A1245610006BD95 /* test2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test2.gpx; sourceTree = "<group>"; };
-		4EEE91B41A1245610006BD95 /* testing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testing.gpx; sourceTree = "<group>"; };
-		4EEE91BD1A1245910006BD95 /* Albertslundruten.line */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Albertslundruten.line; sourceTree = "<group>"; };
 		4EEE91C91A1246920006BD95 /* local-trains-timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "local-trains-timetable.json"; sourceTree = "<group>"; };
 		4EEE91CB1A1246920006BD95 /* metro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro.json; sourceTree = "<group>"; };
 		4EEE91CC1A1246920006BD95 /* s-train-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-lines.json"; sourceTree = "<group>"; };
@@ -919,6 +925,36 @@
 		DE4460E61CF4E0E600865E88 /* GreenestRouteIntroductionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenestRouteIntroductionViewController.swift; sourceTree = "<group>"; };
 		DE4460E91CF4E10800865E88 /* GreenestRouteIntroductionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenestRouteIntroductionView.swift; sourceTree = "<group>"; };
 		DE5AD90B1CEB94420068C436 /* OverlaysClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaysClient.swift; sourceTree = "<group>"; };
+		DE5F91361D5229540037B1D4 /* noerrebrogade-vestergade.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "noerrebrogade-vestergade.gpx"; path = "LocationTestData/noerrebrogade-vestergade.gpx"; sourceTree = "<group>"; };
+		DE5F91371D5229540037B1D4 /* step00.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step00.gpx; path = LocationTestData/step00.gpx; sourceTree = "<group>"; };
+		DE5F91381D5229540037B1D4 /* step01.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step01.gpx; path = LocationTestData/step01.gpx; sourceTree = "<group>"; };
+		DE5F91391D5229540037B1D4 /* step02.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step02.gpx; path = LocationTestData/step02.gpx; sourceTree = "<group>"; };
+		DE5F913A1D5229540037B1D4 /* step03.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step03.gpx; path = LocationTestData/step03.gpx; sourceTree = "<group>"; };
+		DE5F913B1D5229540037B1D4 /* step04.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step04.gpx; path = LocationTestData/step04.gpx; sourceTree = "<group>"; };
+		DE5F913C1D5229540037B1D4 /* step05.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step05.gpx; path = LocationTestData/step05.gpx; sourceTree = "<group>"; };
+		DE5F913D1D5229540037B1D4 /* step06.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step06.gpx; path = LocationTestData/step06.gpx; sourceTree = "<group>"; };
+		DE5F913E1D5229540037B1D4 /* step07.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step07.gpx; path = LocationTestData/step07.gpx; sourceTree = "<group>"; };
+		DE5F913F1D5229540037B1D4 /* step08.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step08.gpx; path = LocationTestData/step08.gpx; sourceTree = "<group>"; };
+		DE5F91401D5229540037B1D4 /* step09.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step09.gpx; path = LocationTestData/step09.gpx; sourceTree = "<group>"; };
+		DE5F91411D5229540037B1D4 /* step10.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step10.gpx; path = LocationTestData/step10.gpx; sourceTree = "<group>"; };
+		DE5F91421D5229540037B1D4 /* step11.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step11.gpx; path = LocationTestData/step11.gpx; sourceTree = "<group>"; };
+		DE5F91431D5229540037B1D4 /* step12.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step12.gpx; path = LocationTestData/step12.gpx; sourceTree = "<group>"; };
+		DE5F91441D5229540037B1D4 /* step13.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step13.gpx; path = LocationTestData/step13.gpx; sourceTree = "<group>"; };
+		DE5F91451D5229540037B1D4 /* step14.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step14.gpx; path = LocationTestData/step14.gpx; sourceTree = "<group>"; };
+		DE5F91461D5229540037B1D4 /* step15.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step15.gpx; path = LocationTestData/step15.gpx; sourceTree = "<group>"; };
+		DE5F91471D5229540037B1D4 /* step16.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step16.gpx; path = LocationTestData/step16.gpx; sourceTree = "<group>"; };
+		DE5F91481D5229540037B1D4 /* step17.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step17.gpx; path = LocationTestData/step17.gpx; sourceTree = "<group>"; };
+		DE5F91491D5229540037B1D4 /* step18.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step18.gpx; path = LocationTestData/step18.gpx; sourceTree = "<group>"; };
+		DE5F914A1D5229540037B1D4 /* step19.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step19.gpx; path = LocationTestData/step19.gpx; sourceTree = "<group>"; };
+		DE5F914B1D5229540037B1D4 /* step20.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step20.gpx; path = LocationTestData/step20.gpx; sourceTree = "<group>"; };
+		DE5F914C1D5229540037B1D4 /* step21.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step21.gpx; path = LocationTestData/step21.gpx; sourceTree = "<group>"; };
+		DE5F914D1D5229540037B1D4 /* step22.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step22.gpx; path = LocationTestData/step22.gpx; sourceTree = "<group>"; };
+		DE5F914E1D5229540037B1D4 /* step23.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step23.gpx; path = LocationTestData/step23.gpx; sourceTree = "<group>"; };
+		DE5F914F1D5229540037B1D4 /* step24.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step24.gpx; path = LocationTestData/step24.gpx; sourceTree = "<group>"; };
+		DE5F91501D5229540037B1D4 /* step25.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step25.gpx; path = LocationTestData/step25.gpx; sourceTree = "<group>"; };
+		DE5F91511D5229540037B1D4 /* step26.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step26.gpx; path = LocationTestData/step26.gpx; sourceTree = "<group>"; };
+		DE5F91521D5229540037B1D4 /* step27.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step27.gpx; path = LocationTestData/step27.gpx; sourceTree = "<group>"; };
+		DE5F91531D5229540037B1D4 /* step28.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = step28.gpx; path = LocationTestData/step28.gpx; sourceTree = "<group>"; };
 		DE911BDF1CEA7C66001A0D96 /* cycle_super_highways.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cycle_super_highways.geojson; sourceTree = "<group>"; };
 		EC7B1759E8CFF6F6AD23239F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1587,16 +1623,9 @@
 		4EEE91B01A1245610006BD95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DE5F91351D5228EB0037B1D4 /* LocationTestData */,
 				4E5258A81A9B604400BE55C8 /* Localization */,
 				4E392AD51A308DBE0076BA86 /* Route Settings */,
-				4EEE91BD1A1245910006BD95 /* Albertslundruten.line */,
-				4EEE91B11A1245610006BD95 /* copenhagen2_withtimestamps.gpx */,
-				4EEE91B21A1245610006BD95 /* copenhagen_withtimestamps.gpx */,
-				4EEE91B31A1245610006BD95 /* test2.gpx */,
-				4EEE91B41A1245610006BD95 /* testing.gpx */,
-				4E59822A1A24C4DD00A40484 /* BitBlueprint.gpx */,
-				4E1258D41A7BA63200A82434 /* routeTestStart.gpx */,
-				4EDC4DD21A7A540A00FD37C2 /* nrbrogade-vestergade.gpx */,
 				4EBB7B341A5EB4E70064B530 /* LocationData */,
 				4E3C3A891A39E80300C79E52 /* SharedImages.xcassets */,
 			);
@@ -1757,6 +1786,43 @@
 				DE4460E91CF4E10800865E88 /* GreenestRouteIntroductionView.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		DE5F91351D5228EB0037B1D4 /* LocationTestData */ = {
+			isa = PBXGroup;
+			children = (
+				DE5F91361D5229540037B1D4 /* noerrebrogade-vestergade.gpx */,
+				DE5F91371D5229540037B1D4 /* step00.gpx */,
+				DE5F91381D5229540037B1D4 /* step01.gpx */,
+				DE5F91391D5229540037B1D4 /* step02.gpx */,
+				DE5F913A1D5229540037B1D4 /* step03.gpx */,
+				DE5F913B1D5229540037B1D4 /* step04.gpx */,
+				DE5F913C1D5229540037B1D4 /* step05.gpx */,
+				DE5F913D1D5229540037B1D4 /* step06.gpx */,
+				DE5F913E1D5229540037B1D4 /* step07.gpx */,
+				DE5F913F1D5229540037B1D4 /* step08.gpx */,
+				DE5F91401D5229540037B1D4 /* step09.gpx */,
+				DE5F91411D5229540037B1D4 /* step10.gpx */,
+				DE5F91421D5229540037B1D4 /* step11.gpx */,
+				DE5F91431D5229540037B1D4 /* step12.gpx */,
+				DE5F91441D5229540037B1D4 /* step13.gpx */,
+				DE5F91451D5229540037B1D4 /* step14.gpx */,
+				DE5F91461D5229540037B1D4 /* step15.gpx */,
+				DE5F91471D5229540037B1D4 /* step16.gpx */,
+				DE5F91481D5229540037B1D4 /* step17.gpx */,
+				DE5F91491D5229540037B1D4 /* step18.gpx */,
+				DE5F914A1D5229540037B1D4 /* step19.gpx */,
+				DE5F914B1D5229540037B1D4 /* step20.gpx */,
+				DE5F914C1D5229540037B1D4 /* step21.gpx */,
+				DE5F914D1D5229540037B1D4 /* step22.gpx */,
+				DE5F914E1D5229540037B1D4 /* step23.gpx */,
+				DE5F914F1D5229540037B1D4 /* step24.gpx */,
+				DE5F91501D5229540037B1D4 /* step25.gpx */,
+				DE5F91511D5229540037B1D4 /* step26.gpx */,
+				DE5F91521D5229540037B1D4 /* step27.gpx */,
+				DE5F91531D5229540037B1D4 /* step28.gpx */,
+			);
+			name = LocationTestData;
 			sourceTree = "<group>";
 		};
 		EB75382B6E76E7EF0729C786 /* Pods */ = {
@@ -1940,46 +2006,68 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE5F91631D5229540037B1D4 /* step14.gpx in Resources */,
 				7D7F99A11CB3C5F30079801B /* smroute_settings_app_private.plist in Resources */,
 				4EBB7B421A5EB4E70064B530 /* stations.json in Resources */,
-				4EEE91BE1A1245910006BD95 /* Albertslundruten.line in Resources */,
+				DE5F91661D5229540037B1D4 /* step17.gpx in Resources */,
+				DE5F91671D5229540037B1D4 /* step18.gpx in Resources */,
+				DE5F915C1D5229540037B1D4 /* step07.gpx in Resources */,
 				4E392ADD1A308DBE0076BA86 /* smroute_settings_private.plist in Resources */,
+				DE5F915E1D5229540037B1D4 /* step09.gpx in Resources */,
 				7D4BC49A1CEB32FA007ABD0F /* groenne_stier.geojson in Resources */,
+				DE5F916B1D5229540037B1D4 /* step22.gpx in Resources */,
+				DE5F91691D5229540037B1D4 /* step20.gpx in Resources */,
 				4E5B90831B60D41A008AC960 /* marker@3x.png in Resources */,
+				DE5F91621D5229540037B1D4 /* step13.gpx in Resources */,
 				4EE0631C1A10FA4900DE4226 /* Images.xcassets in Resources */,
 				4EE82FB51B0BCE300089147A /* LaunchScreen.xib in Resources */,
+				DE5F915D1D5229540037B1D4 /* step08.gpx in Resources */,
 				4E5B90821B60D41A008AC960 /* marker@2x.png in Resources */,
 				4E10EBC01B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib in Resources */,
+				DE5F91551D5229540037B1D4 /* step00.gpx in Resources */,
 				4E21F2E61BBD63FE003D097F /* InfoPlist.strings in Resources */,
+				DE5F91571D5229540037B1D4 /* step02.gpx in Resources */,
 				4E5258AF1A9B616200BE55C8 /* Localizable.strings in Resources */,
 				4EDC5E101B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib in Resources */,
-				4E1258D51A7BA63200A82434 /* routeTestStart.gpx in Resources */,
+				DE5F91651D5229540037B1D4 /* step16.gpx in Resources */,
+				DE5F91641D5229540037B1D4 /* step15.gpx in Resources */,
+				DE5F91601D5229540037B1D4 /* step11.gpx in Resources */,
 				4E392ADB1A308DBE0076BA86 /* smroute_settings.plist in Resources */,
+				DE5F91541D5229540037B1D4 /* noerrebrogade-vestergade.gpx in Resources */,
 				4E10EBBA1B3AE6480012245E /* RouteNavigationToolbarView.xib in Resources */,
 				4E4AC4541A8502E80037A65E /* Logo@2x.png in Resources */,
+				DE5F91701D5229540037B1D4 /* step27.gpx in Resources */,
+				DE5F916C1D5229540037B1D4 /* step23.gpx in Resources */,
 				4E10EBC81B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */,
 				4E5E878C1B31D6560021F5E9 /* FindRouteToolbarView.xib in Resources */,
-				4E59822B1A24C4DD00A40484 /* BitBlueprint.gpx in Resources */,
-				4EEE91B91A1245610006BD95 /* test2.gpx in Resources */,
 				4E5B90851B60D41A008AC960 /* markerFinish@3x.png in Resources */,
 				4E5E87921B31DC520021F5E9 /* RouteStatsToolbarView.xib in Resources */,
+				DE5F91611D5229540037B1D4 /* step12.gpx in Resources */,
+				DE5F916D1D5229540037B1D4 /* step24.gpx in Resources */,
 				4EADAE4E1B4FE03A00A2E43F /* EnableTrackingToolbarView.xib in Resources */,
-				4EEE91B51A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */,
 				4E54C3471BF3887E00E935B0 /* RouteBrokenToolbarView.xib in Resources */,
+				DE5F915A1D5229540037B1D4 /* step05.gpx in Resources */,
 				4E5B90841B60D41A008AC960 /* markerFinish@2x.png in Resources */,
 				DE911BE01CEA7C66001A0D96 /* cycle_super_highways.geojson in Resources */,
 				4EF4DF7E1B28461E00B64D3B /* AddressToolbarView.xib in Resources */,
 				4EC56E891A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
+				DE5F91581D5229540037B1D4 /* step03.gpx in Resources */,
+				DE5F91591D5229540037B1D4 /* step04.gpx in Resources */,
+				DE5F915F1D5229540037B1D4 /* step10.gpx in Resources */,
+				DE5F91681D5229540037B1D4 /* step19.gpx in Resources */,
 				4E3C3A8A1A39E80300C79E52 /* SharedImages.xcassets in Resources */,
 				4EDC5E0D1B21BDE1009189EE /* IconLabelTableViewCell.xib in Resources */,
-				4EDC4DD31A7A540A00FD37C2 /* nrbrogade-vestergade.gpx in Resources */,
-				4EEE91B71A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */,
+				DE5F915B1D5229540037B1D4 /* step06.gpx in Resources */,
 				4EEC6D341B20B139003AE8DF /* TrackingToolbarView.xib in Resources */,
-				4EEE91BB1A1245610006BD95 /* testing.gpx in Resources */,
 				4E5B90861B60D41A008AC960 /* markerStart@2x.png in Resources */,
+				DE5F91711D5229540037B1D4 /* step28.gpx in Resources */,
 				7D4BC49C1CEB32FA007ABD0F /* havneringen.geojson in Resources */,
+				DE5F916E1D5229540037B1D4 /* step25.gpx in Resources */,
+				DE5F91561D5229540037B1D4 /* step01.gpx in Resources */,
 				4EFA28101A2BA1330050450C /* Main.storyboard in Resources */,
+				DE5F916F1D5229540037B1D4 /* step26.gpx in Resources */,
 				4E5E87981B31F7DC0021F5E9 /* RouteTypeToolbarView.xib in Resources */,
+				DE5F916A1D5229540037B1D4 /* step21.gpx in Resources */,
 				4E5B90871B60D41A008AC960 /* markerStart@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1996,39 +2084,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E59822C1A24C4DD00A40484 /* BitBlueprint.gpx in Resources */,
 				4E21F2E71BBD63FE003D097F /* InfoPlist.strings in Resources */,
 				4E4566641A8A620E006563D1 /* smroute_settings_app_private.plist in Resources */,
 				4E5B90781B60D408008AC960 /* markerFinish@2x.png in Resources */,
-				4E1258D61A7BA63200A82434 /* routeTestStart.gpx in Resources */,
 				4E10EBBB1B3AE6480012245E /* RouteNavigationToolbarView.xib in Resources */,
 				4EC56E8B1A2A2C3D00B696B4 /* SMNetworkErrorView.xib in Resources */,
 				4EE06E5F1A11298800DE4226 /* SMAddressPickerView.xib in Resources */,
 				4E4AC4571A8502FC0037A65E /* Logo@2x.png in Resources */,
-				4EEE91B61A1245610006BD95 /* copenhagen2_withtimestamps.gpx in Resources */,
 				4E3C3A8B1A39E80300C79E52 /* SharedImages.xcassets in Resources */,
 				DE911BE11CEA7C7C001A0D96 /* cycle_super_highways.geojson in Resources */,
 				4E5B907B1B60D408008AC960 /* markerStart@3x.png in Resources */,
-				4EEE91BA1A1245610006BD95 /* test2.gpx in Resources */,
 				4E392ADE1A308DBE0076BA86 /* smroute_settings_private.plist in Resources */,
 				4E4AC4581A8502FC0037A65E /* Logo@3x.png in Resources */,
 				4E5258B01A9B616200BE55C8 /* Localizable.strings in Resources */,
 				4E5E87991B31F7DC0021F5E9 /* RouteTypeToolbarView.xib in Resources */,
-				4EEE91B81A1245610006BD95 /* copenhagen_withtimestamps.gpx in Resources */,
 				4EEE91DC1A1246920006BD95 /* timetable-new.json in Resources */,
-				4EEE91BC1A1245610006BD95 /* testing.gpx in Resources */,
 				4E5B90791B60D408008AC960 /* markerFinish@3x.png in Resources */,
 				4EF4DF7F1B28461E00B64D3B /* AddressToolbarView.xib in Resources */,
 				4E5B90761B60D408008AC960 /* marker@2x.png in Resources */,
 				4EFA28111A2BA1330050450C /* Main.storyboard in Resources */,
 				4E5E878D1B31D6560021F5E9 /* FindRouteToolbarView.xib in Resources */,
 				4EE82FB61B0BCE350089147A /* LaunchScreen.xib in Resources */,
-				4EDC4DD41A7A540A00FD37C2 /* nrbrogade-vestergade.gpx in Resources */,
 				4EDC5E111B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib in Resources */,
 				4EEE91D71A1246920006BD95 /* s-train-lines.json in Resources */,
 				4E392ADC1A308DBE0076BA86 /* smroute_settings.plist in Resources */,
 				4E54C3481BF3887E00E935B0 /* RouteBrokenToolbarView.xib in Resources */,
-				4EEE91BF1A1245910006BD95 /* Albertslundruten.line in Resources */,
 				4E10EBC11B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.xib in Resources */,
 				4EEE91D41A1246920006BD95 /* local-trains-timetable.json in Resources */,
 				4E10EBC91B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib in Resources */,
