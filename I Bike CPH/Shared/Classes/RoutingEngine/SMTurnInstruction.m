@@ -258,8 +258,8 @@
         string = [string stringByReplacingOccurrencesOfString:@"{{name}}" withString:self.wayName];
     }
     if ([string rangeOfString:@"{{heading}}"].location != NSNotFound) {
-        modifierDisplayString = [modifierDisplayString stringByReplacingOccurrencesOfString:@"uturn" withString:@"straight"];
-        string = [string stringByReplacingOccurrencesOfString:@"{{heading}}" withString:modifierDisplayString];
+        NSString *heading = translateString([@"direction_" stringByAppendingString:self.directionAbbreviation]);
+        string = [string stringByReplacingOccurrencesOfString:@"{{heading}}" withString:heading];
     }
     if ([string rangeOfString:@"{{side}}"].location != NSNotFound) {
         modifierDisplayString = [modifierDisplayString stringByReplacingOccurrencesOfString:@"uturn" withString:@"behind"];
