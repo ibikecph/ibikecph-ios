@@ -209,7 +209,7 @@
     NSString *string;
     BOOL addModifier = NO;
     NSString *modifierString = [self stringForManeuverModifier:self.maneuverModifier];
-    NSString *modifierDisplayString = [modifierString stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+    NSString *modifierDisplayString = [modifierString stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     switch (self.maneuverType) {
         case OSRMV5ManeuverTypeTurn:
         case OSRMV5ManeuverTypeEndOfRoad:

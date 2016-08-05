@@ -219,9 +219,7 @@ extension RouteNavigationViewController: RouteNavigationDirectionsToolbarDelegat
 extension RouteNavigationViewController: SMRouteDelegate {
     
     func updateTurn(firstElementRemoved: Bool) {
-        if mapView.userTrackingMode != .None {
-            updateTurnInstructions()
-        }
+        updateTurnInstructions()
     }
     func reachedDestination() {
         if let routeComposite = routeComposite {
