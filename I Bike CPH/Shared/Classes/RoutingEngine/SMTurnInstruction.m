@@ -209,7 +209,6 @@
     NSString *string;
     BOOL addModifier = NO;
     NSString *modifierString = [self stringForManeuverModifier:self.maneuverModifier];
-    NSString *modifierDisplayString = [modifierString stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     switch (self.maneuverType) {
         case OSRMV5ManeuverTypeTurn:
         case OSRMV5ManeuverTypeEndOfRoad:
@@ -262,8 +261,8 @@
         string = [string stringByReplacingOccurrencesOfString:@"{{heading}}" withString:heading];
     }
     if ([string rangeOfString:@"{{side}}"].location != NSNotFound) {
-        modifierDisplayString = [modifierDisplayString stringByReplacingOccurrencesOfString:@"uturn" withString:@"behind"];
-        string = [string stringByReplacingOccurrencesOfString:@"{{side}}" withString:modifierDisplayString];
+        NSString *side = translateString([@"direction_" stringByAppendingString:self.directionAbbreviation]);
+        string = [string stringByReplacingOccurrencesOfString:@"{{side}}" withString:side];
     }
     if ([string rangeOfString:@"%{exit}"].location != NSNotFound) {
         NSString *exitString = translateString([@"direction_number_" stringByAppendingString:self.ordinalDirection]);
