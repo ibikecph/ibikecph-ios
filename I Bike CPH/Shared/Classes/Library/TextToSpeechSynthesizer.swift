@@ -52,6 +52,10 @@ public class TextToSpeechSynthesizer: NSObject {
 
 extension TextToSpeechSynthesizer {
     
+    var hasRemainingSpeech: Bool {
+        return self.speechSynthesizer.speaking || self.speechSynthesizer.paused
+    }
+    
     func enableSpeech(enable: Bool) {
         if enable {
             self.speechSynthesizer.continueSpeaking()
@@ -73,6 +77,10 @@ extension TextToSpeechSynthesizer {
         let utterance = AVSpeechUtterance(string: string)
         utterance.voice = AVSpeechSynthesisVoice(language: self.voiceLanguageCode)
         speechSynthesizer.speakUtterance(utterance)
+    }
+    
+    public func stopSpeaking() {
+        speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
     }
 }
 

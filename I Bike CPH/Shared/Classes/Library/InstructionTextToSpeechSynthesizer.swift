@@ -3,16 +3,21 @@
 //  I Bike CPH
 //
 
+//import AVFoundation.AVAudioSession
+import AVFoundation.AVSpeechSynthesis
+
 class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
 
     static let sharedInstance = InstructionTextToSpeechSynthesizer()
     
     var hasReachedDestination: Bool = false
-    var lastSpokenTurnInstruction: String = ""
-    var previousDistanceToNextTurn: Int = Int.max
+    private var lastSpokenTurnInstruction: String = ""
+    private var previousDistanceToNextTurn: Int = Int.max
+    private var hasSpokenDestination: Bool = false
     var routeComposite: RouteComposite? {
         didSet {
             self.hasReachedDestination = false
+            self.hasSpokenDestination = false
             self.lastSpokenTurnInstruction = ""
             self.previousDistanceToNextTurn = Int.max
             self.updateBackgroundLocationsAllowance()
@@ -114,6 +119,9 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
             // Do not speak anymore after destination has been reached
             return
         }
+        if self.hasRemainingSpeech && self.hasSpokenDestination {
+            self.stopSpeaking()
+        }
         super.speakString(string)
     }
     
@@ -154,5 +162,10 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
         } else {
             SMLocationManager.sharedInstance().allowsBackgroundLocationUpdates = false
         }
+    }
+    
+    override func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+        super.speechSynthesizer(synthesizer, didFinishSpeechUtterance: utterance)
+        self.hasSpokenDestination = true
     }
 }
