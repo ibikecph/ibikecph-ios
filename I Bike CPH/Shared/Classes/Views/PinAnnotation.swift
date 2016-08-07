@@ -27,7 +27,6 @@ class PinAnnotation: Annotation {
         case .Ferry: return .Ferry
         case .Bus: return .Bus
         case .Train: return .Train
-        default: return nil
         }
     }
 

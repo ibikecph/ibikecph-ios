@@ -523,7 +523,7 @@
         [tempStartRoute removeObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedTimeForRoute))];
     }
 
-    tempStartRoute = [[SMRoute alloc] initWithRouteStart:start andEnd:end andDelegate:nil];
+    tempStartRoute = [[SMRoute alloc] initWithRouteStart:start end:end delegate:nil];
     [tempStartRoute addObserver:self
                      forKeyPath:NSStringFromSelector(@selector(estimatedRouteDistance))
                         options:NSKeyValueObservingOptionNew
@@ -547,7 +547,7 @@
         [tempFinishRoute removeObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedTimeForRoute))];
     }
 
-    tempFinishRoute = [[SMRoute alloc] initWithRouteStart:start andEnd:end andDelegate:nil];
+    tempFinishRoute = [[SMRoute alloc] initWithRouteStart:start end:end delegate:nil];
     [tempFinishRoute addObserver:self
                       forKeyPath:NSStringFromSelector(@selector(estimatedRouteDistance))
                          options:NSKeyValueObservingOptionNew

@@ -47,4 +47,30 @@ enum RouteType {
         }
         return []
     }
+    
+    var estimatedAverageSpeed: CGFloat {
+        get {
+            var kmPerHour: CGFloat
+            switch self {
+                case .Disabled: kmPerHour = 0
+                case .Fast: kmPerHour = 15
+                case .Cargo: kmPerHour = 10
+                case .Green: kmPerHour = 15
+                case .Broken: kmPerHour = 15
+            }
+            // return in m/s
+            return kmPerHour / 3.6
+        }
+    }
+    
+    static func estimatedAverageSpeedForOSRMServer(osrmServer: String) -> CGFloat {
+        switch osrmServer {
+            case RouteType.Disabled.server: return RouteType.Disabled.estimatedAverageSpeed
+            case RouteType.Fast.server: return RouteType.Fast.estimatedAverageSpeed
+            case RouteType.Cargo.server: return RouteType.Cargo.estimatedAverageSpeed
+            case RouteType.Green.server: return RouteType.Green.estimatedAverageSpeed
+            case RouteType.Broken.server: return RouteType.Broken.estimatedAverageSpeed
+            default: return 15
+        }
+    }
 }

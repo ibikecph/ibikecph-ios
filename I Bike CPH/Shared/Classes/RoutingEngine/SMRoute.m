@@ -49,22 +49,22 @@
     return self;
 }
 
-- (id)initWithRouteStart:(CLLocationCoordinate2D)start andEnd:(CLLocationCoordinate2D)end andDelegate:(id<SMRouteDelegate>)dlg
+- (id)initWithRouteStart:(CLLocationCoordinate2D)start end:(CLLocationCoordinate2D)end delegate:(id<SMRouteDelegate>)delegate
 {
-    return [self initWithRouteStart:start andEnd:end andDelegate:dlg andJSON:nil];
+    return [self initWithRouteStart:start end:end delegate:delegate routeJSON:nil];
 }
 
 - (id)initWithRouteStart:(CLLocationCoordinate2D)start
-                  andEnd:(CLLocationCoordinate2D)end
-             andDelegate:(id<SMRouteDelegate>)dlg
-                 andJSON:(NSDictionary *)routeJSON
+                     end:(CLLocationCoordinate2D)end
+                delegate:(id<SMRouteDelegate>)delegate
+               routeJSON:(NSDictionary *)routeJSON
 {
     self = [self init];
     if (self) {
         self.routeType = SMRouteTypeBike;
         [self setLocationStart:start];
         [self setLocationEnd:end];
-        [self setDelegate:dlg];
+        [self setDelegate:delegate];
         if (routeJSON == nil) {
             SMRequestOSRM *r = [[SMRequestOSRM alloc] initWithDelegate:self];
             [self setRequest:r];

@@ -70,6 +70,7 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
 @property NSString *routeChecksum;
 @property NSString *destinationHint;
 @property CGFloat maxMarginRadius;
+@property(nonatomic, assign) CGFloat estimatedAverageSpeed;
 
 @property(nonatomic, strong) CLLocation *lastCorrectedLocation;
 @property double lastCorrectedHeading;
@@ -91,11 +92,11 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
 - (CGFloat)calculateCaloriesBurned;
 - (NSString *)timePassed;
 
-- (id)initWithRouteStart:(CLLocationCoordinate2D)start andEnd:(CLLocationCoordinate2D)end andDelegate:(id<SMRouteDelegate>)dlg;
+- (id)initWithRouteStart:(CLLocationCoordinate2D)start end:(CLLocationCoordinate2D)end delegate:(id<SMRouteDelegate>)delegate;
 - (id)initWithRouteStart:(CLLocationCoordinate2D)start
-                  andEnd:(CLLocationCoordinate2D)end
-             andDelegate:(id<SMRouteDelegate>)dlg
-                 andJSON:(NSDictionary *)routeJSON;
+                     end:(CLLocationCoordinate2D)end
+                delegate:(id<SMRouteDelegate>)delegate
+               routeJSON:(NSDictionary *)routeJSON;
 - (void)recalculateRoute:(CLLocation *)loc;
 
 - (double)getCorrectedHeading;

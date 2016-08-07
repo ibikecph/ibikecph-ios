@@ -151,7 +151,6 @@ class RouteBrokenPartView: UIView {
             imageName = "Bus"
         case .Train:
             imageName = "Train"
-        default: break
         }
 
         typeImageView.image = UIImage(named: imageName)

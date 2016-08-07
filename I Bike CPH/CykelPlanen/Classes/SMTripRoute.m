@@ -151,10 +151,9 @@
 - (void)createSplitRoutes
 {
     SMRoute *startRoute =
-        [[SMRoute alloc] initWithRouteStart:[self start].coordinate andEnd:self.brokenRouteInfo.sourceStation.location.coordinate andDelegate:self];
-    SMRoute *endRoute = [[SMRoute alloc] initWithRouteStart:self.brokenRouteInfo.destinationStation.location.coordinate
-                                                     andEnd:[self end].coordinate
-                                                andDelegate:self];
+        [[SMRoute alloc] initWithRouteStart:[self start].coordinate end:self.brokenRouteInfo.sourceStation.location.coordinate delegate:self];
+    SMRoute *endRoute =
+        [[SMRoute alloc] initWithRouteStart:self.brokenRouteInfo.destinationStation.location.coordinate end:[self end].coordinate delegate:self];
 
     SMRoute *transportRoute = [self newTransportationRoute];
 

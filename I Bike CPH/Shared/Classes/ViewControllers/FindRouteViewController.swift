@@ -186,6 +186,7 @@ extension FindRouteViewController: RouteManagerDelegate {
                     })
                 presentViewController(alert, animated: true, completion: nil)
             case .Success(let json, let osrmServer):
+                let estimatedAverageSpeed = RouteType.estimatedAverageSpeedForOSRMServer(osrmServer)
                 if let routesJson = json.array {
                     routeCompositeSuggestions.removeAll(keepCapacity: true)
 
@@ -211,7 +212,8 @@ extension FindRouteViewController: RouteManagerDelegate {
                                 {
                                     let fromCoordinate = CLLocationCoordinate2D(latitude: fromLatitude, longitude: fromLongitude)
                                     let toCoordinate = CLLocationCoordinate2D(latitude: toLatitude, longitude: toLongitude)
-                                    let route = SMRoute(routeStart: fromCoordinate, andEnd: toCoordinate, andDelegate: self, andJSON: subDictionary)
+                                    let route = SMRoute(routeStart: fromCoordinate, end: toCoordinate, delegate: self, routeJSON: subDictionary)
+                                    route.estimatedAverageSpeed = estimatedAverageSpeed
                                     subRoutes.append(route)
                                 } else {
                                     print("Failed parsing broken route")
@@ -228,7 +230,8 @@ extension FindRouteViewController: RouteManagerDelegate {
                     fromCoordinate = fromItem.location?.coordinate,
                     toCoordinate = toItem.location?.coordinate
                 {
-                    let route = SMRoute(routeStart: fromCoordinate, andEnd: toCoordinate, andDelegate: self, andJSON: json.dictionaryObject)
+                    let route = SMRoute(routeStart: fromCoordinate, end: toCoordinate, delegate: self, routeJSON: json.dictionaryObject)
+                    route.estimatedAverageSpeed = estimatedAverageSpeed
                     route.osrmServer = osrmServer
                     let routeComposite = RouteComposite(route: route, from: fromItem, to: toItem)
                     self.routeComposite = routeComposite
