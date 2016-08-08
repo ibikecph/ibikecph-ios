@@ -55,7 +55,7 @@
 
 - (SMFoursquareOperation *)addFoursquareTask:(NSObject<SearchListItem> *)item
 {
-    SMFoursquareOperation *task = [[SMFoursquareOperation alloc] initWithItem:item andDelegate:self];
+    SMFoursquareOperation *task = [[SMFoursquareOperation alloc] initWithItem:item delegate:self];
     [task setQueuePriority:NSOperationQueuePriorityNormal];
     [self.queue addOperation:task];
     return task;
@@ -63,7 +63,7 @@
 
 - (SMKMSStreetOperation *)addKMSStreetTask:(NSObject<SearchListItem> *)item
 {
-    SMKMSStreetOperation *task = [[SMKMSStreetOperation alloc] initWithItem:item andDelegate:self];
+    SMKMSStreetOperation *task = [[SMKMSStreetOperation alloc] initWithItem:item delegate:self];
     [task setQueuePriority:NSOperationQueuePriorityNormal];
     [self.queue addOperation:task];
     return task;
@@ -71,7 +71,7 @@
 
 - (SMKMSAddressOperation *)addKMSAddressTask:(NSObject<SearchListItem> *)item
 {
-    SMKMSAddressOperation *task = [[SMKMSAddressOperation alloc] initWithItem:item andDelegate:self];
+    SMKMSAddressOperation *task = [[SMKMSAddressOperation alloc] initWithItem:item delegate:self];
     [task setQueuePriority:NSOperationQueuePriorityNormal];
     [self.queue addOperation:task];
     return task;
@@ -79,7 +79,7 @@
 
 - (SMKMSPlacesOperation *)addKMSPlacesTask:(NSObject<SearchListItem> *)item
 {
-    SMKMSPlacesOperation *task = [[SMKMSPlacesOperation alloc] initWithItem:item andDelegate:self];
+    SMKMSPlacesOperation *task = [[SMKMSPlacesOperation alloc] initWithItem:item delegate:self];
     [task setQueuePriority:NSOperationQueuePriorityNormal];
     [self.queue addOperation:task];
     return task;

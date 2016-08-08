@@ -22,10 +22,10 @@
     NSString *s = @"";
     NSMutableArray *arr = [NSMutableArray array];
     if (self.startItem.street && ![self.startItem.street isEqualToString:@""]) {
-        [arr addObject:[NSString stringWithFormat:@"vejnavn=*%@*", self.startItem.street]];
+        [arr addObject:[NSString stringWithFormat:@"vejnavn=%@*", self.startItem.street]];
     }
     if (self.startItem.number && ![self.startItem.number isEqualToString:@""]) {
-        [arr addObject:[NSString stringWithFormat:@"husnr=%@", self.startItem.number]];
+        [arr addObject:[NSString stringWithFormat:@"husnr=%@*", self.startItem.number]];
     }
     if (self.startItem.city && ![self.startItem.city isEqualToString:@""]) {
         [arr addObject:[NSString stringWithFormat:@"postdist=*%@*", self.startItem.city]];

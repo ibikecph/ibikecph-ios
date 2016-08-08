@@ -41,6 +41,6 @@
 - (void)terminate;
 - (void)timeoutCancel:(NSTimer *)timer;
 
-- (id)initWithItem:(NSObject<SearchListItem> *)item andDelegate:(id<SMAPIOperationDelegate>)dlg;
+- (id)initWithItem:(NSObject<SearchListItem> *)item delegate:(id<SMAPIOperationDelegate>)delegate;
 
 @end
