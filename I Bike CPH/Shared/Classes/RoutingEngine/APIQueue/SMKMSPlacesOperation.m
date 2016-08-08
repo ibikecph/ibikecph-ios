@@ -19,9 +19,10 @@
 {
     self.searchString = self.startItem.street;
 
+#warning The `stednavn` parameter should be able to accept wildcard (*) both as prefix and suffix of the parameter value string
     NSString *URLString = [[NSString
         stringWithFormat:@"https://kortforsyningen.kms.dk/"
-                         @"?servicename=%@&method=sted&stednavn=*%@*&geop=%lf,%lf&georef=EPSG:4326&outgeoref=EPSG:4326&login=%@&password=%@&hits=%@",
+                         @"?servicename=%@&method=stedv2&stednavn=%@*&geop=%lf,%lf&georef=EPSG:4326&outgeoref=EPSG:4326&login=%@&password=%@&hits=%@",
                          KORT_SERVICE, self.searchString, [SMLocationManager sharedInstance].lastValidLocation.coordinate.longitude,
                          [SMLocationManager sharedInstance].lastValidLocation.coordinate.latitude, [SMRouteSettings sharedInstance].kort_username,
                          [SMRouteSettings sharedInstance].kort_password, [SMRouteSettings sharedInstance].kort_max_results]
@@ -40,9 +41,6 @@
 
 - (void)processResult:(id)result
 {
-    //    NSString* nameKey= @"navn";
-    //    NSString* municipalityKey= @"kommune_navn";
-
     NSDictionary *json = (NSDictionary *)result;
     NSMutableCharacterSet *set = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
     [set addCharactersInString:@","];
@@ -53,8 +51,8 @@
 
         NSInteger relevance = [SMRouteUtils
             pointsForName:[[NSString stringWithFormat:@"%@ , %@ %@", item.street, item.zip, item.city] stringByTrimmingCharactersInSet:set]
-               andAddress:[[NSString stringWithFormat:@"%@ , %@ %@", item.street, item.zip, item.city] stringByTrimmingCharactersInSet:set]
-                 andTerms:self.searchString];
+                  address:[[NSString stringWithFormat:@"%@ , %@ %@", item.street, item.zip, item.city] stringByTrimmingCharactersInSet:set]
+                    terms:self.searchString];
         item.relevance = relevance;
         item.distance = [[SMLocationManager sharedInstance].lastValidLocation distanceFromLocation:item.location];
 
@@ -65,12 +63,15 @@
       long first = obj1.distance;
       long second = obj2.distance;
 
-      if (first < second)
+      if (first < second) {
           return NSOrderedAscending;
-      else if (first > second)
+      }
+      else if (first > second) {
           return NSOrderedDescending;
-      else
+      }
+      else {
           return NSOrderedSame;
+      }
     }];
 
     self.results = addressArray;

@@ -164,9 +164,6 @@
         return;
     }
     if (self.responseData) {
-        /**
-         * process data
-         */
         id result = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingAllowFragments error:NULL];
         if (result) {
             dispatch_async(dispatch_get_main_queue(), ^{

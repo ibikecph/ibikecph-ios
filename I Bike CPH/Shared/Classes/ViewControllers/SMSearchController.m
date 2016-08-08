@@ -192,8 +192,8 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
 
         NSString *name = isFromStreetSearch ? item.street : [NSString stringWithFormat:@"%@ %@", item.street, item.number];
         NSString *address = [NSString stringWithFormat:@"%@ %@", item.zip, item.city];
-
-        [twoCell.nameLabel setText:name
+        
+        [twoCell.nameLabel setText:[name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]
             afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
               for (NSString *srch in words) {
                   NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
@@ -213,7 +213,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
               return mutableAttributedString;
             }];
 
-        [twoCell.addressLabel setText:address
+        [twoCell.addressLabel setText:[address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]
             afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
 
               for (NSString *srch in words) {
@@ -240,7 +240,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
     else if (![item.name isEqualToString:item.address] && item.address != nil && ![item.address isEqualToString:@""]) {
         SMSearchTwoRowCell *twoCell = [tableView dequeueReusableCellWithIdentifier:TwoRowSearchCellIdentifier];
 
-        [twoCell.nameLabel setText:item.name
+        [twoCell.nameLabel setText:[item.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]
             afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
               for (NSString *srch in words) {
                   NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
@@ -260,7 +260,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
               return mutableAttributedString;
             }];
 
-        [twoCell.addressLabel setText:item.address
+        [twoCell.addressLabel setText:[item.address stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]
             afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
 
               for (NSString *srch in words) {
@@ -287,7 +287,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
     else {
         cell = [tableView dequeueReusableCellWithIdentifier:SingleRowSearchCellIdentifier];
 
-        [cell.nameLabel setText:item.name
+        [cell.nameLabel setText:[item.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]
             afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
               for (NSString *srch in words) {
                   NSRange boldRange = [[mutableAttributedString string] rangeOfString:srch options:NSCaseInsensitiveSearch];
@@ -513,7 +513,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
         // Favorites
         for (int i = 0; i < self.favorites.count; i++) {
             id<SearchListItem> d = self.favorites[i];
-            if ([SMRouteUtils pointsForName:d.name andAddress:d.address andTerms:str] > 0) {
+            if ([SMRouteUtils pointsForName:d.name address:d.address terms:str] > 0) {
                 [combinedResults addObject:d];
             }
         }
@@ -528,7 +528,7 @@ static NSString *const TwoRowSearchCellIdentifier = @"searchTwoRowsCell";
                     break;
                 }
             }
-            if (found == NO && [SMRouteUtils pointsForName:d.name andAddress:d.address andTerms:str] > 0) {
+            if (found == NO && [SMRouteUtils pointsForName:d.name address:d.address terms:str] > 0) {
                 [combinedResults addObject:d];
             }
         }

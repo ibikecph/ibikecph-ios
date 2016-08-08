@@ -23,7 +23,7 @@ class IconLabelTableViewCell: NibDesignableTableViewCell {
     func configure(text: String, textColor: UIColor = Styler.foregroundColor(), icon: UIImage? = nil) {
         
         label.textColor = textColor
-        label.text = text
+        label.text = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         iconImageView.image = icon
     }

@@ -49,8 +49,8 @@ extension AddressToolbarView {
     }
     
     func updateToItem(item: SearchListItem) {
-        let addressLine1 = item.street + " " + item.number
-        let addressLine2 = item.zip + " " + item.city
+        let addressLine1 = item.street + ((item.number.characters.count > 0) ? " \(item.number)" : "")
+        let addressLine2 = ((item.zip.characters.count > 0) ? "\(item.zip)" : "") + " \(item.city)"
         let doubleAddressLine = "\(addressLine1)\n\(addressLine2)"
         if let favorite = item as? FavoriteItem {
             favoriteSelected = true

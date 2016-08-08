@@ -40,6 +40,6 @@ NSString *formatTimeLeft(NSInteger seconds);
 
 + (NSString *)routeFilenameFromTimestampForExtension:(NSString *)ext;
 
-+ (NSInteger)pointsForName:(NSString *)name andAddress:(NSString *)address andTerms:(NSString *)srchString;
++ (NSInteger)pointsForName:(NSString *)name address:(NSString *)address terms:(NSString *)terms;
 
 @end

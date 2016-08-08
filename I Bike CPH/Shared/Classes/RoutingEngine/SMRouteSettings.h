@@ -37,8 +37,6 @@
 
 @property(nonatomic, strong) NSNumber *use_apple_geocoder; // BOOL
 
-//@property (nonatomic, strong) NSString *google_analytics_key;
-//@property (nonatomic, strong) NSString *google_api_key;
 @property(nonatomic, strong) NSString *foursquare_id;
 @property(nonatomic, strong) NSString *foursquare_secret;
 @property(nonatomic, strong) NSString *foursquare_categories;

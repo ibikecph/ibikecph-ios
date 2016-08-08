@@ -71,7 +71,7 @@
 
     for (NSDictionary *d in res[@"response"][@"venues"]) {
         FoursquareItem *item = [[FoursquareItem alloc] initWithJsonDictionary:d];
-        item.relevance = [SMRouteUtils pointsForName:item.name andAddress:item.address andTerms:self.searchString];
+        item.relevance = [SMRouteUtils pointsForName:item.name address:item.address terms:self.searchString];
         if (item.location.coordinate.latitude != 0 && item.location.coordinate.longitude != 0) {
             item.distance = [[SMLocationManager sharedInstance].lastValidLocation distanceFromLocation:item.location];
             [arr addObject:item];

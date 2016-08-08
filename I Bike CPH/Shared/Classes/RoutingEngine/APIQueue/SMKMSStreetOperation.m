@@ -53,8 +53,8 @@
 
         NSInteger relevance = [SMRouteUtils
             pointsForName:[[NSString stringWithFormat:@"%@ , %@ %@", item.street, item.zip, item.city] stringByTrimmingCharactersInSet:set]
-               andAddress:[[NSString stringWithFormat:@"%@ , %@ %@", item.street, item.zip, item.city] stringByTrimmingCharactersInSet:set]
-                 andTerms:self.searchString];
+                  address:[[NSString stringWithFormat:@"%@ , %@ %@", item.street, item.zip, item.city] stringByTrimmingCharactersInSet:set]
+                    terms:self.searchString];
         item.relevance = relevance;
 
         [addressArray addObject:item];

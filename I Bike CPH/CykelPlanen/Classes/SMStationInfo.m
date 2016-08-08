@@ -79,19 +79,6 @@
 - (void)fetchName
 {
     return;
-//    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(_latitude, _longitude);
-//    __weak SMStationInfo *selfRef = self;
-//    [SMGeocoder reverseGeocode:coord
-//                   synchronous:NO
-//             completionHandler:^(KortforItem *item, NSError *error) {
-//
-//               NSString *streetName = item.street;
-//               if (!streetName || [streetName isEqual:[NSNull null]] || [streetName isEqualToString:@""]) {
-//                   streetName = [NSString stringWithFormat:@"Station %f, %f", coord.latitude, coord.longitude];
-//               }
-//               selfRef.name = streetName;
-//
-//             }];
 }
 
 - (BOOL)isEqual:(id)object

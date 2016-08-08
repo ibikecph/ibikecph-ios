@@ -11,6 +11,10 @@
 //
 
 #import "SMAPIQueue.h"
+#import "SMFoursquareOperation.h"
+#import "SMKMSAddressOperation.h"
+#import "SMKMSStreetOperation.h"
+#import "SMKMSPlacesOperation.h"
 
 @implementation SMAPIQueue
 

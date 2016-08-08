@@ -228,12 +228,9 @@
                      completionHandler:^(KortforItem *item, NSError *error) {
                        NSString *streetName = item.street;
 
-                       // NSLog(@"Response: %@", response);
-
                        if ([streetName isEqualToString:@""]) {
                            streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
                        }
-                       //[tCell.buttonAddressSource setTitle:streetName forState:UIControlStateNormal];
                      }];
 
             coord = CLLocationCoordinate2DMake(self.destinationStation.latitude, self.destinationStation.longitude);
@@ -244,7 +241,6 @@
                        if ([streetName isEqualToString:@""]) {
                            streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
                        }
-                       //[tCell.buttonAddressDestination setTitle:streetName forState:UIControlStateNormal];
                      }];
 
             UIImage *sourceIcon = [UIImage imageNamed:@"metro_icon.png"];
@@ -309,7 +305,6 @@
             CellId = @"DestinationCell";
             SMBikeWaypointCell *wpCell = [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.destinationName];
-            //            [wpCell.labelAddressBottom setText:self.destinationName];
 
             float fDistance = endDistance / 1000.0;
             ;
@@ -367,7 +362,6 @@
 - (void)displayAddressViewWithAddressType:(AddressType)pAddressType model:(NSArray *)pModel
 {
     addressPickerView.addressType = pAddressType;
-    // pickerModel= pModel;
 
     pickerModel = [pModel sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
       if (![a isKindOfClass:[SMStationInfo class]] || ![b isKindOfClass:[SMStationInfo class]]) {
@@ -478,8 +472,6 @@
 
         destinationStations = [self endStationsForSourceStation:routeInfo.sourceStation];
         [self performSelectorOnMainThread:@selector(setSourceStation:) withObject:routeInfo.sourceStation waitUntilDone:YES];
-
-        //        routeInfo=[destinationStations objectAtIndex:0];
 
         [self performSelectorOnMainThread:@selector(setDestinationStation:) withObject:routeInfo.destStation waitUntilDone:YES];
     }

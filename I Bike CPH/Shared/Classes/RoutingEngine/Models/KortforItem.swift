@@ -31,25 +31,37 @@ import SwiftyJSON
     init(jsonDictionary: AnyObject) {
         let json = JSON(jsonDictionary)
         
-        let jsonProperties = json["properties"]
+        let properties = json["properties"]
         // Street, name, address, city, zip
-        if let streetName = jsonProperties["vej_navn"].string {
-            street = streetName
+        self.street = ""
+        if let streetName = properties["vej_navn"].string {
+            self.street = streetName
+        } else if let navn = properties["navn"].string {
+            self.street = navn
         } else {
-            street = jsonProperties["navn"].stringValue
+            if let stednavneliste = properties["stednavneliste"].array {
+                for stednavn: JSON in stednavneliste {
+                    if let navn = stednavn["navn"].string, let status = stednavn["status"].string {
+                        self.street = navn
+                        if status == "officielt" {
+                            break
+                        }
+                    }
+                }
+            }
         }
-        if let postalArea = jsonProperties["postdistrikt_navn"].string {
-            city = postalArea
+        if let postalArea = properties["postdistrikt_navn"].string {
+            self.city = postalArea
         } else {
-            city = jsonProperties["kommune_navn"].stringValue
+            self.city = "\(properties["sogn_navn"].stringValue), \(properties["kommune_navn"])"
         }
-        zip = jsonProperties["postdistrikt_kode"].stringValue
+        self.zip = properties["postdistrikt_kode"].stringValue
         
         // Location
-        let jsonGeometry = json["geometry"]
+        let geometry = json["geometry"]
         var latitude: Double = 0
         var longitude: Double = 0
-        if let ymin = jsonGeometry["ymin"].double {
+        if let ymin = geometry["ymin"].double {
             latitude = ymin
             if let ymax = json["properties"]["ymax"].double {
                 latitude += ymax
@@ -60,7 +72,7 @@ import SwiftyJSON
                 longitude += ymax
                 longitude /= 2
             }
-        } else if let coordinates = jsonGeometry["coordinates"].array {
+        } else if let coordinates = geometry["coordinates"].array {
             latitude = coordinates[1].doubleValue
             longitude = coordinates[0].doubleValue
         } else if let boundingBox = json["bbox"].array {
@@ -69,15 +81,20 @@ import SwiftyJSON
                 longitude = (boundingBox[0].doubleValue + boundingBox[2].doubleValue) / 2
             }
         }
-        location = CLLocation(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+        self.location = CLLocation(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
         
         // Number, distance, isPlace
-        number = jsonProperties["husnr"].stringValue
-        distance = jsonProperties["afstand_afstand"].doubleValue
-        isPlace = jsonProperties["kategori"].string != nil
+        self.number = properties["husnr"].stringValue
+        self.distance = properties["afstand_afstand"].doubleValue
+        self.isPlace = properties["kategori"].string != nil
         
-        name = "\(street) \(number), \(zip) \(city)"
-        address = name
+        self.name = self.street
+        self.name += (self.number.characters.count > 0) ? " \(self.number)," : ","
+        self.name += (self.zip.characters.count > 0) ? " \(self.zip)" : ""
+        self.name += " \(self.city)"
+        self.address = self.name
+        
+        super.init()
     }
     
     override var description: String {

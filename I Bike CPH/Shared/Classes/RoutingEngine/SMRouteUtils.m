@@ -177,23 +177,23 @@ float caloriesBurned(float avgSpeed, float timeSpent)
     return path;
 }
 
-+ (NSInteger)pointsForName:(NSString *)name andAddress:(NSString *)address andTerms:(NSString *)srchString
++ (NSInteger)pointsForName:(NSString *)name address:(NSString *)address terms:(NSString *)terms
 {
-    NSMutableArray *terms = [NSMutableArray array];
-    srchString = [srchString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    for (NSString *str in [srchString componentsSeparatedByString:@" "]) {
-        if ([terms indexOfObject:str] == NSNotFound) {
-            [terms addObject:str];
+    NSMutableArray *termsArray = [NSMutableArray array];
+    terms = [terms stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    for (NSString *str in [terms componentsSeparatedByString:@" "]) {
+        if ([termsArray indexOfObject:str] == NSNotFound) {
+            [termsArray addObject:str];
         }
     }
     NSInteger total = 0;
 
-    NSInteger points = [name numberOfOccurenciesOfString:srchString];
+    NSInteger points = [name numberOfOccurenciesOfString:terms];
     if (points > 0) {
         total += points * POINTS_EXACT_NAME;
     }
     else {
-        for (NSString *str in terms) {
+        for (NSString *str in termsArray) {
             points = [name numberOfOccurenciesOfString:str];
             if (points > 0) {
                 total += points * POINTS_PART_NAME;
@@ -201,12 +201,12 @@ float caloriesBurned(float avgSpeed, float timeSpent)
         }
     }
 
-    points = [address numberOfOccurenciesOfString:srchString];
+    points = [address numberOfOccurenciesOfString:terms];
     if (points > 0) {
         total += points * POINTS_EXACT_ADDRESS;
     }
     else {
-        for (NSString *str in terms) {
+        for (NSString *str in termsArray) {
             points = [address numberOfOccurenciesOfString:str];
             if (points > 0) {
                 total += points * POINTS_PART_NAME;
