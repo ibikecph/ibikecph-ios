@@ -28,8 +28,6 @@
 NSString *formatTime(float seconds);
 // Format time passed between two dates
 NSString *formatTimePassed(NSDate *startDate, NSDate *endDate);
-// Calculate how many calories are burned given speed and time spent cycling
-float caloriesBurned(float avgSpeed, float timeSpent);
 // Calculate expected arrival time
 NSString *expectedArrivalTime(NSInteger seconds);
 

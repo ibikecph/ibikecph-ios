@@ -16,13 +16,18 @@
 #import "SMRouteUtils.h"
 
 @interface SMRoute ()
+
 @property(nonatomic, strong) SMRequestOSRM *request;
 @property(nonatomic, strong) CLLocation *lastRecalcLocation;
 @property(nonatomic, strong) NSObject *recalcMutex;
-@property(nonatomic) CGFloat distanceFromRoute;
 @property(nonatomic, strong) NSMutableArray *allTurnInstructions;
+@property(nonatomic) CGFloat distanceFromRoute;
 @property(nonatomic) NSUInteger nextWaypoint;
 @property(nonatomic) NSInteger lastVisitedWaypointIndex;
+@property(nonatomic) double lastCorrectedHeading;
+@property(nonatomic) BOOL snapArrow;
+@property(nonatomic) NSInteger longestDistance;
+@property(nonatomic) BOOL recalculationInProgress;
 
 @end
 
@@ -35,8 +40,6 @@
         self.routeType = SMRouteTypeBike;
         self.distanceLeft = -1;
         self.tripDistance = -1;
-        self.caloriesBurned = -1;
-        self.averageSpeed = -1;
         self.lastVisitedWaypointIndex = -1;
         self.recalculationInProgress = NO;
         self.lastRecalcLocation = [[CLLocation alloc] initWithLatitude:0 longitude:0];
@@ -77,11 +80,6 @@
         }
     }
     return self;
-}
-
-- (double)getCorrectedHeading
-{
-    return self.lastCorrectedHeading;
 }
 
 - (void)recalculateRoute:(CLLocation *)loc
@@ -226,12 +224,7 @@
     else {
         self.transportLine = @"";
     }
-    self.routeChecksum = nil;
     self.destinationHint = nil;
-
-    if (jsonRoot[@"hint_data"] && jsonRoot[@"hint_data"][@"checksum"]) {
-        self.routeChecksum = [NSString stringWithFormat:@"%@", jsonRoot[@"hint_data"][@"checksum"]];
-    }
 
     if (jsonRoot[@"hint_data"] && jsonRoot[@"hint_data"][@"locations"] && [jsonRoot[@"hint_data"][@"locations"] isKindOfClass:[NSArray class]]) {
         self.destinationHint = [NSString stringWithFormat:@"%@", [jsonRoot[@"hint_data"][@"locations"] lastObject]];
@@ -596,21 +589,6 @@
     return self.tripDistance;
 }
 
-- (CGFloat)calculateAverageSpeed
-{
-    CGFloat distance = [self calculateDistanceTraveled];
-    CGFloat avgSpeed = 0.0f;
-    if (self.visitedLocations.count > 1) {
-        NSDate *startLoc = ((CLLocation *)self.visitedLocations.firstObject).timestamp;
-        NSDate *endLoc = ((CLLocation *)self.visitedLocations.lastObject).timestamp;
-        if ([endLoc timeIntervalSinceDate:startLoc] > 0) {
-            avgSpeed = distance / ([endLoc timeIntervalSinceDate:startLoc]);
-        }
-    }
-    self.averageSpeed = roundf(avgSpeed * 30.6) / 10.0f;
-    return self.averageSpeed;
-}
-
 - (NSString *)timePassed
 {
     if (self.visitedLocations.count > 1) {
@@ -619,23 +597,6 @@
         return formatTimePassed(startDate, endDate);
     }
     return @"";
-}
-
-- (CGFloat)calculateCaloriesBurned
-{
-    if (self.caloriesBurned >= 0) {
-        return self.caloriesBurned;
-    }
-
-    CGFloat avgSpeed = [self calculateAverageSpeed];
-    CGFloat timeSpent = 0.0f;
-    if (self.visitedLocations.count > 1) {
-        NSDate *startLoc = ((CLLocation *)self.visitedLocations.firstObject).timestamp;
-        NSDate *endLoc = ((CLLocation *)self.visitedLocations.lastObject).timestamp;
-        timeSpent = [endLoc timeIntervalSinceDate:startLoc] / 3600.0f;
-    }
-
-    return self.caloriesBurned = caloriesBurned(avgSpeed, timeSpent);
 }
 
 - (void)setupRoute:(id)jsonRoot
@@ -725,11 +686,6 @@
             });
         }
     }
-}
-
-- (BOOL)isOnPath
-{
-    return self.snapArrow;
 }
 
 #pragma mark - new methods

@@ -54,8 +54,6 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
 
 @property CGFloat distanceLeft;
 @property CGFloat tripDistance;
-@property CGFloat averageSpeed;
-@property CGFloat caloriesBurned;
 
 @property CLLocationCoordinate2D locationStart;
 @property CLLocationCoordinate2D locationEnd;
@@ -64,21 +62,15 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
 @property NSDate *startDate;
 @property NSDate *endDate;
 @property NSString *transportLine;
-@property BOOL recalculationInProgress;
 @property NSInteger estimatedTimeForRoute;
 @property NSInteger estimatedRouteDistance;
-@property NSString *routeChecksum;
 @property NSString *destinationHint;
 @property CGFloat maxMarginRadius;
 @property(nonatomic, assign) CGFloat estimatedAverageSpeed;
 
 @property(nonatomic, strong) CLLocation *lastCorrectedLocation;
-@property double lastCorrectedHeading;
 
 @property(nonatomic, strong) NSString *longestStreet;
-@property NSInteger longestDistance;
-
-@property BOOL snapArrow;
 
 @property(nonatomic, strong) NSString *osrmServer;
 
@@ -88,8 +80,6 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
 - (NSDictionary *)save;
 
 - (CGFloat)calculateDistanceTraveled;
-- (CGFloat)calculateAverageSpeed;
-- (CGFloat)calculateCaloriesBurned;
 - (NSString *)timePassed;
 
 - (id)initWithRouteStart:(CLLocationCoordinate2D)start end:(CLLocationCoordinate2D)end delegate:(id<SMRouteDelegate>)delegate;
@@ -99,6 +89,4 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
                routeJSON:(NSDictionary *)routeJSON;
 - (void)recalculateRoute:(CLLocation *)loc;
 
-- (double)getCorrectedHeading;
-- (BOOL)isOnPath;
 @end

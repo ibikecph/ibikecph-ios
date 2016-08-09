@@ -85,57 +85,6 @@ NSString *expectedArrivalTime(NSInteger seconds)
     return [df stringFromDate:d];
 }
 
-// Calculate how many calories are burned given speed and time spent cycling
-float caloriesBurned(float avgSpeed, float timeSpent)
-{
-    float calBurned = 0.0f;
-
-    if (avgSpeed < 10.5) {
-        calBurned = timeSpent * 288;
-    }
-    else if (avgSpeed < 12.9) {
-        calBurned = timeSpent * 324;
-    }
-    else if (avgSpeed < 13.7) {
-        calBurned = timeSpent * 374;
-    }
-    else if (avgSpeed < 16.1) {
-        calBurned = timeSpent * 540;
-    }
-    else if (avgSpeed < 19.3) {
-        calBurned = timeSpent * 639;
-    }
-    else if (avgSpeed < 21) {
-        calBurned = timeSpent * 702;
-    }
-    else if (avgSpeed < 22.5) {
-        calBurned = timeSpent * 806;
-    }
-    else if (avgSpeed < 24.2) {
-        calBurned = timeSpent * 873;
-    }
-    else if (avgSpeed < 25.8) {
-        calBurned = timeSpent * 945;
-    }
-    else if (avgSpeed < 32.2) {
-        calBurned = timeSpent * 1121;
-    }
-    else if (avgSpeed < 35.4) {
-        calBurned = timeSpent * 1359;
-    }
-    else if (avgSpeed < 38.7) {
-        calBurned = timeSpent * 1746;
-    }
-    else if (avgSpeed < 45.1) {
-        calBurned = timeSpent * 2822;
-    }
-    else {
-        calBurned = timeSpent * 3542;
-    }
-
-    return roundf(calBurned);
-}
-
 + (NSString *)formatDistanceInMeters:(float)distanceInMeters
 {
     if (distanceInMeters < 5) {
