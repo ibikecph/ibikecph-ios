@@ -60,7 +60,7 @@ struct RouteComposite {
                 return self.estimatedTime * self.distanceLeft / self.estimatedDistance
             } else {
                 // Create own estimate
-                return self.estimatedDistance / Double(route.estimatedAverageSpeed)
+                return self.bikeDistanceLeft / Double(route.estimatedAverageSpeed)
             }
         case .Multiple(let routes):
             
@@ -78,7 +78,7 @@ struct RouteComposite {
                     duration += Double(route.distanceLeft) / Double(route.estimatedRouteDistance) * NSTimeInterval(route.estimatedTimeForRoute)
                 } else {
                     // Create own estimate
-                    duration += Double(route.estimatedRouteDistance) / Double(route.estimatedAverageSpeed)
+                    duration += Double(route.distanceLeft) / Double(route.estimatedAverageSpeed)
                 }
             } else {
                 duration += Double(route.distanceLeft) / Double(route.estimatedRouteDistance) * NSTimeInterval(route.estimatedTimeForRoute)
@@ -102,7 +102,7 @@ struct RouteComposite {
                         duration += Double(route.distanceLeft) / Double(route.estimatedRouteDistance) * NSTimeInterval(route.estimatedTimeForRoute)
                     } else {
                         // Create own estimate
-                        duration += Double(route.estimatedRouteDistance) / Double(route.estimatedAverageSpeed)
+                        duration += Double(route.distanceLeft) / Double(route.estimatedAverageSpeed)
                     }
                 } else {
                     duration += Double(route.distanceLeft) / Double(route.estimatedRouteDistance) * NSTimeInterval(route.estimatedTimeForRoute)
