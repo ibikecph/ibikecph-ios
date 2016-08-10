@@ -166,7 +166,7 @@ static dispatch_queue_t reachabilityQueue;
               NSUInteger destinationHeading = (NSUInteger)[SMGPSUtil bearingBetweenStartCoordinate:start endCoordinate:end];
               NSUInteger trueHeading = (NSUInteger)heading.trueHeading;
               NSUInteger headingRange = 90;
-              [requestString appendFormat:@"&bearings=%lu,%lu;%lu,%lu", trueHeading, headingRange, destinationHeading, headingRange];
+              [requestString appendFormat:@"&bearings=%lu,%lu;%lu,%lu", (unsigned long)trueHeading, (unsigned long)headingRange, (unsigned long)destinationHeading, (unsigned long)headingRange];
           }
       }
 

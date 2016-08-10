@@ -332,9 +332,6 @@
 
     self.lastVisitedWaypointIndex = -1;
 
-    CLLocation *a = self.waypoints[0];
-    CLLocation *b = self.waypoints[1];
-
     self.snapArrow = NO;
     return YES;
 }
@@ -481,9 +478,6 @@
     }
 
     self.lastVisitedWaypointIndex = -1;
-
-    CLLocation *a = self.waypoints[0];
-    CLLocation *b = self.waypoints[1];
 
     self.snapArrow = NO;
     return YES;
