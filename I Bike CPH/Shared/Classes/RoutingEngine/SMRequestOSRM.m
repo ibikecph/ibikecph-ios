@@ -15,6 +15,7 @@
 #import "SMGPSUtil.h"
 #import "SMRequestOSRM.h"
 #import "SMRouteConsts.h"
+#import "SMGPSUtil.h"
 
 @interface SMRequestOSRM ()
 @property(nonatomic, strong) NSURLConnection *conn;
@@ -158,6 +159,14 @@ static dispatch_queue_t reachabilityQueue;
           NSString *dh = (destinationHint.length > 0) ? destinationHint : @"";
           if (sh.length > 0 || dh.length > 0) {
               [requestString appendFormat:@"&hints=%@;%@", sh, dh];
+          }
+          // Set bearing
+          CLHeading *heading = SMLocationManager.sharedInstance.lastHeading;
+          if (heading) {
+              NSUInteger destinationHeading = (NSUInteger)[SMGPSUtil bearingBetweenStartCoordinate:start endCoordinate:end];
+              NSUInteger trueHeading = (NSUInteger)heading.trueHeading;
+              NSUInteger headingRange = 90;
+              [requestString appendFormat:@"&bearings=%lu,%lu;%lu,%lu", trueHeading, headingRange, destinationHeading, headingRange];
           }
       }
 

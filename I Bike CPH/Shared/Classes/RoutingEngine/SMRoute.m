@@ -24,10 +24,11 @@
 @property(nonatomic) CGFloat distanceFromRoute;
 @property(nonatomic) NSUInteger nextWaypoint;
 @property(nonatomic) NSInteger lastVisitedWaypointIndex;
-@property(nonatomic) double lastCorrectedHeading;
 @property(nonatomic) BOOL snapArrow;
 @property(nonatomic) NSInteger longestDistance;
 @property(nonatomic) BOOL recalculationInProgress;
+@property(nonatomic) CGFloat tripDistance;
+
 
 @end
 
@@ -333,7 +334,6 @@
 
     CLLocation *a = self.waypoints[0];
     CLLocation *b = self.waypoints[1];
-    self.lastCorrectedHeading = [SMGPSUtil bearingBetweenStartLocation:a andEndLocation:b];
 
     self.snapArrow = NO;
     return YES;
@@ -484,7 +484,6 @@
 
     CLLocation *a = self.waypoints[0];
     CLLocation *b = self.waypoints[1];
-    self.lastCorrectedHeading = [SMGPSUtil bearingBetweenStartLocation:a andEndLocation:b];
 
     self.snapArrow = NO;
     return YES;
@@ -838,7 +837,6 @@
             CLLocation *b = self.waypoints[self.lastVisitedWaypointIndex + 1];
             CLLocationCoordinate2D coord = closestCoordinate(loc.coordinate, a.coordinate, b.coordinate);
 
-            self.lastCorrectedHeading = [SMGPSUtil bearingBetweenStartLocation:loc andEndLocation:a];
             self.lastCorrectedLocation = [[CLLocation alloc] initWithCoordinate:coord
                                                                        altitude:loc.altitude
                                                              horizontalAccuracy:loc.horizontalAccuracy
@@ -860,8 +858,6 @@
             locLog(@"Last visited waypoint index: %li", (long)self.lastVisitedWaypointIndex);
             locLog(@"Loc A: (%f, %f)", a.coordinate.latitude, a.coordinate.longitude);
             locLog(@"Loc B: (%f, %f)", b.coordinate.latitude, b.coordinate.longitude);
-            self.lastCorrectedHeading = [SMGPSUtil bearingBetweenStartLocation:a andEndLocation:b];
-            locLog(@"Heading: %f", self.lastCorrectedHeading);
             locLog(@"Closest: (%f %f)", coord.latitude, coord.longitude);
             locLog(@"=========");
         }

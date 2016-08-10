@@ -52,9 +52,7 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
 @property(nonatomic, strong) NSMutableArray *visitedLocations;
 @property(nonatomic, assign) SMRouteType routeType;
 
-@property CGFloat distanceLeft;
-@property CGFloat tripDistance;
-
+@property(nonatomic) CGFloat distanceLeft;
 @property CLLocationCoordinate2D locationStart;
 @property CLLocationCoordinate2D locationEnd;
 @property NSString *startDescription;

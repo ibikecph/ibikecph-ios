@@ -201,23 +201,26 @@ double DegreesToRadians(double degrees)
 };
 double RadiansToDegrees(double radians)
 {
-    return radians * 180 / M_PI;
+    if (radians < 0) {
+        return 360 - fmodf(-radians, 2*M_PI) * 180 / M_PI;
+    } else {
+        return fmodf(radians, 2*M_PI) * 180 / M_PI;
+    }
 };
 
-+ (double)bearingBetweenStartLocation:(CLLocation *)startLocation andEndLocation:(CLLocation *)endLocation
++ (double)bearingBetweenStartCoordinate:(CLLocationCoordinate2D)startCoordinate endCoordinate:(CLLocationCoordinate2D)endCoordinate;
 {
-    double lat1 = DegreesToRadians(startLocation.coordinate.latitude);
-    double lon1 = DegreesToRadians(startLocation.coordinate.longitude);
+    double lat1 = DegreesToRadians(startCoordinate.latitude);
+    double lon1 = DegreesToRadians(startCoordinate.longitude);
 
-    double lat2 = DegreesToRadians(endLocation.coordinate.latitude);
-    double lon2 = DegreesToRadians(endLocation.coordinate.longitude);
+    double lat2 = DegreesToRadians(endCoordinate.latitude);
+    double lon2 = DegreesToRadians(endCoordinate.longitude);
 
     double dLon = lon2 - lon1;
 
     double y = sin(dLon) * cos(lat2);
     double x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon);
     double radiansBearing = atan2(y, x);
-
     return RadiansToDegrees(radiansBearing);
 }
 

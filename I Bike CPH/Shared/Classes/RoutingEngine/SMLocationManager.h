@@ -17,6 +17,7 @@
 
 @property (nonatomic, readonly) BOOL hasValidLocation;
 @property (nonatomic, readonly) CLLocation *lastValidLocation;
+@property (nonatomic, readonly) CLHeading *lastHeading;
 @property (nonatomic, readonly) BOOL locationServicesEnabled;
 @property (nonatomic) BOOL allowsBackgroundLocationUpdates;
 

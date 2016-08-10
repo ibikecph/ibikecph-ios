@@ -23,10 +23,6 @@
 
 @end
 
-/**
- * \ingroup libs
- * OSRM API calls wrapper
- */
 @interface SMRequestOSRM : NSObject<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 @property(nonatomic, readonly) NSURLConnection *conn;

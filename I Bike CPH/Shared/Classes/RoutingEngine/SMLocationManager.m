@@ -75,6 +75,11 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshPosition" object:self userInfo:@{ @"locations" : locations }];
 }
 
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+{
+    
+}
+
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"didFailWithError");
@@ -100,6 +105,7 @@
 {
     if (self.locationManager != nil) {
         [self.locationManager startUpdatingLocation];
+        [self.locationManager startUpdatingHeading];
         [self.locationManager startMonitoringSignificantLocationChanges];
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     }
@@ -109,6 +115,7 @@
 {
     if (self.locationManager != nil) {
         [self.locationManager startUpdatingLocation];
+        [self.locationManager startUpdatingHeading];
         [self.locationManager startMonitoringSignificantLocationChanges];
         self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
     }
@@ -119,6 +126,7 @@
     if (self.locationManager != nil) {
         [self.locationManager stopUpdatingLocation];
         [self.locationManager stopMonitoringSignificantLocationChanges];
+        [self.locationManager stopUpdatingHeading];
     }
 }
 
@@ -132,6 +140,11 @@
 - (void)setAllowsBackgroundLocationUpdates:(BOOL)allowsBackgroundLocationUpdates
 {
     self.locationManager.allowsBackgroundLocationUpdates = allowsBackgroundLocationUpdates;
+}
+
+- (CLHeading *)lastHeading
+{
+    return self.locationManager.heading;
 }
 
 @end

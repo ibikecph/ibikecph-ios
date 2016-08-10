@@ -28,7 +28,7 @@ CLLocationCoordinate2D closestCoordinate(CLLocationCoordinate2D C, CLLocationCoo
  * Compares coordinates of two CLLocations - returnns true if they are the same
  */
 BOOL sameCoordinates(CLLocation *loc1, CLLocation *loc2);
-+ (double)bearingBetweenStartLocation:(CLLocation *)startLocation andEndLocation:(CLLocation *)endLocation;
++ (double)bearingBetweenStartCoordinate:(CLLocationCoordinate2D)startCoordinate endCoordinate:(CLLocationCoordinate2D)endCoordinate;
 
 /*
  * Encoder for the Polyline Algorithm Format
