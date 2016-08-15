@@ -65,7 +65,8 @@ typedef NS_ENUM(NSUInteger, OSRMV5ManeuverModifier) {
     OSRMV5ManeuverModifierStraight,
     OSRMV5ManeuverModifierSlightLeft,
     OSRMV5ManeuverModifierLeft,
-    OSRMV5ManeuverModifierSharpLeft
+    OSRMV5ManeuverModifierSharpLeft,
+    OSRMV5ManeuverModifierNone
 };
 
 typedef NS_ENUM(NSUInteger, TurnInstructionOSRMVersion) {

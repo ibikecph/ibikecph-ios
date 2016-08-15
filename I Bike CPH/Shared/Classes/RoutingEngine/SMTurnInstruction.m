@@ -258,10 +258,16 @@
     }
     if ([string rangeOfString:@"{{heading}}"].location != NSNotFound) {
         NSString *heading = translateString([@"direction_" stringByAppendingString:self.directionAbbreviation]);
+        if (modifierString) {
+            heading = translateString([@"heading_" stringByAppendingString:[modifierString stringByReplacingOccurrencesOfString:@" " withString:@"_"]]);
+        }
         string = [string stringByReplacingOccurrencesOfString:@"{{heading}}" withString:heading];
     }
     if ([string rangeOfString:@"{{side}}"].location != NSNotFound) {
         NSString *side = translateString([@"direction_" stringByAppendingString:self.directionAbbreviation]);
+        if (modifierString) {
+            side = translateString([@"heading_" stringByAppendingString:[modifierString stringByReplacingOccurrencesOfString:@" " withString:@"_"]]);
+        }
         string = [string stringByReplacingOccurrencesOfString:@"{{side}}" withString:side];
     }
     if ([string rangeOfString:@"%{exit}"].location != NSNotFound) {
@@ -327,6 +333,8 @@
         self.maneuverModifier = OSRMV5ManeuverModifierLeft;
     } else if ([maneuverModifierString isEqualToString:@"sharp left"]) {
         self.maneuverModifier = OSRMV5ManeuverModifierSharpLeft;
+    } else {
+        self.maneuverModifier = OSRMV5ManeuverModifierNone;
     }
     [self updateImageName];
 }
@@ -357,6 +365,9 @@
             break;
         case OSRMV5ManeuverModifierSlightRight:
             return @"slight_right";
+            break;
+        case OSRMV5ManeuverModifierNone:
+            return nil;
             break;
     }
 }

@@ -61,6 +61,7 @@
 "direction_W" = "vest";
 "direction_NW" = "nordvest";
 
+"{highway:}" = "vej";
 "{highway:motorway}" = "motorvej";
 "{highway:motorway_link}" = "motorvej";
 "{highway:trunk}" = "hovedvej";
@@ -480,8 +481,17 @@
 
 // OSRM v5 instructions
 
-"depart" = "Start mod {{heading}} ad {{name}}";
+"depart" = "Start {{heading}} ad {{name}}";
 "arrive" = "Mål nået, {{name}} ligger {{side}}";
+
+"heading_uturn" = "i modsatte retning";
+"heading_sharp_right" = "skarpt til højre";
+"heading_right" = "til højre";
+"heading_slight_right" = "let til højre";
+"heading_straight" = "ligeud";
+"heading_sharp_left" = "skarpt til venstre";
+"heading_left" = "til venstre";
+"heading_slight_left" = "let til venstre";
 
 "turn_uturn" = "Vend om på {{name}}";
 "turn_sharp_right" = "Drej skarp til højre ad {{name}}";
