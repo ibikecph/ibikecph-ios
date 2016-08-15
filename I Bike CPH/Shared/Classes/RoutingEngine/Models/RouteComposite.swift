@@ -63,40 +63,11 @@ struct RouteComposite {
                 return self.bikeDistanceLeft / Double(route.estimatedAverageSpeed)
             }
         case .Multiple(let routes):
-            
-            // Current route
-            let current = self.currentRouteIndex
-            let route = routes[current]
+            let route = routes.last!
             var duration: NSTimeInterval = 0
-            let bike = .Bike == route.routeType
-            let walk = .Walk == route.routeType
-            if walk, let endDate = route.endDate {
-                duration += max(endDate.timeIntervalSinceNow, 0)
-            } else if bike {
-                if (route.estimatedAverageSpeed == 0) {
-                    // Use estimate from OSRM server
-                    duration += Double(route.distanceLeft) / Double(route.estimatedRouteDistance) * NSTimeInterval(route.estimatedTimeForRoute)
-                } else {
-                    // Create own estimate
-                    duration += Double(route.distanceLeft) / Double(route.estimatedAverageSpeed)
-                }
-            } else {
-                duration += Double(route.distanceLeft) / Double(route.estimatedRouteDistance) * NSTimeInterval(route.estimatedTimeForRoute)
-            }
-            
-            // Routes between current and last
-            let inBetweenRoutes = current+1 < routes.count-1 ? routes[current+1..<routes.count-1] : []
-            for route in inBetweenRoutes {
-                duration += NSTimeInterval(route.estimatedTimeForRoute)
-            }
-            
-            // Last route
-            if let route = routes.last {
-                let bike = .Bike == route.routeType
-                let walk = .Walk == route.routeType
-                if walk, let endDate = route.endDate {
-                    duration += max(endDate.timeIntervalSinceNow, 0)
-                } else if bike {
+            if currentRouteIndex == routes.count-1 {
+                // User is currently on the last route
+                if route.routeType == .Bike {
                     if (route.estimatedAverageSpeed == 0) {
                         // Use estimate from OSRM server
                         duration += Double(route.distanceLeft) / Double(route.estimatedRouteDistance) * NSTimeInterval(route.estimatedTimeForRoute)
@@ -105,10 +76,17 @@ struct RouteComposite {
                         duration += Double(route.distanceLeft) / Double(route.estimatedAverageSpeed)
                     }
                 } else {
-                    duration += Double(route.distanceLeft) / Double(route.estimatedRouteDistance) * NSTimeInterval(route.estimatedTimeForRoute)
+                    if let endDate = route.endDate {
+                        duration = endDate.timeIntervalSinceNow
+                    }
+                }
+            } else {
+                // User is not on the last route yet
+                if let endDate = route.endDate {
+                    duration = endDate.timeIntervalSinceNow
                 }
             }
-            
+            // At this point the duration could be zero
             return duration
         }
     }
