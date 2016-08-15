@@ -21,7 +21,6 @@
 @property(nonatomic, strong) CLLocation *lastRecalcLocation;
 @property(nonatomic, strong) NSObject *recalcMutex;
 @property(nonatomic, strong) NSMutableArray *allTurnInstructions;
-@property(nonatomic) CGFloat distanceFromRoute;
 @property(nonatomic) NSUInteger nextWaypoint;
 @property(nonatomic) NSInteger lastVisitedWaypointIndex;
 @property(nonatomic) BOOL snapArrow;
@@ -501,9 +500,7 @@
 
     if (self.distanceLeft < 0.0) {
         self.distanceLeft = self.estimatedRouteDistance;
-    }
-
-    else if (self.turnInstructions.count > 0) {
+    } else if (self.turnInstructions.count > 0) {
         // calculate distance from location to the next turn
         SMTurnInstruction *nextTurn = self.turnInstructions[0];
         nextTurn.lengthInMeters = [self calculateDistanceToNextTurn:loc];
@@ -728,7 +725,6 @@
             if (distanceFromStartPoint < maxDistance) {
                 min = distanceFromStartPoint;
                 self.lastVisitedWaypointIndex = i - 1;  // Keep previous as last visited
-                self.distanceFromRoute = min;
                 self.snapArrow = YES;
                 self.lastCorrectedLocation = loc;
                 return min < maxDistance;
@@ -737,7 +733,6 @@
             if (distanceFromLine <= min) {
                 min = distanceFromLine;
                 self.lastVisitedWaypointIndex = i;
-                self.distanceFromRoute = min;
                 self.snapArrow = YES;
                 self.lastCorrectedLocation = loc;
                 return min < maxDistance;
@@ -774,7 +769,7 @@
     if (min > maxDistance) {
         locLog(@"entered FUTURE block!");
         startPoint = MIN(self.waypoints.count - 1, startPoint + 5);
-        for (NSUInteger i = startPoint; i < MIN(self.waypoints.count - 1, startPoint + 5); i++) {
+        for (NSUInteger i = startPoint; i < self.waypoints.count-1; i++) {
             CLLocation *a = [self.waypoints objectAtIndex:i];
             CLLocation *b = [self.waypoints objectAtIndex:(i + 1)];
             double d = distanceFromLineInMeters(loc.coordinate, a.coordinate, b.coordinate);
@@ -801,7 +796,9 @@
             CLLocation *a = [self.waypoints objectAtIndex:i];
             CLLocation *b = [self.waypoints objectAtIndex:(i + 1)];
             double d = distanceFromLineInMeters(loc.coordinate, a.coordinate, b.coordinate);
-            if (d < 0.0) continue;
+            if (d < 0.0) {
+                continue;
+            }
             if (d <= min) {
                 min = d;
                 self.lastVisitedWaypointIndex = i;
@@ -814,17 +811,11 @@
     }
 
     if (self.lastVisitedWaypointIndex < 0) {
-        /**
-         * check the distance from start
-         */
-        min = [loc distanceFromLocation:self.waypoints[0]];
-        /**
-         * if we are less then 5m away from start snap the arrow
-         *
-         * heading is left as sent by the GPS so that you know if you're moving in the wrong direction
-         */
+        // Check the distance from start
+        min = [loc distanceFromLocation:self.waypoints.firstObject];
+        // If we are less than 5m away from start snap the arrow
+        // heading is left as sent by the GPS so that you know if you're moving in the wrong direction
         if (min < 5) {
-            self.distanceFromRoute = min;
             self.lastVisitedWaypointIndex = 0;
 
             CLLocation *a = self.waypoints[self.lastVisitedWaypointIndex];
@@ -841,7 +832,6 @@
         }
     }
     else if (min <= maxDistance && self.lastVisitedWaypointIndex >= 0) {
-        self.distanceFromRoute = min;
 
         CLLocation *a = self.waypoints[self.lastVisitedWaypointIndex];
         CLLocation *b = self.waypoints[self.lastVisitedWaypointIndex + 1];
@@ -882,7 +872,6 @@
     {
         [self updateDistances:loc];
         [self.visitedLocations addObject:loc];
-        self.distanceFromRoute = MAXFLOAT;
         isTooFar = [self findNearestRouteSegmentForLocation:loc withMaxDistance:maxD];
         [self updateSegmentBasedOnWaypoint];
     }

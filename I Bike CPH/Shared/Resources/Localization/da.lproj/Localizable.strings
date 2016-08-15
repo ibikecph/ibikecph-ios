@@ -100,7 +100,7 @@
 "direction_number_11" = "11.";
 
 "read_aloud_upcoming_instruction" = "Om %@ %@";
-"read_aloud_enabled" = "Starter rute til %@.";
+"read_aloud_enabled" = "Starter rute til %@";
 "read_aloud_error_initalizing" = "Kunne ikke starte tekst-til-tale-tjenesten.";
 "read_aloud_error_unsupported_language" = "Enheden understøtter desværre ikke oplæsning på dansk.";
 "read_aloud_encouragement_time_h_m" = "Du er på rette vej. Ankomst om %@ %@, %@ %@.";
