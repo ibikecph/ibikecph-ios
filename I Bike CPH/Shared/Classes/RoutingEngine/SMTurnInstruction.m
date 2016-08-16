@@ -481,6 +481,7 @@
         default:
             switch (self.maneuverModifier) {
                 case OSRMV5ManeuverModifierStraight:
+                case OSRMV5ManeuverModifierNone:
                     self.imageName = @"up";
                     break;
                 case OSRMV5ManeuverModifierUTurn:

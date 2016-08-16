@@ -30,8 +30,6 @@
 
 #define TILE_SOURCE [[SMiBikeCPHMapTileSource alloc] init]
 
-#define MIN_DISTANCE_FOR_RECALCULATION 20.0
-
 #define MAX_TURNS 4
 
 #define TIME_FORMAT @"HH.mm"
