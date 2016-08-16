@@ -53,8 +53,6 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
 @property(nonatomic, assign) SMRouteType routeType;
 
 @property(nonatomic) CGFloat distanceLeft;
-@property CLLocationCoordinate2D locationStart;
-@property CLLocationCoordinate2D locationEnd;
 @property NSString *startDescription;
 @property NSString *endDescription;
 @property NSDate *startDate;
@@ -80,11 +78,9 @@ typedef NS_ENUM(NSUInteger, SMRouteType) {
 - (CGFloat)calculateDistanceTraveled;
 - (NSString *)timePassed;
 
-- (id)initWithRouteStart:(CLLocationCoordinate2D)start end:(CLLocationCoordinate2D)end delegate:(id<SMRouteDelegate>)delegate;
-- (id)initWithRouteStart:(CLLocationCoordinate2D)start
-                     end:(CLLocationCoordinate2D)end
-                delegate:(id<SMRouteDelegate>)delegate
-               routeJSON:(NSDictionary *)routeJSON;
+- (instancetype)initWithRouteStart:(CLLocationCoordinate2D)start end:(CLLocationCoordinate2D)end delegate:(id<SMRouteDelegate>)delegate;
+- (instancetype)initWithRouteStart:(CLLocationCoordinate2D)start end:(CLLocationCoordinate2D)end routeJSON:(NSDictionary *)routeJSON delegate:(id<SMRouteDelegate>)delegate;
+- (instancetype)initWithRouteJSON:(NSDictionary *)routeJSON delegate:(id<SMRouteDelegate>)delegate;
 - (void)recalculateRoute:(CLLocation *)loc;
 
 @end

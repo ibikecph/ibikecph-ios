@@ -28,12 +28,11 @@
 @property(nonatomic) BOOL recalculationInProgress;
 @property(nonatomic) CGFloat tripDistance;
 
-
 @end
 
 @implementation SMRoute
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {
@@ -52,34 +51,40 @@
     return self;
 }
 
-- (id)initWithRouteStart:(CLLocationCoordinate2D)start end:(CLLocationCoordinate2D)end delegate:(id<SMRouteDelegate>)delegate
-{
-    return [self initWithRouteStart:start end:end delegate:delegate routeJSON:nil];
-}
-
-- (id)initWithRouteStart:(CLLocationCoordinate2D)start
-                     end:(CLLocationCoordinate2D)end
-                delegate:(id<SMRouteDelegate>)delegate
-               routeJSON:(NSDictionary *)routeJSON
+- (instancetype)initWithRouteStart:(CLLocationCoordinate2D)start end:(CLLocationCoordinate2D)end delegate:(id<SMRouteDelegate>)delegate
 {
     self = [self init];
     if (self) {
-        self.routeType = SMRouteTypeBike;
-        [self setLocationStart:start];
-        [self setLocationEnd:end];
         [self setDelegate:delegate];
-        if (routeJSON == nil) {
-            SMRequestOSRM *r = [[SMRequestOSRM alloc] initWithDelegate:self];
-            [self setRequest:r];
-            [r setOsrmServer:self.osrmServer];
-            [r setAuxParam:@"startRoute"];
-            [r getRouteFrom:start to:end via:nil];
-        }
-        else {
-            [self setupRoute:routeJSON];
-        }
+        SMRequestOSRM *r = [[SMRequestOSRM alloc] initWithDelegate:self];
+        [self setRequest:r];
+        [r setOsrmServer:self.osrmServer];
+        [r setAuxParam:@"startRoute"];
+        [r getRouteFrom:start to:end via:nil];
     }
     return self;
+}
+
+- (instancetype)initWithRouteJSON:(NSDictionary *)routeJSON
+                         delegate:(id<SMRouteDelegate>)delegate
+{
+    self = [self init];
+    if (self) {
+        [self setDelegate:delegate];
+        [self setupRoute:routeJSON];
+    }
+    return self;
+}
+
+- (instancetype)initWithRouteStart:(CLLocationCoordinate2D)start
+                               end:(CLLocationCoordinate2D)end
+                         routeJSON:(NSDictionary *)routeJSON
+                          delegate:(id<SMRouteDelegate>)delegate
+{
+    if (routeJSON) {
+        return [self initWithRouteJSON:routeJSON delegate:delegate];
+    }
+    return [self initWithRouteStart:start end:end delegate:delegate];
 }
 
 - (void)recalculateRoute:(CLLocation *)loc
@@ -138,20 +143,20 @@
     return (self.waypoints && self.waypoints.count > 0) ? [self.waypoints lastObject] : NULL;
 }
 
-- (BOOL)parseFromJson:(NSDictionary *)jsonRoot delegate:(id<SMRouteDelegate>)dlg
+- (BOOL)parseFromJSON:(NSDictionary *)jsonRoot
 {
     // Hacks incoming!
     if (jsonRoot[@"route_summary"]) {
         // This is presumably JSON from an OSRM V4 source
-        return [self parseFromOSRMV4JSON:jsonRoot delegate:dlg];
+        return [self parseFromOSRMV4JSON:jsonRoot];
     }
     else {
         // This is presumably JSON from an OSRM V5 source
-        return [self parseFromOSRMV5JSON:jsonRoot delegate:dlg];
+        return [self parseFromOSRMV5JSON:jsonRoot];
     }
 }
 
-- (BOOL)parseFromOSRMV4JSON:(NSDictionary *)jsonRoot delegate:(id<SMRouteDelegate>)dlg
+- (BOOL)parseFromOSRMV4JSON:(NSDictionary *)jsonRoot
 {
     NSString *type = jsonRoot[@"route_summary"][@"type"];
     if (type != nil) {
@@ -335,21 +340,24 @@
     return YES;
 }
 
-- (BOOL)parseFromOSRMV5JSON:(NSDictionary *)jsonRoot delegate:(id<SMRouteDelegate>)dlg
-{
+- (BOOL)parseFromOSRMV5JSON:(NSDictionary *)jsonRoot {
     NSArray *routes = jsonRoot[@"routes"];
+    if (!routes) {
+        // This is not a full JSON object, probably a leg
+        return [self parseFromOSRMV5LegJSON:jsonRoot];
+    }
+    
     NSDictionary *route;
     if (![routes isKindOfClass:[NSArray class]] || routes.count == 0) {
         return NO;
     }
     route = [routes firstObject];
 
-    NSArray *legs = route[@"legs"];
-    NSDictionary *leg;
-    if (![legs isKindOfClass:[NSArray class]] || legs.count == 0) {
-        return NO;
+    NSArray *waypoints = jsonRoot[@"waypoints"];
+    if ([waypoints isKindOfClass:[NSArray class]] && (waypoints.count > 1)) {
+        NSDictionary *destinationWaypoint = waypoints.lastObject;
+        self.destinationHint = destinationWaypoint[@"hint"];
     }
-    leg = [legs firstObject];
 
     @synchronized(self.waypoints)
     {
@@ -362,6 +370,18 @@
         return NO;
     }
 
+    NSArray *legs = route[@"legs"];
+    NSDictionary *leg;
+    if (![legs isKindOfClass:[NSArray class]] || legs.count == 0) {
+        return NO;
+    }
+    leg = [legs firstObject];
+    
+    return [self parseFromOSRMV5LegJSON:leg];
+}
+
+- (BOOL)parseFromOSRMV5LegJSON:(NSDictionary *)leg
+{
     @synchronized(self.turnInstructions)
     {
         self.turnInstructions = [NSMutableArray array];
@@ -374,15 +394,61 @@
     self.estimatedRouteDistance = [leg[@"distance"] integerValue];
 
     self.destinationHint = nil;
+    
+    NSString *type = leg[@"type"];
+    if (type != nil) {
+        if ([type isEqualToString:@"BIKE"]) {
+            self.routeType = SMRouteTypeBike;
+        }
+        else if ([type isEqualToString:@"S"]) {
+            self.routeType = SMRouteTypeSTrain;
+        }
+        else if ([type isEqualToString:@"M"]) {
+            self.routeType = SMRouteTypeMetro;
+        }
+        else if ([type isEqualToString:@"WALK"]) {
+            self.routeType = SMRouteTypeWalk;
+        }
+        else if ([type isEqualToString:@"IC"] || [type isEqualToString:@"LYN"] || [type isEqualToString:@"REG"] || [type isEqualToString:@"TOG"]) {
+            self.routeType = SMRouteTypeTrain;
+        }
+        else if ([type isEqualToString:@"BUS"] || [type isEqualToString:@"EXB"] || [type isEqualToString:@"NB"] || [type isEqualToString:@"TB"]) {
+            self.routeType = SMRouteTypeBus;
+        }
+        else if ([type isEqualToString:@"F"]) {
+            self.routeType = SMRouteTypeFerry;
+        }
+    }
+    
+    NSNumber *startDate = leg[@"departure_time"];
+    if (startDate) {
+        self.startDate = [NSDate dateWithTimeIntervalSince1970:startDate.doubleValue];
+    }
+    NSNumber *endDate = leg[@"arrival_time"];
+    if (endDate) {
+        self.endDate = [NSDate dateWithTimeIntervalSince1970:endDate.doubleValue];
+    }
+    
+    self.startDescription = leg[@"start_point"];
+    self.endDescription = leg[@"end_point"];
+    
+    
+    NSString *geometry = leg[@"geometry"];
+    if (geometry && self.waypoints.count == 0) {
+        @synchronized(self.waypoints)
+        {
+            double polylinePrecision = [SMRouteSettings sharedInstance].route_polyline_precision;
+            polylinePrecision /= 10;
+            self.waypoints = [SMGPSUtil decodePolyline:geometry precision:polylinePrecision].mutableCopy;
+        }
 
-    NSArray *waypoints = jsonRoot[@"waypoints"];
-    if ([waypoints isKindOfClass:[NSArray class]] && (waypoints.count > 1)) {
-        NSDictionary *destinationWaypoint = waypoints.lastObject;
-        self.destinationHint = destinationWaypoint[@"hint"];
+        if (self.waypoints.count < 2) {
+            return NO;
+        }
     }
 
     NSArray *steps = leg[@"steps"];
-    if (steps.count > 1) {
+    if (steps.count > 1 && !self.startDescription && !self.endDescription) {
         self.startDescription = steps.firstObject[@"name"];
         [self ifNecessaryTranslateStreetname:self.startDescription];
         self.endDescription = steps.lastObject[@"name"];
@@ -429,6 +495,7 @@
             NSArray *location = maneuver[@"location"];
             if ([location isKindOfClass:[NSArray class]] && location.count == 2) {
                 instruction.location = [[CLLocation alloc] initWithLatitude:[location[1] floatValue] longitude:[location[0] floatValue]];
+                
             }
 
             CLLocationDistance minDistance = CLLocationDistanceMax;
@@ -591,7 +658,7 @@
 
 - (void)setupRoute:(id)jsonRoot
 {
-    if ([self parseFromJson:jsonRoot delegate:nil]) {
+    if ([self parseFromJSON:jsonRoot]) {
         self.tripDistance = 0.0f;
         @synchronized(self.pastTurnInstructions)
         {
@@ -657,7 +724,7 @@
                   }
               };
 
-              BOOL done = [self parseFromJson:jsonRoot delegate:nil];
+              BOOL done = [self parseFromJSON:jsonRoot];
               if (done) {
                   if ([SMLocationManager sharedInstance].hasValidLocation) {
                       [self updateDistances:[SMLocationManager sharedInstance].lastValidLocation];

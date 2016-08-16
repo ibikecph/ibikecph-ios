@@ -187,54 +187,44 @@ extension FindRouteViewController: RouteManagerDelegate {
                 presentViewController(alert, animated: true, completion: nil)
             case .Success(let json, let osrmServer):
                 let estimatedAverageSpeed = RouteType.estimatedAverageSpeedForOSRMServer(osrmServer)
-                if let routesJson = json.array {
-                    routeCompositeSuggestions.removeAll(keepCapacity: true)
+                
+                switch osrmServer {
+                case SMRouteSettings.sharedInstance().broken_journey_server:
+                    if let routes = json["routes"].array {
+                        routeCompositeSuggestions.removeAll(keepCapacity: true)
 
-                    for routeSuggestion in routesJson {
-                        let summary = routeSuggestion["journey_summary"]
-
-                        if let subRoutesJson = routeSuggestion["journey"].array,
-                            toItem = toItem
-                        {
-                            let estimatedDistance = summary["total_distance"].doubleValue
-                            let estimatedBikeDistance = summary["total_bike_distance"].doubleValue
-                            let estimatedTime = summary["total_time"].doubleValue
-                            var subRoutes: [SMRoute] = []
-                            for subRouteJson in subRoutesJson {
-                                if let viaPoints = subRouteJson["via_points"].array,
-                                    from = viaPoints.first?.array,
-                                    fromLatitude = from.first?.doubleValue,
-                                    fromLongitude = from.last?.doubleValue,
-                                    to = viaPoints.last?.array,
-                                    toLatitude = to.first?.doubleValue,
-                                    toLongitude = to.last?.doubleValue,
-                                    subDictionary = subRouteJson.dictionaryObject
-                                {
-                                    let fromCoordinate = CLLocationCoordinate2D(latitude: fromLatitude, longitude: fromLongitude)
-                                    let toCoordinate = CLLocationCoordinate2D(latitude: toLatitude, longitude: toLongitude)
-                                    let route = SMRoute(routeStart: fromCoordinate, end: toCoordinate, delegate: self, routeJSON: subDictionary)
+                        for route in routes {
+                            if let legs = route["legs"].array,
+                                toItem = self.toItem
+                            {
+                                let estimatedDistance = route["distance"].doubleValue
+                                let estimatedBikeDistance = route["distance_bike"].doubleValue
+                                let estimatedTime = route["duration"].doubleValue
+                                var subRoutes: [SMRoute] = []
+                                for leg in legs {
+                                    let route = SMRoute(routeJSON: leg.dictionaryObject, delegate: self)
                                     route.estimatedAverageSpeed = estimatedAverageSpeed
                                     subRoutes.append(route)
-                                } else {
-                                    print("Failed parsing broken route")
                                 }
+                                let routeComposite = RouteComposite(routes: subRoutes, from: self.fromItem, to: toItem, estimatedDistance: estimatedDistance, estimatedBikeDistance: estimatedBikeDistance, estimatedTime: estimatedTime)
+                                routeCompositeSuggestions.append(routeComposite)
                             }
-                            let routeComposite = RouteComposite(routes: subRoutes, from: fromItem, to: toItem, estimatedDistance: estimatedDistance, estimatedBikeDistance: estimatedBikeDistance, estimatedTime: estimatedTime)
-                            routeCompositeSuggestions.append(routeComposite)
                         }
+                        self.routeComposite = routeCompositeSuggestions.first
+                        updateRouteSuggestionsUI()
                     }
-                    self.routeComposite = routeCompositeSuggestions.first
-                    updateRouteSuggestionsUI()
-                } else if let
-                    toItem = toItem,
-                    fromCoordinate = fromItem.location?.coordinate,
-                    toCoordinate = toItem.location?.coordinate
-                {
-                    let route = SMRoute(routeStart: fromCoordinate, end: toCoordinate, delegate: self, routeJSON: json.dictionaryObject)
-                    route.estimatedAverageSpeed = estimatedAverageSpeed
-                    route.osrmServer = osrmServer
-                    let routeComposite = RouteComposite(route: route, from: fromItem, to: toItem)
-                    self.routeComposite = routeComposite
+                default:
+                    if let
+                        toItem = self.toItem,
+                        fromCoordinate = self.fromItem.location?.coordinate,
+                        toCoordinate = toItem.location?.coordinate
+                    {
+                        let route = SMRoute(routeStart: fromCoordinate, end: toCoordinate, routeJSON: json.dictionaryObject, delegate: self)
+                        route.estimatedAverageSpeed = estimatedAverageSpeed
+                        route.osrmServer = osrmServer
+                        let routeComposite = RouteComposite(route: route, from: fromItem, to: toItem)
+                        self.routeComposite = routeComposite
+                    }
                 }
         }
     }

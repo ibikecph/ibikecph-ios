@@ -22,23 +22,23 @@ class SMRoute_Tests: XCTestCase {
         super.tearDown()
     }
 
-    func testOffRoute() {
-        class MockSMRoute: SMRoute {
-            override func recalculateRoute(loc: CLLocation) {
-                XCTAssert(true, "Should recalc")
-            }
-        }
-        
-        let start = CLLocationCoordinate2DMake(55.691326, 12.553318)
-        let end = CLLocationCoordinate2DMake(55.677849, 12.570681)
-        let json = jsonRoute()
-        let route = MockSMRoute(routeStart: start, andEnd: end, andDelegate: nil, andJSON: json)
-        route.estimatedAverageSpeed = 15
-        
-        let off = CLLocationCoordinate2DMake(55.691326, 12.553318)
-        let offLocation = CLLocation(coordinate: off, altitude: 0, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: NSDate())
-        route.visitLocation(offLocation)
-    }
+//    func testOffRoute() {
+//        class MockSMRoute: SMRoute {
+//            override func recalculateRoute(loc: CLLocation) {
+//                XCTAssert(true, "Should recalc")
+//            }
+//        }
+//        
+//        let start = CLLocationCoordinate2DMake(55.691326, 12.553318)
+//        let end = CLLocationCoordinate2DMake(55.677849, 12.570681)
+//        let json = jsonRoute()
+//        let route = MockSMRoute(routeStart: start, andEnd: end, andDelegate: nil, andJSON: json)
+//        route.estimatedAverageSpeed = 15
+//        
+//        let off = CLLocationCoordinate2DMake(55.691326, 12.553318)
+//        let offLocation = CLLocation(coordinate: off, altitude: 0, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: NSDate())
+//        route.visitLocation(offLocation)
+//    }
     
     
     func routeInstructions() -> [[AnyObject]] {
