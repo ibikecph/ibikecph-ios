@@ -52,7 +52,7 @@
                                                             <constraint firstAttribute="width" constant="97" id="G9x-ic-aq9"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                         <variation key="default">
                                                             <mask key="constraints">
                                                                 <exclude reference="G9x-ic-aq9"/>
