@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="epN-zP-gD4">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="epN-zP-gD4">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -102,6 +102,18 @@
                                                             <segue destination="cUi-19-l2D" kind="show" id="d5c-sR-E76"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PX7-u5-dnU" userLabel="forgot_password">
+                                                        <rect key="frame" x="0.0" y="250" width="560" height="40"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                        <state key="normal" title="forgot_password" backgroundImage="ButtonTintBackground">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="forgotPassword:" destination="h7b-VQ-XtA" eventType="touchUpInside" id="Kvk-ur-qQz"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -114,19 +126,24 @@
                                                     <constraint firstAttribute="trailing" secondItem="ZPR-vU-Nvp" secondAttribute="trailing" id="FuA-kY-RW2"/>
                                                     <constraint firstItem="ZPR-vU-Nvp" firstAttribute="leading" secondItem="liK-rh-0w1" secondAttribute="leading" id="H4x-6m-Jor"/>
                                                     <constraint firstAttribute="bottom" secondItem="ZPR-vU-Nvp" secondAttribute="bottom" id="JDK-Ps-1QP"/>
+                                                    <constraint firstItem="PX7-u5-dnU" firstAttribute="height" secondItem="7H3-AA-ZkS" secondAttribute="height" id="Jkg-P3-uSe"/>
                                                     <constraint firstItem="ZPR-vU-Nvp" firstAttribute="leading" secondItem="liK-rh-0w1" secondAttribute="leading" id="KNp-ZM-tff"/>
                                                     <constraint firstItem="7H3-AA-ZkS" firstAttribute="top" secondItem="Ayd-Fl-jg6" secondAttribute="bottom" constant="10" id="N9x-ym-714"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ayd-Fl-jg6" secondAttribute="trailing" id="P5U-VF-39A"/>
                                                     <constraint firstAttribute="centerX" secondItem="II5-pi-5z4" secondAttribute="centerX" id="PmA-9o-cOr"/>
                                                     <constraint firstItem="kEP-rL-vQn" firstAttribute="top" secondItem="P8s-P1-0C5" secondAttribute="bottom" constant="10" id="PwW-x8-JJV"/>
                                                     <constraint firstAttribute="trailing" secondItem="kEP-rL-vQn" secondAttribute="trailing" id="VTQ-gr-Q1k"/>
-                                                    <constraint firstItem="ZPR-vU-Nvp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7H3-AA-ZkS" secondAttribute="bottom" constant="30" id="XHG-6B-XZb"/>
                                                     <constraint firstAttribute="trailing" secondItem="ZPR-vU-Nvp" secondAttribute="trailing" id="ae5-Lu-eaX"/>
+                                                    <constraint firstItem="ZPR-vU-Nvp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PX7-u5-dnU" secondAttribute="bottom" constant="30" id="cwd-oN-Tni"/>
                                                     <constraint firstItem="Ayd-Fl-jg6" firstAttribute="leading" secondItem="liK-rh-0w1" secondAttribute="leading" id="doO-eE-95V"/>
+                                                    <constraint firstItem="PX7-u5-dnU" firstAttribute="top" secondItem="7H3-AA-ZkS" secondAttribute="bottom" constant="10" id="eia-Qk-tyF"/>
                                                     <constraint firstItem="P8s-P1-0C5" firstAttribute="top" secondItem="liK-rh-0w1" secondAttribute="top" id="exu-xa-pny"/>
                                                     <constraint firstAttribute="trailing" secondItem="P8s-P1-0C5" secondAttribute="trailing" id="f2b-1y-Qth"/>
+                                                    <constraint firstItem="PX7-u5-dnU" firstAttribute="trailing" secondItem="7H3-AA-ZkS" secondAttribute="trailing" id="hdf-5d-eWb"/>
+                                                    <constraint firstItem="PX7-u5-dnU" firstAttribute="leading" secondItem="7H3-AA-ZkS" secondAttribute="leading" id="kK5-UO-OCc"/>
                                                     <constraint firstAttribute="trailing" secondItem="7H3-AA-ZkS" secondAttribute="trailing" id="kXU-hR-paM"/>
                                                     <constraint firstItem="kEP-rL-vQn" firstAttribute="leading" secondItem="liK-rh-0w1" secondAttribute="leading" id="t13-zV-IM4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ZPR-vU-Nvp" secondAttribute="bottom" id="xhP-Zh-ckE"/>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">

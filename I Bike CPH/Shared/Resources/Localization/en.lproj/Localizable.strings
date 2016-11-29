@@ -205,7 +205,8 @@
 "favorites_text" = "You can save your favorite destinations in the app so it's easy to find your way home, to work or school.";
 "favorites_home_placeholder" = "Home address...";
 "favorites_work_placeholder" = "Work address...";
-"log_in" = "Log In";
+"log_in" = "Log in";
+"forgot_password" = "I forgot my password";
 "edit_account" = "Edit account";
 "invalid_token_user_logged_out" = "You've been logged out. Please log in.";
 

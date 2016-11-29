@@ -71,6 +71,16 @@
     }];
 }
 
+- (IBAction)forgotPassword:(id)sender {
+
+    NSURL *url = [NSURL URLWithString:@"http://www.ibikecph.dk/users/password/new"];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url];
+    }
+}
+
+
 - (IBAction)loginWithFacebook:(id)sender {
     [self.signInHelper loginWithFacebookForView:self.view callback:^(BOOL success, NSString *errorTitle, NSString *errorDescription) {
         if (success) {

@@ -208,6 +208,7 @@
 "favorites_home_placeholder" = "Hjemmeadresse ...";
 "favorites_work_placeholder" = "Arbejdsadresse ...";
 "log_in" = "Log ind";
+"forgot_password" = "Jeg har glemt min adgangskode";
 "edit_account" = "Redigér profil";
 "invalid_token_user_logged_out" = "Du er blevet logget ud. Log venligst ind igen.";
 
