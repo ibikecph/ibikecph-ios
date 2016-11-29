@@ -73,8 +73,12 @@
 
 - (IBAction)forgotPassword:(id)sender {
 
-    NSURL *url = [NSURL URLWithString:@"http://www.ibikecph.dk/users/password/new"];
-    
+    NSURL *url;
+    if ([[NSLocale preferredLanguages].firstObject hasPrefix:@"en"]) {
+        url = [NSURL URLWithString:@"http://www.ibikecph.dk/en/users/password/new"];
+    } else {
+        url = [NSURL URLWithString:@"http://www.ibikecph.dk/users/password/new"];
+    }
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
         [[UIApplication sharedApplication] openURL:url];
     }
