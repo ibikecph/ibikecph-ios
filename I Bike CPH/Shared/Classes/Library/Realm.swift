@@ -53,27 +53,7 @@ extension RLMObject {
 }
 
 extension RLMResults {
-    
-    func toArray() -> [RLMObject] {
-        var array = [RLMObject]()
-        for result in self {
-            array.append(result)
-        }
-        return array
-    }
-    func toArray<T>(_ ofType: T.Type) -> [T] {
-        var array = [T]()
-        for result in self {
-            if let result = result as? T {
-                array.append(result)
-            }
-        }
-        return array
-    }
-}
 
-extension RLMArray {
-    
     func toArray<T>(_ ofType: T.Type) -> [T] {
         var array = [T]()
         for result in self {
