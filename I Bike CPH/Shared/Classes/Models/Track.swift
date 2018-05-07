@@ -334,9 +334,8 @@ extension Track {
 
 extension Double {
     
-    func roundTo(_ to: Int) -> Double {
-        let selfValue = Double(self)
+    func roundTo(to: Int) -> Double {
         let to = Double(to)
-        return round(selfValue * to) / to
+        return (self * to).rounded() / to
     }
 }
