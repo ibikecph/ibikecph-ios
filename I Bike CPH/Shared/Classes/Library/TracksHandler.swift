@@ -833,7 +833,7 @@ class PruneSlowEndsOperation: TracksOperation {
                         break
                     }
                     if let firstLocation = track.locationsSorted().firstObject() as? TrackLocation {
-                        let _i = track.locations.indexOfObject(firstLocation)
+                        let _i = track.locations.index(of: firstLocation)
                         track.locations.removeObject(at: _i)
                         firstLocation.deleteFromRealm()
                     }
@@ -843,7 +843,7 @@ class PruneSlowEndsOperation: TracksOperation {
                         break
                     }
                     if let lastLocation = track.locationsSorted().lastObject() as? TrackLocation {
-                        let _i = track.locations.indexOfObject(lastLocation)
+                        let _i = track.locations.index(lastLocation)
                         track.locations.removeObject(at: _i)
                         lastLocation.deleteFromRealm()
                     }

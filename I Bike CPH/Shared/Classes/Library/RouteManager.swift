@@ -23,10 +23,10 @@ class RouteManager: NSObject {
     
     enum Result {
         case success(json: JSON, osrmServer: String)
-        case errorOfType(Type)
+        case errorOfType(ErrorType)
         case error(NSError)
         
-        enum Type {
+        enum ErrorType {
             case missingCoordinates
             case routeNotFound
             case serverNotReachable

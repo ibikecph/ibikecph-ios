@@ -150,7 +150,7 @@ extension DefaultsKeys {
                     continue
                 }
                 let formatter = NumberFormatter()
-                formatter.locale = Locale(localeIdentifier: "en_US")
+                formatter.locale = Locale(identifier: "en_US")
                 if let latitude = formatter.number(from: scalars[0])?.doubleValue,
                        let longitude = formatter.number(from: scalars[1])?.doubleValue {
                     let coordinate = CLLocationCoordinate2DMake(longitude, latitude)
@@ -278,7 +278,7 @@ extension DefaultsKeys {
                 case .success(let json):
                     self.harborRingAnnotations = OverlayAnnotations(type: .harborRing, json: json)
                     if let dictionary = json.dictionaryObject {
-                        Defaults[.harborRingGeoJSON] = dictionary
+                        Defaults[.harborRingGeoJSON] = dictionary as [String : AnyObject]
                     }
                 default:
                     // Try to use cached GeoJSON data if available
@@ -293,7 +293,7 @@ extension DefaultsKeys {
                 case .success(let json):
                     self.greenPathsAnnotations = OverlayAnnotations(type: .greenPaths, json: json)
                     if let dictionary = json.dictionaryObject {
-                        Defaults[.greenPathsGeoJSON] = dictionary
+                        Defaults[.greenPathsGeoJSON] = dictionary as [String : AnyObject]
                     }
                 default:
                     // Try to use cached GeoJSON data if available

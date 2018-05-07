@@ -131,10 +131,10 @@ import SwiftyJSON
         
         // Street, name, address, city, zip. Fallback to full address string
         let parsedAddressItem = SMAddressParser.parseAddress(address)
-        number = json["husnr"].string ?? parsedAddressItem.number
-        city = json["by"].string ?? parsedAddressItem.city
-        zip = json["postnummer"].string ?? parsedAddressItem.zip
-        street = json["vej"].string ?? parsedAddressItem.street
+        number = json["husnr"].string ?? parsedAddressItem?.number
+        city = json["by"].string ?? parsedAddressItem?.city
+        zip = json["postnummer"].string ?? parsedAddressItem?.zip
+        street = json["vej"].string ?? parsedAddressItem?.street
         
         if let data = plistDictionary["startDate"] as? Data {
             startDate = NSKeyedUnarchiver.unarchiveObject(with: data) as? Date
@@ -163,7 +163,7 @@ import SwiftyJSON
             "by" : city as AnyObject,
             "postnummer" : zip as AnyObject,
             "vej" : street as AnyObject,
-            "startDate" : NSKeyedArchiver.archivedData(withRootObject: startDate ?? Date()),
+            "startDate" : NSKeyedArchiver.archivedData(withRootObject: startDate ?? Date()) as AnyObject,
             "endDate" : NSKeyedArchiver.archivedData(withRootObject: endDate ?? Date()),
             "origin" : origin.rawValue,
             "lat" : location?.coordinate.latitude ?? 0,
