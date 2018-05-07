@@ -16,7 +16,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
 #import <memory>
 #import <string>
 
@@ -34,9 +33,7 @@ RLMRealm *RLMGetThreadLocalCachedRealmForPath(std::string const& path);
 RLMRealm *RLMGetAnyCachedRealmForPath(std::string const& path);
 // Clear the weak cache of Realms
 void RLMClearRealmCache();
-
-// Install an uncaught exception handler that cancels write transactions
-// for all cached realms on the current thread
-void RLMInstallUncaughtExceptionHandler();
+// Check if the current thread is currently within a running CFRunLoop
+bool RLMIsInRunLoop();
 
 std::unique_ptr<realm::BindingContext> RLMCreateBindingContext(RLMRealm *realm);
