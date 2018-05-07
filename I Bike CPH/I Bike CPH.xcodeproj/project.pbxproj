@@ -3158,6 +3158,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.CykelPlanen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -3197,6 +3198,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.CykelPlanen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -3235,6 +3237,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CykelPlanen.app/CykelPlanen";
 			};
 			name = Debug;
@@ -3273,6 +3276,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CykelPlanen.app/CykelPlanen";
 			};
 			name = Release;
