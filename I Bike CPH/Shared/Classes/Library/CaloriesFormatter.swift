@@ -8,15 +8,15 @@
 
 import Foundation
 
-class CaloriesFormatter: NSNumberFormatter {
+class CaloriesFormatter: NumberFormatter {
     
-    private lazy var numberFormatter: NSNumberFormatter = {
-        let formatter = NSNumberFormatter()
+    fileprivate lazy var numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 0
         return formatter
     }()
     
-    func string(kiloCalories: Double) -> String {
-        return (numberFormatter.stringFromNumber(kiloCalories) ?? "0") + " " + "unit_kcal".localized
+    func string(_ kiloCalories: Double) -> String {
+        return (numberFormatter.string(from: NSNumber(kiloCalories)) ?? "0") + " " + "unit_kcal".localized
     }
 }

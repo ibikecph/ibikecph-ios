@@ -40,8 +40,8 @@ class Settings: NSObject {
     let turnstile = TurnstileSettings()
     
     func clear() {
-        if let bundleID = NSBundle.mainBundle().bundleIdentifier {
-            Defaults.removePersistentDomainForName(bundleID)
+        if let bundleID = Bundle.main.bundleIdentifier {
+            Defaults.removePersistentDomain(forName: bundleID)
         }
     }
 }

@@ -18,41 +18,41 @@ class TrackingViewController: ToolbarViewController {
     @IBOutlet weak var sinceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    private let enableTrackingToolbarView = EnableTrackingToolbarView()
-    private var tracks: [[Track]]?
-    private var selectedTrack: Track?
-    private var swipeEditing: Bool = false
-    private var observerTokens = [AnyObject]()
-    private var pendingEnableTracking = false
-    private static let toAddTrackTokenSegue = "trackingToAddTrackToken"
-    private static let toLoginSegue = "trackingToLogin"
+    fileprivate let enableTrackingToolbarView = EnableTrackingToolbarView()
+    fileprivate var tracks: [[Track]]?
+    fileprivate var selectedTrack: Track?
+    fileprivate var swipeEditing: Bool = false
+    fileprivate var observerTokens = [AnyObject]()
+    fileprivate var pendingEnableTracking = false
+    fileprivate static let toAddTrackTokenSegue = "trackingToAddTrackToken"
+    fileprivate static let toLoginSegue = "trackingToLogin"
     
-    lazy var numberFormatter: NSNumberFormatter = {
-        let formatter = NSNumberFormatter()
+    lazy var numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 0
         formatter.minimumFractionDigits = 0
         return formatter
     }()
     
-    lazy var decimalFormatter: NSNumberFormatter = {
-        let formatter = NSNumberFormatter()
+    lazy var decimalFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 1
         formatter.minimumFractionDigits = 1
         formatter.minimumIntegerDigits = 1 // "0.0" instead of ".0"
         return formatter
     }()
     
-    lazy var sinceFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .LongStyle
-        formatter.timeStyle = .NoStyle
+    lazy var sinceFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
         return formatter
     }()
     
     lazy var headerDateFormatter: RelativeDateFormatter = {
         let formatter = RelativeDateFormatter()
-        formatter.dateStyle = .LongStyle
-        formatter.timeStyle = .NoStyle
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
         return formatter
     }()
     
@@ -88,7 +88,7 @@ class TrackingViewController: ToolbarViewController {
         self.updateUI()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Leave view controller if user hasn't enabled tracking and has no tracking data.
@@ -101,25 +101,25 @@ class TrackingViewController: ToolbarViewController {
         TracksHandler.setNeedsProcessData(true)
         
         // Check if tracking should be enabled
-        if pendingEnableTracking && UserHelper.checkEnableTracking() == .Allowed {
+        if pendingEnableTracking && UserHelper.checkEnableTracking() == .allowed {
             Settings.sharedInstance.tracking.on = true
             if let indexPaths = tableView.indexPathsForVisibleRows {
                 tableView.beginUpdates()
-                tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+                tableView.reloadRows(at: indexPaths, with: .fade)
                 tableView.endUpdates()
             }
-        } else if pendingEnableTracking && UserHelper.checkEnableTracking() == .LacksTrackToken {
-            performSegueWithIdentifier(TrackingViewController.toAddTrackTokenSegue, sender: self)
+        } else if pendingEnableTracking && UserHelper.checkEnableTracking() == .lacksTrackToken {
+            performSegue(withIdentifier: TrackingViewController.toAddTrackTokenSegue, sender: self)
         } else {
             pendingEnableTracking = false
         }
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    private func unobserve() {
+    fileprivate func unobserve() {
         for observerToken in observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
@@ -137,20 +137,20 @@ class TrackingViewController: ToolbarViewController {
         
         // Stats
         let totalDistance = BikeStatistics.totalDistance() / 1000
-        distanceLabel.text = numberFormatter.stringFromNumber(totalDistance)
+        distanceLabel.text = numberFormatter.string(from: NSNumber(totalDistance))
         
         let totalTime = BikeStatistics.totalDuration() / 3600
-        timeLabel.text = numberFormatter.stringFromNumber(totalTime)
+        timeLabel.text = numberFormatter.string(from: NSNumber(totalTime))
         
         let averageSpeed = BikeStatistics.averageSpeed() / 1000 * 3600
-        speedLabel.text = decimalFormatter.stringFromNumber(averageSpeed)
+        speedLabel.text = decimalFormatter.string(from: NSNumber(averageSpeed))
         
         if let startDate = BikeStatistics.firstTrackStartDate() {
-            sinceLabel.text = "Since".localized + " " + sinceFormatter.stringFromDate(startDate)
-            let totalDays = NSDate().relativeDay(startDate) + 1
+            sinceLabel.text = "Since".localized + " " + sinceFormatter.string(from: startDate as Date)
+            let totalDays = Date().relativeDay(startDate) + 1
             let averageDayDistance = BikeStatistics.totalDistance() / Double(totalDays)
             let averageDayCalories = BikeStatistics.kiloCaloriesPerBikedDistance(averageDayDistance)
-            calorieLabel.text = numberFormatter.stringFromNumber(averageDayCalories)
+            calorieLabel.text = numberFormatter.string(from: averageDayCalories)
         } else {
             sinceLabel.text = "–"
             calorieLabel.text = "-"
@@ -169,12 +169,12 @@ class TrackingViewController: ToolbarViewController {
         var updatedTracks = [[Track]]()
         if BikeStatistics.firstTrackStartDate() != nil {
             let allTracks = BikeStatistics.tracks().sortedResultsUsingProperty("startTimestamp", ascending: false)
-            var currentDate: NSDate = BikeStatistics.lastTrackEndDate() ?? NSDate()
+            var currentDate: Date = BikeStatistics.lastTrackEndDate() as! Date ?? Date()
             var section = 0
             for track in allTracks {
                 if let
                     track = track as? Track,
-                    date = track.startDate()
+                    let date = track.startDate()
                 {
                     let sameDay = date.relativeDay(currentDate) == 0
                     if !sameDay {
@@ -191,11 +191,11 @@ class TrackingViewController: ToolbarViewController {
         tracks = updatedTracks
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if
             segue.identifier == "trackingToDetail",
             let track = selectedTrack,
-            trackDetailViewController = segue.destinationViewController as? TrackDetailViewController
+            let trackDetailViewController = segue.destination as? TrackDetailViewController
         {
             trackDetailViewController.track = track
         }
@@ -208,28 +208,27 @@ private let cellID = "TrackCell"
 extension TrackingViewController: UITableViewDataSource {
     
     func tracks(inSection section: Int) -> [Track]? {
-        if let tracks = tracks where section < tracks.count {
+        if let tracks = tracks, section < tracks.count {
             return tracks[section]
         }
         return nil
     }
     
-    func track(indexPath: NSIndexPath?) -> Track? {
+    func track(_ indexPath: IndexPath?) -> Track? {
         if let
             indexPath = indexPath,
-            tracks = tracks(inSection: indexPath.section)
-            where indexPath.row < tracks.count
+            let tracks = tracks(inSection: indexPath.section), indexPath.row < tracks.count
         {
             return tracks[indexPath.row]
         }
         return nil
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return tracks?.count ?? 0
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tracks = tracks(inSection: section) {
             return Int(tracks.count)
         }
@@ -237,32 +236,32 @@ extension TrackingViewController: UITableViewDataSource {
     }
     
     // Section header title
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let aDateInSection = tracks(inSection: section)?.first?.startDate() {
-            return headerDateFormatter.stringFromDate(aDateInSection)
+            return headerDateFormatter.string(from: aDateInSection)
         }
         return nil
     }
     
     // Cell
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as TrackTableViewCell
         cell.updateToTrack(track(indexPath))
         return cell
     }
     
     // Delete track
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete,
-            let track = track(indexPath) where !track.invalidated
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete,
+            let track = track(indexPath), !track.isInvalidated
         {
             let deleteLocalClosure: () -> () = {
                 Async.main {
                     tableView.beginUpdates()
-                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+                    tableView.deleteRows(at: [indexPath], with: .left)
                     track.deleteFromRealmWithRelationships()
                     self.updateTracks()
                     tableView.endUpdates()
@@ -274,19 +273,19 @@ extension TrackingViewController: UITableViewDataSource {
                 // Delete from server
                 TracksClient.sharedInstance.delete(track) { result in
                     switch result {
-                        case .Success(_): fallthrough
-                        case .NotFound:
+                        case .success(_): fallthrough
+                        case .notFound:
                             deleteLocalClosure() // Delete if deleted on server or not found
-                        case .NotAuthorized:
+                        case .notAuthorized:
                             Async.main {
                                 tableView.setEditing(false, animated: true)
                             }
-                        case .Other(let result):
+                        case .other(let result):
                             Async.main {
                                 tableView.setEditing(false, animated: true)
                             }
                             switch result {
-                                case .Failed(let error):
+                                case .failed(let error):
                                     print(error.localizedDescription)
                                 default:
                                     print("Other upload error \(result)")
@@ -298,10 +297,10 @@ extension TrackingViewController: UITableViewDataSource {
             updateUI()
         }
     }
-    func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         swipeEditing = true
     }
-    func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         swipeEditing = false
     }
 }
@@ -309,10 +308,10 @@ extension TrackingViewController: UITableViewDataSource {
 
 extension TrackingViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let track = track(indexPath) where !track.invalidated {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let track = track(indexPath), !track.isInvalidated {
             selectedTrack = track
-            performSegueWithIdentifier("trackingToDetail", sender: self)
+            performSegue(withIdentifier: "trackingToDetail", sender: self)
         } else {
             updateUI()
         }
@@ -324,21 +323,21 @@ extension TrackingViewController: EnableTrackingToolbarDelegate {
     
     func didSelectEnableTracking() {
         switch UserHelper.checkEnableTracking() {
-        case .NotLoggedIn:
-            let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
-            alertController.addCancelActionWithHandler(nil)
+        case .notLoggedIn:
+            let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .alert)
+            alertController?.addCancelAction(handler: nil)
             let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
                 self?.pendingEnableTracking = true
-                self?.performSegueWithIdentifier(TrackingViewController.toLoginSegue, sender: self)
+                self?.performSegue(withIdentifier: TrackingViewController.toLoginSegue, sender: self)
             }
-            alertController.addAction(loginAction)
-            alertController.showWithSender(self, controller: self, animated: true, completion: nil)
-        case .Allowed:
+            alertController?.addAction(loginAction)
+            alertController?.showWithSender(self, controller: self, animated: true, completion: nil)
+        case .allowed:
             Settings.sharedInstance.tracking.on = true
-        case .LacksTrackToken:
+        case .lacksTrackToken:
             // User is logged in but doesn't have a trackToken
             pendingEnableTracking = true
-            performSegueWithIdentifier(TrackingViewController.toAddTrackTokenSegue, sender: self)
+            performSegue(withIdentifier: TrackingViewController.toAddTrackTokenSegue, sender: self)
             return
         }
     }

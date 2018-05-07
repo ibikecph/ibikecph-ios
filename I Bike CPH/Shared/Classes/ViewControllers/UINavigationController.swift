@@ -10,11 +10,11 @@ import UIKit
 
 extension UINavigationController {
 
-    public override func childViewControllerForStatusBarStyle() -> UIViewController? {
+    open override var childViewControllerForStatusBarStyle : UIViewController? {
         return self.topViewController
     }
     
-    public override func childViewControllerForStatusBarHidden() -> UIViewController? {
+    open override var childViewControllerForStatusBarHidden : UIViewController? {
         return self.topViewController
     }
 
@@ -24,14 +24,14 @@ extension UIViewController {
     
     func dismiss() {
         // Check if view controller is on a navigation stack
-        if let navigation = parentViewController as? UINavigationController {
+        if let navigation = parent as? UINavigationController {
             // Check if view controller isn't the top vc in the stack
-            if let vc: UIViewController = navigation.viewControllers.first where vc != self {
-                navigation.popViewControllerAnimated(true)
+            if let vc: UIViewController = navigation.viewControllers.first, vc != self {
+                navigation.popViewController(animated: true)
                 return
             }
         }
         // Default
-        dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

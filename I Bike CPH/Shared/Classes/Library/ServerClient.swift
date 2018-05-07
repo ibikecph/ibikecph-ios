@@ -9,96 +9,96 @@
 import Foundation
 import SwiftyJSON
 
-private let bundleVersion = NSBundle.mainBundle().objectForInfoDictionaryKey(String(kCFBundleVersionKey)) as! String
+private let bundleVersion = Bundle.main.object(forInfoDictionaryKey: String(kCFBundleVersionKey)) as! String
 private let userAgent = "IBikeCPH/\(bundleVersion)/iOS"
 private let apiDefaultAccept = ["Accept": "application/vnd.ibikecph.v1"]
 private let apiUserAgent = ["User-Agent": userAgent]
 private let apiDefaultHeaders = ["Content-Type": "application/json"]
 
 class ServerClient: NSObject {
-    let session: NSURLSession
+    let session: URLSession
     
-    init(session: NSURLSession = NSURLSession.sharedSession()) {
+    init(session: URLSession = URLSession.shared) {
         self.session = session
     }
     
     enum ServerResult {
-        case SuccessJSON(JSON, statusCode: Int)
-        case Failed(error: NSError)
-        case FailedNoData
-        case FailedNoPath
-        case FailedParsingError
-        case FailedEncodingError
-        case FailedNoSuccess
+        case successJSON(JSON, statusCode: Int)
+        case failed(error: NSError)
+        case failedNoData
+        case failedNoPath
+        case failedParsingError
+        case failedEncodingError
+        case failedNoSuccess
     }
     
-    func request(path: String, configureRequest: (NSMutableURLRequest -> NSMutableURLRequest)? = nil, completion: (ServerResult) -> ()) {
-        if let url = NSURL(string: path.stringByAddingUrlAuthToken()){
-            var request = NSMutableURLRequest(URL: url)
+    func request(_ path: String, configureRequest: ((NSMutableURLRequest) -> NSMutableURLRequest)? = nil, completion: @escaping (ServerResult) -> ()) {
+        if let url = URL(string: path.stringByAddingUrlAuthToken()){
+            var request = NSMutableURLRequest(url: url)
             request.addDefaultHeaders()
             if let configureRequest = configureRequest {
                 request = configureRequest(request)
             }
-            let task = session.dataTaskWithRequest(request) { data, response, error in
+            let task = session.dataTask(with: request as NSURLRequest, completionHandler: { data, response, error in
                 if let error = error {
-                    completion(.Failed(error: error))
+                    completion(.failed(error: error))
                     return
                 }
                 if let data = data {
                     var parsingError: NSError? = nil
                     let json = JSON(data: data, error: &parsingError)
                     if let error = parsingError {
-                        completion(.Failed(error: error))
+                        completion(.failed(error: error))
                         return
                     }
-                    let statusCode = (response as? NSHTTPURLResponse)?.statusCode ?? 200
-                    completion(.SuccessJSON(json, statusCode: statusCode))
+                    let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 200
+                    completion(.successJSON(json, statusCode: statusCode))
                     self.checkForInvalidToken(json)
                 } else {
-                    completion(.FailedNoData)
+                    completion(.failedNoData)
                 }
-            }
+            }) 
             task.resume()
         } else {
-            completion(.FailedNoPath)
+            completion(.failedNoPath)
         }
     }
     
-    func upload(data: NSData, toPath path: String, configureRequest: (NSMutableURLRequest -> NSMutableURLRequest)? = nil, completion: (ServerResult) -> ()) {
-        if let url = NSURL(string: path.stringByAddingUrlAuthToken()) {
-            var request = NSMutableURLRequest(URL: url)
+    func upload(_ data: Data, toPath path: String, configureRequest: ((NSMutableURLRequest) -> NSMutableURLRequest)? = nil, completion: @escaping (ServerResult) -> ()) {
+        if let url = URL(string: path.stringByAddingUrlAuthToken()) {
+            var request = NSMutableURLRequest(url: url)
             request.addDefaultHeaders()
-            request.HTTPMethod = "POST"
+            request.httpMethod = "POST"
             if let configureRequest = configureRequest {
                 request = configureRequest(request)
             }
-            let task = session.uploadTaskWithRequest(request, fromData: data) { data, response, error in
+            let task = session.uploadTask(with: request as URLRequest, from: data, completionHandler: { data, response, error in
                 if let error = error {
-                    completion(.Failed(error: error))
+                    completion(.failed(error: error as NSError))
                     return
                 }
                 if let data = data {
                     var parsingError: NSError? = nil
                     let json = JSON(data: data, error: &parsingError)
                     if let error = parsingError {
-                        completion(.Failed(error: error))
+                        completion(.failed(error: error))
                         return
                     }
-                    let statusCode = (response as? NSHTTPURLResponse)?.statusCode ?? 200
-                    completion(.SuccessJSON(json, statusCode: statusCode))
+                    let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 200
+                    completion(.successJSON(json, statusCode: statusCode))
                     self.checkForInvalidToken(json)
                 } else {
-                    completion(.FailedNoData)
+                    completion(.failedNoData)
                 }
-            }
+            }) 
             task.resume()
         } else {
-            completion(.FailedNoPath) 
+            completion(.failedNoPath) 
         }
     }
 
-    private func checkForInvalidToken(json: JSON) {
-        if let invalidToken = json["invalid_token"].bool where invalidToken == true {
+    fileprivate func checkForInvalidToken(_ json: JSON) {
+        if let invalidToken = json["invalid_token"].bool, invalidToken == true {
             UserHelper.logout()
             NotificationCenter.post("invalidToken")
         }
@@ -131,19 +131,19 @@ extension String {
         return self
     }
     
-     func stringByAddingUrlParameters(parameters: [String: String]) -> String {
+     func stringByAddingUrlParameters(_ parameters: [String: String]) -> String {
         var newString = self
         for (key, value) in parameters {
 // TODO: Use NSURLComponents to encode to components component-wiser instead
-            if let string = value.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
+            if let string = value.addingPercentEscapes(using: String.Encoding.utf8) {
                 newString = stringByAddingUrlParameter(key, value: string)
             }
         }
         return newString
     }
     
-    func stringByAddingUrlParameter(key: String, value: String) -> String {
-        let first = !(self as NSString).containsString("?")
+    func stringByAddingUrlParameter(_ key: String, value: String) -> String {
+        let first = !(self as NSString).contains("?")
         var newString = self
         newString += first ? "?" : "&"
         newString += key + "=" + value

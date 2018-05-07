@@ -8,77 +8,77 @@
 
 import UIKit
 
-public extension NSDate {
+public extension Date {
     
-    func beginningOfDay() -> NSDate? {
-        let calendar = NSCalendar.currentCalendar()
-        let unitFlags: NSCalendarUnit = [.Hour, .Year, .Day, .Hour, .Minute, .Second]
-        let components = calendar.components(unitFlags, fromDate: self)
+    func beginningOfDay() -> Date? {
+        let calendar = Calendar.current
+        let unitFlags: NSCalendar.Unit = [.hour, .year, .day, .hour, .minute, .second]
+        var components = (calendar as NSCalendar).components(unitFlags, from: self)
         components.hour = 0
         components.minute = 0
         components.second = 0
-        return calendar.dateFromComponents(components)
+        return calendar.date(from: components)
     }
     
-    func endOfDay() -> NSDate? {
-        let calendar = NSCalendar.currentCalendar()
-        let unitFlags: NSCalendarUnit = [.Month, .Year, .Day, .Hour, .Minute, .Second]
-        let components = calendar.components(unitFlags, fromDate: self)
+    func endOfDay() -> Date? {
+        let calendar = Calendar.current
+        let unitFlags: NSCalendar.Unit = [.month, .year, .day, .hour, .minute, .second]
+        var components = (calendar as NSCalendar).components(unitFlags, from: self)
         components.hour = 23
         components.minute = 59
         components.second = 59
-        return calendar.dateFromComponents(components)
+        return calendar.date(from: components)
     }
     
     enum Day {
-        case Yesterday
-        case Today
-        case Tomorrow
-        case Other(Int)
+        case yesterday
+        case today
+        case tomorrow
+        case other(Int)
     }
     
-    func relativeDay(fromDate : NSDate) -> Int {
-        let calendar = NSCalendar.currentCalendar()
-        let unitFlags: NSCalendarUnit = .Day
+    func relativeDay(_ fromDate : Date) -> Int {
+        let calendar = Calendar.current
+        let unitFlags: NSCalendar.Unit = .day
         let fromDate = fromDate.withComponents(hour: 12, minute: 0, second: 0)!
         let toDate = self.withComponents(hour: 12, minute: 0, second: 0)!
-        let components = calendar.components(unitFlags, fromDate: fromDate, toDate: toDate, options: NSCalendarOptions(rawValue: 0))
+        let components = (calendar as NSCalendar).components(unitFlags, from: fromDate, to: toDate, options: NSCalendar.Options(rawValue: 0))
         let days = components.day
-        return days
+        return days!
     }
     
     func relativeDay() -> Day {
-        let days = relativeDay(NSDate())
+        let days = relativeDay(Date())
         switch days {
-            case -1: return .Yesterday
-            case 0: return .Today
-            case 1: return .Tomorrow
-            default: return .Other(days)
+            case -1: return .yesterday
+            case 0: return .today
+            case 1: return .tomorrow
+            default: return .other(days)
         }
     }
     
-    func laterOrEqualDay(thanDate date: NSDate) -> Bool {
+    func laterOrEqualDay(thanDate date: Date) -> Bool {
         return relativeDay(date) >= 0
     }
     
-    func nextWeekday(weekday: Int, fromDate: NSDate = NSDate()) -> NSDate? {
-        let calendar = NSCalendar.currentCalendar()
-        let unitFlags: NSCalendarUnit = [.Month, .Year, .Weekday, .Day, .Hour, .Minute, .Second]
-        let components = calendar.components(unitFlags, fromDate: fromDate)
+    func nextWeekday(_ weekday: Int, fromDate: Date = Date()) -> Date? {
+        let calendar = Calendar.current
+        let unitFlags: NSCalendar.Unit = [.month, .year, .weekday, .day, .hour, .minute, .second]
+        let components = (calendar as NSCalendar).components(unitFlags, from: fromDate)
         
         // Early on correct weekday, return fromDate
-        if components.weekday == weekday && self.timeIntervalSinceDate(fromDate) < 0 {
+        if components.weekday == weekday && self.timeIntervalSince(fromDate) < 0 {
             return fromDate
         }
         // Go one week forward subtracting weekday offset
-        let daysToNextWeekday = 7 + weekday - components.weekday
-        return calendar.dateByAddingUnit(.Day, value: daysToNextWeekday, toDate: fromDate, options: NSCalendarOptions(rawValue: 0))
+        let daysToNextWeekday = 7 + weekday - components.weekday!
+        return (calendar as NSCalendar).date(byAdding: .day, value: daysToNextWeekday, to: fromDate, options: NSCalendar.Options(rawValue: 0))
     }
     
-    func withComponents(year: Int? = nil, month: Int? = nil, weekday: Int? = nil, day: Int? = nil, hour: Int? = nil, minute: Int? = nil, second: Int? = nil ) -> NSDate? {
-        let calendar = NSCalendar.currentCalendar()
-        let unitFlags: NSCalendarUnit = [.Year, .Month, .Weekday, .Day, .Hour, .Minute, .Second]
-        let components = calendar.components(unitFlags, fromDate: self)
+    func withComponents(_ year: Int? = nil, month: Int? = nil, weekday: Int? = nil, day: Int? = nil, hour: Int? = nil, minute: Int? = nil, second: Int? = nil ) -> Date? {
+        let calendar = Calendar.current
+        let unitFlags: NSCalendar.Unit = [.year, .month, .weekday, .day, .hour, .minute, .second]
+        var components = (calendar as NSCalendar).components(unitFlags, from: self)
         if let year = year {
             components.year = year
         }
@@ -100,6 +100,6 @@ public extension NSDate {
         if let second = second {
             components.second = second
         }
-        return calendar.dateFromComponents(components)
+        return calendar.date(from: components)
     }
 }

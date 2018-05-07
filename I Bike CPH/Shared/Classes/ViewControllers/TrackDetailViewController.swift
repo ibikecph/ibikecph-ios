@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Async
 
 
 class TrackDetailViewController: SMTranslatedViewController {
@@ -18,13 +19,13 @@ class TrackDetailViewController: SMTranslatedViewController {
 
         // Make map passive
         mapView.showsUserLocation = false
-        mapView.userTrackingMode = .None
+        mapView.userTrackingMode = .none
         
         updateUI()
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     var track: Track? {
@@ -46,7 +47,7 @@ class TrackDetailViewController: SMTranslatedViewController {
         }
     }
     
-    func zoomToTrack(track: Track) {
+    func zoomToTrack(_ track: Track) {
         
         if mapView == nil {
             return

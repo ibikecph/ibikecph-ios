@@ -12,29 +12,29 @@ import SwiftyJSON
 class TracksClient: ServerClient {
     static let sharedInstance = TracksClient()
     
-    private let baseUrl = SMRouteSettings.sharedInstance().api_base_url
+    fileprivate let baseUrl = SMRouteSettings.sharedInstance().api_base_url
     
     enum UploadResult {
-        case Success(trackServerId: String)
-        case Other(ServerResult)
+        case success(trackServerId: String)
+        case other(ServerResult)
     }
     
     enum Result {
-        case Success
-        case Other(ServerResult)
+        case success
+        case other(ServerResult)
     }
     
     enum DeleteResult {
-        case Success
-        case NotAuthorized
-        case NotFound
-        case Other(ServerResult)
+        case success
+        case notAuthorized
+        case notFound
+        case other(ServerResult)
     }
     
-    func upload(track: Track, completion: (UploadResult) -> ()) {
-        let path = baseUrl + "/tracks"
+    func upload(_ track: Track, completion: @escaping (UploadResult) -> ()) {
+        let path = baseUrl! + "/tracks"
         guard let serverUpload = track.jsonForServerUpload() else {
-            completion(.Other(ServerResult.Failed(error: NSError(domain: "No JSON for server upload.", code: 0, userInfo: nil))))
+            completion(.other(ServerResult.failed(error: NSError(domain: "No JSON for server upload.", code: 0, userInfo: nil))))
             return
         }
         do {
@@ -44,65 +44,65 @@ class TracksClient: ServerClient {
                 return theRequest
             }) { result in
                 switch result {
-                    case .SuccessJSON(let json, _):
+                    case .successJSON(let json, _):
                         if let serverId = json["data"]["id"].int {
-                            completion(.Success(trackServerId: String(serverId)))
+                            completion(.success(trackServerId: String(serverId)))
                         } else {
-                            completion(.Other(ServerResult.FailedParsingError))
+                            completion(.other(ServerResult.failedParsingError))
                         }
-                    default: completion(.Other(result))
+                    default: completion(.other(result))
                 }
             }
             return
         } catch let error as NSError {
-            completion(.Other(ServerResult.Failed(error: error)))
+            completion(.other(ServerResult.failed(error: error)))
             return
         }
 //        completion(.Other(ServerResult.FailedEncodingError))
     }
     
     
-    func delete(track: Track, completion: (DeleteResult) -> ()) {
+    func delete(_ track: Track, completion: @escaping (DeleteResult) -> ()) {
         let serverId = track.serverId
         if serverId == "" {
-            completion(.Other(ServerResult.FailedEncodingError))
+            completion(.other(ServerResult.failedEncodingError))
             return
         }
-        let path = baseUrl + "/tracks/" + serverId
+        let path = baseUrl! + "/tracks/" + serverId
         
         guard let trackToken = UserHelper.trackToken() else {
-            completion(.Other(ServerResult.FailedEncodingError))
+            completion(.other(ServerResult.failedEncodingError))
             return
         }
         do {
             let data = try JSON(["signature" : trackToken]).rawData()
             request(path, configureRequest: { theRequest in
-                theRequest.HTTPMethod = "DELETE"
-                theRequest.HTTPBody = data
+                theRequest.httpMethod = "DELETE"
+                theRequest.httpBody = data
                 return theRequest
             }) { result in
                 switch result {
-                    case .SuccessJSON(let json, let statusCode):
+                    case .successJSON(let json, let statusCode):
                         if let success = json["success"].bool {
                             if success {
-                                completion(.Success)
+                                completion(.success)
                             } else if statusCode == 404 {
-                                completion(.NotFound)
+                                completion(.notFound)
                             } else if statusCode == 401 {
-                                completion(.NotAuthorized)
+                                completion(.notAuthorized)
                             } else {
-                                completion(.Other(ServerResult.FailedNoSuccess))
+                                completion(.other(ServerResult.failedNoSuccess))
                             }
                         } else {
-                            completion(.Other(ServerResult.FailedNoSuccess))
+                            completion(.other(ServerResult.failedNoSuccess))
                         }
-                    default: completion(.Other(result))
+                    default: completion(.other(result))
                 }
                 return
             }
             return
         } catch let error as NSError {
-            completion(.Other(ServerResult.Failed(error: error)))
+            completion(.other(ServerResult.failed(error: error)))
             return
         }
     }

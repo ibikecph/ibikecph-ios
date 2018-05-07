@@ -26,21 +26,21 @@ class Track: RLMObject {
 
 extension Track {
 	
-    func startDate() -> NSDate? {
-        return (locationsSorted().firstObject() as? TrackLocation)?.date()
+    func startDate() -> Date? {
+        return (locationsSorted().firstObject() as? TrackLocation)?.date() as! Date
     }
 	
-    func endDate() -> NSDate? {
-        return (locationsSorted().lastObject() as? TrackLocation)?.date()
+    func endDate() -> Date? {
+        return (locationsSorted().lastObject() as? TrackLocation)?.date() as! Date
     }
 	
     func recalculate() {
-        let realm = RLMRealm.defaultRealm()
+        let realm = RLMRealm.default()
         let transact = !realm.inWriteTransaction
         if transact {
             realm.beginWriteTransaction()
         }
-        if invalidated {
+        if isInvalidated {
             if transact {
                 realm.cancelWriteTransaction()
             }
@@ -58,7 +58,7 @@ extension Track {
         }
     }
     
-    func deleteFromRealmWithRelationships(realm: RLMRealm = .defaultRealm(), keepLocations: Bool = false, keepActivity: Bool = false) {
+    func deleteFromRealmWithRelationships(_ realm: RLMRealm = .default(), keepLocations: Bool = false, keepActivity: Bool = false) {
         let transact = !realm.inWriteTransaction
         if transact {
             realm.beginWriteTransaction()
@@ -67,8 +67,8 @@ extension Track {
             realm.deleteObjects(locations)
         }
         if !keepActivity,
-            let activityRealm = activity.realm where activityRealm == realm {
-            realm.deleteObject(activity)
+            let activityRealm = activity.realm, activityRealm == realm {
+            realm.delete(activity)
         }
         deleteFromRealm()
         if transact {
@@ -80,37 +80,37 @@ extension Track {
         }
     }
     
-    private func recalculateTimestamps() {
+    fileprivate func recalculateTimestamps() {
         // Use first TrackLocation timestamp. Fallback to activity
         startTimestamp = (locationsSorted().firstObject() as? TrackLocation)?.timestamp ?? activity.startDate.timeIntervalSince1970 ?? 0
         endTimestamp = (locationsSorted().lastObject() as? TrackLocation)?.timestamp ?? activity.startDate.timeIntervalSince1970 ?? 0
     }
     
-    private func recalculateLength() {
+    fileprivate func recalculateLength() {
         var newLength: Double = 0
         let locations = locationsSorted()
-        for (index, location) in locations.enumerate() {
+        for (index, location) in locations.enumerated() {
             if index + 1 >= Int(locations.count) {
                 continue
             }
             if let nextLocation = locations[UInt(index+1)] as? TrackLocation {
                 if let location = location as? TrackLocation {
-                    newLength += location.location().distanceFromLocation(nextLocation.location())
+                    newLength += location.location().distance(from: nextLocation.location())
                 }
             }
         }
         length = newLength
     }
     
-    private func recalculateDuration() {
-        if let newDuration = endDate()?.timeIntervalSinceDate(startDate() ?? endDate()!) {
+    fileprivate func recalculateDuration() {
+        if let newDuration = endDate()?.timeIntervalSince(startDate() ?? endDate()!) {
             duration = newDuration
         } else {
             duration = 0
         }
     }
     
-    func speeding(speedLimit: Double, minLength: Double = 0.050) -> Bool {
+    func speeding(_ speedLimit: Double, minLength: Double = 0.050) -> Bool {
         let duration = self.duration / 3600
         if duration <= 0 {
             return false
@@ -126,7 +126,7 @@ extension Track {
         return true
     }
     
-    func slow(speedLimit: Double, minLength: Double = 0.05) -> Bool {
+    func slow(_ speedLimit: Double, minLength: Double = 0.05) -> Bool {
         let duration = self.duration / 3600
         if duration <= 0 {
             return false
@@ -142,10 +142,10 @@ extension Track {
         return true
     }
     
-    func lowAccuracy(minAccuracy: Double = 100) -> Bool {
-        let locations = locationsSorted().objectsWithPredicate(NSPredicate(value: true))
-        let horizontal = locations.averageOfProperty("horizontalAccuracy")?.doubleValue ?? 0
-        let vertical = locations.averageOfProperty("verticalAccuracy")?.doubleValue ?? 0
+    func lowAccuracy(_ minAccuracy: Double = 100) -> Bool {
+        let locations = locationsSorted().objects(with: NSPredicate(value: true))
+        let horizontal = locations.average(ofProperty: "horizontalAccuracy")?.doubleValue ?? 0
+        let vertical = locations.average(ofProperty: "verticalAccuracy")?.doubleValue ?? 0
         return min(horizontal, vertical) > minAccuracy
     }
     
@@ -156,9 +156,9 @@ extension Track {
         let locations = locationsSorted()
         if let
             firstLocation = locations.firstObject() as? TrackLocation,
-            lastLocation = locations.lastObject() as? TrackLocation
+            let lastLocation = locations.lastObject() as? TrackLocation
         {
-            return firstLocation.location().distanceFromLocation(lastLocation.location())
+            return firstLocation.location().distance(from: lastLocation.location())
         }
         return nil
     }
@@ -172,8 +172,8 @@ extension Track {
             let centerIndex = UInt(floor(Double(locations.count)/2))
             if let centerLocation = locations[centerIndex] as? TrackLocation {
                 if let lastLocation = locations.lastObject() as? TrackLocation {
-                    let distance1 = firstLocation.location().distanceFromLocation(centerLocation.location())
-                    let distance2 = centerLocation.location().distanceFromLocation(lastLocation.location())
+                    let distance1 = firstLocation.location().distance(from: centerLocation.location())
+                    let distance2 = centerLocation.location().distance(from: lastLocation.location())
                     return distance1 + distance2
                 }
             }
@@ -184,14 +184,14 @@ extension Track {
     func speeds() -> [Double] {
         var speeds = [Double]()
         let locations = locationsSorted()
-        for (index, location) in locations.enumerate() {
+        for (index, location) in locations.enumerated() {
             if index + 1 >= Int(locations.count) {
                 continue
             }
             if let nextLocation = locations[UInt(index+1)] as? TrackLocation {
                 if let location = location as? TrackLocation {
-                    let length = location.location().distanceFromLocation(nextLocation.location())
-                    let duration = nextLocation.date().timeIntervalSinceDate(location.date())
+                    let length = location.location().distance(from: nextLocation.location())
+                    let duration = nextLocation.date().timeIntervalSince(location.date())
                     let speed = length / duration
                     speeds.append(speed)
                 }
@@ -223,19 +223,19 @@ extension Track {
     */
     func topSpeed() -> Double {
         let speeds = smoothSpeeds()
-        return speeds.count > 0 ? speeds.maxElement() ?? 0 : 0
+        return speeds.count > 0 ? speeds.max() ?? 0 : 0
     }
     
-    func geocode(synchronous: Bool = false, completion:((Bool) -> ())? = nil) {
+    func geocode(_ synchronous: Bool = false, completion:((Bool) -> ())? = nil) {
         if let startLocation = locations.firstObject() as? TrackLocation {
             let coordinate = startLocation.coordinate()
-            SMGeocoder.reverseGeocode(coordinate, synchronous: synchronous) { (item: KortforItem?, error: NSError?) in
+            SMGeocoder.reverseGeocode(coordinate, synchronous: synchronous) { (item: KortforItem?, error: Error?) in
                 if let realm = self.realm {
                     let transact = !realm.inWriteTransaction
                     if transact {
                         realm.beginWriteTransaction()
                     }
-                    if self.invalidated {
+                    if self.isInvalidated {
                         if transact {
                             realm.cancelWriteTransaction()
                         }
@@ -259,12 +259,12 @@ extension Track {
                     }
                     if let endLocation = self.locations.lastObject() as? TrackLocation {
                         let coordinate = endLocation.coordinate()
-                        SMGeocoder.reverseGeocode(coordinate, synchronous: synchronous) { (item: KortforItem?, error: NSError?) in
+                        SMGeocoder.reverseGeocode(coordinate, synchronous: synchronous) { (item: KortforItem?, error: Error?) in
                             let transact = !realm.inWriteTransaction
                             if transact {
                                 realm.beginWriteTransaction()
                             }
-                            if self.invalidated {
+                            if self.isInvalidated {
                                 if transact {
                                     realm.cancelWriteTransaction()
                                 }
@@ -288,7 +288,7 @@ extension Track {
                         }
                     }
                 }
-            }
+                }
         }
     }
     
@@ -305,8 +305,8 @@ extension Track {
                             "seconds_passed": Int((location.timestamp - startTimestamp).roundTo(1)),
                             "latitude": location.latitude.roundTo(1000000),
                             "longitude": location.longitude.roundTo(1000000)
-                        ]
-                        serializedLocations.append(serializedLocation)
+                            ] as [String : Any]
+                        serializedLocations.append(serializedLocation as AnyObject)
                     }
                 }
                 
@@ -326,16 +326,17 @@ extension Track {
         return nil
     }
 
-    func locationsSorted() -> RLMResults {
-        return locations.sortedResultsUsingProperty("timestamp", ascending: true)
+    func locationsSorted() -> RLMResults<RLMObject> {
+        return locations.sortedResults(usingProperty: "timestamp", ascending: true)
     }
 }
 
 
 extension Double {
     
-    func roundTo(to: Int) -> Double {
+    func roundTo(_ to: Int) -> Double {
+        let selfValue = Double(self)
         let to = Double(to)
-        return round(self * to) / to
+        return round(selfValue * to) / to
     }
 }

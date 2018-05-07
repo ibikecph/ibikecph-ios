@@ -12,27 +12,27 @@ import UIKit
 Relative dates like 'yesterday', '
 
 */
-class RelativeDateFormatter: NSDateFormatter {
+class RelativeDateFormatter: DateFormatter {
    
     /**
 
     Default to add days like "Monday, " before i.e. "Jan 2, 2001"
     */
-    lazy var beforeFallback: NSDateFormatter? = {
-        let formatter = NSDateFormatter()
+    lazy var beforeFallback: DateFormatter? = {
+        let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, "
         return formatter
     }()
     
-    override func stringFromDate(date: NSDate) -> String {
+    override func string(from date: Date) -> String {
         switch date.relativeDay() {
-            case .Yesterday: return "Yesterday".localized
-            case .Today: return "Today".localized
-            case .Tomorrow: return "Tomorrow".localized
+            case .yesterday: return "Yesterday".localized
+            case .today: return "Today".localized
+            case .tomorrow: return "Tomorrow".localized
             default:
-                let fallback = super.stringFromDate(date)
+                let fallback = super.string(from: date)
                 if let beforeFallback = beforeFallback {
-                    return beforeFallback.stringFromDate(date) + fallback
+                    return beforeFallback.string(from: date) + fallback
                 }
                 return fallback
         }

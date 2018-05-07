@@ -30,7 +30,7 @@ import CoreLocation
 
 @objc class UnknownSearchListItem: NSObject, SearchListItem {
     
-    var type: SearchListItemType = .Unknown
+    var type: SearchListItemType = .unknown
     var name: String = ""
     var address: String = ""
     var street: String = ""

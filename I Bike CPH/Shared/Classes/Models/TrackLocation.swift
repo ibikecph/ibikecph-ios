@@ -11,7 +11,7 @@ import CoreLocation
 // Mirrors CLLocation in a Realm object
 class TrackLocation: RLMObject {
     
-    dynamic var timestamp: NSTimeInterval = 0
+    dynamic var timestamp: TimeInterval = 0
     dynamic var latitude: Double = 0
     dynamic var longitude: Double = 0
     dynamic var altitude: Double = 0
@@ -25,11 +25,11 @@ class TrackLocation: RLMObject {
 }
 
 extension TrackLocation {
-    func date() -> NSDate {
-        return NSDate(timeIntervalSince1970: timestamp)
+    func date() -> Date {
+        return Date(timeIntervalSince1970: timestamp)
     }
     
-    class func build(location: CLLocation) -> TrackLocation {
+    class func build(_ location: CLLocation) -> TrackLocation {
         let point = TrackLocation()
         point.timestamp = location.timestamp.timeIntervalSince1970
         point.latitude = location.coordinate.latitude
@@ -50,9 +50,9 @@ extension TrackLocation {
         return CLLocation(coordinate: coordinate(), altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy, course: course, speed: speed, timestamp: date())
     }
     
-    func speedToLocation(toLocation: TrackLocation) -> Double {
-        let length = location().distanceFromLocation(toLocation.location())
-        let duration = -date().timeIntervalSinceDate(toLocation.date())
+    func speedToLocation(_ toLocation: TrackLocation) -> Double {
+        let length = location().distance(from: toLocation.location())
+        let duration = -date().timeIntervalSince(toLocation.date())
         let speed = length / duration
         return speed
     }

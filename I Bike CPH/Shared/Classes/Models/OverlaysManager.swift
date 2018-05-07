@@ -14,17 +14,17 @@ import SwiftHEXColors
 let overlaysUpdatedNotification = "overlaysUpdatedNotification"
 
 enum OverlayType {
-    case CycleSuperHighways
-    case BikeServiceStations
-    case HarborRing
-    case GreenPaths
+    case cycleSuperHighways
+    case bikeServiceStations
+    case harborRing
+    case greenPaths
     
     var localizedDescription: String {
         switch self {
-            case .CycleSuperHighways: return "cycle_super_highways".localized
-            case .BikeServiceStations: return "service_stations".localized
-            case .HarborRing: return "harbor_ring".localized
-            case .GreenPaths: return "green_paths".localized
+            case .cycleSuperHighways: return "cycle_super_highways".localized
+            case .bikeServiceStations: return "service_stations".localized
+            case .harborRing: return "harbor_ring".localized
+            case .greenPaths: return "green_paths".localized
         }
     }
 }
@@ -48,16 +48,16 @@ extension DefaultsKeys {
         }
         if macro.isIBikeCph {
             return [
-                .HarborRing,
-                .GreenPaths
+                .harborRing,
+                .greenPaths
             ]
         }
         return []
     }()
     
-    private struct OverlayAnnotations {
+    fileprivate struct OverlayAnnotations {
         var locations = [[CLLocationCoordinate2D]]()
-        var color = Styler.tintColor().colorWithAlphaComponent(0.5)
+        var color = Styler.tintColor().withAlphaComponent(0.5)
         var name = ""
         var annotations = [Annotation]()
         var type: OverlayType
@@ -65,41 +65,41 @@ extension DefaultsKeys {
         init(type: OverlayType, json: JSON) {
             self.type = type
             switch self.type {
-            case .BikeServiceStations:
+            case .bikeServiceStations:
                 self.setImageLocationsFromJSON(json)
-            case .CycleSuperHighways, .HarborRing, .GreenPaths:
+            case .cycleSuperHighways, .harborRing, .greenPaths:
                 self.setPathLocationsFromGeoJSON(json)
                 self.setColorFromGeoJSON(json)
                 self.setNameFromGeoJSON(json)
             }
         }
         
-        mutating func updateAnnotations(mapView: MapView?) {
+        mutating func updateAnnotations(_ mapView: MapView?) {
             guard let mv = mapView else {
                 return
             }
             switch self.type {
-            case .BikeServiceStations:
+            case .bikeServiceStations:
                 self.setMarkerAnnotations(mv)
-            case .CycleSuperHighways, .HarborRing, .GreenPaths:
+            case .cycleSuperHighways, .harborRing, .greenPaths:
                 self.setPathAnnotations(mv)
             }
         }
         
-        mutating func updateOverlay(mapView: MapView?) {
+        mutating func updateOverlay(_ mapView: MapView?) {
             guard let mv = mapView else {
                 return
             }
             let settings = Settings.sharedInstance
             var overlayEnabled: Bool
             switch self.type {
-            case .CycleSuperHighways:
+            case .cycleSuperHighways:
                 overlayEnabled = settings.overlays.showCycleSuperHighways
-            case .BikeServiceStations:
+            case .bikeServiceStations:
                 overlayEnabled = settings.overlays.showBikeServiceStations
-            case .HarborRing:
+            case .harborRing:
                 overlayEnabled = settings.overlays.showHarborRing
-            case .GreenPaths:
+            case .greenPaths:
                 overlayEnabled = settings.overlays.showGreenPaths
             }
             // If Overlay is not even available then it should always be disabled
@@ -111,7 +111,7 @@ extension DefaultsKeys {
             }
         }
         
-        private mutating func setPathAnnotations(mapView: MapView) {
+        fileprivate mutating func setPathAnnotations(_ mapView: MapView) {
             mapView.removeAnnotations(self.annotations)
             self.annotations = []
             for locations in self.locations {
@@ -121,7 +121,7 @@ extension DefaultsKeys {
             }
         }
         
-        private mutating func setMarkerAnnotations(mapView: MapView) {
+        fileprivate mutating func setMarkerAnnotations(_ mapView: MapView) {
             mapView.removeAnnotations(self.annotations)
             self.annotations = []
             for coordinates in self.locations {
@@ -133,33 +133,33 @@ extension DefaultsKeys {
             }
         }
         
-        private mutating func setImageLocationsFromJSON(json: JSON) {
+        fileprivate mutating func setImageLocationsFromJSON(_ json: JSON) {
             self.locations.removeAll()
             guard let stations = json["stations"].array else {
                 return
             }
             for station in stations {
-                guard let type = station["type"].string where type == "service" else {
+                guard let type = station["type"].string, type == "service" else {
                     continue
                 }
                 guard let coordinates = station["coords"].string else {
                     continue
                 }
-                let scalars = coordinates.componentsSeparatedByString(" ")
+                let scalars = coordinates.components(separatedBy: " ")
                 guard scalars.count == 2 else {
                     continue
                 }
-                let formatter = NSNumberFormatter()
-                formatter.locale = NSLocale(localeIdentifier: "en_US")
-                if let latitude = formatter.numberFromString(scalars[0])?.doubleValue,
-                       longitude = formatter.numberFromString(scalars[1])?.doubleValue {
+                let formatter = NumberFormatter()
+                formatter.locale = Locale(localeIdentifier: "en_US")
+                if let latitude = formatter.number(from: scalars[0])?.doubleValue,
+                       let longitude = formatter.number(from: scalars[1])?.doubleValue {
                     let coordinate = CLLocationCoordinate2DMake(longitude, latitude)
                     self.locations.append([coordinate])
                 }
             }
         }
         
-        private mutating func setPathLocationsFromGeoJSON(json: JSON) {
+        fileprivate mutating func setPathLocationsFromGeoJSON(_ json: JSON) {
             self.locations.removeAll()
             guard let features = json["features"].array else {
                 return
@@ -181,18 +181,18 @@ extension DefaultsKeys {
             }
         }
         
-        private func locationsFromCoordinatesArray(coordinates: [JSON]) -> [CLLocationCoordinate2D] {
+        fileprivate func locationsFromCoordinatesArray(_ coordinates: [JSON]) -> [CLLocationCoordinate2D] {
             var featureLocations = [CLLocationCoordinate2D]()
             for coordinate in coordinates {
-                if let longitude = coordinate[0].double, latitude = coordinate[1].double {
+                if let longitude = coordinate[0].double, let latitude = coordinate[1].double {
                     featureLocations.append(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
                 }
             }
             return featureLocations
         }
         
-        private mutating func setColorFromGeoJSON(json: JSON) {
-            self.color = Styler.tintColor().colorWithAlphaComponent(0.5)
+        fileprivate mutating func setColorFromGeoJSON(_ json: JSON) {
+            self.color = Styler.tintColor().withAlphaComponent(0.5)
             guard let colorString = json["properties", "color"].string else {
                 return
             }
@@ -201,12 +201,12 @@ extension DefaultsKeys {
             }
         }
         
-        private mutating func setNameFromGeoJSON(json: JSON) {
+        fileprivate mutating func setNameFromGeoJSON(_ json: JSON) {
             self.name = self.type.localizedDescription
             
             // Default to English locale
             var localePrefix = "en"
-            guard let preferredLocale = NSLocale.preferredLanguages().first else {
+            guard let preferredLocale = Locale.preferredLanguages.first else {
                 return
             }
             if preferredLocale.hasPrefix("da") {
@@ -220,26 +220,26 @@ extension DefaultsKeys {
         
     }
     
-    private var cycleSuperHighwayAnnotations: OverlayAnnotations? {
+    fileprivate var cycleSuperHighwayAnnotations: OverlayAnnotations? {
         didSet {
             self.cycleSuperHighwayAnnotations?.updateAnnotations(self.mapView)
             self.cycleSuperHighwayAnnotations?.updateOverlay(self.mapView)
         }
     }
-    private var bikeServiceAnnotations: OverlayAnnotations? {
+    fileprivate var bikeServiceAnnotations: OverlayAnnotations? {
         didSet {
             self.bikeServiceAnnotations?.updateAnnotations(self.mapView)
             self.bikeServiceAnnotations?.updateOverlay(self.mapView)
         }
     }
-    private var harborRingAnnotations: OverlayAnnotations? {
+    fileprivate var harborRingAnnotations: OverlayAnnotations? {
         didSet {
             self.harborRingAnnotations?.updateAnnotations(self.mapView)
             self.harborRingAnnotations?.updateOverlay(self.mapView)
             NotificationCenter.post(overlaysUpdatedNotification, object: self)
         }
     }
-    private var greenPathsAnnotations: OverlayAnnotations? {
+    fileprivate var greenPathsAnnotations: OverlayAnnotations? {
         didSet {
             self.greenPathsAnnotations?.updateAnnotations(self.mapView)
             self.greenPathsAnnotations?.updateOverlay(self.mapView)
@@ -264,94 +264,94 @@ extension DefaultsKeys {
         }
     }
     
-    private func fetchData() {
+    fileprivate func fetchData() {
         if let json = self.JSONFromFile("cycle_super_highways", fileExtension: "geojson") {
-            self.cycleSuperHighwayAnnotations = OverlayAnnotations(type: .CycleSuperHighways, json: json)
+            self.cycleSuperHighwayAnnotations = OverlayAnnotations(type: .cycleSuperHighways, json: json)
         }
         
         if let json = self.JSONFromFile("stations", fileExtension: "json") {
-            self.bikeServiceAnnotations = OverlayAnnotations(type: .BikeServiceStations, json: json)
+            self.bikeServiceAnnotations = OverlayAnnotations(type: .bikeServiceStations, json: json)
         }
         
         OverlaysClient.sharedInstance.requestOverlaysGeoJSON("havneringen") { result in
             switch result {
-                case .Success(let json):
-                    self.harborRingAnnotations = OverlayAnnotations(type: .HarborRing, json: json)
+                case .success(let json):
+                    self.harborRingAnnotations = OverlayAnnotations(type: .harborRing, json: json)
                     if let dictionary = json.dictionaryObject {
                         Defaults[.harborRingGeoJSON] = dictionary
                     }
                 default:
                     // Try to use cached GeoJSON data if available
                     if let dictionary = Defaults[.harborRingGeoJSON] {
-                        self.harborRingAnnotations = OverlayAnnotations(type: .HarborRing, json: JSON(dictionary))
+                        self.harborRingAnnotations = OverlayAnnotations(type: .harborRing, json: JSON(dictionary))
                     }
             }
         }
         
         OverlaysClient.sharedInstance.requestOverlaysGeoJSON("groenne_stier") { result in
             switch result {
-                case .Success(let json):
-                    self.greenPathsAnnotations = OverlayAnnotations(type: .GreenPaths, json: json)
+                case .success(let json):
+                    self.greenPathsAnnotations = OverlayAnnotations(type: .greenPaths, json: json)
                     if let dictionary = json.dictionaryObject {
                         Defaults[.greenPathsGeoJSON] = dictionary
                     }
                 default:
                     // Try to use cached GeoJSON data if available
                     if let dictionary = Defaults[.greenPathsGeoJSON] {
-                        self.greenPathsAnnotations = OverlayAnnotations(type: .GreenPaths, json: JSON(dictionary))
+                        self.greenPathsAnnotations = OverlayAnnotations(type: .greenPaths, json: JSON(dictionary))
                     }
             }
         }
     }
     
-    private func annotationOfType(type: OverlayType) -> OverlayAnnotations? {
+    fileprivate func annotationOfType(_ type: OverlayType) -> OverlayAnnotations? {
         switch type {
-        case .CycleSuperHighways:
+        case .cycleSuperHighways:
             return self.cycleSuperHighwayAnnotations
-        case .BikeServiceStations:
+        case .bikeServiceStations:
             return self.bikeServiceAnnotations
-        case .HarborRing:
+        case .harborRing:
             return self.harborRingAnnotations
-        case .GreenPaths:
+        case .greenPaths:
             return self.greenPathsAnnotations
         }
     }
     
-    func titleForOverlay(type: OverlayType) -> String {
+    func titleForOverlay(_ type: OverlayType) -> String {
         guard let annotation = self.annotationOfType(type) else {
             return type.localizedDescription + " (" + "not_currently_available".localized + ")"
         }
         return annotation.name
     }
     
-    func iconImageForOverlay(type: OverlayType) -> UIImage? {
+    func iconImageForOverlay(_ type: OverlayType) -> UIImage? {
         let iconWidth: CGFloat = 22
         switch type {
-            case .CycleSuperHighways: return UIImage(named: "SuperCycleHighway")
-            case .BikeServiceStations: return UIImage(named: "serviceStation")
-            case .HarborRing, .GreenPaths:
+            case .cycleSuperHighways: return UIImage(named: "SuperCycleHighway")
+            case .bikeServiceStations: return UIImage(named: "serviceStation")
+            case .harborRing, .greenPaths:
                 guard let annotations = self.annotationOfType(type) else {
-                    return poPathOverlayIconImage(width: iconWidth, color: UIColor.grayColor())
+                    return poPathOverlayIconImage(width: iconWidth, color: UIColor.gray)
                 }
                 return poPathOverlayIconImage(width: iconWidth, color: annotations.color)
         }
     }
     
-    func isOverlaySelected(type: OverlayType) -> Bool {
+    func isOverlaySelected(_ type: OverlayType) -> Bool {
         switch type {
-            case .CycleSuperHighways: return Settings.sharedInstance.overlays.showCycleSuperHighways
-            case .BikeServiceStations: return Settings.sharedInstance.overlays.showBikeServiceStations
-            case .HarborRing: return Settings.sharedInstance.overlays.showHarborRing
-            case .GreenPaths: return Settings.sharedInstance.overlays.showGreenPaths
+            case .cycleSuperHighways: return Settings.sharedInstance.overlays.showCycleSuperHighways
+            case .bikeServiceStations: return Settings.sharedInstance.overlays.showBikeServiceStations
+            case .harborRing: return Settings.sharedInstance.overlays.showHarborRing
+            case .greenPaths: return Settings.sharedInstance.overlays.showGreenPaths
         }
     }
     
-    func selectOverlay(selected: Bool, type: OverlayType) {
+    func selectOverlay(_ selected: Bool, type: OverlayType) {
         switch type {
-            case .CycleSuperHighways: Settings.sharedInstance.overlays.showCycleSuperHighways = selected
-            case .BikeServiceStations: Settings.sharedInstance.overlays.showBikeServiceStations = selected
-            case .HarborRing: Settings.sharedInstance.overlays.showHarborRing = selected
-            case .GreenPaths: Settings.sharedInstance.overlays.showGreenPaths = selected
+            case .cycleSuperHighways: Settings.sharedInstance.overlays.showCycleSuperHighways = selected
+            case .bikeServiceStations: Settings.sharedInstance.overlays.showBikeServiceStations = selected
+            case .harborRing: Settings.sharedInstance.overlays.showHarborRing = selected
+            case .greenPaths: Settings.sharedInstance.overlays.showGreenPaths = selected
         }
     }
     
@@ -362,18 +362,18 @@ extension DefaultsKeys {
         self.greenPathsAnnotations?.updateOverlay(self.mapView)
     }
     
-    private func updateAllAnnotations() {
+    fileprivate func updateAllAnnotations() {
         self.cycleSuperHighwayAnnotations?.updateAnnotations(self.mapView)
         self.bikeServiceAnnotations?.updateAnnotations(self.mapView)
         self.harborRingAnnotations?.updateAnnotations(self.mapView)
         self.greenPathsAnnotations?.updateAnnotations(self.mapView)
     }
     
-    private func JSONFromFile(filename: String, fileExtension: String) -> JSON? {
-        guard let filePath = NSBundle.mainBundle().pathForResource(filename, ofType: fileExtension) else {
+    fileprivate func JSONFromFile(_ filename: String, fileExtension: String) -> JSON? {
+        guard let filePath = Bundle.main.path(forResource: filename, ofType: fileExtension) else {
             return nil
         }
-        guard let data = NSData(contentsOfFile: filePath) else {
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
             return nil
         }
         return JSON(data: data)

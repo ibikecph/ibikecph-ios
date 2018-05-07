@@ -15,9 +15,9 @@ let trackingHandler = TrackingHandler()
 class TrackingHandler: NSObject {
     var isCurrentlyRouting: Bool = false
     
-    private var currentTrack: Track?
+    fileprivate var currentTrack: Track?
     
-    private let thread: Thread = {
+    fileprivate let thread: Thread = {
         let thread = Thread()
         thread.start()
         return thread
@@ -35,8 +35,8 @@ class TrackingHandler: NSObject {
                 // Add activity to current track
                 thread.enqueue() { [weak self] in
                     do {
-                        try RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
-                            if let track = self?.currentTrack where !track.invalidated {
+                        try RLMRealm.default().transaction() { [weak self] in
+                            if let track = self?.currentTrack, !track.isInvalidated {
                                 print("Tracking: Add new activity")
                                 let newActivity = TrackActivity.build(activity)
                                 track.activity.deleteFromRealm() // Delete current
@@ -59,7 +59,7 @@ class TrackingHandler: NSObject {
             return motionDetector.isAvailable()
         #endif
     }
-    private var observerTokens = [AnyObject]()
+    fileprivate var observerTokens = [AnyObject]()
     
     override init() {
         super.init()
@@ -71,7 +71,7 @@ class TrackingHandler: NSObject {
         unobserve()
     }
     
-    private func unobserve() {
+    fileprivate func unobserve() {
         for observerToken in observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
@@ -106,8 +106,8 @@ class TrackingHandler: NSObject {
         motionDetector.start { [weak self] activity in
             self!.thread.enqueue() { [weak self] in
                 do {
-                    try RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
-                        if let currentTrack = self?.currentTrack where !currentTrack.invalidated && currentTrack.activity.realm != nil && currentTrack.activity.sameActivityTypeAs(cmMotionActivity: activity) {
+                    try RLMRealm.default().transaction() { [weak self] in
+                        if let currentTrack = self?.currentTrack, !currentTrack.isInvalidated && currentTrack.activity.realm != nil && currentTrack.activity.sameActivityTypeAs(cmMotionActivity: activity) {
                             print("Tracking: New confidence for activity")
                             // Activity just updated it's confidence
                             currentTrack.activity.confidence = activity.confidence.rawValue
@@ -126,7 +126,7 @@ class TrackingHandler: NSObject {
     }
     
     func setupBackgroundHandling() {
-        observerTokens.append(NotificationCenter.observe(UIApplicationDidEnterBackgroundNotification) { notification in
+        observerTokens.append(NotificationCenter.observe(NSNotification.Name.UIApplicationDidEnterBackground) { notification in
             if Settings.sharedInstance.tracking.on {
                 return
             }
@@ -137,7 +137,7 @@ class TrackingHandler: NSObject {
             // Stop location manager
             SMLocationManager.sharedInstance().stopUpdating()
         })
-        observerTokens.append(NotificationCenter.observe(UIApplicationWillEnterForegroundNotification) { notification in
+        observerTokens.append(NotificationCenter.observe(NSNotification.Name.UIApplicationWillEnterForeground) { notification in
             SMLocationManager.sharedInstance().startUpdating()
         })
     }
@@ -166,7 +166,7 @@ class TrackingHandler: NSObject {
         // Initialize track
         thread.enqueue() { [weak self] in
             do {
-                try RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
+                try RLMRealm.default().transaction() { [weak self] in
                     print("Tracking: New track")
                     self?.currentTrack = Track()
                     self?.currentTrack!.addToRealm()
@@ -189,8 +189,8 @@ class TrackingHandler: NSObject {
         thread.enqueue() { [weak self] in
             // Stop track
             do {
-                try RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
-                    if let currentTrack = self?.currentTrack where !currentTrack.invalidated {
+                try RLMRealm.default().transaction() { [weak self] in
+                    if let currentTrack = self?.currentTrack, !currentTrack.isInvalidated {
                         currentTrack.recalculate()
                     }
                 }
@@ -204,17 +204,17 @@ class TrackingHandler: NSObject {
         }
     }
     
-    func add(locations: [CLLocation]) {
+    func add(_ locations: [CLLocation]) {
         if currentTrack == nil {
             return
         }
         thread.enqueue() { [weak self] in
             do {
-                try RLMRealm.defaultRealm().transactionWithBlock() { [weak self] in
-                    if let currentTrack = self?.currentTrack where !currentTrack.invalidated {
+                try RLMRealm.default().transaction() { [weak self] in
+                    if let currentTrack = self?.currentTrack, !currentTrack.isInvalidated {
                         for location in locations {
                             let location = TrackLocation.build(location)
-                            currentTrack.locations.addObject(location)
+                            currentTrack.locations.add(location)
                         }
                     }
                 }

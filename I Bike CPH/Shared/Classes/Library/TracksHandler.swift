@@ -18,39 +18,39 @@ let processedGeocodingNoticationKey = "processedGeocodingNoticationKey"
 class TracksHandler {
     static let sharedInstance = TracksHandler()
 
-    private var processingStartDate: NSDate = NSDate()
-    private var processing: Bool = false {
+    fileprivate var processingStartDate: Date = Date()
+    fileprivate var processing: Bool = false {
         didSet {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = processing
+            UIApplication.shared.isNetworkActivityIndicatorVisible = processing
             if processing {
-                processingStartDate = NSDate()
+                processingStartDate = Date()
                 print("Processing start \(processingStartDate)")
             } else {
                 print("Processing ended \(-processingStartDate.timeIntervalSinceNow))s")
             }
         }
     }
-    private var pendingUserInitiatedProcess = false
-    private var pendingGeocode = false
+    fileprivate var pendingUserInitiatedProcess = false
+    fileprivate var pendingGeocode = false
 
-    private let lastProcessedSmallKey = "lastProcessedSmallKey"
-    var lastProcessedSmall: NSDate {
-        get { return Defaults[lastProcessedSmallKey].date ?? NSDate(timeIntervalSince1970: 0) }
+    fileprivate let lastProcessedSmallKey = "lastProcessedSmallKey"
+    var lastProcessedSmall: Date {
+        get { return Defaults[lastProcessedSmallKey].date ?? Date(timeIntervalSince1970: 0) }
         set { Defaults[lastProcessedSmallKey] = newValue }
     }
-    private let lastProcessedBigKey = "lastProcessedBigKey"
-    var lastProcessedBig: NSDate {
-        get { return Defaults[lastProcessedBigKey].date ?? NSDate(timeIntervalSince1970: 0) }
+    fileprivate let lastProcessedBigKey = "lastProcessedBigKey"
+    var lastProcessedBig: Date {
+        get { return Defaults[lastProcessedBigKey].date ?? Date(timeIntervalSince1970: 0) }
         set { Defaults[lastProcessedBigKey] = newValue }
     }
     
-    private lazy var operationQueue: NSOperationQueue = {
-        let queue = NSOperationQueue() // Create background queue
+    fileprivate lazy var operationQueue: OperationQueue = {
+        let queue = OperationQueue() // Create background queue
         queue.maxConcurrentOperationCount = 1
         return queue
     }()
     
-    private var observerTokens = [AnyObject]()
+    fileprivate var observerTokens = [AnyObject]()
     
     init() {
         observerTokens.append(NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
@@ -74,43 +74,43 @@ class TracksHandler {
         unobserve()
     }
     
-    private func unobserve() {
+    fileprivate func unobserve() {
         for observerToken in observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
         NotificationCenter.unobserve(self)
     }
     
-    class func setNeedsProcessData(userInitiated: Bool = false) {
+    class func setNeedsProcessData(_ userInitiated: Bool = false) {
         if compressingRealm {
             if userInitiated {
                 TracksHandler.sharedInstance.pendingUserInitiatedProcess = true
             }
             return
         }
-        let timeIntervalSinceBig = NSDate().timeIntervalSinceDate(sharedInstance.lastProcessedBig)
-        let timeIntervalSinceSmall = NSDate().timeIntervalSinceDate(sharedInstance.lastProcessedSmall)
+        let timeIntervalSinceBig = Date().timeIntervalSince(sharedInstance.lastProcessedBig)
+        let timeIntervalSinceSmall = Date().timeIntervalSince(sharedInstance.lastProcessedSmall)
         if
             userInitiated &&
             timeIntervalSinceBig > 60*1 // Allow userInitiated every 1 min
         {
             sharedInstance.cleanUpBig(true)
-            sharedInstance.lastProcessedBig = NSDate()
+            sharedInstance.lastProcessedBig = Date()
             return
         }
         if timeIntervalSinceBig > 60*60*2 { // Do big stuff every other hour
             sharedInstance.cleanUpBig(false)
-            sharedInstance.lastProcessedBig = NSDate()
+            sharedInstance.lastProcessedBig = Date()
             return
         }
         if timeIntervalSinceSmall > 60*30 { // Do small stuff every 30 min
             sharedInstance.cleanUpSmall()
-            sharedInstance.lastProcessedSmall = NSDate()
+            sharedInstance.lastProcessedSmall = Date()
             return
         }
     }
     
-    private func cleanUpSmall() {
+    fileprivate func cleanUpSmall() {
         if TracksHandler.sharedInstance.processing {
             print("Already processing")
             return
@@ -118,14 +118,14 @@ class TracksHandler {
         TracksHandler.sharedInstance.processing = true
         
         print("Start processing small")
-        let fromDate = lastProcessedSmall.dateByAddingTimeInterval(-60*15) // Go 15 minutes back
+        let fromDate = lastProcessedSmall.addingTimeInterval(-60*15) // Go 15 minutes back
         let operations = [
             MergeCloseSameActivityTracksOperation(fromDate: fromDate, seconds: 60),
             RecalculateTracksOperation(fromDate: fromDate)
         ]
         for operation in operations {
-            operation.queuePriority = .Low
-            operation.qualityOfService = .Background
+            operation.queuePriority = .low
+            operation.qualityOfService = .background
         }
         operations.last?.completionBlock = {
             print("Done processing small")
@@ -136,7 +136,7 @@ class TracksHandler {
         operationQueue.addOperations(operations, waitUntilFinished: false)
     }
     
-    private func cleanUpBig(asap: Bool) {
+    fileprivate func cleanUpBig(_ asap: Bool) {
         if TracksHandler.sharedInstance.processing {
             print("Already processing")
             pendingUserInitiatedProcess = true
@@ -145,7 +145,7 @@ class TracksHandler {
         TracksHandler.sharedInstance.processing = true
         
         print("Start processing big")
-        let fromDate = lastProcessedBig.dateByAddingTimeInterval(-60*60*24) // Go 24 hours back
+        let fromDate = lastProcessedBig.addingTimeInterval(-60*60*24) // Go 24 hours back
         let operations = [
             RemoveEmptyTracksOperation(fromDate: fromDate),
             MergeCloseToUnknownActivityTracksOperation(fromDate: fromDate, seconds: 30),
@@ -165,8 +165,8 @@ class TracksHandler {
             UploadBikeTracksOperation()
         ]
         for operation in operations {
-            operation.queuePriority = .Low
-            operation.qualityOfService = asap ? .UserInitiated : .Background
+            operation.queuePriority = .low
+            operation.qualityOfService = asap ? .userInitiated : .background
         }
         operations.last?.completionBlock = {
             print("Done processing big")
@@ -193,8 +193,8 @@ class TracksHandler {
             GeocodeBikeTracksOperation() // Don't use from date since background operation might not have geocoded)
         ]
         for operation in operations {
-            operation.queuePriority = .High
-            operation.qualityOfService = .UserInitiated
+            operation.queuePriority = .high
+            operation.qualityOfService = .userInitiated
         }
         operations.last?.completionBlock = {
             print("Done geocoding")
@@ -231,28 +231,28 @@ class TracksHandler {
 }
 
 
-class TracksOperation: NSOperation {
+class TracksOperation: Operation {
     
-    private let fromDate: NSDate?
-    private var realm: RLMRealm = RLMRealm.defaultRealm()
-    override var asynchronous: Bool {
+    fileprivate let fromDate: Date?
+    fileprivate var realm: RLMRealm = RLMRealm.default()
+    override var isAsynchronous: Bool {
         return true
     }
     
-    private var startDate: NSDate = NSDate()
+    fileprivate var startDate: Date = Date()
 
-    init(fromDate: NSDate? = nil) {
+    init(fromDate: Date? = nil) {
         self.fromDate = fromDate
         super.init()
     }
     
     override func main() {
-        startDate = NSDate()
-        realm = RLMRealm.defaultRealm()
+        startDate = Date()
+        realm = RLMRealm.default()
     }
     
-    private func tracks(useFromDate: Bool = true) -> RLMResults {
-        let tracks = Track.allObjectsInRealm(realm)
+    fileprivate func tracks(_ useFromDate: Bool = true) -> RLMResults<RLMObject> {
+        let tracks = Track.allObjects(in: realm)
         if useFromDate, let fromDate = fromDate {
             let timestamp = fromDate.timeIntervalSince1970
             return tracks.objectsWhere("endTimestamp >= %lf", timestamp)
@@ -260,13 +260,13 @@ class TracksOperation: NSOperation {
         return tracks
     }
     
-    private func tracksSorted() -> RLMResults {
-        return tracks().sortedResultsUsingProperty("startTimestamp", ascending: true)
+    fileprivate func tracksSorted() -> RLMResults<RLMObject> {
+        return tracks().sortedResults(usingProperty: "startTimestamp", ascending: true)
     }
     
     /// Add dependency to previous operation in array
-    class func addDependencies(operations: [TracksOperation]) {
-        for (index, operation) in operations.enumerate() {
+    class func addDependencies(_ operations: [TracksOperation]) {
+        for (index, operation) in operations.enumerated() {
             if index + 1 >= operations.count {
                 continue
             }
@@ -323,16 +323,16 @@ class RemoveEmptyTracksOperation: TracksOperation {
 
 class RemoveUnownedDataOperation: TracksOperation {
     
-    private func locations() -> RLMResults {
-        let locations = TrackLocation.allObjectsInRealm(realm)
+    fileprivate func locations() -> RLMResults<RLMObject> {
+        let locations = TrackLocation.allObjects(in: realm)
         if let fromDate = fromDate {
             let timestamp = fromDate.timeIntervalSince1970
             return locations.objectsWhere("timestamp >= %lf", timestamp)
         }
         return locations
     }
-    private func activities() -> RLMResults {
-        let activities = TrackActivity.allObjectsInRealm(realm)
+    fileprivate func activities() -> RLMResults<RLMObject> {
+        let activities = TrackActivity.allObjects(in: realm)
         if let fromDate = fromDate {
             return activities.objectsWhere("startDate >= %@", fromDate)
         }
@@ -343,7 +343,7 @@ class RemoveUnownedDataOperation: TracksOperation {
         super.main()
         
         // Only perform this if the app is in the foreground
-        if UIApplication.sharedApplication().applicationState != .Active {
+        if UIApplication.shared.applicationState != .active {
             return
         }
         
@@ -355,7 +355,7 @@ class RemoveUnownedDataOperation: TracksOperation {
         let someActivities = activities()
         
         // Mark locations and activities owned
-        let uuid = NSUUID().UUIDString
+        let uuid = UUID().uuidString
         for track in someTracks {
             if let track = track as? Track {
                 let locations = track.locations
@@ -385,7 +385,7 @@ class RemoveUnownedDataOperation: TracksOperation {
     }
 }
 
-func deleteObjectsInParts(results: RLMResults) {
+func deleteObjectsInParts(_ results: RLMResults<RLMObject>) {
     let realm = results.realm
     let max = 1000
     let count = Int(results.count)
@@ -393,7 +393,7 @@ func deleteObjectsInParts(results: RLMResults) {
         let array = results.toArray(RLMObject.self)
         let parts = Int(floor(Double(count) / Double(max)))
         for i in 0..<parts {
-            let date = NSDate()
+            let date = Date()
             realm.beginWriteTransaction()
             let slicedArray = Array(array[i*max..<((i+1)*max)])
             realm.deleteObjects(slicedArray)
@@ -402,11 +402,11 @@ func deleteObjectsInParts(results: RLMResults) {
             } catch {
                 print("Could not commit Realm write transaction!")
             }
-            print("\(results.count) \(NSDate().timeIntervalSinceDate(date)) .a")
+            print("\(results.count) \(Date().timeIntervalSince(date)) .a")
         }
     }
     if results.count > 0 {
-        let date = NSDate()
+        let date = Date()
         realm.beginWriteTransaction()
         realm.deleteObjects(results.toArray(RLMObject.self))
         do {
@@ -414,18 +414,18 @@ func deleteObjectsInParts(results: RLMResults) {
         } catch {
             print("Could not commit Realm write transaction!")
         }
-        print("\(results.count) \(NSDate().timeIntervalSinceDate(date)) .b")
+        print("\(results.count) \(Date().timeIntervalSince(date)) .b")
     }
 }
 
 
 class InferBikingFromSpeedOperation: TracksOperation {
 
-    private let activity: (TrackActivity) -> Bool
-    private let minSpeedLimit: Double?
-    private let maxSpeedLimit: Double?
-    private let minLength: Double
-    init(fromDate: NSDate? = nil, activity: (TrackActivity) -> Bool, minSpeedLimit: Double? = nil, maxSpeedLimit: Double? = nil, minLength: Double) {
+    fileprivate let activity: (TrackActivity) -> Bool
+    fileprivate let minSpeedLimit: Double?
+    fileprivate let maxSpeedLimit: Double?
+    fileprivate let minLength: Double
+    init(fromDate: Date? = nil, activity: @escaping (TrackActivity) -> Bool, minSpeedLimit: Double? = nil, maxSpeedLimit: Double? = nil, minLength: Double) {
         self.activity = activity
         self.minSpeedLimit = minSpeedLimit
         self.maxSpeedLimit = maxSpeedLimit
@@ -481,9 +481,9 @@ class ClearLeftOversOperation: TracksOperation {
             if let track = track as? Track {
                 track.recalculate()
                 
-                let formatter = NSDateFormatter()
-                formatter.dateStyle = .ShortStyle
-                formatter.timeStyle = .MediumStyle
+                let formatter = DateFormatter()
+                formatter.dateStyle = .short
+                formatter.timeStyle = .medium
                 
                 // Empty
                 if track.locations.count <= 1 {
@@ -572,7 +572,7 @@ class ClearLeftOversOperation: TracksOperation {
 
 class PruneSimilarLocationOperation: TracksOperation {
     
-    private func pruneSimilarLocation(track: Track) -> Bool {
+    fileprivate func pruneSimilarLocation(_ track: Track) -> Bool {
         var changed = false
         
         // All 
@@ -583,8 +583,8 @@ class PruneSimilarLocationOperation: TracksOperation {
             let indexLast = index + 2
             if let
                 first = locations[index] as? TrackLocation,
-                center = locations[indexCenter] as? TrackLocation,
-                last = locations[indexLast] as? TrackLocation
+                let center = locations[indexCenter] as? TrackLocation,
+                let last = locations[indexLast] as? TrackLocation
             {
                 let squeezedBetweenSimilar = first.coordinate().latitude == center.coordinate().latitude &&
                     first.coordinate().longitude == center.coordinate().longitude &&
@@ -600,7 +600,7 @@ class PruneSimilarLocationOperation: TracksOperation {
                     // Find locations of object in unsorted array
                     let i = track.locations.indexOfObject(center)
                     // Delete from locations array on track
-                    track.locations.removeObjectAtIndex(i)
+                    track.locations.removeObject(at: i)
                     // Delete from realm
                     center.deleteFromRealm()
                     changed = true
@@ -639,11 +639,11 @@ class PruneSimilarLocationOperation: TracksOperation {
 
 class PruneCurlyEndsOperation: TracksOperation {
     
-    private func difference(coordinates: [CLLocationCoordinate2D]) -> [Double] {
+    fileprivate func difference(_ coordinates: [CLLocationCoordinate2D]) -> [Double] {
         
         let rotations: [Double] = {
             var rotations = [Double]()
-            for (index, coordinate) in coordinates.enumerate() {
+            for (index, coordinate) in coordinates.enumerated() {
                 let nextIndex = index + 1
                 if nextIndex < Int(coordinates.count) {
                     let nextCoordinate = coordinates[nextIndex]
@@ -658,7 +658,7 @@ class PruneCurlyEndsOperation: TracksOperation {
         }
         let firstToLast = coordinates.first!.degreesFromCoordinate(coordinates.last!)
         
-        let diffClosure: Double -> Double = { rotation in
+        let diffClosure: (Double) -> Double = { rotation in
             var diff = rotation - firstToLast
             while diff > 180 { diff -= 360 }
             while diff < -180 { diff += 360 }
@@ -668,7 +668,7 @@ class PruneCurlyEndsOperation: TracksOperation {
         return diff
     }
     
-    private func pruneCurl(track: Track, extendSeconds: NSTimeInterval = 30) -> Bool {
+    fileprivate func pruneCurl(_ track: Track, extendSeconds: TimeInterval = 30) -> Bool {
         var changed = false
         
         let varianceLimit: Double = 2000
@@ -691,7 +691,7 @@ class PruneCurlyEndsOperation: TracksOperation {
             }()
             let removeToIndex: UInt? = {
                 // Find first coordinate with high deviation
-                for (index, diff) in variancesFromStart.enumerate() {
+                for (index, diff) in variancesFromStart.enumerated() {
                     if diff > varianceLimit { return UInt(index) }
                 }
                 return nil
@@ -717,14 +717,14 @@ class PruneCurlyEndsOperation: TracksOperation {
                 return vars
             }()
             let removeFromIndex: UInt? = {
-                for (index, diff) in variancesToEnd.reverse().enumerate() {
+                for (index, diff) in variancesToEnd.reversed().enumerated() {
                     if diff > varianceLimit {
                         return locations.count - UInt(index) - 1 // Subtract from count since enumerating over reverse
                     }
                 }
                 return nil
             }()
-            if let removeFromIndex = removeFromIndex where removeFromIndex > 0 {
+            if let removeFromIndex = removeFromIndex, removeFromIndex > 0 {
                 removeLocations(inRange: removeFromIndex..<locations.count, fromTrack: track)
                 changed = true
             }
@@ -732,34 +732,34 @@ class PruneCurlyEndsOperation: TracksOperation {
         return changed
     }
     
-    func variance(array: [Double]) -> Double {
+    func variance(_ array: [Double]) -> Double {
         let count = Double(array.count)
-        let sum = array.reduce(0, combine: +)
+        let sum = array.reduce(0, +)
         let mean = sum / count
         let diffSqr =  array.map { pow($0 - mean, 2) }
-        let variance = diffSqr.reduce(0, combine: +) / count
+        let variance = diffSqr.reduce(0, +) / count
         return variance
     }
     
     func removeLocations(inRange range: Range<UInt>, fromTrack track: Track) {
         // Delete from high index to low to not mess up order while deleting
-        let indeces = range.startIndex < range.endIndex ? range.reverse() : [UInt](range)
+        let indeces = range.lowerBound < range.upperBound ? range.reversed() : [UInt](range)
         for i in indeces {
             let locations = track.locationsSorted()
             if let location = locations[i] as? TrackLocation {
                 let _i = track.locations.indexOfObject(location)
-                track.locations.removeObjectAtIndex(_i)
+                track.locations.removeObject(at: _i)
                 location.deleteFromRealm()
             }
         }
     }
     
-    private func path(locations: [CLLocation]) -> UIBezierPath {
+    fileprivate func path(_ locations: [CLLocation]) -> UIBezierPath {
         let coordinates = locations.map { $0.coordinate }
         let allPoints = coordinates.map { CGPoint(x: $0.latitude, y: $0.longitude) }
         let points = allPoints //Array(allPoints[0..<20])
         let count = CGFloat(points.count)
-        let meanPoint = points.reduce(CGPointZero) { mean, new in
+        let meanPoint = points.reduce(CGPoint.zero) { mean, new in
             return CGPoint(x: mean.x + new.x/count, y: mean.y + new.y/count)
         }
         let minPoint = points.reduce(CGPoint(x: 1000, y: 1000)) { value, new in
@@ -777,9 +777,9 @@ class PruneCurlyEndsOperation: TracksOperation {
         let path = UIBezierPath()
         for point in normalizedPoints {
             if point == normalizedPoints.first {
-                path.moveToPoint(point)
+                path.move(to: point)
             } else {
-                path.addLineToPoint(point)
+                path.addLine(to: point)
             }
         }
         return path
@@ -820,7 +820,7 @@ class PruneSlowEndsOperation: TracksOperation {
             realm.beginWriteTransaction()
         }
         for track in tracks().objectsWhere("activity.cycling == TRUE") {
-            if let track = track as? Track where !track.invalidated {
+            if let track = track as? Track, !track.isInvalidated {
                 let cycling = track.activity.cycling
                 if !cycling {
                     continue
@@ -834,17 +834,17 @@ class PruneSlowEndsOperation: TracksOperation {
                     }
                     if let firstLocation = track.locationsSorted().firstObject() as? TrackLocation {
                         let _i = track.locations.indexOfObject(firstLocation)
-                        track.locations.removeObjectAtIndex(_i)
+                        track.locations.removeObject(at: _i)
                         firstLocation.deleteFromRealm()
                     }
                 }
-                for speed in speeds.reverse() {
+                for speed in speeds.reversed() {
                     if speed > speedLimit {
                         break
                     }
                     if let lastLocation = track.locationsSorted().lastObject() as? TrackLocation {
                         let _i = track.locations.indexOfObject(lastLocation)
-                        track.locations.removeObjectAtIndex(_i)
+                        track.locations.removeObject(at: _i)
                         lastLocation.deleteFromRealm()
                     }
                 }
@@ -863,16 +863,16 @@ class PruneSlowEndsOperation: TracksOperation {
 
 class MergeTracksOperation: TracksOperation {
     
-    private func mergeTrack(track1: Track, toTrack track2: Track, forceBike: Bool = false, useFirstTrackActivity: Bool = true) -> Track {
+    fileprivate func mergeTrack(_ track1: Track, toTrack track2: Track, forceBike: Bool = false, useFirstTrackActivity: Bool = true) -> Track {
         realm.beginWriteTransaction()
-        if track1.invalidated || track2.invalidated {
+        if track1.isInvalidated || track2.isInvalidated {
             print("Couldn't merge tracks since one is invalid")
             realm.cancelWriteTransaction()
             return track1
         }
         // Merge locations
         for location in track2.locations {
-            track1.locations.addObject(location)
+            track1.locations.add(location)
         }
         // Combine activity
         if !useFirstTrackActivity {
@@ -906,23 +906,23 @@ class MergeTracksOperation: TracksOperation {
         return track1
     }
     
-    private func mergeTracks(tracks: [Track]) -> Track? {
+    fileprivate func mergeTracks(_ tracks: [Track]) -> Track? {
         var tracks = tracks
         while tracks.count > 1 {
             let track1 = tracks[0]
             let track2 = tracks[1]
             mergeTrack(track1, toTrack: track2)
-            tracks.removeAtIndex(1)
+            tracks.remove(at: 1)
         }
         return tracks.first
     }
     
-    private func closeTracks(track track1: Track, toTrack track2: Track, closerThanSeconds seconds: NSTimeInterval) -> Bool {
+    fileprivate func closeTracks(track track1: Track, toTrack track2: Track, closerThanSeconds seconds: TimeInterval) -> Bool {
         if let
             track1EndDate = track1.endDate(),
-            track2StartDate = track2.startDate()
+            let track2StartDate = track2.startDate()
         {
-            let timeIntervalBetweenTracks = track2StartDate.timeIntervalSinceDate(track1EndDate)
+            let timeIntervalBetweenTracks = track2StartDate.timeIntervalSince(track1EndDate as Date)
             if timeIntervalBetweenTracks < seconds {
                 return true
             }
@@ -934,8 +934,8 @@ class MergeTracksOperation: TracksOperation {
 
 class MergeTimeTracksOperation: MergeTracksOperation {
     
-    private let seconds: NSTimeInterval
-    init(fromDate: NSDate? = nil, seconds: NSTimeInterval) {
+    fileprivate let seconds: TimeInterval
+    init(fromDate: Date? = nil, seconds: TimeInterval) {
         self.seconds = seconds
         super.init(fromDate: fromDate)
     }
@@ -951,7 +951,7 @@ class MergeCloseSameActivityTracksOperation : MergeTimeTracksOperation {
         
         var count = UInt(0)
         while count + 1 < tracks.count {
-            if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
+            if let track = tracks[count] as? Track, let nextTrack = tracks[count+1] as? Track {
                 let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
                 let sameType = track.activity.sameActivityTypeAs(nextTrack.activity)
                 let merge = close && sameType
@@ -979,7 +979,7 @@ class MergeCloseToUnknownActivityTracksOperation: MergeTimeTracksOperation {
         var count = UInt(0)
         while count + 1 < tracks.count {
             if let track = tracks[count] as? Track,
-                   nextTrack = tracks[count+1] as? Track
+                   let nextTrack = tracks[count+1] as? Track
             {
                 let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
                 let unknown = track.activity.unknown || track.activity.completelyUnknown()
@@ -1008,9 +1008,9 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
         print("Merge track between bike tracks")
         var tracks = tracksSorted().toArray(Track.self)
         
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        formatter.timeStyle = .MediumStyle
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .medium
         
         var count = 0
         while count + 2 < tracks.count {
@@ -1031,7 +1031,7 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
                     break // Outside limit, stop search
                 }
                 // Found a bike track
-                print("\(formatter.stringFromDate(track.endDate()!)) | \(formatter.stringFromDate(_nextTrack.startDate()!))")
+                print("\(formatter.string(from: track.endDate()!)) | \(formatter.string(from: _nextTrack.startDate()!))")
                 nextCount += 1 // Keep searching
             }
             if nextCount > count {
@@ -1039,7 +1039,7 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
                 let tracksToMerge = Array(tracks[count...nextCount])
                 
                 for track in tracksToMerge {
-                    print("\(formatter.stringFromDate(track.startDate()!)) -> \(formatter.stringFromDate(track.endDate()!))")
+                    print("\(formatter.string(from: track.startDate()!)) -> \(formatter.string(from: track.endDate()!))")
                 }
                 mergeTracks(tracksToMerge)
                 tracks = tracksSorted().toArray(Track.self)
@@ -1060,7 +1060,7 @@ class MergeBikeCloseWithMoveTracksOperation: MergeTimeTracksOperation {
     
         var count = UInt(0)
         while count + 1 < tracks.count {
-            if let track = tracks[count] as? Track, nextTrack = tracks[count+1] as? Track {
+            if let track = tracks[count] as? Track, let nextTrack = tracks[count+1] as? Track {
                 let close = closeTracks(track: track, toTrack: nextTrack, closerThanSeconds: seconds)
                 let cycling = track.activity.cycling
                 let cyclingNext = nextTrack.activity.cycling
@@ -1089,7 +1089,7 @@ class GeocodeBikeTracksOperation: TracksOperation {
         super.main()
         
         // Only perform this if the app is in the foreground
-        if UIApplication.sharedApplication().applicationState != .Active {
+        if UIApplication.shared.applicationState != .active {
             return
         }
         
@@ -1097,7 +1097,7 @@ class GeocodeBikeTracksOperation: TracksOperation {
         
         let bikeTracks = tracks().objectsWhere("activity.cycling == TRUE")
         for track in bikeTracks {
-            if let track = track as? Track where !track.hasBeenGeocoded {
+            if let track = track as? Track, !track.hasBeenGeocoded {
                 // Geocode synchronously to make sure writes are happening on same thread
                 track.geocode(true)
             }
@@ -1113,7 +1113,7 @@ class UploadBikeTracksOperation: TracksOperation {
         super.main()
         
         // Only perform this if the app is in the foreground
-        if UIApplication.sharedApplication().applicationState != .Active {
+        if UIApplication.shared.applicationState != .active {
             return
         }
         // Logged in user with valid track token
@@ -1128,12 +1128,12 @@ class UploadBikeTracksOperation: TracksOperation {
         print("Upload bike tracks")
         
         // Reset server ids 
-        let dummyTrackId = NSUUID().UUIDString
+        let dummyTrackId = UUID().uuidString
         for track in Track.allObjects() {
             if let track = track as? Track {
-                if track.serverId.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == dummyTrackId.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) {
+                if track.serverId.lengthOfBytes(using: String.Encoding.utf8) == dummyTrackId.lengthOfBytes(using: String.Encoding.utf8) {
                     do {
-                        try track.realm?.transactionWithBlock {
+                        try track.realm?.transaction {
                             track.serverId = ""
                         }
                     } catch let error as NSError {
@@ -1143,13 +1143,13 @@ class UploadBikeTracksOperation: TracksOperation {
             }
         }
         
-        let timestamp = NSDate(timeIntervalSinceNow: -60*60*1).timeIntervalSince1970 // Only upload tracks older than an hour
+        let timestamp = Date(timeIntervalSinceNow: -60*60*1).timeIntervalSince1970 // Only upload tracks older than an hour
         let bikeTracks = tracks().objectsWhere("endTimestamp <= %lf AND serverId == '' AND activity.cycling == TRUE", timestamp)
         for track in bikeTracks {
             if let track = track as? Track {
-                let temporaryTrackId = NSUUID().UUIDString
+                let temporaryTrackId = UUID().uuidString
                 do {
-                    try track.realm?.transactionWithBlock {
+                    try track.realm?.transaction {
                         track.serverId = temporaryTrackId
                     }
                 } catch let error as NSError {
@@ -1158,21 +1158,21 @@ class UploadBikeTracksOperation: TracksOperation {
                 TracksClient.sharedInstance.upload(track) { result in
                     if let track = Track.allObjects().objectsWhere("serverId == %@", temporaryTrackId).firstObject() as? Track {
                         switch result {
-                            case .Success(let trackServerId):
+                            case .success(let trackServerId):
                                 do {
-                                    try track.realm?.transactionWithBlock {
+                                    try track.realm?.transaction {
                                         track.serverId = trackServerId
                                         print("Track stored on server: " + trackServerId)
                                     }
                                 } catch let error as NSError {
                                     print("Realm transaction failed: \(error.description)")
                                 }
-                            case .Other(let result):
+                            case .other(let result):
                                 switch result {
-                                    case .Failed(let error):
+                                    case .failed(let error):
                                         print(error.localizedDescription)
                                         do {
-                                            try track.realm?.transactionWithBlock {
+                                            try track.realm?.transaction {
                                                 track.serverId = ""
                                             }
                                         } catch let error as NSError {
@@ -1181,7 +1181,7 @@ class UploadBikeTracksOperation: TracksOperation {
                                     default:
                                         print("Other upload error \(result)")
                                         do {
-                                            try track.realm?.transactionWithBlock {
+                                            try track.realm?.transaction {
                                                 track.serverId = ""
                                             }
                                         } catch let error as NSError {

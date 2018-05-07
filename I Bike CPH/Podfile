@@ -1,5 +1,3 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
 platform :ios, '8.0'
 
 use_frameworks!
@@ -15,12 +13,13 @@ abstract_target 'app_target' do
   pod 'Realm', '~> 0.99.0'
   pod 'Mapbox-iOS-SDK', '1.6.0'
   pod 'NibDesignable', '~> 2.3'
-  pod 'SwiftyJSON', '~> 2.3'
+  pod 'SwiftyJSON', '~> 3.1.4'
   pod 'ORStackView',  '~> 3.0'
   pod 'Crashlytics', '~> 3.7.0'
   pod 'SwiftyUserDefaults', '~> 2.2.0'
   pod 'SwiftHEXColors', '~> 1.0'
   pod 'SnapKit', '~> 0.21.0'
+  pod 'AsyncSwift', '~> 2.0.4'
 
   target 'I Bike CPH'
   target 'CykelPlanen'

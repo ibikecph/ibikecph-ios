@@ -15,20 +15,20 @@ let routeToItemNotificationItemKey = "routeToItemNotificationItemKey"
 
 class MainMapViewController: MapViewController {
 
-    private let trackingToolbarView = TrackingToolbarView()
-    private let addressToolbarView = AddressToolbarView()
-    private let mainToTrackingSegue = "mainToTracking"
-    private let mainToFindRouteSegue = "mainToFindRoute"
-    private let mainToLoginSegue = "mainToLogin"
-    private let mainToFindAddressSegue = "mainToFindAddress"
-    private let mainToUserTermsSegue = "mainToUserTerms"
+    fileprivate let trackingToolbarView = TrackingToolbarView()
+    fileprivate let addressToolbarView = AddressToolbarView()
+    fileprivate let mainToTrackingSegue = "mainToTracking"
+    fileprivate let mainToFindRouteSegue = "mainToFindRoute"
+    fileprivate let mainToLoginSegue = "mainToLogin"
+    fileprivate let mainToFindAddressSegue = "mainToFindAddress"
+    fileprivate let mainToUserTermsSegue = "mainToUserTerms"
     #if TRACKING_ENABLED
     private let mainToActivateTrackingSegue = "mainToActivateTracking"
     #endif
-    private var pinAnnotation: PinAnnotation?
-    private var currentLocationItem: SearchListItem?
-    private var pendingUserTerms: UserTerms?
-    private var observerTokens = [AnyObject]()
+    fileprivate var pinAnnotation: PinAnnotation?
+    fileprivate var currentLocationItem: SearchListItem?
+    fileprivate var pendingUserTerms: UserTerms?
+    fileprivate var observerTokens = [AnyObject]()
     
     deinit {
         unobserve()
@@ -45,7 +45,7 @@ class MainMapViewController: MapViewController {
         })
         
         // Follow user if possible
-        mapView.userTrackingMode = .Follow
+        mapView.userTrackingMode = .follow
         
         // Toolbar delegate
         trackingToolbarView.delegate = self
@@ -73,10 +73,10 @@ class MainMapViewController: MapViewController {
         observerTokens.append(NotificationCenter.observe(routeToItemNotificationKey) { [weak self] notification in
             if let
                 item = notification.userInfo?[routeToItemNotificationItemKey] as? FavoriteItem,
-                myself = self
+                let myself = self
             {
                 myself.updateToCurrentItem(item)
-                myself.performSegueWithIdentifier(myself.mainToFindRouteSegue, sender: myself)
+                myself.performSegue(withIdentifier: myself.mainToFindRouteSegue, sender: myself)
             }
         })
         observerTokens.append(NotificationCenter.observe(kFAVORITES_CHANGED){ [weak self] notification in
@@ -87,21 +87,21 @@ class MainMapViewController: MapViewController {
             }
         })
         observerTokens.append(NotificationCenter.observe("invalidToken") { [weak self] notification in
-            let alertController = PSTAlertController(title: "", message: "invalid_token_user_logged_out".localized, preferredStyle: .Alert)
-            alertController.addCancelActionWithHandler(nil)
+            let alertController = PSTAlertController(title: "", message: "invalid_token_user_logged_out".localized, preferredStyle: .alert)
+            alertController?.addCancelAction(handler: nil)
             let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
                 guard let nonNilSelf = self else {
                     return
                 }
-                nonNilSelf.performSegueWithIdentifier(nonNilSelf.mainToLoginSegue, sender: nonNilSelf)
+                nonNilSelf.performSegue(withIdentifier: nonNilSelf.mainToLoginSegue, sender: nonNilSelf)
             }
-            alertController.addAction(loginAction)
-            alertController.showWithSender(self, controller: self, animated: true, completion: nil)
+            alertController?.addAction(loginAction)
+            alertController?.showWithSender(self, controller: self, animated: true, completion: nil)
             NotificationCenter.post("closeMenu")
         })
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Update tracking information
         if Settings.sharedInstance.tracking.on {
@@ -122,20 +122,20 @@ class MainMapViewController: MapViewController {
         #endif
     }
     
-    private func unobserve() {
+    fileprivate func unobserve() {
         for observerToken in observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
         NotificationCenter.unobserve(self)
     }
 
-    @IBAction func openMenu(sender: AnyObject) {
+    @IBAction func openMenu(_ sender: AnyObject) {
         NotificationCenter.post("openMenu")
     }
     
     func showUserTerms() {
         if pendingUserTerms != nil {
-            self.performSegueWithIdentifier(self.mainToUserTermsSegue, sender: self)
+            self.performSegue(withIdentifier: self.mainToUserTermsSegue, sender: self)
         }
     }
 
@@ -171,33 +171,33 @@ class MainMapViewController: MapViewController {
         #endif
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if
             segue.identifier == mainToTrackingSegue,
-            let navigationController = segue.destinationViewController as? UINavigationController
+            let navigationController = segue.destination as? UINavigationController
         {
-            let backButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(MainMapViewController.dismissViewController))
+            let backButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(MainMapViewController.dismissViewController))
             navigationController.viewControllers.first?.navigationItem.leftBarButtonItem = backButton
         }
         if
             segue.identifier == mainToFindAddressSegue,
-            let destinationController = segue.destinationViewController as? FindAddressViewController
+            let destinationController = segue.destination as? FindAddressViewController
         {
             destinationController.delegate = self
         }
         if
             segue.identifier == mainToFindRouteSegue,
-            let destinationController = segue.destinationViewController as? FindRouteViewController
+            let destinationController = segue.destination as? FindRouteViewController
         {
             destinationController.toItem = currentLocationItem
         }
         if
             segue.identifier == mainToUserTermsSegue,
-            let destinationController = segue.destinationViewController as? UserTermsViewController
+            let destinationController = segue.destination as? UserTermsViewController
         {
             destinationController.userTerms = pendingUserTerms
             pendingUserTerms = nil
@@ -205,20 +205,20 @@ class MainMapViewController: MapViewController {
     }
     
     func dismissViewController() {
-         dismissViewControllerAnimated(true, completion: nil)
+         self.dismiss(animated: true, completion: nil)
     }
     
-    func favoriteForItem(item: SearchListItem) -> FavoriteItem? {
+    func favoriteForItem(_ item: SearchListItem) -> FavoriteItem? {
         if let
             favorites = SMFavoritesUtil.favorites() as? [FavoriteItem],
-            favorite = favorites.filter({ $0.address == item.address }).first
+            let favorite = favorites.filter({ $0.address == item.address }).first
         {
             return favorite
         }
         return nil
     }
     
-    func updateToCurrentItem(item: SearchListItem) {
+    func updateToCurrentItem(_ item: SearchListItem) {
         currentLocationItem = item
         // Show address in toolbar
         addressToolbarView.updateToItem(item)
@@ -229,8 +229,7 @@ class MainMapViewController: MapViewController {
         }
         // Add new pin if item has location
         if
-            let coordinate = item.location?.coordinate
-            where coordinate.latitude != 0 && coordinate.longitude != 0
+            let coordinate = item.location?.coordinate, coordinate.latitude != 0 && coordinate.longitude != 0
         {
             pinAnnotation = addPin(coordinate)
             mapView.centerCoordinate(coordinate, zoomLevel: DEFAULT_MAP_ZOOM, animated: true)
@@ -241,27 +240,27 @@ class MainMapViewController: MapViewController {
 extension MainMapViewController: TrackingToolbarDelegate {
     
     func didSelectOpenTracking() {
-        performSegueWithIdentifier(mainToTrackingSegue, sender: self)
+        performSegue(withIdentifier: mainToTrackingSegue, sender: self)
     }
 }
 
 extension MainMapViewController: AddressToolbarDelegate {
     
     func didSelectRoute() {
-        performSegueWithIdentifier(mainToFindRouteSegue, sender: self)
+        performSegue(withIdentifier: mainToFindRouteSegue, sender: self)
     }
     
-    func didSelectFavorites(selected: Bool) {
+    func didSelectFavorites(_ selected: Bool) {
         // Check if logged in 
         if !UserHelper.loggedIn() {
             if selected {
-                let alertController = PSTAlertController(title: "", message: "log_in_to_favorite_prompt".localized, preferredStyle: .Alert)
-                alertController.addCancelActionWithHandler(nil)
+                let alertController = PSTAlertController(title: "", message: "log_in_to_favorite_prompt".localized, preferredStyle: .alert)
+                alertController?.addCancelAction(handler: nil)
                 let loginAction = PSTAlertAction(title: "log_in".localized) { action in
-                    self.performSegueWithIdentifier(self.mainToLoginSegue, sender: self)
+                    self.performSegue(withIdentifier: self.mainToLoginSegue, sender: self)
                 }
-                alertController.addAction(loginAction)
-                alertController.showWithSender(self, controller: self, animated: true, completion: nil)
+                alertController?.addAction(loginAction)
+                alertController?.showWithSender(self, controller: self, animated: true, completion: nil)
                 // De-select in view
                 addressToolbarView.favoriteSelected = false
             }
@@ -280,11 +279,11 @@ extension MainMapViewController: AddressToolbarDelegate {
                 currentLocationItem = favorite
                 addressToolbarView.updateToItem(favorite)
                 // Add to server
-                SMFavoritesUtil.instance().addFavoriteToServer(favorite)
+                SMFavoritesUtil.instance().addFavorite(toServer: favorite)
             }
         } else if let item = currentLocationItem as? FavoriteItem {
             // Remove from server
-            SMFavoritesUtil.instance().deleteFavoriteFromServer(item)
+            SMFavoritesUtil.instance().deleteFavorite(fromServer: item)
             // Downgrade to non-favorite item
             let nonFavorite = UnknownSearchListItem(other: item)
             currentLocationItem = nonFavorite
@@ -295,7 +294,7 @@ extension MainMapViewController: AddressToolbarDelegate {
 
 
 extension MainMapViewController: MapViewDelegate {
-    func didSelectCoordinate(coordinate: CLLocationCoordinate2D) {
+    func didSelectCoordinate(_ coordinate: CLLocationCoordinate2D) {
         // Remove existin pin
         if let pin = pinAnnotation {
             removePin(pin)
@@ -313,9 +312,9 @@ extension MainMapViewController: MapViewDelegate {
                 return
             }
             // Reverse geocode doesn't provide a location for the found item.
-            item.location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            item?.location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
             
-            let item: SearchListItem = self?.favoriteForItem(item) ?? item // Attempt upgrade to Favorite
+            let item: SearchListItem = self?.favoriteForItem(item!) ?? item! // Attempt upgrade to Favorite
             self?.currentLocationItem = item
             self?.addressToolbarView.updateToItem(item)
         }
@@ -329,12 +328,11 @@ extension MainMapViewController: MapViewDelegate {
         closeAddressToolbarView()
     }
     
-    func didSelectAnnotation(annotation: Annotation) {
+    func didSelectAnnotation(_ annotation: Annotation) {
         // Remove annotation if the selected one is the pinAnnotation
         if let
             pin = pinAnnotation,
-            annotation = annotation as? PinAnnotation
-            where pin == annotation
+            let annotation = annotation as? PinAnnotation, pin == annotation
         {
             // Remove pin
             removePin(pin)
@@ -346,23 +344,23 @@ extension MainMapViewController: MapViewDelegate {
     
 // MARK: User Terms
     
-    func checkUserTerms(forceAccept: Bool = false) {
+    func checkUserTerms(_ forceAccept: Bool = false) {
         if !UserHelper.loggedIn() {
             return // Only check when logged in
         }
         // Check if user has accepted user terms
         UserTermsClient.instance.requestUserTerms() { result in
             switch result {
-                case .Success(let userTerms, let new) where new == true:
+                case .success(let userTerms, let new) where new == true:
                     if forceAccept {
                         UserTermsClient.instance.latestVerifiedVersion = userTerms.version
                         return
                     }
                     self.pendingUserTerms = userTerms
-                    if self.isViewLoaded() {
+                    if self.isViewLoaded {
                         self.showUserTerms()
                     }
-                case .Success(_, _):
+                case .success(_, _):
                     print("No new user terms")
                 default:
                     print("Failed to get user terms: \(result)")
@@ -383,7 +381,7 @@ extension MainMapViewController: MapViewDelegate {
 
 extension MainMapViewController: FindAddressViewControllerProtocol {
     
-    func foundAddress(item: SearchListItem) {
+    func foundAddress(_ item: SearchListItem) {
         // Update current item
         let item: SearchListItem = favoriteForItem(item) ?? item // Attempt upgrade to Favorite
         updateToCurrentItem(item)
@@ -403,7 +401,7 @@ extension MainMapViewController {
             return
         }
         let introViewController = GreenestRouteIntroductionViewController()
-        self.presentViewController(introViewController, animated: true, completion: nil)
+        self.present(introViewController, animated: true, completion: nil)
     }
 }
 #endif

@@ -19,6 +19,6 @@ extension String {
 extension NSString {
     
     var localized: NSString {
-        return NSLocalizedString(self as String, comment: "")
+        return NSLocalizedString(self as String, comment: "") as NSString
     }
 }

@@ -7,13 +7,37 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class BikeStatistics {
    
     /**
     :returns: All bike tracks as an RLMResults
     */
-    class func tracks() -> RLMResults {
+    class func tracks() -> RLMResults<RLMObject> {
         return Track.objectsWhere("activity.cycling == TRUE AND startTimestamp != 0")
     }
     
@@ -30,7 +54,7 @@ class BikeStatistics {
     :returns: Total distance in meters [m]
     */
     class func totalDistance() -> Double {
-        return tracks().sumOfProperty("length").doubleValue ?? 0
+        return tracks().sum(ofProperty: "length").doubleValue ?? 0
     }
     
     /**
@@ -39,7 +63,7 @@ class BikeStatistics {
     :returns: Total duration in seconds [s]
     */
     class func totalDuration() -> Double {
-        return tracks().sumOfProperty("duration").doubleValue ?? 0
+        return tracks().sum(ofProperty: "duration").doubleValue ?? 0
     }
     
     /**
@@ -58,7 +82,7 @@ class BikeStatistics {
     :returns: Average track distance in meters [m]
     */
     class func averageTrackDistance() -> Double {
-        return tracks().averageOfProperty("length")?.doubleValue ?? 0
+        return tracks().average(ofProperty: "length")?.doubleValue ?? 0
     }
     
     /**
@@ -67,18 +91,18 @@ class BikeStatistics {
     :returns: Day streak in days
     */
     class func currentDayStreak() -> Int {
-        var date = NSDate()
+        var date = Date()
         var streak = 0
         while tracksForDayOfDate(date)?.count > 0 {
             streak += 1
-            date = date.dateByAddingTimeInterval(-60*60*24)
+            date = date.addingTimeInterval(-60*60*24)
         }
         return streak
     }
     
     
-    class func tracksForDayOfDate(date: NSDate) -> RLMResults? {
-        if let timestampDayStart = date.beginningOfDay()?.timeIntervalSince1970, timestampDayEnd = date.endOfDay()?.timeIntervalSince1970 {
+    class func tracksForDayOfDate(_ date: Date) -> RLMResults<RLMObject>? {
+        if let timestampDayStart = date.beginningOfDay()?.timeIntervalSince1970, let timestampDayEnd = date.endOfDay()?.timeIntervalSince1970 {
             // Start time or end time should be within day
             return tracks().objectsWhere("startTimestamp BETWEEN %@ OR endTimestamp BETWEEN %@", [timestampDayStart, timestampDayEnd], [timestampDayEnd, timestampDayEnd])
         }
@@ -90,11 +114,11 @@ class BikeStatistics {
 
     :returns: The start date of the first bike track
     */
-    class func firstTrackStartDate() -> NSDate? {
-        let sortedTracks = tracks().sortedResultsUsingProperty("startTimestamp", ascending: true)
+    class func firstTrackStartDate() -> Date? {
+        let sortedTracks = tracks().sortedResults(usingProperty: "startTimestamp", ascending: true)
         let firstTrack = sortedTracks.firstObject() as? Track
         let startDate = firstTrack?.startDate()
-        return startDate
+        return startDate as! Date
     }
     
     /**
@@ -102,17 +126,17 @@ class BikeStatistics {
     
     :returns: The end date of the latest bike track
     */
-    class func lastTrackEndDate() -> NSDate? {
-        let startDate = (tracks().sortedResultsUsingProperty("startTimestamp", ascending: true).lastObject() as? Track)?.endDate()
-        return startDate
+    class func lastTrackEndDate() -> Date? {
+        let startDate = (tracks().sortedResults(usingProperty: "startTimestamp", ascending: true).lastObject() as? Track)?.endDate()
+        return startDate as! Date
     }
     
-    private class func tracksThisWeek() -> RLMResults? {
-        let now = NSDate()
+    fileprivate class func tracksThisWeek() -> RLMResults<RLMObject>? {
+        let now = Date()
         if let
             endOfToday = now.endOfDay(),
-            nextSunday = now.nextWeekday(1, fromDate: endOfToday),
-            thisMonday = NSCalendar.currentCalendar().dateByAddingUnit(.WeekOfYear, value: -1, toDate: nextSunday, options: NSCalendarOptions(rawValue: 0))
+            let nextSunday = now.nextWeekday(1, fromDate: endOfToday),
+            let thisMonday = (Calendar.current as NSCalendar).date(byAdding: .weekOfYear, value: -1, to: nextSunday, options: NSCalendar.Options(rawValue: 0))
         {
             return tracks().objectsWhere("endTimestamp BETWEEN %@", [thisMonday.timeIntervalSince1970, nextSunday.timeIntervalSince1970])
         }
@@ -124,8 +148,8 @@ class BikeStatistics {
     
     :returns: Total duration in seconds [s]
     */
-    class func durationThisDate(date: NSDate = NSDate()) -> Double {
-        return tracksForDayOfDate(date)?.sumOfProperty("duration").doubleValue ?? 0
+    class func durationThisDate(_ date: Date = Date()) -> Double {
+        return tracksForDayOfDate(date)?.sum(ofProperty: "duration").doubleValue ?? 0
     }
     
     /**
@@ -133,8 +157,8 @@ class BikeStatistics {
     
     :returns: Total distance in meters [m]
     */
-    class func distanceThisDate(date: NSDate = NSDate()) -> Double {
-        return tracksForDayOfDate(date)?.sumOfProperty("length").doubleValue ?? 0
+    class func distanceThisDate(_ date: Date = Date()) -> Double {
+        return tracksForDayOfDate(date)?.sum(ofProperty: "length").doubleValue ?? 0
     }
     
     /**
@@ -143,7 +167,7 @@ class BikeStatistics {
     :returns: Total duration in seconds [s]
     */
     class func durationThisWeek() -> Double {
-        return tracksThisWeek()?.sumOfProperty("duration").doubleValue ?? 0
+        return tracksThisWeek()?.sum(ofProperty: "duration").doubleValue ?? 0
     }
     
     /**
@@ -152,7 +176,7 @@ class BikeStatistics {
     :returns: Total distance in meters [m]
     */
     class func distanceThisWeek() -> Double {
-        return tracksThisWeek()?.sumOfProperty("length").doubleValue ?? 0
+        return tracksThisWeek()?.sum(ofProperty: "length").doubleValue ?? 0
     }
     
     /**
@@ -161,7 +185,7 @@ class BikeStatistics {
     :param: distance Distance in meters [m]
     :returns: Calories [kcal]
     */
-    class func kiloCaloriesPerBikedDistance(distance: Double) -> Double {
+    class func kiloCaloriesPerBikedDistance(_ distance: Double) -> Double {
         let km = distance / 1000
         let calPerKm: Double = 11
         return calPerKm * km

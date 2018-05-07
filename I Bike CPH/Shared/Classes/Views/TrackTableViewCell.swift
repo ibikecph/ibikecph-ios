@@ -17,9 +17,9 @@ class TrackTableViewCell: UITableViewCell {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
-    private let dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .ShortStyle
+    fileprivate let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
         return formatter
     }()
     
@@ -38,19 +38,19 @@ class TrackTableViewCell: UITableViewCell {
     
     func setup() {
         // Full width cell separator
-        separatorInset = UIEdgeInsetsZero
-        layoutMargins = UIEdgeInsetsZero
+        separatorInset = UIEdgeInsets.zero
+        layoutMargins = UIEdgeInsets.zero
         preservesSuperviewLayoutMargins = false
     }
     
-    func updateToTrack(track: Track?) {
-        if let track = track where !track.invalidated {
+    func updateToTrack(_ track: Track?) {
+        if let track = track, !track.isInvalidated {
             var time = ""
             if let date = track.startDate() {
-                time += dateFormatter.stringFromDate(date)
+                time += dateFormatter.string(from: date as Date)
             }
             if let date = track.endDate() {
-                time += " - " + dateFormatter.stringFromDate(date)
+                time += " - " + dateFormatter.string(from: date as Date)
             }
             timeLabel.text = time
             

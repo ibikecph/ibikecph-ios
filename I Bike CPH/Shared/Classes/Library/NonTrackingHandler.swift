@@ -15,7 +15,7 @@ class NonTrackingHandler: NSObject {
     
     var isCurrentlyRouting: Bool = false
 
-    private var observerTokens = [AnyObject]()
+    fileprivate var observerTokens = [AnyObject]()
     
     override init() {
         super.init()
@@ -26,7 +26,7 @@ class NonTrackingHandler: NSObject {
         unobserve()
     }
     
-    private func unobserve() {
+    fileprivate func unobserve() {
         for observerToken in observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
@@ -34,7 +34,7 @@ class NonTrackingHandler: NSObject {
     }
     
     func setupBackgroundHandling() {
-        observerTokens.append(NotificationCenter.observe(UIApplicationDidEnterBackgroundNotification) { notification in
+        observerTokens.append(NotificationCenter.observe(NSNotification.Name.UIApplicationDidEnterBackground.rawValue) { notification in
             // TODO: Revisit functionality of isCurrentlyRouting
             if Settings.sharedInstance.readAloud.on && self.isCurrentlyRouting {
                 return
@@ -42,7 +42,7 @@ class NonTrackingHandler: NSObject {
             // Stop location manager
             SMLocationManager.sharedInstance().stopUpdating()
         })
-        observerTokens.append(NotificationCenter.observe(UIApplicationWillEnterForegroundNotification) { notification in
+        observerTokens.append(NotificationCenter.observe(NSNotification.Name.UIApplicationWillEnterForeground.rawValue) { notification in
             SMLocationManager.sharedInstance().startUpdating()
         })
     }

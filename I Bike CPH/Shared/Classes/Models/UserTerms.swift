@@ -11,16 +11,16 @@ import SwiftyJSON
 
 struct UserTerms {
     
-    let url: NSURL? = NSURL(string: "accept_user_terms_link".localized)
+    let url: URL? = URL(string: "accept_user_terms_link".localized)
     let version: Int
     let humanReadableText: String
     
     init?(json: JSON) {
-        let language = NSUserDefaults.standardUserDefaults().arrayForKey("AppleLanguages")?.first as? String
+        let language = UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String
         let humanReadableKey = "important_parts_description_" + (language == "da" ? "da" : "en")
         if let
             versionString = json["version"].string,
-            humanReadableText = json[humanReadableKey].string
+            let humanReadableText = json[humanReadableKey].string
         {
             self.version = Int(versionString) ?? 0
             self.humanReadableText = humanReadableText

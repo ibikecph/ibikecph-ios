@@ -20,23 +20,23 @@
 
 extension RLMObject {
     // Swift query convenience functions
-    public class func objectsWhere(predicateFormat: String, _ args: CVarArgType...) -> RLMResults {
-        return objectsWithPredicate(NSPredicate(format: predicateFormat, arguments: getVaList(args)))
+    public class func objectsWhere(_ predicateFormat: String, _ args: CVarArg...) -> RLMResults<RLMObject> {
+        return objects(with: NSPredicate(format: predicateFormat, arguments: getVaList(args)))
     }
 
-    public class func objectsInRealm(realm: RLMRealm, _ predicateFormat: String, _ args: CVarArgType...) -> RLMResults {
-        return objectsInRealm(realm, withPredicate:NSPredicate(format: predicateFormat, arguments: getVaList(args)))
+    public class func objectsInRealm(_ realm: RLMRealm, _ predicateFormat: String, _ args: CVarArg...) -> RLMResults<RLMObject> {
+        return objects(in: realm, with:NSPredicate(format: predicateFormat, arguments: getVaList(args)))
     }
 }
 
-extension RLMArray: SequenceType {
+extension RLMArray: Sequence {
     // Support Sequence-style enumeration
-    public func generate() -> AnyGenerator<RLMObject> {
+    public func makeIterator() -> AnyIterator<RLMObject> {
         var i: UInt  = 0
 
-        return AnyGenerator<RLMObject> {
+        return AnyIterator<RLMObject> {
             if (i >= self.count) {
-                return .None
+                return .none
             } else {
                 let returnObject = self[i] as RLMObject
                 i += 1
@@ -46,23 +46,23 @@ extension RLMArray: SequenceType {
     }
 
     // Swift query convenience functions
-    public func indexOfObjectWhere(predicateFormat: String, _ args: CVarArgType...) -> UInt {
-        return indexOfObjectWithPredicate(NSPredicate(format: predicateFormat, arguments: getVaList(args)))
+    public func indexOfObjectWhere(_ predicateFormat: String, _ args: CVarArg...) -> UInt {
+        return indexOfObject(with: NSPredicate(format: predicateFormat, arguments: getVaList(args)))
     }
 
-    public func objectsWhere(predicateFormat: String, _ args: CVarArgType...) -> RLMResults {
-        return objectsWithPredicate(NSPredicate(format: predicateFormat, arguments: getVaList(args)))
+    public func objectsWhere(_ predicateFormat: String, _ args: CVarArg...) -> RLMResults<RLMObject> {
+        return objects(with: NSPredicate(format: predicateFormat, arguments: getVaList(args))) as! RLMResults<RLMObject>
     }
 }
 
-extension RLMResults: SequenceType {
+extension RLMResults: Sequence {
     // Support Sequence-style enumeration
-    public func generate() -> AnyGenerator<RLMObject> {
+    public func makeIterator() -> AnyIterator<RLMObject> {
         var i: UInt  = 0
 
-        return AnyGenerator<RLMObject> {
+        return AnyIterator<RLMObject> {
             if (i >= self.count) {
-                return .None
+                return .none
             } else {
                 let returnObject = self[i] as? RLMObject
                 i += 1
@@ -72,11 +72,11 @@ extension RLMResults: SequenceType {
     }
 
     // Swift query convenience functions
-    public func indexOfObjectWhere(predicateFormat: String, _ args: CVarArgType...) -> UInt {
-        return indexOfObjectWithPredicate(NSPredicate(format: predicateFormat, arguments: getVaList(args)))
+    public func indexOfObjectWhere(_ predicateFormat: String, _ args: CVarArg...) -> UInt {
+        return indexOfObject(with: NSPredicate(format: predicateFormat, arguments: getVaList(args)))
     }
 
-    public func objectsWhere(predicateFormat: String, _ args: CVarArgType...) -> RLMResults {
-        return objectsWithPredicate(NSPredicate(format: predicateFormat, arguments: getVaList(args)))
+    public func objectsWhere(_ predicateFormat: String, _ args: CVarArg...) -> RLMResults {
+        return objects(with: NSPredicate(format: predicateFormat, arguments: getVaList(args)))
     }
 }

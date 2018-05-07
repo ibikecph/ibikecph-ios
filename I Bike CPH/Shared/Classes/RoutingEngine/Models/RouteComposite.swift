@@ -7,20 +7,20 @@ import Foundation
 
 struct RouteComposite {
     enum Composite {
-        case Single(SMRoute)
-        case Multiple([SMRoute])
+        case single(SMRoute)
+        case multiple([SMRoute])
     }
     let composite: Composite
     let from: SearchListItem
     let to: SearchListItem
     let estimatedDistance: Double
     let estimatedBikeDistance: Double
-    let estimatedTime: NSTimeInterval
+    let estimatedTime: TimeInterval
     var distanceLeft: Double {
         switch composite {
-        case .Single(let route):
+        case .single(let route):
             return Double(route.distanceLeft)
-        case .Multiple(let routes):
+        case .multiple(let routes):
             return routes.map { Double($0.distanceLeft) }.reduce(0) { $0 + $1 }
         }
     }
@@ -30,18 +30,18 @@ struct RouteComposite {
     }
     var bikeDistanceLeft: Double {
         switch composite {
-        case .Single(let route):
+        case .single(let route):
             return Double(route.distanceLeft)
-        case .Multiple(let routes):
-            let bikeRoutes = routes.filter { return .Bike == $0.routeType }
+        case .multiple(let routes):
+            let bikeRoutes = routes.filter { return .bike == $0.routeType }
             return bikeRoutes.map { Double($0.distanceLeft) }.reduce(0) { $0 + $1 }
         }
     }
     var currentRouteIndex: Int = 0
     var currentRoute: SMRoute? {
         switch composite {
-        case .Single(let route): return route
-        case .Multiple(let routes):
+        case .single(let route): return route
+        case .multiple(let routes):
             if currentRouteIndex < routes.count {
                 return routes[currentRouteIndex]
             }
@@ -52,9 +52,9 @@ struct RouteComposite {
         let hourMinuteFormatter = HourMinuteFormatter()
         return hourMinuteFormatter.string(self.durationLeft)
     }
-    var durationLeft: NSTimeInterval {
+    var durationLeft: TimeInterval {
         switch self.composite {
-        case .Single(let route):
+        case .single(let route):
             if (route.estimatedAverageSpeed == 0) {
                 // Use estimate from OSRM server
                 return self.estimatedTime * self.distanceLeft / self.estimatedDistance
@@ -62,15 +62,15 @@ struct RouteComposite {
                 // Create own estimate
                 return self.bikeDistanceLeft / Double(route.estimatedAverageSpeed)
             }
-        case .Multiple(let routes):
+        case .multiple(let routes):
             let route = routes.last!
-            var duration: NSTimeInterval = 0
+            var duration: TimeInterval = 0
             if currentRouteIndex == routes.count-1 {
                 // User is currently on the last route
-                if route.routeType == .Bike {
+                if route.routeType == .bike {
                     if (route.estimatedAverageSpeed == 0) {
                         // Use estimate from OSRM server
-                        duration += Double(route.distanceLeft) / Double(route.estimatedRouteDistance) * NSTimeInterval(route.estimatedTimeForRoute)
+                        duration += Double(route.distanceLeft) / Double(route.estimatedRouteDistance) * TimeInterval(route.estimatedTimeForRoute)
                     } else {
                         // Create own estimate
                         duration += Double(route.distanceLeft) / Double(route.estimatedAverageSpeed)
@@ -90,10 +90,10 @@ struct RouteComposite {
             return duration
         }
     }
-    var estimatedTimeOfArrival: NSDate {
-        return NSDate(timeIntervalSinceNow: self.durationLeft)
+    var estimatedTimeOfArrival: Date {
+        return Date(timeIntervalSinceNow: self.durationLeft)
     }
-    private init(composite: Composite, from: SearchListItem, to: SearchListItem, estimatedDistance: Double, estimatedBikeDistance: Double? = nil, estimatedTime: NSTimeInterval) {
+    fileprivate init(composite: Composite, from: SearchListItem, to: SearchListItem, estimatedDistance: Double, estimatedBikeDistance: Double? = nil, estimatedTime: TimeInterval) {
         self.composite = composite
         self.from = from
         self.to = to
@@ -101,19 +101,19 @@ struct RouteComposite {
         self.estimatedBikeDistance = estimatedBikeDistance ?? estimatedDistance
         self.estimatedTime = estimatedTime
         switch composite {
-        case .Multiple(let routes):
+        case .multiple(let routes):
 
-            for (index, route) in routes.enumerate() {
+            for (index, route) in routes.enumerated() {
                 // If route is public, finish route earlier
-                if route.routeType != .Bike &&
-                    route.routeType != .Walk {
+                if route.routeType != .bike &&
+                    route.routeType != .walk {
                         route.maxMarginRadius = CGFloat(MAX_DISTANCE_FOR_PUBLIC_TRANSPORT)
                 }
                 // If next route is public, finish current route earlier
                 if index+1 < routes.count {
                     let nextRoute = routes[index+1]
-                    if nextRoute.routeType != .Bike &&
-                        nextRoute.routeType != .Walk {
+                    if nextRoute.routeType != .bike &&
+                        nextRoute.routeType != .walk {
                         route.maxMarginRadius = CGFloat(MAX_DISTANCE_FOR_PUBLIC_TRANSPORT)
                     }
                 }
@@ -122,9 +122,9 @@ struct RouteComposite {
         }
     }
     init(route: SMRoute, from: SearchListItem, to: SearchListItem) {
-        self.init(composite: .Single(route), from: from, to: to, estimatedDistance: Double(route.estimatedRouteDistance), estimatedTime: Double(route.estimatedTimeForRoute))
+        self.init(composite: .single(route), from: from, to: to, estimatedDistance: Double(route.estimatedRouteDistance), estimatedTime: Double(route.estimatedTimeForRoute))
     }
-    init(routes: [SMRoute], from: SearchListItem, to: SearchListItem, estimatedDistance: Double, estimatedBikeDistance: Double, estimatedTime: NSTimeInterval) {
-        self.init(composite: .Multiple(routes), from: from, to: to, estimatedDistance: estimatedDistance, estimatedBikeDistance: estimatedBikeDistance, estimatedTime: estimatedTime)
+    init(routes: [SMRoute], from: SearchListItem, to: SearchListItem, estimatedDistance: Double, estimatedBikeDistance: Double, estimatedTime: TimeInterval) {
+        self.init(composite: .multiple(routes), from: from, to: to, estimatedDistance: estimatedDistance, estimatedBikeDistance: estimatedBikeDistance, estimatedTime: estimatedTime)
     }
 }

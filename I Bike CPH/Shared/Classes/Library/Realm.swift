@@ -13,13 +13,13 @@ extension RLMObject {
     /**
      * Add object to realm within a write transaction if necessary
      */
-    func addToRealm(realm: RLMRealm = RLMRealm.defaultRealm()) {
+    func addToRealm(_ realm: RLMRealm = RLMRealm.default()) {
         // Add to the Realm inside a transaction
         let transact = !realm.inWriteTransaction
         if transact {
             realm.beginWriteTransaction()
         }
-        realm.addObject(self)
+        realm.add(self)
         if transact {
             do {
                 try realm.commitWriteTransaction()
@@ -40,7 +40,7 @@ extension RLMObject {
                 realm.beginWriteTransaction()
             }
             // Remove from the Realm inside a transaction
-            realm.deleteObject(self)
+            realm.delete(self)
             if transact {
                 do {
                     try realm.commitWriteTransaction()
@@ -61,7 +61,7 @@ extension RLMResults {
         }
         return array
     }
-    func toArray<T>(ofType: T.Type) -> [T] {
+    func toArray<T>(_ ofType: T.Type) -> [T] {
         var array = [T]()
         for result in self {
             if let result = result as? T {
@@ -74,7 +74,7 @@ extension RLMResults {
 
 extension RLMArray {
     
-    func toArray<T>(ofType: T.Type) -> [T] {
+    func toArray<T>(_ ofType: T.Type) -> [T] {
         var array = [T]()
         for result in self {
             if let result = result as? T {
@@ -89,56 +89,55 @@ var compressingRealm = false
 extension RLMRealm {
     
     class func deleteDefaultRealmFile() {
-        if let fileURL = RLMRealmConfiguration.defaultConfiguration().fileURL {
+        if let fileURL = RLMRealmConfiguration.default().fileURL {
             do {
-                try NSFileManager.defaultManager().removeItemAtURL(fileURL)
+                try FileManager.default.removeItem(at: fileURL)
             } catch {
                 print("Couldn't delete Realm file!")
             }
         }
     }
     
-    class func addNotificationBlock(block: RLMNotificationBlock) -> RLMNotificationToken {
-        return RLMRealm.defaultRealm().addNotificationBlock(block)
+    class func addNotificationBlock(_ block: RLMNotificationBlock) -> RLMNotificationToken {
+        return RLMRealm.default().addNotificationBlock(block)
     }
     
-    class func removeNotification(token: RLMNotificationToken) {
+    class func removeNotification(_ token: RLMNotificationToken) {
         token.stop()
     }
     
     class func beginWriteTransaction() {
-        return RLMRealm.defaultRealm().beginWriteTransaction()
+        return RLMRealm.default().beginWriteTransaction()
     }
     class func commitWriteTransaction() {
         do {
-            try RLMRealm.defaultRealm().commitWriteTransaction()
+            try RLMRealm.default().commitWriteTransaction()
         } catch {
             print("Could not commit Realm write transaction!")
         }
     }
     
-    class func compress(ifNecessary: Bool = true) {
-        if let defaultFileURL = RLMRealmConfiguration.defaultConfiguration().fileURL,
-               defaultPath = defaultFileURL.path {
+    class func compress(_ ifNecessary: Bool = true) {
+        if let defaultFileURL = RLMRealmConfiguration.default().fileURL,
+               let defaultPath = defaultFileURL.path {
             if let
-                attributes = try? NSFileManager.defaultManager().attributesOfItemAtPath(defaultPath),
-                size = attributes[NSFileSize] as? Int
-                where size < 100*1024*1024 // 100 mb
+                attributes = try? FileManager.default.attributesOfItem(atPath: defaultPath),
+                let size = attributes[FileAttributeKey.size] as? Int, size < 100*1024*1024 // 100 mb
             {
                 return
             }
             compressingRealm = true
             
-            let tempFileURL = NSURL.fileURLWithPath(defaultPath + "_copy")
+            let tempFileURL = URL(fileURLWithPath: defaultPath + "_copy")
             do {
-                try NSFileManager.defaultManager().removeItemAtURL(tempFileURL)
-                try RLMRealm.defaultRealm().writeCopyToURL(tempFileURL, encryptionKey: nil)
-                try NSFileManager.defaultManager().removeItemAtURL(defaultFileURL)
-                try NSFileManager.defaultManager().moveItemAtURL(tempFileURL, toURL: defaultFileURL)
+                try FileManager.default.removeItem(at: tempFileURL)
+                try RLMRealm.default().writeCopy(to: tempFileURL, encryptionKey: nil)
+                try FileManager.default.removeItem(at: defaultFileURL)
+                try FileManager.default.moveItem(at: tempFileURL, to: defaultFileURL)
             } catch {
                 print("Realm file swapping failed!")
             }
-            RLMRealm.defaultRealm()
+            RLMRealm.default()
             compressingRealm = false
         }
     }

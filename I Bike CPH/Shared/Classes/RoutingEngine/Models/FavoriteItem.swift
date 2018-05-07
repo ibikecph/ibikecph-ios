@@ -12,7 +12,7 @@ import SwiftyJSON
 
 @objc class FavoriteItem: NSObject, SearchListItem {
     
-    var type: SearchListItemType = .Favorite
+    var type: SearchListItemType = .favorite
     var name: String
     var address: String
     var street: String = ""
@@ -24,12 +24,12 @@ import SwiftyJSON
     var location: CLLocation? = CLLocation()
     var relevance: Int = 0
     
-    var startDate: NSDate?
-    var endDate: NSDate?
+    var startDate: Date?
+    var endDate: Date?
     var origin: FavoriteItemType
     var identifier: String = ""
     
-    init(name: String, address: String? = nil, street: String = "", number: String = "", zip: String = "", city: String = "", country: String = "", location: CLLocation, startDate: NSDate? = nil, endDate: NSDate? = nil, origin: FavoriteItemType) {
+    init(name: String, address: String? = nil, street: String = "", number: String = "", zip: String = "", city: String = "", country: String = "", location: CLLocation, startDate: Date? = nil, endDate: Date? = nil, origin: FavoriteItemType) {
         self.name = name
         self.address = address ?? name
         self.street = street
@@ -43,7 +43,7 @@ import SwiftyJSON
         self.origin = origin
     }
     
-    init(name: String, address: String? = nil, location: CLLocation, startDate: NSDate? = nil, endDate: NSDate? = nil, origin: FavoriteItemType) {
+    init(name: String, address: String? = nil, location: CLLocation, startDate: Date? = nil, endDate: Date? = nil, origin: FavoriteItemType) {
         self.name = name
         self.address = address ?? name
         self.location = location
@@ -61,7 +61,7 @@ import SwiftyJSON
         self.city = other.city
         self.country = other.country
         self.location = other.location
-        self.origin = .Unknown
+        self.origin = .unknown
         self.relevance = other.relevance
         if let favorite = other as? FavoriteItem {
             self.startDate = favorite.startDate
@@ -79,30 +79,30 @@ import SwiftyJSON
         address = json["address"].stringValue
         
         // Dates
-        startDate = NSDate()
-        endDate = NSDate()
+        startDate = Date()
+        endDate = Date()
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'ZZZ" // Format 2015-06-10T13:45:31ZUTC
         if let
             dateString = json["startDate"].string,
-            date = formatter.dateFromString(dateString)
+            let date = formatter.date(from: dateString)
         {
             startDate = date
         }
         if let
             dateString = json["endDate"].string,
-            date = formatter.dateFromString(dateString)
+            let date = formatter.date(from: dateString)
         {
             endDate = date
         }
         
         // Parse address string to make details
         let parsedAddressItem = SMAddressParser.parseAddress(address)
-        number = parsedAddressItem.number
-        city = parsedAddressItem.city
-        zip = parsedAddressItem.zip
-        street = parsedAddressItem.street
+        number = (parsedAddressItem?.number)!
+        city = (parsedAddressItem?.city)!
+        zip = (parsedAddressItem?.zip)!
+        street = (parsedAddressItem?.street)!
         
         // Location
         let latitude = json["lattitude"].doubleValue
@@ -111,11 +111,11 @@ import SwiftyJSON
         
         self.origin = {
             switch json["source"].stringValue {
-                case "home": return .Home
-                case "work": return .Work
-                case "school": return .School
+                case "home": return .home
+                case "work": return .work
+                case "school": return .school
                 case "favourites": fallthrough
-                default: return .Unknown
+                default: return .unknown
             }
         }()
         
@@ -136,11 +136,11 @@ import SwiftyJSON
         zip = json["postnummer"].string ?? parsedAddressItem.zip
         street = json["vej"].string ?? parsedAddressItem.street
         
-        if let data = plistDictionary["startDate"] as? NSData {
-            startDate = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? NSDate
+        if let data = plistDictionary["startDate"] as? Data {
+            startDate = NSKeyedUnarchiver.unarchiveObject(with: data) as? Date
         }
-        if let data = plistDictionary["endDate"] as? NSData {
-            endDate = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? NSDate
+        if let data = plistDictionary["endDate"] as? Data {
+            endDate = NSKeyedUnarchiver.unarchiveObject(with: data) as? Date
         }
         
         // Location
@@ -149,22 +149,22 @@ import SwiftyJSON
         location = CLLocation(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
         
         let origin = json["origin"].intValue
-        self.origin = FavoriteItemType(rawValue: origin) ?? .Unknown;
+        self.origin = FavoriteItemType(rawValue: origin) ?? .unknown;
         
         self.identifier = json["identifier"].stringValue
     }
     
     func plistRepresentation() -> [String : AnyObject] {
         return [
-            "identifier" : identifier,
-            "name" :  name,
-            "address" : address,
-            "husnr" : number,
-            "by" : city,
-            "postnummer" : zip,
-            "vej" : street,
-            "startDate" : NSKeyedArchiver.archivedDataWithRootObject(startDate ?? NSDate()),
-            "endDate" : NSKeyedArchiver.archivedDataWithRootObject(endDate ?? NSDate()),
+            "identifier" : identifier as AnyObject,
+            "name" :  name as AnyObject,
+            "address" : address as AnyObject,
+            "husnr" : number as AnyObject,
+            "by" : city as AnyObject,
+            "postnummer" : zip as AnyObject,
+            "vej" : street as AnyObject,
+            "startDate" : NSKeyedArchiver.archivedData(withRootObject: startDate ?? Date()),
+            "endDate" : NSKeyedArchiver.archivedData(withRootObject: endDate ?? Date()),
             "origin" : origin.rawValue,
             "lat" : location?.coordinate.latitude ?? 0,
             "long" : location?.coordinate.longitude ?? 0

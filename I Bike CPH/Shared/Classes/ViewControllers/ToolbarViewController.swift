@@ -12,7 +12,7 @@ class ToolbarViewController: SMTranslatedViewController {
 
     @IBOutlet weak var toolbarContainer: UIView!
     
-    private(set) var toolbarView: ToolbarView?
+    fileprivate(set) var toolbarView: ToolbarView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +33,10 @@ class ToolbarViewController: SMTranslatedViewController {
         toolbarContainer.addSubview(new)
         new.translatesAutoresizingMaskIntoConstraints = false
         toolbarContainer.addConstraints([
-            NSLayoutConstraint(item: new, attribute: .Top, relatedBy: .Equal, toItem: toolbarContainer, attribute: .Top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: new, attribute: .Left, relatedBy: .Equal, toItem: toolbarContainer, attribute: .Left, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: new, attribute: .Right, relatedBy: .Equal, toItem: toolbarContainer, attribute: .Right, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: new, attribute: .Bottom, relatedBy: .Equal, toItem: toolbarContainer, attribute: .Bottom, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: new, attribute: .top, relatedBy: .equal, toItem: toolbarContainer, attribute: .top, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: new, attribute: .left, relatedBy: .equal, toItem: toolbarContainer, attribute: .left, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: new, attribute: .right, relatedBy: .equal, toItem: toolbarContainer, attribute: .right, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: new, attribute: .bottom, relatedBy: .equal, toItem: toolbarContainer, attribute: .bottom, multiplier: 1, constant: 0)
         ])
     }
     

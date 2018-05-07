@@ -11,9 +11,9 @@ import UIKit
 class TracksViewController: SMTranslatedViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    private var tracks: RLMResults?
-    private var selectedTrack: Track?
-    private var observerTokens = [AnyObject]()
+    fileprivate var tracks: RLMResults<RLMObject>?
+    fileprivate var selectedTrack: Track?
+    fileprivate var observerTokens = [AnyObject]()
     
     deinit {
         unobserve()
@@ -36,32 +36,32 @@ class TracksViewController: SMTranslatedViewController {
     }
     
     func updateUI() {
-        tracks = Track.allObjects().sortedResultsUsingProperty("startTimestamp", ascending: false)
+        tracks = Track.allObjects().sortedResults(usingProperty: "startTimestamp", ascending: false)
         tableView.reloadData()
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if
             segue.identifier == "trackListToDetail",
             let track = selectedTrack,
-            trackDetailViewController = segue.destinationViewController as? TrackDetailViewController
+            let trackDetailViewController = segue.destination as? TrackDetailViewController
         {
             trackDetailViewController.track = track
         }
     }
     
-    private func unobserve() {
+    fileprivate func unobserve() {
         for observerToken in observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
         NotificationCenter.unobserve(self)
     }
     
-    @IBAction func didTapCleanUp(sender: AnyObject) {
+    @IBAction func didTapCleanUp(_ sender: AnyObject) {
         TracksHandler.setNeedsProcessData(true)
     }
 }
@@ -71,30 +71,30 @@ private let cellID = "TrackCell"
 
 extension TracksViewController: UITableViewDataSource {
     
-    func track(indexPath: NSIndexPath?) -> Track? {
+    func track(_ indexPath: IndexPath?) -> Track? {
         if let indexPath = indexPath {
             return tracks?[UInt(indexPath.row)] as? Track
         }
         return nil
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Int(tracks?.count ?? 0)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as DebugTrackTableViewCell
         cell.updateToTrack(track(indexPath), index: indexPath.row)
         return cell
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             tableView.beginUpdates()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+            tableView.deleteRows(at: [indexPath], with: .left)
             track(indexPath)?.deleteFromRealmWithRelationships()
             tableView.endUpdates()
         }
@@ -103,10 +103,10 @@ extension TracksViewController: UITableViewDataSource {
 
 extension TracksViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let track = track(indexPath) {
             selectedTrack = track
-            performSegueWithIdentifier("trackListToDetail", sender: self)
+            performSegue(withIdentifier: "trackListToDetail", sender: self)
         }
     }
 }
@@ -123,21 +123,21 @@ class DebugTrackTableViewCell: UITableViewCell {
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var mapView: TrackMapView!
     
-    let dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        formatter.timeStyle = .MediumStyle
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .medium
         return formatter
     }()
     
-    func updateToTrack(track: Track?, index: Int = 0) {
+    func updateToTrack(_ track: Track?, index: Int = 0) {
         if let track = track {
             var title = "\(index)) "
             if let date = track.startDate() {
-                title += dateFormatter.stringFromDate(date)
+                title += dateFormatter.string(from: date as Date)
             }
             if let date = track.endDate() {
-                title += " to " + dateFormatter.stringFromDate(date)
+                title += " to " + dateFormatter.string(from: date as Date)
             }
             var subtitle = "\(track.activity.confidence)"
             if track.activity.stationary { subtitle += ",st" }
@@ -146,13 +146,13 @@ class DebugTrackTableViewCell: UITableViewCell {
             if track.activity.running { subtitle += ",rn" }
             if track.activity.automotive { subtitle += ",aut" }
             if track.activity.unknown { subtitle += ",un" }
-            let horizontal = track.locations.objectsWithPredicate(NSPredicate(value: true)).maxOfProperty("horizontalAccuracy")?.intValue ?? -1
-            let vertical = track.locations.objectsWithPredicate(NSPredicate(value: true)).maxOfProperty("verticalAccuracy")?.intValue ?? -1
+            let horizontal = (track.locations.objects(with: NSPredicate(value: true)).max(ofProperty: "horizontalAccuracy") as AnyObject).int32Value ?? -1
+            let vertical = (track.locations.objects(with: NSPredicate(value: true)).max(ofProperty: "verticalAccuracy") as AnyObject).int32Value ?? -1
             subtitle += "\(horizontal) \(vertical)"
             subtitle += ",\(Int(round(track.length)))m,\(Int(round(track.length)))s,\(round(track.length/1000/(track.duration/3600)))kmh"
             subtitle += ",fy:\(round(track.flightDistance() ?? 0))m"
             
-            subtitle += " " + dateFormatter.stringFromDate(track.activity.startDate)
+            subtitle += " " + dateFormatter.string(from: track.activity.startDate as Date)
             
             fromLabel.text = title
             toLabel.text = subtitle
@@ -181,20 +181,20 @@ class TrackMapView: MKMapView {
         }
     }
     
-    func updateToTrack(track: Track) {
+    func updateToTrack(_ track: Track) {
         removeOverlays(overlays)
         
         let overlay = polylineForLocationPoints(track.locations)
         zoomToTrack(track)
-        addOverlay(overlay, level: .AboveRoads)
+        add(overlay, level: .aboveRoads)
     }
     
-    private func polylineForLocationPoints(locationPoints: RLMArray) -> MKPolyline {
+    fileprivate func polylineForLocationPoints(_ locationPoints: RLMArray<RLMObject>) -> MKPolyline {
         var coordinates = coordinatesForLocationPoints(locationPoints)
         return MKPolyline(coordinates: &coordinates, count: coordinates.count)
     }
     
-    private func coordinatesForLocationPoints(locationPoints: RLMArray) -> [CLLocationCoordinate2D] {
+    fileprivate func coordinatesForLocationPoints(_ locationPoints: RLMArray<RLMObject>) -> [CLLocationCoordinate2D] {
         var coordinates: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
         for rlmLocationPoint in locationPoints {
             if let locationPoint = rlmLocationPoint as? TrackLocation {
@@ -204,7 +204,7 @@ class TrackMapView: MKMapView {
         return coordinates
     }
     
-    private func zoomToTrack(track: Track) {
+    fileprivate func zoomToTrack(_ track: Track) {
         
         var zoomRect: MKMapRect? = nil
         for location in track.locations
@@ -228,7 +228,7 @@ class TrackMapView: MKMapView {
 
 extension TrackMapView: MKMapViewDelegate {
     
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let polyline = overlay as? MKPolyline {
             let renderer = MKPolylineRenderer(polyline: polyline)
             renderer.strokeColor = Styler.tintColor()
@@ -257,7 +257,7 @@ extension MKMapRect {
 
 extension MKMapView {
     
-    func setVisibleMapRectPadded(mapRect: MKMapRect) {
+    func setVisibleMapRectPadded(_ mapRect: MKMapRect) {
         let padding: CGFloat = 10
         let edgePadding = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         setVisibleMapRect(mapRect.minimumRect, edgePadding: edgePadding, animated: false)

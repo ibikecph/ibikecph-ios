@@ -13,37 +13,37 @@ class MainWithSideMenuViewController: UIViewController {
     var sideMenu: ENSideMenu?
     var mainViewController: UIViewController?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         sideMenu?.menuViewController.beginAppearanceTransition(true, animated: animated)
         mainViewController?.beginAppearanceTransition(true, animated: animated)
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if sideMenu != nil {
             return
         }
         
-        if let mainViewController = storyboard?.instantiateViewControllerWithIdentifier("MainNavigationViewController") {
+        if let mainViewController = storyboard?.instantiateViewController(withIdentifier: "MainNavigationViewController") {
             self.mainViewController = mainViewController
             
             addChildViewController(mainViewController)
             view.addSubview(mainViewController.view)
-            mainViewController.didMoveToParentViewController(self)
+            mainViewController.didMove(toParentViewController: self)
             
             let mainView = mainViewController.view
-            mainView.translatesAutoresizingMaskIntoConstraints = false
-            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1, constant: 0))
+            mainView?.translatesAutoresizingMaskIntoConstraints = false
+            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0))
         }
 
-        if let menuNavigationViewController = storyboard?.instantiateViewControllerWithIdentifier("MenuNavigationViewController") {
+        if let menuNavigationViewController = storyboard?.instantiateViewController(withIdentifier: "MenuNavigationViewController") {
             menuNavigationViewController.beginAppearanceTransition(true, animated: false)
-            sideMenu = ENSideMenu(sourceViewController: self, menuViewController: menuNavigationViewController, menuPosition: .Left)
+            sideMenu = ENSideMenu(sourceViewController: self, menuViewController: menuNavigationViewController, menuPosition: .left)
             sideMenu?.delegate = self
             menuNavigationViewController.endAppearanceTransition()
             
@@ -58,27 +58,27 @@ class MainWithSideMenuViewController: UIViewController {
         setNeedsStatusBarAppearanceUpdate()
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         sideMenu?.menuViewController.beginAppearanceTransition(false, animated: animated)
         mainViewController?.beginAppearanceTransition(false, animated: animated)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
         sideMenu?.menuViewController.endAppearanceTransition()
         mainViewController?.endAppearanceTransition()
     }
     
-    override func childViewControllerForStatusBarStyle() -> UIViewController? {
-        if let isMenuOpen = sideMenu?.isMenuOpen where isMenuOpen == true {
+    override var childViewControllerForStatusBarStyle : UIViewController? {
+        if let isMenuOpen = sideMenu?.isMenuOpen, isMenuOpen == true {
             return sideMenu?.menuViewController
         }
         return mainViewController
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }
 

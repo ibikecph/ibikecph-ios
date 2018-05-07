@@ -43,7 +43,7 @@ class SMRoute_Tests: XCTestCase {
     
     func routeInstructions() -> [[AnyObject]] {
         return [
-            [ 10, "Nørrebrogade", 736, 0, 209, "736m", "SE", 139, 1 ],
+            [ 10 as AnyObject, "Nørrebrogade" as AnyObject, 736 as AnyObject, 0 as AnyObject, 209 as AnyObject, "736m" as AnyObject, "SE" as AnyObject, 139, 1 ],
             [ 1, "Dronning Louises Bro", 211, 14, 55, "211m", "SE", 124, 1 ],
             [ 1, "Frederiksborggade", 12, 19, 11, "12m", "SE", 119, 1 ],
             [ 3, "{highway:cycleway}", 70, 20, 20, "70m", "SE", 156, 1 ],
@@ -60,10 +60,10 @@ class SMRoute_Tests: XCTestCase {
     
     func routeSummary() -> [String : AnyObject] {
         return [
-            "end_point": "Vestergade",
-            "start_point": "Nørrebrogade",
-            "total_distance": 2216,
-            "total_time": 606,
+            "end_point": "Vestergade" as AnyObject,
+            "start_point": "Nørrebrogade" as AnyObject,
+            "total_distance": 2216 as AnyObject,
+            "total_time": 606 as AnyObject,
         ]
     }
     func hintData() -> [String : AnyObject] {
@@ -78,7 +78,7 @@ class SMRoute_Tests: XCTestCase {
         return [ [ "55.691319", "12.553331" ], [ "55.677849", "12.570681" ] ]
     }
     
-    func jsonRoute() -> [NSObject : AnyObject] {
+    func jsonRoute() -> [AnyHashable: Any] {
         return [
             "found_alternative": 0,
             "hint_data": hintData(),

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RouteTypeToolbarDelegate {
-    func didChangeType(type: RouteType)
+    func didChangeType(_ type: RouteType)
 }
 
 class RouteTypeToolbarView: ToolbarView {
@@ -18,7 +18,7 @@ class RouteTypeToolbarView: ToolbarView {
     @IBOutlet weak var centerButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
-    private var type: RouteType {
+    fileprivate var type: RouteType {
         get {
             return RouteTypeHandler.instance.type
         }
@@ -30,8 +30,8 @@ class RouteTypeToolbarView: ToolbarView {
             }
         }
     }
-    private let validTypes = RouteType.validTypes()
-    private var buttons: [UIButton] {
+    fileprivate let validTypes = RouteType.validTypes()
+    fileprivate var buttons: [UIButton] {
         return [leftButton, centerButton, rightButton]
     }
     
@@ -43,27 +43,27 @@ class RouteTypeToolbarView: ToolbarView {
         updateUI()
     }
     
-    private func validType(index: Int) -> RouteType {
-        return index < validTypes.count ? validTypes[index] : .Disabled
+    fileprivate func validType(_ index: Int) -> RouteType {
+        return index < validTypes.count ? validTypes[index] : .disabled
     }
     
-    @IBAction func didTapLeftButton(sender: AnyObject) {
+    @IBAction func didTapLeftButton(_ sender: AnyObject) {
         type = validType(0)
     }
-    @IBAction func didTapCenterButton(sender: AnyObject) {
+    @IBAction func didTapCenterButton(_ sender: AnyObject) {
         type = validType(1)
     }
-    @IBAction func didTapRightButton(sender: AnyObject) {
+    @IBAction func didTapRightButton(_ sender: AnyObject) {
         type = validType(2)
     }
     
     func updateUI() {
-        for (index, button) in buttons.enumerate() {
+        for (index, button) in buttons.enumerated() {
             let type = validType(index)
-            button.enabled = (type != .Disabled)
+            button.isEnabled = (type != .disabled)
             let typeViewModel = RouteTypeViewModel(type: type)
             // Set image
-            button.setImage(typeViewModel.iconImage, forState: .Normal)
+            button.setImage(typeViewModel.iconImage, for: UIControlState())
             // Set selection
             button.tintColor = typeViewModel.selected ? Styler.tintColor() : Styler.foregroundColor()
         }

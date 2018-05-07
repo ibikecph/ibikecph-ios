@@ -22,12 +22,12 @@ struct Milestone {
         self.valueDividerForDescription = valueDividerForDescription
     }
     
-    private var storeKey: String { return "MilestoneLatest" + uniqueKey }
+    fileprivate var storeKey: String { return "MilestoneLatest" + uniqueKey }
     /// Last milestone presented to the user
     func latestPresentedValue() -> Int? {
         return Defaults[storeKey].int
     }
-    func setLatestPresentedValue(newValue: Int) {
+    func setLatestPresentedValue(_ newValue: Int) {
         Defaults[storeKey] = newValue
     }
     
@@ -46,19 +46,19 @@ struct Milestone {
     
     
     enum Response {
-        case Present(description: String, milestone: Milestone)
-        case False
+        case present(description: String, milestone: Milestone)
+        case `false`
     }
 
     func shouldPresent(forValue value: Int) -> Response {
         let nextMilestone = nextMilestoneToPresentToUser()
-        if value >= nextMilestone, let index = values.indexOf(nextMilestone) {
+        if value >= nextMilestone, let index = values.index(of: nextMilestone) {
             let reducedValue = nextMilestone / valueDividerForDescription
             let description = String(format: descriptions[index].localized, reducedValue)
             setLatestPresentedValue(value)
-            return .Present(description: description, milestone: self)
+            return .present(description: description, milestone: self)
         }
-        return .False
+        return .false
     }
 }
 
@@ -69,11 +69,11 @@ let statsNotificationHandler = StatsNotificationHandler()
 class StatsNotificationHandler {
     
     enum NotificationCategory {
-        case TotalDistance
-        case DayStreak
+        case totalDistance
+        case dayStreak
     }
     
-    private var distanceMilestone = Milestone(
+    fileprivate var distanceMilestone = Milestone(
         uniqueKey: "distanceMilestone",
         values: [10000, 50000, 100000, 250000, 500000, 750000, 1000000],
         descriptions: [
@@ -86,7 +86,7 @@ class StatsNotificationHandler {
             "milestone_distance_7_description"],
         valueDividerForDescription: 1000
     )
-    private var daystreakMilestone = Milestone(
+    fileprivate var daystreakMilestone = Milestone(
         uniqueKey: "daystreakMilestone",
         values: [3, 5, 10, 15, 20, 25, 30],
         descriptions: [
@@ -99,7 +99,7 @@ class StatsNotificationHandler {
             "milestone_daystreak_7_description"],
         valueDividerForDescription: 1
     )
-    private var observerTokens = [AnyObject]()
+    fileprivate var observerTokens = [AnyObject]()
 
     init() {
         setupLocalNotifications()
@@ -111,35 +111,35 @@ class StatsNotificationHandler {
         unobserve()
     }
     
-    private func unobserve() {
+    fileprivate func unobserve() {
         for observerToken in observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
         NotificationCenter.unobserve(self)
     }
     
-    private func setupLocalNotifications() {
+    fileprivate func setupLocalNotifications() {
         Notifications.register()
     }
     
-    private func setupTracksObserver() {
+    fileprivate func setupTracksObserver() {
         observerTokens.append(NotificationCenter.observe(processedBigNoticationKey) { [weak self] notification in
             self?.updateToTrackData()
         })
     }
     
-    private func setupSettingsObserver() {
+    fileprivate func setupSettingsObserver() {
         observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.updateToTrackData()
         })
     }
     
-    private func updateToTrackData() {
+    fileprivate func updateToTrackData() {
         // Weekly
-        let now = NSDate()
+        let now = Date()
         if let
             correctTimeToday = now.withComponents(hour: 18, minute: 0, second: 0),
-            nextSundayAt18 = now.nextWeekday(1, fromDate: correctTimeToday)
+            let nextSundayAt18 = now.nextWeekday(1, fromDate: correctTimeToday)
         {
             // Cancel previously set notification
             if let existingNotification = Notifications.localNotificationScheduledAtDate(nextSundayAt18) {
@@ -149,10 +149,10 @@ class StatsNotificationHandler {
             if Settings.sharedInstance.tracking.weeklyStatusNotifications {
                 // Update notification with latest statistics
                 let durationThisWeek = round(BikeStatistics.durationThisWeek()/60)*60 // Round to minutes
-                let calendar = NSCalendar.currentCalendar()
-                let unitFlags: NSCalendarUnit = [.Hour, .Minute]
-                let components = calendar.components(unitFlags, fromDate: NSDate(), toDate: NSDate(timeIntervalSinceNow: durationThisWeek), options: NSCalendarOptions(rawValue: 0))
-                let description = String(format: "weekly_status_description".localized, BikeStatistics.distanceThisWeek()/1000, components.hour, components.minute)
+                let calendar = Calendar.current
+                let unitFlags: NSCalendar.Unit = [.hour, .minute]
+                let components = (calendar as NSCalendar).components(unitFlags, from: Date(), to: Date(timeIntervalSinceNow: durationThisWeek), options: NSCalendar.Options(rawValue: 0))
+                let description = String(format: "weekly_status_description".localized, BikeStatistics.distanceThisWeek()/1000, components.hour!, components.minute!)
                 Notifications.scheduleLocalNotification(description, fireDate: nextSundayAt18)
             }
         }
@@ -160,28 +160,28 @@ class StatsNotificationHandler {
         // Distance
         let currentTotalDistance = Int(floor(BikeStatistics.totalDistance()))
         switch distanceMilestone.shouldPresent(forValue: currentTotalDistance) {
-            case .Present(let description, let milestone):
+            case .present(let description, let milestone):
                 addNotificationToQueue(description, milestone: milestone)
-            case .False: break // Do nothing
+            case .false: break // Do nothing
         }
         
         // Day streak
         let currentDaystreak = BikeStatistics.currentDayStreak()
         switch daystreakMilestone.shouldPresent(forValue: currentDaystreak) {
-            case .Present(let description, let milestone):
+            case .present(let description, let milestone):
                 addNotificationToQueue(description, milestone: milestone)
-            case .False: break // Do nothing
+            case .false: break // Do nothing
         }
         
         // Check if notifications should be presented to user
         checkPresentNotificationToUser()
     }
     
-    private func storeKeyForMilestone(milestone: Milestone) -> String {
+    fileprivate func storeKeyForMilestone(_ milestone: Milestone) -> String {
         return "NotificationQueue" + milestone.uniqueKey
     }
     
-    private func addNotificationToQueue(description: String, milestone: Milestone) {
+    fileprivate func addNotificationToQueue(_ description: String, milestone: Milestone) {
         Defaults[storeKeyForMilestone(milestone)] = description
     }
     
@@ -191,7 +191,7 @@ class StatsNotificationHandler {
             return
         }
         // Check that user didn't bike within last 5 min.
-        if let interval = BikeStatistics.lastTrackEndDate()?.timeIntervalSinceNow where -interval < 5*60 {
+        if let interval = BikeStatistics.lastTrackEndDate()?.timeIntervalSinceNow, -interval < 5*60 {
             return
         }
         // Present pending milestones
@@ -205,8 +205,8 @@ class StatsNotificationHandler {
         }
     }
     
-    private func tryPresentNotification(description: String) -> Bool {
-        let fireDate = NSDate().dateByAddingTimeInterval(1)
+    fileprivate func tryPresentNotification(_ description: String) -> Bool {
+        let fireDate = Date().addingTimeInterval(1)
         Notifications.scheduleLocalNotification(description, fireDate: fireDate)
         return true
     }

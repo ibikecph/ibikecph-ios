@@ -12,8 +12,8 @@ import CoreLocation
 // https://github.com/ibikecph/ibikecph-lib-android/blob/master/IBikeCPHLib/src/com/spoiledmilk/ibikecph/search/CurrentLocation.java#L43
 @objc class CurrentLocationItem: NSObject, SearchListItem {
     
-    var type: SearchListItemType = .CurrentLocation
-    var name: String = SMTranslation.decodeString("current_position")
+    var type: SearchListItemType = .currentLocation
+    var name: String = SMTranslation.decode("current_position")
     var address: String = "" // TODO: Check if it should can be calculated somehow https://github.com/ibikecph/ibikecph-lib-android/blob/master/IBikeCPHLib/src/com/spoiledmilk/ibikecph/search/CurrentLocation.java#L43
     var street: String = ""
     var number: String = ""

@@ -8,27 +8,27 @@
 
 import UIKit
 
-class Thread: NSThread {
+class Thread: Foundation.Thread {
     
     typealias Block = () -> ()
     
-    private let queueCondition = NSCondition()
-    private var blockQueue = [Block]()
+    fileprivate let queueCondition = NSCondition()
+    fileprivate var blockQueue = [Block]()
     
     override func main() {
         
         while true {
             queueCondition.lock()
-            while (blockQueue.count == 0 && !cancelled) {
+            while (blockQueue.count == 0 && !isCancelled) {
                 queueCondition.wait()
             }
             
-            if (cancelled) {
+            if (isCancelled) {
                 queueCondition.unlock()
                 return
             }
         
-            let block = blockQueue.removeAtIndex(0)
+            let block = blockQueue.remove(at: 0)
             queueCondition.unlock()
             
             // Execute block outside the condition, since it's also a lock!
@@ -38,7 +38,7 @@ class Thread: NSThread {
         }
     }
     
-    func enqueue(block: Block) {
+    func enqueue(_ block: @escaping Block) {
         queueCondition.lock()
         blockQueue.append(block)
         queueCondition.signal()

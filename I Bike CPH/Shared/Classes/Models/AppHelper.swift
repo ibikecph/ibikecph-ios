@@ -11,6 +11,6 @@ import Foundation
 class AppHelper {
     
     class func delegate() -> SMAppDelegate? {
-        return UIApplication.sharedApplication().delegate as? SMAppDelegate ?? nil
+        return UIApplication.shared.delegate as? SMAppDelegate ?? nil
     }
 }

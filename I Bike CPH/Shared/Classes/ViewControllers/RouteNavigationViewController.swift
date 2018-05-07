@@ -24,15 +24,15 @@ class RouteNavigationViewController: MapViewController {
     var routeAnnotations = [Annotation]()
     var observerTokens = [AnyObject]()
     
-    @IBAction func didTapProblem(sender: AnyObject) {
-        performSegueWithIdentifier(routeNavigationToReportErrorSegue, sender: self)
+    @IBAction func didTapProblem(_ sender: AnyObject) {
+        performSegue(withIdentifier: routeNavigationToReportErrorSegue, sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Disable user tracking
-        mapView.userTrackingMode = .Follow
+        mapView.userTrackingMode = .follow
         
         // Toolbar
         add(toolbarView: routeNavigationToolbarView)
@@ -47,7 +47,7 @@ class RouteNavigationViewController: MapViewController {
         updateUI(true)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addObservers()
 #if TRACKING_ENABLED
@@ -57,7 +57,7 @@ class RouteNavigationViewController: MapViewController {
 #endif
     }
 
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         unobserve()
         
@@ -71,18 +71,18 @@ class RouteNavigationViewController: MapViewController {
 #endif
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if
             segue.identifier == routeNavigationToReportErrorSegue,
-            let reportErrorController = segue.destinationViewController as? SMReportErrorController
+            let reportErrorController = segue.destination as? SMReportErrorController
         {
             var instructionDescriptions = [String]()
             if let routeComposite = routeComposite,
-                route = routeComposite.currentRoute {
+                let route = routeComposite.currentRoute {
                 if let pastInstructions = route.pastTurnInstructions.copy() as? [SMTurnInstruction] {
                     instructionDescriptions += (pastInstructions.map { $0.fullDescriptionString } )
                 }
@@ -98,31 +98,31 @@ class RouteNavigationViewController: MapViewController {
         }
     }
     
-    private func addObservers() {
+    fileprivate func addObservers() {
         // Location updates
         unobserve()
         observerTokens.append(NotificationCenter.observe("refreshPosition") { [weak self] notification in
             if let
                 locations = notification.userInfo?["locations"] as? [CLLocation],
-                location = locations.first,
-                routeComposite = self?.routeComposite
+                let location = locations.first,
+                let routeComposite = self?.routeComposite
             {
                 // Tell route about new user location
-                routeComposite.currentRoute?.visitLocation(location)
+                routeComposite.currentRoute?.visit(location)
                 // Update stats to reflect route progress
                 self?.updateStats()
             }
         })
     }
     
-    private func unobserve() {
+    fileprivate func unobserve() {
         for observerToken in observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
         NotificationCenter.unobserve(self)
     }
     
-    private func updateUI(zoom: Bool) {
+    fileprivate func updateUI(_ zoom: Bool) {
         updateRouteUI(zoom)
         // Directions
         updateTurnInstructions()
@@ -130,7 +130,7 @@ class RouteNavigationViewController: MapViewController {
         updateStats()
     }
 
-    private func updateRouteUI(zoom: Bool) {
+    fileprivate func updateRouteUI(_ zoom: Bool) {
         mapView.removeAnnotations(routeAnnotations)
         routeAnnotations = [Annotation]()
         if let routeComposite = routeComposite
@@ -142,7 +142,7 @@ class RouteNavigationViewController: MapViewController {
         }
     }
     
-    private func updateStats() {
+    fileprivate func updateStats() {
         if let routeComposite = routeComposite {
             // Stats
             routeNavigationToolbarView.routeStatsToolbarView.updateToRoute(routeComposite)
@@ -151,25 +151,25 @@ class RouteNavigationViewController: MapViewController {
         }
     }
     
-    private func updateTurnInstructions() {
+    fileprivate func updateTurnInstructions() {
         if let instructions = routeComposite?.currentRoute?.turnInstructions.copy() as? [SMTurnInstruction] {
             // Default
             routeNavigationDirectionsToolbarView.instructions = instructions
 
             if let routeComposite = routeComposite {
                 switch routeComposite.composite {
-                case .Multiple(let routes):
+                case .multiple(let routes):
                     if let currentRoute = routeComposite.currentRoute {
                         let previousIndex = routeComposite.currentRouteIndex - 1
                         if previousIndex < 0 {
                             break
                         } // Has previous route
                         let previousRoute = routes[previousIndex]
-                        if previousRoute.routeType == .Bike ||
-                            previousRoute.routeType == .Walk {
+                        if previousRoute.routeType == .bike ||
+                            previousRoute.routeType == .walk {
                             break
                         } // Previous route was public
-                        let distanceFromPreviousRouteEndLocation = previousRoute.getEndLocation().distanceFromLocation(currentRoute.lastCorrectedLocation)
+                        let distanceFromPreviousRouteEndLocation = previousRoute.getEndLocation().distance(from: currentRoute.lastCorrectedLocation)
                         if distanceFromPreviousRouteEndLocation > MAX_DISTANCE_FOR_PUBLIC_TRANSPORT {
                             break
                         } // Still closer than X meters
@@ -197,19 +197,18 @@ class RouteNavigationViewController: MapViewController {
 
 extension RouteNavigationViewController: RouteNavigationDirectionsToolbarDelegate {
     
-    func didSwipeToInstruction(instruction: SMTurnInstruction, userAction: Bool) {
+    func didSwipeToInstruction(_ instruction: SMTurnInstruction, userAction: Bool) {
         if !userAction {
             return
         }
         if let
-            firstInstruction = routeComposite?.currentRoute?.turnInstructions.firstObject as? SMTurnInstruction
-            where firstInstruction == instruction
+            firstInstruction = routeComposite?.currentRoute?.turnInstructions.firstObject as? SMTurnInstruction, firstInstruction == instruction
         {
             // If user swiped to the first instruction, enable .Follow
-            mapView.userTrackingMode = .Follow
+            mapView.userTrackingMode = .follow
         } else {
             // Disable tracking to allow user to swipe through turn instructions
-            mapView.userTrackingMode = .None
+            mapView.userTrackingMode = .none
             mapView.centerCoordinate(instruction.location.coordinate, zoomLevel: mapView.zoomLevel)
         }
     }
@@ -218,16 +217,16 @@ extension RouteNavigationViewController: RouteNavigationDirectionsToolbarDelegat
 
 extension RouteNavigationViewController: SMRouteDelegate {
     
-    func updateTurn(firstElementRemoved: Bool) {
+    func updateTurn(_ firstElementRemoved: Bool) {
         updateTurnInstructions()
     }
     func reachedDestination() {
         if let routeComposite = routeComposite {
             switch routeComposite.composite {
-            case .Single(_):
+            case .single(_):
                 InstructionTextToSpeechSynthesizer.sharedInstance.hasReachedDestination = true
                 return
-            case .Multiple(let routes): //  Go to next route if route contains more subroutes
+            case .multiple(let routes): //  Go to next route if route contains more subroutes
                 if routeComposite.currentRouteIndex + 1 < routes.count {
                     self.routeComposite?.currentRoute?.delegate = nil
                     self.routeComposite?.currentRouteIndex += 1
@@ -244,7 +243,7 @@ extension RouteNavigationViewController: SMRouteDelegate {
     func updateRoute() {
         updateUI(false)
     }
-    func startRoute(route: SMRoute!) {
+    func start(_ route: SMRoute!) {
         
     }
     func routeNotFound() {

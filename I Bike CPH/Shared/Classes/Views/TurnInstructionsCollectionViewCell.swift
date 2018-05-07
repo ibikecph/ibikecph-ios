@@ -14,14 +14,14 @@ class TurnInstructionsCollectionViewCell: NibDesignableCollectionViewCell {
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet weak var wayNameLabel: UILabel!
 
-    lazy var timeFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .ShortStyle
-        formatter.dateStyle = .NoStyle // No date
+    lazy var timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .none // No date
         return formatter
     }()
     
-    override var selected: Bool {
+    override var isSelected: Bool {
         set {
             // Do nothing to avoid highlight on selection
         }
@@ -33,15 +33,15 @@ class TurnInstructionsCollectionViewCell: NibDesignableCollectionViewCell {
 
 extension TurnInstructionsCollectionViewCell {
     
-    func configure(instruction: SMTurnInstruction) {
+    func configure(_ instruction: SMTurnInstruction) {
         directionImageView.image = instruction.directionIcon
-        let isPublic = instruction.routeType != .Bike && instruction.routeType != .Walk
+        let isPublic = instruction.routeType != .bike && instruction.routeType != .walk
         if isPublic {
             wayNameLabel.text = instruction.descriptionString
-            distanceLabel.text = timeFormatter.stringFromDate(instruction.routeLineTime)
+            distanceLabel.text = timeFormatter.string(from: instruction.routeLineTime)
         } else {
             wayNameLabel.text = instruction.wayName.localized
-            distanceLabel.text = SMRouteUtils.formatDistanceInMeters(Float(instruction.lengthInMeters))
+            distanceLabel.text = SMRouteUtils.formatDistance(inMeters: Float(instruction.lengthInMeters))
         }
     }
 }
