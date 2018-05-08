@@ -260,7 +260,7 @@ class TracksOperation: Operation {
         return tracks
     }
     
-    fileprivate func tracksSorted() -> RLMResults<RLMObject> {
+    fileprivate func tracksSorted() -> RLMResults<AnyObject> {
         return tracks().sortedResults(usingProperty: "startTimestamp", ascending: true)
     }
     
