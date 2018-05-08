@@ -36,8 +36,9 @@ class TracksViewController: SMTranslatedViewController {
     }
     
     func updateUI() {
-        tracks = Track.allObjects().sortedResults(usingProperty: "startTimestamp", ascending: false)
-        tableView.reloadData()
+        //TODO: temp commenting out of Realm-related logic
+        /*tracks = Track.allObjects().sortedResults(usingProperty: "startTimestamp", ascending: false)
+        tableView.reloadData()*/
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {

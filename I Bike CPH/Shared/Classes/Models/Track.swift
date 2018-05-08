@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class Track: RLMObject {
     dynamic var activity: TrackActivity = TrackActivity()
-    dynamic var locations = RLMArray(objectClassName: TrackLocation.className())
+    dynamic var locations = RLMArray<RLMObject>(objectClassName: TrackLocation.className())
     dynamic var start = ""
     dynamic var end = ""
     dynamic var length: Double = 0
