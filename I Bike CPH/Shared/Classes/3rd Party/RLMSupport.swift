@@ -16,125 +16,67 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-import Realm
-
-extension RLMRealm {
-    @nonobjc public class func schemaVersion(at url: URL, usingEncryptionKey key: Data? = nil) throws -> UInt64 {
-        var error: NSError?
-        let version = __schemaVersion(at: url, encryptionKey: key, error: &error)
-        guard version != RLMNotVersioned else { throw error! }
-        return version
-    }
-    
-    #if swift(>=3.2)
-    @nonobjc public func resolve<Confined>(reference: RLMThreadSafeReference<Confined>) -> Confined? {
-        return __resolve(reference as! RLMThreadSafeReference<RLMThreadConfined>) as! Confined?
-    }
-    #else
-    @nonobjc public func resolve<Confined: RLMThreadConfined>(reference: RLMThreadSafeReference<Confined>) -> Confined? {
-    return __resolve(reference as! RLMThreadSafeReference<RLMThreadConfined>) as! Confined?
-    }
-    #endif
-}
+//import Realm
 
 extension RLMObject {
     // Swift query convenience functions
-    public class func objects(where predicateFormat: String, _ args: CVarArg...) -> RLMResults<RLMObject> {
-        return objects(with: NSPredicate(format: predicateFormat, arguments: getVaList(args))) as! RLMResults<RLMObject>
+    public class func objectsWhere(_ predicateFormat: String, _ args: CVarArg...) -> RLMResults<RLMObject> {
+        return objects(with: NSPredicate(format: predicateFormat, arguments: getVaList(args)))
     }
-    
-    public class func objects(in realm: RLMRealm,
-                              where predicateFormat: String,
-                              _ args: CVarArg...) -> RLMResults<RLMObject> {
-        return objects(in: realm, with: NSPredicate(format: predicateFormat, arguments: getVaList(args))) as! RLMResults<RLMObject>
+
+    public class func objectsInRealm(_ realm: RLMRealm, _ predicateFormat: String, _ args: CVarArg...) -> RLMResults<RLMObject> {
+        return objects(in: realm, with:NSPredicate(format: predicateFormat, arguments: getVaList(args)))
     }
 }
 
-public struct RLMIterator<T>: IteratorProtocol {
-    private var iteratorBase: NSFastEnumerationIterator
-    
-    internal init(collection: RLMCollection) {
-        iteratorBase = NSFastEnumerationIterator(collection)
-    }
-    
-    public mutating func next() -> T? {
-        return iteratorBase.next() as! T?
-    }
-}
-
-// Sequence conformance for RLMArray and RLMResults is provided by RLMCollection's
-// `makeIterator()` implementation.
-extension RLMArray: Sequence {}
-extension RLMResults: Sequence {}
-
-extension RLMCollection {
+extension RLMArray: Sequence {
     // Support Sequence-style enumeration
-    public func makeIterator() -> RLMIterator<RLMObject> {
-        return RLMIterator(collection: self)
-    }
-}
+    public func makeIterator() -> AnyIterator<RLMObject> {
+        var i: UInt  = 0
 
-extension RLMCollection {
+        return AnyIterator<RLMObject> {
+            if (i >= self.count) {
+                return .none
+            } else {
+                let returnObject = self[i] as RLMObject
+                i += 1
+                return returnObject
+            }
+        }
+    }
+
     // Swift query convenience functions
-    public func indexOfObject(where predicateFormat: String, _ args: CVarArg...) -> UInt {
+    public func indexOfObjectWhere(_ predicateFormat: String, _ args: CVarArg...) -> UInt {
         return indexOfObject(with: NSPredicate(format: predicateFormat, arguments: getVaList(args)))
     }
-    
-    public func objects(where predicateFormat: String, _ args: CVarArg...) -> RLMResults<NSObject> {
-        return objects(with: NSPredicate(format: predicateFormat, arguments: getVaList(args))) as! RLMResults<NSObject>
+
+    public func objectsWhere(_ predicateFormat: String, _ args: CVarArg...) -> RLMResults<RLMObject> {
+        return objects(with: NSPredicate(format: predicateFormat, arguments: getVaList(args))) as! RLMResults<RLMObject>
     }
 }
 
-// MARK: - Sync-related
+extension RLMResults: Sequence {
+    // Support Sequence-style enumeration
+    public func makeIterator() -> AnyIterator<RLMObject> {
+        var i: UInt  = 0
 
-extension RLMSyncManager {
-    public static var shared: RLMSyncManager {
-        return __shared()
-    }
-}
-
-extension RLMSyncUser {
-    public static var current: RLMSyncUser? {
-        return __current()
-    }
-    
-    public static var all: [String: RLMSyncUser] {
-        return __allUsers()
-    }
-    
-    @nonobjc public var errorHandler: RLMUserErrorReportingBlock? {
-        get {
-            return __errorHandler
-        }
-        set {
-            __errorHandler = newValue
+        return AnyIterator<RLMObject> {
+            if (i >= self.count) {
+                return .none
+            } else {
+                let returnObject = self[i] as? RLMObject
+                i += 1
+                return returnObject
+            }
         }
     }
-    
-    public static func logIn(with credentials: RLMSyncCredentials,
-                             server authServerURL: URL,
-                             timeout: TimeInterval = 30,
-                             callbackQueue queue: DispatchQueue = DispatchQueue.main,
-                             onCompletion completion: @escaping RLMUserCompletionBlock) {
-        return __logIn(with: credentials,
-                       authServerURL: authServerURL,
-                       timeout: timeout,
-                       callbackQueue: queue,
-                       onCompletion: completion)
-    }
-}
 
-extension RLMSyncSession {
-    public func addProgressNotification(for direction: RLMSyncProgressDirection,
-                                        mode: RLMSyncProgressMode,
-                                        block: @escaping RLMProgressNotificationBlock) -> RLMProgressNotificationToken? {
-        return __addProgressNotification(for: direction,
-                                         mode: mode,
-                                         block: block)
+    // Swift query convenience functions
+    public func indexOfObjectWhere(_ predicateFormat: String, _ args: CVarArg...) -> UInt {
+        return indexOfObject(with: NSPredicate(format: predicateFormat, arguments: getVaList(args)))
     }
-}
 
-extension RLMNotificationToken {
-    @available(*, unavailable, renamed: "invalidate()")
-    @nonobjc public func stop() { fatalError() }
+    public func objectsWhere(_ predicateFormat: String, _ args: CVarArg...) -> RLMResults {
+        return objects(with: NSPredicate(format: predicateFormat, arguments: getVaList(args)))
+    }
 }
