@@ -21,6 +21,4 @@
 
 @interface RLMRealmConfiguration ()
 - (realm::Realm::Config&)config;
-
-@property (nonatomic) realm::SchemaMode schemaMode;
 @end

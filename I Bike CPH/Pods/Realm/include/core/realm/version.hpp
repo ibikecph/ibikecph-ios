@@ -1,54 +1,52 @@
 /*************************************************************************
  *
- * Copyright 2016 Realm Inc.
+ * REALM CONFIDENTIAL
+ * __________________
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  [2011] - [2015] Realm Inc
+ *  All Rights Reserved.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Realm Incorporated and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Realm Incorporated
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Realm Incorporated.
  *
  **************************************************************************/
-
 #ifndef REALM_VERSION_HPP
 #define REALM_VERSION_HPP
 
 #include <string>
+#include <sstream>
 
-// Do not use `cmakedefine` here, as certain versions can be 0, which CMake
-// interprets as being undefined.
-#define REALM_VERSION_MAJOR 5
-#define REALM_VERSION_MINOR 4
-#define REALM_VERSION_PATCH 2
-#define REALM_VERSION_EXTRA ""
-#define REALM_VERSION_STRING "5.4.2"
-
+#define REALM_VER_MAJOR 0
+#define REALM_VER_MINOR 97
+#define REALM_VER_PATCH 4
 #define REALM_PRODUCT_NAME "realm-core"
-#define REALM_VER_CHUNK "[" REALM_PRODUCT_NAME "-" REALM_VERSION_STRING "]"
+
+#define REALM_QUOTE2(X) #X
+#define REALM_QUOTE(X) REALM_QUOTE2(X)
+
+#define REALM_VER_STRING REALM_QUOTE(REALM_VER_MAJOR) "." REALM_QUOTE(REALM_VER_MINOR) "." REALM_QUOTE(REALM_VER_PATCH)
+#define REALM_VER_CHUNK "[" REALM_PRODUCT_NAME "-" REALM_VER_STRING "]"
 
 namespace realm {
 
 enum Feature {
     feature_Debug,
-    feature_Replication,
+    feature_Replication
 };
-
-class StringData;
 
 class Version {
 public:
-    static int get_major() { return REALM_VERSION_MAJOR; }
-    static int get_minor() { return REALM_VERSION_MINOR; }
-    static int get_patch() { return REALM_VERSION_PATCH; }
-    static StringData get_extra();
+    static int get_major() { return REALM_VER_MAJOR; }
+    static int get_minor() { return REALM_VER_MINOR; }
+    static int get_patch() { return REALM_VER_PATCH; }
     static std::string get_version();
-    static bool is_at_least(int major, int minor, int patch, StringData extra);
     static bool is_at_least(int major, int minor, int patch);
     static bool has_feature(Feature feature);
 };

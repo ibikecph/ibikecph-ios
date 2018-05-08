@@ -20,13 +20,6 @@
 
 @class RLMObjectSchema;
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface RLMResults ()
-@property (nonatomic, readonly, getter=isAttached) BOOL attached;
-
-+ (instancetype)emptyDetachedResults;
-
+@property (nonatomic, unsafe_unretained) RLMObjectSchema *objectSchema;
 @end
-
-NS_ASSUME_NONNULL_END

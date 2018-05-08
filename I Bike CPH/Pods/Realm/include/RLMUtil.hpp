@@ -22,8 +22,8 @@
 
 #import <realm/array.hpp>
 #import <realm/binary_data.hpp>
+#import <realm/datetime.hpp>
 #import <realm/string_data.hpp>
-#import <realm/timestamp.hpp>
 #import <realm/util/file.hpp>
 
 namespace realm {
@@ -45,18 +45,12 @@ NSError *RLMMakeError(RLMError code, std::exception const& exception);
 NSError *RLMMakeError(RLMError code, const realm::util::File::AccessError&);
 NSError *RLMMakeError(RLMError code, const realm::RealmFileException&);
 NSError *RLMMakeError(std::system_error const& exception);
+NSError *RLMMakeError(NSException *exception);
 
 void RLMSetErrorOrThrow(NSError *error, NSError **outError);
 
 // returns if the object can be inserted as the given type
 BOOL RLMIsObjectValidForProperty(id obj, RLMProperty *prop);
-// throw an exception if the object is not a valid value for the property
-void RLMValidateValueForProperty(id obj, RLMObjectSchema *objectSchema,
-                                 RLMProperty *prop, bool validateObjects=false);
-BOOL RLMValidateValue(id value, RLMPropertyType type, bool optional, bool array,
-                      NSString *objectClassName);
-
-void RLMThrowTypeError(id obj, RLMObjectSchema *objectSchema, RLMProperty *prop);
 
 // gets default values for the given schema (+defaultPropertyValues)
 // merges with native property defaults if Swift class
@@ -74,6 +68,9 @@ static inline BOOL RLMIsKindOfClass(Class class1, Class class2) {
     return NO;
 }
 
+// Returns whether the class is an indirect descendant of RLMObjectBase
+BOOL RLMIsObjectSubclass(Class klass);
+
 template<typename T>
 static inline T *RLMDynamicCast(__unsafe_unretained id obj) {
     if ([obj isKindOfClass:[T class]]) {
@@ -82,19 +79,42 @@ static inline T *RLMDynamicCast(__unsafe_unretained id obj) {
     return nil;
 }
 
-static inline id RLMCoerceToNil(__unsafe_unretained id obj) {
+template<typename T>
+static inline T RLMCoerceToNil(__unsafe_unretained T obj) {
     if (static_cast<id>(obj) == NSNull.null) {
         return nil;
     }
     else if (__unsafe_unretained auto optional = RLMDynamicCast<RLMOptionalBase>(obj)) {
-        return RLMCoerceToNil(RLMGetOptional(optional));
+        return RLMCoerceToNil(optional.underlyingValue);
     }
     return obj;
 }
 
-template<typename T>
-static inline T RLMCoerceToNil(__unsafe_unretained T obj) {
-    return RLMCoerceToNil(static_cast<id>(obj));
+// Translate an rlmtype to a string representation
+static inline NSString *RLMTypeToString(RLMPropertyType type) {
+    switch (type) {
+        case RLMPropertyTypeString:
+            return @"string";
+        case RLMPropertyTypeInt:
+            return @"int";
+        case RLMPropertyTypeBool:
+            return @"bool";
+        case RLMPropertyTypeDate:
+            return @"date";
+        case RLMPropertyTypeData:
+            return @"data";
+        case RLMPropertyTypeDouble:
+            return @"double";
+        case RLMPropertyTypeFloat:
+            return @"float";
+        case RLMPropertyTypeAny:
+            return @"any";
+        case RLMPropertyTypeObject:
+            return @"object";
+        case RLMPropertyTypeArray:
+            return @"array";
+    }
+    return @"Unknown";
 }
 
 // String conversion utilities
@@ -115,10 +135,10 @@ static inline realm::StringData RLMStringDataWithNSString(__unsafe_unretained NS
     static_assert(sizeof(size_t) >= sizeof(NSUInteger),
                   "Need runtime overflow check for NSUInteger to size_t conversion");
     return realm::StringData(string.UTF8String,
-                             [string lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+                               [string lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
 }
 
-// Binary conversion utilities
+// Binary convertion utilities
 static inline NSData *RLMBinaryDataToNSData(realm::BinaryData binaryData) {
     return binaryData ? [NSData dataWithBytes:binaryData.data() length:binaryData.size()] : nil;
 }
@@ -131,39 +151,15 @@ static inline realm::BinaryData RLMBinaryDataForNSData(__unsafe_unretained NSDat
     return realm::BinaryData(bytes, data.length);
 }
 
-// Date conversion utilities
-// These use the reference date and shift the seconds rather than just getting
-// the time interval since the epoch directly to avoid losing sub-second precision
-static inline NSDate *RLMTimestampToNSDate(realm::Timestamp ts) NS_RETURNS_RETAINED {
-    if (ts.is_null())
-        return nil;
-    auto timeInterval = ts.get_seconds() - NSTimeIntervalSince1970 + ts.get_nanoseconds() / 1'000'000'000.0;
-    return [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:timeInterval];
+// Date convertion utilities
+static inline NSDate *RLMDateTimeToNSDate(realm::DateTime dateTime) {
+    auto timeInterval = static_cast<NSTimeInterval>(dateTime.get_datetime());
+    return [NSDate dateWithTimeIntervalSince1970:timeInterval];
 }
 
-static inline realm::Timestamp RLMTimestampForNSDate(__unsafe_unretained NSDate *const date) {
-    if (!date)
-        return {};
-    auto timeInterval = date.timeIntervalSinceReferenceDate;
-    if (isnan(timeInterval))
-        return {0, 0}; // Arbitrary choice
-
-    // Clamp dates that we can't represent as a Timestamp to the maximum value
-    if (timeInterval >= std::numeric_limits<int64_t>::max() - NSTimeIntervalSince1970)
-        return {std::numeric_limits<int64_t>::max(), 1'000'000'000 - 1};
-    if (timeInterval - NSTimeIntervalSince1970 < std::numeric_limits<int64_t>::min())
-        return {std::numeric_limits<int64_t>::min(), -1'000'000'000 + 1};
-
-    auto seconds = static_cast<int64_t>(timeInterval);
-    auto nanoseconds = static_cast<int32_t>((timeInterval - seconds) * 1'000'000'000.0);
-    seconds += static_cast<int64_t>(NSTimeIntervalSince1970);
-
-    // Seconds and nanoseconds have to have the same sign
-    if (nanoseconds < 0 && seconds > 0) {
-        nanoseconds += 1'000'000'000;
-        --seconds;
-    }
-    return {seconds, nanoseconds};
+static inline realm::DateTime RLMDateTimeForNSDate(__unsafe_unretained NSDate *const date) {
+    auto time = static_cast<int64_t>(date.timeIntervalSince1970);
+    return realm::DateTime(time);
 }
 
 static inline NSUInteger RLMConvertNotFound(size_t index) {
@@ -171,7 +167,3 @@ static inline NSUInteger RLMConvertNotFound(size_t index) {
 }
 
 id RLMMixedToObjc(realm::Mixed const& value);
-
-// Given a bundle identifier, return the base directory on the disk within which Realm database and support files should
-// be stored.
-NSString *RLMDefaultDirectoryForBundleIdentifier(NSString *bundleIdentifier);

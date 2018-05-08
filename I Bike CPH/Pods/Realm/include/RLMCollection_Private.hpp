@@ -16,9 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-#import <Realm/RLMCollection_Private.h>
+#import <Realm/RLMCollection.h>
 
-#import <vector>
+#import <Realm/RLMRealm.h>
 
 namespace realm {
     class List;
@@ -27,30 +27,23 @@ namespace realm {
     struct CollectionChangeSet;
     struct NotificationToken;
 }
-class RLMClassInfo;
-@class RLMFastEnumerator;
+@class RLMObjectSchema;
 
 @protocol RLMFastEnumerable
 @property (nonatomic, readonly) RLMRealm *realm;
-@property (nonatomic, readonly) RLMClassInfo *objectInfo;
+@property (nonatomic, readonly) RLMObjectSchema *objectSchema;
 @property (nonatomic, readonly) NSUInteger count;
 
+- (NSUInteger)indexInSource:(NSUInteger)index;
 - (realm::TableView)tableView;
-- (RLMFastEnumerator *)fastEnumerator;
 @end
 
 // An object which encapulates the shared logic for fast-enumerating RLMArray
 // and RLMResults, and has a buffer to store strong references to the current
 // set of enumerated items
 @interface RLMFastEnumerator : NSObject
-- (instancetype)initWithList:(realm::List&)list
-                  collection:(id)collection
-                       realm:(RLMRealm *)realm
-                   classInfo:(RLMClassInfo&)info;
-- (instancetype)initWithResults:(realm::Results&)results
-                     collection:(id)collection
-                          realm:(RLMRealm *)realm
-                      classInfo:(RLMClassInfo&)info;
+- (instancetype)initWithCollection:(id<RLMFastEnumerable>)collection
+                      objectSchema:(RLMObjectSchema *)objectSchema;
 
 // Detach this enumerator from the source collection. Must be called before the
 // source collection is changed.
@@ -59,15 +52,9 @@ class RLMClassInfo;
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
                                     count:(NSUInteger)len;
 @end
-NSUInteger RLMFastEnumerate(NSFastEnumerationState *state, NSUInteger len, id<RLMFastEnumerable> collection);
-
-@interface RLMNotificationToken ()
-- (void)suppressNextNotification;
-- (RLMRealm *)realm;
-@end
 
 @interface RLMCancellationToken : RLMNotificationToken
-- (instancetype)initWithToken:(realm::NotificationToken)token realm:(RLMRealm *)realm;
+- (instancetype)initWithToken:(realm::NotificationToken)token;
 @end
 
 @interface RLMCollectionChange ()
@@ -80,8 +67,6 @@ RLMNotificationToken *RLMAddNotificationBlock(id objcCollection,
                                               void (^block)(id, RLMCollectionChange *, NSError *),
                                               bool suppressInitialChange=false);
 
-template<typename Collection>
-NSArray *RLMCollectionValueForKey(Collection& collection, NSString *key,
-                                  RLMRealm *realm, RLMClassInfo& info);
-
-std::vector<std::pair<std::string, bool>> RLMSortDescriptorsToKeypathArray(NSArray<RLMSortDescriptor *> *properties);
+NSArray *RLMCollectionValueForKey(id<RLMFastEnumerable> collection, NSString *key);
+void RLMCollectionSetValueForKey(id<RLMFastEnumerable> collection, NSString *key, id value);
+NSString *RLMDescriptionWithMaxDepth(NSString *name, id<RLMCollection> collection, NSUInteger depth);

@@ -17,20 +17,22 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #import "RLMRealm_Private.h"
+#import "RLMUtil.hpp"
+#import "shared_realm.hpp"
 
-#import "RLMClassInfo.hpp"
+#import <realm/group.hpp>
 
 namespace realm {
     class Group;
     class Realm;
+    typedef std::shared_ptr<realm::Realm> SharedRealm;
 }
 
 @interface RLMRealm () {
     @public
-    std::shared_ptr<realm::Realm> _realm;
-    RLMSchemaInfo _info;
+    realm::SharedRealm _realm;
 }
 
 // FIXME - group should not be exposed
-@property (nonatomic, readonly) realm::Group &group;
+@property (nonatomic, readonly) realm::Group *group;
 @end

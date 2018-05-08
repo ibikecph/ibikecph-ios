@@ -25,9 +25,9 @@ PODS:
   - ORStackView (3.0.1):
     - FLKAutoLayout (~> 0.2)
   - PSTAlertController (1.1.0)
-  - Realm (3.5.0):
-    - Realm/Headers (= 3.5.0)
-  - Realm/Headers (3.5.0)
+  - Realm (0.99.1):
+    - Realm/Headers (= 0.99.1)
+  - Realm/Headers (0.99.1)
   - SMCalloutView (2.0)
   - SnapKit (0.21.0)
   - SwiftHEXColors (1.0.4)
@@ -46,7 +46,7 @@ DEPENDENCIES:
   - OCMockito (~> 1.0)
   - ORStackView (~> 3.0)
   - PSTAlertController (= 1.1.0)
-  - Realm (~> 3.5.0)
+  - Realm (~> 0.99.0)
   - SnapKit (~> 0.21.0)
   - SwiftHEXColors (~> 1.0)
   - SwiftyJSON (~> 3.1.4)
@@ -96,7 +96,7 @@ SPEC CHECKSUMS:
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   ORStackView: a1bb52748cd0ae29891c140baf22ff8972fb363c
   PSTAlertController: cb21afcfa76c3229feec7db044afd4f60dab5892
-  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
+  Realm: 522a0cc8e1f8755ee56d7dc16ca0fc380d045766
   SMCalloutView: f758edd824b18bf4f42de00df1e299861a2d1950
   SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
   SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
@@ -105,6 +105,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIImage-Categories: a0593f6a7991c99016b9ecadfbd38b3717ff1a73
 
-PODFILE CHECKSUM: cf57f442dbdad64c6f35ed827be5722804d756b3
+PODFILE CHECKSUM: 8deb1759ed3b59d0641821621d38a88d82cdf2f3
 
 COCOAPODS: 1.5.0
