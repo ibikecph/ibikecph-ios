@@ -115,10 +115,10 @@ class BikeStatistics {
     :returns: The start date of the first bike track
     */
     class func firstTrackStartDate() -> Date? {
-        let sortedTracks = tracks().sortedResults(usingProperty: "startTimestamp", ascending: true)
+        let sortedTracks = tracks().sortedResults(usingKeyPath: "startTimestamp", ascending: true)
         let firstTrack = sortedTracks.firstObject() as? Track
         let startDate = firstTrack?.startDate()
-        return startDate as! Date
+        return startDate
     }
     
     /**
@@ -127,8 +127,8 @@ class BikeStatistics {
     :returns: The end date of the latest bike track
     */
     class func lastTrackEndDate() -> Date? {
-        let startDate = (tracks().sortedResults(usingProperty: "startTimestamp", ascending: true).lastObject() as? Track)?.endDate()
-        return startDate as! Date
+        let startDate = (tracks().sortedResults(usingKeyPath: "startTimestamp", ascending: true).lastObject() as? Track)?.endDate()
+        return startDate
     }
     
     fileprivate class func tracksThisWeek() -> RLMResults<RLMObject>? {
