@@ -154,7 +154,7 @@ import SwiftyJSON
         self.identifier = json["identifier"].stringValue
     }
     
-    func plistRepresentation() -> [String : AnyObject] {
+    func plistRepresentation() -> [String : Any] {
         return [
             "identifier" : identifier as AnyObject,
             "name" :  name as AnyObject,
