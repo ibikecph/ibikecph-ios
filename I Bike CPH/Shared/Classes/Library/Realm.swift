@@ -52,15 +52,14 @@ extension RLMObject {
     }
 }
 
-extension RLMResults {
-
-    func toArray<T>(_ ofType: T.Type) -> [T] {
+class RLMResultsHelper {
+    static func toArray<T>(results: RLMResults<RLMObject>, ofType: T.Type) -> [T] {
         var array = [T]()
-        /*for result in self {
+        for result in results {
             if let result = result as? T {
                 array.append(result)
             }
-        }*/
+        }
         return array
     }
 }
