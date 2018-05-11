@@ -39,16 +39,16 @@ class ServerClient: NSObject {
             if let configureRequest = configureRequest {
                 request = configureRequest(request)
             }
-            let task = session.dataTask(with: request as NSURLRequest, completionHandler: { data, response, error in
+            let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
                 if let error = error {
-                    completion(.failed(error: error))
+                    completion(.failed(error: error as NSError))
                     return
                 }
                 if let data = data {
                     var parsingError: NSError? = nil
                     let json = JSON(data: data, error: &parsingError)
                     if let error = parsingError {
-                        completion(.failed(error: error))
+                        completion(.failed(error: error as NSError))
                         return
                     }
                     let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 200

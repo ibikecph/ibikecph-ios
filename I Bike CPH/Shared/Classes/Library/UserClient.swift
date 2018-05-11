@@ -124,7 +124,7 @@ extension UserClient {
                 switch otherResult {
                 case .successJSON(let json, _):
                     let message = json["info"].stringValue
-                    completion(false, error: NSError(domain: "UserClient", code: 0, userInfo: [NSLocalizedDescriptionKey : message]))
+                    completion(false, NSError(domain: "UserClient", code: 0, userInfo: [NSLocalizedDescriptionKey : message]))
                 case .failed(let error):
                     completion(false, error)
                 default:
