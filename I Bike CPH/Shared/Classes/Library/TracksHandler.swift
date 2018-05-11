@@ -529,11 +529,12 @@ class ClearLeftOversOperation: TracksOperation {
                 }
                 
                 // Delete inacurate locations
-                let inaccurateLocations = track.locations.objectsWhere("horizontalAccuracy > 200 OR verticalAccuracy > 200")
+                // Temporarily disabled (TODO)
+                /*let inaccurateLocations = track.locations.objectsWhere("horizontalAccuracy > 200 OR verticalAccuracy > 200")
                 for inaccurateLocation in inaccurateLocations {
                     print("Deleted inacurate location in track: \(track.startDate())")
                     inaccurateLocation.deleteFromRealm()
-                }
+                }*/
                 
                 // Somewhat slow + long distance
                 let someWhatSlowLongDistance = track.slow(5, minLength: 0.200)

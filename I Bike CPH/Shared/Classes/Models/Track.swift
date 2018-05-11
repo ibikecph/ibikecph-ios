@@ -327,7 +327,7 @@ extension Track {
     }
 
     func locationsSorted() -> RLMResults<RLMObject> {
-        return locations.sortedResults(usingProperty: "timestamp", ascending: true)
+        return locations.sortedResults(usingKeyPath: "timestamp", ascending: true)
     }
 }
 
