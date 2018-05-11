@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class Track: RLMObject {
     dynamic var activity: TrackActivity = TrackActivity()
-    dynamic var locations = RLMArray(objectClassName: TrackLocation.className())
+    dynamic var locations = RLMArray<RLMObject>(objectClassName: TrackLocation.className())
     dynamic var start = ""
     dynamic var end = ""
     dynamic var length: Double = 0
@@ -327,7 +327,7 @@ extension Track {
     }
 
     func locationsSorted() -> RLMResults<RLMObject> {
-        return locations.sortedResults(usingProperty: "timestamp", ascending: true)
+        return locations.sortedResults(usingKeyPath: "timestamp", ascending: true)
     }
 }
 

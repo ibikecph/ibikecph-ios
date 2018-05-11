@@ -52,11 +52,10 @@ extension RLMObject {
     }
 }
 
-extension RLMResults {
-
-    func toArray<T>(_ ofType: T.Type) -> [T] {
+class RLMResultsHelper {
+    static func toArray<T>(results: RLMResults<AnyObject>, ofType: T.Type) -> [T] {
         var array = [T]()
-        for result in self {
+        for result in results {
             if let result = result as? T {
                 array.append(result)
             }
@@ -79,11 +78,11 @@ extension RLMRealm {
     }
     
     class func addNotificationBlock(_ block: RLMNotificationBlock) -> RLMNotificationToken {
-        return RLMRealm.default().addNotificationBlock(block)
+        return RLMRealm.addNotificationBlock(block)
     }
     
     class func removeNotification(_ token: RLMNotificationToken) {
-        token.stop()
+        token.invalidate()
     }
     
     class func beginWriteTransaction() {
@@ -98,7 +97,8 @@ extension RLMRealm {
     }
     
     class func compress(_ ifNecessary: Bool = true) {
-        if let defaultFileURL = RLMRealmConfiguration.default().fileURL,
+        //TODO: temp commenting out of Realm-related logic
+        /*if let defaultFileURL = RLMRealmConfiguration.default().fileURL,
                let defaultPath = defaultFileURL.path {
             if let
                 attributes = try? FileManager.default.attributesOfItem(atPath: defaultPath),
@@ -119,6 +119,6 @@ extension RLMRealm {
             }
             RLMRealm.default()
             compressingRealm = false
-        }
+        }*/
     }
 }

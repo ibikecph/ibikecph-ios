@@ -38,7 +38,10 @@ class BikeStatistics {
     :returns: All bike tracks as an RLMResults
     */
     class func tracks() -> RLMResults<RLMObject> {
-        return Track.objectsWhere("activity.cycling == TRUE AND startTimestamp != 0")
+        // Temporarily disabled (TODO)
+        //return Track.objectsWhere("activity.cycling == TRUE AND startTimestamp != 0")
+        
+        return Track.allObjects() as! RLMResults<RLMObject> // This is a temporary return value
     }
     
     /**
@@ -105,6 +108,8 @@ class BikeStatistics {
         if let timestampDayStart = date.beginningOfDay()?.timeIntervalSince1970, let timestampDayEnd = date.endOfDay()?.timeIntervalSince1970 {
             // Start time or end time should be within day
             return tracks().objectsWhere("startTimestamp BETWEEN %@ OR endTimestamp BETWEEN %@", [timestampDayStart, timestampDayEnd], [timestampDayEnd, timestampDayEnd])
+            
+            
         }
         return nil
     }
@@ -115,10 +120,10 @@ class BikeStatistics {
     :returns: The start date of the first bike track
     */
     class func firstTrackStartDate() -> Date? {
-        let sortedTracks = tracks().sortedResults(usingProperty: "startTimestamp", ascending: true)
+        let sortedTracks = tracks().sortedResults(usingKeyPath: "startTimestamp", ascending: true)
         let firstTrack = sortedTracks.firstObject() as? Track
         let startDate = firstTrack?.startDate()
-        return startDate as! Date
+        return startDate
     }
     
     /**
@@ -127,19 +132,21 @@ class BikeStatistics {
     :returns: The end date of the latest bike track
     */
     class func lastTrackEndDate() -> Date? {
-        let startDate = (tracks().sortedResults(usingProperty: "startTimestamp", ascending: true).lastObject() as? Track)?.endDate()
-        return startDate as! Date
+        let startDate = (tracks().sortedResults(usingKeyPath: "startTimestamp", ascending: true).lastObject() as? Track)?.endDate()
+        return startDate
     }
     
     fileprivate class func tracksThisWeek() -> RLMResults<RLMObject>? {
-        let now = Date()
+        // Temporarily disabled (TODO)
+        /*let now = Date()
         if let
             endOfToday = now.endOfDay(),
             let nextSunday = now.nextWeekday(1, fromDate: endOfToday),
             let thisMonday = (Calendar.current as NSCalendar).date(byAdding: .weekOfYear, value: -1, to: nextSunday, options: NSCalendar.Options(rawValue: 0))
         {
             return tracks().objectsWhere("endTimestamp BETWEEN %@", [thisMonday.timeIntervalSince1970, nextSunday.timeIntervalSince1970])
-        }
+        }*/
+        
         return nil
     }
     
