@@ -253,15 +253,18 @@ class TracksOperation: Operation {
     
     fileprivate func tracks(_ useFromDate: Bool = true) -> RLMResults<RLMObject> {
         let tracks = Track.allObjects(in: realm)
-        if useFromDate, let fromDate = fromDate {
+        
+        //TODO: disabled temporarily
+        /*if useFromDate, let fromDate = fromDate {
             let timestamp = fromDate.timeIntervalSince1970
             return tracks.objectsWhere("endTimestamp >= %lf", timestamp)
-        }
-        return tracks
+        }*/
+        
+        return tracks as! RLMResults<RLMObject>
     }
     
     fileprivate func tracksSorted() -> RLMResults<AnyObject> {
-        return tracks().sortedResults(usingProperty: "startTimestamp", ascending: true)
+        return tracks().sortedResults(usingKeyPath: "startTimestamp", ascending: true) as! RLMResults<AnyObject>
     }
     
     /// Add dependency to previous operation in array

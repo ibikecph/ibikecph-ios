@@ -53,7 +53,7 @@ class TrackDetailViewController: SMTranslatedViewController {
             return
         }
 
-        let trackLocations = RLMResultsHelper.toArray(results: track.locationsSorted(), ofType: TrackLocation.self)
+        let trackLocations = RLMResultsHelper.toArray(results: track.locationsSorted() as! RLMResults<AnyObject>, ofType: TrackLocation.self)
         let coordinates = trackLocations.map { return $0.coordinate() }
         // Draw route
         let pathAnnotation = mapView.addPath(coordinates)
