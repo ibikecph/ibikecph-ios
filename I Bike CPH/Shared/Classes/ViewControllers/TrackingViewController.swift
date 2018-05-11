@@ -168,7 +168,7 @@ class TrackingViewController: ToolbarViewController {
     func updateTracks() {
         var updatedTracks = [[Track]]()
         if BikeStatistics.firstTrackStartDate() != nil {
-            let allTracks = BikeStatistics.tracks().sortedResults(usingKeyPath: "startTimestamp", ascending: false)
+            let allTracks = BikeStatistics.tracks().sortedResults(usingProperty: "startTimestamp", ascending: false)
             var currentDate: Date = BikeStatistics.lastTrackEndDate() as! Date ?? Date()
             var section = 0
             for track in allTracks {
