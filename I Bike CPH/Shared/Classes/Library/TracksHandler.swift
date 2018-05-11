@@ -384,23 +384,25 @@ class RemoveUnownedDataOperation: TracksOperation {
         }
         
         // Delete unowned data
-        let unownedLocations = someLocations.objectsWhere("owned != %@", uuid)
+        // Temporarily disabled (TODO)
+        /*let unownedLocations = someLocations.objectsWhere("owned != %@", uuid)
         print("Deleting \(unownedLocations.count) unowned locations")
         deleteObjectsInParts(unownedLocations)
         let unownedActivities = someActivities.objectsWhere("owned != %@", uuid)
         print("Deleting \(unownedActivities.count) unowned activities")
         deleteObjectsInParts(unownedActivities)
         
-        print("Clear unowned data DONE \(-startDate.timeIntervalSinceNow)")
+        print("Clear unowned data DONE \(-startDate.timeIntervalSinceNow)")*/
     }
 }
 
 func deleteObjectsInParts(_ results: RLMResults<RLMObject>) {
-    let realm = results.realm
+    // Temporarily disabled (TODO)
+    /*let realm = results.realm
     let max = 1000
     let count = Int(results.count)
     if count > max {
-        let array = RLMResultsHelper.toArray(results: results as! RLMResults<Any>, ofType: RLMObject.self)
+        let array = RLMResultsHelper.toArray(results: results as! RLMResults<AnyObject>, ofType: RLMObject.self)
         let parts = Int(floor(Double(count) / Double(max)))
         for i in 0..<parts {
             let date = Date()
@@ -427,7 +429,7 @@ func deleteObjectsInParts(_ results: RLMResults<RLMObject>) {
             print("Could not commit Realm write transaction!")
         }
         print("\(results.count) \(Date().timeIntervalSince(date)) .b")
-    }
+    }*/
 }
 
 

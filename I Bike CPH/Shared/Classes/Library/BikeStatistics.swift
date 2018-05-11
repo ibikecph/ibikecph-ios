@@ -38,7 +38,10 @@ class BikeStatistics {
     :returns: All bike tracks as an RLMResults
     */
     class func tracks() -> RLMResults<RLMObject> {
-        return Track.objectsWhere("activity.cycling == TRUE AND startTimestamp != 0")
+        // Temporarily disabled (TODO)
+        //return Track.objectsWhere("activity.cycling == TRUE AND startTimestamp != 0")
+        
+        return Track.allObjects() as! RLMResults<RLMObject> // This is a temporary return value
     }
     
     /**
