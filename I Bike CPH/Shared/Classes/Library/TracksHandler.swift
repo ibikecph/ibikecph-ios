@@ -328,18 +328,25 @@ class RemoveUnownedDataOperation: TracksOperation {
     
     fileprivate func locations() -> RLMResults<RLMObject> {
         let locations = TrackLocation.allObjects(in: realm)
-        if let fromDate = fromDate {
+        
+        // Disabled temporarily (TODO)
+        /*if let fromDate = fromDate {
             let timestamp = fromDate.timeIntervalSince1970
             return locations.objectsWhere("timestamp >= %lf", timestamp)
-        }
-        return locations
+        }*/
+        
+        return locations as! RLMResults<RLMObject>
     }
+    
     fileprivate func activities() -> RLMResults<RLMObject> {
         let activities = TrackActivity.allObjects(in: realm)
-        if let fromDate = fromDate {
+        
+        // Disabled temporarily (TODO)
+        /*if let fromDate = fromDate {
             return activities.objectsWhere("startDate >= %@", fromDate)
-        }
-        return activities
+        }*/
+        
+        return activities as! RLMResults<RLMObject>
     }
     
     override func main() {
@@ -674,7 +681,8 @@ class PruneCurlyEndsOperation: TracksOperation {
     }
     
     fileprivate func pruneCurl(_ track: Track, extendSeconds: TimeInterval = 30) -> Bool {
-        var changed = false
+        // Temporarily disabled (TODO)
+        /*var changed = false
         
         let varianceLimit: Double = 2000
 
@@ -709,7 +717,7 @@ class PruneCurlyEndsOperation: TracksOperation {
         
         if let lastLocation = locations.lastObject() as? TrackLocation {
             // Go back 60 seconds from end
-            let lastLocations = locations.objectsWhere("timestamp >= %lf", lastLocation.timestamp - extendSeconds)
+            let lastLocations = locations.objectsWhere("timestamp >= %lf", args: [lastLocation.timestamp - extendSeconds])
             let lastCoordinates = lastLocations.toArray(TrackLocation).map { $0.coordinate() }
             let degreeDifferencesLast = difference(lastCoordinates)
             let variancesToEnd: [Double] = {
@@ -734,7 +742,10 @@ class PruneCurlyEndsOperation: TracksOperation {
                 changed = true
             }
         }
-        return changed
+        
+        return changed*/
+        
+        return false; // Temporary
     }
     
     func variance(_ array: [Double]) -> Double {
@@ -824,8 +835,14 @@ class PruneSlowEndsOperation: TracksOperation {
         if transact {
             realm.beginWriteTransaction()
         }
-        for track in tracks().objectsWhere("activity.cycling == TRUE") {
-            if let track = track as? Track, !track.isInvalidated {
+        
+        let tracksArray = tracks()
+        for track in tracksArray {
+            if let track = track as? Track {
+                if (!track.activity.cycling || !track.isInvalidated) {
+                    continue
+                }
+                
                 let cycling = track.activity.cycling
                 if !cycling {
                     continue
@@ -855,6 +872,7 @@ class PruneSlowEndsOperation: TracksOperation {
                 }
             }
         }
+        
         if transact {
             do {
                 try realm.commitWriteTransaction()
@@ -1100,11 +1118,13 @@ class GeocodeBikeTracksOperation: TracksOperation {
         
         print("Geocode bike tracks")
         
-        let bikeTracks = tracks().objectsWhere("activity.cycling == TRUE")
+        let bikeTracks = tracks()
         for track in bikeTracks {
             if let track = track as? Track, !track.hasBeenGeocoded {
-                // Geocode synchronously to make sure writes are happening on same thread
-                track.geocode(true)
+                if track.activity.cycling {
+                    // Geocode synchronously to make sure writes are happening on same thread
+                    track.geocode(true)
+                }
             }
         }
         print("Geocode bike tracks DONE \(-startDate.timeIntervalSinceNow)")
@@ -1117,6 +1137,8 @@ class UploadBikeTracksOperation: TracksOperation {
     override func main() {
         super.main()
         
+        // Temporarily disabled (TODO)
+        /*
         // Only perform this if the app is in the foreground
         if UIApplication.shared.applicationState != .active {
             return
@@ -1149,9 +1171,13 @@ class UploadBikeTracksOperation: TracksOperation {
         }
         
         let timestamp = Date(timeIntervalSinceNow: -60*60*1).timeIntervalSince1970 // Only upload tracks older than an hour
-        let bikeTracks = tracks().objectsWhere("endTimestamp <= %lf AND serverId == '' AND activity.cycling == TRUE", timestamp)
-        for track in bikeTracks {
-            if let track = track as? Track {
+        let bikeTracks = tracks()
+        for bikeTrack in bikeTracks {
+            if let track = bikeTrack as? Track {
+                if !(track.endTimestamp <= timestamp && track.serverId == "" && track.activity.cycling) {
+                    continue
+                }
+                
                 let temporaryTrackId = UUID().uuidString
                 do {
                     try track.realm?.transaction {
@@ -1201,5 +1227,6 @@ class UploadBikeTracksOperation: TracksOperation {
             }
         }
         print("Upload bike tracks DONE \(-startDate.timeIntervalSinceNow)")
+        */
     }
 }
