@@ -55,13 +55,13 @@ class RouteManager: NSObject {
 
 extension RouteManager: SMRequestOSRMDelegate {
     
-    func request(_ req: SMRequestOSRM!, failedWithError error: NSError!) {
-        delegate?.didGetResultForRoute(.error(error))
+    func request(_ req: SMRequestOSRM!, failedWithError error: Error!) {
+        delegate?.didGetResultForRoute(.error(error! as NSError))
     }
     
-    func request(_ req: SMRequestOSRM!, finishedWithResult res: AnyObject!) {
+    func request(_ req: SMRequestOSRM!, finishedWithResult res: Any!) {
         
-        let json = JSON(data: req.responseData)
+        let json = JSON(data: req.responseData as Data)
         // TODO: Get this status code thing sorted
         if let status = json["status"].int, (status != 200 && status != 0) {
             delegate?.didGetResultForRoute(.errorOfType(.routeNotFound))

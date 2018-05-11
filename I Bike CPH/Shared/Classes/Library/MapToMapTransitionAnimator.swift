@@ -19,9 +19,8 @@ class MapToMapTransitionAnimator: NSObject, UIViewControllerAnimatedTransitionin
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         self.transitionContext = transitionContext
         
-        if let containerView = transitionContext.containerView,
-            let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? MapViewController
-        {
+        let containerView = transitionContext.containerView
+        if let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? MapViewController {
             // Add toViewController to view hierarchy
             containerView.addSubview(toViewController.view)
             
@@ -35,7 +34,8 @@ class MapToMapTransitionAnimator: NSObject, UIViewControllerAnimatedTransitionin
         }
     }
   
-    override func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    // Removed the "override" annotation from the function below. TODO: Make sure the current implementation matches the function's purpose. 
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         self.transitionContext?.completeTransition(!self.transitionContext!.transitionWasCancelled)
     }
 }

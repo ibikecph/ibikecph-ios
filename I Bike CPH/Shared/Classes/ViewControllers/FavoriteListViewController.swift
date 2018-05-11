@@ -85,7 +85,7 @@ extension FavoriteListViewController: SMFavoritesDelegate {
     func favoritesOperation(_ req: AnyObject!, failedWithError error: NSError!) {
     }
     
-    func favoritesOperationFinishedSuccessfully(_ req: AnyObject!, withData data: AnyObject!) {
+    func favoritesOperationFinishedSuccessfully(_ req: Any!, withData data: Any!) {
         items = SMFavoritesUtil.favorites() as! [FavoriteItem] // Update favorites
     }
 }
