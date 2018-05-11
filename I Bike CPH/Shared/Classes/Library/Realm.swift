@@ -53,7 +53,7 @@ extension RLMObject {
 }
 
 class RLMResultsHelper {
-    static func toArray<T>(results: RLMResults<RLMObject>, ofType: T.Type) -> [T] {
+    static func toArray<T>(results: RLMResults<AnyObject>, ofType: T.Type) -> [T] {
         var array = [T]()
         for result in results {
             if let result = result as? T {

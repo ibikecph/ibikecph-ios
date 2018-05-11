@@ -390,7 +390,7 @@ func deleteObjectsInParts(_ results: RLMResults<RLMObject>) {
     let max = 1000
     let count = Int(results.count)
     if count > max {
-        let array = RLMResultsHelper.toArray(results: results, ofType: RLMObject.self)
+        let array = RLMResultsHelper.toArray(results: results as! RLMResults<Any>, ofType: RLMObject.self)
         let parts = Int(floor(Double(count) / Double(max)))
         for i in 0..<parts {
             let date = Date()
@@ -409,7 +409,7 @@ func deleteObjectsInParts(_ results: RLMResults<RLMObject>) {
         let date = Date()
         realm.beginWriteTransaction()
         
-        var resultsArray = RLMResultsHelper.toArray(results: results, ofType: RLMObject.self)
+        var resultsArray = RLMResultsHelper.toArray(results: results as! RLMResults<AnyObject>, ofType: RLMObject.self)
         realm.deleteObjects(resultsArray)
         do {
             try realm.commitWriteTransaction()
@@ -1044,7 +1044,7 @@ class MergeTracksBetweenBikeTracksOperation: MergeTimeTracksOperation {
                     print("\(formatter.string(from: track.startDate()!)) -> \(formatter.string(from: track.endDate()!))")
                 }
                 mergeTracks(tracksToMerge)
-                tracks = tracksSorted().toArray(Track.self)
+                tracks = RLMResultsHelper.toArray(results: tracksSorted(), ofType: Track.self)
             } else {
                 count += 1
             }
