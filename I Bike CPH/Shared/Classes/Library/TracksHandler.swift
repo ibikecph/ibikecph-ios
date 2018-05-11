@@ -611,7 +611,7 @@ class PruneSimilarLocationOperation: TracksOperation {
 
                 if deleteCenter {
                     // Find locations of object in unsorted array
-                    let i = track.locations.indexOfObject(center)
+                    let i = track.locations.index(of: center)
                     // Delete from locations array on track
                     track.locations.removeObject(at: i)
                     // Delete from realm
@@ -865,11 +865,13 @@ class PruneSlowEndsOperation: TracksOperation {
                     if speed > speedLimit {
                         break
                     }
-                    if let lastLocation = track.locationsSorted().lastObject() as? TrackLocation {
+                    
+                    // Temporarily disabled (TODO)
+                    /*if let lastLocation = track.locationsSorted().lastObject() as? TrackLocation {
                         let _i = track.locations.index(lastLocation)
                         track.locations.removeObject(at: _i)
                         lastLocation.deleteFromRealm()
-                    }
+                    }*/
                 }
             }
         }

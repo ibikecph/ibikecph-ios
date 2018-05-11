@@ -105,6 +105,8 @@ class BikeStatistics {
         if let timestampDayStart = date.beginningOfDay()?.timeIntervalSince1970, let timestampDayEnd = date.endOfDay()?.timeIntervalSince1970 {
             // Start time or end time should be within day
             return tracks().objectsWhere("startTimestamp BETWEEN %@ OR endTimestamp BETWEEN %@", [timestampDayStart, timestampDayEnd], [timestampDayEnd, timestampDayEnd])
+            
+            
         }
         return nil
     }
@@ -132,14 +134,16 @@ class BikeStatistics {
     }
     
     fileprivate class func tracksThisWeek() -> RLMResults<RLMObject>? {
-        let now = Date()
+        // Temporarily disabled (TODO)
+        /*let now = Date()
         if let
             endOfToday = now.endOfDay(),
             let nextSunday = now.nextWeekday(1, fromDate: endOfToday),
             let thisMonday = (Calendar.current as NSCalendar).date(byAdding: .weekOfYear, value: -1, to: nextSunday, options: NSCalendar.Options(rawValue: 0))
         {
             return tracks().objectsWhere("endTimestamp BETWEEN %@", [thisMonday.timeIntervalSince1970, nextSunday.timeIntervalSince1970])
-        }
+        }*/
+        
         return nil
     }
     
