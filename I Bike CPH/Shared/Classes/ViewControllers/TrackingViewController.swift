@@ -137,20 +137,20 @@ class TrackingViewController: ToolbarViewController {
         
         // Stats
         let totalDistance = BikeStatistics.totalDistance() / 1000
-        distanceLabel.text = numberFormatter.string(from: NSNumber(totalDistance))
+        distanceLabel.text = numberFormatter.string(from: NSNumber(value: totalDistance))
         
         let totalTime = BikeStatistics.totalDuration() / 3600
-        timeLabel.text = numberFormatter.string(from: NSNumber(totalTime))
+        timeLabel.text = numberFormatter.string(from: NSNumber(value: totalTime))
         
         let averageSpeed = BikeStatistics.averageSpeed() / 1000 * 3600
-        speedLabel.text = decimalFormatter.string(from: NSNumber(averageSpeed))
+        speedLabel.text = decimalFormatter.string(from: NSNumber(value: averageSpeed))
         
         if let startDate = BikeStatistics.firstTrackStartDate() {
             sinceLabel.text = "Since".localized + " " + sinceFormatter.string(from: startDate as Date)
             let totalDays = Date().relativeDay(startDate) + 1
             let averageDayDistance = BikeStatistics.totalDistance() / Double(totalDays)
             let averageDayCalories = BikeStatistics.kiloCaloriesPerBikedDistance(averageDayDistance)
-            calorieLabel.text = numberFormatter.string(from: averageDayCalories)
+            calorieLabel.text = numberFormatter.string(from: NSNumber(value: averageDayCalories))
         } else {
             sinceLabel.text = "–"
             calorieLabel.text = "-"
