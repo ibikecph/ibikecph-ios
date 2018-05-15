@@ -59,11 +59,6 @@
                                              selector:@selector(inputKeyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    
-    if (![SMAnalytics trackEventWithCategory:@"Report" withAction:@"Start" withLabel:@"" withValue:0]) {
-        debugLog(@"error in trackEvent");
-    }
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -307,10 +302,6 @@
 
 - (void)request:(SMAPIRequest *)req completedWithResult:(NSDictionary *)result {
     if ([result[@"success"] boolValue]) {
-        if (![SMAnalytics trackEventWithCategory:@"Report" withAction:@"Completed" withLabel:@"" withValue:0]) {
-            debugLog(@"error in trackEvent");
-        }
-
         [UIView animateWithDuration:0.4f animations:^{
             [reportSentView setAlpha:1.0f];
         }];

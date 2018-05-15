@@ -38,19 +38,6 @@
     // Initialize location manager (not used for map, but for getting current location)
     [SMLocationManager sharedInstance];
 
-    /**
-     * initialize Google Analytics
-     */
-    [GAI sharedInstance].dispatchInterval = GOOGLE_ANALYTICS_DISPATCH_INTERVAL;
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    self.tracker = [[GAI sharedInstance] trackerWithTrackingId:GOOGLE_ANALYTICS_KEY];
-    [GAI sharedInstance].defaultTracker = self.tracker;
-    [[GAI sharedInstance].defaultTracker set:kGAISampleRate value:GOOGLE_ANALYTICS_SAMPLE_RATE];
-    [[GAI sharedInstance].defaultTracker set:kGAIAnonymizeIp value:GOOGLE_ANALYTICS_ANONYMIZE];
-
-    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@""];
-    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createScreenView] build]];
-
     if ([[NSFileManager defaultManager] fileExistsAtPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
                                                                  .firstObject stringByAppendingPathComponent:@"settings.plist"]] == NO) {
         NSDictionary *d = @{ @"introSeen" : @NO, @"permanentTileCache" : @NO };
