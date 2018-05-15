@@ -8,126 +8,127 @@
 
 import UIKit
 import SwiftyJSON
+import Async
 
 class UserClient: ServerClient {
     static let instance = UserClient()
     
-    private let baseUrl = SMRouteSettings.sharedInstance().api_base_url
+    fileprivate let baseUrl = SMRouteSettings.sharedInstance().api_base_url
     
     enum HasTokenResult {
-        case Success(hasToken: Bool)
-        case Other(ServerResult)
+        case success(hasToken: Bool)
+        case other(ServerResult)
     }
     
     enum UserResult {
-        case Success(name: String, imageUrl: UIImage?)
-        case Other(ServerResult)
+        case success(name: String, imageUrl: UIImage?)
+        case other(ServerResult)
     }
     
     enum Result {
-        case Success()
-        case Other(ServerResult)
+        case success()
+        case other(ServerResult)
     }
     
-    func hasTrackToken(completion: (HasTokenResult) -> ()) {
-        let path = baseUrl + "/users/has_password"
+    func hasTrackToken(_ completion: @escaping (HasTokenResult) -> ()) {
+        let path = baseUrl! + "/users/has_password"
         
         request(path, configureRequest: { theRequest in
-            theRequest.HTTPMethod = "POST"
+            theRequest.httpMethod = "POST"
             return theRequest
         }) { result in
             Async.main {
                 switch result {
-                case .SuccessJSON(let json, _):
+                case .successJSON(let json, _):
                     if let hasToken = json["has_password"].bool {
-                        completion(.Success(hasToken: hasToken))
+                        completion(.success(hasToken: hasToken))
                     } else {
-                        completion(.Other(ServerResult.FailedNoSuccess))
+                        completion(.other(ServerResult.failedNoSuccess))
                     }
-                default: completion(.Other(result))
+                default: completion(.other(result))
                 }
             }
             return
         }
     }
     
-    func addTrackToken(token: String, completion: (Result) -> ()) {
-        let path = baseUrl + "/users/add_password"
+    func addTrackToken(_ token: String, completion: @escaping (Result) -> ()) {
+        let path = baseUrl! + "/users/add_password"
         
         let json: JSON = [ "user" : ["password" : token]]
         do {
             let data = try json.rawData()
             request(path, configureRequest: { theRequest in
-                theRequest.HTTPBody = data
-                theRequest.HTTPMethod = "POST"
+                theRequest.httpBody = data
+                theRequest.httpMethod = "POST"
                 return theRequest
             }) { result in
                 Async.main {
                     switch result {
-                    case .SuccessJSON(let json, _):
+                    case .successJSON(let json, _):
                         if let trackToken = json["data"]["signature"].string {
                             AppHelper.delegate()?.appSettings["signature"] = trackToken
-                            completion(.Success())
+                            completion(.success())
                         } else {
-                            completion(.Other(ServerResult.FailedNoSuccess))
+                            completion(.other(ServerResult.failedNoSuccess))
                         }
-                    default: completion(.Other(result))
+                    default: completion(.other(result))
                     }
                 }
                 return
             }
             return
         } catch let error as NSError {
-            completion(.Other(ServerResult.Failed(error: error)))
+            completion(.other(ServerResult.failed(error: error)))
             return
         }
 //        completion(.Other(ServerResult.FailedEncodingError))
     }
     
-    func userData(completion: (UserResult) -> ()) {
+    func userData(_ completion: @escaping (UserResult) -> ()) {
         if let id = UserHelper.id() {
-            let path = baseUrl + "/users/" + id
+            let path = baseUrl! + "/users/" + id
             request(path) { result in
                 switch result {
-                case .SuccessJSON(let json, _):
+                case .successJSON(let json, _):
                     if let name = json["data"]["name"].string {
                         let image: UIImage? = {
                             if let string = json["data"]["image_url"].string,
-                                url = NSURL(string: string),
-                                data = NSData(contentsOfURL: url),
-                                image = UIImage(data: data) {
+                                let url = URL(string: string),
+                                let data = try? Data(contentsOf: url),
+                                let image = UIImage(data: data) {
                                     return image
                             }
                             return nil
                         }()
-                        Async.main { completion(.Success(name: name, imageUrl: image)) }
+                        Async.main { completion(.success(name: name, imageUrl: image)) }
                     } else {
-                        Async.main { completion(.Other(ServerResult.FailedNoSuccess)) }
+                        Async.main { completion(.other(ServerResult.failedNoSuccess)) }
                     }
-                default: Async.main { completion(.Other(result)) }
+                default: Async.main { completion(.other(result)) }
                 }
                 return
             }
             return
         }
-        completion(.Other(ServerResult.FailedEncodingError))
+        completion(.other(ServerResult.failedEncodingError))
     }
 }
 
 extension UserClient {
-    @objc func hasTrackTokenObjc(completion: (success: Bool, error: NSError?) -> ()) {
+    @objc func hasTrackTokenObjc(_ completion: @escaping (_ success: Bool, _ error: NSError?) -> ()) {
         hasTrackToken { result in
             switch result {
-            case .Success(let hasToken): completion(success: hasToken, error: nil)
-            case .Other(let otherResult):
+            case .success(let hasToken): completion(hasToken, nil)
+            case .other(let otherResult):
                 switch otherResult {
-                case .SuccessJSON(let json, _):
+                case .successJSON(let json, _):
                     let message = json["info"].stringValue
-                    completion(success: false, error: NSError(domain: "UserClient", code: 0, userInfo: [NSLocalizedDescriptionKey : message]))
-                case .Failed(let error):
-                    completion(success: false, error: error)
+                    completion(false, NSError(domain: "UserClient", code: 0, userInfo: [NSLocalizedDescriptionKey : message]))
+                case .failed(let error):
+                    completion(false, error)
                 default:
-                    completion(success: false, error: NSError(domain: "UserClient", code: 0, userInfo: nil))
+                    completion(false, NSError(domain: "UserClient", code: 0, userInfo: nil))
                 }
             }
         }

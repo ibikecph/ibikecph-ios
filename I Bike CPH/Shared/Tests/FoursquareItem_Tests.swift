@@ -26,14 +26,14 @@ class FoursquareItem_Tests: XCTestCase {
         var serverResponse = [String: AnyObject]()
         
         var locationResponse = [String: AnyObject]()
-        locationResponse["address"] = "Smallegade 1"
-        locationResponse["city"] = "Frederiksberg"
-        locationResponse["country"] = "Denmark"
-        locationResponse["lat"] = 55.67815305484223
-        locationResponse["lng"] = 12.53254652023315
-        locationResponse["postalCode"] = 2000
-        serverResponse["location"] = locationResponse
-        serverResponse["name"] = "Frederiksberg Rådhusplads"
+        locationResponse["address"] = "Smallegade 1" as AnyObject
+        locationResponse["city"] = "Frederiksberg" as AnyObject
+        locationResponse["country"] = "Denmark" as AnyObject
+        locationResponse["lat"] = 55.67815305484223 as AnyObject
+        locationResponse["lng"] = 12.53254652023315 as AnyObject
+        locationResponse["postalCode"] = 2000 as AnyObject
+        serverResponse["location"] = locationResponse as AnyObject
+        serverResponse["name"] = "Frederiksberg Rådhusplads" as AnyObject
         
         let foursquareItem = FoursquareItem(jsonDictionary: serverResponse as AnyObject)
         

@@ -3,17 +3,16 @@
 //  I Bike CPH
 //
 
-//import AVFoundation.AVAudioSession
-import AVFoundation.AVSpeechSynthesis
+import AVFoundation
 
 class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
 
     static let sharedInstance = InstructionTextToSpeechSynthesizer()
     
     var hasReachedDestination: Bool = false
-    private var lastSpokenTurnInstruction: String = ""
-    private var previousDistanceToNextTurn: Int = Int.max
-    private var hasSpokenDestination: Bool = false
+    fileprivate var lastSpokenTurnInstruction: String = ""
+    fileprivate var previousDistanceToNextTurn: Int = Int.max
+    fileprivate var hasSpokenDestination: Bool = false
     var routeComposite: RouteComposite? {
         didSet {
             self.hasReachedDestination = false
@@ -31,7 +30,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
     
     func speakDestination() {
         if let destination = self.routeComposite?.to {
-            let destinationName = (destination.name.containsString(destination.street)) ? destination.street + " " + destination.number : destination.name
+            let destinationName = (destination.name.contains(destination.street)) ? destination.street + " " + destination.number : destination.name
             let stringToBeSpoken = String.init(format: "read_aloud_enabled".localized, destinationName)
             self.speakString(self.replaceSubstrings(stringToBeSpoken))
         }
@@ -44,8 +43,8 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
     
     func speakTurnInstruction() {
         guard let routeComposite = self.routeComposite,
-                  instructions = self.routeComposite?.currentRoute?.turnInstructions.copy() as? [SMTurnInstruction],
-                  instruction = instructions.first else {
+                  let instructions = self.routeComposite?.currentRoute?.turnInstructions.copy() as? [SMTurnInstruction],
+                  let instruction = instructions.first else {
             return
         }
         
@@ -53,7 +52,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
         let metersToNextTurn = Int(instruction.lengthInMeters)
         let minimumDistanceBeforeTurn: Int = 75
         let distanceDelta: Int = 500
-        let onPublicTransport = instruction.routeType != .Bike && instruction.routeType != .Walk
+        let onPublicTransport = instruction.routeType != .bike && instruction.routeType != .walk
         
         if (self.lastSpokenTurnInstruction != nextTurnInstruction) {
             // The turn instruction has changed
@@ -95,22 +94,22 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
         }
     }
     
-    private let calendar = NSCalendar.currentCalendar()
-    private let unitFlags: NSCalendarUnit = [.Hour, .Minute]
-    private func hoursAndMinutes(seconds: NSTimeInterval) -> (hour: Int, minutes: Int) {
+    fileprivate let calendar = Calendar.current
+    fileprivate let unitFlags: NSCalendar.Unit = [.hour, .minute]
+    fileprivate func hoursAndMinutes(_ seconds: TimeInterval) -> (hour: Int, minutes: Int) {
         let rounded = round(seconds/60)*60 // Round to minutes
-        let components = calendar.components(unitFlags, fromDate: NSDate(), toDate: NSDate(timeIntervalSinceNow: rounded), options: NSCalendarOptions(rawValue: 0))
+        let components = (calendar as NSCalendar).components(unitFlags, from: Date(), to: Date(timeIntervalSinceNow: rounded), options: NSCalendar.Options(rawValue: 0))
         let hours = components.hour
         let minutes = components.minute
-        return (hours, minutes)
+        return (hours!, minutes!)
     }
     
-    private func replaceSubstrings(string: String) -> String {
-        let mutatedString = string.stringByReplacingOccurrencesOfString(" st.", withString: " station")
+    fileprivate func replaceSubstrings(_ string: String) -> String {
+        let mutatedString = string.replacingOccurrences(of: " st.", with: " station")
         return mutatedString
     }
     
-    override func speakString(string: String) {
+    override func speakString(_ string: String) {
         if !Settings.sharedInstance.readAloud.on {
             // Reading aloud is not enabled
             return
@@ -134,21 +133,21 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
         self.unobserve()
     }
     
-    private var observerTokens = [AnyObject]()
-    private func unobserve() {
+    fileprivate var observerTokens = [AnyObject]()
+    fileprivate func unobserve() {
         for observerToken in self.observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
         NotificationCenter.unobserve(self)
     }
     
-    private func setupSettingsObserver() {
+    fileprivate func setupSettingsObserver() {
         self.observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.updateSpeechAllowance()
         })
     }
     
-    private func updateSpeechAllowance() {
+    fileprivate func updateSpeechAllowance() {
         if self.routeComposite != nil && Settings.sharedInstance.readAloud.on {
             self.enableSpeech(true)
         } else {
@@ -156,7 +155,7 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
         }
     }
     
-    private func updateBackgroundLocationsAllowance() {
+    fileprivate func updateBackgroundLocationsAllowance() {
         if self.routeComposite != nil && Settings.sharedInstance.readAloud.on {
             SMLocationManager.sharedInstance().allowsBackgroundLocationUpdates = true
         } else {
@@ -164,8 +163,8 @@ class InstructionTextToSpeechSynthesizer: TextToSpeechSynthesizer {
         }
     }
     
-    override func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
-        super.speechSynthesizer(synthesizer, didFinishSpeechUtterance: utterance)
+    override func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        super.speechSynthesizer(synthesizer, didFinish: utterance)
         self.hasSpokenDestination = true
     }
 }

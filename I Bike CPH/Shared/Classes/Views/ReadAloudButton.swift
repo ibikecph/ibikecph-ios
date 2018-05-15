@@ -11,9 +11,9 @@ class ReadAloudButton: UIButton {
     var circleColor: UIColor {
         return Settings.sharedInstance.readAloud.on ? Styler.tintColor() : UIColor(red:0.41, green:0.41, blue:0.41, alpha:1)
     }
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         didSet {
-            highlight(highlighted)
+            highlight(isHighlighted)
         }
     }
     
@@ -28,7 +28,7 @@ class ReadAloudButton: UIButton {
     }
     
     init() {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         setup()
     }
     
@@ -36,8 +36,8 @@ class ReadAloudButton: UIButton {
         unobserve()
     }
     
-    private var observerTokens = [AnyObject]()
-    private func unobserve() {
+    fileprivate var observerTokens = [AnyObject]()
+    fileprivate func unobserve() {
         for observerToken in self.observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
@@ -50,30 +50,30 @@ class ReadAloudButton: UIButton {
         self.setupSettingsObserver()
         self.updateState()
         
-        self.addTarget(self, action: #selector(self.touchedUpInside(_:)), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(self.touchedUpInside(_:)), for: .touchUpInside)
     }
     
-    private func setupSettingsObserver() {
+    fileprivate func setupSettingsObserver() {
         self.observerTokens.append(NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.updateState()
         })
     }
     
-    private func updateState() {
+    fileprivate func updateState() {
         let imageName = Settings.sharedInstance.readAloud.on ? "read_aloud_on" : "read_aloud_off"
-        self.setImage(UIImage(named: imageName), forState: .Normal)
+        self.setImage(UIImage(named: imageName), for: UIControlState())
         self.setNeedsDisplay()
     }
     
-    @objc private func touchedUpInside(sender: UIButton!) {
+    @objc fileprivate func touchedUpInside(_ sender: UIButton!) {
         Settings.sharedInstance.readAloud.on = !Settings.sharedInstance.readAloud.on
     }
     
-    func highlight(highlight: Bool = false) {
+    func highlight(_ highlight: Bool = false) {
         shadow(highlight)
     }
     
-    func shadow(lifted: Bool = false) {
+    func shadow(_ lifted: Bool = false) {
         layer.masksToBounds = false
         let offset = lifted  ? 4 : 0.5
         layer.shadowOffset = CGSize(width: 0, height: offset)
@@ -81,8 +81,8 @@ class ReadAloudButton: UIButton {
         layer.shadowOpacity =  0.5
     }
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         // Take account for off-center content
         let verticalOffset = contentEdgeInsets.top - contentEdgeInsets.bottom
@@ -95,8 +95,8 @@ class ReadAloudButton: UIButton {
         let circleRect = UIEdgeInsetsInsetRect(rect, inset)
         // Draw circle
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, circleColor.CGColor)
-        CGContextFillEllipseInRect (context, circleRect)
-        CGContextFillPath(context)
+        context?.setFillColor(circleColor.cgColor)
+        context?.fillEllipse (in: circleRect)
+        context?.fillPath()
     }
 }

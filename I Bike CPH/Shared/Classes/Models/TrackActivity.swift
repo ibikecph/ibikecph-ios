@@ -15,11 +15,11 @@ class TrackActivity: RLMObject {
     dynamic var running = false
     dynamic var automotive = false
     dynamic var cycling = false
-    dynamic var startDate = NSDate()
+    dynamic var startDate = Date()
     dynamic var confidence = 0
     dynamic var owned: String = ""
     
-    class func build(activity: CMMotionActivity) -> TrackActivity {
+    class func build(_ activity: CMMotionActivity) -> TrackActivity {
         let newActivity = TrackActivity()
         newActivity.unknown = activity.unknown
         newActivity.stationary = activity.stationary
@@ -32,7 +32,7 @@ class TrackActivity: RLMObject {
         return newActivity
     }
     
-    func sameActivityTypeAs(activity: TrackActivity) -> Bool {
+    func sameActivityTypeAs(_ activity: TrackActivity) -> Bool {
         let stationary = self.stationary == activity.stationary
         let walking = self.walking == activity.walking
         let cycling = self.cycling == activity.cycling

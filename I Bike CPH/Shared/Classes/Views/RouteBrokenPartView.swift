@@ -14,65 +14,65 @@ class RouteBrokenPartView: UIView {
 
     let route: SMRoute
 
-    private let hourMinuteFormatter = HourMinuteFormatter()
-    private let distanceFormatter = DistanceFormatter()
-    lazy var timeFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .ShortStyle
-        formatter.dateStyle = .NoStyle // No date
+    fileprivate let hourMinuteFormatter = HourMinuteFormatter()
+    fileprivate let distanceFormatter = DistanceFormatter()
+    lazy var timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .none // No date
         return formatter
     }()
 
-    private lazy var stackView: ORStackView = {
+    fileprivate lazy var stackView: ORStackView = {
         let scroll = ORStackView()
-        scroll.direction = .Horizontal
+        scroll.direction = .horizontal
         self.addSubview(scroll)
         scroll.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
-            NSLayoutConstraint(item: scroll, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: scroll, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: scroll, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: scroll, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: scroll, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: scroll, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: scroll, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: scroll, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
             ])
         return scroll
     }()
 
-    private lazy var typeImageView: UIImageView = {
+    fileprivate lazy var typeImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .Center
+        imageView.contentMode = .center
         return imageView
     }()
-    private lazy var dotsImageView: UIImageView = {
+    fileprivate lazy var dotsImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .Center
+        imageView.contentMode = .center
         return imageView
     }()
-    private lazy var departureLabel: UILabel = {
+    fileprivate lazy var departureLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         label.textColor = Styler.foregroundColor()
         label.numberOfLines = 1
-        label.textAlignment = .Right
+        label.textAlignment = .right
         return label
     }()
-    private lazy var arrivalLabel: UILabel = {
+    fileprivate lazy var arrivalLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
         label.textColor = Styler.foregroundSecondaryColor()
         label.numberOfLines = 2
-        label.textAlignment = .Right
+        label.textAlignment = .right
         return label
     }()
-    private lazy var topLabel: UILabel = {
+    fileprivate lazy var topLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         label.textColor = Styler.foregroundColor()
         label.numberOfLines = 1
         return label
     }()
-    private lazy var bottomLabel: UILabel = {
+    fileprivate lazy var bottomLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
         label.textColor = Styler.foregroundSecondaryColor()
         label.numberOfLines = 2
         return label
@@ -80,7 +80,7 @@ class RouteBrokenPartView: UIView {
 
     init(route: SMRoute) {
         self.route = route
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
 
         // Setup view
         setupView()
@@ -92,21 +92,21 @@ class RouteBrokenPartView: UIView {
     }
 
 
-    private func setupView() {
+    fileprivate func setupView() {
         let horizontalPadding: CGFloat = 10
 
         let leftContainer = ORStackView()
         leftContainer.addSubview(departureLabel, withPrecedingMargin: 0, sideMargin: 0)
         leftContainer.addSubview(arrivalLabel, withPrecedingMargin: 0, sideMargin: 0)
         leftContainer.addConstraint(
-            NSLayoutConstraint(item: leftContainer, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 0, constant: 70)
+            NSLayoutConstraint(item: leftContainer, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: 70)
         )
 
         let centerContainer = ORStackView()
         centerContainer.addSubview(typeImageView, withPrecedingMargin: 0, sideMargin: 0)
         centerContainer.addSubview(dotsImageView, withPrecedingMargin: 0, sideMargin: 0)
         centerContainer.addConstraint(
-            NSLayoutConstraint(item: centerContainer, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 0, constant: 22)
+            NSLayoutConstraint(item: centerContainer, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: 22)
         )
 
         let rightContainer = ORStackView()
@@ -120,44 +120,44 @@ class RouteBrokenPartView: UIView {
         stackView.lastMarginHeight = horizontalPadding
     }
 
-    private func populateView() {
-        let departureDate = route.startDate ?? NSDate()
-        let arrivalDate = route.endDate ?? departureDate.dateByAddingTimeInterval(NSTimeInterval(route.estimatedRouteDistance))
+    fileprivate func populateView() {
+        let departureDate = route.startDate ?? Date()
+        let arrivalDate = route.endDate ?? departureDate.addingTimeInterval(TimeInterval(route.estimatedRouteDistance))
         let startPlace = route.startDescription.localized
         let endPlace = route.endDescription.localized
         let distance = distanceFormatter.string(Double(route.estimatedRouteDistance))
-        let duration = hourMinuteFormatter.string(NSTimeInterval(route.estimatedTimeForRoute))
+        let duration = hourMinuteFormatter.string(TimeInterval(route.estimatedTimeForRoute))
 
         var topLabelString = startPlace
         var bottomLabelString = route.transportLine + " " + "to".localized + "\n" + endPlace
         var imageName = ""
 
         switch route.routeType {
-        case .Bike:
+        case .bike:
             imageName = "Bike"
             topLabelString = "vehicle_1".localized + " " + distance +  ", " + duration
             bottomLabelString = "from".localized + " " + startPlace + " " + "to".localized + "\n" + endPlace
-        case .Walk:
+        case .walk:
             imageName = "Walk"
             topLabelString = "vehicle_2".localized + " " + distance +  ", " + duration
             bottomLabelString = "from".localized + " " + startPlace + " " + "to".localized + "\n" + endPlace
-        case .STrain:
+        case .sTrain:
             imageName = "STrain"
-        case .Metro:
+        case .metro:
             imageName = "Metro"
-        case .Ferry:
+        case .ferry:
             imageName = "Ferry"
-        case .Bus:
+        case .bus:
             imageName = "Bus"
-        case .Train:
+        case .train:
             imageName = "Train"
         }
 
         typeImageView.image = UIImage(named: imageName)
         dotsImageView.image = UIImage(named: "RouteLine")
 
-        departureLabel.text = timeFormatter.stringFromDate(departureDate)
-        arrivalLabel.text = "\0\n" + timeFormatter.stringFromDate(arrivalDate)
+        departureLabel.text = timeFormatter.string(from: departureDate)
+        arrivalLabel.text = "\0\n" + timeFormatter.string(from: arrivalDate)
 
         topLabel.text = topLabelString
         bottomLabel.text = bottomLabelString

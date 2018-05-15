@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Async
 
 protocol FindAddressViewControllerProtocol {
     
-    func foundAddress(item: SearchListItem)
+    func foundAddress(_ item: SearchListItem)
 }
 
 
@@ -19,10 +20,10 @@ class FindAddressViewController: SMTranslatedViewController {
     @IBOutlet weak var currentItemButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    private let maxHistory = 3
+    fileprivate let maxHistory = 3
     enum Section: Int {
-        case History
-        case Favorites
+        case history
+        case favorites
         static var count: Int {
             var max = 1
             while let _ = self.init(rawValue: max) {
@@ -38,7 +39,7 @@ class FindAddressViewController: SMTranslatedViewController {
             if let item = currentItem {
                 title = self.textFromItem(item)
             }
-            currentItemButton.setTitle(title, forState: .Normal)
+            currentItemButton.setTitle(title, for: UIControlState())
             
             if let item = currentItem {
                 // Close view controller
@@ -52,8 +53,8 @@ class FindAddressViewController: SMTranslatedViewController {
     var favorites = [FavoriteItem]()
     var delegate: FindAddressViewControllerProtocol?
     
-    @IBAction func findAddressTapped(sender: AnyObject) {
-        performSegueWithIdentifier("searchSegue", sender: self)
+    @IBAction func findAddressTapped(_ sender: AnyObject) {
+        performSegue(withIdentifier: "searchSegue", sender: self)
     }
     
     override func viewDidLoad() {
@@ -75,92 +76,92 @@ class FindAddressViewController: SMTranslatedViewController {
         history = Array(totalHistory[0..<historyCount])
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if
             segue.identifier == "searchSegue",
-            let viewController = segue.destinationViewController as? SMSearchController
+            let viewController = segue.destination as? SMSearchController
         {
             viewController.delegate = self
             viewController.shouldAllowCurrentPosition = false
-            if let item = currentItem as? protocol<SearchListItem, NSObjectProtocol> {
+            if let item = currentItem as? SearchListItem & NSObjectProtocol {
                 viewController.locationItem = item
             }
         }
     }
     
-    func textFromItem(item: SearchListItem) -> String {
+    func textFromItem(_ item: SearchListItem) -> String {
         var text = item.name
-        let address = item.address.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
+        let address = item.address.trimmingCharacters(in: .whitespacesAndNewlines)
         if (address != "") && (address != item.name) {
             text += ", " + address
         }
         return text
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }
 
 extension FindAddressViewController: UITableViewDataSource {
     
-    func itemsForSection(section: Int) -> [SearchListItem] {
+    func itemsForSection(_ section: Int) -> [SearchListItem] {
         let section = Section(rawValue: section)!
         switch section {
-            case .History: return history
-            case .Favorites: return favorites
+            case .history: return history
+            case .favorites: return favorites
         }
     }
     
-    func itemForIndexPath(indexPath: NSIndexPath) -> SearchListItem {
+    func itemForIndexPath(_ indexPath: IndexPath) -> SearchListItem {
         return itemsForSection(indexPath.section)[indexPath.row]
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return Section.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = Section(rawValue: section)!
         switch section {
-            case .History: return history.count
-            case .Favorites: return favorites.count
+            case .history: return history.count
+            case .favorites: return favorites.count
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.cellWithIdentifier("iconLabelTableViewCell", forIndexPath: indexPath) as IconLabelTableViewCell
         let item = itemForIndexPath(indexPath)
         cell.configure(item)
         return cell
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let section = Section(rawValue: section)!
         switch section {
-            case .History: return history.count == 0 ? "" : "recent_results".localized
-            case .Favorites: return favorites.count == 0 ? "" : "favorites".localized
+            case .history: return history.count == 0 ? "" : "recent_results".localized
+            case .favorites: return favorites.count == 0 ? "" : "favorites".localized
         }
     }
 }
 
 extension FindAddressViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         currentItem = itemForIndexPath(indexPath)
     }
 }
 
 extension FindAddressViewController: SMSearchDelegate {
     
-    func locationFound(locationItem: protocol<SearchListItem, NSObjectProtocol>!) {
+    func locationFound(_ locationItem: (SearchListItem & NSObjectProtocol)!) {
         currentItem = locationItem
         
-        let date = NSDate()
+        let date = Date()
         let historyItem = HistoryItem(other: locationItem, startDate: date, endDate: date)
-        SMSearchHistory.saveToSearchHistory(historyItem)
+        SMSearchHistory.save(toSearchHistory: historyItem)
         if UserHelper.loggedIn() {
-            SMSearchHistory.instance().addSearchToServer(historyItem)
+            SMSearchHistory.instance().addSearch(toServer: historyItem)
         }
     }
 }

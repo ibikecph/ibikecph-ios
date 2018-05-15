@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RouteNavigationDirectionsToolbarDelegate {
-    func didSwipeToInstruction(instruction: SMTurnInstruction, userAction: Bool)
+    func didSwipeToInstruction(_ instruction: SMTurnInstruction, userAction: Bool)
 }
 
 
@@ -23,10 +23,10 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
     @IBOutlet weak var leftArrow: UIImageView!
     @IBOutlet weak var rightArrow: UIImageView!
     
-    private let cellID = "TurnInstructionCellID"
+    fileprivate let cellID = "TurnInstructionCellID"
     var instructions = [SMTurnInstruction]() {
         didSet {
-            collectionView.contentOffset = CGPointZero // Reset scroll position
+            collectionView.contentOffset = CGPoint.zero // Reset scroll position
             collectionView.reloadData()
         }
     }
@@ -44,10 +44,10 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
                 topContainer.addSubview(view)
                 view.translatesAutoresizingMaskIntoConstraints = false
                 self.addConstraints([
-                    NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: topContainer, attribute: .Top, multiplier: 1, constant: 0),
-                    NSLayoutConstraint(item: view, attribute: .Left, relatedBy: .Equal, toItem: topContainer, attribute: .Left, multiplier: 1, constant: 0),
-                    NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: topContainer, attribute: .Right, multiplier: 1, constant: 0),
-                    NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: topContainer, attribute: .Bottom, multiplier: 1, constant: 0)
+                    NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: topContainer, attribute: .top, multiplier: 1, constant: 0),
+                    NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: topContainer, attribute: .left, multiplier: 1, constant: 0),
+                    NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: topContainer, attribute: .right, multiplier: 1, constant: 0),
+                    NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: topContainer, attribute: .bottom, multiplier: 1, constant: 0)
                     ])
                 topContainerHeight.constant = 100
             } else {
@@ -55,7 +55,7 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
             }
         }
     }
-    private(set) var index: Int = 0 {
+    fileprivate(set) var index: Int = 0 {
         didSet {
             if index == oldValue {
                 return
@@ -70,12 +70,12 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
             updateArrows()
         }
     }
-    private var userTouched = false
+    fileprivate var userTouched = false
     
     override func setup() {
         super.setup()
         collectionView.allowsSelection = false
-        collectionView.registerClass(TurnInstructionsCollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView.register(TurnInstructionsCollectionViewCell.self, forCellWithReuseIdentifier: cellID)
         updateArrows()
     }
     
@@ -89,13 +89,13 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
     func updateArrows() {
         let leftVisible = index != 0
         let rightVisible = index != instructions.count - 1
-        leftArrow.hidden = !leftVisible
-        rightArrow.hidden = !rightVisible
+        leftArrow.isHidden = !leftVisible
+        rightArrow.isHidden = !rightVisible
     }
     
-    func goToIndex(index: Int, animated: Bool = true) {
-        let indexPath = NSIndexPath(forItem: index, inSection: 0)
-        collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .Left, animated: animated)
+    func goToIndex(_ index: Int, animated: Bool = true) {
+        let indexPath = IndexPath(item: index, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: animated)
         // Don't set self.index directly. It will be updated via scrollDidScroll() delegate callback on UIScrollView
     }
 }
@@ -112,11 +112,11 @@ extension RouteNavigationDirectionsToolbarView {
 
 
 extension RouteNavigationDirectionsToolbarView: UICollectionViewDataSource {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return instructions.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.cellWithIdentifier(cellID, forIndexPath: indexPath) as TurnInstructionsCollectionViewCell
         let instruction = instructions[indexPath.row]
@@ -127,8 +127,8 @@ extension RouteNavigationDirectionsToolbarView: UICollectionViewDataSource {
 
 
 extension RouteNavigationDirectionsToolbarView: UIScrollViewDelegate {
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        if scrollView.dragging {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.isDragging {
             userTouched = true
         }
         index = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
@@ -138,8 +138,8 @@ extension RouteNavigationDirectionsToolbarView: UIScrollViewDelegate {
 
 extension UICollectionView {
     
-    func cellWithIdentifier<T: UICollectionViewCell>(identifier: String, forIndexPath indexPath: NSIndexPath) -> T {
-        if let cell = dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as? T {
+    func cellWithIdentifier<T: UICollectionViewCell>(_ identifier: String, forIndexPath indexPath: IndexPath) -> T {
+        if let cell = dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? T {
             return cell
         }
         return T()

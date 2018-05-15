@@ -10,27 +10,27 @@ import UIKit
 
 class LaunchActivateTrackingViewController: SMTranslatedViewController {
     
-    private let toLoginNavigationControllerSegue = "activateTrackingToLogin"
-    private let toAddTrackTokenControllerSegue = "activateTrackingToAddTrackToken"
-    private var pendingEnableTrackingFromTrackToken = false
+    fileprivate let toLoginNavigationControllerSegue = "activateTrackingToLogin"
+    fileprivate let toAddTrackTokenControllerSegue = "activateTrackingToAddTrackToken"
+    fileprivate var pendingEnableTrackingFromTrackToken = false
     @IBOutlet weak var activateButton: UIButton!
 
-    @IBAction func didTapActivateButton(sender: AnyObject) {
+    @IBAction func didTapActivateButton(_ sender: AnyObject) {
         switch UserHelper.checkEnableTracking() {
-        case .NotLoggedIn:
-            performSegueWithIdentifier(toLoginNavigationControllerSegue, sender: self)
-        case .Allowed:
+        case .notLoggedIn:
+            performSegue(withIdentifier: toLoginNavigationControllerSegue, sender: self)
+        case .allowed:
             Settings.sharedInstance.tracking.on = true
             dismiss()
-        case .LacksTrackToken:
+        case .lacksTrackToken:
             // User is logged in but doesn't have a trackToken
             pendingEnableTrackingFromTrackToken = true
-            performSegueWithIdentifier(toAddTrackTokenControllerSegue, sender: self)
+            performSegue(withIdentifier: toAddTrackTokenControllerSegue, sender: self)
             return
         }
     }
     
-    @IBAction func didTapCancelButton(sender: AnyObject) {
+    @IBAction func didTapCancelButton(_ sender: AnyObject) {
         dismiss()
     }
     
@@ -43,14 +43,14 @@ class LaunchActivateTrackingViewController: SMTranslatedViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateActivateButton()
         // Hide navigationbar when appeared
         navigationController?.setNavigationBarHidden(true, animated: true)
 
         // Check if tracking should be enabled
-        if pendingEnableTrackingFromTrackToken && UserHelper.checkEnableTracking() == .Allowed {
+        if pendingEnableTrackingFromTrackToken && UserHelper.checkEnableTracking() == .allowed {
             Settings.sharedInstance.tracking.on = true
             pendingEnableTrackingFromTrackToken = false
             dismiss()
@@ -59,12 +59,12 @@ class LaunchActivateTrackingViewController: SMTranslatedViewController {
         }
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    private func updateActivateButton() {
+    fileprivate func updateActivateButton() {
         let activateButtonTitle = (UserHelper.loggedIn() ? "enable" : "log_in").localized
-        activateButton.setTitle(activateButtonTitle, forState: .Normal)
+        activateButton.setTitle(activateButtonTitle, for: UIControlState())
     }
 }

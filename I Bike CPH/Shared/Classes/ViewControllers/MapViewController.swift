@@ -21,26 +21,26 @@ class MapViewController: ToolbarViewController {
         mapView.trackingDelegate = self
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         OverlaysManager.sharedInstance.mapView = mapView
         mapView.loadInitialRegionIfNecessary()
     }
     
-    @IBAction func compassButtonTapped(sender: AnyObject) {
+    @IBAction func compassButtonTapped(_ sender: AnyObject) {
         switch mapView.userTrackingMode {
-            case .None: mapView.userTrackingMode = .Follow // None -> Follow
-            case .Follow: mapView.userTrackingMode = .FollowWithHeading // Follow -> Heading
-            case .FollowWithHeading: mapView.userTrackingMode = .Follow // Heading -> Follow
+            case .none: mapView.userTrackingMode = .follow // None -> Follow
+            case .follow: mapView.userTrackingMode = .followWithHeading // Follow -> Heading
+            case .followWithHeading: mapView.userTrackingMode = .follow // Heading -> Follow
         }
     }
     
-    func removePin(pin: PinAnnotation) {
+    func removePin(_ pin: PinAnnotation) {
         mapView.removeAnnotation(pin)
     }
 
-    func addPin(coordinate: CLLocationCoordinate2D) -> PinAnnotation {
+    func addPin(_ coordinate: CLLocationCoordinate2D) -> PinAnnotation {
         let pin = PinAnnotation(mapView: mapView, coordinate: coordinate)
         mapView.addAnnotation(pin)
         return pin
@@ -49,7 +49,7 @@ class MapViewController: ToolbarViewController {
 
 
 extension MapViewController: MapViewTrackingDelegate {
-    func didChangeUserTrackingMode(mode: MapView.UserTrackingMode) {
+    func didChangeUserTrackingMode(_ mode: MapView.UserTrackingMode) {
         compassButton?.userTrackingMode = mode
     }
 }

@@ -22,7 +22,7 @@ class ToolbarView: NibDesignable {
     }
     
     init() {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         setup()
     }
     

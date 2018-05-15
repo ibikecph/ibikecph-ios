@@ -21,7 +21,7 @@ class GreenestRouteIntroductionView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         self.setupSubViews()
         self.setupConstraints()
     }
@@ -33,46 +33,46 @@ class GreenestRouteIntroductionView: UIView {
     func setupSubViews() {
         self.headerImageView.image = UIImage(named: "IntroductionGreenestRouteHeader")
         self.headerImageView.clipsToBounds = true
-        self.headerImageView.contentMode = .Center
+        self.headerImageView.contentMode = .center
         self.addSubview(self.headerImageView)
         
         self.titleLabel.text = "introduction_greenest_route_header_ibc".localized
-        self.titleLabel.textAlignment = .Center
-        self.titleLabel.textColor = UIColor.blackColor()
-        self.titleLabel.font = UIFont.boldSystemFontOfSize(24)
+        self.titleLabel.textAlignment = .center
+        self.titleLabel.textColor = UIColor.black
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         self.addSubview(self.titleLabel)
         
         self.scrollView.showsHorizontalScrollIndicator = false
         self.addSubview(self.scrollView)
         
         self.bodyLabel.text = "introduction_greenest_route_body_ibc".localized
-        self.bodyLabel.textColor = UIColor.blackColor()
-        self.bodyLabel.font = UIFont.systemFontOfSize(16)
-        self.bodyLabel.textAlignment = .Left
+        self.bodyLabel.textColor = UIColor.black
+        self.bodyLabel.font = UIFont.systemFont(ofSize: 16)
+        self.bodyLabel.textAlignment = .left
         self.bodyLabel.numberOfLines = 0
         self.scrollView.addSubview(self.bodyLabel)
         
         self.leafImageView.image = poGreenRouteImage(width: 44, color: Styler.tintColor())
-        self.leafImageView.contentMode = .Center
+        self.leafImageView.contentMode = .center
         self.scrollView.addSubview(self.leafImageView)
         
         self.footerLabel.text = "introduction_greenest_route_footer_ibc".localized
         self.footerLabel.font = self.bodyLabel.font
         self.footerLabel.textColor = self.bodyLabel.textColor
-        self.footerLabel.textAlignment = .Left
+        self.footerLabel.textAlignment = .left
         self.footerLabel.numberOfLines = 0
         self.scrollView.addSubview(self.footerLabel)
         
-        let footerButtonFont = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        let footerButtonFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
         var attributes: [String: AnyObject] = [NSFontAttributeName: footerButtonFont,
-                                               NSForegroundColorAttributeName: UIColor.whiteColor()]
+                                               NSForegroundColorAttributeName: UIColor.white]
         var attributedTitle = NSAttributedString.init(string: "continue_button_text".localized, attributes: attributes)
-        self.footerButton.setAttributedTitle(attributedTitle, forState: .Normal)
+        self.footerButton.setAttributedTitle(attributedTitle, for: UIControlState())
         attributes = [NSFontAttributeName: footerButtonFont,
-                      NSForegroundColorAttributeName: UIColor.whiteColor().colorWithAlphaComponent(0.5)]
+                      NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.5)]
         attributedTitle = NSAttributedString.init(string: "continue_button_text".localized, attributes: attributes)
-        self.footerButton.setAttributedTitle(attributedTitle, forState: .Highlighted)
-        self.footerButton.backgroundColor = UIColor.blackColor()
+        self.footerButton.setAttributedTitle(attributedTitle, for: .highlighted)
+        self.footerButton.backgroundColor = UIColor.black
         self.addSubview(self.footerButton)
         
     }

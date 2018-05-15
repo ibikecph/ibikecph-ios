@@ -16,7 +16,7 @@ class EnableTrackingToolbarView: ToolbarView {
     
     var delegate: EnableTrackingToolbarDelegate?
     
-    @IBAction func didTapView(sender: AnyObject) {
+    @IBAction func didTapView(_ sender: AnyObject) {
         delegate?.didSelectEnableTracking()
     }
 }

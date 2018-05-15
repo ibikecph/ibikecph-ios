@@ -11,7 +11,7 @@ import SwiftyJSON
 
 @objc class OiorestItem: NSObject, SearchListItem {
     
-    var type: SearchListItemType = .Oiorest
+    var type: SearchListItemType = .oiorest
     var name: String
     var address: String = ""
     var street: String

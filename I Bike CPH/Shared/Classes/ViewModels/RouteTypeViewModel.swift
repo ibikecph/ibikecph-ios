@@ -14,19 +14,19 @@ struct RouteTypeViewModel {
     }
     var iconImage: UIImage? {
         let iconWidth: CGFloat = 25
-        let iconColor = UIColor.grayColor()
+        let iconColor = UIColor.gray
         switch self.type {
-            case .Disabled: return nil
-            case .Fast: return poFastRouteImage(width: iconWidth, color: iconColor)?.imageWithRenderingMode(.AlwaysTemplate)
-            case .Cargo: return poCargoRouteImage(width: iconWidth, color: iconColor)?.imageWithRenderingMode(.AlwaysTemplate)
-            case .Green: return poGreenRouteImage(width: iconWidth, color: iconColor)?.imageWithRenderingMode(.AlwaysTemplate)
-            case .Broken: return UIImage(named:"BrokenRoute")
+            case .disabled: return nil
+            case .fast: return poFastRouteImage(width: iconWidth, color: iconColor)?.withRenderingMode(.alwaysTemplate)
+            case .cargo: return poCargoRouteImage(width: iconWidth, color: iconColor)?.withRenderingMode(.alwaysTemplate)
+            case .green: return poGreenRouteImage(width: iconWidth, color: iconColor)?.withRenderingMode(.alwaysTemplate)
+            case .broken: return UIImage(named:"BrokenRoute")
         }
     }
     let type: RouteType
     var selected: Bool {
         get {
-            return (type == .Disabled) ? false : type == RouteTypeHandler.instance.type
+            return (type == .disabled) ? false : type == RouteTypeHandler.instance.type
         }
         set {
             if newValue {

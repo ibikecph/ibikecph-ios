@@ -15,17 +15,17 @@ class LaunchReadMoreViewController: SMTranslatedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        textView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         textView.textContainerInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

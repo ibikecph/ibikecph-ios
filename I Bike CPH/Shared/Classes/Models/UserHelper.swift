@@ -11,7 +11,7 @@ import Foundation
 class UserHelper: NSObject {
     
     enum EnableTrackingOptions {
-        case Allowed, LacksTrackToken, NotLoggedIn
+        case allowed, lacksTrackToken, notLoggedIn
     }
     
     class func authToken() -> String? {
@@ -19,7 +19,7 @@ class UserHelper: NSObject {
     }
     
     class func id() -> String? {
-        let id: AnyObject? = AppHelper.delegate()?.appSettings["id"]
+        let id: AnyObject? = AppHelper.delegate()?.appSettings["id"] as AnyObject
         if let id: AnyObject = id {
             return "\(id)"
         }
@@ -56,11 +56,11 @@ class UserHelper: NSObject {
         let hasTrackToken = UserHelper.trackToken() != nil
         
         if !isLoggedIn {
-            return .NotLoggedIn
+            return .notLoggedIn
         }
         if hasTrackToken {
-            return .Allowed
+            return .allowed
         }
-        return .LacksTrackToken
+        return .lacksTrackToken
     }
 }

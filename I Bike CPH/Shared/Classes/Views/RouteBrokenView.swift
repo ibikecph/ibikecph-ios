@@ -16,21 +16,21 @@ class RouteBrokenView: UIView {
 
     lazy var stackScrollView: ORStackScrollView = {
         let scroll = ORStackScrollView()
-        scroll.stackView.direction = .Vertical
+        scroll.stackView.direction = .vertical
         self.addSubview(scroll)
         scroll.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
-            NSLayoutConstraint(item: scroll, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: scroll, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: scroll, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: scroll, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: scroll, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: scroll, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: scroll, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: scroll, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
             ])
         return scroll
     }()
 
     init(route: RouteComposite) {
         self.routeComposite = route
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
 
         // Setup view
         populateView()
@@ -44,8 +44,8 @@ class RouteBrokenView: UIView {
         stackScrollView.stackView.removeAllSubviews()
         let subRoutes: [SMRoute] = {
             switch self.routeComposite.composite {
-            case .Single(let route): return [route]
-            case .Multiple(let routes): return routes
+            case .single(let route): return [route]
+            case .multiple(let routes): return routes
             }
         }()
         for route in subRoutes {

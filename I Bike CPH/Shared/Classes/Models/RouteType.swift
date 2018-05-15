@@ -9,19 +9,19 @@
 import Foundation
 
 enum RouteType {
-    case Disabled
-    case Fast
-    case Cargo
-    case Green
-    case Broken
+    case disabled
+    case fast
+    case cargo
+    case green
+    case broken
     
     var localizedDescription: String {
         switch self {
-            case .Disabled: return ""
-            case .Fast: return "bike_type_1".localized
-            case .Cargo: return "bike_type_2".localized
-            case .Green: return "bike_type_3".localized
-            case .Broken: return "bike_type_4".localized
+            case .disabled: return ""
+            case .fast: return "bike_type_1".localized
+            case .cargo: return "bike_type_2".localized
+            case .green: return "bike_type_3".localized
+            case .broken: return "bike_type_4".localized
         }
     }
 
@@ -29,21 +29,21 @@ enum RouteType {
         get {
             let settings = SMRouteSettings.sharedInstance()
             switch self {
-            case .Disabled: return ""
-            case .Fast: return settings.osrm_server
-            case .Cargo: return settings.osrm_server_cargo
-            case .Green: return settings.osrm_server_green
-            case .Broken: return settings.broken_journey_server
+            case .disabled: return ""
+            case .fast: return settings!.osrm_server
+            case .cargo: return settings!.osrm_server_cargo
+            case .green: return settings!.osrm_server_green
+            case .broken: return settings!.broken_journey_server
             }
         }
     }
 
     static func validTypes() -> [RouteType] {
         if macro.isCykelPlanen {
-            return [.Fast, .Green, .Broken]
+            return [.fast, .green, .broken]
         }
         if macro.isIBikeCph {
-            return [.Fast, .Cargo, .Green]
+            return [.fast, .cargo, .green]
         }
         return []
     }
@@ -52,24 +52,24 @@ enum RouteType {
         get {
             var kmPerHour: CGFloat
             switch self {
-                case .Disabled: kmPerHour = 0
-                case .Fast: kmPerHour = 15
-                case .Cargo: kmPerHour = 10
-                case .Green: kmPerHour = 15
-                case .Broken: kmPerHour = 15
+                case .disabled: kmPerHour = 0
+                case .fast: kmPerHour = 15
+                case .cargo: kmPerHour = 10
+                case .green: kmPerHour = 15
+                case .broken: kmPerHour = 15
             }
             // return in m/s
             return kmPerHour / 3.6
         }
     }
     
-    static func estimatedAverageSpeedForOSRMServer(osrmServer: String) -> CGFloat {
+    static func estimatedAverageSpeedForOSRMServer(_ osrmServer: String) -> CGFloat {
         switch osrmServer {
-            case RouteType.Disabled.server: return RouteType.Disabled.estimatedAverageSpeed
-            case RouteType.Fast.server: return RouteType.Fast.estimatedAverageSpeed
-            case RouteType.Cargo.server: return RouteType.Cargo.estimatedAverageSpeed
-            case RouteType.Green.server: return RouteType.Green.estimatedAverageSpeed
-            case RouteType.Broken.server: return RouteType.Broken.estimatedAverageSpeed
+            case RouteType.disabled.server: return RouteType.disabled.estimatedAverageSpeed
+            case RouteType.fast.server: return RouteType.fast.estimatedAverageSpeed
+            case RouteType.cargo.server: return RouteType.cargo.estimatedAverageSpeed
+            case RouteType.green.server: return RouteType.green.estimatedAverageSpeed
+            case RouteType.broken.server: return RouteType.broken.estimatedAverageSpeed
             default: return 15
         }
     }

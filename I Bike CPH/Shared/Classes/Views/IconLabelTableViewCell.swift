@@ -15,20 +15,20 @@ class IconLabelTableViewCell: NibDesignableTableViewCell {
     @IBOutlet weak var label: UILabel!
     var enabled: Bool = true {
         didSet {
-            label.enabled = enabled
-            iconImageView.tintAdjustmentMode = enabled ? .Normal : .Dimmed
+            label.isEnabled = enabled
+            iconImageView.tintAdjustmentMode = enabled ? .normal : .dimmed
         }
     }
     
-    func configure(text: String, textColor: UIColor = Styler.foregroundColor(), icon: UIImage? = nil) {
+    func configure(_ text: String, textColor: UIColor = Styler.foregroundColor(), icon: UIImage? = nil) {
         
         label.textColor = textColor
-        label.text = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        label.text = text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         iconImageView.image = icon
     }
     
-    func configure(item: SearchListItem) {
+    func configure(_ item: SearchListItem) {
         var icon: UIImage?
         if let favorite = item as? FavoriteItem {
             icon = FavoriteTypeViewModel(type: favorite.origin).iconImage

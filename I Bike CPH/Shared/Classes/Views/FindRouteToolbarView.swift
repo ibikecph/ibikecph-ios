@@ -46,16 +46,16 @@ class FindRouteToolbarView: ToolbarView {
     
     @IBOutlet weak var reverseRouteButton: UIButton!
     
-    @IBAction func didTapReverseItems(sender: AnyObject) {
+    @IBAction func didTapReverseItems(_ sender: AnyObject) {
         delegate?.didSelectReverseRoute()
     }
-    @IBAction func didTapRoute(sender: AnyObject) {
+    @IBAction func didTapRoute(_ sender: AnyObject) {
         delegate?.didSelectRoute()
     }
-    @IBAction func didTapFromButton(sender: AnyObject) {
+    @IBAction func didTapFromButton(_ sender: AnyObject) {
         delegate?.didSelectFrom()
     }
-    @IBAction func didTapToButton(sender: AnyObject) {
+    @IBAction func didTapToButton(_ sender: AnyObject) {
         delegate?.didSelectTo()
     }
 }
@@ -66,25 +66,25 @@ extension FindRouteToolbarView {
         super.prepareForReuse()
         fromButton.updateToItem(nil)
         toButton.updateToItem(nil)
-        routeButton.enabled = false
+        routeButton.isEnabled = false
     }
     
-    func updateWithFromItem(fromItem: SearchListItem?, toItem: SearchListItem?) {
+    func updateWithFromItem(_ fromItem: SearchListItem?, toItem: SearchListItem?) {
         fromButton.updateToItem(fromItem)
         toButton.updateToItem(toItem)
-        routeButton.enabled = fromItem != nil && toItem != nil
-        reverseRouteButton.enabled = fromItem?.type != .CurrentLocation
+        routeButton.isEnabled = fromItem != nil && toItem != nil
+        reverseRouteButton.isEnabled = fromItem?.type != .currentLocation
     }
 }
 
 private extension UIButton {
-    func updateToItem(item: SearchListItem?) {
+    func updateToItem(_ item: SearchListItem?) {
         let title: String? = {
             if let item = item {
                 return item.name
             }
             return nil
         }()
-        setTitle(title, forState: .Normal)
+        setTitle(title, for: UIControlState())
     }
 }

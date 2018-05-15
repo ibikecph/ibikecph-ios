@@ -1,4 +1,5 @@
 PODS:
+  - AsyncSwift (2.0.4)
   - Crashlytics (3.7.2):
     - Fabric (~> 1.6.3)
   - DAKeyboardControl (2.4.0)
@@ -30,12 +31,13 @@ PODS:
   - SMCalloutView (2.0)
   - SnapKit (0.21.0)
   - SwiftHEXColors (1.0.4)
-  - SwiftyJSON (2.3.2)
+  - SwiftyJSON (3.1.4)
   - SwiftyUserDefaults (2.2.0)
-  - TTTAttributedLabel (1.13.4)
+  - TTTAttributedLabel (2.0.0)
   - UIImage-Categories (1.0.0)
 
 DEPENDENCIES:
+  - AsyncSwift (~> 2.0.4)
   - Crashlytics (~> 3.7.0)
   - DAKeyboardControl (~> 2.4)
   - GoogleAnalytics (~> 3.10)
@@ -47,12 +49,39 @@ DEPENDENCIES:
   - Realm (~> 0.99.0)
   - SnapKit (~> 0.21.0)
   - SwiftHEXColors (~> 1.0)
-  - SwiftyJSON (~> 2.3)
+  - SwiftyJSON (~> 3.1.4)
   - SwiftyUserDefaults (~> 2.2.0)
-  - TTTAttributedLabel (~> 1.13)
+  - TTTAttributedLabel (~> 2.0)
   - UIImage-Categories (~> 1.0)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AsyncSwift
+    - Crashlytics
+    - DAKeyboardControl
+    - Fabric
+    - FLKAutoLayout
+    - FMDB
+    - GoogleAnalytics
+    - GRMustache
+    - JRSwizzle
+    - Mapbox-iOS-SDK
+    - NibDesignable
+    - OCHamcrest
+    - OCMockito
+    - ORStackView
+    - PSTAlertController
+    - Realm
+    - SMCalloutView
+    - SnapKit
+    - SwiftHEXColors
+    - SwiftyJSON
+    - SwiftyUserDefaults
+    - TTTAttributedLabel
+    - UIImage-Categories
+
 SPEC CHECKSUMS:
+  AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
@@ -71,11 +100,11 @@ SPEC CHECKSUMS:
   SMCalloutView: f758edd824b18bf4f42de00df1e299861a2d1950
   SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
   SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
-  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UIImage-Categories: a0593f6a7991c99016b9ecadfbd38b3717ff1a73
 
-PODFILE CHECKSUM: fcda9ac6164f343f9f60cf94a28e68dc0465e1b6
+PODFILE CHECKSUM: 050d6e5fc62a3b77eee53b385ad15e98fd9ec17e
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.5.0

@@ -20,9 +20,9 @@ class TrackingToolbarView: ToolbarView {
     
     var delegate: TrackingToolbarDelegate?
     
-    private let hourMinutesFormatter = HourMinuteFormatter()
-    private let distanceFormatter = DistanceFormatter()
-    private let caloriesFormatter = CaloriesFormatter()
+    fileprivate let hourMinutesFormatter = HourMinuteFormatter()
+    fileprivate let distanceFormatter = DistanceFormatter()
+    fileprivate let caloriesFormatter = CaloriesFormatter()
     
     var distance: Double = 0 {
         didSet {
@@ -39,7 +39,7 @@ class TrackingToolbarView: ToolbarView {
             caloriesLabel?.text = caloriesFormatter.string(kiloCalories)
         }
     }
-    @IBAction func didTapView(sender: AnyObject) {
+    @IBAction func didTapView(_ sender: AnyObject) {
         delegate?.didSelectOpenTracking()
     }
 }

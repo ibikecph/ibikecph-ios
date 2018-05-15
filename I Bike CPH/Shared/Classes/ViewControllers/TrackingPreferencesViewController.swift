@@ -18,7 +18,7 @@ private protocol TrackingItemProtocol {
 private struct TrackingItem : TrackingItemProtocol {
     let title: String
     let iconImageName: String
-    let action: TrackingPreferencesViewController -> ()
+    let action: (TrackingPreferencesViewController) -> ()
     var enabled: (() -> Bool)?
 }
 
@@ -35,13 +35,13 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let cellID = "TrackingCellID"
-    private let cellSwitchID = "TrackingSwitchCellID"
-    private let toLoginSegue = "trackingPreferencesToLogin"
-    private let toAddTrackTokenSegue = "trackingPreferencesToAddTrackToken"
-    private var pendingEnableTracking = false
+    fileprivate let cellID = "TrackingCellID"
+    fileprivate let cellSwitchID = "TrackingSwitchCellID"
+    fileprivate let toLoginSegue = "trackingPreferencesToLogin"
+    fileprivate let toAddTrackTokenSegue = "trackingPreferencesToAddTrackToken"
+    fileprivate var pendingEnableTracking = false
     
-    private let sections: [SectionViewModel<TrackingItemProtocol>] = [
+    fileprivate let sections: [SectionViewModel<TrackingItemProtocol>] = [
         SectionViewModel(items:
             [
                 TrackingSwitchItem(
@@ -52,23 +52,23 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
                         
                         if on {
                             switch UserHelper.checkEnableTracking() {
-                            case .NotLoggedIn:
-                                let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .Alert)
-                                alertController.addCancelActionWithHandler(nil)
+                            case .notLoggedIn:
+                                let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .alert)
+                                alertController?.addCancelAction(handler: nil)
                                 let loginAction = PSTAlertAction(title: "log_in".localized) { action in
                                     viewController.pendingEnableTracking = true
-                                    viewController.performSegueWithIdentifier(viewController.toLoginSegue, sender: viewController)
+                                    viewController.performSegue(withIdentifier: viewController.toLoginSegue, sender: viewController)
                                 }
-                                alertController.addAction(loginAction)
-                                alertController.showWithSender(viewController, controller: viewController, animated: true, completion: nil)
+                                alertController?.addAction(loginAction)
+                                alertController?.showWithSender(viewController, controller: viewController, animated: true, completion: nil)
                                 switcher.setOn(false, animated: true)
-                            case .Allowed:
+                            case .allowed:
                                 Settings.sharedInstance.tracking.on = true
-                            case .LacksTrackToken:
+                            case .lacksTrackToken:
                                 // User is logged in but doesn't have a trackToken
                                 switcher.setOn(false, animated: true)
                                 viewController.pendingEnableTracking = true
-                                viewController.performSegueWithIdentifier(viewController.toAddTrackTokenSegue, sender: viewController)
+                                viewController.performSegue(withIdentifier: viewController.toAddTrackTokenSegue, sender: viewController)
                                 return
                             }
                         } else {
@@ -76,7 +76,7 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
                         }
                         if let indexPaths = viewController.tableView.indexPathsForVisibleRows {
                             viewController.tableView.beginUpdates()
-                            viewController.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+                            viewController.tableView.reloadRows(at: indexPaths, with: .fade)
                             viewController.tableView.endUpdates()
                         }
                 }, enabled: nil
@@ -109,47 +109,47 @@ class TrackingPreferencesViewController: SMTranslatedViewController {
         title = "settings".localized
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
      
-        if pendingEnableTracking && UserHelper.checkEnableTracking() == .Allowed {
+        if pendingEnableTracking && UserHelper.checkEnableTracking() == .allowed {
             Settings.sharedInstance.tracking.on = true
             if let indexPaths = tableView.indexPathsForVisibleRows {
                 tableView.beginUpdates()
-                tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+                tableView.reloadRows(at: indexPaths, with: .fade)
                 tableView.endUpdates()
             }
-        } else if pendingEnableTracking && UserHelper.checkEnableTracking() == .LacksTrackToken {
-            performSegueWithIdentifier(toAddTrackTokenSegue, sender: self)
+        } else if pendingEnableTracking && UserHelper.checkEnableTracking() == .lacksTrackToken {
+            performSegue(withIdentifier: toAddTrackTokenSegue, sender: self)
         } else {
             pendingEnableTracking = false
         }
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }
 
 extension TrackingPreferencesViewController: UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].title
     }
     
-    func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return sections[section].footer
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].items.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let item = sections[indexPath.section].items[indexPath.row]
         
@@ -157,7 +157,7 @@ extension TrackingPreferencesViewController: UITableViewDataSource {
             let cell = tableView.cellWithIdentifier(cellSwitchID, forIndexPath: indexPath) as IconLabelSwitchTableViewCell
             cell.configure(item.title, icon: UIImage(named: item.iconImageName))
             // Configure switcher
-            cell.switcher.on = item.on()
+            cell.switcher.isOn = item.on()
             cell.switchChanged = { on in item.switchAction(self, cell.switcher, on) }
             let enabled = item.enabled?() ?? true
             cell.enabled = enabled
@@ -171,10 +171,10 @@ extension TrackingPreferencesViewController: UITableViewDataSource {
 
 extension TrackingPreferencesViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item = sections[indexPath.section].items[indexPath.row] as? TrackingItem {
             item.action(self)
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

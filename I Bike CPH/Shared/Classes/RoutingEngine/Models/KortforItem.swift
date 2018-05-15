@@ -12,7 +12,7 @@ import SwiftyJSON
 
 @objc class KortforItem: NSObject, SearchListItem {
     
-    var type: SearchListItemType = .Kortfor
+    var type: SearchListItemType = .kortfor
     var name: String
     var address: String = ""
     var street: String

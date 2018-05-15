@@ -13,7 +13,7 @@ import SwiftyJSON
 // https://github.com/ibikecph/ibikecph-lib-android/blob/master/IBikeCPHLib/src/com/spoiledmilk/ibikecph/search/HistoryData.java
 @objc class HistoryItem: NSObject, SearchListItem {
    
-    var type: SearchListItemType = .History
+    var type: SearchListItemType = .history
     var name: String
     var address: String
     var street: String = ""
@@ -25,10 +25,10 @@ import SwiftyJSON
     var location: CLLocation? = CLLocation()
     var relevance: Int = 0
     
-    var startDate: NSDate?
-    var endDate: NSDate?
+    var startDate: Date?
+    var endDate: Date?
     
-    init(name: String, address: String? = nil, location: CLLocation, startDate: NSDate? = nil, endDate: NSDate? = nil) {
+    init(name: String, address: String? = nil, location: CLLocation, startDate: Date? = nil, endDate: Date? = nil) {
         self.name = name
         self.address = address ?? name
         self.location = location
@@ -36,7 +36,7 @@ import SwiftyJSON
         self.endDate = endDate
     }
     
-    init(other: SearchListItem, startDate: NSDate? = nil, endDate: NSDate? = nil) {
+    init(other: SearchListItem, startDate: Date? = nil, endDate: Date? = nil) {
         self.name = other.name
         self.address = other.address
         self.street = other.street
@@ -54,19 +54,19 @@ import SwiftyJSON
         
         name = json["name"].stringValue
         address = json["address"].stringValue
-        if let startDateData = plistDictionary["startDate"] as? NSData {
-            startDate = NSKeyedUnarchiver.unarchiveObjectWithData(startDateData) as? NSDate
+        if let startDateData = plistDictionary["startDate"] as? Data {
+            startDate = NSKeyedUnarchiver.unarchiveObject(with: startDateData) as? Date
         }
-        if let endDateData = plistDictionary["endDate"] as? NSData {
-            endDate = NSKeyedUnarchiver.unarchiveObjectWithData(endDateData) as? NSDate
+        if let endDateData = plistDictionary["endDate"] as? Data {
+            endDate = NSKeyedUnarchiver.unarchiveObject(with: endDateData) as? Date
         }
         
         // Parse address string to make details
         let parsedAddressItem = SMAddressParser.parseAddress(address)
-        number = parsedAddressItem.number
-        city = parsedAddressItem.city
-        zip = parsedAddressItem.zip
-        street = parsedAddressItem.street
+        number = (parsedAddressItem?.number)!
+        city = (parsedAddressItem?.city)!
+        zip = (parsedAddressItem?.zip)!
+        street = (parsedAddressItem?.street)!
         
         // Location
         let latitude = json["lat"].doubleValue
@@ -76,12 +76,12 @@ import SwiftyJSON
     
     func plistRepresentation() -> [String : AnyObject] {
         return [
-            "name" :  self.name,
-            "address" : self.address,
-            "startDate" : NSKeyedArchiver.archivedDataWithRootObject(self.startDate!),
-            "endDate" : NSKeyedArchiver.archivedDataWithRootObject(self.endDate!),
-            "lat" : self.location?.coordinate.latitude ?? 0,
-            "long" : self.location?.coordinate.longitude ?? 0
+            "name" :  self.name as AnyObject,
+            "address" : self.address as AnyObject,
+            "startDate" : NSKeyedArchiver.archivedData(withRootObject: self.startDate!) as AnyObject,
+            "endDate" : NSKeyedArchiver.archivedData(withRootObject: self.endDate!) as AnyObject,
+            "lat" : self.location?.coordinate.latitude as AnyObject,
+            "long" : self.location?.coordinate.longitude as AnyObject
         ]
     }
     

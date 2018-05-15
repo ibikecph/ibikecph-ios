@@ -10,12 +10,12 @@ import UIKit
 
 extension UITableView {
     
-    func cellWithIdentifier<T: UITableViewCell>(style: UITableViewCellStyle = .Default, reuseIdentifier: String) -> T {
-        return dequeueReusableCellWithIdentifier(reuseIdentifier) as? T ?? T(style: style, reuseIdentifier: reuseIdentifier)
+    func cellWithIdentifier<T: UITableViewCell>(_ style: UITableViewCellStyle = .default, reuseIdentifier: String) -> T {
+        return dequeueReusableCell(withIdentifier: reuseIdentifier) as? T ?? T(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    func cellWithIdentifier<T: UITableViewCell>(identifier: String, forIndexPath indexPath: NSIndexPath, fallbackStyle style: UITableViewCellStyle = .Default) -> T {
-        if let cell = dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as? T {
+    func cellWithIdentifier<T: UITableViewCell>(_ identifier: String, forIndexPath indexPath: IndexPath, fallbackStyle style: UITableViewCellStyle = .default) -> T {
+        if let cell = dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? T {
             return cell
         }
         return T(style: style, reuseIdentifier: identifier)

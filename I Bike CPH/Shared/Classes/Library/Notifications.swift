@@ -12,33 +12,32 @@ import UIKit
 class Notifications {
     
     class func register() {
-        let settings = UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        let settings = UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(settings)
     }
     
-    class func scheduleLocalNotification(description: String, fireDate: NSDate? = NSDate()) -> UILocalNotification  {
+    class func scheduleLocalNotification(_ description: String, fireDate: Date? = Date()) -> UILocalNotification  {
         let notification = UILocalNotification()
         notification.fireDate = fireDate
         notification.alertBody = description
         notification.applicationIconBadgeNumber = 0
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        UIApplication.shared.scheduleLocalNotification(notification)
         return notification
     }
     
     class func localNotificationCancelScheduled()  {
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        UIApplication.shared.cancelAllLocalNotifications()
     }
     
-    class func cancelScheduledLocalNotification(localNotification: UILocalNotification)  {
-        UIApplication.sharedApplication().cancelLocalNotification(localNotification)
+    class func cancelScheduledLocalNotification(_ localNotification: UILocalNotification)  {
+        UIApplication.shared.cancelLocalNotification(localNotification)
     }
     
-    class func localNotificationScheduledAtDate(date: NSDate) -> UILocalNotification? {
-        if let scheduledNotifications = UIApplication.sharedApplication().scheduledLocalNotifications {
+    class func localNotificationScheduledAtDate(_ date: Date) -> UILocalNotification? {
+        if let scheduledNotifications = UIApplication.shared.scheduledLocalNotifications {
             for scheduledNotification in scheduledNotifications {
                 if let
-                    fireDate = scheduledNotification.fireDate
-                    where fireDate.isEqualToDate(date)
+                    fireDate = scheduledNotification.fireDate, (fireDate == date)
                 {
                     return scheduledNotification
                 }

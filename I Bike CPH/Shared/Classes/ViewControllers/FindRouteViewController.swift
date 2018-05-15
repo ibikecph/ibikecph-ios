@@ -10,32 +10,32 @@ import UIKit
 
 class FindRouteViewController: MapViewController {
     
-    private var currentRequestOSRM: SMRequestOSRM?
+    fileprivate var currentRequestOSRM: SMRequestOSRM?
     
-    private enum ItemOrigin {
-        case From, To, None
+    fileprivate enum ItemOrigin {
+        case from, to, none
     }
     
-    private var findRouteToolbarView = FindRouteToolbarView()
-    private let findRouteToRouteNavigationSegue = "findRouteToRouteNavigation"
-    private let findRouteToFindAddressSegue = "findRouteToFindAddress"
+    fileprivate var findRouteToolbarView = FindRouteToolbarView()
+    fileprivate let findRouteToRouteNavigationSegue = "findRouteToRouteNavigation"
+    fileprivate let findRouteToFindAddressSegue = "findRouteToFindAddress"
     var fromItem: SearchListItem = CurrentLocationItem()
     var toItem: SearchListItem?
-    private var itemOrigin: ItemOrigin = .None
-    private let routeManager = RouteManager()
-    private var routeComposite: RouteComposite? {
+    fileprivate var itemOrigin: ItemOrigin = .none
+    fileprivate let routeManager = RouteManager()
+    fileprivate var routeComposite: RouteComposite? {
         didSet {
             updateUI()
         }
     }
-    private var routeCompositeSuggestions: [RouteComposite] = []
-    private var routeAnnotations = [Annotation]()
+    fileprivate var routeCompositeSuggestions: [RouteComposite] = []
+    fileprivate var routeAnnotations = [Annotation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Disable tracking
-        mapView.userTrackingMode = .None
+        mapView.userTrackingMode = .none
         // Show user location
         mapView.showsUserLocation = true
         
@@ -52,50 +52,50 @@ class FindRouteViewController: MapViewController {
         searchForNewRoute(RouteTypeHandler.instance.type.server)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if
             segue.identifier == findRouteToRouteNavigationSegue,
-            let routeNavigationViewController = segue.destinationViewController as? RouteNavigationViewController,
-            routeComposite = routeComposite
+            let routeNavigationViewController = segue.destination as? RouteNavigationViewController,
+            let routeComposite = routeComposite
         {
             routeNavigationViewController.routeComposite = routeComposite
         }
         if
             segue.identifier == findRouteToFindAddressSegue,
-            let findAddressViewController = segue.destinationViewController as? FindAddressViewController
+            let findAddressViewController = segue.destination as? FindAddressViewController
         {
             // Delegate
             findAddressViewController.delegate = self
         }
     }
     
-    private func favoriteForItem(item: SearchListItem) -> FavoriteItem? {
+    fileprivate func favoriteForItem(_ item: SearchListItem) -> FavoriteItem? {
         if let favorite = item as? FavoriteItem {
             return favorite
         }
         if let
             favorites = SMFavoritesUtil.favorites() as? [FavoriteItem],
-            favorite = favorites.filter({ $0.address == item.address }).first
+            let favorite = favorites.filter({ $0.address == item.address }).first
         {
             return favorite
         }
         return nil
     }
 
-    private func clearUI() {
+    fileprivate func clearUI() {
         routeComposite = nil
-        routeCompositeSuggestions.removeAll(keepCapacity: true)
+        routeCompositeSuggestions.removeAll(keepingCapacity: true)
         updateUI()
         updateRouteSuggestionsUI()
     }
 
-    private func updateUI() {
+    fileprivate func updateUI() {
         findRouteToolbarView.prepareForReuse()
-        let isBroken = RouteType.Broken == RouteTypeHandler.instance.type
+        let isBroken = RouteType.broken == RouteTypeHandler.instance.type
         findRouteToolbarView.showBrokenRoute = isBroken
         mapView.removeAnnotations(routeAnnotations)
         routeAnnotations = [Annotation]()
@@ -105,7 +105,7 @@ class FindRouteViewController: MapViewController {
         }
         if let
             routeComposite = routeComposite,
-            toItem = toItem
+            let toItem = toItem
         {
             // Route path
             routeAnnotations = mapView.addAnnotationsForRouteComposite(routeComposite, from: fromItem, to: toItem, zoom: true)
@@ -116,18 +116,18 @@ class FindRouteViewController: MapViewController {
         }
     }
 
-    private func updateRouteSuggestionsUI() {
-        findRouteToolbarView.showBrokenRoute = RouteType.Broken == RouteTypeHandler.instance.type
+    fileprivate func updateRouteSuggestionsUI() {
+        findRouteToolbarView.showBrokenRoute = RouteType.broken == RouteTypeHandler.instance.type
         if findRouteToolbarView.showBrokenRoute {
             findRouteToolbarView.brokenRouteToolbarView.updateToRoutes(routeCompositeSuggestions)
         }
     }
      
-    private func searchForNewRoute(server: String) {
+    fileprivate func searchForNewRoute(_ server: String) {
         self.currentRequestOSRM?.delegate = nil
         if let toItem = toItem {
             self.currentRequestOSRM = routeManager.findRoute(self.fromItem, to: toItem, server: server)
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
     }
 }
@@ -148,54 +148,54 @@ extension FindRouteViewController: FindRouteToolbarDelegate {
         }
     }
     func didSelectRoute() {
-        performSegueWithIdentifier(findRouteToRouteNavigationSegue, sender: self)
+        performSegue(withIdentifier: findRouteToRouteNavigationSegue, sender: self)
     }
     func didSelectFrom() {
-        itemOrigin = .From
-        performSegueWithIdentifier(findRouteToFindAddressSegue, sender: self)
+        itemOrigin = .from
+        performSegue(withIdentifier: findRouteToFindAddressSegue, sender: self)
     }
     func didSelectTo() {
-        itemOrigin = .To
-        performSegueWithIdentifier(findRouteToFindAddressSegue, sender: self)
+        itemOrigin = .to
+        performSegue(withIdentifier: findRouteToFindAddressSegue, sender: self)
     }
 }
 
 extension FindRouteViewController: RouteTypeToolbarDelegate {
-    func didChangeType(type: RouteType) {
+    func didChangeType(_ type: RouteType) {
         clearUI()
         searchForNewRoute(type.server)
     }
 }
 
 extension FindRouteViewController: RouteManagerDelegate {
-    func didGetResultForRoute(result: RouteManager.Result) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    func didGetResultForRoute(_ result: RouteManager.Result) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         switch result {
-            case .Error(let error):
+            case .error(let error):
                 print(error)
                 fallthrough
-            case .ErrorOfType(_):
-                let alert = UIAlertController(title: nil, message: "error_route_not_found".localized, preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "Cancel".localized, style: .Cancel) { action in
+            case .errorOfType(_):
+                let alert = UIAlertController(title: nil, message: "error_route_not_found".localized, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel) { action in
                     self.clearUI()
                     self.findRouteToolbarView.showBrokenRoute = false
                     })
-                alert.addAction(UIAlertAction(title: "Try_again".localized, style: .Default) { action in
+                alert.addAction(UIAlertAction(title: "Try_again".localized, style: .default) { action in
                     self.clearUI()
                     self.searchForNewRoute(RouteTypeHandler.instance.type.server)
                     })
-                presentViewController(alert, animated: true, completion: nil)
-            case .Success(let json, let osrmServer):
+                present(alert, animated: true, completion: nil)
+            case .success(let json, let osrmServer):
                 let estimatedAverageSpeed = RouteType.estimatedAverageSpeedForOSRMServer(osrmServer)
                 
                 switch osrmServer {
                 case SMRouteSettings.sharedInstance().broken_journey_server:
                     if let routes = json["routes"].array {
-                        routeCompositeSuggestions.removeAll(keepCapacity: true)
+                        routeCompositeSuggestions.removeAll(keepingCapacity: true)
 
                         for route in routes {
                             if let legs = route["legs"].array,
-                                toItem = self.toItem
+                                let toItem = self.toItem
                             {
                                 let estimatedDistance = route["distance"].doubleValue
                                 let estimatedBikeDistance = route["distance_bike"].doubleValue
@@ -203,8 +203,8 @@ extension FindRouteViewController: RouteManagerDelegate {
                                 var subRoutes: [SMRoute] = []
                                 for leg in legs {
                                     let route = SMRoute(routeJSON: leg.dictionaryObject, delegate: self)
-                                    route.estimatedAverageSpeed = estimatedAverageSpeed
-                                    subRoutes.append(route)
+                                    route?.estimatedAverageSpeed = estimatedAverageSpeed
+                                    subRoutes.append(route!)
                                 }
                                 let routeComposite = RouteComposite(routes: subRoutes, from: self.fromItem, to: toItem, estimatedDistance: estimatedDistance, estimatedBikeDistance: estimatedBikeDistance, estimatedTime: estimatedTime)
                                 routeCompositeSuggestions.append(routeComposite)
@@ -216,13 +216,13 @@ extension FindRouteViewController: RouteManagerDelegate {
                 default:
                     if let
                         toItem = self.toItem,
-                        fromCoordinate = self.fromItem.location?.coordinate,
-                        toCoordinate = toItem.location?.coordinate
+                        let fromCoordinate = self.fromItem.location?.coordinate,
+                        let toCoordinate = toItem.location?.coordinate
                     {
                         let route = SMRoute(routeStart: fromCoordinate, end: toCoordinate, routeJSON: json.dictionaryObject, delegate: self)
-                        route.estimatedAverageSpeed = estimatedAverageSpeed
-                        route.osrmServer = osrmServer
-                        let routeComposite = RouteComposite(route: route, from: fromItem, to: toItem)
+                        route?.estimatedAverageSpeed = estimatedAverageSpeed
+                        route?.osrmServer = osrmServer
+                        let routeComposite = RouteComposite(route: route!, from: fromItem, to: toItem)
                         self.routeComposite = routeComposite
                     }
                 }
@@ -233,7 +233,7 @@ extension FindRouteViewController: RouteManagerDelegate {
 
 extension FindRouteViewController: RouteBrokenToolbarViewDelegate {
 
-    func didChangePage(page: Int) {
+    func didChangePage(_ page: Int) {
         if routeCompositeSuggestions.count > page {
             routeComposite = routeCompositeSuggestions[page]
         }
@@ -242,7 +242,7 @@ extension FindRouteViewController: RouteBrokenToolbarViewDelegate {
 
 
 extension FindRouteViewController: SMRouteDelegate {
-    func updateTurn(firstElementRemoved: Bool) {
+    func updateTurn(_ firstElementRemoved: Bool) {
         
     }
     func reachedDestination() {
@@ -251,7 +251,7 @@ extension FindRouteViewController: SMRouteDelegate {
     func updateRoute() {
         
     }
-    func startRoute(route: SMRoute!) {
+    func start(_ route: SMRoute!) {
         
     }
     func routeNotFound() {
@@ -265,13 +265,13 @@ extension FindRouteViewController: SMRouteDelegate {
 
 extension FindRouteViewController: FindAddressViewControllerProtocol {
     
-    func foundAddress(item: SearchListItem) {
+    func foundAddress(_ item: SearchListItem) {
         switch itemOrigin {
-            case .From: fromItem = item
-            case .To: toItem = item
+            case .from: fromItem = item
+            case .to: toItem = item
             default: break
         }
-        itemOrigin = .None
+        itemOrigin = .none
         // Update route
         searchForNewRoute(RouteTypeHandler.instance.type.server)
 

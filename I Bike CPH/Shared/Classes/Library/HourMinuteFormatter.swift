@@ -10,18 +10,18 @@ import UIKit
 
 class HourMinuteFormatter {
    
-    private let calendar = NSCalendar.currentCalendar()
-    private let unitFlags: NSCalendarUnit = [.Hour, .Minute]
+    fileprivate let calendar = Calendar.current
+    fileprivate let unitFlags: NSCalendar.Unit = [.hour, .minute]
     
-    private func hoursAndMinutes(seconds: NSTimeInterval) -> (hour: Int, minutes: Int) {
+    fileprivate func hoursAndMinutes(_ seconds: TimeInterval) -> (hour: Int, minutes: Int) {
         let rounded = round(seconds/60)*60 // Round to minutes
-        let components = calendar.components(unitFlags, fromDate: NSDate(), toDate: NSDate(timeIntervalSinceNow: rounded), options: NSCalendarOptions(rawValue: 0))
+        let components = (calendar as NSCalendar).components(unitFlags, from: Date(), to: Date(timeIntervalSinceNow: rounded), options: NSCalendar.Options(rawValue: 0))
         let hours = components.hour
         let minutes = components.minute
-        return (hours, minutes)
+        return (hours!, minutes!)
     }
     
-    func string(seconds: NSTimeInterval) -> String {
+    func string(_ seconds: TimeInterval) -> String {
         let (hours, minutes) = hoursAndMinutes(seconds)
         let description = String(format: "hour_minute_format".localized, hours, minutes)
         return description
