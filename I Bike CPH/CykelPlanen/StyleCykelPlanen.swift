@@ -18,7 +18,7 @@ extension UIColor {
 class Styler: NSObject, StyleProtocol {
     
     class func backgroundColor() -> UIColor {
-        return .whiteColor()
+        return .white
     }
     
     class func tintColor() -> UIColor {
@@ -26,11 +26,11 @@ class Styler: NSObject, StyleProtocol {
     }
     
     class func foregroundColor() -> UIColor {
-        return .darkGrayColor()
+        return .darkGray
     }
 
     class func foregroundSecondaryColor() -> UIColor {
-        return .lightGrayColor()
+        return .lightGray
     }
     
     class func navigationBarTintColor() -> UIColor {
@@ -38,7 +38,7 @@ class Styler: NSObject, StyleProtocol {
     }
     
     class func navigationBarContentTintColor() -> UIColor {
-        return .whiteColor()
+        return .white
     }
     
     class func logo() -> UIImage? {
