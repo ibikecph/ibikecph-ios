@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MapToMapTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+class MapToMapTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
   
     weak var transitionContext: UIViewControllerContextTransitioning?
   
@@ -29,7 +29,7 @@ class MapToMapTransitionAnimator: NSObject, UIViewControllerAnimatedTransitionin
             maskLayerAnimation.fromValue = 0
             maskLayerAnimation.toValue = 1
             maskLayerAnimation.duration = self.transitionDuration(using: transitionContext)
-            maskLayerAnimation.delegate = self as! CAAnimationDelegate
+            maskLayerAnimation.delegate = self
             toViewController.view.layer.add(maskLayerAnimation, forKey: "opacity")
         }
     }
