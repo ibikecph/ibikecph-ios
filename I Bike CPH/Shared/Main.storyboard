@@ -910,13 +910,13 @@ God tur og tak fordi du cykler!</string>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzH-Xj-9jE">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <items>
-                                            <barButtonItem title="Cancel" id="WDi-9w-zvm">
+                                            <barButtonItem title="Annuller" id="WDi-9w-zvm">
                                                 <connections>
                                                     <action selector="pickerCancel:" destination="Ebm-yV-wF5" id="BRA-Fo-o57"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="7QU-Y6-NNL"/>
-                                            <barButtonItem title="Done" style="done" id="KFP-Ni-cEg">
+                                            <barButtonItem title="Vælg" style="done" id="KFP-Ni-cEg">
                                                 <connections>
                                                     <action selector="pickerDone:" destination="Ebm-yV-wF5" id="Yp2-pl-a5u"/>
                                                 </connections>
