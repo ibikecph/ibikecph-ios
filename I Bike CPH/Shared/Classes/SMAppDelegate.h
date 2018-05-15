@@ -9,8 +9,6 @@
 @import UIKit;
 #import "SMSearchHistory.h"
 
-@protocol GAITracker;
-
 @class Overlays;
 
 @interface SMAppDelegate : UIResponder<UIApplicationDelegate, SMSearchHistoryDelegate>
@@ -21,8 +19,6 @@
 @property(nonatomic, strong) NSArray *currentEvents;
 @property(nonatomic, strong) NSArray *pastRoutes;
 @property(nonatomic, strong) NSArray *searchHistory;
-
-@property(nonatomic, strong) id<GAITracker> tracker;
 
 @property(nonatomic, strong) NSMutableDictionary *appSettings;
 

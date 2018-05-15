@@ -174,8 +174,6 @@
 		4EBB7B491A5EC2A00064B530 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B471A5EC2A00064B530 /* RouteType.swift */; };
 		4EBB7B4B1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */; };
 		4EBB7B4C1A5ECA470064B530 /* RouteTypeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */; };
-		4EC56DB81A2A25E900B696B4 /* SMAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */; };
-		4EC56DBA1A2A25E900B696B4 /* SMAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */; };
 		4EC56DC01A2A25E900B696B4 /* SMAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */; };
 		4EC56DC21A2A25E900B696B4 /* SMAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */; };
 		4EC56DC41A2A25E900B696B4 /* SMContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAD1A2A25E900B696B4 /* SMContacts.m */; };
@@ -617,8 +615,6 @@
 		4EBB7B471A5EC2A00064B530 /* RouteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
 		4EBB7B4A1A5ECA470064B530 /* RouteTypeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTypeHandler.swift; sourceTree = "<group>"; };
 		4EC282111A9C862B0036AE4E /* SharedConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedConstants.h; sourceTree = "<group>"; };
-		4EC56DA61A2A25E900B696B4 /* SMAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAnalytics.h; sourceTree = "<group>"; };
-		4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAnalytics.m; sourceTree = "<group>"; };
 		4EC56DAA1A2A25E900B696B4 /* SMAPIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAPIRequest.h; sourceTree = "<group>"; };
 		4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAPIRequest.m; sourceTree = "<group>"; };
 		4EC56DAC1A2A25E900B696B4 /* SMContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMContacts.h; sourceTree = "<group>"; };
@@ -1161,9 +1157,7 @@
 				4E2CF4FF1B85C0F7004BDCAB /* Server */,
 				4E467D181B3416C3003770EE /* Route */,
 				4E337B511B2F1DD400261D97 /* Map */,
-				4EC56DA61A2A25E900B696B4 /* SMAnalytics.h */,
 				4EE683731B4D55FC00366EBC /* CLLocationCoordinate2D.swift */,
-				4EC56DA71A2A25E900B696B4 /* SMAnalytics.m */,
 				4EC56DAA1A2A25E900B696B4 /* SMAPIRequest.h */,
 				4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */,
 				4EC56DAC1A2A25E900B696B4 /* SMContacts.h */,
@@ -2374,7 +2368,6 @@
 				4EC56E851A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */,
 				4EB8B1881B25D20F00A1C53E /* PinAnnotation.swift in Sources */,
 				4E10EBBE1B3AF8E50012245E /* RouteNavigationDirectionsToolbarView.swift in Sources */,
-				4EC56DB81A2A25E900B696B4 /* SMAnalytics.m in Sources */,
 				4EC56E991A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4E5E87961B31F7DC0021F5E9 /* RouteTypeToolbarView.swift in Sources */,
 				7D1D9C751CB7EA1E007F1D30 /* SMAPIQueue.m in Sources */,
@@ -2595,7 +2588,6 @@
 				4EE06C3F1A10FC5600DE4226 /* SMMetroStationInfo.m in Sources */,
 				4EEC6D3B1B20B7F8003AE8DF /* DistanceFormatter.swift in Sources */,
 				4E32B29C1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */,
-				4EC56DBA1A2A25E900B696B4 /* SMAnalytics.m in Sources */,
 				4E5E87971B31F7DC0021F5E9 /* RouteTypeToolbarView.swift in Sources */,
 				4E10EBB51B3AE4B10012245E /* RouteNavigationViewController.swift in Sources */,
 				4EE06F051A112F6D00DE4226 /* SMBreakRouteButtonCell.m in Sources */,
