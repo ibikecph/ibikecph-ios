@@ -9,9 +9,7 @@
 import Foundation
 import Accounts
 import Social
-
-
-
+import Async
 
 @objc open class FacebookHandler: NSObject {
     public typealias Completion = (UserInfo?, NSError?) -> ()
