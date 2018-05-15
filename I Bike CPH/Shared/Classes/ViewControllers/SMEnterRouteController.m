@@ -80,10 +80,6 @@ typedef enum { fieldTo, fieldFrom } CurrentField;
 
     [self setGroupedList:@[ saved, last ]];
     [self.tableView reloadData];
-
-    if (![SMAnalytics trackEventWithCategory:@"Route" withAction:@"Search" withLabel:@"" withValue:0]) {
-        debugLog(@"error in trackEvent");
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -196,12 +192,6 @@ typedef enum { fieldTo, fieldFrom } CurrentField;
         }
     }
 
-    if ([self.fromItem.name isEqualToString:CURRENT_POSITION_STRING] == NO) {
-        if (![SMAnalytics trackEventWithCategory:@"Route" withAction:@"From" withLabel:self.fromItem.name withValue:0]) {
-            debugLog(@"error in trackEvent");
-        }
-    }
-
     [UIView animateWithDuration:0.2f
                      animations:^{
                        [self.loaderView setAlpha:1.0f];
@@ -213,9 +203,7 @@ typedef enum { fieldTo, fieldFrom } CurrentField;
     NSString *st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)", self.fromButton.titleLabel.text, s.coordinate.latitude,
                                               s.coordinate.longitude, self.toButton.titleLabel.text, e.coordinate.latitude, e.coordinate.longitude];
     debugLog(@"%@", st);
-    if (![SMAnalytics trackEventWithCategory:@"Route:" withAction:@"Finder" withLabel:st withValue:0]) {
-        debugLog(@"error in trackPageview");
-    }
+
     SMRequestOSRM *r = [[SMRequestOSRM alloc] initWithDelegate:self];
     [r setAuxParam:@"startRoute"];
     [r getRouteFrom:s.coordinate to:e.coordinate via:nil];
@@ -261,9 +249,7 @@ typedef enum { fieldTo, fieldFrom } CurrentField;
             [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)", self.fromButton.titleLabel.text, s.coordinate.latitude,
                                        s.coordinate.longitude, self.toButton.titleLabel.text, e.coordinate.latitude, e.coordinate.longitude];
         debugLog(@"%@", st);
-        if (![SMAnalytics trackEventWithCategory:@"Route:" withAction:@"Finder" withLabel:st withValue:0]) {
-            debugLog(@"error in trackPageview");
-        }
+
         SMRequestOSRM *r = [[SMRequestOSRM alloc] initWithDelegate:self];
         [r setAuxParam:@"startRoute"];
         [r getRouteFrom:s.coordinate to:e.coordinate via:nil];
@@ -485,16 +471,6 @@ typedef enum { fieldTo, fieldFrom } CurrentField;
         [self openCloseSection:indexPath.section];
     }
     else {
-        if (indexPath.section == 0) {
-            if (![SMAnalytics trackEventWithCategory:@"Route" withAction:@"Search" withLabel:@"Favorites" withValue:0]) {
-                debugLog(@"error in trackEvent");
-            }
-        }
-        else {
-            if (![SMAnalytics trackEventWithCategory:@"Route" withAction:@"Search" withLabel:@"Recent" withValue:0]) {
-                debugLog(@"error in trackEvent");
-            }
-        }
         NSObject<SearchListItem> *currentItem = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         self.toItem = currentItem;
     }

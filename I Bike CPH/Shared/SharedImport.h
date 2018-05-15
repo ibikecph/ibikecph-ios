@@ -13,7 +13,7 @@
 #import <UIKit/UIKit.h>
 
 #import "SMAddressParser.h"
-#import "SMAnalytics.h"
+
 @import CoreLocation;
 
 #if defined(I_BIKE_CPH)
