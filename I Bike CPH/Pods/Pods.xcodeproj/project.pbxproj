@@ -692,7 +692,6 @@
 		DBB86C4B86619A08B6C1D079A74FD79E /* HCStringStartsWith.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C656D53078F408D3EEE1036C252891 /* HCStringStartsWith.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBCB86DFB1141380E16E8702C02E8D14 /* UIImage+Alpha.h in Headers */ = {isa = PBXBuildFile; fileRef = C15067B061E91787EAFD7A0A02F69E7C /* UIImage+Alpha.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBEB35843FEA5A45F0BEEEAD8768F2B4 /* MKTArgumentGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F324E16ABB7D732BDF0DD1CD37318 /* MKTArgumentGetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		DC46FDA4062BC80CFB2789C4517CA6D0 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C67617228964DDB73C358F090718D0EF /* TTTAttributedLabel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DC638583E6B4E67619452594EDF7CF09 /* HCIsNot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2CB2D3BF22A83FF24A7A5895514F38 /* HCIsNot.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DC8009F63077065662ACCD0D46CF00DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84ABA0CB62F4F95D58260F2D8D1CAAF3 /* Foundation.framework */; };
 		DC8022B22B96C8ED20452AB42A4FB671 /* UIImage-Categories-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C9669CF352E3A8272969F6354F20A7 /* UIImage-Categories-dummy.m */; };
@@ -759,6 +758,7 @@
 		EEBF550EDAA52122AF3946533A752C08 /* RLMObject_Private.h in Copy . Private Headers */ = {isa = PBXBuildFile; fileRef = 85CC704B343B7C850E33FE6F1F58F8A8 /* RLMObject_Private.h */; };
 		EFE1CEA66A6E597A55C087DCF1D9C358 /* RLMSwiftSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9D5F17D28DF9263777599A869FF17F /* RLMSwiftSupport.m */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"0.99.1\"' -D__ASSERTMACROS__ -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F00B106482D733FA64DAE974FE43CF6C /* MKTFloatReturnSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A439A51BEF2ECEF0BC7849D2FF505AA /* MKTFloatReturnSetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F04E512F09DE6D57B5081D876E7BFF9E /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C67617228964DDB73C358F090718D0EF /* TTTAttributedLabel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F05ACA2D2C9985A42941873137A96392 /* MKTUnsignedLongReturnSetter.h in Headers */ = {isa = PBXBuildFile; fileRef = 88345049EE87E88D18C4FC410E03A2B5 /* MKTUnsignedLongReturnSetter.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F0A134B8A4BFFAA6A8411D38CBEFA599 /* RLMArrayLinkView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC0EAA9C0F5FAB079E60806BDBA73392 /* RLMArrayLinkView.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"0.99.1\"' -D__ASSERTMACROS__ -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F0E90D8867DC474676CCBA27B17A6011 /* MKTCharArgumentGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = DC5A815E761EBD7250F2F02573DA34AB /* MKTCharArgumentGetter.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -4953,7 +4953,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCE294D700B11AE9A146BA85F4A41DF2 /* TTTAttributedLabel-dummy.m in Sources */,
-				DC46FDA4062BC80CFB2789C4517CA6D0 /* TTTAttributedLabel.m in Sources */,
+				F04E512F09DE6D57B5081D876E7BFF9E /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
