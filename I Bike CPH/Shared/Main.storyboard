@@ -828,7 +828,7 @@ God tur og tak fordi du cykler!</string>
                                 <rect key="frame" x="0.0" y="148" width="600" height="392"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportRadioUnchecked" rowHeight="44" id="O3S-2N-5eq" customClass="SMRadioUncheckedCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportRadioUnchecked" rowHeight="44" id="O3S-2N-5eq" customClass="SMRadioUncheckedCell">
                                         <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O3S-2N-5eq" id="dOY-eQ-3yy">
@@ -851,7 +851,7 @@ God tur og tak fordi du cykler!</string>
                                             <outlet property="radioTitle" destination="NT2-Vd-GSc" id="XGC-pv-K9s"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportRadioChecked" rowHeight="110" id="Qpb-Ik-3ul" customClass="SMRadioCheckedCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportRadioChecked" rowHeight="110" id="Qpb-Ik-3ul" customClass="SMRadioCheckedCell">
                                         <rect key="frame" x="0.0" y="66" width="600" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qpb-Ik-3ul" id="fzl-Fj-deX">
@@ -910,13 +910,13 @@ God tur og tak fordi du cykler!</string>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzH-Xj-9jE">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <items>
-                                            <barButtonItem title="cancel_picker" id="WDi-9w-zvm">
+                                            <barButtonItem title="Annuller" id="WDi-9w-zvm">
                                                 <connections>
                                                     <action selector="pickerCancel:" destination="Ebm-yV-wF5" id="BRA-Fo-o57"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="7QU-Y6-NNL"/>
-                                            <barButtonItem title="done_picker" style="done" id="KFP-Ni-cEg">
+                                            <barButtonItem title="Vælg" style="done" id="KFP-Ni-cEg">
                                                 <connections>
                                                     <action selector="pickerDone:" destination="Ebm-yV-wF5" id="Yp2-pl-a5u"/>
                                                 </connections>
@@ -1041,7 +1041,7 @@ God tur og tak fordi du cykler!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SourceCell" rowHeight="90" id="tZz-p3-gEc" customClass="SMBikeWaypointCell">
+                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SourceCell" rowHeight="90" id="tZz-p3-gEc" customClass="SMBikeWaypointCell">
                                         <rect key="frame" x="0.0" y="22" width="600" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tZz-p3-gEc" id="FqG-mh-73V">
@@ -1049,16 +1049,16 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGZ-T6-0Rh" userLabel="TopView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="53"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="585" height="53"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Norrebrogade 42c" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LS-A4-pkl">
-                                                            <rect key="frame" x="80" y="10" width="260" height="23"/>
+                                                            <rect key="frame" x="80" y="10" width="485" height="23"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2200 Kobnhavn N" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIe-wk-ztK">
-                                                            <rect key="frame" x="80" y="33" width="260" height="20"/>
+                                                            <rect key="frame" x="80" y="33" width="485" height="20"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1082,7 +1082,7 @@ God tur og tak fordi du cykler!</string>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muQ-Yd-RnE" userLabel="BottomView">
-                                                    <rect key="frame" x="0.0" y="53" width="375" height="37"/>
+                                                    <rect key="frame" x="0.0" y="53" width="600" height="37"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" image="bike_route.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Mb-d2-cbd">
                                                             <rect key="frame" x="25" y="0.0" width="30" height="37"/>
@@ -1144,7 +1144,7 @@ God tur og tak fordi du cykler!</string>
                                             <outlet property="viewDistance" destination="muQ-Yd-RnE" id="LcG-uP-XnA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DestinationCell" rowHeight="90" id="PHd-xt-rs9" customClass="SMBikeWaypointCell">
+                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DestinationCell" rowHeight="90" id="PHd-xt-rs9" customClass="SMBikeWaypointCell">
                                         <rect key="frame" x="0.0" y="112" width="600" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PHd-xt-rs9" id="Xsd-Wx-85c">
@@ -1152,13 +1152,13 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzp-G0-vRG" userLabel="TopView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="37"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" image="bike_route.png" translatesAutoresizingMaskIntoConstraints="NO" id="HX6-RR-L9Q">
                                                             <rect key="frame" x="25" y="0.0" width="30" height="37"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="7 min. 1.2 km." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmj-pt-ka7">
-                                                            <rect key="frame" x="80" y="10" width="275" height="17"/>
+                                                            <rect key="frame" x="80" y="10" width="500" height="17"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1177,16 +1177,16 @@ God tur og tak fordi du cykler!</string>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oBx-H6-Hnp" userLabel="BottomView">
-                                                    <rect key="frame" x="0.0" y="37" width="375" height="53"/>
+                                                    <rect key="frame" x="0.0" y="37" width="600" height="53"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Norrebrogade 42c" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YX7-my-S8U">
-                                                            <rect key="frame" x="80" y="0.0" width="275" height="23"/>
+                                                            <rect key="frame" x="80" y="0.0" width="500" height="23"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2200 Kobnhavn N" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEy-aA-p3l">
-                                                            <rect key="frame" x="80" y="23" width="275" height="20"/>
+                                                            <rect key="frame" x="80" y="23" width="500" height="20"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1236,7 +1236,7 @@ God tur og tak fordi du cykler!</string>
                                             <outlet property="viewDistance" destination="vzp-G0-vRG" id="ETB-18-jLN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TransportCell" rowHeight="130" id="qZ7-mW-w5W" customClass="SMTransportationCell">
+                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TransportCell" rowHeight="130" id="qZ7-mW-w5W" customClass="SMTransportationCell">
                                         <rect key="frame" x="0.0" y="202" width="600" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qZ7-mW-w5W" id="cSK-r9-037">
@@ -1375,7 +1375,7 @@ God tur og tak fordi du cykler!</string>
                                             <outlet property="sourceStationIcon" destination="ecB-vY-oA8" id="sVt-VH-KFu"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ButtonCell" rowHeight="64" id="CPj-4b-QJc" customClass="SMBreakRouteButtonCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ButtonCell" rowHeight="64" id="CPj-4b-QJc" customClass="SMBreakRouteButtonCell">
                                         <rect key="frame" x="0.0" y="332" width="600" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CPj-4b-QJc" id="8Ua-yJ-t8Y">
@@ -1383,7 +1383,7 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gB-TT-n4I" customClass="SMPatternedButton">
-                                                    <rect key="frame" x="25" y="10" width="325" height="44"/>
+                                                    <rect key="frame" x="25" y="10" width="550" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="xg9-Cu-geZ"/>
                                                     </constraints>
@@ -1412,7 +1412,7 @@ God tur og tak fordi du cykler!</string>
                                             <outlet property="btnBreakRoute" destination="7gB-TT-n4I" id="kzF-Ra-7La"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="breakRouteHeader" id="re6-mG-gSD" customClass="SMBreakRouteHeader">
+                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="breakRouteHeader" id="re6-mG-gSD" customClass="SMBreakRouteHeader">
                                         <rect key="frame" x="0.0" y="396" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="re6-mG-gSD" id="cH4-FO-ujx">
@@ -1420,7 +1420,7 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYf-JR-AEy">
-                                                    <rect key="frame" x="300" y="11" width="50" height="23"/>
+                                                    <rect key="frame" x="525" y="11" width="50" height="23"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                                     <color key="textColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1640,7 +1640,7 @@ God tur og tak fordi du cykler!</string>
                                 <color key="separatorColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellHeader" rowHeight="132" id="ZoA-0Q-Kdz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellHeader" rowHeight="132" id="ZoA-0Q-Kdz">
                                         <rect key="frame" x="0.0" y="22" width="375" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZoA-0Q-Kdz" id="Llk-Jq-AQf">
@@ -1755,7 +1755,7 @@ God tur og tak fordi du cykler!</string>
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="CellData" rowHeight="40" id="oKo-ZX-fQO">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="CellData" rowHeight="40" id="oKo-ZX-fQO">
                                         <rect key="frame" x="0.0" y="154" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oKo-ZX-fQO" id="xRe-lb-cCc">
