@@ -64,7 +64,7 @@ struct Milestone {
 
 
 
-let statsNotificationHandler = StatsNotificationHandler()
+/*let statsNotificationHandler = StatsNotificationHandler()
 
 class StatsNotificationHandler {
     
@@ -220,4 +220,4 @@ extension StatsNotificationHandler {
     class func sharedInstance() -> StatsNotificationHandler {
         return statsNotificationHandler
     }
-}
+}*/

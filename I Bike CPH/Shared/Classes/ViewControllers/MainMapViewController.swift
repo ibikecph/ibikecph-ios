@@ -104,9 +104,10 @@ class MainMapViewController: MapViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Update tracking information
-        if Settings.sharedInstance.tracking.on {
+        // Temporarily disabled
+        /*if Settings.sharedInstance.tracking.on {
             TracksHandler.setNeedsProcessData(true)
-        }
+        }*/
         
         #if TRACKING_ENABLED
             let showedActivateTracking = checkActivateTracking()
