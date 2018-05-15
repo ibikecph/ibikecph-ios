@@ -99,7 +99,7 @@
     
     [RLMRealmConfiguration setDefaultConfiguration:config];
     [RLMRealm defaultRealm];
-    [RLMRealm compress:true];
+    //[RLMRealm compress:true]; Temporarily disabled
 
 #if TRACKING_ENABLED
     [TrackingHandler sharedInstance];
