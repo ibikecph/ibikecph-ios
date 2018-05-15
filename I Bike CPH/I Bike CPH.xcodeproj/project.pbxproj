@@ -12,8 +12,6 @@
 		29D613F9290EC2EF5AD59851 /* Pods_test_target_CykelPlanenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B89135AA495093F5F2D92AD /* Pods_test_target_CykelPlanenTests.framework */; };
 		379E3027DA91E6D7A8FB6653 /* Pods_app_target_CykelPlanen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3C05DDEFC4CF063E85E812 /* Pods_app_target_CykelPlanen.framework */; };
 		4C1A9D6CE3067F78623FA922 /* Pods_test_target_I_Bike_CPHTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7CB2BAFF13FEC84F7212FB /* Pods_test_target_I_Bike_CPHTests.framework */; };
-		4E0176881AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */; };
-		4E0176891AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */; };
 		4E1000E01B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1000DF1B00A6EC005C7FE7 /* RouteTypeViewModel.swift */; };
 		4E1000E11B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1000DF1B00A6EC005C7FE7 /* RouteTypeViewModel.swift */; };
 		4E10EBB41B3AE4B10012245E /* RouteNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E10EBB31B3AE4B10012245E /* RouteNavigationViewController.swift */; };
@@ -36,26 +34,18 @@
 		4E21F2E71BBD63FE003D097F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E21F2E91BBD63FE003D097F /* InfoPlist.strings */; };
 		4E23D6DC1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */; };
 		4E23D6DD1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */; };
-		4E2A92561A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
-		4E2A92571A3B43130032ACD4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A92551A3B43130032ACD4 /* Async.swift */; };
 		4E2B08F21B3D5C6900580C27 /* MapToMapTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2B08F01B3D5C6900580C27 /* MapToMapTransitionAnimator.swift */; };
 		4E2B08F31B3D5C6900580C27 /* MapToMapTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2B08F01B3D5C6900580C27 /* MapToMapTransitionAnimator.swift */; };
 		4E2B08F41B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2B08F11B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift */; };
 		4E2B08F51B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2B08F11B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift */; };
-		4E2CE9EE1A974BA600F4BC4F /* TracksHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */; };
-		4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */; };
 		4E2CF4FD1B84B964004BDCAB /* LaunchReadMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF4FC1B84B964004BDCAB /* LaunchReadMoreViewController.swift */; };
 		4E2CF4FE1B84B964004BDCAB /* LaunchReadMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF4FC1B84B964004BDCAB /* LaunchReadMoreViewController.swift */; };
 		4E2CF5051B85C17A004BDCAB /* ServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5041B85C17A004BDCAB /* ServerClient.swift */; };
 		4E2CF5061B85C17A004BDCAB /* ServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5041B85C17A004BDCAB /* ServerClient.swift */; };
-		4E2CF5081B85C30E004BDCAB /* TracksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5071B85C30E004BDCAB /* TracksClient.swift */; };
-		4E2CF5091B85C30E004BDCAB /* TracksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2CF5071B85C30E004BDCAB /* TracksClient.swift */; };
 		4E32B29B1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */; };
 		4E32B29C1AADB9F500583811 /* TrackingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */; };
 		4E32B29E1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */; };
 		4E32B29F1AADCA4900583811 /* StatsNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */; };
-		4E32B2A11AADCC8A00583811 /* BikeStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */; };
-		4E32B2A21AADCC8A00583811 /* BikeStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */; };
 		4E337B541B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E337B531B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m */; };
 		4E337B551B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E337B531B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m */; };
 		4E33B91C1A640579007D4C82 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B91B1A640579007D4C82 /* UserHelper.swift */; };
@@ -98,20 +88,14 @@
 		4E5258B01A9B616200BE55C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5258B21A9B616200BE55C8 /* Localizable.strings */; };
 		4E5258C71A9B9C8400BE55C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C61A9B9C8300BE55C8 /* String.swift */; };
 		4E5258C81A9B9C8400BE55C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C61A9B9C8300BE55C8 /* String.swift */; };
-		4E5258CA1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */; };
-		4E5258CB1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */; };
 		4E54C3471BF3887E00E935B0 /* RouteBrokenToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C3461BF3887E00E935B0 /* RouteBrokenToolbarView.xib */; };
 		4E54C3481BF3887E00E935B0 /* RouteBrokenToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C3461BF3887E00E935B0 /* RouteBrokenToolbarView.xib */; };
 		4E55A0241A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */; };
 		4E55A0251A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */; };
 		4E55A0271A36068800386F85 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0261A36068800386F85 /* MenuViewController.swift */; };
 		4E55A0281A36068800386F85 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55A0261A36068800386F85 /* MenuViewController.swift */; };
-		4E5674561A92383500BF4A28 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5674551A92383500BF4A28 /* Track.swift */; };
 		4E5674591A9238A600BF4A28 /* TrackLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5674581A9238A600BF4A28 /* TrackLocation.swift */; };
 		4E56745A1A9238A600BF4A28 /* TrackLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5674581A9238A600BF4A28 /* TrackLocation.swift */; };
-		4E56745B1A9238A900BF4A28 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5674551A92383500BF4A28 /* Track.swift */; };
-		4E56745D1A92469000BF4A28 /* TrackingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745C1A92469000BF4A28 /* TrackingHandler.swift */; };
-		4E56745E1A92469000BF4A28 /* TrackingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745C1A92469000BF4A28 /* TrackingHandler.swift */; };
 		4E5674601A92521800BF4A28 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745F1A92521800BF4A28 /* MotionDetector.swift */; };
 		4E5674611A92521800BF4A28 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56745F1A92521800BF4A28 /* MotionDetector.swift */; };
 		4E58C30A1B0E15DC0041255B /* MainWithSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58C3091B0E15DC0041255B /* MainWithSideMenuViewController.swift */; };
@@ -156,8 +140,6 @@
 		4E5E87991B31F7DC0021F5E9 /* RouteTypeToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5E87951B31F7DC0021F5E9 /* RouteTypeToolbarView.xib */; };
 		4E651D2F1A93EA5B00497C70 /* TrackingPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E651D2E1A93EA5B00497C70 /* TrackingPromptViewController.swift */; };
 		4E651D301A93EA5B00497C70 /* TrackingPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E651D2E1A93EA5B00497C70 /* TrackingPromptViewController.swift */; };
-		4E651D321A93EB9400497C70 /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E651D311A93EB9400497C70 /* TrackingViewController.swift */; };
-		4E651D331A93EB9400497C70 /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E651D311A93EB9400497C70 /* TrackingViewController.swift */; };
 		4E65D2A21AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */; };
 		4E65D2A31AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */; };
 		4E6BD7C71A56FE320049F1DB /* AddressParser_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */; };
@@ -166,14 +148,8 @@
 		4E7262DA1B2AF450008561D0 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7262D81B2AF450008561D0 /* BorderedButton.swift */; };
 		4E7BA9E51A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */; };
 		4E7BA9E61A1E2AD500F9744A /* FoursquareItem_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */; };
-		4E7BD07B1A9234EF00BFDC7B /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */; };
-		4E7BD07C1A9234EF00BFDC7B /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */; };
-		4E7BD07F1A92354E00BFDC7B /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07E1A92354E00BFDC7B /* Realm.swift */; };
-		4E7BD0801A92354E00BFDC7B /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7BD07E1A92354E00BFDC7B /* Realm.swift */; };
 		4E818EB71BF3872C0058C090 /* RouteBrokenToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818EB51BF3872C0058C090 /* RouteBrokenToolbarView.swift */; };
 		4E818EB81BF3872C0058C090 /* RouteBrokenToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E818EB51BF3872C0058C090 /* RouteBrokenToolbarView.swift */; };
-		4E90B42E1A9739A900A5F4C5 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */; };
-		4E90B42F1A9739A900A5F4C5 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */; };
 		4EAB12471A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */; };
 		4EAB12481A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */; };
 		4EAB124A1A76AEF50099AC54 /* SettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */; };
@@ -541,7 +517,6 @@
 		489F1201F655BED5B68DD674 /* Pods_I_Bike_CPHTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_I_Bike_CPHTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B89135AA495093F5F2D92AD /* Pods_test_target_CykelPlanenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_target_CykelPlanenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B96C2575165B7DAFDE3B797 /* Pods_CykelPlanenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CykelPlanenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		4E1000DF1B00A6EC005C7FE7 /* RouteTypeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTypeViewModel.swift; sourceTree = "<group>"; };
 		4E10EBB31B3AE4B10012245E /* RouteNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationViewController.swift; sourceTree = "<group>"; };
 		4E10EBB61B3AE6480012245E /* RouteNavigationToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationToolbarView.swift; sourceTree = "<group>"; };
@@ -556,16 +531,12 @@
 		4E21F2EA1BBD6401003D097F /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E23D6DA1A648E56008998CB /* SMAccountFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAccountFacebookViewController.h; sourceTree = "<group>"; };
 		4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAccountFacebookViewController.m; sourceTree = "<group>"; };
-		4E2A92551A3B43130032ACD4 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		4E2B08F01B3D5C6900580C27 /* MapToMapTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapToMapTransitionAnimator.swift; sourceTree = "<group>"; };
 		4E2B08F11B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapToMapNavigationControllerDelegate.swift; sourceTree = "<group>"; };
-		4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksHandler.swift; sourceTree = "<group>"; };
 		4E2CF4FC1B84B964004BDCAB /* LaunchReadMoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchReadMoreViewController.swift; sourceTree = "<group>"; };
 		4E2CF5041B85C17A004BDCAB /* ServerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerClient.swift; sourceTree = "<group>"; };
-		4E2CF5071B85C30E004BDCAB /* TracksClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksClient.swift; sourceTree = "<group>"; };
 		4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingPreferencesViewController.swift; sourceTree = "<group>"; };
 		4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsNotificationHandler.swift; sourceTree = "<group>"; };
-		4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStatistics.swift; sourceTree = "<group>"; };
 		4E337B521B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMiBikeCPHMapTileSource.h; sourceTree = "<group>"; };
 		4E337B531B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMiBikeCPHMapTileSource.m; sourceTree = "<group>"; };
 		4E33B91B1A640579007D4C82 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
@@ -594,13 +565,10 @@
 		4E5258B31A9B61B300BE55C8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E5258B41A9B61E400BE55C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E5258C61A9B9C8300BE55C8 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackDetailViewController.swift; sourceTree = "<group>"; };
 		4E54C3461BF3887E00E935B0 /* RouteBrokenToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RouteBrokenToolbarView.xib; sourceTree = "<group>"; };
 		4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabelTableViewCell.swift; sourceTree = "<group>"; };
 		4E55A0261A36068800386F85 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		4E5674551A92383500BF4A28 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		4E5674581A9238A600BF4A28 /* TrackLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackLocation.swift; sourceTree = "<group>"; };
-		4E56745C1A92469000BF4A28 /* TrackingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingHandler.swift; sourceTree = "<group>"; };
 		4E56745F1A92521800BF4A28 /* MotionDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		4E58C3091B0E15DC0041255B /* MainWithSideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWithSideMenuViewController.swift; sourceTree = "<group>"; };
 		4E58C3171B0E35000041255B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenu.swift; path = ENSwiftSideMenu/ENSideMenu.swift; sourceTree = "<group>"; };
@@ -629,17 +597,13 @@
 		4E5E87941B31F7DC0021F5E9 /* RouteTypeToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTypeToolbarView.swift; sourceTree = "<group>"; };
 		4E5E87951B31F7DC0021F5E9 /* RouteTypeToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RouteTypeToolbarView.xib; sourceTree = "<group>"; };
 		4E651D2E1A93EA5B00497C70 /* TrackingPromptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingPromptViewController.swift; sourceTree = "<group>"; };
-		4E651D311A93EB9400497C70 /* TrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingViewController.swift; sourceTree = "<group>"; };
 		4E65D2A11AFD03F4006D7CA4 /* HourMinuteFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourMinuteFormatter.swift; sourceTree = "<group>"; };
 		4E6BD7C61A56FE320049F1DB /* AddressParser_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParser_Tests.swift; sourceTree = "<group>"; };
 		4E7262D81B2AF450008561D0 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		4E7BA9D01A1E1AD100F9744A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		4E7BA9E41A1E2AD500F9744A /* FoursquareItem_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareItem_Tests.swift; sourceTree = "<group>"; };
-		4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
-		4E7BD07E1A92354E00BFDC7B /* Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		4E818EB51BF3872C0058C090 /* RouteBrokenToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteBrokenToolbarView.swift; sourceTree = "<group>"; };
 		4E8C1E4B1BFF63DF00D757AA /* keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = keys.h; path = Shared/Resources/keys.h; sourceTree = "<group>"; };
-		4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
 		4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabelSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandler.swift; sourceTree = "<group>"; };
 		4EADAE4A1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableTrackingToolbarView.swift; sourceTree = "<group>"; };
@@ -1037,8 +1001,6 @@
 			isa = PBXGroup;
 			children = (
 				4E58C30C1B0E16160041255B /* ENSwiftSideMenu */,
-				4E2A92551A3B43130032ACD4 /* Async.swift */,
-				4E7BD07A1A9234EF00BFDC7B /* RLMSupport.swift */,
 			);
 			path = "3rd Party";
 			sourceTree = "<group>";
@@ -1048,7 +1010,6 @@
 			children = (
 				4E5B906A1B5F99AE008AC960 /* UserTermsClient.swift */,
 				DE5AD90B1CEB94420068C436 /* OverlaysClient.swift */,
-				4E2CF5071B85C30E004BDCAB /* TracksClient.swift */,
 				4EEA6A931BA06E99009E9020 /* UserClient.swift */,
 				4E2CF5041B85C17A004BDCAB /* ServerClient.swift */,
 				4EEA6A8C1BA033AB009E9020 /* SignInHelper.h */,
@@ -1135,9 +1096,6 @@
 				4EE671C51A2F25F00037865B /* UINavigationController.swift */,
 				4E651D2E1A93EA5B00497C70 /* TrackingPromptViewController.swift */,
 				4E5258A51A9B580000BE55C8 /* TrackingNotAvailableViewController.swift */,
-				4E651D311A93EB9400497C70 /* TrackingViewController.swift */,
-				4E90B42D1A9739A900A5F4C5 /* TracksViewController.swift */,
-				4E5258C91A9BD1E600BE55C8 /* TrackDetailViewController.swift */,
 				4E32B29A1AADB9F500583811 /* TrackingPreferencesViewController.swift */,
 			);
 			name = Menu;
@@ -1225,15 +1183,11 @@
 				4EAB12491A76AEF50099AC54 /* SettingsHandler.swift */,
 				4E3A7EF51A7793980020A8B4 /* TextToSpeechSynthesizer.swift */,
 				7D92B9F41D0EC6DD0022400E /* InstructionTextToSpeechSynthesizer.swift */,
-				4E7BD07E1A92354E00BFDC7B /* Realm.swift */,
-				4E2CE9ED1A974BA600F4BC4F /* TracksHandler.swift */,
-				4E56745C1A92469000BF4A28 /* TrackingHandler.swift */,
 				4E56745F1A92521800BF4A28 /* MotionDetector.swift */,
 				DE1032751CF363380099D170 /* ProgrammaticAssets.swift */,
 				7D03242D1CBD38D0002DADDE /* NonTrackingHandler.swift */,
 				4E5258C61A9B9C8300BE55C8 /* String.swift */,
 				4E32B29D1AADCA4900583811 /* StatsNotificationHandler.swift */,
-				4E32B2A01AADCC8A00583811 /* BikeStatistics.swift */,
 				4ECA91A01AB2EED800F4BB4F /* NotificationCenter.swift */,
 				4EFDA4811AB87A6D00522A41 /* NSDate.swift */,
 				4E2CF5001B85C148004BDCAB /* Formatters */,
@@ -1580,7 +1534,6 @@
 				4E55A0231A3605E900386F85 /* IconLabelTableViewCell.swift */,
 				4EDC5E0F1B21EC9C009189EE /* IconLabelSwitchTableViewCell.xib */,
 				4EAB12461A76A32E0099AC54 /* IconLabelSwitchTableViewCell.swift */,
-				4E0176871AB70AEB002A2C2D /* TrackTableViewCell.swift */,
 				4E7262D81B2AF450008561D0 /* BorderedButton.swift */,
 				4E10EBC51B3AFEF80012245E /* TurnInstructionsCollectionViewCell.xib */,
 				4E10EBC41B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift */,
@@ -1612,7 +1565,6 @@
 				4EBB7B471A5EC2A00064B530 /* RouteType.swift */,
 				4E33B91B1A640579007D4C82 /* UserHelper.swift */,
 				4E33B91D1A640590007D4C82 /* AppHelper.swift */,
-				4E5674551A92383500BF4A28 /* Track.swift */,
 				4E3E38A61A979E0A00773285 /* TrackActivity.swift */,
 				4E5674581A9238A600BF4A28 /* TrackLocation.swift */,
 				4E5B90671B5F990E008AC960 /* UserTerms.swift */,
@@ -1858,7 +1810,6 @@
 				4EE05F461A10EBFA00DE4226 /* Sources */,
 				4EE05F471A10EBFA00DE4226 /* Frameworks */,
 				4EE05F481A10EBFA00DE4226 /* Resources */,
-				37B4B92B914D1C42FB8F4A42 /* [CP] Copy Pods Resources */,
 				3B55A56B90BF3EDEB7F58A19 /* [CP] Embed Pods Frameworks */,
 				DEF202CB1CCFF265009CCC8E /* Fabric Integration Phase */,
 			);
@@ -1879,7 +1830,6 @@
 				4EE05F5F1A10EBFA00DE4226 /* Sources */,
 				4EE05F601A10EBFA00DE4226 /* Frameworks */,
 				4EE05F611A10EBFA00DE4226 /* Resources */,
-				B97F3E4914447D86F9A83EE9 /* [CP] Copy Pods Resources */,
 				2BBC5490CC591CA08D184A7D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -1901,7 +1851,6 @@
 				4EE05F751A10EDE700DE4226 /* Sources */,
 				4EE05F761A10EDE700DE4226 /* Frameworks */,
 				4EE05F771A10EDE700DE4226 /* Resources */,
-				E30B861333E8242813AA62CD /* [CP] Copy Pods Resources */,
 				3FAB1B7E55E241434B45041D /* [CP] Embed Pods Frameworks */,
 				DEF202CC1CCFF2A0009CCC8E /* Fabric Integration Phase */,
 			);
@@ -1922,7 +1871,6 @@
 				4EE05F8D1A10EDE700DE4226 /* Sources */,
 				4EE05F8E1A10EDE700DE4226 /* Frameworks */,
 				4EE05F8F1A10EDE700DE4226 /* Resources */,
-				9851AACE0BBCC7D790F8E83A /* [CP] Copy Pods Resources */,
 				1B5BE91AF7D1A9E03208AF12 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -1948,6 +1896,7 @@
 					4EE05F491A10EBFA00DE4226 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = SP46WFGATT;
+						LastSwiftMigration = 0830;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1959,6 +1908,7 @@
 					};
 					4EE05F621A10EBFA00DE4226 = {
 						CreatedOnToolsVersion = 6.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = 4EE05F491A10EBFA00DE4226;
 					};
 					4EE05F781A10EDE700DE4226 = {
@@ -2145,9 +2095,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-test_target-CykelPlanenTests/Pods-test_target-CykelPlanenTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OCHamcrest/OCHamcrest.framework",
+				"${BUILT_PRODUCTS_DIR}/OCMockito/OCMockito.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OCHamcrest.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OCMockito.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2160,13 +2115,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-app_target-I Bike CPH-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2BBC5490CC591CA08D184A7D /* [CP] Embed Pods Frameworks */ = {
@@ -2175,28 +2133,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-test_target-I Bike CPHTests/Pods-test_target-I Bike CPHTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OCHamcrest/OCHamcrest.framework",
+				"${BUILT_PRODUCTS_DIR}/OCMockito/OCMockito.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OCHamcrest.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OCMockito.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-test_target-I Bike CPHTests/Pods-test_target-I Bike CPHTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		37B4B92B914D1C42FB8F4A42 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-app_target-I Bike CPH/Pods-app_target-I Bike CPH-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3B55A56B90BF3EDEB7F58A19 /* [CP] Embed Pods Frameworks */ = {
@@ -2205,9 +2153,46 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-app_target-I Bike CPH/Pods-app_target-I Bike CPH-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AsyncSwift/Async.framework",
+				"${BUILT_PRODUCTS_DIR}/DAKeyboardControl/DAKeyboardControl.framework",
+				"${BUILT_PRODUCTS_DIR}/FLKAutoLayout/FLKAutoLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/GRMustache/GRMustache.framework",
+				"${BUILT_PRODUCTS_DIR}/JRSwizzle/JRSwizzle.framework",
+				"${BUILT_PRODUCTS_DIR}/Mapbox-iOS-SDK/Mapbox_iOS_SDK.framework",
+				"${BUILT_PRODUCTS_DIR}/NibDesignable/NibDesignable.framework",
+				"${BUILT_PRODUCTS_DIR}/ORStackView/ORStackView.framework",
+				"${BUILT_PRODUCTS_DIR}/PSTAlertController/PSTAlertController.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/SMCalloutView/SMCalloutView.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
+				"${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/UIImage-Categories/UIImage_Categories.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Async.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DAKeyboardControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLKAutoLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRMustache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JRSwizzle.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox_iOS_SDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NibDesignable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ORStackView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSTAlertController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SMCalloutView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTTAttributedLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImage_Categories.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2220,9 +2205,46 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-app_target-CykelPlanen/Pods-app_target-CykelPlanen-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AsyncSwift/Async.framework",
+				"${BUILT_PRODUCTS_DIR}/DAKeyboardControl/DAKeyboardControl.framework",
+				"${BUILT_PRODUCTS_DIR}/FLKAutoLayout/FLKAutoLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/GRMustache/GRMustache.framework",
+				"${BUILT_PRODUCTS_DIR}/JRSwizzle/JRSwizzle.framework",
+				"${BUILT_PRODUCTS_DIR}/Mapbox-iOS-SDK/Mapbox_iOS_SDK.framework",
+				"${BUILT_PRODUCTS_DIR}/NibDesignable/NibDesignable.framework",
+				"${BUILT_PRODUCTS_DIR}/ORStackView/ORStackView.framework",
+				"${BUILT_PRODUCTS_DIR}/PSTAlertController/PSTAlertController.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/SMCalloutView/SMCalloutView.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
+				"${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/UIImage-Categories/UIImage_Categories.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Async.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DAKeyboardControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLKAutoLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRMustache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JRSwizzle.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox_iOS_SDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NibDesignable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ORStackView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSTAlertController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SMCalloutView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTTAttributedLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImage_Categories.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2256,49 +2278,22 @@
 			shellPath = /bin/sh;
 			shellScript = "cp -f ../strings/en.strings Shared/Resources/Localization/en.lproj/Localizable.strings\ncp -f ../strings/da.strings Shared/Resources/Localization/da.lproj/Localizable.strings";
 		};
-		9851AACE0BBCC7D790F8E83A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-test_target-CykelPlanenTests/Pods-test_target-CykelPlanenTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B97F3E4914447D86F9A83EE9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-test_target-I Bike CPHTests/Pods-test_target-I Bike CPHTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D060BD536C924C10FE0EE259 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-test_target-CykelPlanenTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DB92C30BE4171D186DE7F3F8 /* [CP] Check Pods Manifest.lock */ = {
@@ -2307,13 +2302,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-test_target-I Bike CPHTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DEF202CB1CCFF265009CCC8E /* Fabric Integration Phase */ = {
@@ -2344,34 +2342,22 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 4b03ae94613016b718b0175087421d8bbe22f1e6 32d0d932721d7351ef9f5ffb454d78783cb9697f8b1135fbe59e8b49067305c0";
 		};
-		E30B861333E8242813AA62CD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-app_target-CykelPlanen/Pods-app_target-CykelPlanen-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		FAE064F4971BDC7FBCB998BB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-app_target-CykelPlanen-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2405,13 +2391,11 @@
 				4E55A0241A3605E900386F85 /* IconLabelTableViewCell.swift in Sources */,
 				7D1D9C611CB7EA07007F1D30 /* SMLocationManager.m in Sources */,
 				4EE8A83B1BF487FA00369B27 /* ToolbarViewContainer.swift in Sources */,
-				4E0176881AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */,
 				4E5258A61A9B580000BE55C8 /* TrackingNotAvailableViewController.swift in Sources */,
 				4EADAE4C1B4FE03A00A2E43F /* EnableTrackingToolbarView.swift in Sources */,
 				DE5AD90C1CEB94420068C436 /* OverlaysClient.swift in Sources */,
 				7D1D9C661CB7EA07007F1D30 /* SMRouteUtils.m in Sources */,
 				4EEC6D371B20B14F003AE8DF /* TrackingToolbarView.swift in Sources */,
-				4E7BD07F1A92354E00BFDC7B /* Realm.swift in Sources */,
 				4E4F5FE01A2BB3A000233ACA /* StyleIBikeCph.swift in Sources */,
 				4EC56E9D1A2A2C3D00B696B4 /* SMSearchCell.m in Sources */,
 				4EC56EE71A2A3AAE00B696B4 /* SMRegisterController.m in Sources */,
@@ -2429,13 +2413,11 @@
 				4EC56DCC1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */,
 				4EC56E8D1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
 				4EEC6D3A1B20B7F8003AE8DF /* DistanceFormatter.swift in Sources */,
-				4E90B42E1A9739A900A5F4C5 /* TracksViewController.swift in Sources */,
 				4EC56E791A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
 				4EEC6D311B208156003AE8DF /* CompassButton.swift in Sources */,
 				4E10EBC61B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */,
 				DE1032761CF363380099D170 /* ProgrammaticAssets.swift in Sources */,
 				4EE05F501A10EBFA00DE4226 /* main.m in Sources */,
-				4E2A92561A3B43130032ACD4 /* Async.swift in Sources */,
 				7D1D9C921CB7EA6F007F1D30 /* HistoryItem.swift in Sources */,
 				4E5B90681B5F990E008AC960 /* UserTerms.swift in Sources */,
 				4E337B541B2F1E3A00261D97 /* SMiBikeCPHMapTileSource.m in Sources */,
@@ -2467,18 +2449,15 @@
 				4EC56E711A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
 				7D03242E1CBD38D0002DADDE /* NonTrackingHandler.swift in Sources */,
 				4EC56EA11A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */,
-				4E5258CA1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */,
 				4E65D2A21AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */,
 				4EC56EF31A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
 				4EC56E751A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
 				7D1D9C761CB7EA1E007F1D30 /* SMFoursquareOperation.m in Sources */,
-				4E7BD07B1A9234EF00BFDC7B /* RLMSupport.swift in Sources */,
 				7D1D9C601CB7EA07007F1D30 /* SMGPSUtil.m in Sources */,
 				4EC56DD41A2A25E900B696B4 /* SMUtil.m in Sources */,
 				7D1D9C961CB7EA6F007F1D30 /* User.swift in Sources */,
 				4E58C30A1B0E15DC0041255B /* MainWithSideMenuViewController.swift in Sources */,
 				4E4AC45D1A85091C0037A65E /* Macro.swift in Sources */,
-				4E32B2A11AADCC8A00583811 /* BikeStatistics.swift in Sources */,
 				4ED672501B0F61A00025DFDF /* Thread.swift in Sources */,
 				4EE671C61A2F25F00037865B /* UINavigationController.swift in Sources */,
 				4EC56DD81A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
@@ -2488,11 +2467,9 @@
 				4EDC5E0A1B21B0F0009189EE /* FindAddressViewController.swift in Sources */,
 				4EC56E2D1A2A2C3D00B696B4 /* FlickableView.m in Sources */,
 				4E3C3A871A39DEFC00C79E52 /* FavoriteListViewController.swift in Sources */,
-				4E5674561A92383500BF4A28 /* Track.swift in Sources */,
 				4EEC6D2E1B207B74003AE8DF /* ToolbarViewController.swift in Sources */,
 				4E1000E01B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */,
 				4EC56DDE1A2A262800B696B4 /* SMAppDelegate.m in Sources */,
-				4E56745D1A92469000BF4A28 /* TrackingHandler.swift in Sources */,
 				4EC56EFF1A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
 				4E2B08F21B3D5C6900580C27 /* MapToMapTransitionAnimator.swift in Sources */,
 				4EBB7B481A5EC2A00064B530 /* RouteType.swift in Sources */,
@@ -2514,14 +2491,12 @@
 				DE4460EA1CF4E10800865E88 /* GreenestRouteIntroductionView.swift in Sources */,
 				7D1D9C901CB7EA6F007F1D30 /* FavoriteItem.swift in Sources */,
 				7D1D9C8F1CB7EA6F007F1D30 /* CurrentLocationItem.swift in Sources */,
-				4E2CF5081B85C30E004BDCAB /* TracksClient.swift in Sources */,
 				4EC56E551A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
 				4EC56E391A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
 				4EC56DC81A2A25E900B696B4 /* SMEvents.m in Sources */,
 				4E4F5FDA1A2BAC4700233ACA /* Styling.swift in Sources */,
 				4EFB7DB61B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift in Sources */,
 				4E5258C71A9B9C8400BE55C8 /* String.swift in Sources */,
-				4E2CE9EE1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
 				7D1D9C741CB7EA1E007F1D30 /* SMAPIOperation.m in Sources */,
 				4EC56DD01A2A25E900B696B4 /* SMSearchHistory.m in Sources */,
 				4EC56E291A2A2C3D00B696B4 /* AsyncImageView.m in Sources */,
@@ -2540,7 +2515,6 @@
 				7D1D9C951CB7EA6F007F1D30 /* SearchListItem.swift in Sources */,
 				4EC56EB11A2A2C3D00B696B4 /* SMViewMoreCell.m in Sources */,
 				4EC56ECF1A2A3AAE00B696B4 /* SMAboutController.m in Sources */,
-				4E651D321A93EB9400497C70 /* TrackingViewController.swift in Sources */,
 				7D1D9C5F1CB7EA07007F1D30 /* SMGeocoder.m in Sources */,
 				4E3867811A430A0E0018AC5B /* FacebookHandler.swift in Sources */,
 				4EB70F4C1B6B62A900AB48CB /* CaloriesFormatter.swift in Sources */,
@@ -2599,7 +2573,6 @@
 				7D03242F1CBD3990002DADDE /* NonTrackingHandler.swift in Sources */,
 				4EC56E3B1A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
 				4EC56EDD1A2A3AAE00B696B4 /* SMEnterRouteController.m in Sources */,
-				4E0176891AB70AEB002A2C2D /* TrackTableViewCell.swift in Sources */,
 				4EC56DC61A2A25E900B696B4 /* SMContacts.m in Sources */,
 				7D1D9C9B1CB7EBA2007F1D30 /* KortforItem.swift in Sources */,
 				4EE59AF51A6485BA00B89D71 /* SMAccountNativeViewController.m in Sources */,
@@ -2650,7 +2623,6 @@
 				4EB70F4D1B6B62A900AB48CB /* CaloriesFormatter.swift in Sources */,
 				4EC56E9B1A2A2C3D00B696B4 /* SMRouteTypeSelectCell.m in Sources */,
 				4EC56DDA1A2A25E900B696B4 /* UIView+LocateSubview.m in Sources */,
-				4E5258CB1A9BD1E600BE55C8 /* TrackDetailViewController.swift in Sources */,
 				4E4F5FDE1A2BAE1400233ACA /* StyleCykelPlanen.swift in Sources */,
 				7D1D9CB01CB7EBF3007F1D30 /* SMKMSPlacesOperation.m in Sources */,
 				4EE05F7E1A10EDE700DE4226 /* main.m in Sources */,
@@ -2658,9 +2630,7 @@
 				4EC56DD61A2A25E900B696B4 /* SMUtil.m in Sources */,
 				4EC56EED1A2A3AAE00B696B4 /* SMReportErrorController.m in Sources */,
 				4EE06C581A10FC5600DE4226 /* SMBreakRouteViewController.m in Sources */,
-				4E651D331A93EB9400497C70 /* TrackingViewController.swift in Sources */,
 				4EC56E971A2A2C3D00B696B4 /* SMRadioUncheckedCell.m in Sources */,
-				4E90B42F1A9739A900A5F4C5 /* TracksViewController.swift in Sources */,
 				4EE06C351A10FC5600DE4226 /* SMBikeWaypointCell.m in Sources */,
 				4EC56E8F1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
 				4E5258C81A9B9C8400BE55C8 /* String.swift in Sources */,
@@ -2675,7 +2645,6 @@
 				7D1D9CAD1CB7EBF3007F1D30 /* SMAPIQueue.m in Sources */,
 				4EC56E931A2A2C3D00B696B4 /* SMRadioCheckedCell.m in Sources */,
 				4EEE92891A1A4A340006BD95 /* SMTransportationCell.m in Sources */,
-				4E56745E1A92469000BF4A28 /* TrackingHandler.swift in Sources */,
 				4EE06C3C1A10FC5600DE4226 /* SMLineData.m in Sources */,
 				4EC56E6F1A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */,
 				4EC56EF91A2A3AAE00B696B4 /* SMSettingsController.m in Sources */,
@@ -2691,11 +2660,9 @@
 				4E5B90661B5F98BF008AC960 /* UserTermsViewController.swift in Sources */,
 				DE4460E81CF4E0EC00865E88 /* GreenestRouteIntroductionViewController.swift in Sources */,
 				4EFDA4871AB884AD00522A41 /* RelativeDateFormatter.swift in Sources */,
-				4E2CE9EF1A974BA600F4BC4F /* TracksHandler.swift in Sources */,
 				4EE683751B4D55FC00366EBC /* CLLocationCoordinate2D.swift in Sources */,
 				4E2CF4FE1B84B964004BDCAB /* LaunchReadMoreViewController.swift in Sources */,
 				4E7262DA1B2AF450008561D0 /* BorderedButton.swift in Sources */,
-				4E56745B1A9238A900BF4A28 /* Track.swift in Sources */,
 				7D1D9CA31CB7EBCF007F1D30 /* SMRequestOSRM.m in Sources */,
 				4EC56E731A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
 				4EC56DCA1A2A25E900B696B4 /* SMEvents.m in Sources */,
@@ -2723,7 +2690,6 @@
 				4EB610E61AD69D2500CEC994 /* UITableView.swift in Sources */,
 				4EE06F041A112F6D00DE4226 /* SMAddressPickerView.m in Sources */,
 				4EEC6D2F1B207B74003AE8DF /* ToolbarViewController.swift in Sources */,
-				4E2CF5091B85C30E004BDCAB /* TracksClient.swift in Sources */,
 				4E467D1B1B3416D4003770EE /* RouteManager.swift in Sources */,
 				4EEC6D381B20B14F003AE8DF /* TrackingToolbarView.swift in Sources */,
 				4EC56E771A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
@@ -2731,21 +2697,17 @@
 				4EE671C71A2F25F00037865B /* UINavigationController.swift in Sources */,
 				7D1D9CA41CB7EBCF007F1D30 /* SMRoute.m in Sources */,
 				4E1000E11B00A6EC005C7FE7 /* RouteTypeViewModel.swift in Sources */,
-				4E7BD07C1A9234EF00BFDC7B /* RLMSupport.swift in Sources */,
 				4EEA6A8F1BA033B2009E9020 /* SignInHelper.m in Sources */,
 				4EC56F011A2A3AAE00B696B4 /* SMTranslatedViewController.m in Sources */,
 				4EE8A83C1BF487FA00369B27 /* ToolbarViewContainer.swift in Sources */,
 				4EE06C471A10FC5600DE4226 /* SMSingleRouteInfo.m in Sources */,
 				4EC56E2F1A2A2C3D00B696B4 /* FlickableView.m in Sources */,
 				7D1D9C9C1CB7EBAF007F1D30 /* OiorestItem.swift in Sources */,
-				4E7BD0801A92354E00BFDC7B /* Realm.swift in Sources */,
-				4E32B2A21AADCC8A00583811 /* BikeStatistics.swift in Sources */,
 				7D1D9C9F1CB7EBBD007F1D30 /* SMGeocoder.m in Sources */,
 				4EC56E571A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
 				4E818EB81BF3872C0058C090 /* RouteBrokenToolbarView.swift in Sources */,
 				4ECA91A21AB2EED800F4BB4F /* NotificationCenter.swift in Sources */,
 				4EE06C321A10FC5600DE4226 /* SMArrivalInfo.m in Sources */,
-				4E2A92571A3B43130032ACD4 /* Async.swift in Sources */,
 				7D1D9C9E1CB7EBB5007F1D30 /* User.swift in Sources */,
 				4EB610E31AD69B8800CEC994 /* SectionViewModel.swift in Sources */,
 				4EDC5E081B20EBD5009189EE /* ToolbarView.swift in Sources */,
@@ -2964,6 +2926,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.ibikecph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -3005,6 +2968,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.ibikecph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
@@ -3045,6 +3009,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I Bike CPH.app/I Bike CPH";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -3085,6 +3050,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I Bike CPH.app/I Bike CPH";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -3126,6 +3092,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.CykelPlanen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -3165,6 +3132,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.CykelPlanen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -3203,6 +3171,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CykelPlanen.app/CykelPlanen";
 			};
 			name = Debug;
@@ -3241,6 +3210,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CykelPlanen.app/CykelPlanen";
 			};
 			name = Release;

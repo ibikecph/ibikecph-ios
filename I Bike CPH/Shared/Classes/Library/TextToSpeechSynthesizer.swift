@@ -8,19 +8,18 @@
 
 import UIKit
 
-import AVFoundation.AVAudioSession
-import AVFoundation.AVSpeechSynthesis
+import AVFoundation
 
-public class TextToSpeechSynthesizer: NSObject {
+open class TextToSpeechSynthesizer: NSObject {
     
-    private let audioSession: AVAudioSession = {
+    fileprivate let audioSession: AVAudioSession = {
         var audioSession = AVAudioSession.sharedInstance()
         do {
             if #available(iOS 9.0, *) {
-                try audioSession.setCategory(AVAudioSessionCategoryPlayback, withOptions: [.DuckOthers, .InterruptSpokenAudioAndMixWithOthers])
+                try audioSession.setCategory(AVAudioSessionCategoryPlayback, with: [.duckOthers, .interruptSpokenAudioAndMixWithOthers])
             } else {
                 // Fallback on earlier versions
-                try audioSession.setCategory(AVAudioSessionCategoryPlayback, withOptions: .DuckOthers)
+                try audioSession.setCategory(AVAudioSessionCategoryPlayback, with: .duckOthers)
             }
         } catch {
             // TODO: Handle error
@@ -28,8 +27,8 @@ public class TextToSpeechSynthesizer: NSObject {
         return audioSession
     }()
     
-    private let acceptableLanguageCodes: [String] = ["en-GB", "en-AU", "en-IE", "en-US", "en-ZA", "da-DK"]
-    private var voiceLanguageCode: String {
+    fileprivate let acceptableLanguageCodes: [String] = ["en-GB", "en-AU", "en-IE", "en-US", "en-ZA", "da-DK"]
+    fileprivate var voiceLanguageCode: String {
         let currentLanguageCode = AVSpeechSynthesisVoice.currentLanguageCode()
         if self.acceptableLanguageCodes.contains(currentLanguageCode) {
             return currentLanguageCode
@@ -37,7 +36,7 @@ public class TextToSpeechSynthesizer: NSObject {
         return self.acceptableLanguageCodes.first!
     }
     
-    private let speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
+    fileprivate let speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     
     override init () {
         super.init()
@@ -53,18 +52,18 @@ public class TextToSpeechSynthesizer: NSObject {
 extension TextToSpeechSynthesizer {
     
     var hasRemainingSpeech: Bool {
-        return self.speechSynthesizer.speaking || self.speechSynthesizer.paused
+        return self.speechSynthesizer.isSpeaking || self.speechSynthesizer.isPaused
     }
     
-    func enableSpeech(enable: Bool) {
+    func enableSpeech(_ enable: Bool) {
         if enable {
             self.speechSynthesizer.continueSpeaking()
         } else {
-            self.speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
+            self.speechSynthesizer.stopSpeaking(at: .immediate)
         }
     }
 
-    private func setAudioSessionActive(beActive: Bool) {
+    fileprivate func setAudioSessionActive(_ beActive: Bool) {
         do {
             try audioSession.setActive(beActive)
         } catch let error as NSError {
@@ -73,36 +72,36 @@ extension TextToSpeechSynthesizer {
     }
     
 
-    public func speakString(string: String) {
+    public func speakString(_ string: String) {
         let utterance = AVSpeechUtterance(string: string)
         utterance.voice = AVSpeechSynthesisVoice(language: self.voiceLanguageCode)
-        speechSynthesizer.speakUtterance(utterance)
+        speechSynthesizer.speak(utterance)
     }
     
     public func stopSpeaking() {
-        speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
+        speechSynthesizer.stopSpeaking(at: .immediate)
     }
 }
 
 extension TextToSpeechSynthesizer: AVSpeechSynthesizerDelegate {
     
-    public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
+    public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         setAudioSessionActive(true)
     }
 
-    public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+    public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         setAudioSessionActive(false)
     }
     
-    public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didPauseSpeechUtterance utterance: AVSpeechUtterance) {
+    public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didPause utterance: AVSpeechUtterance) {
         setAudioSessionActive(false)
     }
 
-    public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didContinueSpeechUtterance utterance: AVSpeechUtterance) {
+    public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didContinue utterance: AVSpeechUtterance) {
         setAudioSessionActive(true)
     }
 
-    public func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
+    public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         // This will from time to time provoke errors from the audio session because its I/O has not stopped completely.
         // It does however seem necessary to call the following function to stop the audio session.
         setAudioSessionActive(false)

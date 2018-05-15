@@ -12,19 +12,19 @@ import SwiftyJSON
 class OverlaysClient: ServerClient {
     static let sharedInstance = OverlaysClient()
     
-    private let baseUrl = SMRouteSettings.sharedInstance().api_base_url + "/terms"
+    fileprivate let baseUrl = SMRouteSettings.sharedInstance().api_base_url + "/terms"
     
     enum Result {
-        case Success(JSON)
-        case Other(ServerResult)
+        case success(JSON)
+        case other(ServerResult)
     }
     
-    func requestOverlaysGeoJSON(filename: String, completion: (Result) -> ()) {
+    func requestOverlaysGeoJSON(_ filename: String, completion: @escaping (Result) -> ()) {
         let path = "http://assets.ibikecph.dk/geodata/" + filename + ".geojson"
         request(path) { result in
             switch result {
-                case .SuccessJSON(let json, _): completion(.Success(json))
-                default: completion(.Other(result))
+                case .successJSON(let json, _): completion(.success(json))
+                default: completion(.other(result))
             }
         }
     }

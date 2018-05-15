@@ -16,8 +16,8 @@ class BorderedButton: UIButton {
     }
     
     func setup() {
-        layer.borderColor = UIColor.lightGrayColor().CGColor
-        layer.borderWidth = 1 / UIScreen.mainScreen().scale
+        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderWidth = 1 / UIScreen.main.scale
         layer.cornerRadius = 4
     }
 }

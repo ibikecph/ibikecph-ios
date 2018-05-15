@@ -28,31 +28,31 @@ class UserTermsViewController: SMTranslatedViewController {
         updateToUserTerms()
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    @IBAction func didTapReadTerms(sender: AnyObject) {
+    @IBAction func didTapReadTerms(_ sender: AnyObject) {
         if let url = userTerms?.url {
-            UIApplication.sharedApplication().openURL(url)
+            UIApplication.shared.openURL(url as URL)
         }
     }
     
-    @IBAction func didTapNo(sender: AnyObject) {
-        let alertController = PSTAlertController(title: "", message: "accept_user_terms_or_log_out".localized, preferredStyle: .Alert)
+    @IBAction func didTapNo(_ sender: AnyObject) {
+        let alertController = PSTAlertController(title: "", message: "accept_user_terms_or_log_out".localized, preferredStyle: .alert)
         let cancelAction = PSTAlertAction(title: "back".localized) { action in
-            alertController.dismissAnimated(true, completion: nil)
+            alertController?.dismiss(animated: true, completion: nil)
         }
-        alertController.addAction(cancelAction)
+        alertController?.addAction(cancelAction)
         let loginAction = PSTAlertAction(title: "logout".localized) { action in
             UserHelper.logout()
             self.dismiss()
         }
-        alertController.addAction(loginAction)
-        alertController.showWithSender(self, controller: self, animated: true, completion: nil)
+        alertController?.addAction(loginAction)
+        alertController?.showWithSender(self, controller: self, animated: true, completion: nil)
     }
     
-    @IBAction func didTapAccept(sender: AnyObject) {
+    @IBAction func didTapAccept(_ sender: AnyObject) {
         if let version = userTerms?.version {
             UserTermsClient.instance.latestVerifiedVersion = version
             dismiss()
@@ -62,9 +62,9 @@ class UserTermsViewController: SMTranslatedViewController {
     func updateToUserTerms() {
         humanReadableLabel?.text = userTerms?.humanReadableText
         let enabled = userTerms != nil
-        readTermsButton?.enabled = enabled
-        acceptButton?.enabled = enabled
-        noButton?.enabled = enabled
+        readTermsButton?.isEnabled = enabled
+        acceptButton?.isEnabled = enabled
+        noButton?.isEnabled = enabled
     }
 }
 

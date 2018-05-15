@@ -8,10 +8,10 @@
 
 import UIKit
 
-class DistanceFormatter: NSNumberFormatter {
+class DistanceFormatter: NumberFormatter {
    
-    private lazy var numberFormatter: NSNumberFormatter = {
-        let formatter = NSNumberFormatter()
+    fileprivate lazy var numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 1
         formatter.minimumFractionDigits = 1
         formatter.alwaysShowsDecimalSeparator = true
@@ -19,7 +19,8 @@ class DistanceFormatter: NSNumberFormatter {
         return formatter
     }()
     
-    func string(meters: Double) -> String {
-        return (numberFormatter.stringFromNumber(meters / 1000) ?? "0") + " " + "unit_km".localized
+    func string(_ meters: Double) -> String {
+        let mm = meters / 1000
+        return (numberFormatter.string(from: NSNumber(value: mm)) ?? "0") + " " + "unit_km".localized
     }
 }

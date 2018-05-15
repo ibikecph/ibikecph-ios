@@ -11,22 +11,22 @@ import UIKit
 
 class CompassButton: UIButton {
 
-    var userTrackingMode: MapView.UserTrackingMode = .None {
+    var userTrackingMode: MapView.UserTrackingMode = .none {
         didSet {
             let imageName: String = {
                 switch self.userTrackingMode {
-                    case .None: return "Compas unselected"
-                    case .Follow: return "Compas selected"
-                    case .FollowWithHeading: return "Compas active"
+                    case .none: return "Compas unselected"
+                    case .follow: return "Compas selected"
+                    case .followWithHeading: return "Compas active"
                 }
             }()
-            setImage(UIImage(named: imageName), forState: .Normal)
+            setImage(UIImage(named: imageName), for: UIControlState())
         }
     }
     var circleColor: UIColor = Styler.tintColor()
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         didSet {
-            highlight(highlighted)
+            highlight(isHighlighted)
         }
     }
     
@@ -41,7 +41,7 @@ class CompassButton: UIButton {
     }
     
     init() {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         setup()
     }
     
@@ -50,11 +50,11 @@ class CompassButton: UIButton {
         highlight(false)
     }
     
-    func highlight(highlight: Bool = false) {
+    func highlight(_ highlight: Bool = false) {
         shadow(highlight)
     }
     
-    func shadow(lifted: Bool = false) {
+    func shadow(_ lifted: Bool = false) {
         layer.masksToBounds = false
         let offset = lifted  ? 4 : 0.5
         layer.shadowOffset = CGSize(width: 0, height: offset)
@@ -66,8 +66,8 @@ class CompassButton: UIButton {
         super.layoutSubviews()
     }
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         // Take account for off-center content 
         let verticalOffset = contentEdgeInsets.top - contentEdgeInsets.bottom
@@ -80,8 +80,8 @@ class CompassButton: UIButton {
         let circleRect = UIEdgeInsetsInsetRect(rect, inset)
         // Draw circle
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, circleColor.CGColor)
-        CGContextFillEllipseInRect (context, circleRect)
-        CGContextFillPath(context)
+        context?.setFillColor(circleColor.cgColor)
+        context?.fillEllipse (in: circleRect)
+        context?.fillPath()
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class RouteTypeHandler: NSObject {
     static let instance = RouteTypeHandler()
     
-    var type: RouteType = .Fast {
+    var type: RouteType = .fast {
         didSet {
             delegate?.routeTypeHandlerChanged(type)
             delegateObjc?.routeTypeHandlerChanged(type.server)
@@ -24,10 +24,10 @@ class RouteTypeHandler: NSObject {
 
 protocol RouteTypeHandlerDelegate {
     
-    func routeTypeHandlerChanged(toType: RouteType)
+    func routeTypeHandlerChanged(_ toType: RouteType)
 }
 
 @objc protocol RouteTypeHandlerDelegateObjc {
     
-    func routeTypeHandlerChanged(toServer: String)
+    func routeTypeHandlerChanged(_ toServer: String)
 }

@@ -19,8 +19,8 @@ class AddTrackTokenViewController: SMTranslatedViewController {
     @IBOutlet weak var profileLabel: UILabel!
     @IBOutlet weak var passwordLabel: UITextField!
     @IBOutlet weak var passwordRepeatLabel: UITextField!
-    private let signInHelper = SignInHelper()
-    private var hasPreExistingTrackToken: Bool = false
+    fileprivate let signInHelper = SignInHelper()
+    fileprivate var hasPreExistingTrackToken: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +29,11 @@ class AddTrackTokenViewController: SMTranslatedViewController {
         
         updateUI()
         if UserHelper.isFacebook() {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             UserClient.instance.hasTrackToken { result in
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 switch result {
-                case .Success(let hasToken):
+                case .success(let hasToken):
                     self.hasPreExistingTrackToken = hasToken
                     self.updateUI()
                 default: break
@@ -41,7 +41,7 @@ class AddTrackTokenViewController: SMTranslatedViewController {
             }
             UserClient.instance.userData { result in
                 switch result {
-                case .Success(let name, let image):
+                case .success(let name, let image):
                     self.profileLabel.text = name
                     self.imageView.image = image
                 default: break
@@ -53,30 +53,30 @@ class AddTrackTokenViewController: SMTranslatedViewController {
         imageView.layer.masksToBounds = true
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: true)
         
-        view.addKeyboardPanningWithActionHandler { [weak self] keyboardFrameInView, opening, closing in
-            let keyboardIsVisibleWithHeight = CGRectGetHeight(self!.view.frame) - CGRectGetMinY(keyboardFrameInView)
+        view.addKeyboardPanning { [weak self] keyboardFrameInView, opening, closing in
+            let keyboardIsVisibleWithHeight = self!.view.frame.height - keyboardFrameInView.minY
             let insets = UIEdgeInsetsMake(0, 0, keyboardIsVisibleWithHeight, 0);
             self?.scrollView.contentInset = insets
             self?.scrollView.scrollIndicatorInsets = insets
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         view.removeKeyboardControl()
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    @IBAction func didTapSendButton(sender: AnyObject) {
+    @IBAction func didTapSendButton(_ sender: AnyObject) {
         send()
     }
     
@@ -84,11 +84,11 @@ class AddTrackTokenViewController: SMTranslatedViewController {
 //        let isLoggedIn = UserHelper.loggedIn()
         let isFacebook = UserHelper.isFacebook()
         
-        passwordRepeatLabel.hidden = true
+        passwordRepeatLabel.isHidden = true
         if isFacebook {
             subtitleLabel.text = "track_token_subtitle_facebook".localized
             if !hasPreExistingTrackToken {
-                passwordRepeatLabel.hidden = false
+                passwordRepeatLabel.isHidden = false
                 descriptionLabel.text = "track_token_description_facebook_new".localized
             } else {
                 descriptionLabel.text = "track_token_description_facebook_has_token".localized
@@ -102,7 +102,7 @@ class AddTrackTokenViewController: SMTranslatedViewController {
     
     func send() {
         // Similar passwords (if needed)
-        if !passwordRepeatLabel.hidden &&
+        if !passwordRepeatLabel.isHidden &&
             passwordLabel.text != passwordRepeatLabel.text {
             // Show error
             let alertView = UIAlertView(title: "Error".localized, message: "register_error_passwords".localized, delegate: nil, cancelButtonTitle: "OK".localized)
@@ -110,33 +110,33 @@ class AddTrackTokenViewController: SMTranslatedViewController {
             return
         }
         // Password has some length
-        guard let password = passwordLabel.text where password.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 0 else {
+        guard let password = passwordLabel.text, password.lengthOfBytes(using: String.Encoding.utf8) != 0 else {
             let alertView = UIAlertView(title: "Error".localized, message: "register_error_fields".localized, delegate: nil, cancelButtonTitle: "OK".localized)
             alertView.show()
             return
         }
         
         if UserHelper.isFacebook() && !hasPreExistingTrackToken {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             UserClient.instance.addTrackToken(password) { result in
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 switch result {
-                case .Success:
+                case .success:
                     self.dismiss()
-                case .Other(_):
+                case .other(_):
                     let alertView = UIAlertView(title: "Error".localized, message: "network_error_text".localized, delegate: nil, cancelButtonTitle: "OK".localized)
                     alertView.show()
                 }
             }
         } else {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-            signInHelper.loginWithEmail(UserHelper.email(), password: password, view: self.view) { success, errorTitle, errorDescription in
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            signInHelper.login(withEmail: UserHelper.email(), password: password, view: self.view) { success, errorTitle, errorDescription in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 if success {
                     self.dismiss()
                     return
                 }
-                let alertView = UIAlertView(title: errorTitle.localized, message: errorDescription.localized, delegate: nil, cancelButtonTitle: "OK".localized)
+                let alertView = UIAlertView(title: errorTitle?.localized, message: errorDescription?.localized, delegate: nil, cancelButtonTitle: "OK".localized)
                 alertView.show()
             }
         }
@@ -145,11 +145,11 @@ class AddTrackTokenViewController: SMTranslatedViewController {
 
 extension AddTrackTokenViewController: UITextFieldDelegate {
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         switch textField {
         case passwordLabel:
-            if passwordRepeatLabel.hidden {
+            if passwordRepeatLabel.isHidden {
                 send()
             } else {
                 passwordRepeatLabel.becomeFirstResponder()

@@ -17,16 +17,16 @@ class GreenestRouteIntroductionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let view = self.view as? GreenestRouteIntroductionView {
-            view.footerButton.addTarget(self, action: #selector(pressedFooterButton), forControlEvents: .TouchUpInside)
+            view.footerButton.addTarget(self, action: #selector(pressedFooterButton), for: .touchUpInside)
         }
     }
     
-    func pressedFooterButton(sender: UIButton) {
+    func pressedFooterButton(_ sender: UIButton) {
         Settings.sharedInstance.turnstile.didSeeGreenestRouteIntroduction = true
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .Default
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .default
     }
 }

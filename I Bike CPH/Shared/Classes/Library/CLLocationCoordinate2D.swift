@@ -11,7 +11,7 @@ import CoreLocation
 extension CLLocationCoordinate2D {
     
     /// The angle between -180 and 180 degrees
-    func degreesFromCoordinate(coordinate: CLLocationCoordinate2D) -> CLLocationDirection {
+    func degreesFromCoordinate(_ coordinate: CLLocationCoordinate2D) -> CLLocationDirection {
         let deltaLatitude = latitude - coordinate.latitude
         let deltaLongitude = longitude - coordinate.longitude
         let angle = atan2(deltaLatitude, deltaLongitude) * 180 / M_PI

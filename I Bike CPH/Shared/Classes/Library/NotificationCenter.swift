@@ -7,20 +7,25 @@
 //
 
 import UIKit
+import Async
 
 class NotificationCenter {
     
-    class func post(name: String, object: AnyObject? = nil, userInfo: [NSObject : AnyObject]? = nil) {
+    class func post(_ name: String, object: AnyObject? = nil, userInfo: [AnyHashable: Any]? = nil) {
         Async.main {
-            NSNotificationCenter.defaultCenter().postNotificationName(name, object: object, userInfo: userInfo)
+            Foundation.NotificationCenter.default.post(name: Notification.Name(rawValue: name), object: object, userInfo: userInfo)
         }
     }
     
-    class func observe(name: String, object: AnyObject? = nil, queue: NSOperationQueue? = nil, usingBlock block: NSNotification! -> ()) -> NSObjectProtocol {
-        return NSNotificationCenter.defaultCenter().addObserverForName(name, object: object, queue: queue, usingBlock: block)
+    class func observe(_ name: NSNotification.Name, object: AnyObject? = nil, queue: OperationQueue? = nil, usingBlock block: @escaping (Notification!) -> ()) -> NSObjectProtocol {
+        return Foundation.NotificationCenter.default.addObserver(forName: name, object: object, queue: queue, using: block)
     }
     
-    class func unobserve(observer: AnyObject, name: String? = nil, object: AnyObject? = nil) {
-        NSNotificationCenter.defaultCenter().removeObserver(observer, name: name, object: object)
+    class func observe(_ name: String, object: AnyObject? = nil, queue: OperationQueue? = nil, usingBlock block: @escaping (Notification!) -> ()) -> NSObjectProtocol {
+        return Foundation.NotificationCenter.default.addObserver(forName: NSNotification.Name(name), object: object, queue: queue, using: block)
+    }
+    
+    class func unobserve(_ observer: AnyObject, name: String? = nil, object: AnyObject? = nil) {
+        Foundation.NotificationCenter.default.removeObserver(observer, name: name.map { NSNotification.Name(rawValue: $0) }, object: object)
     }
 }

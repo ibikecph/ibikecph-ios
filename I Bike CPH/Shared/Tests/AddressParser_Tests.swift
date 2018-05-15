@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-func assertEqualIfExists<T: Equatable>(left: T?, right: T, message: String) {
+func assertEqualIfExists<T: Equatable>(_ left: T?, right: T, message: String) {
     if let left = left {
         XCTAssert(left == right, message)
     }
@@ -27,7 +27,7 @@ class AddressParser_Tests: XCTestCase {
         super.tearDown()
     }
     
-    func shorthand(address: String, expectedStreet: String? = nil, expectedNumber: String? = nil, expectedZip: String? = nil, expectedCity: String? = nil) {
+    func shorthand(_ address: String, expectedStreet: String? = nil, expectedNumber: String? = nil, expectedZip: String? = nil, expectedCity: String? = nil) {
         let result = SMAddressParser.parseAddress(address)
         
         assertEqualIfExists(expectedStreet, result.street, "Wrong street")

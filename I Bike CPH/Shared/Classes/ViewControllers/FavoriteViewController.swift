@@ -16,16 +16,16 @@ struct FavoriteTypeViewModel {
     init(type: FavoriteItemType) {
         self.type = type
         switch type {
-            case .Home:
+            case .home:
                 title = "Home".localized
                 iconImage = UIImage(named: "favoriteHome")
-            case .Work:
+            case .work:
                 title = "Work".localized
                 iconImage = UIImage(named: "favoriteWork")
-            case .School:
+            case .school:
                 title = "School".localized
                 iconImage = UIImage(named: "favoriteSchool")
-            case .Unknown:
+            case .unknown:
                 title = "Favorite".localized
                 iconImage = UIImage(named: "Favorite")
         }
@@ -40,24 +40,24 @@ class FavoriteViewController: SMTranslatedViewController {
     @IBOutlet weak var routeBarButton: UIBarButtonItem!
 
     @IBOutlet weak var tableView: UITableView!
-    private let cellID = "FavoriteTypeCellID"
+    fileprivate let cellID = "FavoriteTypeCellID"
 
-    private let searchAddressSegue = "favoriteToSearch"
+    fileprivate let searchAddressSegue = "favoriteToSearch"
     
-    private var observerTokens = [AnyObject]()
+    fileprivate var observerTokens = [AnyObject]()
     
     var favoriteItem: FavoriteItem? {
         didSet {
             updateViews()
         }
     }
-    private var creating: Bool = false
+    fileprivate var creating: Bool = false
     
     let typeItems = [
-        FavoriteTypeViewModel(type: .Home),
-        FavoriteTypeViewModel(type: .Work),
-        FavoriteTypeViewModel(type: .School),
-        FavoriteTypeViewModel(type: .Unknown)]
+        FavoriteTypeViewModel(type: .home),
+        FavoriteTypeViewModel(type: .work),
+        FavoriteTypeViewModel(type: .school),
+        FavoriteTypeViewModel(type: .unknown)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ class FavoriteViewController: SMTranslatedViewController {
         nameTextField.delegate = self
         
         // Observers
-        observerTokens.append(NotificationCenter.observe(UITextFieldTextDidChangeNotification) { [weak self] notification in
+        observerTokens.append(NotificationCenter.observe("UITextFieldTextDidChange") { [weak self] notification in
             if let name = self?.nameTextField.text {
                 self?.favoriteItem?.name = name
             }
@@ -86,7 +86,7 @@ class FavoriteViewController: SMTranslatedViewController {
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         save()
@@ -96,13 +96,13 @@ class FavoriteViewController: SMTranslatedViewController {
         unobserve()
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 
     // MARK: -
     
-    private func unobserve() {
+    fileprivate func unobserve() {
         for observerToken in observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
@@ -116,22 +116,22 @@ class FavoriteViewController: SMTranslatedViewController {
         if let item = favoriteItem {
             addressTextField.text = item.address
             nameTextField.text = item.name
-            nameLabel.hidden = false
-            nameTextField.hidden = false
-            tableView.hidden = false
-            routeBarButton.enabled = true
+            nameLabel.isHidden = false
+            nameTextField.isHidden = false
+            tableView.isHidden = false
+            routeBarButton.isEnabled = true
         } else {
             addressTextField.text = nil
             nameTextField.text = nil
-            nameLabel.hidden = true
-            nameTextField.hidden = true
-            tableView.hidden = true
-            routeBarButton.enabled = false
+            nameLabel.isHidden = true
+            nameTextField.isHidden = true
+            tableView.isHidden = true
+            routeBarButton.isEnabled = false
         }
         tableView.reloadData()
     }
     
-    func updateItemType(type: FavoriteItemType) {
+    func updateItemType(_ type: FavoriteItemType) {
         let currentType = favoriteItem?.origin
         let nameMatchesCurrentType = currentType == nil ? false : nameTextField.text == FavoriteTypeViewModel(type: currentType!).title
         let noName = nameTextField.text == "" || nameTextField.text == nil
@@ -145,10 +145,10 @@ class FavoriteViewController: SMTranslatedViewController {
         updateViews()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if
             segue.identifier == searchAddressSegue,
-            let searchViewController = segue.destinationViewController as? SMSearchController
+            let searchViewController = segue.destination as? SMSearchController
         {
             searchViewController.shouldAllowCurrentPosition = false
             searchViewController.locationItem = favoriteItem
@@ -164,7 +164,7 @@ class FavoriteViewController: SMTranslatedViewController {
         }
         if creating {
             if let item = favoriteItem {
-                SMFavoritesUtil.instance().addFavoriteToServer(item)
+                SMFavoritesUtil.instance().addFavorite(toServer: item)
                 creating = false
             } else {
                 print("No item to save")
@@ -175,7 +175,7 @@ class FavoriteViewController: SMTranslatedViewController {
         }
     }
     
-    @IBAction func newRouteButtonTapped(sender: AnyObject) {
+    @IBAction func newRouteButtonTapped(_ sender: AnyObject) {
         if let item = favoriteItem {
             NotificationCenter.post("closeMenu")
             NotificationCenter.post(routeToItemNotificationKey, userInfo: [routeToItemNotificationItemKey : item])
@@ -185,16 +185,16 @@ class FavoriteViewController: SMTranslatedViewController {
 
 extension FavoriteViewController: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return typeItems.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
         let typeItem = typeItems[indexPath.row]
         
         cell.configure(typeItem.title, icon: typeItem.iconImage)
-        cell.accessoryType = favoriteItem?.origin == typeItem.type ? .Checkmark : .None
+        cell.accessoryType = favoriteItem?.origin == typeItem.type ? .checkmark : .none
 
         return cell
     }
@@ -202,8 +202,8 @@ extension FavoriteViewController: UITableViewDataSource {
 
 extension FavoriteViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView .deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView .deselectRow(at: indexPath, animated: true)
         
         let typeItem = typeItems[indexPath.row]
         updateItemType(typeItem.type)
@@ -212,13 +212,13 @@ extension FavoriteViewController: UITableViewDelegate {
 
 extension FavoriteViewController: UITextFieldDelegate {
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == addressTextField {
-            self.performSegueWithIdentifier(searchAddressSegue, sender: self)
+            self.performSegue(withIdentifier: searchAddressSegue, sender: self)
         }
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == nameTextField {
             favoriteItem?.name = nameTextField.text ?? ""
             save()
@@ -226,7 +226,7 @@ extension FavoriteViewController: UITextFieldDelegate {
         updateViews()
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == nameTextField {
             textField.resignFirstResponder()
             return false
@@ -238,7 +238,7 @@ extension FavoriteViewController: UITextFieldDelegate {
 
 extension FavoriteViewController: SMSearchDelegate {
     
-    func locationFound(locationItem: protocol<SearchListItem, NSObjectProtocol>!) {
+    func locationFound(_ locationItem: (SearchListItem & NSObjectProtocol)!) {
         if let currentItem = favoriteItem {
             // Update current item
             let newItem = FavoriteItem(other: locationItem)

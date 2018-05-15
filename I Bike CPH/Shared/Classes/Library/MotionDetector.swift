@@ -21,13 +21,13 @@ class MotionDetector {
         return CMMotionActivityManager.isActivityAvailable()
     }
     
-    func start(handler: (activity: CMMotionActivity) -> ()) {
+    func start(_ handler: @escaping (_ activity: CMMotionActivity) -> ()) {
         if !isAvailable() {
             return
         }
         print("Start activity updates")
         let manager = CMMotionActivityManager()
-        manager.startActivityUpdatesToQueue(NSOperationQueue.mainQueue()) { act in
+        manager.startActivityUpdates(to: OperationQueue.main) { act in
             guard let activity = act else {
                return
             }
@@ -35,7 +35,7 @@ class MotionDetector {
                 return // Received activity even though it should have been stopped
             }
             print("stationary: \(activity.stationary), bike: \(activity.cycling),  walk: \(activity.walking), run: \(activity.running), automotive: \(activity.automotive), unknown: \(activity.unknown), confidence: \(activity.confidence.rawValue), start: \(activity.startDate), ")
-            handler(activity: activity)
+            handler(activity)
         }
         self.motionActivityManager = manager
     }

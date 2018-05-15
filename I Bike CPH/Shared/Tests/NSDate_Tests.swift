@@ -24,9 +24,9 @@ class NSDate_Tests: XCTestCase {
     func testNextMondayPreOnDay() {
         let weekday = 2 // Monday
         if let
-            noon = NSDate().withComponents(year: 2015, month: 4, day: 6, hour: 12, minute: 0, second: 0),
-            preNoon = noon.withComponents(hour: 11),
-            nextWeekday = preNoon.nextWeekday(weekday, fromDate: noon)
+            noon = Date().withComponents(year: 2015, month: 4, day: 6, hour: 12, minute: 0, second: 0),
+            let preNoon = noon.withComponents(hour: 11),
+            let nextWeekday = preNoon.nextWeekday(weekday, fromDate: noon)
         {
             XCTAssertEqual(nextWeekday, noon, "Next weekday should be on same day.")
             return
@@ -38,10 +38,10 @@ class NSDate_Tests: XCTestCase {
     func testNextMondayPostOnDay() {
         let weekday = 2 // Monday
         if let
-            noon = NSDate().withComponents(year: 2015, month: 4, day: 6, hour: 12, minute: 0, second: 0),
-            postNoon = noon.withComponents(hour: 13),
-            nextWeekday = postNoon.nextWeekday(weekday, fromDate: noon),
-            noonInAWeek = NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitWeekOfYear, value: 1, toDate: noon, options: nil)
+            noon = Date().withComponents(year: 2015, month: 4, day: 6, hour: 12, minute: 0, second: 0),
+            let postNoon = noon.withComponents(hour: 13),
+            let nextWeekday = postNoon.nextWeekday(weekday, fromDate: noon),
+            let noonInAWeek = Calendar.currentCalendar().dateByAddingUnit(.CalendarUnitWeekOfYear, value: 1, toDate: noon, options: nil)
         {
             XCTAssertEqual(nextWeekday, noonInAWeek, "Next weekday should be noon in a week.")
             return
@@ -53,9 +53,9 @@ class NSDate_Tests: XCTestCase {
     func testNextMondayDayBefore() {
         let weekday = 2 // Monday
         if let
-            noon = NSDate().withComponents(year: 2015, month: 4, day: 6, hour: 12, minute: 0, second: 0),
-            noonDayBefore = noon.withComponents(day: 5),
-            nextWeekday = noonDayBefore.nextWeekday(weekday, fromDate: noon)
+            noon = Date().withComponents(year: 2015, month: 4, day: 6, hour: 12, minute: 0, second: 0),
+            let noonDayBefore = noon.withComponents(day: 5),
+            let nextWeekday = noonDayBefore.nextWeekday(weekday, fromDate: noon)
         {
             XCTAssertEqual(nextWeekday, noon, "Next weekday should be next day.")
             return
@@ -67,10 +67,10 @@ class NSDate_Tests: XCTestCase {
     func testNextMondayDayAfter() {
         let weekday = 2 // Monday
         if let
-            noon = NSDate().withComponents(year: 2015, month: 4, day: 6, hour: 12, minute: 0, second: 0),
-            noonDayAfter = noon.withComponents(day: 7),
-            nextWeekday = noonDayAfter.nextWeekday(weekday, fromDate: noon),
-            noonInAWeek = NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitWeekOfYear, value: 1, toDate: noon, options: nil)
+            noon = Date().withComponents(year: 2015, month: 4, day: 6, hour: 12, minute: 0, second: 0),
+            let noonDayAfter = noon.withComponents(day: 7),
+            let nextWeekday = noonDayAfter.nextWeekday(weekday, fromDate: noon),
+            let noonInAWeek = Calendar.currentCalendar().dateByAddingUnit(.CalendarUnitWeekOfYear, value: 1, toDate: noon, options: nil)
         {
             XCTAssertEqual(nextWeekday, noonInAWeek, "Next weekday should be noon in a week.")
             return

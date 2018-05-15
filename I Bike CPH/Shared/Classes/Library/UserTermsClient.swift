@@ -8,37 +8,61 @@
 
 import Foundation
 import SwiftyUserDefaults
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class UserTermsClient: ServerClient {
     static let instance = UserTermsClient()
     
-    private let baseUrl = SMRouteSettings.sharedInstance().api_base_url + "/terms"
+    fileprivate let baseUrl = SMRouteSettings.sharedInstance().api_base_url + "/terms"
     
-    private let latestVerifiedVersionKey = "UserTermsLatestVerifiedVersionKey"
+    fileprivate let latestVerifiedVersionKey = "UserTermsLatestVerifiedVersionKey"
     var latestVerifiedVersion: Int? {
         get { return Defaults[latestVerifiedVersionKey].int }
         set { Defaults[latestVerifiedVersionKey] = newValue }
     }
     
     enum Result {
-        case Success(UserTerms, new: Bool)
-        case Other(ServerResult)
+        case success(UserTerms, new: Bool)
+        case other(ServerResult)
     }
     
-    func requestUserTerms(completion: (Result) -> ()) {
+    func requestUserTerms(_ completion: @escaping (Result) -> ()) {
         let path = baseUrl
         request(path) { result in
             switch result {
-                case .SuccessJSON(let json, _):
+                case .successJSON(let json, _):
                     if let userTerms = UserTerms(json: json) {
                         let newVersion = userTerms.version
                         let currentVersion = UserTermsClient.instance.latestVerifiedVersion
                         let new = newVersion > currentVersion
-                        completion(.Success(userTerms, new: new))
+                        completion(.success(userTerms, new: new))
                     } else {
-                        completion(.Other(ServerResult.FailedParsingError))
+                        completion(.other(ServerResult.failedParsingError))
                     }
-                default: completion(.Other(result))
+                default: completion(.other(result))
             }
         }
     }

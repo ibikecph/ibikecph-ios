@@ -14,7 +14,7 @@ struct Route {
 }
 
 protocol RouteManagerDelegate {
-    func didGetResultForRoute(result: RouteManager.Result)
+    func didGetResultForRoute(_ result: RouteManager.Result)
 }
 
 class RouteManager: NSObject {
@@ -22,32 +22,32 @@ class RouteManager: NSObject {
     var delegate: RouteManagerDelegate?
     
     enum Result {
-        case Success(json: JSON, osrmServer: String)
-        case ErrorOfType(Type)
-        case Error(NSError)
+        case success(json: JSON, osrmServer: String)
+        case errorOfType(ErrorType)
+        case error(NSError)
         
-        enum Type {
-            case MissingCoordinates
-            case RouteNotFound
-            case ServerNotReachable
-            case WrongJsonFormat
+        enum ErrorType {
+            case missingCoordinates
+            case routeNotFound
+            case serverNotReachable
+            case wrongJsonFormat
         }
     }
     
     
-    func findRoute(from: SearchListItem, to: SearchListItem, server osrmServer: String) -> SMRequestOSRM? {
+    func findRoute(_ from: SearchListItem, to: SearchListItem, server osrmServer: String) -> SMRequestOSRM? {
         
         if let
             fromCoordinate = from.location?.coordinate,
-            toCoordinate = to.location?.coordinate
+            let toCoordinate = to.location?.coordinate
         {
             let requestOSRM = SMRequestOSRM(delegate: self)
-            requestOSRM.auxParam = "startRoute"
-            requestOSRM.osrmServer = osrmServer
-            requestOSRM.getRouteFrom(fromCoordinate, to: toCoordinate, via: nil)
+            requestOSRM?.auxParam = "startRoute"
+            requestOSRM?.osrmServer = osrmServer
+            requestOSRM?.getRouteFrom(fromCoordinate, to: toCoordinate, via: nil)
             return requestOSRM
         }
-        delegate?.didGetResultForRoute(.ErrorOfType(.MissingCoordinates))
+        delegate?.didGetResultForRoute(.errorOfType(.missingCoordinates))
         return nil
     }
 }
@@ -55,27 +55,27 @@ class RouteManager: NSObject {
 
 extension RouteManager: SMRequestOSRMDelegate {
     
-    func request(req: SMRequestOSRM!, failedWithError error: NSError!) {
-        delegate?.didGetResultForRoute(.Error(error))
+    func request(_ req: SMRequestOSRM!, failedWithError error: Error!) {
+        delegate?.didGetResultForRoute(.error(error! as NSError))
     }
     
-    func request(req: SMRequestOSRM!, finishedWithResult res: AnyObject!) {
+    func request(_ req: SMRequestOSRM!, finishedWithResult res: Any!) {
         
-        let json = JSON(data: req.responseData)
+        let json = JSON(data: req.responseData as Data)
         // TODO: Get this status code thing sorted
-        if let status = json["status"].int where (status != 200 && status != 0) {
-            delegate?.didGetResultForRoute(.ErrorOfType(.RouteNotFound))
+        if let status = json["status"].int, (status != 200 && status != 0) {
+            delegate?.didGetResultForRoute(.errorOfType(.routeNotFound))
             return
         }
         if let errorString = json["error"].string {
             let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: errorString])
-            delegate?.didGetResultForRoute(.Error(error))
+            delegate?.didGetResultForRoute(.error(error))
             return
         }
-        delegate?.didGetResultForRoute(.Success(json: json, osrmServer: req.osrmServer))
+        delegate?.didGetResultForRoute(.success(json: json, osrmServer: req.osrmServer))
     }
     
     func serverNotReachable() {
-        delegate?.didGetResultForRoute(.ErrorOfType(.ServerNotReachable))
+        delegate?.didGetResultForRoute(.errorOfType(.serverNotReachable))
     }
 }

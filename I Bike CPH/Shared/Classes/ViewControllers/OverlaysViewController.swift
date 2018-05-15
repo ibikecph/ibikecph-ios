@@ -10,15 +10,15 @@ import UIKit
 
 class OverlaysViewController: UIViewController {
 
-    private let cellID = "OverlayCellID"
+    fileprivate let cellID = "OverlayCellID"
     
-    private var observerTokens = [AnyObject]()
+    fileprivate var observerTokens = [AnyObject]()
     
     deinit {
         unobserve()
     }
     
-    private func unobserve() {
+    fileprivate func unobserve() {
         for observerToken in observerTokens {
             NotificationCenter.unobserve(observerToken)
         }
@@ -42,18 +42,18 @@ class OverlaysViewController: UIViewController {
         })
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }
 
 extension OverlaysViewController: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return OverlaysManager.sharedInstance.availableOverlays.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.cellWithIdentifier(cellID, forIndexPath: indexPath) as IconLabelTableViewCell
         let item = OverlaysManager.sharedInstance.availableOverlays[indexPath.row]
@@ -63,7 +63,7 @@ extension OverlaysViewController: UITableViewDataSource {
         let selected = OverlaysManager.sharedInstance.isOverlaySelected(item)
         
         cell.configure(title, icon: iconImage)
-        cell.accessoryType = selected ? .Checkmark : .None
+        cell.accessoryType = selected ? .checkmark : .none
         
         return cell
     }
@@ -71,12 +71,12 @@ extension OverlaysViewController: UITableViewDataSource {
 
 extension OverlaysViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView .deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView .deselectRow(at: indexPath, animated: true)
         
         let item = OverlaysManager.sharedInstance.availableOverlays[indexPath.row]
         let selected = OverlaysManager.sharedInstance.isOverlaySelected(item)
         OverlaysManager.sharedInstance.selectOverlay(!selected, type: item)
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
     }
 }

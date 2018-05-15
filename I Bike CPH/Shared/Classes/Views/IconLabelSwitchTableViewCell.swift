@@ -14,19 +14,19 @@ class IconLabelSwitchTableViewCell: IconLabelTableViewCell {
     
     override var enabled: Bool {
         didSet {
-            switcher.enabled = enabled
+            switcher.isEnabled = enabled
         }
     }
     
-    var switchChanged: ((on: Bool) -> ())? {
+    var switchChanged: ((_ on: Bool) -> ())? {
         didSet {
-            switcher.addTarget(self, action: #selector(IconLabelSwitchTableViewCell.switched(_:)), forControlEvents: .ValueChanged)
+            switcher.addTarget(self, action: #selector(IconLabelSwitchTableViewCell.switched(_:)), for: .valueChanged)
         }
     }
     
-    func switched(sender: UISwitch) {
+    func switched(_ sender: UISwitch) {
         if let switchChanged = switchChanged {
-            switchChanged(on: switcher.on)
+            switchChanged(switcher.isOn)
         }
     }
 }

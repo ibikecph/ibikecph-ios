@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddressToolbarDelegate {
-    func didSelectFavorites(selected: Bool)
+    func didSelectFavorites(_ selected: Bool)
     func didSelectRoute()
 }
 
@@ -30,11 +30,11 @@ class AddressToolbarView: ToolbarView {
         }
     }
     
-    @IBAction func didTapRoute(sender: UIButton) {
+    @IBAction func didTapRoute(_ sender: UIButton) {
         delegate?.didSelectRoute()
     }
     
-    @IBAction func didTapFavorite(sender: UIButton) {
+    @IBAction func didTapFavorite(_ sender: UIButton) {
         favoriteSelected = !favoriteSelected
     }
 }
@@ -48,7 +48,7 @@ extension AddressToolbarView {
         favoriteSelected = false
     }
     
-    func updateToItem(item: SearchListItem) {
+    func updateToItem(_ item: SearchListItem) {
         let addressLine1 = item.street + ((item.number.characters.count > 0) ? " \(item.number)" : "")
         let addressLine2 = ((item.zip.characters.count > 0) ? "\(item.zip)" : "") + " \(item.city)"
         let doubleAddressLine = "\(addressLine1)\n\(addressLine2)"
@@ -64,7 +64,7 @@ extension AddressToolbarView {
             addresslabel.text = doubleAddressLine
             return
         }
-        if item.name.rangeOfString(item.address) == nil {
+        if item.name.range(of: item.address) == nil {
             nameLabel.text = item.name
             addresslabel.text = doubleAddressLine
             return

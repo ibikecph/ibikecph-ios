@@ -15,28 +15,28 @@ class Annotation: RMAnnotation {
 
 class PinAnnotation: Annotation {
     
-    enum Type {
-        case Regular, Start, End, Metro, STrain, Bus, Ferry, Train, Walk, Bike
+    enum PinAnnotationType {
+        case regular, start, end, metro, sTrain, bus, ferry, train, walk, bike
     }
-    static func typeForRouteType(routeType: SMRouteType) -> Type? {
+    static func typeForRouteType(_ routeType: SMRouteType) -> PinAnnotationType? {
         switch routeType {
-        case .Bike: return .Bike
-        case .Walk: return .Walk
-        case .STrain: return .STrain
-        case .Metro: return .Metro
-        case .Ferry: return .Ferry
-        case .Bus: return .Bus
-        case .Train: return .Train
+        case .bike: return .bike
+        case .walk: return .walk
+        case .sTrain: return .sTrain
+        case .metro: return .metro
+        case .ferry: return .ferry
+        case .bus: return .bus
+        case .train: return .train
         }
     }
 
-    var type: Type {
+    var type: PinAnnotationType {
         didSet {
             updateIconToType()
         }
     }
     
-    init(mapView: MapView, coordinate: CLLocationCoordinate2D, type: Type = .Regular, title: String? = nil) {
+    init(mapView: MapView, coordinate: CLLocationCoordinate2D, type: PinAnnotationType = .regular, title: String? = nil) {
         // Subclass properties
         self.type = type
         // Init
@@ -48,16 +48,16 @@ class PinAnnotation: Annotation {
     func updateIconToType() {
         let imageName: String = {
             switch self.type {
-                case .Regular: return "marker"
-                case .Start: return "markerStart"
-                case .End: return "markerFinish"
-                case .Metro: return "pin_metro"
-                case .STrain: return "pin_strain"
-                case .Bus: return "pin_bus"
-                case .Ferry: return "pin_ferry"
-                case .Train: return "pin_train"
-                case .Walk: return "pin_walk"
-                case .Bike: return "pin_bike"
+                case .regular: return "marker"
+                case .start: return "markerStart"
+                case .end: return "markerFinish"
+                case .metro: return "pin_metro"
+                case .sTrain: return "pin_strain"
+                case .bus: return "pin_bus"
+                case .ferry: return "pin_ferry"
+                case .train: return "pin_train"
+                case .walk: return "pin_walk"
+                case .bike: return "pin_bike"
             }
         }()
         annotationIcon = UIImage(named: imageName)

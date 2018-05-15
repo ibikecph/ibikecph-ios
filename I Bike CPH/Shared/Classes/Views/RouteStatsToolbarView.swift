@@ -15,28 +15,28 @@ class RouteStatsToolbarView: ToolbarView {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var arrivalTime: UILabel!
     
-    lazy var dateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .ShortStyle
-        formatter.dateStyle = .NoStyle // No date
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .none // No date
         return formatter
     }()
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        updateTo("", durationLeft: "", eta: NSDate())
+        updateTo("", durationLeft: "", eta: Date())
     }
     
-    func updateToRoute(routeComposite: RouteComposite) {
+    func updateToRoute(_ routeComposite: RouteComposite) {
         let distanceLeft = routeComposite.formattedBikeDistanceLeft
         let durationLeft = routeComposite.formattedDurationLeft
         let eta = routeComposite.estimatedTimeOfArrival
-        updateTo(distanceLeft, durationLeft: durationLeft, eta: eta)
+        updateTo(distanceLeft, durationLeft: durationLeft, eta: eta as Date)
     }
     
-    func updateTo(distanceLeft: String, durationLeft: String, eta: NSDate?) {
+    func updateTo(_ distanceLeft: String, durationLeft: String, eta: Date?) {
         distanceLabel.text = distanceLeft
         durationLabel.text = durationLeft
-        arrivalTime.text = eta == nil ? "" : dateFormatter.stringFromDate(eta!)
+        arrivalTime.text = eta == nil ? "" : dateFormatter.string(from: eta!)
     }
 }

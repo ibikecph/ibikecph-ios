@@ -12,7 +12,7 @@ import SwiftyJSON
 
 @objc class FoursquareItem: NSObject, SearchListItem {
     
-    var type: SearchListItemType = .Foursquare
+    var type: SearchListItemType = .foursquare
     var name: String
     var address: String
     var street: String
@@ -42,9 +42,9 @@ import SwiftyJSON
         
         let extraItem = SMAddressParser.parseAddress(address)
         
-        number = extraItem.number
-        if extraItem.street != "" {
-            street = extraItem.street
+        number = (extraItem?.number)!
+        if extraItem?.street != "" {
+            street = (extraItem?.street)!
         }
     }
     

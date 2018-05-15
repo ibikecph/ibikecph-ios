@@ -22,7 +22,7 @@ extension RouteNavigationToolbarView {
         destinationLabel.text = nil
     }
     
-    func updateWithItem(item: SearchListItem?) {
+    func updateWithItem(_ item: SearchListItem?) {
         destinationLabel.text = item?.name
     }
 }
