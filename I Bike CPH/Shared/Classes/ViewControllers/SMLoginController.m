@@ -9,6 +9,8 @@
 #import "SMLoginController.h"
 #import "DAKeyboardControl.h"
 #import "SignInHelper.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface SMLoginController()<UITextFieldDelegate>
 
@@ -86,13 +88,20 @@
 
 
 - (IBAction)loginWithFacebook:(id)sender {
-    [self.signInHelper loginWithFacebookForView:self.view callback:^(BOOL success, NSString *errorTitle, NSString *errorDescription) {
-        if (success) {
-            [self loginSucceeded];
-            return;
-        }
-        [self loginFailedWithErrorTitle:errorTitle description:errorDescription];
-    }];
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login
+     logInWithReadPermissions: @[@"public_profile"]
+     fromViewController:self
+     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error) {
+             NSLog(@"Login with Facebook - error");
+             [self loginFailedWithErrorTitle:@"TODO" description:@"TODO"]; //TODO: define title and description
+         } else if (result.isCancelled) {
+             NSLog(@"Login with Facebook - cancelled");
+         } else {
+             [self loginSucceeded];
+         }
+     }];
 }
 
 - (void)loginSucceeded {
