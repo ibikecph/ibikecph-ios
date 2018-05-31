@@ -90,7 +90,6 @@
              //TODO: show message box
          } else {
              NSLog(@"Login with Facebook - succeeded");
-             //TODO: need to set email?
              NSString *token = [FBSDKAccessToken currentAccessToken].tokenString;
              [self loginWithFacebookToken:token view:sourceViewController.view callback:callback];
          }
