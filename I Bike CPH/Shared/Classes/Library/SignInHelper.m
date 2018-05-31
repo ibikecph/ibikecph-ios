@@ -7,6 +7,8 @@
 //
 
 #import "SignInHelper.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 
 @interface SignInHelper()<SMAPIRequestDelegate>
@@ -74,32 +76,25 @@
 }
 
 
-- (void)loginWithFacebookForView:(UIView *)view callback:(SignInHelperCallback)callback {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    FacebookHandler *faceboookHandler = [FacebookHandler new];
-    [faceboookHandler request:^(NSString *identifier, NSString *email, NSString *token, NSError *error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        if (error.code == faceboookHandler.errorAccessNotAllowed) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error_no_access".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
-            [av show];
-            NSLog(@"Couldn't sign in to Facebook %@", error.localizedDescription);
-            return;
-        }
-        if (error) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
-            [av show];
-            NSLog(@"Couldn't sign in to Facebook %@", error.localizedDescription);
-            return;
-        }
-        if (!token) {
-            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
-            [av show];
-            NSLog(@"Couldn't sign in to Facebook. No token.");
-            return;
-        }
-        self.email = email;
-        [self loginWithFacebookToken:token view:view callback:callback];
-    }];
+- (void)loginWithFacebookForView:(UIViewController *)sourceViewController callback:(SignInHelperCallback)callback {
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login
+     logInWithReadPermissions: @[@"public_profile"]
+     fromViewController:sourceViewController
+     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error) {
+             NSLog(@"Login with Facebook - error");
+             //TODO: show message box
+         } else if (result.isCancelled) {
+             NSLog(@"Login with Facebook - cancelled");
+             //TODO: show message box
+         } else {
+             NSLog(@"Login with Facebook - succeeded");
+             //TODO: need to set email?
+             NSString *token = [FBSDKAccessToken currentAccessToken].tokenString;
+             [self loginWithFacebookToken:token view:sourceViewController.view callback:callback];
+         }
+     }];
 }
 
 
