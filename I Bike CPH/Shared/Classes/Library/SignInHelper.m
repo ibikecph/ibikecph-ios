@@ -79,7 +79,7 @@
 - (void)loginWithFacebookForView:(UIViewController *)sourceViewController callback:(SignInHelperCallback)callback {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     [login
-     logInWithReadPermissions: @[@"public_profile"]
+     logInWithReadPermissions: @[@"public_profile", @"email"]
      fromViewController:sourceViewController
      handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
          if (error) {
