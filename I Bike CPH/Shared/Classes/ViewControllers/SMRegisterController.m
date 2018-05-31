@@ -92,9 +92,7 @@
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"" message:@"register_successful".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
             [self.navigationController popToRootViewControllerAnimated:YES];
-            if (![SMAnalytics trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:self.emailField.text withValue:0]) {
-                debugLog(@"error in trackEvent");
-            }
+
             return;
         }
         [self loginFailedWithErrorTitle:errorTitle description:errorDescription];

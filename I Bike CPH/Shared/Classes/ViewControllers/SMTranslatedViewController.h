@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "GAITrackedViewController.h"
 #import "SMAppDelegate.h"
 
 /**

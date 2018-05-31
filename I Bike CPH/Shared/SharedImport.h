@@ -12,11 +12,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "GAI.h"
-#import "GAIFields.h"
-#import "GAIDictionaryBuilder.h"
 #import "SMAddressParser.h"
-#import "SMAnalytics.h"
+
 @import CoreLocation;
 
 #if defined(I_BIKE_CPH)

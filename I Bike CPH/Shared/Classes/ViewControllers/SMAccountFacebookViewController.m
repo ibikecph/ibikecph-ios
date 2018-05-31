@@ -135,9 +135,6 @@
             NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
             self.profileImage = [UIImage imageWithData:imageData scale:[UIScreen mainScreen].scale];
         } else if ([req.requestIdentifier isEqualToString:@"deleteUser"]) {
-            if (![SMAnalytics trackEventWithCategory:@"Account" withAction:@"Delete" withLabel:@"" withValue:0]) {
-                debugLog(@"error in trackEvent");
-            }
             debugLog(@"Account deleted!!!");
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"account_deleted".localized message:@"" delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
             [av show];
