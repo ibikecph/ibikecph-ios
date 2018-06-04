@@ -31,7 +31,6 @@
 		4E20BA691ADC065A00738CA8 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20BA681ADC065A00738CA8 /* Notifications.swift */; };
 		4E20BA6A1ADC065A00738CA8 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20BA681ADC065A00738CA8 /* Notifications.swift */; };
 		4E21F2E61BBD63FE003D097F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E21F2E91BBD63FE003D097F /* InfoPlist.strings */; };
-		4E21F2E71BBD63FE003D097F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E21F2E91BBD63FE003D097F /* InfoPlist.strings */; };
 		4E23D6DC1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */; };
 		4E23D6DD1A648E56008998CB /* SMAccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E23D6DB1A648E56008998CB /* SMAccountFacebookViewController.m */; };
 		4E2B08F21B3D5C6900580C27 /* MapToMapTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2B08F01B3D5C6900580C27 /* MapToMapTransitionAnimator.swift */; };
@@ -440,7 +439,8 @@
 		7D92B9F81D0EECE30022400E /* ReadAloudButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92B9F71D0EECE30022400E /* ReadAloudButton.swift */; };
 		7D92B9F91D0EECE30022400E /* ReadAloudButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92B9F71D0EECE30022400E /* ReadAloudButton.swift */; };
 		8CC05C2DBF8DA677FD28AFF3 /* Pods_app_target_I_Bike_CPH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE3E3F28EF50DD375ABBB57 /* Pods_app_target_I_Bike_CPH.framework */; };
-		B1959FD520C5657E00CCA5DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1959FD720C5657E00CCA5DE /* InfoPlist.strings */; };
+		B1959FE520C56E6B00CCA5DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1959FE320C56E6B00CCA5DE /* InfoPlist.strings */; };
+		B1959FE720C56E7800CCA5DE /* keys.h in Resources */ = {isa = PBXBuildFile; fileRef = 4E8C1E4B1BFF63DF00D757AA /* keys.h */; };
 		DE1032761CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
 		DE1032771CF363380099D170 /* ProgrammaticAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1032751CF363380099D170 /* ProgrammaticAssets.swift */; };
 		DE30AEEB1D1BDF4D0076550A /* RouteComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE30AEEA1D1BDF4D0076550A /* RouteComposite.swift */; };
@@ -879,6 +879,8 @@
 		ADB6492F313076A311C7CA75 /* Pods-I Bike CPHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-I Bike CPHTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-I Bike CPHTests/Pods-I Bike CPHTests.release.xcconfig"; sourceTree = "<group>"; };
 		B1959FD820C5658400CCA5DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B1959FD920C5658800CCA5DE /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B1959FE420C56E6B00CCA5DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = CykelPlanen/Resources/Localization/Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B1959FE620C56E7800CCA5DE /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = CykelPlanen/Resources/Localization/da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BB96368F0E2C7A8FB25B138B /* Pods-test_target-I Bike CPHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_target-I Bike CPHTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-test_target-I Bike CPHTests/Pods-test_target-I Bike CPHTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C40C9EBA1FFAC0ACBC43C5B1 /* Pods-CykelPlanenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CykelPlanenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CykelPlanenTests/Pods-CykelPlanenTests.release.xcconfig"; sourceTree = "<group>"; };
 		CDB68DE70198E82D8B39AFB2 /* Pods-app_target-I Bike CPH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_target-I Bike CPH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app_target-I Bike CPH/Pods-app_target-I Bike CPH.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1201,6 +1203,7 @@
 		4EE05F411A10EBFA00DE4226 = {
 			isa = PBXGroup;
 			children = (
+				B1959FE320C56E6B00CCA5DE /* InfoPlist.strings */,
 				4E8C1E4B1BFF63DF00D757AA /* keys.h */,
 				4E1CD6401BF4C30F005FCEAA /* Mapbox.h */,
 				4EE05F9F1A10EE7600DE4226 /* Shared */,
@@ -2032,8 +2035,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E21F2E71BBD63FE003D097F /* InfoPlist.strings in Resources */,
-				B1959FD520C5657E00CCA5DE /* InfoPlist.strings in Resources */,
+				B1959FE720C56E7800CCA5DE /* keys.h in Resources */,
+				B1959FE520C56E6B00CCA5DE /* InfoPlist.strings in Resources */,
 				4E4566641A8A620E006563D1 /* smroute_settings_app_private.plist in Resources */,
 				4E5B90781B60D408008AC960 /* markerFinish@2x.png in Resources */,
 				4E10EBBB1B3AE6480012245E /* RouteNavigationToolbarView.xib in Resources */,
@@ -2813,6 +2816,15 @@
 			);
 			name = InfoPlist.strings;
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		B1959FE320C56E6B00CCA5DE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1959FE420C56E6B00CCA5DE /* Base */,
+				B1959FE620C56E7800CCA5DE /* da */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
