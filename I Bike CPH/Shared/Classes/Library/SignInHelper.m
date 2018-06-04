@@ -83,13 +83,12 @@
      fromViewController:sourceViewController
      handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
          if (error) {
-             NSLog(@"Login with Facebook - error");
-             //TODO: show message box
+             NSLog(@"Failed to log into Facebook. Error: %@", error.localizedDescription);
+             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error".localized message:@"fb_login_error".localized delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
+             [av show];
          } else if (result.isCancelled) {
              NSLog(@"Login with Facebook - cancelled");
-             //TODO: show message box
          } else {
-             NSLog(@"Login with Facebook - succeeded");
              NSString *token = [FBSDKAccessToken currentAccessToken].tokenString;
              [self loginWithFacebookToken:token view:sourceViewController.view callback:callback];
          }
