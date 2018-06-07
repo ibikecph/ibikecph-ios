@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  I Bike CPH
+
+  Created by Tobias Due Munk on 01/10/15.
+  Copyright (c) 2015 I Bike CPH. All rights reserved.
+*/
+
+NSLocationAlwaysUsageDescription = "For at kunne finde ruter og give rutevejledning.";
