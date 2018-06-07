@@ -1894,7 +1894,7 @@
 				TargetAttributes = {
 					4EE05F491A10EBFA00DE4226 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = SP46WFGATT;
+						DevelopmentTeam = 9397MGXMJF;
 						LastSwiftMigration = 0830;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -2910,6 +2910,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9397MGXMJF;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "I Bike CPH/I Bike CPH-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2952,6 +2953,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9397MGXMJF;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "I Bike CPH/I Bike CPH-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
