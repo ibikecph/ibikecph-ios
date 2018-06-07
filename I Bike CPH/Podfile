@@ -19,6 +19,7 @@ abstract_target 'app_target' do
   pod 'SwiftHEXColors', '~> 1.0'
   pod 'SnapKit', '~> 0.21.0'
   pod 'AsyncSwift', '~> 2.0.4'
+  pod 'FBSDKLoginKit', '~> 4.33.0'
 
   target 'I Bike CPH'
   target 'CykelPlanen'

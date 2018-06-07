@@ -99,17 +99,6 @@
     }];
 }
 
-- (IBAction)loginWithFacebook:(id)sender {
-    [self.signInHelper loginWithFacebookForView:self.view callback:^(BOOL success, NSString *errorTitle, NSString *errorDescription) {
-        if (success) {
-            [self.navigationController popToRootViewControllerAnimated:YES];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoggedIn" object:nil];
-            return;
-        }
-        [self loginFailedWithErrorTitle:errorTitle description:errorDescription];
-    }];
-}
-
 - (void)loginFailedWithErrorTitle:(NSString *)title description:(NSString *)description {
     UIAlertView * av = [[UIAlertView alloc] initWithTitle:title message:description delegate:nil cancelButtonTitle:@"OK".localized otherButtonTitles:nil];
     [av show];
