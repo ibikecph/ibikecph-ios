@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  I Bike CPH
+
+  Created by Babak Feiz on 04/06/2018.
+  Copyright © 2018 I Bike CPH. All rights reserved.
+*/
+
+NSLocationWhenInUseUsageDescription = "App'en benytter location services for at give rutevejledning";
+NSLocationAlwaysAndWhenInUseUsageDescription = "App'en benytter location services for at give rutevejledning";
