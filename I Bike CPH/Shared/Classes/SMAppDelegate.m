@@ -13,6 +13,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import <Fabric/Fabric.h>
 #import "SharedImport.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 #if defined(CYKEL_PLANEN)
 #import "SMReminder.h"
@@ -29,6 +30,9 @@
     // Reminders has been deprecated. Clear no make sure notifications doesn't fly around and spook the users.
     [SMReminder clear];
 #endif
+    
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
 
     self.pastRoutes = @[];
     self.currentContacts = @[];
@@ -103,6 +107,21 @@
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
     return UIInterfaceOrientationMaskPortrait;
+}
+    
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                  openURL:url
+                                                        sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                                               annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
+                    ];
+    
+    // Add any custom logic here.
+    
+    return handled;
 }
 
 - (BOOL)saveSettings

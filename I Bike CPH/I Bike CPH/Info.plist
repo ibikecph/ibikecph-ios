@@ -67,5 +67,27 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+
+    <!-- Facebook SDK -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb478150322233312</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>478150322233312</string>
+    <key>FacebookDisplayName</key>
+    <string>I Bike CPH</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-share-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
 </dict>
 </plist>
