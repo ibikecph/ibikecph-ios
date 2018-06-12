@@ -86,7 +86,7 @@
 
 
 - (IBAction)loginWithFacebook:(id)sender {
-    [self.signInHelper loginWithFacebookForView:self.view callback:^(BOOL success, NSString *errorTitle, NSString *errorDescription) {
+    [self.signInHelper loginWithFacebookForView:self callback:^(BOOL success, NSString *errorTitle, NSString *errorDescription) {
         if (success) {
             [self loginSucceeded];
             return;
