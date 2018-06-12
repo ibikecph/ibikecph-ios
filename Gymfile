@@ -8,5 +8,5 @@
 
 # scheme "Example"
 
-sdk "iphoneos9.3"
+sdk "iphoneos11.0"
 use_legacy_build_api true
