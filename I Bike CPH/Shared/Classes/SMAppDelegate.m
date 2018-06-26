@@ -24,6 +24,7 @@
 
 @implementation SMAppDelegate
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #if defined(CYKEL_PLANEN)
