@@ -6,10 +6,7 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - Crashlytics (3.7.2):
-    - Fabric (~> 1.6.3)
   - DAKeyboardControl (2.4.0)
-  - Fabric (1.6.7)
   - FBSDKCoreKit (4.34.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.34.0):
@@ -47,7 +44,6 @@ PODS:
 
 DEPENDENCIES:
   - AsyncSwift (~> 2.0.4)
-  - Crashlytics (~> 3.7.0)
   - DAKeyboardControl (~> 2.4)
   - FBSDKLoginKit (~> 4.34.0)
   - Mapbox-iOS-SDK (= 1.6.0)
@@ -67,9 +63,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AsyncSwift
     - Bolts
-    - Crashlytics
     - DAKeyboardControl
-    - Fabric
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FLKAutoLayout
@@ -94,9 +88,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
-  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FBSDKCoreKit: 0ff57f093b85c8c9d5aba697d3edf68a8960ce78
   FBSDKLoginKit: 8c78f57a145afb756e4755e69195ebe08a42466e
   FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
@@ -118,6 +110,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UIImage-Categories: a0593f6a7991c99016b9ecadfbd38b3717ff1a73
 
-PODFILE CHECKSUM: f8d962618c7929effae8cd83978980faddbca14e
+PODFILE CHECKSUM: 79f8dffe93d706b76f5bb9738320b74dd88b581c
 
 COCOAPODS: 1.5.3

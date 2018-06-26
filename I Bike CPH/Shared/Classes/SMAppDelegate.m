@@ -10,8 +10,6 @@
 #import "SMSearchHistory.h"
 #import "SMUtil.h"
 
-#import <Crashlytics/Crashlytics.h>
-#import <Fabric/Fabric.h>
 #import "SharedImport.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
@@ -98,9 +96,6 @@
 #else
     [NonTrackingHandler sharedInstance];
 #endif
-
-    // Enable Fabric kits
-    [Fabric with:@[[Crashlytics class]]];
 
     return YES;
 }

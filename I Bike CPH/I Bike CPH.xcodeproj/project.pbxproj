@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1810,7 +1810,6 @@
 				4EE05F471A10EBFA00DE4226 /* Frameworks */,
 				4EE05F481A10EBFA00DE4226 /* Resources */,
 				3B55A56B90BF3EDEB7F58A19 /* [CP] Embed Pods Frameworks */,
-				DEF202CB1CCFF265009CCC8E /* Fabric Integration Phase */,
 			);
 			buildRules = (
 			);
@@ -1851,7 +1850,6 @@
 				4EE05F761A10EDE700DE4226 /* Frameworks */,
 				4EE05F771A10EDE700DE4226 /* Resources */,
 				3FAB1B7E55E241434B45041D /* [CP] Embed Pods Frameworks */,
-				DEF202CC1CCFF2A0009CCC8E /* Fabric Integration Phase */,
 			);
 			buildRules = (
 			);
@@ -1929,7 +1927,7 @@
 				};
 			};
 			buildConfigurationList = 4EE05F451A10EBFA00DE4226 /* Build configuration list for PBXProject "I Bike CPH" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -2326,34 +2324,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		DEF202CB1CCFF265009CCC8E /* Fabric Integration Phase */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Fabric Integration Phase";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 4b03ae94613016b718b0175087421d8bbe22f1e6 32d0d932721d7351ef9f5ffb454d78783cb9697f8b1135fbe59e8b49067305c0";
-		};
-		DEF202CC1CCFF2A0009CCC8E /* Fabric Integration Phase */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Fabric Integration Phase";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 4b03ae94613016b718b0175087421d8bbe22f1e6 32d0d932721d7351ef9f5ffb454d78783cb9697f8b1135fbe59e8b49067305c0";
 		};
 		FAE064F4971BDC7FBCB998BB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2928,8 +2898,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shared/Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2966,7 +2937,10 @@
 				);
 				INFOPLIST_FILE = "I Bike CPH/Info.plist";
 				I_BIKE_CPH = 1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D IBIKECPH";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.ibikecph;
@@ -3009,7 +2983,10 @@
 				);
 				INFOPLIST_FILE = "I Bike CPH/Info.plist";
 				I_BIKE_CPH = 1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D IBIKECPH";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.ibikecph;
@@ -3052,7 +3029,11 @@
 				);
 				INFOPLIST_FILE = "I Bike CPHTests/Info.plist";
 				I_BIKE_CPH = 1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3094,7 +3075,11 @@
 				);
 				INFOPLIST_FILE = "I Bike CPHTests/Info.plist";
 				I_BIKE_CPH = 1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -3133,7 +3118,10 @@
 					"$(SDKROOT)/usr/include/libz",
 				);
 				INFOPLIST_FILE = CykelPlanen/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D CYKELPLANEN";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.CykelPlanen;
@@ -3173,7 +3161,10 @@
 					"$(SDKROOT)/usr/include/libz",
 				);
 				INFOPLIST_FILE = CykelPlanen/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D CYKELPLANEN";
 				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.CykelPlanen;
@@ -3214,7 +3205,11 @@
 					"\"${PODS_ROOT}/Headers/Public/UIImage-Categories\"",
 				);
 				INFOPLIST_FILE = CykelPlanenTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3254,7 +3249,11 @@
 					"\"${PODS_ROOT}/Headers/Public/UIImage-Categories\"",
 				);
 				INFOPLIST_FILE = CykelPlanenTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
