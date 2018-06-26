@@ -64,7 +64,7 @@ DEPENDENCIES:
   - UIImage-Categories (~> 1.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AsyncSwift
     - Bolts
     - Crashlytics
@@ -120,4 +120,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2a1031818a617d5a16829c5d8deb330c6b903205
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
