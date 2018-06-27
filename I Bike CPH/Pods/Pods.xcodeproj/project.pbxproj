@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1547,8 +1547,8 @@
 		02E5B64F964D2523E763CC3ACC7F03E5 /* RMGenericMapSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMGenericMapSource.h; path = MapView/Map/RMGenericMapSource.h; sourceTree = "<group>"; };
 		03446F643962EF5364200A4C834F069E /* FMDatabaseQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = src/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
 		03BCE12D87F3C597ABD9AB6F0DC87B91 /* MKTInvocationContainer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTInvocationContainer.m; path = Source/OCMockito/MKTInvocationContainer.m; sourceTree = "<group>"; };
-		03BDA47BFBFFE69AE64F2D617524D1EB /* RLMRealm.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMRealm.mm; path = Realm/RLMRealm.mm; sourceTree = "<group>"; };
-		044A8D83AA37167566CD628D1CE47902 /* NibDesignable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NibDesignable.framework; path = NibDesignable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		03BDA47BFBFFE69AE64F2D617524D1EB /* RLMRealm.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMRealm.mm; path = Realm/RLMRealm.mm; sourceTree = "<group>"; };
+		044A8D83AA37167566CD628D1CE47902 /* NibDesignable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NibDesignable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0463B814959FA6BE25083684D1CEF755 /* HCIsInstanceOf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCIsInstanceOf.h; path = Source/Library/Object/HCIsInstanceOf.h; sourceTree = "<group>"; };
 		049C8672D95017212250318B3D28435E /* RMOpenCycleMapSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMOpenCycleMapSource.h; path = MapView/Map/RMOpenCycleMapSource.h; sourceTree = "<group>"; };
 		04AB39B5AAD0ED2762886FCEFB36C688 /* RLMAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMAccessor.h; path = include/RLMAccessor.h; sourceTree = "<group>"; };
@@ -1582,13 +1582,13 @@
 		0C9D1BF841CCA3B1F380278DF2F0491B /* BFCancellationTokenSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFCancellationTokenSource.h; path = Bolts/Common/BFCancellationTokenSource.h; sourceTree = "<group>"; };
 		0CADF10C1ECB9DF9AC7164D3ABEE554D /* RLMRealmConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMRealmConfiguration.h; path = include/RLMRealmConfiguration.h; sourceTree = "<group>"; };
 		0CCFDCF2072186D00313F7B499A8FAEE /* RMMapOverlayView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMMapOverlayView.m; path = MapView/Map/RMMapOverlayView.m; sourceTree = "<group>"; };
-		0CEC08272275A05EB5E48E8AD7EC3966 /* shared_realm.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = shared_realm.cpp; path = Realm/ObjectStore/shared_realm.cpp; sourceTree = "<group>"; };
+		0CEC08272275A05EB5E48E8AD7EC3966 /* shared_realm.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = shared_realm.cpp; path = Realm/ObjectStore/shared_realm.cpp; sourceTree = "<group>"; };
 		0D5AD25FBF1EFDEFCEE2B8EB20E386E8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		0E07BEB0551F55AA5B9EB76C9448539D /* GRMustacheStandardLibrary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheStandardLibrary.m; path = src/classes/Services/StandardLibrary/GRMustacheStandardLibrary.m; sourceTree = "<group>"; };
 		0EB66891A237F9D7A955A9E656C23A1A /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
 		0F0D3134032E6E102D89ACE44681A75C /* Pods-app_target-CykelPlanen-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-app_target-CykelPlanen-acknowledgements.plist"; sourceTree = "<group>"; };
 		0F548CBC9E35ABEDB99C0A9C4CDC97D7 /* GRMustacheToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheToken.m; path = src/classes/Parsing/GRMustacheToken.m; sourceTree = "<group>"; };
-		0F93C50B153C120C8040A9F17CA01674 /* RLMProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMProperty.mm; path = Realm/RLMProperty.mm; sourceTree = "<group>"; };
+		0F93C50B153C120C8040A9F17CA01674 /* RLMProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMProperty.mm; path = Realm/RLMProperty.mm; sourceTree = "<group>"; };
 		106466C09223D21329B294A3E484ED15 /* geocent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = geocent.h; path = Proj4/geocent.h; sourceTree = "<group>"; };
 		1145436F1D05BD9C88A96393B267F304 /* FBSDKLoginManagerLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKLoginManagerLogger.m; path = FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginManagerLogger.m; sourceTree = "<group>"; };
 		1203863A20D778C2B10F919C62936B7D /* UIImage+Alpha.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Alpha.h"; path = "Classes/UIImage+Alpha.h"; sourceTree = "<group>"; };
@@ -1608,7 +1608,7 @@
 		15283C22F89D7A6CF038B8F13A43923D /* FBSDKAppEventsUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAppEventsUtility.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKAppEventsUtility.h; sourceTree = "<group>"; };
 		15304D1EF360F5D4392022A70B84CBE7 /* HCSenTestFailureReporter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCSenTestFailureReporter.h; path = Source/Core/Helpers/TestFailureReporters/HCSenTestFailureReporter.h; sourceTree = "<group>"; };
 		1545491A195744A6970E64FAE00BB580 /* OCMockito-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OCMockito-prefix.pch"; sourceTree = "<group>"; };
-		15815A7381811C84684B79968F288484 /* SwiftHEXColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftHEXColors.framework; path = SwiftHEXColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		15815A7381811C84684B79968F288484 /* SwiftHEXColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHEXColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1620D3DE8E9FC782E9E78BE6A53836B8 /* MKTProtocolMock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTProtocolMock.h; path = Source/OCMockito/MKTProtocolMock.h; sourceTree = "<group>"; };
 		16305FBDC9D7EFF635B945A76370B652 /* MKTVerificationMode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTVerificationMode.h; path = Source/OCMockito/MKTVerificationMode.h; sourceTree = "<group>"; };
 		165285F72DC0A0C56856D0A90E42A038 /* HCOrderingComparison.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCOrderingComparison.h; path = Source/Library/Number/HCOrderingComparison.h; sourceTree = "<group>"; };
@@ -1629,17 +1629,17 @@
 		18C1BD6AC9BC23AD5A99D27EFCCE5BE1 /* FBSDKLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLogger.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKLogger.h; sourceTree = "<group>"; };
 		18C774D611329B333B66CD1857265D4E /* HCBaseDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCBaseDescription.h; path = Source/Core/HCBaseDescription.h; sourceTree = "<group>"; };
 		1901858F4D7DEC1CDB44057823F5A5FB /* HCXCTestFailureReporter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCXCTestFailureReporter.h; path = Source/Core/Helpers/TestFailureReporters/HCXCTestFailureReporter.h; sourceTree = "<group>"; };
-		190298A7B989E61108AD694EEF0552D9 /* RLMObjectBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObjectBase.mm; path = Realm/RLMObjectBase.mm; sourceTree = "<group>"; };
+		190298A7B989E61108AD694EEF0552D9 /* RLMObjectBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObjectBase.mm; path = Realm/RLMObjectBase.mm; sourceTree = "<group>"; };
 		194EB30F454C0AFD5E1610680339B9F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		1951FB6C0330C6BD0D1C23FD66B49C93 /* RMCircleAnnotation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMCircleAnnotation.h; path = MapView/Map/RMCircleAnnotation.h; sourceTree = "<group>"; };
-		196CFC322FF49ADB8663276FE1B7294F /* Pods_app_target_CykelPlanen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_app_target_CykelPlanen.framework; path = "Pods-app_target-CykelPlanen.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		19F03702F13B3C9705A0C1BAB35929EB /* object_store.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = object_store.cpp; path = Realm/ObjectStore/object_store.cpp; sourceTree = "<group>"; };
+		196CFC322FF49ADB8663276FE1B7294F /* Pods_app_target_CykelPlanen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_target_CykelPlanen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19F03702F13B3C9705A0C1BAB35929EB /* object_store.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = object_store.cpp; path = Realm/ObjectStore/object_store.cpp; sourceTree = "<group>"; };
 		1A03115F8D1C2EF203F543EC371D2EF1 /* SwiftyUserDefaults.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyUserDefaults.modulemap; sourceTree = "<group>"; };
 		1A70FE56F6F4E69ADF45B2FAEF0C2EA6 /* FBSDKServerConfigurationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKServerConfigurationManager.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfigurationManager.h; sourceTree = "<group>"; };
 		1A95A8FA8EDC3C3759CD5400FC4AEC41 /* GRMustacheRenderingEngine_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheRenderingEngine_private.h; path = src/classes/Rendering/GRMustacheRenderingEngine_private.h; sourceTree = "<group>"; };
 		1ACBA325070B53CA79E4B2A2F101F6A6 /* HCIsCollectionContainingInRelativeOrder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIsCollectionContainingInRelativeOrder.m; path = Source/Library/Collection/HCIsCollectionContainingInRelativeOrder.m; sourceTree = "<group>"; };
 		1B502C42C280AFD012ABBE921FE24B2D /* FBSDKInternalUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKInternalUtility.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKInternalUtility.m; sourceTree = "<group>"; };
-		1B6FFF13405E617652B094AE711A8280 /* RLMRealmConfiguration.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMRealmConfiguration.mm; path = Realm/RLMRealmConfiguration.mm; sourceTree = "<group>"; };
+		1B6FFF13405E617652B094AE711A8280 /* RLMRealmConfiguration.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMRealmConfiguration.mm; path = Realm/RLMRealmConfiguration.mm; sourceTree = "<group>"; };
 		1C6D7F67C8DCDD7BB6685ED0EF562899 /* GRMustacheSectionTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheSectionTag.m; path = src/classes/Compiling/TemplateAST/GRMustacheSectionTag.m; sourceTree = "<group>"; };
 		1C76A4695C18656D57A404B0ACCFDB18 /* FBSDKImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKImageDownloader.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKImageDownloader.m; sourceTree = "<group>"; };
 		1C8999B0395844D6ED2A3AC6273F0D3C /* FBSDKTestUsersManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKTestUsersManager.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKTestUsersManager.h; sourceTree = "<group>"; };
@@ -1670,7 +1670,7 @@
 		20AB32C188893918F64DEBA1061152A7 /* TrackingDot.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = TrackingDot.png; path = MapView/Map/Resources/TrackingDot.png; sourceTree = "<group>"; };
 		217D528A714335E839AA26AD5F546A14 /* FBSDKGraphRequestPiggybackManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKGraphRequestPiggybackManager.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestPiggybackManager.h; sourceTree = "<group>"; };
 		21A0A66C4C7D8DBE4B8BC17FF3EFED63 /* MKTBoolReturnSetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTBoolReturnSetter.m; path = Source/OCMockito/Helpers/ReturnValueSetters/MKTBoolReturnSetter.m; sourceTree = "<group>"; };
-		21AA6D296C8A887C7C4F8DDA220888E8 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSDKLoginKit.framework; path = FBSDKLoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		21AA6D296C8A887C7C4F8DDA220888E8 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSDKLoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B69AE15641E9C7DEF4788A3D2AACBD /* JRSwizzle.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JRSwizzle.modulemap; sourceTree = "<group>"; };
 		21BA2B71FDEBADC0C544F3D7876805FF /* HCStringContains.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCStringContains.h; path = Source/Library/Text/HCStringContains.h; sourceTree = "<group>"; };
 		21C96ECB544CB28640A5245F1E671EA9 /* FBSDKAppEventsStateManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAppEventsStateManager.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKAppEventsStateManager.h; sourceTree = "<group>"; };
@@ -1701,7 +1701,7 @@
 		27269FBFA43AB85284FBD1E3A9FA065E /* FBSDKServerConfigurationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKServerConfigurationManager.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfigurationManager.m; sourceTree = "<group>"; };
 		27689139D6BCB8ED87C02950144F38A4 /* FBSDKEventBindingManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKEventBindingManager.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/Codeless/FBSDKEventBindingManager.m; sourceTree = "<group>"; };
 		27C79EAED8B5B94FFDE304612B4919C4 /* HCWrapInMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCWrapInMatcher.m; path = Source/Core/Helpers/HCWrapInMatcher.m; sourceTree = "<group>"; };
-		27DB9D9B46F7F16ADD458E35B4864C61 /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Async.framework; path = AsyncSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27DB9D9B46F7F16ADD458E35B4864C61 /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2803411BC342D6240F25D131D6B4C5BA /* FBSDKBridgeAPIProtocolNativeV1.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKBridgeAPIProtocolNativeV1.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolNativeV1.m; sourceTree = "<group>"; };
 		280B2BAC600036FAAAD40F6947F5A463 /* ORStackViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ORStackViewController.h; path = Classes/ios/ORStackViewController.h; sourceTree = "<group>"; };
 		2818B32CF4BE13F84D2A8357F25B6A9B /* FBSDKCloseIcon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKCloseIcon.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKCloseIcon.m; sourceTree = "<group>"; };
@@ -1722,7 +1722,7 @@
 		2AFF3D060931BE3B510A49B40D74F7B7 /* FBSDKButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKButton.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKButton.h; sourceTree = "<group>"; };
 		2B2B09E42BA248C2A022717F72F9A0A5 /* Pods-app_target-CykelPlanen-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-app_target-CykelPlanen-dummy.m"; sourceTree = "<group>"; };
 		2BE07EB2125C733EA18AB37C4F9BF06B /* MKTBoolReturnSetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTBoolReturnSetter.h; path = Source/OCMockito/Helpers/ReturnValueSetters/MKTBoolReturnSetter.h; sourceTree = "<group>"; };
-		2C190929860F687017E2D78BDAE9CFC4 /* ORStackView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ORStackView.framework; path = ORStackView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C190929860F687017E2D78BDAE9CFC4 /* ORStackView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ORStackView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C25E213E8D068469215B93ECB4D7BB8 /* MKTSelectorArgumentGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTSelectorArgumentGetter.h; path = Source/OCMockito/Helpers/ArgumentGetters/MKTSelectorArgumentGetter.h; sourceTree = "<group>"; };
 		2C46A34F9EA77873FE7B3007063FBC28 /* HCIsAnything.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCIsAnything.h; path = Source/Library/Logical/HCIsAnything.h; sourceTree = "<group>"; };
 		2C84E1C17EC286D67F357B52C543921D /* NSInvocation+OCMockito.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+OCMockito.h"; path = "Source/OCMockito/NSInvocation+OCMockito.h"; sourceTree = "<group>"; };
@@ -1743,7 +1743,7 @@
 		31135531CB822C833195385A04307C0E /* FBSDKDeviceLoginManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKDeviceLoginManager.h; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKDeviceLoginManager.h; sourceTree = "<group>"; };
 		31699BEFB21C7BDC596D8A065E466362 /* HCDiagnosingMatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCDiagnosingMatcher.h; path = Source/Core/HCDiagnosingMatcher.h; sourceTree = "<group>"; };
 		3224277CD834FD183BE473D9D0774328 /* GRMustacheExpressionVisitor_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheExpressionVisitor_private.h; path = src/classes/Compiling/Expressions/GRMustacheExpressionVisitor_private.h; sourceTree = "<group>"; };
-		32B11ECFB6E3A8D0E2062532F5042D12 /* external_commit_helper.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = external_commit_helper.cpp; path = Realm/ObjectStore/impl/apple/external_commit_helper.cpp; sourceTree = "<group>"; };
+		32B11ECFB6E3A8D0E2062532F5042D12 /* external_commit_helper.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = external_commit_helper.cpp; path = Realm/ObjectStore/impl/apple/external_commit_helper.cpp; sourceTree = "<group>"; };
 		32C04CC4AD4B5221AA4289F86A03C124 /* RMShapeAnnotation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMShapeAnnotation.m; path = MapView/Map/RMShapeAnnotation.m; sourceTree = "<group>"; };
 		33175A0F1A3611E3EBFE2B346BCED211 /* Mapbox-iOS-SDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Mapbox-iOS-SDK.xcconfig"; sourceTree = "<group>"; };
 		332004F74095335339BCFA8391E2E1B1 /* MKTUnsignedCharArgumentGetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTUnsignedCharArgumentGetter.m; path = Source/OCMockito/Helpers/ArgumentGetters/MKTUnsignedCharArgumentGetter.m; sourceTree = "<group>"; };
@@ -1757,7 +1757,7 @@
 		35D86500E31B29C12894D4340ECC910C /* BFAppLink.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFAppLink.h; path = Bolts/iOS/BFAppLink.h; sourceTree = "<group>"; };
 		35DCFC6C3857C498DA6CC6917EC6C842 /* FBSDKColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKColor.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKColor.m; sourceTree = "<group>"; };
 		3622B6C96B5E1C92A192A5E30B0DE925 /* FBSDKCoreKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSDKCoreKit-prefix.pch"; sourceTree = "<group>"; };
-		3682EE9F246EB22FF8F07C77279F1CA8 /* results.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = results.cpp; path = Realm/ObjectStore/results.cpp; sourceTree = "<group>"; };
+		3682EE9F246EB22FF8F07C77279F1CA8 /* results.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = results.cpp; path = Realm/ObjectStore/results.cpp; sourceTree = "<group>"; };
 		368C021D405081A5445629139D33AB0E /* HCStringEndsWith.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCStringEndsWith.h; path = Source/Library/Text/HCStringEndsWith.h; sourceTree = "<group>"; };
 		36BA3B56BCE00F8D56590867992C0CB7 /* MKTDoubleArgumentGetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTDoubleArgumentGetter.m; path = Source/OCMockito/Helpers/ArgumentGetters/MKTDoubleArgumentGetter.m; sourceTree = "<group>"; };
 		36BC17A335C95097E6730D67CFC968F1 /* RMAbstractMercatorTileSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMAbstractMercatorTileSource.h; path = MapView/Map/RMAbstractMercatorTileSource.h; sourceTree = "<group>"; };
@@ -1770,7 +1770,7 @@
 		39004E738405AFA4D8C8719A37F5D569 /* BFAppLinkReturnToRefererView_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFAppLinkReturnToRefererView_Internal.h; path = Bolts/iOS/Internal/BFAppLinkReturnToRefererView_Internal.h; sourceTree = "<group>"; };
 		390F56AB9CC16FC9A7ADFE859866A3A8 /* PSTAlertController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PSTAlertController.h; path = PSTAlertController/PSTAlertController.h; sourceTree = "<group>"; };
 		3917C98A37A0ADC33C2BD53EE93D8D09 /* GRMustache_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustache_private.h; path = src/classes/GRMustache_private.h; sourceTree = "<group>"; };
-		3945DEB370C84F479D03CC094CB614F2 /* results_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = results_notifier.cpp; path = Realm/ObjectStore/impl/results_notifier.cpp; sourceTree = "<group>"; };
+		3945DEB370C84F479D03CC094CB614F2 /* results_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = results_notifier.cpp; path = Realm/ObjectStore/impl/results_notifier.cpp; sourceTree = "<group>"; };
 		394A7BDA9205A9879F32F0553D0D6B85 /* HCIsEqualIgnoringWhiteSpace.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIsEqualIgnoringWhiteSpace.m; path = Source/Library/Text/HCIsEqualIgnoringWhiteSpace.m; sourceTree = "<group>"; };
 		39F9A06039E91319C535196F6543351E /* SMClassicCalloutView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SMClassicCalloutView.h; sourceTree = "<group>"; };
 		3ADDA73C8060CF5F1C2E1A2AFC69F8E1 /* RMMapQuestOpenAerialSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMMapQuestOpenAerialSource.m; path = MapView/Map/RMMapQuestOpenAerialSource.m; sourceTree = "<group>"; };
@@ -1784,14 +1784,14 @@
 		3B9FAB3823B809554A6279DCF12F51C7 /* RMMapView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMMapView.m; path = MapView/Map/RMMapView.m; sourceTree = "<group>"; };
 		3BA50AEF520CD2D8FC30A083EB11205F /* MKTReturnValueSetterChain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTReturnValueSetterChain.h; path = Source/OCMockito/Helpers/ReturnValueSetters/MKTReturnValueSetterChain.h; sourceTree = "<group>"; };
 		3BEF6E3808CDEB87694100B0BD9D7AE1 /* UIView+FLKAutoLayoutPredicate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+FLKAutoLayoutPredicate.h"; path = "FLKAutoLayout/UIView+FLKAutoLayoutPredicate.h"; sourceTree = "<group>"; };
-		3C78CC10A3D315E920F7D0AE02A1FAE1 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C78CC10A3D315E920F7D0AE02A1FAE1 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC16B6E6DCE7EFEB2E520F02430815F /* GRMustache-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GRMustache-prefix.pch"; sourceTree = "<group>"; };
 		3CC94A1A94C89D4C24C4466CA0D16338 /* GRMustacheInheritableSectionNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheInheritableSectionNode.m; path = src/classes/Compiling/TemplateAST/GRMustacheInheritableSectionNode.m; sourceTree = "<group>"; };
 		3CCA99848568082189337DC18FF9B2A2 /* FBSDKLoginKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLoginKit.h; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit.h; sourceTree = "<group>"; };
 		3D13D3B45070AD14F9D507432576DCA6 /* HCStringDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCStringDescription.m; path = Source/Core/HCStringDescription.m; sourceTree = "<group>"; };
 		3D2F1A52F3EF42B05FF09BAC71B52B5A /* FBSDKBridgeAPICrypto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKBridgeAPICrypto.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPICrypto.h; sourceTree = "<group>"; };
 		3E043BB26F1B5F4911E22F1385C4E43A /* HCClassMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCClassMatcher.m; path = Source/Library/Object/HCClassMatcher.m; sourceTree = "<group>"; };
-		3E2AE70E309A654851104E8552067E25 /* RLMObservation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObservation.mm; path = Realm/RLMObservation.mm; sourceTree = "<group>"; };
+		3E2AE70E309A654851104E8552067E25 /* RLMObservation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObservation.mm; path = Realm/RLMObservation.mm; sourceTree = "<group>"; };
 		3E4ABD828013DA02DE7E7CBD8F7FE1F5 /* RLMSchema.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSchema.h; path = include/RLMSchema.h; sourceTree = "<group>"; };
 		3E4DB0C4BB436EA917BF1AD00D6E3CC4 /* Bolts.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Bolts.h; path = Bolts/Common/Bolts.h; sourceTree = "<group>"; };
 		3F320C51B559849F43FAA93C8A9B1C57 /* DAKeyboardControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DAKeyboardControl.m; path = DAKeyboardControl/DAKeyboardControl.m; sourceTree = "<group>"; };
@@ -1803,9 +1803,9 @@
 		40DAB32067A9A2911AA568239A60311D /* FBSDKAccessTokenExpirer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAccessTokenExpirer.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenExpirer.h; sourceTree = "<group>"; };
 		40EBF6F395A0F19A1DA26D62A5A1DA7F /* MKTShortReturnSetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTShortReturnSetter.m; path = Source/OCMockito/Helpers/ReturnValueSetters/MKTShortReturnSetter.m; sourceTree = "<group>"; };
 		413F2E4414C9D7C1C2AF275FFE881218 /* GRMustache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GRMustache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		416F0794EBA5BDFF29C6FCA82B79B838 /* JRSwizzle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JRSwizzle.framework; path = JRSwizzle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		416F0794EBA5BDFF29C6FCA82B79B838 /* JRSwizzle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JRSwizzle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4181252CCD554BF6B1D34E2857159855 /* FBSDKSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKSwizzler.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKSwizzler.h; sourceTree = "<group>"; };
-		4194987F89498F91AF54529B0737AD00 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4194987F89498F91AF54529B0737AD00 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42522AA3C0158CE8282DA38A00446787 /* GRMustacheImplicitIteratorExpression.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheImplicitIteratorExpression.m; path = src/classes/Compiling/Expressions/GRMustacheImplicitIteratorExpression.m; sourceTree = "<group>"; };
 		4258AB88E96CDB4724833225B8026947 /* GRMustacheEachFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheEachFilter.m; path = src/classes/Services/StandardLibrary/GRMustacheEachFilter.m; sourceTree = "<group>"; };
 		42DAEFD9442C94BFF58CBD168A96E069 /* MKTObjectReturnSetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTObjectReturnSetter.h; path = Source/OCMockito/Helpers/ReturnValueSetters/MKTObjectReturnSetter.h; sourceTree = "<group>"; };
@@ -1813,7 +1813,7 @@
 		42E91E6F5A7366E51C7C97DFB6A8ECF9 /* GRMustacheTextNode_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheTextNode_private.h; path = src/classes/Compiling/TemplateAST/GRMustacheTextNode_private.h; sourceTree = "<group>"; };
 		43030499D22CCE7DB38D73729458BB3A /* SwiftHEXColors-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftHEXColors-dummy.m"; sourceTree = "<group>"; };
 		4341910BD054059264476C6A071048A3 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
-		435D026445ED645B602C2ECEB1834AC6 /* RLMOptionalBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMOptionalBase.mm; path = Realm/RLMOptionalBase.mm; sourceTree = "<group>"; };
+		435D026445ED645B602C2ECEB1834AC6 /* RLMOptionalBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMOptionalBase.mm; path = Realm/RLMOptionalBase.mm; sourceTree = "<group>"; };
 		4363FC79B7B8973236FA6ABEDACF64FF /* MKTBaseMockObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTBaseMockObject.m; path = Source/OCMockito/MKTBaseMockObject.m; sourceTree = "<group>"; };
 		436B6DF4D718B565C356F8C89F49F61D /* RMConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMConfiguration.h; path = MapView/Map/RMConfiguration.h; sourceTree = "<group>"; };
 		43B98AEC250FD4AB36A2455E54E747CF /* BFMeasurementEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFMeasurementEvent.h; path = Bolts/iOS/BFMeasurementEvent.h; sourceTree = "<group>"; };
@@ -1833,12 +1833,12 @@
 		45B863903A73F8F7B812635AC110588B /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
 		45BDEFB79E00FCFD80B930E60775441B /* HeadingAngleMaskMedium.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = HeadingAngleMaskMedium.png; path = MapView/Map/Resources/HeadingAngleMaskMedium.png; sourceTree = "<group>"; };
 		464BC351C7CD60FB9D342B76A033685F /* HCIsAnything.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIsAnything.m; path = Source/Library/Logical/HCIsAnything.m; sourceTree = "<group>"; };
-		46A607C946D985E58E49FA68CC0349B1 /* RLMUpdateChecker.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMUpdateChecker.mm; path = Realm/RLMUpdateChecker.mm; sourceTree = "<group>"; };
-		46C581AAAC8DF554920C6F65FD5CC099 /* Pods_test_target_I_Bike_CPHTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_test_target_I_Bike_CPHTests.framework; path = "Pods-test_target-I Bike CPHTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46A607C946D985E58E49FA68CC0349B1 /* RLMUpdateChecker.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMUpdateChecker.mm; path = Realm/RLMUpdateChecker.mm; sourceTree = "<group>"; };
+		46C581AAAC8DF554920C6F65FD5CC099 /* Pods_test_target_I_Bike_CPHTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_target_I_Bike_CPHTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DAF250EBEDF180C07E81F4997E01E3 /* GRMustacheIdentifierExpression_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheIdentifierExpression_private.h; path = src/classes/Compiling/Expressions/GRMustacheIdentifierExpression_private.h; sourceTree = "<group>"; };
 		46FFF1F43DA4B9D93D1A326DF15EEEB1 /* FBSDKMonotonicTime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKMonotonicTime.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKMonotonicTime.h; sourceTree = "<group>"; };
 		4713E96E11E456F0C4CBD27FDD9EF4BA /* RMInteractiveSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMInteractiveSource.h; path = MapView/Map/RMInteractiveSource.h; sourceTree = "<group>"; };
-		4742734892604789CD78AC789E4CB8FA /* list.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = list.cpp; path = Realm/ObjectStore/list.cpp; sourceTree = "<group>"; };
+		4742734892604789CD78AC789E4CB8FA /* list.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = list.cpp; path = Realm/ObjectStore/list.cpp; sourceTree = "<group>"; };
 		47940B19993465D935E631AD0A617082 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		479729DC11EED2C90DB1DA7160F115FE /* HCHasDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCHasDescription.h; path = Source/Library/Object/HCHasDescription.h; sourceTree = "<group>"; };
 		47A33C95DC910E92FE54F6CAD9B0A8DD /* GRMustacheURLLibrary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheURLLibrary.m; path = src/classes/Services/StandardLibrary/GRMustacheURLLibrary.m; sourceTree = "<group>"; };
@@ -1847,7 +1847,7 @@
 		484B531F4D59DFC71C93B6724E321101 /* Bolts.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Bolts.xcconfig; sourceTree = "<group>"; };
 		48BCEC891EA17762285EB1197C8C7536 /* RMMarker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMMarker.m; path = MapView/Map/RMMarker.m; sourceTree = "<group>"; };
 		48DFA0B5751549B583FF1519A1AF70EC /* HCStringDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCStringDescription.h; path = Source/Core/HCStringDescription.h; sourceTree = "<group>"; };
-		48EC2728481F30C7B07484523ACCF622 /* RLMSchema.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSchema.mm; path = Realm/RLMSchema.mm; sourceTree = "<group>"; };
+		48EC2728481F30C7B07484523ACCF622 /* RLMSchema.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSchema.mm; path = Realm/RLMSchema.mm; sourceTree = "<group>"; };
 		491F974C3469890659976B15E87B683B /* MKTLongLongReturnSetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTLongLongReturnSetter.m; path = Source/OCMockito/Helpers/ReturnValueSetters/MKTLongLongReturnSetter.m; sourceTree = "<group>"; };
 		496371C7344116A51A4BD65F6427B163 /* HCIsCollectionContaining.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCIsCollectionContaining.h; path = Source/Library/Collection/HCIsCollectionContaining.h; sourceTree = "<group>"; };
 		4972CE9462BEE55C54DC9C83486A3CC4 /* FBSDKAudioResourceLoader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAudioResourceLoader.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKAudioResourceLoader.m; sourceTree = "<group>"; };
@@ -1881,7 +1881,7 @@
 		508E0EA9F521B1CF5A08AB8D976B763C /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
 		50C008401EE5879FC8611C504FC5E83A /* NSValueTransformer+GRMustache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValueTransformer+GRMustache.m"; path = "src/classes/Services/NSValueTransformer+GRMustache.m"; sourceTree = "<group>"; };
 		51182F34E752AFF572044FCA23492A8D /* FBSDKServerConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKServerConfiguration.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfiguration.m; sourceTree = "<group>"; };
-		52A39B9EA938F7C35C70B1A049346726 /* RLMResults.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMResults.mm; path = Realm/RLMResults.mm; sourceTree = "<group>"; };
+		52A39B9EA938F7C35C70B1A049346726 /* RLMResults.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMResults.mm; path = Realm/RLMResults.mm; sourceTree = "<group>"; };
 		52BF64E01AEF540160E0102BB314B432 /* RMTile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMTile.h; path = MapView/Map/RMTile.h; sourceTree = "<group>"; };
 		52F660689D7A4CAE55D4D9D37F5ACEAB /* RMUserLocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMUserLocation.m; path = MapView/Map/RMUserLocation.m; sourceTree = "<group>"; };
 		530087236452CF013C18D755A5111940 /* MKTBoolArgumentGetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTBoolArgumentGetter.m; path = Source/OCMockito/Helpers/ArgumentGetters/MKTBoolArgumentGetter.m; sourceTree = "<group>"; };
@@ -1902,7 +1902,7 @@
 		563FDE55456E4D10C8AEB9FAF0CD7638 /* GRMustachePartialNode_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustachePartialNode_private.h; path = src/classes/Compiling/TemplateAST/GRMustachePartialNode_private.h; sourceTree = "<group>"; };
 		565A1C4DFA7466AE99C18FEBD059C58D /* GRMustache-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GRMustache-umbrella.h"; sourceTree = "<group>"; };
 		56C6B23707B7D977CCC1186064FEDA40 /* Pods-test_target-I Bike CPHTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-test_target-I Bike CPHTests-resources.sh"; sourceTree = "<group>"; };
-		56D76D4BB4CE566A1C50A647B741A2F9 /* RMTile.c */ = {isa = PBXFileReference; includeInIndex = 1; name = RMTile.c; path = MapView/Map/RMTile.c; sourceTree = "<group>"; };
+		56D76D4BB4CE566A1C50A647B741A2F9 /* RMTile.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = RMTile.c; path = MapView/Map/RMTile.c; sourceTree = "<group>"; };
 		56E08B85770901F7057BEB49D65E49AD /* RMUserTrackingBarButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMUserTrackingBarButtonItem.h; path = MapView/Map/RMUserTrackingBarButtonItem.h; sourceTree = "<group>"; };
 		571C0ADDB89E9D723F075CD69F150A51 /* GRMustacheExpression_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheExpression_private.h; path = src/classes/Compiling/Expressions/GRMustacheExpression_private.h; sourceTree = "<group>"; };
 		573B5FC0964E92FA7FB6AD385B0F6323 /* FBSDKProfile+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBSDKProfile+Internal.h"; path = "FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKProfile+Internal.h"; sourceTree = "<group>"; };
@@ -1931,7 +1931,7 @@
 		5BC4351D0069CE933287AFFD5C820B99 /* FBSDKIcon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKIcon.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKIcon.m; sourceTree = "<group>"; };
 		5C0A2237EEE89BA097C030BD553EC6A6 /* BFAppLinkNavigation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFAppLinkNavigation.h; path = Bolts/iOS/BFAppLinkNavigation.h; sourceTree = "<group>"; };
 		5C21D5CD966762787EA4F11EAA183F49 /* Pods-app_target-I Bike CPH-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-app_target-I Bike CPH-frameworks.sh"; sourceTree = "<group>"; };
-		5C9936B303AAF1B77F386B9944EED2D2 /* RMPixel.c */ = {isa = PBXFileReference; includeInIndex = 1; name = RMPixel.c; path = MapView/Map/RMPixel.c; sourceTree = "<group>"; };
+		5C9936B303AAF1B77F386B9944EED2D2 /* RMPixel.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = RMPixel.c; path = MapView/Map/RMPixel.c; sourceTree = "<group>"; };
 		5D3AF8ACCEF9217CC7FA7EBB51EADBA1 /* HCIsCollectionContainingInAnyOrder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIsCollectionContainingInAnyOrder.m; path = Source/Library/Collection/HCIsCollectionContainingInAnyOrder.m; sourceTree = "<group>"; };
 		5D4EC0168F0FD2EA5E351EA7A47F31EF /* RMOpenSeaMapLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMOpenSeaMapLayer.h; path = MapView/Map/RMOpenSeaMapLayer.h; sourceTree = "<group>"; };
 		5D520F724C06E2FBD733F38765EE1B78 /* HeadingAngleMaskMedium@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "HeadingAngleMaskMedium@2x.png"; path = "MapView/Map/Resources/HeadingAngleMaskMedium@2x.png"; sourceTree = "<group>"; };
@@ -1985,7 +1985,7 @@
 		6767D1B9731C6A7463025C484946BA25 /* FBSDKCoreKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSDKCoreKit-umbrella.h"; sourceTree = "<group>"; };
 		6775350FE286AFBC6854D91E16DE1DEB /* FBSDKLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKLogger.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKLogger.m; sourceTree = "<group>"; };
 		6780839A19F79173EE419584C247B79C /* TrackingLocationOffMask@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "TrackingLocationOffMask@2x.png"; path = "MapView/Map/Resources/TrackingLocationOffMask@2x.png"; sourceTree = "<group>"; };
-		67B6F9E95F598E62A9CCFC55594DB3A1 /* RLMRealmUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMRealmUtil.mm; path = Realm/RLMRealmUtil.mm; sourceTree = "<group>"; };
+		67B6F9E95F598E62A9CCFC55594DB3A1 /* RLMRealmUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMRealmUtil.mm; path = Realm/RLMRealmUtil.mm; sourceTree = "<group>"; };
 		67BE162CAED7231A998CCF334BE29EC0 /* UIImage+PathCropping.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+PathCropping.m"; path = "Classes/UIImage+PathCropping.m"; sourceTree = "<group>"; };
 		67D96810245BD744DCF172369E090E4D /* FBSDKURLSessionTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKURLSessionTask.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKURLSessionTask.h; sourceTree = "<group>"; };
 		68420564B2C718600B6490184D3B2896 /* FBSDKCopying.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKCopying.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKCopying.h; sourceTree = "<group>"; };
@@ -2002,7 +2002,7 @@
 		69E78F033BA9987AAECAF479E5FF6F1A /* GRMustacheURLLibrary_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheURLLibrary_private.h; path = src/classes/Services/StandardLibrary/GRMustacheURLLibrary_private.h; sourceTree = "<group>"; };
 		69EB3AEA0CB3B8F139FB6EC8DA02E55D /* TrackingHeading.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = TrackingHeading.png; path = MapView/Map/Resources/TrackingHeading.png; sourceTree = "<group>"; };
 		69FFAF5809AFF39149C43B66CDDF1885 /* FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FMDB-dummy.m"; sourceTree = "<group>"; };
-		6A001DD1D1F81EDA40627C9BF9190283 /* RLMMigration.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMMigration.mm; path = Realm/RLMMigration.mm; sourceTree = "<group>"; };
+		6A001DD1D1F81EDA40627C9BF9190283 /* RLMMigration.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMMigration.mm; path = Realm/RLMMigration.mm; sourceTree = "<group>"; };
 		6A371481483F3A8220F20808910DE77A /* FBSDKLoginManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKLoginManager.m; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginManager.m; sourceTree = "<group>"; };
 		6B237D9E74BBDB3E662B49989C3175CB /* HCIsEqualIgnoringCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIsEqualIgnoringCase.m; path = Source/Library/Text/HCIsEqualIgnoringCase.m; sourceTree = "<group>"; };
 		6B62DA11967B462D51B02389436ED79F /* OCMockito.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OCMockito.xcconfig; sourceTree = "<group>"; };
@@ -2027,7 +2027,7 @@
 		6FDD5A4F9835012C96209BA3E480B1E7 /* Compass.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Compass.png; path = MapView/Map/Resources/Compass.png; sourceTree = "<group>"; };
 		6FF72464DBB7F472FC9275AB13E71D84 /* HCDoubleReturnGetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCDoubleReturnGetter.m; path = Source/Core/Helpers/ReturnValueGetters/HCDoubleReturnGetter.m; sourceTree = "<group>"; };
 		70CBF360BE08A83468C104369F9EE613 /* HCIsNil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIsNil.m; path = Source/Library/Object/HCIsNil.m; sourceTree = "<group>"; };
-		713408B6D615D06C7485E7611B709C61 /* OCMockito.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = OCMockito.framework; path = OCMockito.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		713408B6D615D06C7485E7611B709C61 /* OCMockito.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCMockito.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7139B0167B041C55C8C2520A601E0E09 /* MKTUnsignedLongLongArgumentGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTUnsignedLongLongArgumentGetter.h; path = Source/OCMockito/Helpers/ArgumentGetters/MKTUnsignedLongLongArgumentGetter.h; sourceTree = "<group>"; };
 		717E76C79EE6471940F1ABE0A041F98F /* MKTExactTimes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTExactTimes.m; path = Source/OCMockito/MKTExactTimes.m; sourceTree = "<group>"; };
 		71940B9075257431BABC00CB425049D3 /* HCUnsignedCharReturnGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCUnsignedCharReturnGetter.h; path = Source/Core/Helpers/ReturnValueGetters/HCUnsignedCharReturnGetter.h; sourceTree = "<group>"; };
@@ -2036,7 +2036,7 @@
 		72071BC40D6AD2ABCA4987F1CC4019B0 /* MKTStructArgumentGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTStructArgumentGetter.h; path = Source/OCMockito/Helpers/ArgumentGetters/MKTStructArgumentGetter.h; sourceTree = "<group>"; };
 		7235C5D7AE78E8542FA1C594364EDB6D /* FBSDKAppLinkUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAppLinkUtility.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKAppLinkUtility.h; sourceTree = "<group>"; };
 		727604CB5652AC76D953C26A2A3F3A69 /* HCIs.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIs.m; path = Source/Library/Decorator/HCIs.m; sourceTree = "<group>"; };
-		72795A3B0B166E87E5306F2A76B32815 /* RLMQueryUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMQueryUtil.mm; path = Realm/RLMQueryUtil.mm; sourceTree = "<group>"; };
+		72795A3B0B166E87E5306F2A76B32815 /* RLMQueryUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMQueryUtil.mm; path = Realm/RLMQueryUtil.mm; sourceTree = "<group>"; };
 		728360A2EE0AE6D310F56AEA75597883 /* nad_list.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = nad_list.h; path = Proj4/nad_list.h; sourceTree = "<group>"; };
 		7283FC3DD80EBE6D3C8CBB438CE4D4DF /* ORTagBasedAutoStackView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ORTagBasedAutoStackView.m; path = Classes/ios/ORTagBasedAutoStackView.m; sourceTree = "<group>"; };
 		729A1A550A42629ABE0926313EA75BEE /* RMCircle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMCircle.m; path = MapView/Map/RMCircle.m; sourceTree = "<group>"; };
@@ -2073,12 +2073,12 @@
 		7933C122E4D5AEE366BE6DB1BA1132D3 /* ORStackScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ORStackScrollView.m; path = Classes/ios/ORStackScrollView.m; sourceTree = "<group>"; };
 		7968B401A1F2887A7529CD9937713C06 /* RLMArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMArray.h; path = include/RLMArray.h; sourceTree = "<group>"; };
 		7991CD8A67E6678D5734126D6F914A39 /* MKTDoubleArgumentGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTDoubleArgumentGetter.h; path = Source/OCMockito/Helpers/ArgumentGetters/MKTDoubleArgumentGetter.h; sourceTree = "<group>"; };
-		79DB134770CAD53DA14AC2E67E45899F /* RLMAccessor.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMAccessor.mm; path = Realm/RLMAccessor.mm; sourceTree = "<group>"; };
+		79DB134770CAD53DA14AC2E67E45899F /* RLMAccessor.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMAccessor.mm; path = Realm/RLMAccessor.mm; sourceTree = "<group>"; };
 		79DD9797F5FD006C03A68411D5D95D6C /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		7A47EBA00A5EED9A0D942791DEE21287 /* GRMustacheContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheContentType.h; path = src/classes/Shared/GRMustacheContentType.h; sourceTree = "<group>"; };
 		7A8D1153832149624488F443EB339DBC /* MKTClassArgumentGetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTClassArgumentGetter.m; path = Source/OCMockito/Helpers/ArgumentGetters/MKTClassArgumentGetter.m; sourceTree = "<group>"; };
 		7AA2B42F7DC9BCCEC4C279246DB58F03 /* ResourceBundle-Mapbox-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Mapbox-Info.plist"; sourceTree = "<group>"; };
-		7ABBAF119C165AA75BA1E141E4C1454D /* DAKeyboardControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DAKeyboardControl.framework; path = DAKeyboardControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ABBAF119C165AA75BA1E141E4C1454D /* DAKeyboardControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DAKeyboardControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B042BFB3D32D82BE7261F28447E5245 /* FBSDKHybridAppEventsScriptMessageHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKHybridAppEventsScriptMessageHandler.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKHybridAppEventsScriptMessageHandler.h; sourceTree = "<group>"; };
 		7B8657473DF4DCAE5D40B33A6BE94394 /* JRSwizzle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
 		7B96B8BC7DAF37833C900B2F45121A6F /* HCGenericTestFailureReporter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCGenericTestFailureReporter.m; path = Source/Core/Helpers/TestFailureReporters/HCGenericTestFailureReporter.m; sourceTree = "<group>"; };
@@ -2088,14 +2088,14 @@
 		7C57AAB84F785035ED14366BA670F334 /* FBSDKBridgeAPICrypto.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKBridgeAPICrypto.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPICrypto.m; sourceTree = "<group>"; };
 		7C662E385E68A53291B57CB49B84D81A /* HCAllOf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCAllOf.h; path = Source/Library/Logical/HCAllOf.h; sourceTree = "<group>"; };
 		7CFE8735B049A3ABE370003A1D649949 /* FBSDKDeviceLoginCodeInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKDeviceLoginCodeInfo.h; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKDeviceLoginCodeInfo.h; sourceTree = "<group>"; };
-		7D00E5AC7C2C49B5B0A480512D9E7AF6 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyUserDefaults.framework; path = SwiftyUserDefaults.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D00E5AC7C2C49B5B0A480512D9E7AF6 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyUserDefaults.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D1A10B8120492A33427D0FC4A5A55D3 /* SwiftyUserDefaults-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyUserDefaults-dummy.m"; sourceTree = "<group>"; };
 		7D3905BEC90AA8F3F4A92C17BA579CBB /* RMTileImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMTileImage.m; path = MapView/Map/RMTileImage.m; sourceTree = "<group>"; };
 		7DB69645963DCC12ECD93F39E653436A /* FBSDKHybridAppEventsScriptMessageHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKHybridAppEventsScriptMessageHandler.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKHybridAppEventsScriptMessageHandler.m; sourceTree = "<group>"; };
 		7DB8EA9D4E90366DC4C32FF2224579B3 /* FMResultSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/fmdb/FMResultSet.m; sourceTree = "<group>"; };
 		7DB9282128D13F03C69DCC645142A4AE /* GRMustacheRendering_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheRendering_private.h; path = src/classes/Rendering/GRMustacheRendering_private.h; sourceTree = "<group>"; };
 		7DC86E38CF7CC4C9E52ED411E3CDEA46 /* TrackingLocationOffMask.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = TrackingLocationOffMask.png; path = MapView/Map/Resources/TrackingLocationOffMask.png; sourceTree = "<group>"; };
-		7DCAD038C6AB0213C086BD71F47E3A2E /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Bolts.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DCAD038C6AB0213C086BD71F47E3A2E /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EDA9E4AB791CE8787F2A439D5C3B4A9 /* GRMustacheVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheVersion.h; path = src/classes/GRMustacheVersion.h; sourceTree = "<group>"; };
 		7EF20AF1240C7D4BCA140A001EEEE80B /* HCStringContainsInOrder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCStringContainsInOrder.h; path = Source/Library/Text/HCStringContainsInOrder.h; sourceTree = "<group>"; };
 		7EF56C973AC5E7085E9F4C19F6E7B8DA /* Pods-test_target-CykelPlanenTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-test_target-CykelPlanenTests.modulemap"; sourceTree = "<group>"; };
@@ -2125,7 +2125,7 @@
 		81E73128ACD8E2C25AA54CB5B19613F5 /* GRMustacheExpressionGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheExpressionGenerator.m; path = src/classes/Services/GRMustacheExpressionGenerator.m; sourceTree = "<group>"; };
 		8213C8ED3F6303C7F464825C629A2F7C /* HCTestFailureReporterChain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCTestFailureReporterChain.h; path = Source/Core/Helpers/TestFailureReporters/HCTestFailureReporterChain.h; sourceTree = "<group>"; };
 		8264F12939E693F962618FBE8CAAFA9C /* FBSDKGraphRequest+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBSDKGraphRequest+Internal.h"; path = "FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequest+Internal.h"; sourceTree = "<group>"; };
-		82F212E88ABBA450BAE525123EE6CD21 /* RLMArray.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMArray.mm; path = Realm/RLMArray.mm; sourceTree = "<group>"; };
+		82F212E88ABBA450BAE525123EE6CD21 /* RLMArray.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMArray.mm; path = Realm/RLMArray.mm; sourceTree = "<group>"; };
 		834D854A69B59938D1DE03ACE68A3F89 /* RMCacheObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMCacheObject.m; path = MapView/Map/RMCacheObject.m; sourceTree = "<group>"; };
 		835BBDC4948D155BFE2436AFFE38061E /* HCDoubleReturnGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCDoubleReturnGetter.h; path = Source/Core/Helpers/ReturnValueGetters/HCDoubleReturnGetter.h; sourceTree = "<group>"; };
 		83F48DE34DED1737F1F30AB3DEAF17C1 /* Mapbox-iOS-SDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Mapbox-iOS-SDK-dummy.m"; sourceTree = "<group>"; };
@@ -2138,7 +2138,7 @@
 		84D2A8B090910D6C41BE93747C832085 /* GRMustacheTranslateCharacters_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheTranslateCharacters_private.h; path = src/classes/Shared/GRMustacheTranslateCharacters_private.h; sourceTree = "<group>"; };
 		8524E6832E35C4C03C2EE8FF1A2C0716 /* Mapbox-iOS-SDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mapbox-iOS-SDK-umbrella.h"; sourceTree = "<group>"; };
 		8530472602BD5E95F1CDF1464F016DD3 /* HeadingAngleSmall@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "HeadingAngleSmall@2x.png"; path = "MapView/Map/Resources/HeadingAngleSmall@2x.png"; sourceTree = "<group>"; };
-		855346073C8DE07166408BE27D54FA5D /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FMDB.framework; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		855346073C8DE07166408BE27D54FA5D /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		856AF2D137F9A06D6991E07C25519318 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
 		8581881E74B3491A20EE2F931CB48690 /* FLKAutoLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FLKAutoLayout-prefix.pch"; sourceTree = "<group>"; };
 		859ED3B5E4C4989F19FDD4B3869057B0 /* HCConformsToProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCConformsToProtocol.m; path = Source/Library/Object/HCConformsToProtocol.m; sourceTree = "<group>"; };
@@ -2153,7 +2153,7 @@
 		8777B1A14C33F22C1086107934CB653B /* FBSDKAccessTokenExpirer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAccessTokenExpirer.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenExpirer.m; sourceTree = "<group>"; };
 		87853405059F43D9F56CA853722CD8B5 /* HCHasProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCHasProperty.m; path = Source/Library/Object/HCHasProperty.m; sourceTree = "<group>"; };
 		87EF5B6963A1A8980FBE7BCEB3BE3C9D /* HCXCTestFailureReporter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCXCTestFailureReporter.m; path = Source/Core/Helpers/TestFailureReporters/HCXCTestFailureReporter.m; sourceTree = "<group>"; };
-		881725E6C7A0CCFB3BD5AB8B94F00DD3 /* transact_log_handler.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = transact_log_handler.cpp; path = Realm/ObjectStore/impl/transact_log_handler.cpp; sourceTree = "<group>"; };
+		881725E6C7A0CCFB3BD5AB8B94F00DD3 /* transact_log_handler.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = transact_log_handler.cpp; path = Realm/ObjectStore/impl/transact_log_handler.cpp; sourceTree = "<group>"; };
 		8824926AB5BE36D614E20CD390850299 /* MKTStructArgumentGetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTStructArgumentGetter.m; path = Source/OCMockito/Helpers/ArgumentGetters/MKTStructArgumentGetter.m; sourceTree = "<group>"; };
 		89293CEA2D9B3F4F2962271A9E196A82 /* HCAssertThat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCAssertThat.m; path = Source/Core/HCAssertThat.m; sourceTree = "<group>"; };
 		8983724D301D96AD62F5374F19DF68B4 /* FBSDKPaymentObserver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKPaymentObserver.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKPaymentObserver.h; sourceTree = "<group>"; };
@@ -2167,7 +2167,7 @@
 		8BB5B56455433C1B9DDCB5B2463FCFFF /* LoadingTile6.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = LoadingTile6.png; path = MapView/Map/Resources/LoadingTile6.png; sourceTree = "<group>"; };
 		8BC46B16976CCD2FE3712BB9CD392AF5 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
 		8BDED7781D1E3EE239CFD71FC0D556F7 /* BFURL_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFURL_Internal.h; path = Bolts/iOS/Internal/BFURL_Internal.h; sourceTree = "<group>"; };
-		8C6A7315E86F7CE7B0175178D54CC37F /* RLMCollection.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMCollection.mm; path = Realm/RLMCollection.mm; sourceTree = "<group>"; };
+		8C6A7315E86F7CE7B0175178D54CC37F /* RLMCollection.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMCollection.mm; path = Realm/RLMCollection.mm; sourceTree = "<group>"; };
 		8CC918402D2D1ABBF1C701268D9BFD36 /* FBSDKMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKMacros.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKMacros.h; sourceTree = "<group>"; };
 		8CCB7437D5EB9A8D76DD27D29B07D8BF /* GRMustacheInheritableSectionNode_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheInheritableSectionNode_private.h; path = src/classes/Compiling/TemplateAST/GRMustacheInheritableSectionNode_private.h; sourceTree = "<group>"; };
 		8D7F64F55B83D09B078A57CD1FB46FEF /* FBSDKBridgeAPIProtocolWebV2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKBridgeAPIProtocolWebV2.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolWebV2.h; sourceTree = "<group>"; };
@@ -2191,7 +2191,7 @@
 		928C0852D6F8739D8AC6D4CEFE1AB255 /* FBSDKUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKUtility.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKUtility.m; sourceTree = "<group>"; };
 		93333357981E4806F862C4CE7652F291 /* GRMustacheRendering.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheRendering.m; path = src/classes/Rendering/GRMustacheRendering.m; sourceTree = "<group>"; };
 		9365D60F115180701CA5166830A52E4B /* HCIsEqual.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIsEqual.m; path = Source/Library/Object/HCIsEqual.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		945240D9A7FD8400F977CE89770D4E15 /* org_proj4_Projections.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = org_proj4_Projections.h; path = Proj4/org_proj4_Projections.h; sourceTree = "<group>"; };
 		9455E6CFFCA3B7CF150C1585B1F746CB /* HCIsTrueFalse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIsTrueFalse.m; path = Source/Library/Number/HCIsTrueFalse.m; sourceTree = "<group>"; };
 		952FA7CE35D040F29898C32942128976 /* Pods-test_target-CykelPlanenTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-test_target-CykelPlanenTests-umbrella.h"; sourceTree = "<group>"; };
@@ -2208,12 +2208,12 @@
 		97958C843B91CA126648F5092716D4C7 /* MKTCharArgumentGetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTCharArgumentGetter.m; path = Source/OCMockito/Helpers/ArgumentGetters/MKTCharArgumentGetter.m; sourceTree = "<group>"; };
 		97E40EE325E6A99BA03C1BBB3622CB39 /* GRMustacheRendering.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheRendering.h; path = src/classes/Rendering/GRMustacheRendering.h; sourceTree = "<group>"; };
 		982FC66E28A492F6D02F7D5290D12448 /* RMAttributionViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMAttributionViewController.m; path = MapView/Map/RMAttributionViewController.m; sourceTree = "<group>"; };
-		9841326B24DE3394C0B88D56F77B5566 /* list_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = list_notifier.cpp; path = Realm/ObjectStore/impl/list_notifier.cpp; sourceTree = "<group>"; };
+		9841326B24DE3394C0B88D56F77B5566 /* list_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = list_notifier.cpp; path = Realm/ObjectStore/impl/list_notifier.cpp; sourceTree = "<group>"; };
 		98B400BC9A87F538D49BEE24FF12C899 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		98EAA965F283FA28524F047002E4CAA8 /* ORStackView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ORStackView-dummy.m"; sourceTree = "<group>"; };
-		9904669FCEC51D9180D39B8F21E2F09F /* RLMObjectStore.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObjectStore.mm; path = Realm/RLMObjectStore.mm; sourceTree = "<group>"; };
+		9904669FCEC51D9180D39B8F21E2F09F /* RLMObjectStore.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObjectStore.mm; path = Realm/RLMObjectStore.mm; sourceTree = "<group>"; };
 		990C2590831F3809B744A5042799F81B /* MKTUnsignedLongArgumentGetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTUnsignedLongArgumentGetter.m; path = Source/OCMockito/Helpers/ArgumentGetters/MKTUnsignedLongArgumentGetter.m; sourceTree = "<group>"; };
-		99483FA8E273A5DC98F106B38E732187 /* SMCalloutView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SMCalloutView.framework; path = SMCalloutView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99483FA8E273A5DC98F106B38E732187 /* SMCalloutView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SMCalloutView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9978D6308D3E90E41670068AC6FEEA52 /* HCTestFailureReporterChain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCTestFailureReporterChain.m; path = Source/Core/Helpers/TestFailureReporters/HCTestFailureReporterChain.m; sourceTree = "<group>"; };
 		99A8FB09DE6128B33F8DD2BB3A34BD94 /* RLMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMDefines.h; path = include/RLMDefines.h; sourceTree = "<group>"; };
 		99A9B6AF114E98A8B88260C7277050C8 /* MKTUnsignedLongArgumentGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTUnsignedLongArgumentGetter.h; path = Source/OCMockito/Helpers/ArgumentGetters/MKTUnsignedLongArgumentGetter.h; sourceTree = "<group>"; };
@@ -2238,15 +2238,15 @@
 		9E1EDF320187ACA3A5210C56B90E56F5 /* ORStackView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ORStackView-prefix.pch"; sourceTree = "<group>"; };
 		9E23C6EF02DFAB31536AE12FD45F80C6 /* Pods-test_target-CykelPlanenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-test_target-CykelPlanenTests.release.xcconfig"; sourceTree = "<group>"; };
 		9EBE2DF6D29E1ACA5646725ACF1584EF /* BFAppLinkTarget.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFAppLinkTarget.h; path = Bolts/iOS/BFAppLinkTarget.h; sourceTree = "<group>"; };
-		9F087AD205DE4D282ACA14E949D07F7C /* FLKAutoLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FLKAutoLayout.framework; path = FLKAutoLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F087AD205DE4D282ACA14E949D07F7C /* FLKAutoLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FLKAutoLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2E6DEFB59626FA785E86D8920045AF /* MKTShortArgumentGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTShortArgumentGetter.h; path = Source/OCMockito/Helpers/ArgumentGetters/MKTShortArgumentGetter.h; sourceTree = "<group>"; };
 		9F4930C72BBDA1AD774292FF3C4109FB /* GRMustacheExpressionInvocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheExpressionInvocation.m; path = src/classes/Rendering/GRMustacheExpressionInvocation.m; sourceTree = "<group>"; };
 		9F5C3853ED6BA469823433DE25C7ACDC /* MKTDynamicProperties.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTDynamicProperties.m; path = Source/OCMockito/Helpers/MKTDynamicProperties.m; sourceTree = "<group>"; };
 		9F6086C737D4F0EA60E5F695DA059B59 /* mapbox@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mapbox@2x.png"; path = "MapView/Map/Resources/mapbox@2x.png"; sourceTree = "<group>"; };
 		9F718C3ED7C6D9D96125A83A8648CDD0 /* HCRequireNonNilObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCRequireNonNilObject.m; path = Source/Core/Helpers/HCRequireNonNilObject.m; sourceTree = "<group>"; };
-		9F82B34CB4118BE505D95BF8DE0BEE31 /* OCHamcrest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = OCHamcrest.framework; path = OCHamcrest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F82B34CB4118BE505D95BF8DE0BEE31 /* OCHamcrest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCHamcrest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9F517C61C3D2B32F7BD132B473EF4A /* MKTUnsignedLongReturnSetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTUnsignedLongReturnSetter.h; path = Source/OCMockito/Helpers/ReturnValueSetters/MKTUnsignedLongReturnSetter.h; sourceTree = "<group>"; };
-		9FBF879C1104211B2DA56249F6139494 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSDKCoreKit.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FBF879C1104211B2DA56249F6139494 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC9C3CD7A984A6D31112949E91D5154 /* HeadingAngleLarge@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "HeadingAngleLarge@2x.png"; path = "MapView/Map/Resources/HeadingAngleLarge@2x.png"; sourceTree = "<group>"; };
 		9FE700E975B2204C9B4742E85E51ACA6 /* Pods-test_target-CykelPlanenTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-test_target-CykelPlanenTests-resources.sh"; sourceTree = "<group>"; };
 		9FF3A702FF6AEE53998D3C142F0A56BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -2298,7 +2298,7 @@
 		AAE52AC883553A86378003342CCE76E3 /* HCIsCollectionContainingInAnyOrder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCIsCollectionContainingInAnyOrder.h; path = Source/Library/Collection/HCIsCollectionContainingInAnyOrder.h; sourceTree = "<group>"; };
 		AB06FB04832D252B7470AC7BE544381C /* MKTUnsignedShortReturnSetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTUnsignedShortReturnSetter.h; path = Source/OCMockito/Helpers/ReturnValueSetters/MKTUnsignedShortReturnSetter.h; sourceTree = "<group>"; };
 		AB13BCDF81365BF9D033DEC5635D7517 /* FBSDKAppEventsState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAppEventsState.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKAppEventsState.h; sourceTree = "<group>"; };
-		AB2BB52CF5805D5A4841770054FD483F /* GRMustache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GRMustache.framework; path = GRMustache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB2BB52CF5805D5A4841770054FD483F /* GRMustache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GRMustache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB438AD67DEE5453DB6102FC9B5BEC36 /* FBSDKCoreKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FBSDKCoreKit.modulemap; sourceTree = "<group>"; };
 		ABB19938B5B9769F4CB2C4107BA496CC /* ORSplitStackView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ORSplitStackView.h; path = Classes/ios/ORSplitStackView.h; sourceTree = "<group>"; };
 		AC188AA2107C00C3D4D4A16C445DF221 /* GRMustacheFilteredExpression_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheFilteredExpression_private.h; path = src/classes/Compiling/Expressions/GRMustacheFilteredExpression_private.h; sourceTree = "<group>"; };
@@ -2315,7 +2315,7 @@
 		AE72FAB6742AD99DBDE07A1E17C5A3BF /* RMMBTilesSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMMBTilesSource.h; path = MapView/Map/RMMBTilesSource.h; sourceTree = "<group>"; };
 		AE7D595813BD3CE79A5CC67E40118609 /* DAKeyboardControl.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DAKeyboardControl.xcconfig; sourceTree = "<group>"; };
 		AE80C3725C445BB3FA96B156786EE496 /* RMFractalTileProjection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMFractalTileProjection.h; path = MapView/Map/RMFractalTileProjection.h; sourceTree = "<group>"; };
-		AE959737A21924FADD01644CE32E5B37 /* Pods_test_target_CykelPlanenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_test_target_CykelPlanenTests.framework; path = "Pods-test_target-CykelPlanenTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE959737A21924FADD01644CE32E5B37 /* Pods_test_target_CykelPlanenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_target_CykelPlanenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE963105C20A737ACC11E077222B3456 /* HCArgumentCaptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCArgumentCaptor.h; path = Source/Library/Object/HCArgumentCaptor.h; sourceTree = "<group>"; };
 		AF3613FA8D55A48E9C8440E286DFBD08 /* FBSDKGraphRequestMetadata.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKGraphRequestMetadata.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestMetadata.m; sourceTree = "<group>"; };
 		AF501A6C889CA7E4567D38E343E22276 /* RMMapLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMMapLayer.h; path = MapView/Map/RMMapLayer.h; sourceTree = "<group>"; };
@@ -2345,7 +2345,7 @@
 		B484BA75449789D8DC5FB1DB71E6C814 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4D64068E39D3F5B39B427D2504573B0 /* FBSDKGraphRequestPiggybackManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKGraphRequestPiggybackManager.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestPiggybackManager.m; sourceTree = "<group>"; };
 		B51E9B7689D51C75E81676C2C0D9280E /* TTTAttributedLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TTTAttributedLabel-umbrella.h"; sourceTree = "<group>"; };
-		B528ABA39738F0A625CAD4975B0A4B63 /* RMFoundation.c */ = {isa = PBXFileReference; includeInIndex = 1; name = RMFoundation.c; path = MapView/Map/RMFoundation.c; sourceTree = "<group>"; };
+		B528ABA39738F0A625CAD4975B0A4B63 /* RMFoundation.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = RMFoundation.c; path = MapView/Map/RMFoundation.c; sourceTree = "<group>"; };
 		B5E7DCE40B8E04528DCE8E1877FDE85B /* BFCancellationTokenRegistration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BFCancellationTokenRegistration.m; path = Bolts/Common/BFCancellationTokenRegistration.m; sourceTree = "<group>"; };
 		B603666326D6B4AB869DB0439F76126A /* FBSDKLoginKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FBSDKLoginKit.xcconfig; sourceTree = "<group>"; };
 		B65B2A97C7C5688E91AF6D69A0086753 /* GRMustacheTemplateAST_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheTemplateAST_private.h; path = src/classes/Compiling/TemplateAST/GRMustacheTemplateAST_private.h; sourceTree = "<group>"; };
@@ -2353,9 +2353,9 @@
 		B69883CDB2C46D41A19460F20E16D1F3 /* TrackingLocationOffMaskLandscape@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "TrackingLocationOffMaskLandscape@2x.png"; path = "MapView/Map/Resources/TrackingLocationOffMaskLandscape@2x.png"; sourceTree = "<group>"; };
 		B69CFB268D5542A65AFE1B723AD0A680 /* FBSDKURLConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKURLConnection.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKURLConnection.m; sourceTree = "<group>"; };
 		B6F84F1D28BF9C4F93FB9A88E4F98491 /* FBSDKLoginUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLoginUtility.h; path = FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginUtility.h; sourceTree = "<group>"; };
-		B7025E0BF81A9019E7E38B718F2CA737 /* RLMObjectSchema.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObjectSchema.mm; path = Realm/RLMObjectSchema.mm; sourceTree = "<group>"; };
+		B7025E0BF81A9019E7E38B718F2CA737 /* RLMObjectSchema.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObjectSchema.mm; path = Realm/RLMObjectSchema.mm; sourceTree = "<group>"; };
 		B76EA43EFFF534557C14B6B787C1EFEE /* FBSDKLoginManagerLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLoginManagerLogger.h; path = FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginManagerLogger.h; sourceTree = "<group>"; };
-		B7B602CC30BF62F482FCF5C1E83F31E4 /* Mapbox.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Mapbox.bundle; path = "Mapbox-iOS-SDK-Mapbox.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7B602CC30BF62F482FCF5C1E83F31E4 /* Mapbox.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mapbox.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C6AFB3645C627406EE7A6AF76433E3 /* MKTArgumentCaptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTArgumentCaptor.m; path = Source/OCMockito/MKTArgumentCaptor.m; sourceTree = "<group>"; };
 		B7F9106CB063FFD61CE123E015017852 /* GRMustacheTagDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheTagDelegate.h; path = src/classes/Rendering/GRMustacheTagDelegate.h; sourceTree = "<group>"; };
 		B7FB88D24CEA9D245AAA528F7E4042E0 /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyUserDefaults.swift; path = Sources/SwiftyUserDefaults.swift; sourceTree = "<group>"; };
@@ -2394,12 +2394,12 @@
 		BE267680AB47DA5CE3393A3D55A7833D /* FBSDKLogo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLogo.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKLogo.h; sourceTree = "<group>"; };
 		BE318947BE2D6E87AA31D744A77CD5DF /* HCHasCount.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCHasCount.h; path = Source/Library/Collection/HCHasCount.h; sourceTree = "<group>"; };
 		BE4D102C1BC38F722318F6279B014ACC /* HCStringStartsWith.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCStringStartsWith.h; path = Source/Library/Text/HCStringStartsWith.h; sourceTree = "<group>"; };
-		BE935D9EFFC63CB3C451D19A9C6E851C /* TTTAttributedLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TTTAttributedLabel.framework; path = TTTAttributedLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE935D9EFFC63CB3C451D19A9C6E851C /* TTTAttributedLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TTTAttributedLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8B9D500ECED58B14C1C1D116E93548 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		BFBFF7C820683DDCE45BD0064C9D2295 /* MKTTestLocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTTestLocation.m; path = Source/OCMockito/MKTTestLocation.m; sourceTree = "<group>"; };
 		BFE1F4E4C42405B1C8FB94A0CBC76A06 /* HCCharReturnGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCCharReturnGetter.h; path = Source/Core/Helpers/ReturnValueGetters/HCCharReturnGetter.h; sourceTree = "<group>"; };
 		BFE90E6EF7243CED27181A65B4762296 /* GRMustache.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GRMustache.modulemap; sourceTree = "<group>"; };
-		C0902945F7BA2DB4DC8E0050F50D0DBA /* RLMUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMUtil.mm; path = Realm/RLMUtil.mm; sourceTree = "<group>"; };
+		C0902945F7BA2DB4DC8E0050F50D0DBA /* RLMUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMUtil.mm; path = Realm/RLMUtil.mm; sourceTree = "<group>"; };
 		C0C885D78C979314D712E7939C2D1F9A /* RMMapTiledLayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMMapTiledLayerView.m; path = MapView/Map/RMMapTiledLayerView.m; sourceTree = "<group>"; };
 		C0D0DB572548778F60560F20D21FBBEC /* FBSDKAccessTokenCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAccessTokenCache.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCache.h; sourceTree = "<group>"; };
 		C0F9254DCE208348381C059C8C2A85AD /* RMPolylineAnnotation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMPolylineAnnotation.m; path = MapView/Map/RMPolylineAnnotation.m; sourceTree = "<group>"; };
@@ -2413,7 +2413,7 @@
 		C2C632743862CE9CAE6C62CE0A044BC1 /* FBSDKURLConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKURLConnection.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKURLConnection.h; sourceTree = "<group>"; };
 		C2CCC6C3FC089D05BBB24DA7D4ACFC82 /* ORStackView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ORStackView.modulemap; sourceTree = "<group>"; };
 		C2E2F3229986489F9FC3F0AA2039B271 /* SMCalloutView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
-		C34046DDBA55F939594AAEE7350A8888 /* RLMPredicateUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMPredicateUtil.mm; path = Realm/RLMPredicateUtil.mm; sourceTree = "<group>"; };
+		C34046DDBA55F939594AAEE7350A8888 /* RLMPredicateUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMPredicateUtil.mm; path = Realm/RLMPredicateUtil.mm; sourceTree = "<group>"; };
 		C34326085D84C1EBDEA0D3B21D487068 /* HCLongReturnGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCLongReturnGetter.h; path = Source/Core/Helpers/ReturnValueGetters/HCLongReturnGetter.h; sourceTree = "<group>"; };
 		C3585549A3E284AC7C5FE373DEC6D8DF /* GRMustacheScopedExpression.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheScopedExpression.m; path = src/classes/Compiling/Expressions/GRMustacheScopedExpression.m; sourceTree = "<group>"; };
 		C3A01E33457D0582BD4633DAC2389614 /* RMOpenSeaMapSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMOpenSeaMapSource.h; path = MapView/Map/RMOpenSeaMapSource.h; sourceTree = "<group>"; };
@@ -2430,7 +2430,7 @@
 		C5A933DE46316872EFB0893C6C9FFF5B /* FBSDKWebDialog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKWebDialog.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/WebDialog/FBSDKWebDialog.h; sourceTree = "<group>"; };
 		C5D5284731FCBC2D43B8EA701DC836F1 /* FBSDKCoreKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FBSDKCoreKit-dummy.m"; sourceTree = "<group>"; };
 		C65046C3D163352C0E2F251C32A688C8 /* FBSDKAppEventsUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAppEventsUtility.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKAppEventsUtility.m; sourceTree = "<group>"; };
-		C66E16C43B3E20B84571E07490194651 /* PSTAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PSTAlertController.framework; path = PSTAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C66E16C43B3E20B84571E07490194651 /* PSTAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PSTAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E99C1A05DB89190136DFADA68140F8 /* MKTUnsignedIntReturnSetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTUnsignedIntReturnSetter.h; path = Source/OCMockito/Helpers/ReturnValueSetters/MKTUnsignedIntReturnSetter.h; sourceTree = "<group>"; };
 		C6F8989FC536DF187E67E3EECD032325 /* FBSDKWebDialogView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKWebDialogView.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/WebDialog/FBSDKWebDialogView.m; sourceTree = "<group>"; };
 		C6FE50F44DFF2316856F9E8DA55BFC46 /* MKTThrowsException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTThrowsException.h; path = Source/OCMockito/MKTThrowsException.h; sourceTree = "<group>"; };
@@ -2462,17 +2462,17 @@
 		CD860E0FE305497087E5957035989D25 /* RLMObjectSchema.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMObjectSchema.h; path = include/RLMObjectSchema.h; sourceTree = "<group>"; };
 		CDB1E5A1F29F075F19B88FCF7FF520E7 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RoundedCorner.m"; path = "Classes/UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		CDB540969250E0700F323B8CD3B9051C /* NSInvocation+OCMockito.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+OCMockito.m"; path = "Source/OCMockito/NSInvocation+OCMockito.m"; sourceTree = "<group>"; };
-		CDF1F7DED21ED14C71C08E8A867A5B8A /* object_schema.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = object_schema.cpp; path = Realm/ObjectStore/object_schema.cpp; sourceTree = "<group>"; };
-		CDF54A66F48BD855068ACA5854A23AD4 /* collection_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = collection_notifier.cpp; path = Realm/ObjectStore/impl/collection_notifier.cpp; sourceTree = "<group>"; };
+		CDF1F7DED21ED14C71C08E8A867A5B8A /* object_schema.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = object_schema.cpp; path = Realm/ObjectStore/object_schema.cpp; sourceTree = "<group>"; };
+		CDF54A66F48BD855068ACA5854A23AD4 /* collection_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = collection_notifier.cpp; path = Realm/ObjectStore/impl/collection_notifier.cpp; sourceTree = "<group>"; };
 		CE163D83C38FBB58FC51D37CC25860EF /* FBSDKAppLinkUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAppLinkUtility.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKAppLinkUtility.m; sourceTree = "<group>"; };
 		CE30FE2C73CFEC09A47104B396784FFC /* HCTestFailureHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCTestFailureHandler.h; path = Source/Core/Helpers/TestFailureHandlers/HCTestFailureHandler.h; sourceTree = "<group>"; };
 		CE676D1570C207589B3A7BA63C1BEBB3 /* MKTStructReturnSetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTStructReturnSetter.h; path = Source/OCMockito/Helpers/ReturnValueSetters/MKTStructReturnSetter.h; sourceTree = "<group>"; };
 		CE761549B25E16AE700BBBA3773C5572 /* MKTReturnsValue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTReturnsValue.m; path = Source/OCMockito/MKTReturnsValue.m; sourceTree = "<group>"; };
 		CEDD9E26DCD70E29A61A7DDD8D872F05 /* HCIsDictionaryContainingKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCIsDictionaryContainingKey.h; path = Source/Library/Collection/HCIsDictionaryContainingKey.h; sourceTree = "<group>"; };
-		CF4103294982783B676E3CBD06612584 /* RLMObject.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObject.mm; path = Realm/RLMObject.mm; sourceTree = "<group>"; };
-		CF549F5A4B51ABEAA5761D3FA8CC56C3 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Realm.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF9F73E9FE8AC470A03EFDA880DD4127 /* Pods_app_target_I_Bike_CPH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_app_target_I_Bike_CPH.framework; path = "Pods-app_target-I Bike CPH.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0014E2AF31BE7277EC7ED9DC880B715 /* RLMListBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMListBase.mm; path = Realm/RLMListBase.mm; sourceTree = "<group>"; };
+		CF4103294982783B676E3CBD06612584 /* RLMObject.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObject.mm; path = Realm/RLMObject.mm; sourceTree = "<group>"; };
+		CF549F5A4B51ABEAA5761D3FA8CC56C3 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF9F73E9FE8AC470A03EFDA880DD4127 /* Pods_app_target_I_Bike_CPH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_target_I_Bike_CPH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0014E2AF31BE7277EC7ED9DC880B715 /* RLMListBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMListBase.mm; path = Realm/RLMListBase.mm; sourceTree = "<group>"; };
 		D05F88BD85F0EBF4BC351B3E30C64C81 /* HCAssertThat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCAssertThat.h; path = Source/Core/HCAssertThat.h; sourceTree = "<group>"; };
 		D077AA8BA2C1DE3C941367F3AC2F7C10 /* FBSDKDeviceLoginCodeInfo+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBSDKDeviceLoginCodeInfo+Internal.h"; path = "FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKDeviceLoginCodeInfo+Internal.h"; sourceTree = "<group>"; };
 		D0BA86A7462E12EF79C5088E98B79FF1 /* GRMustacheInheritablePartialNode_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheInheritablePartialNode_private.h; path = src/classes/Compiling/TemplateAST/GRMustacheInheritablePartialNode_private.h; sourceTree = "<group>"; };
@@ -2494,7 +2494,7 @@
 		D3BCB066A01B66CF480DD57452CE7A6F /* HCBaseDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCBaseDescription.m; path = Source/Core/HCBaseDescription.m; sourceTree = "<group>"; };
 		D3E28B3E27BB7877FE246D627AC5E49C /* HeadingAngleLarge.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = HeadingAngleLarge.png; path = MapView/Map/Resources/HeadingAngleLarge.png; sourceTree = "<group>"; };
 		D414B1CB380B785B1EFFD425C7416EEB /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
-		D460BB38D9B8ABF5DB5047E0F088F7BC /* collection_change_builder.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = collection_change_builder.cpp; path = Realm/ObjectStore/impl/collection_change_builder.cpp; sourceTree = "<group>"; };
+		D460BB38D9B8ABF5DB5047E0F088F7BC /* collection_change_builder.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = collection_change_builder.cpp; path = Realm/ObjectStore/impl/collection_change_builder.cpp; sourceTree = "<group>"; };
 		D4777F0C432AE25EAF63AEFA8EDB6CB8 /* RLMConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMConstants.h; path = include/RLMConstants.h; sourceTree = "<group>"; };
 		D4EAE4F2949EF4861F5F7C6E742F4E27 /* BFAppLinkTarget.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BFAppLinkTarget.m; path = Bolts/iOS/BFAppLinkTarget.m; sourceTree = "<group>"; };
 		D51105CA3842402459AA2088F9EB8225 /* FMDatabasePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
@@ -2531,7 +2531,7 @@
 		DC67F10B77DF67273037A6D8D66969C0 /* Bolts-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bolts-umbrella.h"; sourceTree = "<group>"; };
 		DC71A44370BFEC3EBF47BF6DED4924D4 /* GRMustacheVariableTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheVariableTag.m; path = src/classes/Compiling/TemplateAST/GRMustacheVariableTag.m; sourceTree = "<group>"; };
 		DCEBFA3858950D98BEF05114734F30A7 /* GRMustacheTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRMustacheTag.m; path = src/classes/Compiling/TemplateAST/GRMustacheTag.m; sourceTree = "<group>"; };
-		DD027A7C89F4343E177B7CD940E7F8BD /* schema.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = schema.cpp; path = Realm/ObjectStore/schema.cpp; sourceTree = "<group>"; };
+		DD027A7C89F4343E177B7CD940E7F8BD /* schema.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = schema.cpp; path = Realm/ObjectStore/schema.cpp; sourceTree = "<group>"; };
 		DD1AC4761619A26199CFB0AA7A811427 /* FBSDKGraphRequestMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKGraphRequestMetadata.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestMetadata.h; sourceTree = "<group>"; };
 		DD30FDBF6E2999473263E1BF2D9A2AA5 /* HCTestFailure.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCTestFailure.h; path = Source/Core/Helpers/TestFailureReporters/HCTestFailure.h; sourceTree = "<group>"; };
 		DD9B7117857C3B2EC7C1159D16681938 /* proj_api.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = proj_api.h; path = Proj4/proj_api.h; sourceTree = "<group>"; };
@@ -2547,7 +2547,7 @@
 		DF7B1247C260145F382A1F272BA2BF4F /* FBSDKLoginButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLoginButton.h; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginButton.h; sourceTree = "<group>"; };
 		E02E4F32106D104F6912B07FD4D4584C /* BFAppLink.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BFAppLink.m; path = Bolts/iOS/BFAppLink.m; sourceTree = "<group>"; };
 		E0BB59D6C136EB79BC9A59A0B94516DD /* Pods-app_target-CykelPlanen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-app_target-CykelPlanen.debug.xcconfig"; sourceTree = "<group>"; };
-		E0F889A7FC1425ACCCFE958C7D64AAE7 /* realm_coordinator.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = realm_coordinator.cpp; path = Realm/ObjectStore/impl/realm_coordinator.cpp; sourceTree = "<group>"; };
+		E0F889A7FC1425ACCCFE958C7D64AAE7 /* realm_coordinator.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = realm_coordinator.cpp; path = Realm/ObjectStore/impl/realm_coordinator.cpp; sourceTree = "<group>"; };
 		E12BDB58536FAB14551427F3A826F427 /* Bolts.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Bolts.m; path = Bolts/Common/Bolts.m; sourceTree = "<group>"; };
 		E1806A2A2F1E5EC3107E93AF6C44EF43 /* FBSDKDeviceLoginManagerResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKDeviceLoginManagerResult.m; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKDeviceLoginManagerResult.m; sourceTree = "<group>"; };
 		E19C6ACC3CE00BAFCB1CCD1A67F69F4C /* FBSDKLoginKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSDKLoginKit-prefix.pch"; sourceTree = "<group>"; };
@@ -2562,7 +2562,7 @@
 		E466FE83ABBF75C94D26AFF31AF19BED /* FLKAutoLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FLKAutoLayout.xcconfig; sourceTree = "<group>"; };
 		E4FE00A3BAC3C9451BB1651B32D70A4B /* DAKeyboardControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DAKeyboardControl.h; path = DAKeyboardControl/DAKeyboardControl.h; sourceTree = "<group>"; };
 		E50EA835DEAAD77CFC2ED38FDBA592D3 /* MKTUnsignedLongLongReturnSetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTUnsignedLongLongReturnSetter.h; path = Source/OCMockito/Helpers/ReturnValueSetters/MKTUnsignedLongLongReturnSetter.h; sourceTree = "<group>"; };
-		E584669BFC40B7EA8AB8E6FA4EF22AE6 /* RLMAnalytics.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMAnalytics.mm; path = Realm/RLMAnalytics.mm; sourceTree = "<group>"; };
+		E584669BFC40B7EA8AB8E6FA4EF22AE6 /* RLMAnalytics.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMAnalytics.mm; path = Realm/RLMAnalytics.mm; sourceTree = "<group>"; };
 		E5ECC6AF9C2FBCAFB6AF7F84F9CBFA69 /* FBSDKViewImpressionTracker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKViewImpressionTracker.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKViewImpressionTracker.m; sourceTree = "<group>"; };
 		E62B70AC2EE1DEB89C2D979A0723A354 /* RMPolylineAnnotation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMPolylineAnnotation.h; path = MapView/Map/RMPolylineAnnotation.h; sourceTree = "<group>"; };
 		E62C018151636F810B48849969F4C08A /* FBSDKEventBinding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKEventBinding.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/Codeless/FBSDKEventBinding.m; sourceTree = "<group>"; };
@@ -2573,14 +2573,14 @@
 		E7FC2E21F20065DD3FBB6CEA6753881B /* FBSDKBoltsMeasurementEventListener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKBoltsMeasurementEventListener.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppLink/FBSDKBoltsMeasurementEventListener.h; sourceTree = "<group>"; };
 		E8355AC2A69022EF9E98DB7D3FD9A685 /* BFCancellationTokenSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BFCancellationTokenSource.m; path = Bolts/Common/BFCancellationTokenSource.m; sourceTree = "<group>"; };
 		E897E74D8255B509C012944B78EB1B41 /* MKTClassObjectMock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTClassObjectMock.m; path = Source/OCMockito/MKTClassObjectMock.m; sourceTree = "<group>"; };
-		E8B3EDC0DB5C6C32C4791385608D4C21 /* collection_notifications.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = collection_notifications.cpp; path = Realm/ObjectStore/collection_notifications.cpp; sourceTree = "<group>"; };
+		E8B3EDC0DB5C6C32C4791385608D4C21 /* collection_notifications.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = collection_notifications.cpp; path = Realm/ObjectStore/collection_notifications.cpp; sourceTree = "<group>"; };
 		E8B4E0514CD911CAFD39ED606D05A6BA /* FBSDKGraphRequestConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKGraphRequestConnection.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphRequestConnection.m; sourceTree = "<group>"; };
 		E8B6AB67AE3BC71E0E1A498C1AEF3459 /* ORStackView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ORStackView.xcconfig; sourceTree = "<group>"; };
 		E8B9713C603841DCF86BC6681D21A2BD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8F735936F60A78E192496FB36784F4E /* OCHamcrest-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OCHamcrest-dummy.m"; sourceTree = "<group>"; };
 		E8FCD4B7AEA1AD28369204816C881202 /* BFExecutor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFExecutor.h; path = Bolts/Common/BFExecutor.h; sourceTree = "<group>"; };
 		E93F8F8A05852236FBFEBAC12C8671C0 /* GRMustacheConfiguration_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheConfiguration_private.h; path = src/classes/Configuration/GRMustacheConfiguration_private.h; sourceTree = "<group>"; };
-		E9CFD1712168E39F10A66DBE4F526156 /* index_set.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = index_set.cpp; path = Realm/ObjectStore/index_set.cpp; sourceTree = "<group>"; };
+		E9CFD1712168E39F10A66DBE4F526156 /* index_set.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = index_set.cpp; path = Realm/ObjectStore/index_set.cpp; sourceTree = "<group>"; };
 		E9E41DB2C6DC47F7055A9F6D8C09F4EE /* MKTInvocationMatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTInvocationMatcher.h; path = Source/OCMockito/MKTInvocationMatcher.h; sourceTree = "<group>"; };
 		EA48D6935168BE96A3492A14BF933C3E /* TrackingHeadingMask.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = TrackingHeadingMask.png; path = MapView/Map/Resources/TrackingHeadingMask.png; sourceTree = "<group>"; };
 		EAC684152ADB9749FAF93E4B4997CDBF /* RMNotifications.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMNotifications.h; path = MapView/Map/RMNotifications.h; sourceTree = "<group>"; };
@@ -2598,7 +2598,7 @@
 		ECF9861F29C190C28A530182450AC11C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED450040E725E52A8D904D295332BE90 /* RMMapScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMMapScrollView.m; path = MapView/Map/RMMapScrollView.m; sourceTree = "<group>"; };
 		ED66444149CDF4CC2B279DF409BA73C7 /* FBSDKSystemAccountStoreAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKSystemAccountStoreAdapter.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKSystemAccountStoreAdapter.h; sourceTree = "<group>"; };
-		EDAC744EEB0D9AD7D345662994E937A6 /* UIImage_Categories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UIImage_Categories.framework; path = "UIImage-Categories.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDAC744EEB0D9AD7D345662994E937A6 /* UIImage_Categories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIImage_Categories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB7631C5617C970C8A9E8F0E7046D9C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDD909F72BC40F5C935BEB7244CF743B /* HCTestFailureReporter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCTestFailureReporter.m; path = Source/Core/Helpers/TestFailureReporters/HCTestFailureReporter.m; sourceTree = "<group>"; };
 		EDDCECF18D1730BB4F7CCEC5226EDE1A /* FBSDKCodelessParameterComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKCodelessParameterComponent.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/Codeless/FBSDKCodelessParameterComponent.h; sourceTree = "<group>"; };
@@ -2617,7 +2617,7 @@
 		F261779F52FD850EE9FB48FFDB7ABDA3 /* HCHasProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCHasProperty.h; path = Source/Library/Object/HCHasProperty.h; sourceTree = "<group>"; };
 		F2AE24FAA5F9B266FB54E13F4E6A6DB2 /* FBSDKAccessTokenCacheV4.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAccessTokenCacheV4.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV4.m; sourceTree = "<group>"; };
 		F2D06450B4AB09F63B094E1470069A86 /* FBSDKLoginButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKLoginButton.m; path = FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginButton.m; sourceTree = "<group>"; };
-		F30814F8D627CB8BFE6C7C3B4331B38A /* Mapbox_iOS_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Mapbox_iOS_SDK.framework; path = "Mapbox-iOS-SDK.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30814F8D627CB8BFE6C7C3B4331B38A /* Mapbox_iOS_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mapbox_iOS_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3686176F9483F23F8D18C75BD38334B /* HCIsCollectionOnlyContaining.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCIsCollectionOnlyContaining.h; path = Source/Library/Collection/HCIsCollectionOnlyContaining.h; sourceTree = "<group>"; };
 		F379D5DE916D5EA6DE64C99DA3F32F39 /* TrackingDotHalo.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = TrackingDotHalo.png; path = MapView/Map/Resources/TrackingDotHalo.png; sourceTree = "<group>"; };
 		F3B34945E3ACDB667A561E9B51DCF78F /* HCIsDictionaryContaining.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCIsDictionaryContaining.h; path = Source/Library/Collection/HCIsDictionaryContaining.h; sourceTree = "<group>"; };
@@ -2642,7 +2642,7 @@
 		F67ECC961288AD285AC6193C61966E19 /* RMAnnotation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMAnnotation.m; path = MapView/Map/RMAnnotation.m; sourceTree = "<group>"; };
 		F68F972F6B62FAA535B874CFE32BC745 /* GRMustacheFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRMustacheFilter.h; path = src/classes/Rendering/GRMustacheFilter.h; sourceTree = "<group>"; };
 		F6B310CB13DF732EF43DD82FA38D0D4F /* RLMMigration_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMMigration_Private.h; path = include/RLMMigration_Private.h; sourceTree = "<group>"; };
-		F751E1FBEBBB0DA89D4721D9AFF1BDF2 /* weak_realm_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = weak_realm_notifier.cpp; path = Realm/ObjectStore/impl/apple/weak_realm_notifier.cpp; sourceTree = "<group>"; };
+		F751E1FBEBBB0DA89D4721D9AFF1BDF2 /* weak_realm_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = weak_realm_notifier.cpp; path = Realm/ObjectStore/impl/apple/weak_realm_notifier.cpp; sourceTree = "<group>"; };
 		F759CB8D6516DF25B02ACA074A493B01 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
 		F76A60610D8146AECF6FB293F9E417EE /* HCReturnValueGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCReturnValueGetter.h; path = Source/Core/Helpers/ReturnValueGetters/HCReturnValueGetter.h; sourceTree = "<group>"; };
 		F80B0303D3A635A6CB853A61F833DA7F /* MKTTestLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKTTestLocation.h; path = Source/OCMockito/MKTTestLocation.h; sourceTree = "<group>"; };
@@ -2672,7 +2672,7 @@
 		FDF424003C0861108CAA626FE44B7008 /* RLMPlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMPlatform.h; path = include/RLMPlatform.h; sourceTree = "<group>"; };
 		FDFB552CC213AF0DE26BE3FF48FEE032 /* FBSDKGraphRequestBody.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKGraphRequestBody.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestBody.m; sourceTree = "<group>"; };
 		FE59523AA7F38BEF335CA2B3AC0BFE3C /* FBSDKConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKConstants.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKConstants.m; sourceTree = "<group>"; };
-		FE9ADB6A23D599A27A03F906047FB3AA /* RLMArrayLinkView.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMArrayLinkView.mm; path = Realm/RLMArrayLinkView.mm; sourceTree = "<group>"; };
+		FE9ADB6A23D599A27A03F906047FB3AA /* RLMArrayLinkView.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMArrayLinkView.mm; path = Realm/RLMArrayLinkView.mm; sourceTree = "<group>"; };
 		FEC98C27CB6C0EA96A11856495D00DEE /* FBSDKIcon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKIcon.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKIcon.h; sourceTree = "<group>"; };
 		FEE71D220B02A639CC89FCD423F814A6 /* projects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = projects.h; path = Proj4/projects.h; sourceTree = "<group>"; };
 		FF10E6EBFBE7A73A387A93406D528429 /* MKTObjectMock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKTObjectMock.m; path = Source/OCMockito/MKTObjectMock.m; sourceTree = "<group>"; };
@@ -2991,7 +2991,6 @@
 				D437E48429B39EDA9A6A9FB30E3A67EC /* Headers */,
 				89762F9396C58DA14679DDD0B3EA1A7A /* Support Files */,
 			);
-			name = Realm;
 			path = Realm;
 			sourceTree = "<group>";
 		};
@@ -3089,7 +3088,6 @@
 				B7FB88D24CEA9D245AAA528F7E4042E0 /* SwiftyUserDefaults.swift */,
 				B95A155617FBCA9363974E875A4FAAB3 /* Support Files */,
 			);
-			name = SwiftyUserDefaults;
 			path = SwiftyUserDefaults;
 			sourceTree = "<group>";
 		};
@@ -3122,7 +3120,6 @@
 				BD34C94B79E13000DD8AE525FB2D74F2 /* Support Files */,
 				A0D5F3D91080AC1C66B4D7147D77DD7A /* Tasks */,
 			);
-			name = Bolts;
 			path = Bolts;
 			sourceTree = "<group>";
 		};
@@ -3176,7 +3173,6 @@
 				B9123AEA723E6D49E6128436187E3451 /* common */,
 				0FA3987B67C64778AA71393009B8D36B /* Support Files */,
 			);
-			name = FMDB;
 			path = FMDB;
 			sourceTree = "<group>";
 		};
@@ -3220,7 +3216,6 @@
 				5DCBB4C801DBDBCD1DCA3D1E077733A9 /* PSTAlertController.m */,
 				DC94D4486C217C95C438F39AA5AC8473 /* Support Files */,
 			);
-			name = PSTAlertController;
 			path = PSTAlertController;
 			sourceTree = "<group>";
 		};
@@ -3230,7 +3225,6 @@
 				20716549877E12378E76F183BE393C1B /* NibDesignable.swift */,
 				338A118B2EF10F9C54FC02164095A541 /* Support Files */,
 			);
-			name = NibDesignable;
 			path = NibDesignable;
 			sourceTree = "<group>";
 		};
@@ -3389,7 +3383,6 @@
 				581A6D49D2F6F259628F773062F06019 /* ViewController+SnapKit.swift */,
 				245D4B37BF59CB36725066F96B3FAAC8 /* Support Files */,
 			);
-			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
@@ -3575,7 +3568,6 @@
 				7493AD60B68FEE315EFBC2F2F18E10EA /* OCHamcrest.h */,
 				84E9BDA149B011EC1E39970C8B0868CF /* Support Files */,
 			);
-			name = OCHamcrest;
 			path = OCHamcrest;
 			sourceTree = "<group>";
 		};
@@ -3764,7 +3756,6 @@
 				3F58131421F83F6D80169EE6C54E9514 /* Resources */,
 				753CB969DCB7C72097C64931F9C4629C /* Support Files */,
 			);
-			name = FBSDKCoreKit;
 			path = FBSDKCoreKit;
 			sourceTree = "<group>";
 		};
@@ -3850,7 +3841,6 @@
 				9BAC522527E3001C251F6C1BD4546D77 /* FBSDKTooltipView.m */,
 				03C8B3F1899EBA78179853E9B1B7A6F6 /* Support Files */,
 			);
-			name = FBSDKLoginKit;
 			path = FBSDKLoginKit;
 			sourceTree = "<group>";
 		};
@@ -3949,7 +3939,6 @@
 				7283FC3DD80EBE6D3C8CBB438CE4D4DF /* ORTagBasedAutoStackView.m */,
 				32E056B4FACCA607BC507E3D5B5E2B08 /* Support Files */,
 			);
-			name = ORStackView;
 			path = ORStackView;
 			sourceTree = "<group>";
 		};
@@ -3982,7 +3971,6 @@
 				C802F494C1B114BD50806CBD2B918551 /* UIView+FLKAutoLayoutPredicate.m */,
 				AF39B4544C4F8B3D6BE1A2B11B8F6419 /* Support Files */,
 			);
-			name = FLKAutoLayout;
 			path = FLKAutoLayout;
 			sourceTree = "<group>";
 		};
@@ -4120,7 +4108,6 @@
 				CB5270D88DADA9F56CC855FE5E896A6A /* OCMockito.m */,
 				827315CDBB5E4243F2CCF10D2E1B095F /* Support Files */,
 			);
-			name = OCMockito;
 			path = OCMockito;
 			sourceTree = "<group>";
 		};
@@ -4146,7 +4133,6 @@
 				16E5E603739C53F98F9FF29D8B16A01D /* TTTAttributedLabel.m */,
 				395D96F61DFC44EF55A444A8ED18209D /* Support Files */,
 			);
-			name = TTTAttributedLabel;
 			path = TTTAttributedLabel;
 			sourceTree = "<group>";
 		};
@@ -4225,7 +4211,6 @@
 				0AACFB9F65379E3563586464C3EC40EE /* SwiftHEXColors.swift */,
 				ED9122C383446C744632177154E97F6E /* Support Files */,
 			);
-			name = SwiftHEXColors;
 			path = SwiftHEXColors;
 			sourceTree = "<group>";
 		};
@@ -4235,7 +4220,6 @@
 				0A1D784D175F2E49CCF2B194D36ED83B /* SwiftyJSON.swift */,
 				0A2A2F4FC127665D06E5A31EE5DFF389 /* Support Files */,
 			);
-			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -4246,7 +4230,6 @@
 				7B8657473DF4DCAE5D40B33A6BE94394 /* JRSwizzle.m */,
 				ACD65DCC2F9A991FA1396CD7252E14B2 /* Support Files */,
 			);
-			name = JRSwizzle;
 			path = JRSwizzle;
 			sourceTree = "<group>";
 		};
@@ -4259,7 +4242,6 @@
 				BD3618D996E64D6A5806C119DEED22A5 /* SMClassicCalloutView.m */,
 				67D85C34F2845DA2CF885015E6B47882 /* Support Files */,
 			);
-			name = SMCalloutView;
 			path = SMCalloutView;
 			sourceTree = "<group>";
 		};
@@ -4396,7 +4378,6 @@
 				50C008401EE5879FC8611C504FC5E83A /* NSValueTransformer+GRMustache.m */,
 				93116C28ADD39097A732F9721F60A919 /* Support Files */,
 			);
-			name = GRMustache;
 			path = GRMustache;
 			sourceTree = "<group>";
 		};
@@ -4551,7 +4532,6 @@
 				D02B40A1A809F2B34924C6DF14EDFD30 /* Resources */,
 				C3A09A554452DD5B4C3A05D8FE2DB9CC /* Support Files */,
 			);
-			name = "Mapbox-iOS-SDK";
 			path = "Mapbox-iOS-SDK";
 			sourceTree = "<group>";
 		};
@@ -4562,7 +4542,6 @@
 				3F320C51B559849F43FAA93C8A9B1C57 /* DAKeyboardControl.m */,
 				68ED8E66916777DF9A1801C623BC49B9 /* Support Files */,
 			);
-			name = DAKeyboardControl;
 			path = DAKeyboardControl;
 			sourceTree = "<group>";
 		};
@@ -4585,7 +4564,6 @@
 				57B753EB1FACCD57E52868B594E52412 /* Async.swift */,
 				F0820B282C9EA9DFFFE0399DDD469BD8 /* Support Files */,
 			);
-			name = AsyncSwift;
 			path = AsyncSwift;
 			sourceTree = "<group>";
 		};
@@ -4604,7 +4582,6 @@
 				CDB1E5A1F29F075F19B88FCF7FF520E7 /* UIImage+RoundedCorner.m */,
 				7D5ABC3FBF6F3B3C24838A4448C1B501 /* Support Files */,
 			);
-			name = "UIImage-Categories";
 			path = "UIImage-Categories";
 			sourceTree = "<group>";
 		};
@@ -5878,7 +5855,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -7002,11 +6979,7 @@
 				INFOPLIST_FILE = "Target Support Files/Mapbox-iOS-SDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Mapbox-iOS-SDK/Mapbox-iOS-SDK.modulemap";
 				PRODUCT_MODULE_NAME = Mapbox_iOS_SDK;
 				PRODUCT_NAME = Mapbox_iOS_SDK;
@@ -7042,11 +7015,7 @@
 				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
 				PRODUCT_MODULE_NAME = SwiftyJSON;
 				PRODUCT_NAME = SwiftyJSON;
@@ -7082,11 +7051,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-test_target-I Bike CPHTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-test_target-I Bike CPHTests/Pods-test_target-I Bike CPHTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -7123,11 +7088,7 @@
 				INFOPLIST_FILE = "Target Support Files/FBSDKCoreKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FBSDKCoreKit/FBSDKCoreKit.modulemap";
 				PRODUCT_MODULE_NAME = FBSDKCoreKit;
 				PRODUCT_NAME = FBSDKCoreKit;
@@ -7196,6 +7157,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -7221,11 +7183,7 @@
 				INFOPLIST_FILE = "Target Support Files/OCHamcrest/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/OCHamcrest/OCHamcrest.modulemap";
 				PRODUCT_MODULE_NAME = OCHamcrest;
 				PRODUCT_NAME = OCHamcrest;
@@ -7280,11 +7238,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-test_target-CykelPlanenTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-test_target-CykelPlanenTests/Pods-test_target-CykelPlanenTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -7321,11 +7275,7 @@
 				INFOPLIST_FILE = "Target Support Files/DAKeyboardControl/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/DAKeyboardControl/DAKeyboardControl.modulemap";
 				PRODUCT_MODULE_NAME = DAKeyboardControl;
 				PRODUCT_NAME = DAKeyboardControl;
@@ -7360,11 +7310,7 @@
 				INFOPLIST_FILE = "Target Support Files/TTTAttributedLabel/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/TTTAttributedLabel/TTTAttributedLabel.modulemap";
 				PRODUCT_MODULE_NAME = TTTAttributedLabel;
 				PRODUCT_NAME = TTTAttributedLabel;
@@ -7400,11 +7346,7 @@
 				INFOPLIST_FILE = "Target Support Files/SMCalloutView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SMCalloutView/SMCalloutView.modulemap";
 				PRODUCT_MODULE_NAME = SMCalloutView;
 				PRODUCT_NAME = SMCalloutView;
@@ -7439,11 +7381,7 @@
 				INFOPLIST_FILE = "Target Support Files/Mapbox-iOS-SDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Mapbox-iOS-SDK/Mapbox-iOS-SDK.modulemap";
 				PRODUCT_MODULE_NAME = Mapbox_iOS_SDK;
 				PRODUCT_NAME = Mapbox_iOS_SDK;
@@ -7478,11 +7416,7 @@
 				INFOPLIST_FILE = "Target Support Files/NibDesignable/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/NibDesignable/NibDesignable.modulemap";
 				PRODUCT_MODULE_NAME = NibDesignable;
 				PRODUCT_NAME = NibDesignable;
@@ -7518,11 +7452,7 @@
 				INFOPLIST_FILE = "Target Support Files/Bolts/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Bolts/Bolts.modulemap";
 				PRODUCT_MODULE_NAME = Bolts;
 				PRODUCT_NAME = Bolts;
@@ -7557,11 +7487,7 @@
 				INFOPLIST_FILE = "Target Support Files/OCMockito/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/OCMockito/OCMockito.modulemap";
 				PRODUCT_MODULE_NAME = OCMockito;
 				PRODUCT_NAME = OCMockito;
@@ -7597,11 +7523,7 @@
 				INFOPLIST_FILE = "Target Support Files/ORStackView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ORStackView/ORStackView.modulemap";
 				PRODUCT_MODULE_NAME = ORStackView;
 				PRODUCT_NAME = ORStackView;
@@ -7636,11 +7558,7 @@
 				INFOPLIST_FILE = "Target Support Files/AsyncSwift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/AsyncSwift/AsyncSwift.modulemap";
 				PRODUCT_MODULE_NAME = Async;
 				PRODUCT_NAME = Async;
@@ -7676,11 +7594,7 @@
 				INFOPLIST_FILE = "Target Support Files/Realm/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Realm/Realm.modulemap";
 				PRODUCT_MODULE_NAME = Realm;
 				PRODUCT_NAME = Realm;
@@ -7716,11 +7630,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-app_target-I Bike CPH/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-app_target-I Bike CPH/Pods-app_target-I Bike CPH.modulemap";
 				OTHER_LDFLAGS = "";
@@ -7759,11 +7669,7 @@
 				INFOPLIST_FILE = "Target Support Files/FLKAutoLayout/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FLKAutoLayout/FLKAutoLayout.modulemap";
 				PRODUCT_MODULE_NAME = FLKAutoLayout;
 				PRODUCT_NAME = FLKAutoLayout;
@@ -7799,11 +7705,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-test_target-CykelPlanenTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-test_target-CykelPlanenTests/Pods-test_target-CykelPlanenTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -7841,11 +7743,7 @@
 				INFOPLIST_FILE = "Target Support Files/GRMustache/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/GRMustache/GRMustache.modulemap";
 				PRODUCT_MODULE_NAME = GRMustache;
 				PRODUCT_NAME = GRMustache;
@@ -7880,11 +7778,7 @@
 				INFOPLIST_FILE = "Target Support Files/FMDB/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FMDB/FMDB.modulemap";
 				PRODUCT_MODULE_NAME = FMDB;
 				PRODUCT_NAME = FMDB;
@@ -7920,11 +7814,7 @@
 				INFOPLIST_FILE = "Target Support Files/SwiftHEXColors/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftHEXColors/SwiftHEXColors.modulemap";
 				PRODUCT_MODULE_NAME = SwiftHEXColors;
 				PRODUCT_NAME = SwiftHEXColors;
@@ -7981,11 +7871,7 @@
 				INFOPLIST_FILE = "Target Support Files/TTTAttributedLabel/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/TTTAttributedLabel/TTTAttributedLabel.modulemap";
 				PRODUCT_MODULE_NAME = TTTAttributedLabel;
 				PRODUCT_NAME = TTTAttributedLabel;
@@ -8020,11 +7906,7 @@
 				INFOPLIST_FILE = "Target Support Files/SwiftyUserDefaults/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftyUserDefaults/SwiftyUserDefaults.modulemap";
 				PRODUCT_MODULE_NAME = SwiftyUserDefaults;
 				PRODUCT_NAME = SwiftyUserDefaults;
@@ -8061,11 +7943,7 @@
 				INFOPLIST_FILE = "Target Support Files/SnapKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
 				PRODUCT_MODULE_NAME = SnapKit;
 				PRODUCT_NAME = SnapKit;
@@ -8101,11 +7979,7 @@
 				INFOPLIST_FILE = "Target Support Files/JRSwizzle/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/JRSwizzle/JRSwizzle.modulemap";
 				PRODUCT_MODULE_NAME = JRSwizzle;
 				PRODUCT_NAME = JRSwizzle;
@@ -8141,11 +8015,7 @@
 				INFOPLIST_FILE = "Target Support Files/SwiftyUserDefaults/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftyUserDefaults/SwiftyUserDefaults.modulemap";
 				PRODUCT_MODULE_NAME = SwiftyUserDefaults;
 				PRODUCT_NAME = SwiftyUserDefaults;
@@ -8181,11 +8051,7 @@
 				INFOPLIST_FILE = "Target Support Files/Bolts/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Bolts/Bolts.modulemap";
 				PRODUCT_MODULE_NAME = Bolts;
 				PRODUCT_NAME = Bolts;
@@ -8221,11 +8087,7 @@
 				INFOPLIST_FILE = "Target Support Files/UIImage-Categories/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/UIImage-Categories/UIImage-Categories.modulemap";
 				PRODUCT_MODULE_NAME = UIImage_Categories;
 				PRODUCT_NAME = UIImage_Categories;
@@ -8260,11 +8122,7 @@
 				INFOPLIST_FILE = "Target Support Files/FBSDKCoreKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FBSDKCoreKit/FBSDKCoreKit.modulemap";
 				PRODUCT_MODULE_NAME = FBSDKCoreKit;
 				PRODUCT_NAME = FBSDKCoreKit;
@@ -8300,11 +8158,7 @@
 				INFOPLIST_FILE = "Target Support Files/FBSDKLoginKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FBSDKLoginKit/FBSDKLoginKit.modulemap";
 				PRODUCT_MODULE_NAME = FBSDKLoginKit;
 				PRODUCT_NAME = FBSDKLoginKit;
@@ -8340,11 +8194,7 @@
 				INFOPLIST_FILE = "Target Support Files/ORStackView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ORStackView/ORStackView.modulemap";
 				PRODUCT_MODULE_NAME = ORStackView;
 				PRODUCT_NAME = ORStackView;
@@ -8380,11 +8230,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-test_target-I Bike CPHTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-test_target-I Bike CPHTests/Pods-test_target-I Bike CPHTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -8422,11 +8268,7 @@
 				INFOPLIST_FILE = "Target Support Files/OCMockito/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/OCMockito/OCMockito.modulemap";
 				PRODUCT_MODULE_NAME = OCMockito;
 				PRODUCT_NAME = OCMockito;
@@ -8461,11 +8303,7 @@
 				INFOPLIST_FILE = "Target Support Files/PSTAlertController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PSTAlertController/PSTAlertController.modulemap";
 				PRODUCT_MODULE_NAME = PSTAlertController;
 				PRODUCT_NAME = PSTAlertController;
@@ -8501,11 +8339,7 @@
 				INFOPLIST_FILE = "Target Support Files/FLKAutoLayout/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FLKAutoLayout/FLKAutoLayout.modulemap";
 				PRODUCT_MODULE_NAME = FLKAutoLayout;
 				PRODUCT_NAME = FLKAutoLayout;
@@ -8540,11 +8374,7 @@
 				INFOPLIST_FILE = "Target Support Files/SnapKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
 				PRODUCT_MODULE_NAME = SnapKit;
 				PRODUCT_NAME = SnapKit;
@@ -8581,11 +8411,7 @@
 				INFOPLIST_FILE = "Target Support Files/FMDB/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FMDB/FMDB.modulemap";
 				PRODUCT_MODULE_NAME = FMDB;
 				PRODUCT_NAME = FMDB;
@@ -8620,11 +8446,7 @@
 				INFOPLIST_FILE = "Target Support Files/AsyncSwift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/AsyncSwift/AsyncSwift.modulemap";
 				PRODUCT_MODULE_NAME = Async;
 				PRODUCT_NAME = Async;
@@ -8661,11 +8483,7 @@
 				INFOPLIST_FILE = "Target Support Files/NibDesignable/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/NibDesignable/NibDesignable.modulemap";
 				PRODUCT_MODULE_NAME = NibDesignable;
 				PRODUCT_NAME = NibDesignable;
@@ -8702,11 +8520,7 @@
 				INFOPLIST_FILE = "Target Support Files/OCHamcrest/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/OCHamcrest/OCHamcrest.modulemap";
 				PRODUCT_MODULE_NAME = OCHamcrest;
 				PRODUCT_NAME = OCHamcrest;
@@ -8742,11 +8556,7 @@
 				INFOPLIST_FILE = "Target Support Files/Realm/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Realm/Realm.modulemap";
 				PRODUCT_MODULE_NAME = Realm;
 				PRODUCT_NAME = Realm;
@@ -8781,11 +8591,7 @@
 				INFOPLIST_FILE = "Target Support Files/SMCalloutView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SMCalloutView/SMCalloutView.modulemap";
 				PRODUCT_MODULE_NAME = SMCalloutView;
 				PRODUCT_NAME = SMCalloutView;
@@ -8821,11 +8627,7 @@
 				INFOPLIST_FILE = "Target Support Files/PSTAlertController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PSTAlertController/PSTAlertController.modulemap";
 				PRODUCT_MODULE_NAME = PSTAlertController;
 				PRODUCT_NAME = PSTAlertController;
@@ -8860,11 +8662,7 @@
 				INFOPLIST_FILE = "Target Support Files/JRSwizzle/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/JRSwizzle/JRSwizzle.modulemap";
 				PRODUCT_MODULE_NAME = JRSwizzle;
 				PRODUCT_NAME = JRSwizzle;
@@ -8899,11 +8697,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-app_target-CykelPlanen/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-app_target-CykelPlanen/Pods-app_target-CykelPlanen.modulemap";
 				OTHER_LDFLAGS = "";
@@ -8942,11 +8736,7 @@
 				INFOPLIST_FILE = "Target Support Files/UIImage-Categories/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/UIImage-Categories/UIImage-Categories.modulemap";
 				PRODUCT_MODULE_NAME = UIImage_Categories;
 				PRODUCT_NAME = UIImage_Categories;
@@ -8982,11 +8772,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-app_target-CykelPlanen/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-app_target-CykelPlanen/Pods-app_target-CykelPlanen.modulemap";
 				OTHER_LDFLAGS = "";
@@ -9025,11 +8811,7 @@
 				INFOPLIST_FILE = "Target Support Files/DAKeyboardControl/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/DAKeyboardControl/DAKeyboardControl.modulemap";
 				PRODUCT_MODULE_NAME = DAKeyboardControl;
 				PRODUCT_NAME = DAKeyboardControl;
@@ -9065,11 +8847,7 @@
 				INFOPLIST_FILE = "Target Support Files/SwiftHEXColors/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftHEXColors/SwiftHEXColors.modulemap";
 				PRODUCT_MODULE_NAME = SwiftHEXColors;
 				PRODUCT_NAME = SwiftHEXColors;
@@ -9105,11 +8883,7 @@
 				INFOPLIST_FILE = "Target Support Files/FBSDKLoginKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FBSDKLoginKit/FBSDKLoginKit.modulemap";
 				PRODUCT_MODULE_NAME = FBSDKLoginKit;
 				PRODUCT_NAME = FBSDKLoginKit;
@@ -9144,11 +8918,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-app_target-I Bike CPH/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-app_target-I Bike CPH/Pods-app_target-I Bike CPH.modulemap";
 				OTHER_LDFLAGS = "";
@@ -9187,11 +8957,7 @@
 				INFOPLIST_FILE = "Target Support Files/GRMustache/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/GRMustache/GRMustache.modulemap";
 				PRODUCT_MODULE_NAME = GRMustache;
 				PRODUCT_NAME = GRMustache;
@@ -9291,11 +9057,7 @@
 				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
 				PRODUCT_MODULE_NAME = SwiftyJSON;
 				PRODUCT_NAME = SwiftyJSON;
