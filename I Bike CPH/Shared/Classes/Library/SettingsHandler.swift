@@ -48,7 +48,7 @@ class Settings: NSObject {
 
 class ReadAloudSettings {
     var on: Bool {
-        get { return Defaults[.readAloudOn] ?? false }
+        get { return Defaults[.readAloudOn] }
         set {
             Defaults[.readAloudOn] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
@@ -58,21 +58,21 @@ class ReadAloudSettings {
 
 class TrackingSettings {
     var on: Bool {
-        get { return Defaults[.trackingOn] ?? false }
+        get { return Defaults[.trackingOn] }
         set {
             Defaults[.trackingOn] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
     var milestoneNotifications: Bool {
-        get { return Defaults[.milestoneNotificationsOn] ?? true }
+        get { return Defaults[.milestoneNotificationsOn] }
         set {
             Defaults[.milestoneNotificationsOn] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
     var weeklyStatusNotifications: Bool {
-        get { return Defaults[.weeklyStatusNotificationsOn] ?? true }
+        get { return Defaults[.weeklyStatusNotificationsOn] }
         set {
             Defaults[.weeklyStatusNotificationsOn] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)

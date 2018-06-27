@@ -98,17 +98,15 @@ class RouteNavigationDirectionsToolbarView: ToolbarView {
         collectionView.scrollToItem(at: indexPath, at: .left, animated: animated)
         // Don't set self.index directly. It will be updated via scrollDidScroll() delegate callback on UIScrollView
     }
-}
 
-
-extension RouteNavigationDirectionsToolbarView {
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         instructions = [SMTurnInstruction]()
         collectionView.reloadData()
     }
 }
+
+
 
 
 extension RouteNavigationDirectionsToolbarView: UICollectionViewDataSource {

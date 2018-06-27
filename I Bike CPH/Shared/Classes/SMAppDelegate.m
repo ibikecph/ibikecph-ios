@@ -94,7 +94,7 @@
 #if TRACKING_ENABLED
     [TrackingHandler sharedInstance];
 #else
-    [NonTrackingHandler sharedInstance];
+    (void)[NonTrackingHandler sharedInstance];
 #endif
 
     return YES;

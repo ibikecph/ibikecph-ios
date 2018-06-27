@@ -72,7 +72,7 @@ class MainMapViewController: MapViewController {
         // Observe
         observerTokens.append(NotificationCenter.observe(routeToItemNotificationKey) { [weak self] notification in
             if let
-                item = notification.userInfo?[routeToItemNotificationItemKey] as? FavoriteItem,
+                item = notification!.userInfo?[routeToItemNotificationItemKey] as? FavoriteItem,
                 let myself = self
             {
                 myself.updateToCurrentItem(item)

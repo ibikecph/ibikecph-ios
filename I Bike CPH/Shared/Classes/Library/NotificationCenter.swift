@@ -17,11 +17,11 @@ class NotificationCenter {
         }
     }
     
-    class func observe(_ name: NSNotification.Name, object: AnyObject? = nil, queue: OperationQueue? = nil, usingBlock block: @escaping (Notification!) -> ()) -> NSObjectProtocol {
+    class func observe(_ name: NSNotification.Name, object: AnyObject? = nil, queue: OperationQueue? = nil, usingBlock block: @escaping (Notification?) -> ()) -> NSObjectProtocol {
         return Foundation.NotificationCenter.default.addObserver(forName: name, object: object, queue: queue, using: block)
     }
     
-    class func observe(_ name: String, object: AnyObject? = nil, queue: OperationQueue? = nil, usingBlock block: @escaping (Notification!) -> ()) -> NSObjectProtocol {
+    class func observe(_ name: String, object: AnyObject? = nil, queue: OperationQueue? = nil, usingBlock block: @escaping (Notification?) -> ()) -> NSObjectProtocol {
         return Foundation.NotificationCenter.default.addObserver(forName: NSNotification.Name(name), object: object, queue: queue, using: block)
     }
     

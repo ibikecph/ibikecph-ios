@@ -103,7 +103,7 @@ class RouteNavigationViewController: MapViewController {
         unobserve()
         observerTokens.append(NotificationCenter.observe("refreshPosition") { [weak self] notification in
             if let
-                locations = notification.userInfo?["locations"] as? [CLLocation],
+                locations = notification!.userInfo?["locations"] as? [CLLocation],
                 let location = locations.first,
                 let routeComposite = self?.routeComposite
             {

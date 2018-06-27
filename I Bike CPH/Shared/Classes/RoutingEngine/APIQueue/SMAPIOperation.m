@@ -30,7 +30,9 @@
 #pragma mark - NSOperation stuff
 
 - (void)startOperation {
-    assert(@"Must override this!");
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+                                 userInfo:nil];
 }
 
 - (void)start {
@@ -150,7 +152,9 @@
 }
 
 - (void)processResult:(id)result {
-    assert(@"Must override this!");
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+                                 userInfo:nil];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
