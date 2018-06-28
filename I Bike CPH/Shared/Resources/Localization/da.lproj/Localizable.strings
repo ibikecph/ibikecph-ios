@@ -262,7 +262,7 @@
 "account_repeat_placeholder" = "Gentag ny adgangskode";
 "accept_user_terms" = "Jeg accepterer brugerbetingelserne";
 "accept_user_terms_link_highlight" = "brugerbetingelserne";
-"accept_user_terms_link" = "https://www.ibikecph.dk/about/terms";
+"accept_user_terms_link" = "https://www.ibikecph.dk/terms";
 
 "login_error_fields" = "Både din email og din adgangskode skal være indtastet!";
 "register_error_fields" = "Alle felter skal være udfyldt!";
