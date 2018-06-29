@@ -1910,7 +1910,6 @@
 					};
 					4EE05F781A10EDE700DE4226 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = SP46WFGATT;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3100,6 +3099,7 @@
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				CYKEL_PLANEN = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9397MGXMJF;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "CykelPlanen/CykelPlanen-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3143,6 +3143,7 @@
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				CYKEL_PLANEN = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9397MGXMJF;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "CykelPlanen/CykelPlanen-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
