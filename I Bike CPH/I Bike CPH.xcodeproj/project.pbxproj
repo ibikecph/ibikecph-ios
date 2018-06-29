@@ -2942,7 +2942,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D IBIKECPH";
-				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.ibikecph;
+				PRODUCT_BUNDLE_IDENTIFIER = dk.kk.tmf.ibikecph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -2988,7 +2988,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D IBIKECPH";
-				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.ibikecph;
+				PRODUCT_BUNDLE_IDENTIFIER = dk.kk.tmf.ibikecph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
