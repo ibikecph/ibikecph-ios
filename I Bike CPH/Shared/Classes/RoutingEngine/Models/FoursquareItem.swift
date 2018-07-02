@@ -49,6 +49,6 @@ import SwiftyJSON
     }
     
     override var description: String {
-        return "Name: \(name), Address: \(address), Street: \(street), Number: \(number), Zip: \(zip), City: \(city), Country: \(country), Location: (\(location?.coordinate.latitude), \(location?.coordinate.longitude)), Order: \(order), Relevance: \(relevance), Distance: \(distance)"
+        return "Name: \(name), Address: \(address), Street: \(street), Number: \(number), Zip: \(zip), City: \(city), Country: \(country), Location: (\(String(describing: location?.coordinate.latitude)), \(String(describing: location?.coordinate.longitude))), Order: \(order), Relevance: \(relevance), Distance: \(distance)"
     }
 }

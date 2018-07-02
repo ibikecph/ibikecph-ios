@@ -37,20 +37,21 @@ class AddressToolbarView: ToolbarView {
     @IBAction func didTapFavorite(_ sender: UIButton) {
         favoriteSelected = !favoriteSelected
     }
-}
 
-extension AddressToolbarView {
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         nameLabel.text = "\0"
         addresslabel.text = "\0\n\0"
         favoriteSelected = false
     }
+}
+
+extension AddressToolbarView {
+    
     
     func updateToItem(_ item: SearchListItem) {
-        let addressLine1 = item.street + ((item.number.characters.count > 0) ? " \(item.number)" : "")
-        let addressLine2 = ((item.zip.characters.count > 0) ? "\(item.zip)" : "") + " \(item.city)"
+        let addressLine1 = item.street + ((item.number.count > 0) ? " \(item.number)" : "")
+        let addressLine2 = ((item.zip.count > 0) ? "\(item.zip)" : "") + " \(item.city)"
         let doubleAddressLine = "\(addressLine1)\n\(addressLine2)"
         if let favorite = item as? FavoriteItem {
             favoriteSelected = true

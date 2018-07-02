@@ -58,16 +58,17 @@ class FindRouteToolbarView: ToolbarView {
     @IBAction func didTapToButton(_ sender: AnyObject) {
         delegate?.didSelectTo()
     }
-}
 
-extension FindRouteToolbarView {
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         fromButton.updateToItem(nil)
         toButton.updateToItem(nil)
         routeButton.isEnabled = false
     }
+    
+}
+
+extension FindRouteToolbarView {
     
     func updateWithFromItem(_ fromItem: SearchListItem?, toItem: SearchListItem?) {
         fromButton.updateToItem(fromItem)

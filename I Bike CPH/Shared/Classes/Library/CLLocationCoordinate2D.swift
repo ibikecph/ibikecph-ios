@@ -14,7 +14,7 @@ extension CLLocationCoordinate2D {
     func degreesFromCoordinate(_ coordinate: CLLocationCoordinate2D) -> CLLocationDirection {
         let deltaLatitude = latitude - coordinate.latitude
         let deltaLongitude = longitude - coordinate.longitude
-        let angle = atan2(deltaLatitude, deltaLongitude) * 180 / M_PI
+        let angle = atan2(deltaLatitude, deltaLongitude) * 180 / Double.pi
         return angle
     }
 }

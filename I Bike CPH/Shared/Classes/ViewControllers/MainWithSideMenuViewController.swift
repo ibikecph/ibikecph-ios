@@ -35,10 +35,10 @@ class MainWithSideMenuViewController: UIViewController {
             
             let mainView = mainViewController.view
             mainView?.translatesAutoresizingMaskIntoConstraints = false
-            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: mainView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: mainView!, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: mainView!, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: mainView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: mainView!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0))
         }
 
         if let menuNavigationViewController = storyboard?.instantiateViewController(withIdentifier: "MenuNavigationViewController") {
@@ -47,10 +47,10 @@ class MainWithSideMenuViewController: UIViewController {
             sideMenu?.delegate = self
             menuNavigationViewController.endAppearanceTransition()
             
-            NotificationCenter.observe("openMenu") { [weak self] notification in
+            _ = NotificationCenter.observe("openMenu") { [weak self] notification in
                 self?.sideMenu?.showSideMenu()
             }
-            NotificationCenter.observe("closeMenu") { [weak self] notification in
+            _ = NotificationCenter.observe("closeMenu") { [weak self] notification in
                 self?.sideMenu?.hideSideMenu()
             }
         }
