@@ -14,6 +14,6 @@ typedef void (^SignInHelperCallback)(BOOL success, NSString *errorTitle, NSStrin
 
 - (void)registerWithName:(NSString *)name email:(NSString *)email password:(NSString *)password image:(UIImage *)image view:(UIView *)view callback:(SignInHelperCallback)callback;
 - (void)loginWithEmail:(NSString *)email password:(NSString *)password view:(UIView *)view callback:(SignInHelperCallback)callback;
-- (void)loginWithFacebookForView:(UIView *)view callback:(SignInHelperCallback)callback;
+- (void)loginWithFacebookForView:(UIViewController *)view callback:(SignInHelperCallback)callback;
 
 @end

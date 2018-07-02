@@ -10,7 +10,6 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-
 @interface SignInHelper()<SMAPIRequestDelegate>
 
 @property (nonatomic, strong) SMAPIRequest * apr;
