@@ -178,7 +178,7 @@
         self.pickerWrapperViewBottomContstraint.constant = 0;
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
-        pickerOpen = YES;
+        self->pickerOpen = YES;
     }];
 }
 
@@ -193,11 +193,11 @@
             self.pickerWrapperViewBottomContstraint.constant = -self.pickerWrapperView.frame.size.height;
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
-            pickerOpen = NO;
+            self->pickerOpen = NO;
         }];
     } else {
         self.pickerWrapperViewBottomContstraint.constant = -self.pickerWrapperView.frame.size.height;
-        pickerOpen = NO;
+        self->pickerOpen = NO;
     }
 }
 
@@ -303,7 +303,7 @@
 - (void)request:(SMAPIRequest *)req completedWithResult:(NSDictionary *)result {
     if ([result[@"success"] boolValue]) {
         [UIView animateWithDuration:0.4f animations:^{
-            [reportSentView setAlpha:1.0f];
+            [self->reportSentView setAlpha:1.0f];
         }];
     } else {
         if (result[@"invalid_token"]) {
