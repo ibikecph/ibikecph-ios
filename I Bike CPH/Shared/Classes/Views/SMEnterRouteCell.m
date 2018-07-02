@@ -36,6 +36,7 @@
 }
 
 - (void)prepareForReuse {
+    [super prepareForReuse];
     [self.iconImage setHighlightedImage:nil];
     [self.iconImage setImage:nil];
 }

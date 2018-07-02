@@ -15,6 +15,7 @@
 }
 
 - (void)prepareForReuse {
+    [super prepareForReuse];
     [self.radioTextBox setDelegate:nil];
 }
 
