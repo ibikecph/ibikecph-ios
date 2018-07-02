@@ -122,7 +122,7 @@ typedef enum {
 - (IBAction)onTap:(UITapGestureRecognizer*)tap {
     [UIView animateWithDuration:0.2 animations:^{
         CGRect frame = self.frame;
-        if (swipeDirection == fvHorizontal) {
+        if (self->swipeDirection == fvHorizontal) {
             if (frame.origin.x == self.startPos) {
                 frame.origin.x = self.endPos;
             } else if (frame.origin.x == self.endPos) {
@@ -180,7 +180,7 @@ typedef enum {
                     frame.origin.x = self.endPos;
                     [self setFrame:frame];
                 } completion:^(BOOL finished) {
-                    blockTouch = NO;
+                    self->blockTouch = NO;
                     self.originalPos = self.endPos;
                 }];
             } else if ([pan velocityInView:self.superview].x < -1000) {
@@ -190,7 +190,7 @@ typedef enum {
                     frame.origin.x = self.startPos;
                     [self setFrame:frame];
                 } completion:^(BOOL finished) {
-                    blockTouch = NO;
+                    self->blockTouch = NO;
                     self.originalPos = self.startPos;
                 }];
             } else if (self.originalPos == self.startPos && (point.x - self.originalPos) >= self.threshold) {
@@ -200,78 +200,78 @@ typedef enum {
                     frame.origin.x = self.endPos;
                     [self setFrame:frame];
                 } completion:^(BOOL finished) {
-                    blockTouch = NO;
+                    self->blockTouch = NO;
                     self.originalPos = self.endPos;
                 }];
             } else if (self.originalPos == self.endPos && (self.originalPos - point.x) >= self.threshold) {
-                blockTouch = YES;
+                self->blockTouch = YES;
                 [UIView animateWithDuration:FLICK_SPEED animations:^{
                     CGRect frame = self.frame;
                     frame.origin.x = self.startPos;
                     [self setFrame:frame];
                 } completion:^(BOOL finished) {
-                    blockTouch = NO;
+                    self->blockTouch = NO;
                     self.originalPos = self.startPos;
                 }];
             } else {
-                blockTouch = YES;
+                self->blockTouch = YES;
                 [UIView animateWithDuration:FLICK_SPEED animations:^{
                     CGRect frame = self.frame;
                     frame.origin.x = self.originalPos;
                     [self setFrame:frame];
                 } completion:^(BOOL finished) {
-                    blockTouch = NO;
+                    self->blockTouch = NO;
                 }];
             }
         } else {
             if ([pan velocityInView:self.superview].y > 1000) {
-                blockTouch = YES;
+                self->blockTouch = YES;
                 [UIView animateWithDuration:MIN(0.2f,ABS((self.endPos-point.x)/[pan velocityInView:self.superview].y)) animations:^{
                     CGRect frame = self.frame;
                     frame.origin.y = self.endPos;
                     [self setFrame:frame];
                 } completion:^(BOOL finished) {
-                    blockTouch = NO;
+                    self->blockTouch = NO;
                     self.originalPos = self.endPos;
                 }];
             } else if ([pan velocityInView:self.superview].y < -1000) {
-                blockTouch = YES;
+                self->blockTouch = YES;
                 [UIView animateWithDuration:MIN(0.2f,ABS((self.endPos-point.x)/[pan velocityInView:self.superview].y))  animations:^{
                     CGRect frame = self.frame;
                     frame.origin.y = self.startPos;
                     [self setFrame:frame];
                 } completion:^(BOOL finished) {
-                    blockTouch = NO;
+                    self->blockTouch = NO;
                     self.originalPos = self.startPos;
                 }];
             } else if (self.originalPos == self.startPos && (point.y - self.originalPos) >= self.threshold) {
-                blockTouch = YES;
+                self->blockTouch = YES;
                 [UIView animateWithDuration:FLICK_SPEED animations:^{
                     CGRect frame = self.frame;
                     frame.origin.y = self.endPos;
                     [self setFrame:frame];
                 } completion:^(BOOL finished) {
-                    blockTouch = NO;
+                    self->blockTouch = NO;
                     self.originalPos = self.endPos;
                 }];
             } else if (self.originalPos == self.endPos && (self.originalPos - point.y) >= self.threshold) {
-                blockTouch = YES;
+                self->blockTouch = YES;
                 [UIView animateWithDuration:FLICK_SPEED animations:^{
                     CGRect frame = self.frame;
                     frame.origin.y = self.startPos;
                     [self setFrame:frame];
                 } completion:^(BOOL finished) {
-                    blockTouch = NO;
+                    self->blockTouch = NO;
                     self.originalPos = self.startPos;
                 }];
             } else {
-                blockTouch = YES;
+                self->blockTouch = YES;
                 [UIView animateWithDuration:FLICK_SPEED animations:^{
                     CGRect frame = self.frame;
                     frame.origin.y = self.originalPos;
                     [self setFrame:frame];
                 } completion:^(BOOL finished) {
-                    blockTouch = NO;
+                    self->blockTouch = NO;
                 }];
             }
         }
