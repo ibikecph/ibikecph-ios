@@ -434,7 +434,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlE-EY-q1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4026" y="-264"/>
+            <point key="canvasLocation" x="-2615" y="-435"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="icz-p2-mgu">
@@ -523,7 +523,6 @@
                         <segue destination="h7b-VQ-XtA" kind="show" identifier="mainToLogin" id="8Kg-rW-C0r"/>
                         <segue destination="RsW-qC-pTA" kind="show" identifier="mainToFindRoute" id="ybc-71-YrM"/>
                         <segue destination="Vto-AB-zLx" kind="presentation" identifier="mainToUserTerms" id="113-Kl-NTj"/>
-                        <segue destination="fkV-sp-Bun" kind="presentation" identifier="mainToActivateTracking" id="ZOu-KZ-AEg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7p-R1-qaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1428,22 +1427,6 @@ God tur og tak fordi du cykler!</string>
             </objects>
             <point key="canvasLocation" x="4446" y="927"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Mdv-Du-8BM">
-            <objects>
-                <navigationController id="fkV-sp-Bun" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yEe-cU-0nU">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="1Rk-GX-hhi" kind="relationship" relationship="rootViewController" id="NNe-5k-gC6"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Job-5H-iWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-442" y="-757"/>
-        </scene>
         <!--User Terms View Controller-->
         <scene sceneID="xtt-I2-qAB">
             <objects>
@@ -2165,7 +2148,7 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="McDonalds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efI-VN-ALf" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="46" y="5" width="524" height="33"/>
+                                                    <rect key="frame" x="46" y="5" width="299" height="33"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="ow8-Xw-MFu"/>
                                                     </constraints>
@@ -2209,19 +2192,19 @@ God tur og tak fordi du cykler!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jws-Ky-7dr" userLabel="Top">
-                                                    <rect key="frame" x="297.5" y="0.0" width="5" height="5"/>
+                                                    <rect key="frame" x="185" y="0.0" width="5" height="5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="5" id="9d5-TO-UFi"/>
                                                         <constraint firstAttribute="width" constant="5" id="anb-5A-PW9"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Heldbjergvej" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhV-Kq-zHr" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="46" y="5" width="524" height="20"/>
+                                                    <rect key="frame" x="46" y="5" width="299" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="6200 Aabenraa" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg2-fN-GIX" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="46" y="25" width="539" height="13"/>
+                                                    <rect key="frame" x="46" y="25" width="314" height="13"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2233,7 +2216,7 @@ God tur og tak fordi du cykler!</string>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="074-oM-R4e" userLabel="Bottom">
-                                                    <rect key="frame" x="297.5" y="38" width="5" height="5"/>
+                                                    <rect key="frame" x="185" y="38" width="5" height="5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="Ws1-nC-w3u"/>
                                                     </constraints>
