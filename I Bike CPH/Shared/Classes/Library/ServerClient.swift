@@ -135,7 +135,7 @@ extension String {
         var newString = self
         for (key, value) in parameters {
 // TODO: Use NSURLComponents to encode to components component-wiser instead
-            if let string = value.addingPercentEscapes(using: String.Encoding.utf8) {
+            if let string = value.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.alphanumerics) {
                 newString = stringByAddingUrlParameter(key, value: string)
             }
         }
