@@ -176,8 +176,6 @@
 		4EC56DC21A2A25E900B696B4 /* SMAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */; };
 		4EC56DC41A2A25E900B696B4 /* SMContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAD1A2A25E900B696B4 /* SMContacts.m */; };
 		4EC56DC61A2A25E900B696B4 /* SMContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAD1A2A25E900B696B4 /* SMContacts.m */; };
-		4EC56DC81A2A25E900B696B4 /* SMEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAF1A2A25E900B696B4 /* SMEvents.m */; };
-		4EC56DCA1A2A25E900B696B4 /* SMEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DAF1A2A25E900B696B4 /* SMEvents.m */; };
 		4EC56DCC1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB11A2A25E900B696B4 /* SMFavoritesUtil.m */; };
 		4EC56DCE1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB11A2A25E900B696B4 /* SMFavoritesUtil.m */; };
 		4EC56DD01A2A25E900B696B4 /* SMSearchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DB31A2A25E900B696B4 /* SMSearchHistory.m */; };
@@ -206,12 +204,6 @@
 		4EC56E571A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56DFD1A2A2C3D00B696B4 /* SMCustomCheckbox.m */; };
 		4EC56E6D1A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */; };
 		4EC56E6F1A2A2C3D00B696B4 /* SMEnterRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */; };
-		4EC56E711A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0A1A2A2C3D00B696B4 /* SMEventsCalendarCell.m */; };
-		4EC56E731A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0A1A2A2C3D00B696B4 /* SMEventsCalendarCell.m */; };
-		4EC56E751A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0C1A2A2C3D00B696B4 /* SMEventsFacebookCell.m */; };
-		4EC56E771A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0C1A2A2C3D00B696B4 /* SMEventsFacebookCell.m */; };
-		4EC56E791A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0E1A2A2C3D00B696B4 /* SMEventsHeader.m */; };
-		4EC56E7B1A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E0E1A2A2C3D00B696B4 /* SMEventsHeader.m */; };
 		4EC56E811A2A2C3D00B696B4 /* SMMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E121A2A2C3D00B696B4 /* SMMenuCell.m */; };
 		4EC56E831A2A2C3D00B696B4 /* SMMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E121A2A2C3D00B696B4 /* SMMenuCell.m */; };
 		4EC56E851A2A2C3D00B696B4 /* SMNetworkErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC56E141A2A2C3D00B696B4 /* SMNetworkErrorView.m */; };
@@ -619,8 +611,6 @@
 		4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAPIRequest.m; sourceTree = "<group>"; };
 		4EC56DAC1A2A25E900B696B4 /* SMContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMContacts.h; sourceTree = "<group>"; };
 		4EC56DAD1A2A25E900B696B4 /* SMContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMContacts.m; sourceTree = "<group>"; };
-		4EC56DAE1A2A25E900B696B4 /* SMEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEvents.h; sourceTree = "<group>"; };
-		4EC56DAF1A2A25E900B696B4 /* SMEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEvents.m; sourceTree = "<group>"; };
 		4EC56DB01A2A25E900B696B4 /* SMFavoritesUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFavoritesUtil.h; sourceTree = "<group>"; };
 		4EC56DB11A2A25E900B696B4 /* SMFavoritesUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFavoritesUtil.m; sourceTree = "<group>"; };
 		4EC56DB21A2A25E900B696B4 /* SMSearchHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSearchHistory.h; sourceTree = "<group>"; };
@@ -649,12 +639,6 @@
 		4EC56DFD1A2A2C3D00B696B4 /* SMCustomCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomCheckbox.m; sourceTree = "<group>"; };
 		4EC56E071A2A2C3D00B696B4 /* SMEnterRouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEnterRouteCell.h; sourceTree = "<group>"; };
 		4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEnterRouteCell.m; sourceTree = "<group>"; };
-		4EC56E091A2A2C3D00B696B4 /* SMEventsCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEventsCalendarCell.h; sourceTree = "<group>"; };
-		4EC56E0A1A2A2C3D00B696B4 /* SMEventsCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEventsCalendarCell.m; sourceTree = "<group>"; };
-		4EC56E0B1A2A2C3D00B696B4 /* SMEventsFacebookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEventsFacebookCell.h; sourceTree = "<group>"; };
-		4EC56E0C1A2A2C3D00B696B4 /* SMEventsFacebookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEventsFacebookCell.m; sourceTree = "<group>"; };
-		4EC56E0D1A2A2C3D00B696B4 /* SMEventsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEventsHeader.h; sourceTree = "<group>"; };
-		4EC56E0E1A2A2C3D00B696B4 /* SMEventsHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEventsHeader.m; sourceTree = "<group>"; };
 		4EC56E111A2A2C3D00B696B4 /* SMMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMenuCell.h; sourceTree = "<group>"; };
 		4EC56E121A2A2C3D00B696B4 /* SMMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMenuCell.m; sourceTree = "<group>"; };
 		4EC56E131A2A2C3D00B696B4 /* SMNetworkErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNetworkErrorView.h; sourceTree = "<group>"; };
@@ -1165,8 +1149,6 @@
 				4EC56DAB1A2A25E900B696B4 /* SMAPIRequest.m */,
 				4EC56DAC1A2A25E900B696B4 /* SMContacts.h */,
 				4EC56DAD1A2A25E900B696B4 /* SMContacts.m */,
-				4EC56DAE1A2A25E900B696B4 /* SMEvents.h */,
-				4EC56DAF1A2A25E900B696B4 /* SMEvents.m */,
 				4EC56DB01A2A25E900B696B4 /* SMFavoritesUtil.h */,
 				4EC56DB11A2A25E900B696B4 /* SMFavoritesUtil.m */,
 				4EC56DB21A2A25E900B696B4 /* SMSearchHistory.h */,
@@ -1501,12 +1483,6 @@
 				4EC56DFD1A2A2C3D00B696B4 /* SMCustomCheckbox.m */,
 				4EC56E071A2A2C3D00B696B4 /* SMEnterRouteCell.h */,
 				4EC56E081A2A2C3D00B696B4 /* SMEnterRouteCell.m */,
-				4EC56E091A2A2C3D00B696B4 /* SMEventsCalendarCell.h */,
-				4EC56E0A1A2A2C3D00B696B4 /* SMEventsCalendarCell.m */,
-				4EC56E0B1A2A2C3D00B696B4 /* SMEventsFacebookCell.h */,
-				4EC56E0C1A2A2C3D00B696B4 /* SMEventsFacebookCell.m */,
-				4EC56E0D1A2A2C3D00B696B4 /* SMEventsHeader.h */,
-				4EC56E0E1A2A2C3D00B696B4 /* SMEventsHeader.m */,
 				4EC56E111A2A2C3D00B696B4 /* SMMenuCell.h */,
 				4EC56E121A2A2C3D00B696B4 /* SMMenuCell.m */,
 				4EC56E131A2A2C3D00B696B4 /* SMNetworkErrorView.h */,
@@ -2393,7 +2369,6 @@
 				4EC56DCC1A2A25E900B696B4 /* SMFavoritesUtil.m in Sources */,
 				4EC56E8D1A2A2C3D00B696B4 /* SMPatternedButton.m in Sources */,
 				4EEC6D3A1B20B7F8003AE8DF /* DistanceFormatter.swift in Sources */,
-				4EC56E791A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
 				4EEC6D311B208156003AE8DF /* CompassButton.swift in Sources */,
 				4E10EBC61B3AFEF80012245E /* TurnInstructionsCollectionViewCell.swift in Sources */,
 				DE1032761CF363380099D170 /* ProgrammaticAssets.swift in Sources */,
@@ -2426,12 +2401,10 @@
 				4EEC6D251B207844003AE8DF /* MainMapViewController.swift in Sources */,
 				4E5E878A1B31D6560021F5E9 /* FindRouteToolbarView.swift in Sources */,
 				7D1D9C621CB7EA07007F1D30 /* SMNearbyPlaces.m in Sources */,
-				4EC56E711A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
 				7D03242E1CBD38D0002DADDE /* NonTrackingHandler.swift in Sources */,
 				4EC56EA11A2A2C3D00B696B4 /* SMSearchTwoRowCell.m in Sources */,
 				4E65D2A21AFD03F4006D7CA4 /* HourMinuteFormatter.swift in Sources */,
 				4EC56EF31A2A3AAE00B696B4 /* SMSearchController.m in Sources */,
-				4EC56E751A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
 				7D1D9C761CB7EA1E007F1D30 /* SMFoursquareOperation.m in Sources */,
 				7D1D9C601CB7EA07007F1D30 /* SMGPSUtil.m in Sources */,
 				4EC56DD41A2A25E900B696B4 /* SMUtil.m in Sources */,
@@ -2473,7 +2446,6 @@
 				7D1D9C8F1CB7EA6F007F1D30 /* CurrentLocationItem.swift in Sources */,
 				4EC56E551A2A2C3D00B696B4 /* SMCustomCheckbox.m in Sources */,
 				4EC56E391A2A2C3D00B696B4 /* SMAutocompleteCell.m in Sources */,
-				4EC56DC81A2A25E900B696B4 /* SMEvents.m in Sources */,
 				4E4F5FDA1A2BAC4700233ACA /* Styling.swift in Sources */,
 				4EFB7DB61B74AD8B00A79ECD /* LaunchActivateTrackingViewController.swift in Sources */,
 				4E5258C71A9B9C8400BE55C8 /* String.swift in Sources */,
@@ -2533,7 +2505,6 @@
 				4EC56ED91A2A3AAE00B696B4 /* SMEnterEmailControllerViewController.m in Sources */,
 				4EADAE521B5024CA00A2E43F /* ServiceStationsAnnotation.swift in Sources */,
 				4EE06C381A10FC5600DE4226 /* SMDepartureInfo.m in Sources */,
-				4EC56E7B1A2A2C3D00B696B4 /* SMEventsHeader.m in Sources */,
 				4E5B90691B5F990E008AC960 /* UserTerms.swift in Sources */,
 				4E10EBB91B3AE6480012245E /* RouteNavigationToolbarView.swift in Sources */,
 				7D1D9C981CB7EB97007F1D30 /* FavoriteItem.swift in Sources */,
@@ -2643,8 +2614,6 @@
 				4E2CF4FE1B84B964004BDCAB /* LaunchReadMoreViewController.swift in Sources */,
 				4E7262DA1B2AF450008561D0 /* BorderedButton.swift in Sources */,
 				7D1D9CA31CB7EBCF007F1D30 /* SMRequestOSRM.m in Sources */,
-				4EC56E731A2A2C3D00B696B4 /* SMEventsCalendarCell.m in Sources */,
-				4EC56DCA1A2A25E900B696B4 /* SMEvents.m in Sources */,
 				4EE06C4A1A10FC5600DE4226 /* SMStationsCache.m in Sources */,
 				4EE6337B1A5E8B6D009DA49B /* OverlaysManager.swift in Sources */,
 				4E2B08F51B3D5C6900580C27 /* MapToMapNavigationControllerDelegate.swift in Sources */,
@@ -2671,7 +2640,6 @@
 				4EEC6D2F1B207B74003AE8DF /* ToolbarViewController.swift in Sources */,
 				4E467D1B1B3416D4003770EE /* RouteManager.swift in Sources */,
 				4EEC6D381B20B14F003AE8DF /* TrackingToolbarView.swift in Sources */,
-				4EC56E771A2A2C3D00B696B4 /* SMEventsFacebookCell.m in Sources */,
 				4EC56DE01A2A262800B696B4 /* SMAppDelegate.m in Sources */,
 				4EE671C71A2F25F00037865B /* UINavigationController.swift in Sources */,
 				7D1D9CA41CB7EBCF007F1D30 /* SMRoute.m in Sources */,
