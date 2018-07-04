@@ -173,8 +173,8 @@ extension FindRouteViewController: RouteManagerDelegate {
         switch result {
             case .error(let error):
                 print(error)
-                fallthrough
-            case .errorOfType(_):
+            case .errorOfType(let error):
+                print(error)
                 let alert = UIAlertController(title: nil, message: "error_route_not_found".localized, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel) { action in
                     self.clearUI()

@@ -56,6 +56,12 @@
         [self startUpdating];
         self.locationServicesEnabled = YES;
     }
+    else if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        //TODO navigation notifications will not work when app is in the background, maybe we should
+        //somehow let the user know this, or at least gracefully handle the case and not try to push notifications
+        [self startUpdating];
+        self.locationServicesEnabled = YES;
+    }
     else {
         [self stopUpdating];
         self.locationServicesEnabled = NO;
