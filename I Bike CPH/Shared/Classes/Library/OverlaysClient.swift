@@ -20,7 +20,7 @@ class OverlaysClient: ServerClient {
     }
     
     func requestOverlaysGeoJSON(_ filename: String, completion: @escaping (Result) -> ()) {
-        let path = "http://assets.ibikecph.dk/geodata/" + filename + ".geojson"
+        let path = "https://assets.ibikecph.dk/geodata/" + filename + ".geojson"
         request(path) { result in
             switch result {
                 case .successJSON(let json, _): completion(.success(json))

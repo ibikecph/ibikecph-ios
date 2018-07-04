@@ -82,7 +82,7 @@ class TrackingSettings {
 
 class TurnstileSettings {
     var didSeeActivateTracking: Bool {
-        get { return Defaults[.turnstileDidSeeActivateTracking] ?? false }
+        get { return Defaults[.turnstileDidSeeActivateTracking] }
         set {
             Defaults[.turnstileDidSeeActivateTracking] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
@@ -90,7 +90,7 @@ class TurnstileSettings {
     }
     
     var didSeeGreenestRouteIntroduction: Bool {
-        get { return Defaults[.turnstileDidSeeGreenestRouteIntroduction] ?? false }
+        get { return Defaults[.turnstileDidSeeGreenestRouteIntroduction] }
         set {
             Defaults[.turnstileDidSeeGreenestRouteIntroduction] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
@@ -100,31 +100,28 @@ class TurnstileSettings {
 
 class OverlaysSettings: NSObject {
     var showBikeServiceStations: Bool {
-        get { return Defaults[.showBikeServiceStationsOverlay] ?? false }
+        get { return Defaults[.showBikeServiceStationsOverlay] }
         set {
             Defaults[.showBikeServiceStationsOverlay] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
     var showCycleSuperHighways: Bool {
-        get {
-            return false // Disable until routes are updated
-//            return Defaults[.showCycleSuperHighwaysOverlay] ?? false
-        }
+        get { return Defaults[.showCycleSuperHighwaysOverlay] }
         set {
             Defaults[.showCycleSuperHighwaysOverlay] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
-    }
+}
     var showHarborRing: Bool {
-        get { return Defaults[.showHarborRingOverlay] ?? false }
+        get { return Defaults[.showHarborRingOverlay] }
         set {
             Defaults[.showHarborRingOverlay] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)
         }
     }
     var showGreenPaths: Bool {
-        get { return Defaults[.showGreenPathsOverlay] ?? false }
+        get { return Defaults[.showGreenPathsOverlay] }
         set {
             Defaults[.showGreenPathsOverlay] = newValue
             NotificationCenter.post(settingsUpdatedNotification, object: self)

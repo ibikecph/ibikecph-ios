@@ -33,23 +33,24 @@ extension DefaultsKeys {
     // Saved Overlays GeoJSON
     static let harborRingGeoJSON = DefaultsKey<Dictionary<String,AnyObject>?>("harborRingGeoJSON")
     static let greenPathsGeoJSON = DefaultsKey<Dictionary<String,AnyObject>?>("greenPathsGeoJSON")
+    static let superCycleHighwaysGeoJSON = DefaultsKey<Dictionary<String,AnyObject>?>("superCycleHighwaysGeoJSON")
 }
 
 @objc class OverlaysManager: NSObject {
-    
     static let sharedInstance = OverlaysManager()
     
     let availableOverlays: [OverlayType] = {
         if macro.isCykelPlanen {
             return [
-//                .CycleSuperHighways,
+                .cycleSuperHighways,
 //                .BikeServiceStations
             ]
         }
         if macro.isIBikeCph {
             return [
                 .harborRing,
-                .greenPaths
+                .greenPaths,
+                //.cycleSuperHighways
             ]
         }
         return []
@@ -259,15 +260,15 @@ extension DefaultsKeys {
         fetchData()
         
         // Since the class is a singleton there's no need to unobserve
-        NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
+        _ = NotificationCenter.observe(settingsUpdatedNotification) { [weak self] notification in
             self?.updateAllOverlays()
         }
     }
     
     fileprivate func fetchData() {
-        if let json = self.JSONFromFile("cycle_super_highways", fileExtension: "geojson") {
-            self.cycleSuperHighwayAnnotations = OverlayAnnotations(type: .cycleSuperHighways, json: json)
-        }
+        //if let json = self.JSONFromFile("cycle_super_highways", fileExtension: "geojson") {
+        //    self.cycleSuperHighwayAnnotations = OverlayAnnotations(type: .cycleSuperHighways, json: json)
+        //}
         
         if let json = self.JSONFromFile("stations", fileExtension: "json") {
             self.bikeServiceAnnotations = OverlayAnnotations(type: .bikeServiceStations, json: json)
@@ -300,6 +301,21 @@ extension DefaultsKeys {
                     if let dictionary = Defaults[.greenPathsGeoJSON] {
                         self.greenPathsAnnotations = OverlayAnnotations(type: .greenPaths, json: JSON(dictionary))
                     }
+            }
+        }
+
+        OverlaysClient.sharedInstance.requestOverlaysGeoJSON("cycle_super_highways") { result in
+            switch result {
+            case .success(let json):
+                self.cycleSuperHighwayAnnotations = OverlayAnnotations(type: .cycleSuperHighways, json: json)
+                if let dictionary = json.dictionaryObject {
+                    Defaults[.superCycleHighwaysGeoJSON] = dictionary as [String : AnyObject]
+                }
+            default:
+                 //Try to use cached GeoJSON data if available
+                if let dictionary = Defaults[.superCycleHighwaysGeoJSON] {
+                    self.cycleSuperHighwayAnnotations = OverlayAnnotations(type: .cycleSuperHighways, json: JSON(dictionary))
+                }
             }
         }
     }
