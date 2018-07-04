@@ -2903,6 +2903,7 @@
 					"$(SDKROOT)/usr/include/libz",
 				);
 				INFOPLIST_FILE = "I Bike CPH/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2951,6 +2952,7 @@
 					"$(SDKROOT)/usr/include/libz",
 				);
 				INFOPLIST_FILE = "I Bike CPH/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				I_BIKE_CPH = 1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
