@@ -728,13 +728,7 @@ God tur og tak fordi du cykler!</string>
                             <constraint firstItem="Mb2-Mw-5tH" firstAttribute="top" secondItem="gIQ-mB-Wlj" secondAttribute="bottom" id="url-Bv-fTV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="yTU-l4-nT2">
-                        <barButtonItem key="rightBarButtonItem" title="Problem" id="BWY-Sz-zGo">
-                            <connections>
-                                <action selector="didTapProblem:" destination="0iY-Gd-Bo4" id="2EB-vj-H5X"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="yTU-l4-nT2"/>
                     <connections>
                         <outlet property="compassButton" destination="jDH-94-tHy" id="pkV-4g-9Dn"/>
                         <outlet property="mapView" destination="m8f-LC-UdU" id="pnO-PP-Tbj"/>
