@@ -97,53 +97,9 @@
 }
 
 - (void)addSearchToServer:(NSObject<SearchListItem>*)searchItem {
-    SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
-    [self setApr:ap];
-    [self.apr setRequestIdentifier:@"addHistory"];
-    
-    NSDateFormatter * df = [[NSDateFormatter alloc] init];
-    [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-    [df setDateFormat:@"EEE, dd MMMM YYYY HH:mm:ss zzz"];
-    NSString * date = [df stringFromDate:[NSDate date]];
-    
-    [self.apr executeRequest:API_ADD_HISTORY withParams:@{
-     @"auth_token":[self.appDelegate.appSettings objectForKey:@"auth_token"], @
-     "route": @{
-     @"from_name": @"N/A",
-     @"from_lattitude": @0,
-     @"from_longitude": @0,
-     @"to_name": searchItem.name,
-     @"to_lattitude": [NSString stringWithFormat:@"%f", searchItem.location.coordinate.latitude],
-     @"to_longitude": [NSString stringWithFormat:@"%f", searchItem.location.coordinate.longitude],
-     @"start_date" : date }}
-     ];    
 }
 
 - (void)addFinishedRouteToServer:(NSDictionary*)srchData {
-    SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
-    [self setApr:ap];
-    [self.apr setRequestIdentifier:@"addFinished"];
-    
-    NSDateFormatter * df = [[NSDateFormatter alloc] init];
-    [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-    [df setDateFormat:@"EEE, dd MMMM YYYY HH:mm:ss zzz"];
-    
-    NSDictionary * d = @{
-                         @"auth_token":[self.appDelegate.appSettings objectForKey:@"auth_token"], @
-                         "route": @{
-                                 @"from_name": [[srchData[@"fromName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]?@"N/A":[srchData[@"fromName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
-                                 @"from_lattitude": [NSString stringWithFormat:@"%f", ((CLLocation*)srchData[@"fromLocation"]).coordinate.latitude],
-                                 @"from_longitude": [NSString stringWithFormat:@"%f", ((CLLocation*)srchData[@"fromLocation"]).coordinate.longitude],
-                                 @"to_name": [[srchData[@"toName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]?@"N/A":[srchData[@"toName"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
-                                 @"to_lattitude": [NSString stringWithFormat:@"%f", ((CLLocation*)srchData[@"toLocation"]).coordinate.latitude],
-                                 @"to_longitude": [NSString stringWithFormat:@"%f", ((CLLocation*)srchData[@"toLocation"]).coordinate.longitude],
-                                 @"route_visited_locations": @"tetststst",//[srchData objectForKey:@"visitedLocations"],
-                                 @"is_finished": @"true",
-                                 @"start_date" : [df stringFromDate:srchData[@"startDate"]],
-                                 @"end_date" : [df stringFromDate:srchData[@"endDate"]]
-                                 }};
-    
-    [self.apr executeRequest:API_ADD_HISTORY withParams:d];
 }
 
 #pragma mark - api delegate
