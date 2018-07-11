@@ -41,15 +41,15 @@ class UserTermsViewController: SMTranslatedViewController {
     @IBAction func didTapNo(_ sender: AnyObject) {
         let alertController = PSTAlertController(title: "", message: "accept_user_terms_or_log_out".localized, preferredStyle: .alert)
         let cancelAction = PSTAlertAction(title: "back".localized) { action in
-            alertController?.dismiss(animated: true, completion: nil)
+            alertController.dismiss(animated: true, completion: nil)
         }
-        alertController?.addAction(cancelAction)
+        alertController.addAction(cancelAction)
         let loginAction = PSTAlertAction(title: "logout".localized) { action in
             UserHelper.logout()
             self.dismiss()
         }
-        alertController?.addAction(loginAction)
-        alertController?.showWithSender(self, controller: self, animated: true, completion: nil)
+        alertController.addAction(loginAction)
+        alertController.showWithSender(self, controller: self, animated: true, completion: nil)
     }
     
     @IBAction func didTapAccept(_ sender: AnyObject) {

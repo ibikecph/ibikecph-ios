@@ -60,13 +60,13 @@ class TrackingPromptViewController: SMTranslatedViewController {
         switch UserHelper.checkEnableTracking() {
         case .notLoggedIn:
             let alertController = PSTAlertController(title: "", message: "log_in_to_track_prompt".localized, preferredStyle: .alert)
-            alertController?.addCancelAction(handler: nil)
+            alertController.addCancelAction(handler: nil)
             let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
                 self?.pendingEnableTrackingFromLogin = true
                 self?.performSegue(withIdentifier: TrackingPromptViewController.toLoginSegue, sender: self)
             }
-            alertController?.addAction(loginAction)
-            alertController?.showWithSender(self, controller: self, animated: true, completion: nil)
+            alertController.addAction(loginAction)
+            alertController.showWithSender(self, controller: self, animated: true, completion: nil)
         case .allowed:
             Settings.sharedInstance.tracking.on = true
             dismiss()

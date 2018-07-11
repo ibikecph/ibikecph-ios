@@ -88,15 +88,15 @@ class MainMapViewController: MapViewController {
         })
         observerTokens.append(NotificationCenter.observe("invalidToken") { [weak self] notification in
             let alertController = PSTAlertController(title: "", message: "invalid_token_user_logged_out".localized, preferredStyle: .alert)
-            alertController?.addCancelAction(handler: nil)
+            alertController.addCancelAction(handler: nil)
             let loginAction = PSTAlertAction(title: "log_in".localized) { [weak self] action in
                 guard let nonNilSelf = self else {
                     return
                 }
                 nonNilSelf.performSegue(withIdentifier: nonNilSelf.mainToLoginSegue, sender: nonNilSelf)
             }
-            alertController?.addAction(loginAction)
-            alertController?.showWithSender(self, controller: self, animated: true, completion: nil)
+            alertController.addAction(loginAction)
+            alertController.showWithSender(self, controller: self, animated: true, completion: nil)
             NotificationCenter.post("closeMenu")
         })
     }
@@ -256,12 +256,12 @@ extension MainMapViewController: AddressToolbarDelegate {
         if !UserHelper.loggedIn() {
             if selected {
                 let alertController = PSTAlertController(title: "", message: "log_in_to_favorite_prompt".localized, preferredStyle: .alert)
-                alertController?.addCancelAction(handler: nil)
+                alertController.addCancelAction(handler: nil)
                 let loginAction = PSTAlertAction(title: "log_in".localized) { action in
                     self.performSegue(withIdentifier: self.mainToLoginSegue, sender: self)
                 }
-                alertController?.addAction(loginAction)
-                alertController?.showWithSender(self, controller: self, animated: true, completion: nil)
+                alertController.addAction(loginAction)
+                alertController.showWithSender(self, controller: self, animated: true, completion: nil)
                 // De-select in view
                 addressToolbarView.favoriteSelected = false
             }

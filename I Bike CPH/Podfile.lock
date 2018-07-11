@@ -30,13 +30,13 @@ PODS:
     - OCHamcrest (~> 4.0)
   - ORStackView (3.0.1):
     - FLKAutoLayout (~> 0.2)
-  - PSTAlertController (1.1.0)
+  - PSTAlertController (1.2.0)
   - Realm (0.99.1):
     - Realm/Headers (= 0.99.1)
   - Realm/Headers (0.99.1)
   - SMCalloutView (2.0)
   - SnapKit (0.21.0)
-  - SwiftHEXColors (1.0.4)
+  - SwiftHEXColors (1.1.1)
   - SwiftyJSON (3.1.4)
   - SwiftyUserDefaults (2.2.0)
   - TTTAttributedLabel (2.0.0)
@@ -50,10 +50,10 @@ DEPENDENCIES:
   - NibDesignable (~> 2.3)
   - OCMockito (~> 1.0)
   - ORStackView (~> 3.0)
-  - PSTAlertController (= 1.1.0)
+  - PSTAlertController (= 1.2.0)
   - Realm (~> 0.99.0)
   - SnapKit (~> 0.21.0)
-  - SwiftHEXColors (~> 1.0)
+  - SwiftHEXColors (~> 1.1.1)
   - SwiftyJSON (~> 3.1.4)
   - SwiftyUserDefaults (~> 2.2.0)
   - TTTAttributedLabel (~> 2.0)
@@ -100,16 +100,16 @@ SPEC CHECKSUMS:
   OCHamcrest: cd63d27f48a266d4412c0b295b01b8f0940efa81
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   ORStackView: a1bb52748cd0ae29891c140baf22ff8972fb363c
-  PSTAlertController: cb21afcfa76c3229feec7db044afd4f60dab5892
+  PSTAlertController: 9b802dfbda54fee2683bfd6dda7023a6de895d5b
   Realm: 522a0cc8e1f8755ee56d7dc16ca0fc380d045766
   SMCalloutView: f758edd824b18bf4f42de00df1e299861a2d1950
   SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
-  SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
+  SwiftHEXColors: 9681e756dc78a99ae97f277165b3f5e33b087553
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UIImage-Categories: a0593f6a7991c99016b9ecadfbd38b3717ff1a73
 
-PODFILE CHECKSUM: 79f8dffe93d706b76f5bb9738320b74dd88b581c
+PODFILE CHECKSUM: b8cc50c2c6530dc489b9fa98c3db63f45311c08d
 
 COCOAPODS: 1.5.3

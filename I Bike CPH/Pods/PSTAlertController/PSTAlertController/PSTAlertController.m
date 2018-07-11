@@ -108,6 +108,10 @@
     return [[self alloc] initWithTitle:title message:message preferredStyle:preferredStyle];
 }
 
+- (instancetype)init NS_UNAVAILABLE {
+    assert(0);
+}
+
 - (instancetype)initWithTitle:(NSString *)title message:(NSString *)message preferredStyle:(PSTAlertControllerStyle)preferredStyle {
     if ((self = [super init])) {
         _title = [title copy];
@@ -119,7 +123,11 @@
         } else {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
             if (preferredStyle == PSTAlertControllerStyleActionSheet) {
-                _strongSheetStorage = [[UIActionSheet alloc] initWithTitle:title delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+                NSString *titleAndMessage = title;
+                if (title && message) {
+                    titleAndMessage = [NSString stringWithFormat:@"%@\n%@", title, message];
+                }
+                _strongSheetStorage = [[UIActionSheet alloc] initWithTitle:titleAndMessage delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
             } else {
                 _strongSheetStorage = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
             }
@@ -131,6 +139,32 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"<%@: %p, title:%@, actions:%@>", NSStringFromClass(self.class), self, self.title, self.actions];
+}
+
+- (void)setTitle:(NSString *)title {
+    _title = [title copy];
+    _alertController.title = title;
+
+    id obj = self.strongSheetStorage ?: self.weakSheetStorage;
+    if ([obj respondsToSelector:@selector(setTitle:)]) {
+        [obj setTitle:title];
+    }
+}
+
+- (void)setMessage:(NSString *)message {
+    _message = [message copy];
+    _alertController.message = message;
+
+    id obj = self.strongSheetStorage ?: self.weakSheetStorage;
+    if ([obj respondsToSelector:@selector(setMessage:)]) {
+        [obj setMessage:message];
+    } else if ([obj respondsToSelector:@selector(setTitle:)]) {
+        NSString *final = message;
+        if (_title && message) {
+            final = [NSString stringWithFormat:@"%@\n%@", _title, message];
+        }
+        [obj setTitle:final];
+    }
 }
 
 - (void)dealloc {
@@ -243,6 +277,10 @@ static NSUInteger PSTVisibleAlertsCount = 0;
 }
 
 - (void)showWithSender:(id)sender controller:(UIViewController *)controller animated:(BOOL)animated completion:(void (^)(void))completion {
+    [self showWithSender:sender arrowDirection:UIPopoverArrowDirectionAny controller:controller animated:animated completion:completion];
+}
+
+- (void)showWithSender:(id)sender arrowDirection:(UIPopoverArrowDirection)arrowDirection controller:(UIViewController *)controller animated:(BOOL)animated completion:(void (^)(void))completion {
     if ([self alertControllerAvailable]) {
         // As a convenience, allow automatic root view controller fetching if we show an alert.
         if (self.preferredStyle == PSTAlertControllerStyleAlert) {
@@ -288,6 +326,21 @@ static NSUInteger PSTVisibleAlertsCount = 0;
             if (CGRectGetHeight(r) > CGRectGetHeight(screen)*0.5 || CGRectGetWidth(r) > CGRectGetWidth(screen)*0.5) {
                 popoverPresentation.sourceRect = CGRectMake(r.origin.x + r.size.width/2.f, r.origin.y + r.size.height/2.f, 1.f, 1.f);
             }
+
+            // optimize arrow positioning for up and down.
+            UIPopoverPresentationController *popover = controller.popoverPresentationController;
+                popover.permittedArrowDirections = arrowDirection;
+                switch (arrowDirection) {
+                    case UIPopoverArrowDirectionDown:
+                        popoverPresentation.sourceRect = CGRectMake(r.origin.x + r.size.width/2.f, r.origin.y, 1.f, 1.f);
+                        break;
+                    case UIPopoverArrowDirectionUp:
+                        popoverPresentation.sourceRect = CGRectMake(r.origin.x + r.size.width/2.f, r.origin.y + r.size.height, 1.f, 1.f);
+                        break;
+                    // Left and right is too buggy.
+                    default:
+                        break;
+                }
         }
 
         // Hook up dismiss blocks.

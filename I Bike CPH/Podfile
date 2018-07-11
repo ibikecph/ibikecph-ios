@@ -5,19 +5,19 @@ inhibit_all_warnings!
 
 abstract_target 'app_target' do
 
-  pod 'TTTAttributedLabel', '~> 2.0'
-  pod 'DAKeyboardControl', '~> 2.4'
-  pod 'UIImage-Categories', '~> 1.0'
-  pod 'PSTAlertController', '1.1.0'
-  pod 'Realm', '~> 0.99.0'
-  pod 'Mapbox-iOS-SDK', '1.6.0'
-  pod 'NibDesignable', '~> 2.3'
-  pod 'SwiftyJSON', '~> 3.1.4'
-  pod 'ORStackView',  '~> 3.0'
-  pod 'SwiftyUserDefaults', '~> 2.2.0'
-  pod 'SwiftHEXColors', '~> 1.0'
-  pod 'SnapKit', '~> 0.21.0'
-  pod 'AsyncSwift', '~> 2.0.4'
+  pod 'TTTAttributedLabel', '~> 2.0'        # replacement for UILabel that supports attributes
+  pod 'DAKeyboardControl', '~> 2.4'         # not updated since 2014. used a handful of places
+  pod 'UIImage-Categories', '~> 1.0'        # used when user creates account
+  pod 'PSTAlertController', '1.2.0'         # legacy way of showing alerts, should remove
+  pod 'Realm', '~> 0.99.0'                  # ancient
+  pod 'Mapbox-iOS-SDK', '1.6.0'             # ancient. newer version requires that telemetry data is sent to mapbox
+  pod 'NibDesignable', '~> 2.3'             # support legacy nib files, but there are no  nib files in the project?
+  pod 'SwiftyJSON', '~> 3.1.4'              # newer version requires code changes
+  pod 'ORStackView',  '~> 3.0'              # superseded by OS functions, could be removed
+  pod 'SwiftyUserDefaults', '~> 2.2.0'      # newer version requires code changes
+  pod 'SwiftHEXColors', '~> 1.1.1'
+  pod 'AsyncSwift', '~> 2.0.4'              # syntatic sugar, by Tobias Due Munk
+  pod 'SnapKit', '~> 0.21.0'                # layout constrains in code, only used a few places
   pod 'FBSDKLoginKit', '~> 4.34.0'
 
   target 'I Bike CPH'
