@@ -676,14 +676,14 @@ God tur og tak fordi du cykler!</string>
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dyj-2u-WaP" customClass="ReadAloudButton" customModule="CykelPlanen" customModuleProvider="target">
-                                <rect key="frame" x="323" y="553" width="52" height="52"/>
+                                <rect key="frame" x="323" y="453" width="52" height="52"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="20" maxY="20"/>
                                 <state key="normal" image="Compas unselected">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDH-94-tHy" customClass="CompassButton" customModule="CykelPlanen" customModuleProvider="target">
-                                <rect key="frame" x="323" y="615" width="52" height="52"/>
+                                <rect key="frame" x="323" y="515" width="52" height="52"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="20" maxY="20"/>
                                 <state key="normal" image="Compas unselected">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -694,24 +694,17 @@ God tur og tak fordi du cykler!</string>
                                 </connections>
                             </button>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIQ-mB-Wlj" userLabel="Instructions" customClass="RouteNavigationDirectionsToolbarView" customModule="CykelPlanen" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="RWr-kb-68U"/>
-                                    <constraint firstAttribute="width" constant="320" id="oKV-Ic-ZiP"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="RWr-kb-68U"/>
-                                        <exclude reference="oKV-Ic-ZiP"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="m8f-LC-UdU" firstAttribute="bottom" secondItem="jDH-94-tHy" secondAttribute="bottom" id="1Mr-r9-5sM"/>
+                            <constraint firstItem="gIQ-mB-Wlj" firstAttribute="top" secondItem="jDH-94-tHy" secondAttribute="bottom" id="1Mr-r9-5sM"/>
                             <constraint firstItem="jDH-94-tHy" firstAttribute="top" secondItem="Dyj-2u-WaP" secondAttribute="bottom" constant="10" id="4Uv-hh-ood"/>
                             <constraint firstItem="Qwr-r2-t5R" firstAttribute="top" secondItem="6sL-D7-CXy" secondAttribute="bottom" id="8YR-Pt-i0m"/>
                             <constraint firstItem="Dyj-2u-WaP" firstAttribute="leading" secondItem="jDH-94-tHy" secondAttribute="leading" id="8rv-D1-AId"/>
@@ -724,7 +717,7 @@ God tur og tak fordi du cykler!</string>
                             <constraint firstItem="Qwr-r2-t5R" firstAttribute="leading" secondItem="159-dI-AuV" secondAttribute="leading" id="Qzi-hv-L4s"/>
                             <constraint firstAttribute="trailing" secondItem="gIQ-mB-Wlj" secondAttribute="trailing" id="Rz1-Uf-BuL"/>
                             <constraint firstItem="m8f-LC-UdU" firstAttribute="top" secondItem="Qwr-r2-t5R" secondAttribute="bottom" id="V4D-kI-XrF"/>
-                            <constraint firstItem="gIQ-mB-Wlj" firstAttribute="top" secondItem="m8f-LC-UdU" secondAttribute="bottom" id="adT-FT-rMr"/>
+                            <constraint firstItem="gIQ-mB-Wlj" firstAttribute="bottom" secondItem="m8f-LC-UdU" secondAttribute="bottom" id="adT-FT-rMr"/>
                             <constraint firstItem="Mb2-Mw-5tH" firstAttribute="top" secondItem="gIQ-mB-Wlj" secondAttribute="bottom" id="url-Bv-fTV"/>
                         </constraints>
                     </view>
