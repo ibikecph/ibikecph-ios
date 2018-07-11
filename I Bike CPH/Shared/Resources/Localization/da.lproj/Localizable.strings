@@ -1,3 +1,15 @@
+/*
+NOTE:
+Every time the app is build, the localization string files
+are copied from the git submodule ../strings/ into
+I\Bike\CPH/Shared/Resources/Localizaation/
+
+Any changes to the destination file will we silenty overwritten.
+
+This mechanism is akward, but was implemented to share strings
+between iOS and Android.
+*/
+
 "current_position" = "Nuværende position";
 "accounts" = "Konto";
 "settings" = "Indstillinger";
@@ -262,7 +274,7 @@
 "account_repeat_placeholder" = "Gentag ny adgangskode";
 "accept_user_terms" = "Jeg accepterer brugerbetingelserne";
 "accept_user_terms_link_highlight" = "brugerbetingelserne";
-"accept_user_terms_link" = "https://www.ibikecph.dk/terms";
+"accept_user_terms_link" = "https://www.ibikecph.dk/about/terms";
 
 "login_error_fields" = "Både din email og din adgangskode skal være indtastet!";
 "register_error_fields" = "Alle felter skal være udfyldt!";
