@@ -3097,7 +3097,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D CYKELPLANEN";
-				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.CykelPlanen;
+				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.CSS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -3141,7 +3141,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D CYKELPLANEN";
-				PRODUCT_BUNDLE_IDENTIFIER = dk.socialsquare.CykelPlanen;
+				PRODUCT_BUNDLE_IDENTIFIER = "Spoiled-Milk.CSS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
